@@ -16,8 +16,7 @@ This tutorial carries out a basic DFT calculation for silicon. The goal is to in
 <hr style="height:5pt; visibility:hidden;" />
 ### Command summary     
 
-    $mkdir si; cd si; cp path/init.si .     #create working directory, move into it and copy init file     
-    $cp path/init.si .                      #copy structure file to working directory
+    $mkdir si; cd si; cp path/init.si .     #create working directory, move into it and copy file     
     $blm init.si --express                  #use blm tool to create actrl and site files
     $cp actrl.si ctrl.si                    #copy actrl to recognised ctrl prefix
     $lmfa ctrl.si                           #use lmfa to make basp file, atm file and to get gmax
