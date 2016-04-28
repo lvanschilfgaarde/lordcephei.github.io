@@ -11,31 +11,26 @@ header: no
 <hr style="height:5pt; visibility:hidden;" />
 # Basic introduction to full-potential program lmf 
 
-This tutorial carries out a basic DFT calculation for silicon. The goal is to introduce you to the different file types and the basics of running the code. It is assumed that you have installed the executables and that they are in your path (see installing tutorial for more). The starting point is a structure file called "init.si". The init file contains basic structural information in a format that is recognised by the Questaal program (it is analogous to the POSCAR file in VASP). 
+This tutorial carries out a basic DFT calculation for silicon. The goal is to introduce you to the different file types and the basics of running the code. It is assumed that you have installed the executables and that they are in your path (see installation tutorial for more). The full tutorial starts under the heading "Main tutorial". To get straight to the commands you can click on the "Command summary" dropdown menu below.
 
 <hr style="height:5pt; visibility:hidden;" />
 ### Command summary     
 
-    $mkdir si       
-    $cd si
-    $cp path/init.si .
-    $blm init.si --express    #create actrl and site files
+    $mkdir si; cd si          #create working directory and move into it       
+    $cp path/init.si .        #copy structure file to working directory
+    $blm init.si --express    #use blm tool to create actrl and site files
     $cp actrl.si ctrl.si      #copy actrl to recognised ctrl prefix
-    $lmfa ctrl.si             #make basp file, atm file and gmax value
-    $vi ctrl.si               #set k mesh and gmax values in ctrl file
+    $lmfa ctrl.si             #use lmfa to make basp file, atm file and to get gmax
+    $vi ctrl.si               #set k mesh dimensions and gmax value in ctrl file
     $cp basp0.si basp.si      #copy basp0 to recognised basp prefix
     $lmf ctrl.si              #run single iteration
     $vi ctrl.si               #set nit to 20
     $lmf ctrl.si > out.lmfsc  #make self-consistent
 
 <hr style="height:5pt; visibility:hidden;" />
-### Tutorial summary
-Brief summary of overall tutorial, to be used as recap or for very quick and basic tutorial. 
-
-<hr style="height:5pt; visibility:hidden;" />
 ### Main tutorial
 
-To get started, create a new working directory, called "si" for example, and move into it. Then copy the silicon init file "init.si" from path/ into your working directory.
+To get started, create a new working directory, called "si" for example, and move into it. Then copy the silicon init file "init.si" from path/ into your working directory. The init file contains basic structural information in a format that is recognised by the code (it is analogous to the POSCAR file in VASP). 
 
     $mkdir si       #test
     $cd si
