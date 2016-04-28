@@ -30,7 +30,8 @@ This tutorial carries out a band structure calculation for silicon. The goal is 
     $vi ctrl.si
     $lmf ctrl.si > out.lmfsc
 
-Tutorial summary
+<hr style="height:5pt; visibility:hidden;" />
+### Tutorial summary
 
 
 
