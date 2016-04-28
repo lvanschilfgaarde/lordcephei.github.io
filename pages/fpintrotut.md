@@ -32,6 +32,12 @@ This tutorial carries out a band structure calculation for silicon. The goal is 
 
 <hr style="height:5pt; visibility:hidden;" />
 ### Tutorial summary
+Brief summary of overall tutorial, to be used as recap or for very quick and basic tutorial. 
+
+<hr style="height:5pt; visibility:hidden;" />
+### Main tutorial
+
+To get started, create a new working directory, called "si" for example, and move into it. Then copy the silicon init file "init.si" from path/ into your working directory.
 
 
 
