@@ -11,24 +11,22 @@ header: no
 <hr style="height:5pt; visibility:hidden;" />
 # Basic introduction to full-potential program lmf 
 
-This tutorial carries out a basic DFT calculation for silicon. The goal is to provide a simple introduction to the input and output files and the basics of running the code. It is assumed that you have installed the executables and that they are in your path (see installing tutorial for more). The starting point is a structure file called "init.si". The init file contains basic structural information in a format that is recognised by the Questaal program (it is analogous to the POSCAR file in VASP). You can convert other standard structure files into an init file using conversion tools that are supplied as part of the suite of programs. See the /path/ page for more information on file conversion and an example of how to create a structure file manually. Below is a complete list of the commands that will be carried out.
+This tutorial carries out a basic DFT calculation for silicon. The goal is to introduce you to the different file types and the basics of running the code. It is assumed that you have installed the executables and that they are in your path (see installing tutorial for more). The starting point is a structure file called "init.si". The init file contains basic structural information in a format that is recognised by the Questaal program (it is analogous to the POSCAR file in VASP). 
 
 <hr style="height:5pt; visibility:hidden;" />
 ### Command summary     
 
-    $mkdir si       #test
+    $mkdir si       
     $cd si
     $cp path/init.si .
-    $blm init.si --express
-    $cp actrl.si ctrl.si
-    $blm init.si --express
-    $cp actrl.si ctrl.si
-    $lmfa ctrl.si
-    $vi ctrl.si
-    $cp basp0.si basp.si
-    $lmf ctrl.si
-    $vi ctrl.si
-    $lmf ctrl.si > out.lmfsc
+    $blm init.si --express    #create actrl and site files
+    $cp actrl.si ctrl.si      #copy actrl to recognised ctrl prefix
+    $lmfa ctrl.si             #make basp file, atm file and gmax value
+    $vi ctrl.si               #set k mesh and gmax values in ctrl file
+    $cp basp0.si basp.si      #copy basp0 to recognised basp prefix
+    $lmf ctrl.si              #run single iteration
+    $vi ctrl.si               #set nit to 20
+    $lmf ctrl.si > out.lmfsc  #make self-consistent
 
 <hr style="height:5pt; visibility:hidden;" />
 ### Tutorial summary
@@ -73,7 +71,7 @@ We now have everything that we need to run an all-electron, full-potential DFT c
     
 Now take a look at the output file "out.lmfsc". Look for the line beginning with "iors", again around line 60, and you will see that the guess density was read from the restart file "rst.si". The rst file was created after the single iteration. Now move to the end of the file, the "it 8 of 20" indicates that the calculation converged after 8 iterations. At the end of each iteration the total energies (KS and HF) are printed and a check is made for self-consistency. Two parameters conv and convc were given in the ctrl file and these specify the self-consistency tolerances for the total energy and root mean square (RMS) change in the density. The change in the density can be tracked by grepping the output for 'DQ' and the change in the energy can be tracked by grepping for 'ehk=-'.
 
-And that's it! You now have a self-consistent density.
+And that's it! You now have a self-consistent density and looked at some basic properties such as the band gap and total energy.  
 
 <hr style="height:5pt; visibility:hidden;" />
 ### Additional exercises
