@@ -11,7 +11,7 @@ header: no
 <hr style="height:5pt; visibility:hidden;" />
 # Basic introduction to full-potential program lmf 
 
-This tutorial carries out a basic DFT calculation for silicon. The goal is to introduce you to the different file types and the basics of running the code. It is assumed that you have installed the executables and that they are in your path (see installation tutorial for more). The full tutorial starts under the heading "Main tutorial". To get straight to the commands you can click on the "Command summary" dropdown menu below .
+This tutorial carries out a basic DFT calculation for silicon. The goal is to introduce you to the different file types and the basics of running the code. It is assumed that you have installed the executables and that they are in your path (see installation tutorial for more). The full tutorial starts under the heading "Main tutorial". You can go straight to the commands by clicking on the "Command summary" dropdown menu below.
 
 <hr style="height:5pt; visibility:hidden;" />
 ### Command summary     
@@ -30,11 +30,11 @@ This tutorial carries out a basic DFT calculation for silicon. The goal is to in
 <hr style="height:5pt; visibility:hidden;" />
 ### Main tutorial
 
-To get started, create a new working directory and move into it, here we will call it "si". Then copy the silicon init file "init.si" from path/ to your working directory. The init file contains basic structural information in a format that is recognised by the code (it is analogous to the POSCAR file in VASP). 
+To get started, create a new working directory and move into it, here we will call it "si". Then copy the silicon init file "init.si" from path/ to this directory. The init file is the starting poiny, it contains basic structural information in a format that is recognised by the code (analogous to the POSCAR file in VASP). 
 
     $mkdir si 
     $cd si
-    $cp path/init.si 
+    $cp path/init.si .
 
 Take a look at the init file using a text editor (e.g. vi) and you will see it contains only the basic structural information. The lattice constant "ALAT" and primitive lattice vectors "PLAT" are shown in the "LATTICE" section. The "UNITS=A" specficies that the lattice constant is in Angstroms (the lattice vectors are in units of the lattice constant). The primitive lattice vectors are in row format (i.e. the first row contains the x, y and z components of the first lattice vector and so forth). In the "SITE" section, the atom type and coordinates are shown. The "X=" label specifices that the coordinates are in fractional (or direct) representation. It is also possible to use cartesian coordinates and in this case the "X=" label would be replaced by "POS=" (see additional exercises dropdown menu).
 
@@ -43,7 +43,7 @@ In order to run a DFT calculation, you need an input file and structural informa
     $blm init.si --express
     $cp actrl.si ctrl.si
     
-The blm output shows some structural and symmetry information. The "makrm0:" part gives information about creating the augmentation spheres, both silicon atoms were assigned spheres of radii 4.0912 Bohr. Open up the site file and you can see it contains the lattice constant and lattice vectors in the first line. Note that the lattice constant has been converted from Angstroms to Bohr since the code works in atomic units. The other terms in the first line are just standard settings and a full explanation can be found on the site file page. The second line is a comment line and the following lines contain the atomic species labels and coordinates. Note that blm writes cartesian coordinates by default (they happen to be the same as fractional coordinates in this case) and that running blm produces a new actrl and site file each time. 
+The start of the blm output shows some structural and symmetry information. Further down, the "makrm0:" part gives information about creating the augmentation spheres, both silicon atoms were assigned spheres of radii 4.0912 Bohr. Open up the site file and you can see it contains the lattice constant and lattice vectors in the first line. Note that the lattice constant has been converted from Angstroms to Bohr since the code works in atomic units. The other terms in the first line are just standard settings and a full explanation can be found on the site file page. The second line is a comment line and the following lines contain the atomic species labels and coordinates. Note that blm writes cartesian coordinates by default (they happen to be the same as fractional coordinates in this case) and that running blm produces a new actrl and site file each time. 
 
     $vi site.si
 
