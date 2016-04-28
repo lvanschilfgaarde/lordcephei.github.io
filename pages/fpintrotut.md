@@ -16,16 +16,13 @@ This tutorial carries out a basic DFT calculation for silicon. The goal is to in
 <hr style="height:5pt; visibility:hidden;" />
 ### Command summary     
 
-    $mkdir si; cd si          #create working directory and move into it       
-    $cp path/init.si .        #copy structure file to working directory
-    $blm init.si --express    #use blm tool to create actrl and site files
-    $cp actrl.si ctrl.si      #copy actrl to recognised ctrl prefix
-    $lmfa ctrl.si             #use lmfa to make basp file, atm file and to get gmax
-    $vi ctrl.si               #set k mesh dimensions and gmax value in ctrl file
-    $cp basp0.si basp.si      #copy basp0 to recognised basp prefix
-    $lmf ctrl.si              #run single iteration
-    $vi ctrl.si               #set nit to 20
-    $lmf ctrl.si > out.lmfsc  #make self-consistent
+    $mkdir si; cd si; cp path/init.si .     #create working directory, move into it and copy init file     
+    $cp path/init.si .                      #copy structure file to working directory
+    $blm init.si --express                  #use blm tool to create actrl and site files
+    $cp actrl.si ctrl.si                    #copy actrl to recognised ctrl prefix
+    $lmfa ctrl.si                           #use lmfa to make basp file, atm file and to get gmax
+    $cp basp0.si basp.si                    #copy basp0 to recognised basp prefix    
+    $lmf ctrl.si > out.lmfsc                #make self-consistent
 
 <hr style="height:5pt; visibility:hidden;" />
 ### Main tutorial
