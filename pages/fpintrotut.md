@@ -14,9 +14,6 @@ header: no
 This tutorial carries out a basic DFT calculation for silicon. The goal is to introduce you to the different file types and the basics of running the code. It is assumed that you have installed the executables and that they are in your path (see installation tutorial for more). The full tutorial starts under the heading "Main tutorial". You can go straight to the commands by clicking on the "Command summary" dropdown menu below.
 
 <hr style="height:5pt; visibility:hidden;" />
-<<<<<<< HEAD
-### Command summary 
-=======
 ### Command summary     
 
     $ mkdir si; cd si; cp path/init.si .     #create working directory, move into it and copy file     
@@ -29,7 +26,6 @@ This tutorial carries out a basic DFT calculation for silicon. The goal is to in
 
 <hr style="height:5pt; visibility:hidden;" />
 ### Main tutorial
->>>>>>> 046c386e603d2d4013323096d23dd7c148a4816b
 
 To get started, create a new working directory and move into it, here we will call it "si". Then copy the silicon init file "init.si" from path/ to this directory. The init file is the starting poiny, it contains basic structural information in a format that is recognised by the code (analogous to the POSCAR file in VASP). 
 
