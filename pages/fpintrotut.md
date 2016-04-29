@@ -79,12 +79,12 @@ And that's it! You now have a self-consistent density and have calculated some b
 <hr style="height:5pt; visibility:hidden;" />
 ### FAQ 
 Below is a list of commonly asked questions. Please get in contact if you have more questions.
+
 1. How does blm determine the augmentation spheres?
 Overlaps free atom densities and looks for where potential is flat. 
 2. What is the log file? 
 The log file "log.si" keeps a record of what has been run in the current directory.
 3. What is the Harris-Foulkes energy?
-4. 
 
 <hr style="height:5pt; visibility:hidden;" />
 ### Additional exercises
