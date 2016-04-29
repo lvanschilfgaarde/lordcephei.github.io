@@ -35,6 +35,8 @@ To get started, create a new working directory and move into it, here we will ca
 
 Take a look at the init file using a text editor (e.g. vi) and you will see it contains only the basic structural information. The lattice constant "ALAT" and primitive lattice vectors "PLAT" are shown in the "LATTICE" section. The "UNITS=A" specficies that the lattice constant is in Angstroms (the lattice vectors are in units of the lattice constant). The primitive lattice vectors are in row format (i.e. the first row contains the x, y and z components of the first lattice vector and so forth). In the "SITE" section, the atom type and coordinates are shown. The "X=" label specifices that the coordinates are in fractional (or direct) representation. It is also possible to use cartesian coordinates and in this case the "X=" label would be replaced by "POS=" (see additional exercises below).
 
+    $ vi init.si
+
 In order to run a DFT calculation, you need an input file and structural information. The blm tool takes the init file as input and creates a template input file "actrl.si" and structure file "site.si". Note that the code recognises certain prefixes as file types (such as "ctrl" for input file and "site" for structure file) and extensions as file names (which the user can specify). The additional prefix "a" in "actrl.si" is used to prevent overwriting of an existing ctrl file. Run the blm command and then copy the template file "actrl.si" to "ctrl.si", which is now recognised by the code as an input file. The "--express" switch tells blm to make a particularly simple input file, we will see more complicated examples in later tutorials.
 
     $ blm init.si --express
@@ -56,7 +58,7 @@ Again the output shows some structural information and then details about findin
 
     $ vi ctrl.si
 
-Check the contents of your working directory and you will find two new files "atm.si" and "basp0.si". The "atm.si" file contains the free atom densities calculated by lmfa. The basp0.si is the template basis set file; the standard basis set name is basp and the extra 0 is added to avoid overwriting. Take a look at the basp0.si file and you will see that it contains basis set parameters that define silicon's smooth hankel functions. Changing these values would change their functional form, but lmfa does a very good job so we will leave them as they are. Copy basp0.si to the recognised basp.si form.
+Check the contents of your working directory and you will find two new files "atm.si" and "basp0.si". The "atm.si" file contains the free atom densities calculated by lmfa. The basp0.si is the template basis set file; the standard basis set name is basp and the extra 0 is added to avoid overwriting. Take a look at the basp0.si file and you will see that it contains basis set parameters that define silicon's smooth Hankel functions. Changing these values would change their functional form, but lmfa does a very good job so we will leave them as they are. Copy basp0.si to the recognised basp.si form.
 
     $ cp basp0.si basp.si
     
