@@ -27,7 +27,7 @@ This tutorial carries out a basic DFT calculation for silicon. The goal is to in
 <hr style="height:5pt; visibility:hidden;" />
 ### Main tutorial
 
-To get started, create a new working directory and move into it, here we will call it "si". Then copy the silicon init file "init.si" from path/ to this directory. The init file is the starting poiny, it contains basic structural information in a format that is recognised by the code (analogous to the POSCAR file in VASP). 
+To get started, create a new working directory and move into it, here we will call it "si". Then copy the silicon init file "init.si" from path/. The init file is the starting point, it contains basic structural information in a format that is recognised by the code (analogous to the POSCAR file in VASP). 
 
     $mkdir si 
     $cd si
