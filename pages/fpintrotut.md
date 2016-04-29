@@ -79,8 +79,8 @@ Now take a look at the output file "out.lmfsc". Look for the line beginning with
 And that's it! You now have a self-consistent density and have calculated some basic properties such as the band gap and total energy.  
 
 <hr style="height:5pt; visibility:hidden;" />
-### FAQ 
-Below is a list of commonly asked questions. Please get in contact if you have more questions.
+### FAQ (to be completed)
+Below is a list of frequently asked questions. Please get in contact if you have more questions.
 
 1. How does blm determine the augmentation spheres?
 Overlaps free atom densities and looks for where potential is flat. 
@@ -89,7 +89,7 @@ The log file "log.si" keeps a record of what has been run in the current directo
 3. What is the Harris-Foulkes energy?
 
 <hr style="height:5pt; visibility:hidden;" />
-### Additional exercises
+### Additional exercises (to be completed)
 
 1. Converting between fractional and cartesian coordinates
 For example, try running the command "blm init.si --express --wsitex" and you will see that "xpos" has been added to the first line, this indicates that the coordinates are now in fractional form. 
