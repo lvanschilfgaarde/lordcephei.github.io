@@ -58,13 +58,6 @@ Again the output shows some structural information and then details about findin
 
     $ vi ctrl.si
 
-Note: you can avoid editing ctrl.si by using blm with extra switches:
-
-    $ blm init.si --express --gmax=5 --nk=4
-    $ diff actrl.si ctrl.si
-
-You can see that values for gmax and nkabc have been set now.  If you modify the input file this way, be sure to copy actrl.si to ctrl.si before continuing.
-
 Check the contents of your working directory and you will find two new files "atm.si" and "basp0.si". The "atm.si" file contains the free atom densities calculated by lmfa. File basp0.si is the template basis set file; the standard basis set name is basp and the extra 0 is added to avoid overwriting. Take a look at the basp0.si file and you will see that it contains basis set parameters that define silicon's smooth Hankel functions. Changing these values would change their functional form, but lmfa does a reasonable job (also later on parameters can be automatically optimized, if desired) so we will leave them as they are. Copy basp0.si to the recognised basp.si form.
 
     $ cp basp0.si basp.si
@@ -83,7 +76,7 @@ Now take a look at the output file "out.lmfsc". Look for the line beginning with
     $ grep 'DQ' out.lmfsc
     $ grep 'ehk=-' out.lmfsc
 
-You can also check how the bandgap changes by grepping out.lmfc for 'gap'.
+You can also check how the bandgap changes by grepping out.lmfsc for 'gap'.
 
 And that's it! You now have a self-consistent density and have calculated some basic properties such as the band gap and total energy.  
 
@@ -93,15 +86,27 @@ Below is a list of frequently asked questions. Please get in contact if you have
 
 1. How does blm determine the augmentation spheres?
 Overlaps free atom densities and looks for where potential is flat. 
+
 2. What is the log file? 
-The log file "log.si" keeps a record of what has been run in the current directory.
+The log file "log.si" keeps a compact record of key outputs in the current directory.  In successive runs, data is appended to the log file.
+
 3. What is the Harris-Foulkes energy?
+It is a functional of the input density, rather than the output density.  At self-consistency it should be the same as the standard Kohn-Sham functional.  The Harris-Foulkes functional tends to be more stabl, and like the Kohn-Sham functional, it is stationary at the self-consistent density. But it is not necessarily a minimum there. See M. Foulkes and R. Haydock, Phys. Rev. B 39, 12520 (1989).
+ 
 
 <hr style="height:5pt; visibility:hidden;" />
 ### Additional exercises (to be completed)
 
 1. Converting between fractional and cartesian coordinates
-For example, try running the command "blm init.si --express --wsitex" and you will see that "xpos" has been added to the first line, this indicates that the coordinates are now in fractional form. 
-2. k point convergence and silicon band gap
+For example, try running the command "blm init.si --express --wsitex" and you will see that "xpos" has been added to the first line, this indicates that the coordinates are now in fractional form.
+
+2. You can avoid editing ctrl.si by invoking blm with extra switches:
+
+    $ blm init.si --express --gmax=5 --nk=4
+    $ diff actrl.si ctrl.si
+    
+You can see that values for gmax and nkabc have been set by blm.  If you modify the input file this way, be sure to copy actrl.si to ctrl.si before continuing.
+
+3. k point convergence and silicon band gap
 Here we are looking at a simple sp semiconductor and the charge density should be well converged with a 4x4x4 mesh. You can test this by seeing how properties (such as the total energy or band gap at a specific point) change with increasing k mesh. Silicon indirect, experimental value... QSGW... 
 
