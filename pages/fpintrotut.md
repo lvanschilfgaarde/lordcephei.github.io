@@ -14,7 +14,7 @@ header: no
 This tutorial carries out a basic DFT calculation for silicon. The goal is to introduce you to the different file types and the basics of running the code. It is assumed that you have installed the executables and that they are in your path (see installation tutorial for more). The full tutorial starts under the heading "Main tutorial". You can get straight to the commands by clicking on the "Command summary" dropdown menu below.
 
 <hr style="height:5pt; visibility:hidden;" />
-### Command summary     
+### Command summary (this will be dropdown)     
 
     $ mkdir si; cd si; cp path/init.si .     #create working directory, move into it and copy file     
     $ blm init.si --express                  #use blm tool to create actrl and site files
