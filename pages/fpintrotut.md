@@ -106,6 +106,7 @@ For example, try running the command "blm init.si --express --wsitex" and you wi
 
 2. You can avoid editing ctrl.si by invoking blm with extra switches:
 
+
     $ blm init.si --express --gmax=5 --nk=4
     $ diff actrl.si ctrl.si
     
