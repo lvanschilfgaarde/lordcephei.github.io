@@ -84,15 +84,15 @@ And that's it! You now have a self-consistent density and have calculated some b
 ### FAQ
 Below is a list of frequently asked questions. Please get in contact if you have more questions.
 
-1. How does blm determine the augmentation spheres?
+1) How does blm determine the augmentation spheres?
 
 Overlaps free atom densities and looks for where potential is flat. 
 
-2. What is the log file? 
+2) What is the log file? 
 
 The log file "log.si" keeps a compact record of key outputs in the current directory.  In successive runs, data is appended to the log file.
 
-3. What is the Harris-Foulkes energy?
+3) What is the Harris-Foulkes energy?
 
 It is a functional of the input density, rather than the output density.  At self-consistency it should be the same as the standard Kohn-Sham functional.  The Harris-Foulkes functional tends to be more stable, and like the Kohn-Sham functional, it is stationary at the self-consistent density. But it is not necessarily a minimum there. See M. Foulkes and R. Haydock, Phys. Rev. B 39, 12520 (1989).
  
@@ -100,12 +100,11 @@ It is a functional of the input density, rather than the output density.  At sel
 <hr style="height:5pt; visibility:hidden;" />
 ### Additional exercises
 
-1. Converting between fractional and cartesian coordinates
+1) Converting between fractional and cartesian coordinates
 
 For example, try running the command "blm init.si --express --wsitex" and you will see that "xpos" has been added to the first line, this indicates that the coordinates are now in fractional form. Note that in this case the cartesian and fractional coordinates happen to be the same.
 
-2. You can avoid editing ctrl.si by invoking blm with extra switches:
-
+2) You can avoid editing ctrl.si by invoking blm with extra switches:
 
     $ blm init.si --express --gmax=5 --nk=4
     $ diff actrl.si ctrl.si
