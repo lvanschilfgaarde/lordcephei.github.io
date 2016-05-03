@@ -82,7 +82,7 @@ And that's it! You now have a self-consistent density and have calculated some b
 
 <hr style="height:5pt; visibility:hidden;" />
 ### FAQ
-Below is a list of frequently asked questions. Please get in contact if you have more questions.
+Below is a list of frequently asked questions. Please get in contact if you have other questions.
 
 1) How does blm determine the augmentation spheres?
 
