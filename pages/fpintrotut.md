@@ -71,7 +71,7 @@ The first part of the output is similar to what we've seen from the other progra
     $ vi ctrl.si
     $ lmf ctrl.si > out.lmfsc
     
-Now take a look at the output file "out.lmfsc". Look for the line beginning with "iors", again around line 60, and you will see that this time the rst file was found and the density is used as the input density (the rst file was created after the single iteration). Now move to the end of the file, the "c" in front of the Harris Foulkes "ehf" and Kohn-Sham "ehk" energies indicates that convergence was reached (note how similar the ehf and ehk energies are). A few lines up you can see that it took 8 iterations to converge: "it 8 of 20". At the end of each iteration the ehf and ehk total energies are printed and a check is made for self-consistency. The two parameters conv and convc in the ctrl file specify the self-consistency tolerances for the total energy and root mean square (RMS) change in the density. Further up again the converged Fermi energy and band gap values are reported in the Brillouin zone integration section (look for last occurence of "BZWTS" in the file). To see how the density and energy changes between iterations, try grepping for "DQ" and "ehk=-" 
+Now take a look at the output file "out.lmfsc". Look for the line beginning with "iors", again around line 60, and you will see that this time the rst file was found and the density is used as the input density (the rst file was created after the single iteration). Now move to the end of the file, the "c" in front of the Harris Foulkes "ehf" and Kohn-Sham "ehk" energies indicates that convergence was reached (note how similar the ehf and ehk energies are). A few lines up you can see that it took 8 iterations to converge: "it 8 of 20". At the end of each iteration the ehf and ehk total energies are printed and a check is made for self-consistency. The two parameters conv and convc in the ctrl file specify, respectively, the self-consistency tolerances for the total energy and root mean square (RMS) change in the density. Note that by default both tolerances have to be met, to use a single tolerance you simply set the undesired one to zero. Further up again the converged Fermi energy and band gap values are reported in the Brillouin zone integration section (look for last occurence of "BZWTS" in the file). To see how the density and energy changes between iterations, try grepping for "DQ" and "ehk=-" 
 
     $ grep 'DQ' out.lmfsc
     $ grep 'ehk=-' out.lmfsc
@@ -110,4 +110,6 @@ For example, try running the command "blm init.si --express --wsitex" and you wi
     $ diff actrl.si ctrl.si
     
 You can see that values for gmax and nkabc have been set by blm.  If you modify the input file this way, be sure to copy actrl.si to ctrl.si before continuing. You will also need to set the number of iterations "nit" manually.  
+
+3) 
 
