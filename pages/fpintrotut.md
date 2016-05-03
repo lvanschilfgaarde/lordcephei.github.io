@@ -42,7 +42,7 @@ In order to run a DFT calculation, you need an input file and structural informa
     $ blm init.si --express
     $ cp actrl.si ctrl.si
     
-The start of the blm output shows some structural and symmetry information. Further down, the "makrm0:" part gives information about creating the augmentation spheres, both silicon atoms were assigned spheres of radii 4.0912 Bohr. Now open up the site file and you can see it contains the lattice constant and lattice vectors in the first line. Note that the lattice constant has been converted from Angstroms to Bohr since the code works in atomic units. The other terms in the first line are just standard settings and a full explanation can be found in the online page for the site file. The second line is a comment line and the subsequent lines contain the atomic species labels and coordinates. Note that blm writes cartesian coordinates by default (they happen to be the same as fractional coordinates in this case) and that running blm produces a new actrl and site file each time. 
+The start of the blm output shows some structural and symmetry information. Further down, the "makrm0:" part gives information about creating the augmentation spheres, both silicon atoms were assigned spheres of radii 2.22 Bohr. Now open up the site file and you can see it contains the lattice constant and lattice vectors in the first line. Note that the lattice constant has been converted from Angstroms to Bohr since the code works in atomic units. The other terms in the first line are just standard settings and a full explanation can be found in the online page for the site file. The second line is a comment line and the subsequent lines contain the atomic species labels and coordinates. Note that blm writes cartesian coordinates by default (they happen to be the same as fractional coordinates in this case) and that running blm produces a new actrl and site file each time. 
 
     $ vi site.si
 
@@ -81,7 +81,7 @@ You can also check how the bandgap changes by grepping out.lmfsc for 'gap'.
 And that's it! You now have a self-consistent density and have calculated some basic properties such as the band gap and total energy.  
 
 <hr style="height:5pt; visibility:hidden;" />
-### FAQ (to be completed)
+### FAQ
 Below is a list of frequently asked questions. Please get in contact if you have more questions.
 
 1. How does blm determine the augmentation spheres?
@@ -94,22 +94,20 @@ The log file "log.si" keeps a compact record of key outputs in the current direc
 
 3. What is the Harris-Foulkes energy?
 
-It is a functional of the input density, rather than the output density.  At self-consistency it should be the same as the standard Kohn-Sham functional.  The Harris-Foulkes functional tends to be more stabl, and like the Kohn-Sham functional, it is stationary at the self-consistent density. But it is not necessarily a minimum there. See M. Foulkes and R. Haydock, Phys. Rev. B 39, 12520 (1989).
+It is a functional of the input density, rather than the output density.  At self-consistency it should be the same as the standard Kohn-Sham functional.  The Harris-Foulkes functional tends to be more stable, and like the Kohn-Sham functional, it is stationary at the self-consistent density. But it is not necessarily a minimum there. See M. Foulkes and R. Haydock, Phys. Rev. B 39, 12520 (1989).
  
 
 <hr style="height:5pt; visibility:hidden;" />
-### Additional exercises (to be completed)
+### Additional exercises
 
 1. Converting between fractional and cartesian coordinates
-For example, try running the command "blm init.si --express --wsitex" and you will see that "xpos" has been added to the first line, this indicates that the coordinates are now in fractional form.
+
+For example, try running the command "blm init.si --express --wsitex" and you will see that "xpos" has been added to the first line, this indicates that the coordinates are now in fractional form. Note that in this case the cartesian and fractional coordinates happen to be the same.
 
 2. You can avoid editing ctrl.si by invoking blm with extra switches:
 
     $ blm init.si --express --gmax=5 --nk=4
     $ diff actrl.si ctrl.si
     
-You can see that values for gmax and nkabc have been set by blm.  If you modify the input file this way, be sure to copy actrl.si to ctrl.si before continuing.
-
-3. k point convergence and silicon band gap
-Here we are looking at a simple sp semiconductor and the charge density should be well converged with a 4x4x4 mesh. You can test this by seeing how properties (such as the total energy or band gap at a specific point) change with increasing k mesh. Silicon indirect, experimental value... QSGW... 
+You can see that values for gmax and nkabc have been set by blm.  If you modify the input file this way, be sure to copy actrl.si to ctrl.si before continuing. You will also need to set the number of iterations "nit" manually.  
 
