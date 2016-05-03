@@ -85,12 +85,15 @@ And that's it! You now have a self-consistent density and have calculated some b
 Below is a list of frequently asked questions. Please get in contact if you have more questions.
 
 1. How does blm determine the augmentation spheres?
+
 Overlaps free atom densities and looks for where potential is flat. 
 
 2. What is the log file? 
+
 The log file "log.si" keeps a compact record of key outputs in the current directory.  In successive runs, data is appended to the log file.
 
 3. What is the Harris-Foulkes energy?
+
 It is a functional of the input density, rather than the output density.  At self-consistency it should be the same as the standard Kohn-Sham functional.  The Harris-Foulkes functional tends to be more stabl, and like the Kohn-Sham functional, it is stationary at the self-consistent density. But it is not necessarily a minimum there. See M. Foulkes and R. Haydock, Phys. Rev. B 39, 12520 (1989).
  
 
