@@ -11,7 +11,7 @@ header: no
 <hr style="height:5pt; visibility:hidden;" />
 # Introduction to GW calculations 
 
-This tutorial carries out an LDA calculation for Si, starting from an init file. Following this are demonstrations of both QSGW and 1-shot GW calculations. The starting point is a self-consistent LDA calculation, which can be run with the following commands (click on the LDA self-consistency dropdown menu). More details on the set up and running of a self-consistent LDA calculation can be found on the fpintrotut page. 
+This tutorial begins with an LDA calculation for Si, starting from an init file. Following this are demonstrations of both QSGW and 1-shot GW calculations. The LDA calculation can be run with the following commands (click on the LDA calculation dropdown menu). More details on the set up and running of a self-consistent LDA calculation can be found on the fpintrotut page. 
 
 <hr style="height:5pt; visibility:hidden;" />
 ### Command summary     
@@ -26,7 +26,7 @@ This tutorial carries out an LDA calculation for Si, starting from an init file.
 
 {::nomarkdown}</div>{:/}
 
-Note that we have included an extra --gw switch. This switch tailors the ctrl file for a GW calculation. To see how it affects the ctrl file, try running blm without --gw. One consequence of --gw is that blm autogenerates a GW category. Its tokens mostly hold parameters that go into the GW input file (GWinput), which will be used in the QSGW step when it is generated later. 
+Note that we have included an extra --gw switch. This switch tailors the ctrl file for a GW calculation. To see how it affects the ctrl file, try running blm without --gw. Starting from the top of the ctrl file, the first change is seen in the basis set section. GW calculations are more sensitive to the size of the basis and the so the inclusion of the gw switch increases the size of the basis set. Two new blocks of text, the HAM and GW categories, are also added towards the end of the file. The HAM category includes parameters for the handling of the self-energy. The GW category provides default values that will go into the GW input file (GWinput), which will be generated later in the QSGW set up.
 
 
 
