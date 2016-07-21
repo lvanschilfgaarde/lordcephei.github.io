@@ -110,10 +110,10 @@ For example, try running the command "blm init.si --express --wsitex" and you wi
 
 2) You can avoid editing ctrl.si by invoking blm with extra switches:
 
-    $ blm init.si --express --gmax=5 --nk=4
+    $ blm init.si --express --gmax=5 --nk=4 --nit=20
     $ diff actrl.si ctrl.si
     
-You can see that values for gmax and nkabc have been set by blm.  If you modify the input file this way, be sure to copy actrl.si to ctrl.si before continuing. You will also need to set the number of iterations "nit" manually.  
+You can see that values for gmax, nkabc and nit have been set by blm.  If you modify the input file this way, be sure to copy actrl.si to ctrl.si before continuing.
 
 3) 
 
