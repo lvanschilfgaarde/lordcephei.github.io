@@ -26,8 +26,9 @@ This tutorial begins with an LDA calculation for Si, starting from an init file.
 
 {::nomarkdown}</div>{:/}
 
-Note that we have included an extra --gw switch. This switch tailors the ctrl file for a GW calculation. To see how it affects the ctrl file, try running blm without --gw. Starting from the top of the ctrl file, the first change is seen in the basis set section. GW calculations are more sensitive to the size of the basis and the so the inclusion of the gw switch increases the size of the basis set. Two new blocks of text, the HAM and GW categories, are also added towards the end of the file. The HAM category includes parameters for the handling of the self-energy. The GW category provides default values that will go into the GW input file (GWinput), which will be generated later in the QSGW set up.
+Note that we have included an extra --gw switch. This switch tailors the ctrl file for a GW calculation. To see how it affects the ctrl file, try running blm without --gw. The basis set section is modified (see the autobas line) to increase the size of the basis set. GW calculations require a larger basis and this is accounted for by the gw switch. We will leave further details of the basis set to the additional exercises and basp file page. Two new blocks of text, the HAM and GW categories, are also added towards the end of the file. The HAM category includes parameters for the handling of the self-energy. The GW category provides default values that will go into the GW input file (GWinput), which will be generated later in the QSGW set up.
 
+The GW...
 
 
 
