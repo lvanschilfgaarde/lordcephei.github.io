@@ -11,6 +11,8 @@ header: no
 <hr style="height:5pt; visibility:hidden;" />
 # Introduction to a QSGW calculation
 
+Notes: add annotated GW output file with explanation of steps
+
 This tutorial begins with an LDA calculation for Si, starting from an init file. Following this is a demonstration of a QSGW calculation (the 1-shot GW code is described in a separate tutorial) The LDA calculation can be run with the following commands (click on the LDA calculation dropdown menu). More details on the set up and running of a self-consistent LDA calculation can be found on the fpintrotut page. 
 
 <hr style="height:5pt; visibility:hidden;" />
