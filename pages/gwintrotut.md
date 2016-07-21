@@ -33,9 +33,9 @@ Two new blocks of text, the HAM and GW categories, are also added towards the en
 
 <hr style="height:5pt; visibility:hidden;" />
 ### GW input file
-The GW package (both one-shot and QSGW) uses one main user-supplied input file, GWinput. The script lmfgwd can create a template GWinput for you.
+The GW package (both one-shot and QSGW) uses one main user-supplied input file, GWinput. The script lmfgwd can create a template GWinput for you. You can either run it interactively and you will be prompted for options 
 
-    $ test
+    $ echo -1 | lmfgwd si                              #makes a GWinput file
 
 
 The approximate self-consistent gap comes out to 0.58 eV as can be seen by inspecting the output of lmf (This is actually the Γ-X gap; the true gap is 0.44 eV as can be seen by running lmf with a fine k mesh). 
