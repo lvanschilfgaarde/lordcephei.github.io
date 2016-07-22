@@ -89,8 +89,13 @@ We are now ready for a QSGW calculation, this is run using the shell script lmgw
 
     $ lmgwsc --wt  --insul=4 --tol=2e-5 --maxit=2 -vnit=10 si
 
+The first iteratin is 0 of 10, zeroth. Starts off with lmf calc... Then some preparation then the GW calc... The most expensive step is lsc which is... Then have self-energy and next iteration beings... After 3 iterations the calculation is converged
 
+At this point you should have a file sigm residing in your working directory. Because ctrl.si has HAM_RDSIG=12, it will automatically read sigm.si and effectively add it as an external potential. The actual file is sigm; lmgwsc makes a soft link to sigm.si so lmf can read it.
 
+Do a band pass substituting the QSGW exchange-correlation potential for the LDA one: 
+
+    $ lmf si -vnit=1 --rs=1,0 
 
 However, please note that the file is only a template and care must be taken in selecting appropriate parameter values.
 
