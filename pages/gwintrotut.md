@@ -13,7 +13,22 @@ header: no
 
 Notes: add annotated GW output file with explanation of steps
 
-This tutorial begins with an LDA calculation for Si, starting from an init file. Following this is a demonstration of a QSGW calculation (the 1-shot GW code is described in a separate tutorial) The LDA calculation can be run with the following commands (click on the LDA calculation dropdown menu). More details on the set up and running of a self-consistent LDA calculation can be found on the fpintrotut page. 
+This tutorial begins with an LDA calculation for Si, starting from an init file. Following this is a demonstration of a quasi-particle self-consistent GW (QSGW) calculation. An example of the 1-shot GW code is provided in a separate tutorial. A summary of the calculation is provided in the dropdown menu below. Theory notes for GW and QSGW can be found here (add link).  
+
+<div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
+
+In this code, each iteration of a QSGW calculation has two distinct parts. It begins with a self-consistent DFT calculation to calculate eigenfunctions and eigenvalues. These are then used in the second part, which is a GW calculation that ends with the formation of a self-energy. 
+
+The QSGW calculation takes as input the self-consistent DFT eigenfunctions and eigenvalues (normally LDA) and these are used to construct a self-energy. In the next iteration, the self-energy replaces the LDA exchnage-correlation functional in the hamiltonian and a self-consistent DFT calculation is carried out to obtain the new eigenfunctions and eigenvalues. These are then used to construct a new self-energy. This process is repeated until the change in the root mean square between the old and the new self-energy is below a certain tolerance. The final self-energy is a tailored effective exchange-correlation functional that can be conveninetly used within the DFT formalism to calculate properties such as the band structure.  
+
+{::nomarkdown}</div>{:/}
+
+
+
+<hr style="height:5pt; visibility:hidden;" />
+### LDA calculation
+The LDA calculation can be run with the following commands (click on the LDA calculation dropdown menu). More details on the set up and running of a self-consistent LDA calculation can be found on the fpintrotut page. 
 
 <hr style="height:5pt; visibility:hidden;" />
 ### Command summary     
