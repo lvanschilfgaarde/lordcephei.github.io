@@ -45,7 +45,7 @@ The QSGW calculation takes as input the self-consistent DFT eigenfunctions and e
 
 <hr style="height:5pt; visibility:hidden;" />
 ### LDA calculation
-The LDA calculation can be run with the following commands (click on the LDA calculation dropdown menu). More details on the set up and running of a self-consistent LDA calculation can be found on the fpintrotut page. 
+The self-consistent LDA calculation can be run with the following commands. More details on the set up and running of a DFT calculation, within an all-electron framework, can be found on the fpintrotut page. 
 
 <hr style="height:5pt; visibility:hidden;" />
 ### LDA commands     
@@ -61,18 +61,29 @@ The LDA calculation can be run with the following commands (click on the LDA cal
 
 {::nomarkdown}</div>{:/}
 
-Note that we have included an extra --gw switch. This switch tailors the ctrl file for a GW calculation. To see how it affects the ctrl file, try running blm without --gw. The basis set section is modified (see the autobas line) to increase the size of the basis set. GW calculations require a larger basis and this is accounted for by the gw switch. There are a number of considerations when choosing an appropriate basis set but we will leave these details to the additional exercises and the basis set page. 
+Note that we have included an extra --gw switch. This switch tailors the ctrl file for a GW calculation. To see how it affects the ctrl file, try running blm without --gw. The basis set section is modified (see the autobas line) to increase the size of the basis set. GW calculations require a larger basis and this is accounted for by the gw switch.
 
-Two new blocks of text, the HAM and GW categories, are also added towards the end of the file. The HAM category includes parameters for the handling of the self-energy. The GW category provides default values for parameters that are required in a GW calculation. For now we will only consider the NKABC= token. This defines the GW k mesh and is specified in the same way as the nkabc= for the LDA calculation. Usually a comparable or coarser mesh may be used because the self-energy generally varies much more smoothly with k than does the kinetic energy. This is fortunate because GW calculations are much more expensive and moreover the CPU time scales as the square of the number of k points, in contrast to the LDA's linear scaling.
+Two new blocks of text, the HAM and GW categories, are also added towards the end of the file. The HAM category includes parameters for the handling of the self-energy. The GW category provides default values for parameters that are required in a GW calculation. The details are not important for now. One part to note is the NKABC= token, which defines the GW k mesh. It is specified in the same way as the nkabc= for the LDA calculation. Usually a comparable or coarser mesh may be used because the self-energy generally varies much more smoothly with k than does the kinetic energy. This is fortunate because GW calculations are much more expensive and moreover the CPU time scales as the square of the number of k points, in contrast to the LDA's linear scaling.
+
+Check the output file out.lmfsc. The approximate self-consistent gap comes out to 0.58 eV as can be seen by inspecting the output of lmf (This is actually the Γ-X gap; the true gap is 0.44 eV as can be seen by running lmf with a fine k mesh). Note that this result differs to that from the LDA tutorial because, with the gw switch, the basis set is now different. The next step is to create a GW input file. 
 
 <hr style="height:5pt; visibility:hidden;" />
 ### GW input file
-The GW package (both one-shot and QSGW) uses one main user-supplied input file, GWinput. The script lmfgwd can create a template GWinput for you. You can either run it interactively and you will be prompted for options 
+The GW package (both one-shot and QSGW) uses one main user-supplied input file, GWinput. The script lmfgwd can create a template GWinput file for you by running the following command: 
 
     $ echo -1 | lmfgwd si                              #makes a GWinput file
 
+The lmfgwd script has multiple options and is designed to run interactively. Using 'echo -1' automatically passes it the '-1' option that creates a template input file. You can try running it interactively by just using the command 'lmfgwd si' and then entering -1. Take a look at the file GWinput that was made. It is a rather complicated input file but we will only consider the GW k mesh for now (further information can be found on the GWinput page). In the GWinput file, the k mesh is specified on the line:
+    $ n1n2n3  4  4  4 ! for GW BZ mesh
+This is the
 
-The approximate self-consistent gap comes out to 0.58 eV as can be seen by inspecting the output of lmf (This is actually the Γ-X gap; the true gap is 0.44 eV as can be seen by running lmf with a fine k mesh). 
+after n1n2n3 and here it is 4x4x4. In setting up the GWinput file, lmfgwd checks the GW section of the ctrl file and then uses these values in the template file. The 'NKABC= 4' part of the ctrl file is read by lmfgwd and
+
+
+However, please note that the file is only a template and care must be taken in selecting appropriate parameter values.
+
+
+
 
 The k mesh data that the GW codes actually reads comes from the following tag in the GWinput file: 
 
