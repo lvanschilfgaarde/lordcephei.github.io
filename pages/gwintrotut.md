@@ -68,16 +68,28 @@ Two new blocks of text, the HAM and GW categories, are also added towards the en
 Check the output file out.lmfsc. The approximate self-consistent gap comes out to 0.58 eV as can be seen by inspecting the output of lmf (This is actually the Γ-X gap; the true gap is 0.44 eV as can be seen by running lmf with a fine k mesh). Note that this result differs to that from the LDA tutorial because, with the gw switch, the basis set is now different. The next step is to create a GW input file. 
 
 <hr style="height:5pt; visibility:hidden;" />
-### GW input file
+### Making GWinput
 The GW package (both one-shot and QSGW) uses one main user-supplied input file, GWinput. The script lmfgwd can create a template GWinput file for you by running the following command: 
 
     $ echo -1 | lmfgwd si                              #makes a GWinput file
 
-The lmfgwd script has multiple options and is designed to run interactively. Using 'echo -1' automatically passes it the '-1' option that creates a template input file. You can try running it interactively by just using the command 'lmfgwd si' and then entering -1. Take a look at the file GWinput that was made. It is a rather complicated input file but we will only consider the GW k mesh for now (further information can be found on the GWinput page). In the GWinput file, the k mesh is specified on the line:
-    $ n1n2n3  4  4  4 ! for GW BZ mesh
-This is the
+The lmfgwd script has multiple options and is designed to run interactively. Using 'echo -1' automatically passes it the '-1' option that creates a template input file. You can try running it interactively by just using the command 'lmfgwd si' and then entering -1. Take a look at GWinput, it is a rather complicated input file but we will only consider the GW k mesh for now (further information can be found on the GWinput page). The k mesh is specified by n1n2n3 in the GWinput file, look for the following line:
 
-after n1n2n3 and here it is 4x4x4. In setting up the GWinput file, lmfgwd checks the GW section of the ctrl file and then uses these values in the template file. The 'NKABC= 4' part of the ctrl file is read by lmfgwd and
+    $ n1n2n3  4  4  4 ! for GW BZ mesh
+
+When creating the GWinput file, lmfgwd checks the GW section of the ctrl file and then uses these values. The 'NKABC= 4' part of the ctrl file is read by lmfgwd and used for n1n2n3. Remember if only one number is supplied in NKABC then that number is used as the division in each direction of the reciprocal lattice vectors, so 4 alone means a 4x4x4 mesh. To make things run a bit quicker, change the k mesh to 3x3x3 by editing the GWinput file line:
+
+    $ n1n2n3  3  3  3 ! for GW BZ mesh
+    
+The k mesh of 3×3×3 divisions is rough, but it makes the calculation fast and for Si the results are reasonable.
+
+<hr style="height:5pt; visibility:hidden;" />
+### Running QSGW
+We are now ready for a QSGW calculation, this is run using the shell script lmgwsc.  
+
+    $ lmgwsc --wt  --insul=4 --tol=2e-5 --maxit=2 -vnit=10 si
+
+
 
 
 However, please note that the file is only a template and care must be taken in selecting appropriate parameter values.
@@ -87,5 +99,10 @@ However, please note that the file is only a template and care must be taken in 
 
 The k mesh data that the GW codes actually reads comes from the following tag in the GWinput file: 
 
+
+Additional exercises
+
+- Changing k mesh:
+We want the calculation to run quickly so let's use a coarser 3x3x3 mesh. Change NKABC in the ctrl file and rerun the lmfgwd command. The GWinput file  
 
 
