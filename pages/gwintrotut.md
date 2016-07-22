@@ -15,15 +15,18 @@ Notes: add annotated GW output file with explanation of steps
 
 This tutorial begins with an LDA calculation for Si, starting from an init file. Following this is a demonstration of a quasi-particle self-consistent GW (QSGW) calculation. An example of the 1-shot GW code is provided in a separate tutorial. Click on the 'QSGW' dropdown menu below for a brief description of the QSGW scheme. A complete summary of the commands used throughout is provided in the 'Commands' dropdown menu. Theory notes for GW and QSGW can be found here (add link).  
 
+<hr style="height:5pt; visibility:hidden;" />
+### QSGW summary
 <div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">QSGW - Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
 
 In this code, each iteration of a QSGW calculation has two distinct parts. It begins with a self-consistent DFT calculation to calculate eigenfunctions and eigenvalues. These are then used in the second part, the GW calculation, that constructs a self-energy. 
-
 The QSGW calculation takes as input the self-consistent DFT eigenfunctions and eigenvalues (usually LDA) and these are used to construct a self-energy. In the next iteration, the self-energy replaces the DFT exchnage-correlation functional in the hamiltonian and a self-consistent DFT calculation is carried out to obtain the new eigenfunctions and eigenvalues. These are then used to construct a new self-energy. This process is repeated until the change in the root mean square between the old and the new self-energy is below a certain tolerance. The final self-energy is an effective exchange-correlation functional, tailored to the system, that can be conveninetly used within the standard DFT formalism to calculate properties such as the band structure.  
 
 {::nomarkdown}</div>{:/}
 
+<hr style="height:5pt; visibility:hidden;" />
+### Command summary
 <div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Commands - Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
 
