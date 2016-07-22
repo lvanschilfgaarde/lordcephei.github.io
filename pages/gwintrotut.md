@@ -63,9 +63,9 @@ The self-consistent LDA calculation can be run with the following commands. More
 
 Note that we have included an extra --gw switch. This switch tailors the ctrl file for a GW calculation. To see how it affects the ctrl file, try running blm without --gw. The basis set section is modified (see the autobas line) to increase the size of the basis set. GW calculations require a larger basis and this is accounted for by the gw switch.
 
-Two new blocks of text, the HAM and GW categories, are also added towards the end of the file. The HAM category includes parameters for the handling of the self-energy. The GW category provides default values for parameters that are required in a GW calculation. The details are not important for now. One part to note is the NKABC= token, which defines the GW k mesh. It is specified in the same way as the nkabc= for the LDA calculation. Usually a comparable or coarser mesh may be used because the self-energy generally varies much more smoothly with k than does the kinetic energy. This is fortunate because GW calculations are much more expensive and moreover the CPU time scales as the square of the number of k points, in contrast to the LDA's linear scaling.
+Two new blocks of text, the HAM and GW categories, are also added towards the end of the ctrl file. The HAM category includes parameters for the handling of the self-energy. The GW category provides default values for parameters that are required in a GW calculation. These values are read and used in the stand alone input file for the GW calculation, we will come back to this later. One thing to note is the NKABC= token, which defines the GW k mesh. It is specified in the same way as the lower case nkabc= for the LDA calculation. 
 
-Check the output file out.lmfsc. The approximate self-consistent gap comes out to 0.58 eV as can be seen by inspecting the output of lmf (This is actually the Γ-X gap; the true gap is 0.44 eV as can be seen by running lmf with a fine k mesh). Note that this result differs to that from the LDA tutorial because, with the gw switch, the basis set is now different. The next step is to create a GW input file. 
+Now check the output file out.lmfsc. The approximate self-consistent gap comes out to 0.58 eV as can be seen by inspecting the output of lmf. Note that this result differs to that from the LDA tutorial because the gw swtich increases the size of the basis set. The next step is to create a GW input file. 
 
 <hr style="height:5pt; visibility:hidden;" />
 ### Making GWinput
@@ -73,7 +73,7 @@ The GW package (both one-shot and QSGW) uses one main user-supplied input file, 
 
     $ echo -1 | lmfgwd si                              #makes a GWinput file
 
-The lmfgwd script has multiple options and is designed to run interactively. Using 'echo -1' automatically passes it the '-1' option that creates a template input file. You can try running it interactively by just using the command 'lmfgwd si' and then entering -1. Take a look at GWinput, it is a rather complicated input file but we will only consider the GW k mesh for now (further information can be found on the GWinput page). The k mesh is specified by n1n2n3 in the GWinput file, look for the following line:
+The lmfgwd script has multiple options and is designed to run interactively. Using 'echo -1' automatically passes it the '-1' option that specifies making a template input file. You can try running it interactively by just using the command 'lmfgwd si' and then entering '-1'. Take a look at GWinput, it is a rather complicated input file but we will only consider the GW k mesh for now (further information can be found on the GWinput page). The k mesh is specified by n1n2n3 in the GWinput file, look for the following line:
 
     $ n1n2n3  4  4  4 ! for GW BZ mesh
 
@@ -102,6 +102,8 @@ The k mesh data that the GW codes actually reads comes from the following tag in
 
 Additional exercises
 
+- Correct gap
+(This is actually the Γ-X gap; the true gap is 0.44 eV as can be seen by running lmf with a fine k mesh).
 - Changing k mesh:
 We want the calculation to run quickly so let's use a coarser 3x3x3 mesh. Change NKABC in the ctrl file and rerun the lmfgwd command. The GWinput file  
 
