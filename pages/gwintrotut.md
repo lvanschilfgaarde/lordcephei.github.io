@@ -47,7 +47,7 @@ The QSGW calculation takes as input the self-consistent DFT eigenfunctions and e
 The LDA calculation can be run with the following commands (click on the LDA calculation dropdown menu). More details on the set up and running of a self-consistent LDA calculation can be found on the fpintrotut page. 
 
 <hr style="height:5pt; visibility:hidden;" />
-### Command summary     
+### LDA commands     
 <div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
 
