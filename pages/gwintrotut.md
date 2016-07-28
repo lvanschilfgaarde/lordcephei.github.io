@@ -63,7 +63,9 @@ Note that we have included an extra --gw switch, which tailors the ctrl file for
 
 Two new blocks of text, the HAM and GW categories, are also added towards the end of the ctrl file. The extra parameters in the HAM category handle the inclusion of the self-energy in a DFT calculation. The GW category provides some default values for parameters that are required in the GW calculation. The GW code has its own input file and the DFT ctrl file influences what defaults are set in it, we will come back to this later. One thing to note is the NKABC= token, which defines the GW k mesh. It is specified in the same way as the lower case nkabc= for the LDA calculation. 
 
-Now check the output file out.lmfsc. The approximate self-consistent gap is 0.58 eV as can be seen by inspecting the output of lmf. Note that this result differs to that from the LDA tutorial because the gw swtich increases the size of the basis set. Now that we have the input eigenfunctions and eigenvalues, the next step is to carry out the GW calculation. For this, we need an input file for the GW code.  
+Now check the output file out.lmfsc. The self-consistent gap is reported to be 0.58 eV as can be seen by searching for the word 'gap'. Note that this result differs slightly to that from the LDA tutorial because the gw swtich increases the size of the basis set. 
+
+Now that we have the input eigenfunctions and eigenvalues, the next step is to carry out a GW calculation. For this, we need an input file for the GW code.  
 
 <hr style="height:5pt; visibility:hidden;" />
 ### Making GWinput
@@ -75,7 +77,7 @@ The lmfgwd script has multiple options and is designed to run interactively. Usi
 
     $ n1n2n3  4  4  4 ! for GW BZ mesh
 
-When creating the GWinput file, lmfgwd checks the GW section of the ctrl file and then uses these values. The 'NKABC= 4' part of the ctrl file is read by lmfgwd and used for n1n2n3. Remember if only one number is supplied in NKABC then that number is used as the division in each direction of the reciprocal lattice vectors, so 4 alone means a 4x4x4 mesh. To make things run a bit quicker, change the k mesh to 3x3x3 by editing the GWinput file line:
+When creating the GWinput file, lmfgwd checks the GW section of the ctrl file for default values. The 'NKABC= 4' part of the DFT input file is read by lmfgwd and used for n1n2n3 in the GW input file. Remember if only one number is supplied in NKABC then that number is used as the division in each direction of the reciprocal lattice vectors, so 4 alone means a 4x4x4 mesh. To make things run a bit quicker, change the k mesh to 3x3x3 by editing the GWinput file line:
 
     $ n1n2n3  3  3  3 ! for GW BZ mesh
     
