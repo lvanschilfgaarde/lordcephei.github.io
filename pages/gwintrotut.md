@@ -112,8 +112,8 @@ However, please note that the file is only a template and care must be taken in 
 
 The k mesh data that the GW codes actually reads comes from the following tag in the GWinput file: 
 
-
-Additional exercises
+<hr style="height:5pt; visibility:hidden;" />
+###Additional exercises
 
 - Correct gap
 (This is actually the Γ-X gap; the true gap is 0.44 eV as can be seen by running lmf with a fine k mesh).
