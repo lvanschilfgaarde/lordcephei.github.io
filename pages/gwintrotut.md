@@ -89,13 +89,21 @@ We are now ready for a QSGW calculation, this is run using the shell script lmgw
 
     $ lmgwsc --wt  --insul=4 --tol=2e-5 --maxit=2 -vnit=10 si
 
-The first iteratin is 0 of 10, zeroth. Starts off with lmf calc... Then some preparation then the GW calc... The most expensive step is lsc which is... Then have self-energy and next iteration beings... After 3 iterations the calculation is converged
+The first iteration is 0 of 10, zeroth. Starts off with lmf calc... Then some preparation then the GW calc... The most expensive step is lsc which is... Then have self-energy and next iteration beings... After 3 iterations the calculation is converged
 
 At this point you should have a file sigm residing in your working directory. Because ctrl.si has HAM_RDSIG=12, it will automatically read sigm.si and effectively add it as an external potential. The actual file is sigm; lmgwsc makes a soft link to sigm.si so lmf can read it.
 
 Do a band pass substituting the QSGW exchange-correlation potential for the LDA one: 
 
     $ lmf si -vnit=1 --rs=1,0 
+
+Inspect the lmf output and you can find that the Γ-X gap is now 1.28 eV. 
+
+To make the QSGW energy bands, do: 
+
+    $ lmf si --band:fn=syml                            
+    $ cp bnds.si bnds-qsgw.si
+
 
 However, please note that the file is only a template and care must be taken in selecting appropriate parameter values.
 
@@ -111,5 +119,6 @@ Additional exercises
 (This is actually the Γ-X gap; the true gap is 0.44 eV as can be seen by running lmf with a fine k mesh).
 - Changing k mesh:
 We want the calculation to run quickly so let's use a coarser 3x3x3 mesh. Change NKABC in the ctrl file and rerun the lmfgwd command. The GWinput file  
-
+- Adding floating orbitals
+Note  that the basis set for this calculation isn't quite converged. For Si this is not much of an issue but it can matter a bit for other materials (making errors of order 0.1 eV). The atom-centered LMTO basis set is sufficient for LDA calculations, but it is not quite adequate for GW (work is in progress for a next-generation basis which should address this limitation). To make the basis complete you should add floating orbitals (you cannot add (you cannot add APWs in the QSGW context because the self-energy interpolator does not work with delocalized orbitals). Floating orbitals are like the empty spheres often required by the ASA, but they have no augmentation radius. You can automatically locate them using lmchk (the same way the empty sphere locator works for the ASA). 
 
