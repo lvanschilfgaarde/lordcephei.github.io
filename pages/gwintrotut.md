@@ -43,7 +43,7 @@ In short, a QSGW calculation consists of the following steps. The starting point
 
 <hr style="height:5pt; visibility:hidden;" />
 ### LDA calculation
-The self-consistent LDA calculation can be run with the following commands. More details on the set up and running of a DFT calculation, within an all-electron framework, can be found on the fpintrotut page. 
+To carry out a self-consistent LDA calculation, we use the lmf code. Try running the commands below. The steps follow those from the lmf tutorial. Please review this page for more details on the set up and running of commands. 
 
 <hr style="height:5pt; visibility:hidden;" />
 ### LDA commands     
@@ -59,11 +59,11 @@ The self-consistent LDA calculation can be run with the following commands. More
 
 {::nomarkdown}</div>{:/}
 
-Note that we have included an extra --gw switch. This switch tailors the ctrl file for a GW calculation. To see how it affects the ctrl file, try running blm without --gw. The basis set section is modified (see the autobas line) to increase the size of the basis set. GW calculations require a larger basis and this is accounted for by the gw switch.
+Note that we have included an extra --gw switch, which tailors the ctrl file for a GW calculation. To see how it affects the ctrl file, try running blm without --gw. The basis set section is modified (see the autobas line) to increase the size of the basis set as GW calculations require a larger basis.
 
-Two new blocks of text, the HAM and GW categories, are also added towards the end of the ctrl file. The HAM category includes parameters for the handling of the self-energy. The GW category provides default values for parameters that are required in a GW calculation. These values are read and used in the stand alone input file for the GW calculation, we will come back to this later. One thing to note is the NKABC= token, which defines the GW k mesh. It is specified in the same way as the lower case nkabc= for the LDA calculation. 
+Two new blocks of text, the HAM and GW categories, are also added towards the end of the ctrl file. The extra parameters in the HAM category handle the inclusion of a self-energy in a DFT calculation. The GW category provides some default values for parameters that are required in the GW calculation. The GW code has its own input file and the DFT ctrl file influences what defaults are set in it, we will come back to this later. One thing to note is the NKABC= token, which defines the GW k mesh. It is specified in the same way as the lower case nkabc= for the LDA calculation. 
 
-Now check the output file out.lmfsc. The approximate self-consistent gap comes out to 0.58 eV as can be seen by inspecting the output of lmf. Note that this result differs to that from the LDA tutorial because the gw swtich increases the size of the basis set. The next step is to create a GW input file. 
+Now check the output file out.lmfsc. The approximate self-consistent gap is 0.58 eV as can be seen by inspecting the output of lmf. Note that this result differs to that from the LDA tutorial because the gw swtich increases the size of the basis set. Now that we have the input eigenfunctions and eigenvalues, the next step is to carry out the GW calculation. For this, we need an input file for the GW code.  
 
 <hr style="height:5pt; visibility:hidden;" />
 ### Making GWinput
