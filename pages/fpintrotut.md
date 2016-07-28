@@ -17,7 +17,7 @@ This tutorial carries out a basic DFT calculation for silicon. The goal is to in
 
 <hr style="height:5pt; visibility:hidden;" />
 ### Command summary     
-<div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
+<div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Commands - Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
 
     $ mkdir si; cd si; cp path/init.si .     #create working directory, move into it and copy file     
