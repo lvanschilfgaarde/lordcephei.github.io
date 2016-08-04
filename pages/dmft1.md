@@ -19,7 +19,7 @@ As explained in the introduction to QSGW+DMFT (tutorial dmft0 TO BE DONE), the f
  
 The self-consistent DMFT loop is composed by the following steps:
 
-1  The lattice Green's function is projected onto the local correlated subsystem ($$G_{\rm loc}$$) to define the hybridization function ($$\Delta$$) and the impurity levels ($$E_{\rm imp}$$).
+1  The lattice Green's function is projected onto the local correlated subsystem ($$ G_loc $$) to define the hybridization function ($$\Delta$$) and the impurity levels ($$E_{\rm imp}$$).
 2  These two quantities together with the effective interactions $$U$$ and $$J$$ are passed to the Continuous Time Quantum Monte Carlo (CTQMC) solver which computes the corresponding impurity self-energy and the impurity Greens function ($$G_{\rm imp}$$).
 3  The double counting is subtracted from it and result is embedded into an updated lattice Green's function. The loop then starts again from point 1. untill $$G_{imp}$$ is equal to $$G_{\rm loc}$$.
 
