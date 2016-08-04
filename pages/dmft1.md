@@ -4,7 +4,7 @@ title: "First tutorial on QSGW+DMFT"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "/dmft1/"
+permalink: ""
 sidebar: "left"
 header: no
 ---
@@ -15,7 +15,7 @@ header: no
 <hr style="height:5pt; visibility:hidden;" />
 ### Introduction
 
-As explained in the introduction to QSGW+DMFT (tutorial /dmft0/ TO BE DONE), the fundamental step of DMFT is the self-consistent solution of the (local) Anderson impurity problem. This is connected to the electronic structure of the material (bath) through the hybridization function, the impurity level and the effective interactions U and J.
+As explained in the introduction to QSGW+DMFT (tutorial dmft0 TO BE DONE), the fundamental step of DMFT is the self-consistent solution of the (local) Anderson impurity problem. This is connected to the electronic structure of the material (bath) through the hybridization function, the impurity level and the effective interactions U and J.
  
 The self-consistent DMFT loop is composed by the following steps:
 
