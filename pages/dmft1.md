@@ -9,27 +9,45 @@ sidebar: "left"
 header: no
 ---
 <hr style="height:5pt; visibility:hidden;" />
-# First tutorial on QSGW+DMFT calculation
-
-As explained in the introduction to GSGW+DMFT, the fundamental step of DMFT is the self-consistent solution of the (local) impurity problem. This is connected to the electronic structure of the material (bath) through the hybridization function. 
-The self-consistent DMFT loop is composed by repeated steps:
-1. The lattice Greens function is projected onto the local correlated subsystem (Gloc) to define the hybridization function (Delta) and the impurity levels (Eimp). 
-2. These two quantities together with the effective Hubbard interaction U are fed into the Continuous Time Quantum Monte Carlo (CTQMC) solver to solve the corresponding impurity problem. This leads to an impurity self-energy and a corresponding impurity Greens function (Gimp)
-3. The double counting is subtracted from it and result is embedded into an updated lattice Greens function. The loop then starts again from point 1. untill Gimp is equal to Gloc. 
-
-In this tutorial, we will go through the steps needed to run the DMFT loop until convergence.
-This will be done starting from a converged QSGW of the paramagnetic phase of La2CuO4.
+# First tutorial on QSGW+DMFT calculation: The DMFT loop
 
 
-SETUP: 
-prepare the input folders (lmfinput and qmcinput) and
-1. add line 
-'DMFT    PROJ=2 NLOHI=11,53 BETA=50 NOMEGA=1999 KNORM=0'
-to the ctrl.file. 
-The token NLOHI defines the projection window in band index, BETA is the inverse temperature in eV^{-1} and NOMEGA is the number of Matsubara frequencies in the mesh.
-2. Copy all files of lmfinput into folder signip0 and run lmfdmft with -job=1. This will create an empty sig.inp 
-lmfdmft lsco -vnk=4 -job=1
-3. Compile (with gfortran for instance) the file braod_sig.f90 in broad_sig.x
+<hr style="height:5pt; visibility:hidden;" />
+### Introduction
+
+As explained in the introduction to QSGW+DMFT (tutorial dmft0 TO BE DONE), the fundamental step of DMFT is the self-consistent solution of the (local) Anderson impurity problem. This is connected to the electronic structure of the material (bath) through the hybridization function, the impurity level and the effective interactions U and J.
+ 
+The self-consistent DMFT loop is composed by the following steps:\\
+1. The lattice Green's function is projected onto the local correlated subsystem (G~loc~) to define the hybridization function (Delta) and the impurity levels (Eimp).\\ 
+2. These two quantities together with the effective interactions U and J are passed to the Continuous Time Quantum Monte Carlo (CTQMC) solver which computes the corresponding impurity self-energy and the impurity Greens function (G~imp~).\\
+3. The double counting is subtracted from it and result is embedded into an updated lattice Green's function. The loop then starts again from point 1. untill G~imp~ is equal to G~loc~.
+
+In this tutorial, we will go through the steps needed to run the DMFT loop until convergence. 
+This will be done starting from a converged QSGW of the paramagnetic phase of La~2~CuO~4~.
+
+In tutorial dmft2 we will highlight some possible source of error and how to prevent them.
+
+
+### Set up of the calculation 
+After copying the relevant files in the input folders, you need to compile broad_sig.f90 and add a command line to the ctrl file. 
+You can type the following commands:
+<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">
+mkdir lmfinput qmcinput                              # prepare input folders
+cp *.lsco lmfinput                                   # copy input files relevant for lmfdmft
+gfortran -o broad_sig.x broad_sig.f90                # compile (here with gfortran) the broadening program
+cp atom_d.py broad_sig.x Trans.dat PARAMS qmcinput/  # copy files and programs relevant for CTQMC
+echo 'DMFT    PROJ=2 NLOHI=11,53 BETA=50 NOMEGA=1999 KNORM=0' >> lmfinput/ctrl.lsco  # add a line to the ctrl file 
+</div>
+The token NLOHI defines the projection window in band index, BETA is the inverse temperature in eV^{-1} and NOMEGA is the number of Matsubara frequencies in the mesh. 
+
+After that, you can create an empty impurity self-energy to start the loop.
+<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">
+mkdir sigfreq0
+cd sigfreq0
+cp ../lmfinput/*  . 
+lmfdmft lsco -vnk=4 -rs=1,0 --ldadc=82.2 -job=1
+</div>
+
 
 THE LOOP:
 The loop is composed by alternated runs of lmfdmft and ctqmc, the output of each run being the input for the successive.
