@@ -93,15 +93,25 @@ We are now ready for a QSGW calculation, this is run using the shell script lmgw
 
 The switch '--wt' includes additional timing information in the printed output, insul refers to the number of occupied bands (normally spin degenerate so half the number of electrons), tol is the tolerance for the RMS change in the self-energy between iterations and maxit is the maximum number of QSGW iterations. Note that maxit is zero, this specifies that a single iteration (zeroth iteration) is to be carried out starting from DFT with no self-energy.
 
-Run the command and inspect the output. The first few lines are preparatory steps and the main GW calculation begins . The three lines with lbasC, lvccC and lsxC are the steps that calculate the core contributions to the self-energy and the following lines up to the one with lsc are for the valence contribution to the self-energy. The lsc step, calculating the correlation part of the self-energy, is usually the most expensive step. The self-energy is converted into an effective exchange-correlation potential in the lqpe step and the final few lines are to do with its handling. A full account of the GW steps can be found here (link) in the annotated output file. 
+Run the command and inspect the output. Take a look at the line containing the file name llmf.
+
+    $ lmgw  15:26:47 : invoking         mpix -np=8 /h/ms4/bin/lmf-MPIK --no-iactive  cspi >llmf
+
+Each QSGW iteration begins with a self-consistent calculation by calling the program lmf and writing the output to llmf. We are starting from a self-consitent LDA density (we already ran lmf above) so the llmf output will only contain a single iteration. The next few lines are preparatory steps. The main GW calculation begins on the line containing the file name 'lbasC':
+
+~~~
+    lmgw  16:27:55 : invoking /h/ms4/bin/code2/hbasfp0 --job=3 >lbasC
+    lmgw  16:27:55 : invoking /h/ms4/bin/code2/hvccfp0 --job=0 >lvccC ... 0.0m (0.0h)
+    lmgw  16:27:58 : invoking /h/ms4/bin/code2/hsfp0_sc --job=3 >lsxC ... 0.0m (0.0h)
+~~~
+
+The three lines with lbasC, lvccC and lsxC are the steps that calculate the core contributions to the self-energy and the following lines up to the one with lsc are for the valence contribution to the self-energy. The lsc step, calculating the correlation part of the self-energy, is usually the most expensive step. The self-energy is converted into an effective exchange-correlation potential in the lqpe step and the final few lines are to do with its handling. A full account of the GW steps can be found here (link) in the annotated output file. 
 
 Run the command again but this time set the number of iterations (maxit) to something like 5: 
 
     $ lmgwsc --wt --insul=4 --tol=2e-5 --maxit=5 si
     
-$$ \int $$
-    
-This time the iteration count starts from 0 since we are now starting with the self-energy from the zeroth iteration. 
+This time the iteration count starts from 0 since we are now starting with the self-energy from the zeroth iteration.  
     
 
 Look at the line ending in 'llmf', this is a DFT calculation with the output being written to the file 'llmf'. We already ran a self-consistent DFT calculation so this step will 
