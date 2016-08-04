@@ -25,11 +25,11 @@ The self-consistent DMFT loop is composed by the following steps:
 In this tutorial, we will go through the steps needed to run the DMFT loop until convergence. 
 This will be done starting from a converged QSGW of the paramagnetic phase of La2CuO4.
 
-In tutorial dmft2 we will highlight some possible source of error and how to prevent them.
+In tutorial _dmft2_ we will highlight some possible source of error and how to prevent them.
 
 
 ### Set up of the calculation 
-After copying the relevant files in the input folders, you need to compile broad_sig.f90 and add a command line to the ctrl file. 
+After copying the relevant files in the input folders, you need to compile *broad_sig.f90* and add a command line to the *ctrl.lsco* file. 
 You can type the following commands:
 ~~~
 mkdir lmfinput qmcinput                              # prepare input folders
@@ -38,7 +38,7 @@ gfortran -o broad_sig.x broad_sig.f90                # compile (here with gfortr
 cp atom_d.py broad_sig.x Trans.dat PARAMS qmcinput/  # copy files and programs relevant for CTQMC
 echo 'DMFT    PROJ=2 NLOHI=11,53 BETA=50 NOMEGA=1999 KNORM=0' >> lmfinput/ctrl.lsco  # add a line to the ctrl file 
 ~~~
-The token NLOHI defines the projection window in band index, BETA is the inverse temperature in eV^{-1} and NOMEGA is the number of Matsubara frequencies in the mesh. 
+The token **DMFT_NLOHI** defines the projection window in band index, **DMFT_BETA** is the inverse temperature in eV^{-1} and **DMFT_NOMEGA** is the number of Matsubara frequencies in the mesh. 
 
 After that, you can create an empty impurity self-energy to start the loop.
 ~~~
@@ -47,12 +47,12 @@ cd siginp0
 cp ../lmfinput/*  . 
 lmfdmft lsco -vnk=4 -rs=1,0 --ldadc=82.2 -job=1
 ~~~
-You can check that a file called sig.inp has been created. It is formatted with the first column being the Matsubara frequencies and then a number of columns equal to twice the number of m channels (ten columns for d-type impurity: real and imaginary parts).
-
+You can check that a file called *sig.inp* has been created. It is formatted with the first column being the Matsubara frequencies and then a number of columns equal to twice the number of m channels (ten columns for d-type impurity: real and imaginary parts).
+---
 
 ### Running the loop:
-The DMFT loop is composed by alternated runs of lmfdmft and ctqmc, the output of each run being the input for the successive. To do that, do the following steps:
-* Prepare and launch the lmfdmft run
+The DMFT loop is composed by alternated runs of **lmfdmft** and **ctqmc**, the output of each run being the input for the successive. To do that, do the following steps:
+* **Prepare and launch the lmfdmft run**
   ~~~
   mkdir itX_lmfrun                            # with X=iteration , X=1 if first run
   cp lmfinput/* itX_lmfrun                    # copy standard input files 
@@ -68,14 +68,14 @@ The DMFT loop is composed by alternated runs of lmfdmft and ctqmc, the output of
   ~~~
   if you are running the first iteration.
 
-  Let now U=10 eV and J=0.7 eV be the Hubbard on-site interaction and Hunds coupling respectively, and n=9 the nominal occupancy (n=9 for cuprates). Then launch lmfdmft with the command 
+  Let now U=10 eV and J=0.7 eV be the Hubbard on-site interaction and Hunds coupling respectively, and n=9 the nominal occupancy (n=9 for cuprates). Then launch **lmfdmft** with the command 
   ~~~
   lmfdmft lsco -vnk=4 --rs=1,0 --ldadc=82.2 -job=1 
   ~~~
-  where 82.2 is the double counting according to the formula Edc=U(n-1/2)-J(n-1)/2. The hybridization function Delta is stored in delta.lsco (first column are Matsubaras energies and then five d-channels with real and imaginary parts).The impurity levels are recorded in eimp1.lsco 
+  where 82.2 is the double counting according to the formula Edc=U(n-1/2)-J(n-1)/2. The hybridization function Delta is stored in *delta.lsco* (first column are Matsubaras energies and then five d-channels with real and imaginary parts).The impurity levels are recorded in *eimp1.lsco* 
 
-* Prepare and launch the ctqmc run 
-  At the X iteration you can launch the following commands
+* **Prepare and launch the ctqmc run**
+  At the Xth iteration you can launch the following commands
   ~~~
   mkdir itX_qmcrun                                 # the running folder
   cp qmcinput/*   itX_qmcrun/                      # copy input files and relevant executables
@@ -84,14 +84,14 @@ The DMFT loop is composed by alternated runs of lmfdmft and ctqmc, the output of
   ~~~
 
   Now there are some manual operations to do:
-  * Copy the forth line of Eimp.inp in the PARAMS file (in such a way to have one line like Ed=[ ..... ) 
-  * Change accordingly the mu variable in PARAMS. It has to be the first value of the Ed string with inverted sign.
-  * Run atom_d.py using the command
+  * Copy the forth line of *Eimp.inp* in the *PARAMS* file (in such a way to have one line like Ed=[ ..... ) 
+  * Change accordingly the mu variable in *PARAMS*. It has to be the first value of the Ed string with inverted sign.
+  * Run **atom_d.py** using the command
   ~~~
   python atom_d.py J=0.7 l=2 cx=0.0 OCA_G=False qatom=0 "CoulombF='Ising'" HB2=False $EIMP
   ~~~ 
-  where the variable $EIMP is a copy of the third line of Eimp.inp. This generates a file called actqmc.cix used by the solver.
-  * Add correct values of U, J, nf0 (equivalent of n) and beta in PARAMS. The Params file at the end should look like the following 
+  where the variable $EIMP is a copy of the third line of *Eimp.inp*. This generates a file called *actqmc.cix* used by the solver.
+  * Add correct values of U, J, nf0 (equivalent of n) and beta in *PARAMS*. The Params file at the end should look like the following 
   ~~~
   Ntau  1000  
   OffDiagonal  real
@@ -123,12 +123,12 @@ The DMFT loop is composed by alternated runs of lmfdmft and ctqmc, the output of
   nf0  9.0
   beta 50.0
   ~~~
-  The run	should now be send using a submission script on, let's say 20 cores. Important parameters (that may need to be adjusted during the loop) are nom, Nmax and M. To start with, we can set them to nom 130 Nmax 200 and M 20000000.
+  The run	should now be sent using a submission script on, let's say 20 cores. Important parameters (that may need to be adjusted during the loop) are nom, Nmax and M. Their explanation is reported as a comment in the *PARAMS* file itself. To start with, we can set them to nom=130 Nmax=200 and M=20000000. As shown above.
 
-  After the run you need to broad sigma using the program brad_sig.x
+  After the run you need to broad sigma using the program **brad_sig**
   ~~~ 
   cd itX_qmcrun
   cp ../qmcinput/broad_sig.x .
   echo 'Sig.out 130 l "55  20  130" k "1 2 3 4 5"'| ./broad_sig.x > broad.log
   ~~~
-  For a clearer explanation on how broad_six.f90 works, we refer to its commented header.
+  For a clearer explanation on how **broad_six** works, we refer to its commented header.
