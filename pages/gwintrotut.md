@@ -99,9 +99,7 @@ Run the command again but this time set the number of iterations (maxit) to some
 
     $ lmgwsc --wt --insul=4 --tol=2e-5 --maxit=5 si
     
-~~~
-block of input
-~~~
+$$ \int $$
     
 This time the iteration count starts from 0 since we are now starting with the self-energy from the zeroth iteration. 
     
