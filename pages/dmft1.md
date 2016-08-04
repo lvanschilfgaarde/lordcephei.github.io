@@ -130,4 +130,4 @@ The DMFT loop is composed by alternated runs of **lmfdmft** and **ctqmc**, the o
   cp ../qmcinput/broad_sig.x .
   echo 'Sig.out 130 l "55  20  130" k "1 2 3 4 5"'| ./broad_sig.x > broad.log
   ~~~
-  For a clearer explanation on how **broad_six** works, we refer to its commented header.
+  For a clearer explanation on how **broad_sig** works, we refer to its commented header.
