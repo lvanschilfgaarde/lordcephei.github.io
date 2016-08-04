@@ -48,7 +48,6 @@ cp ../lmfinput/*  .
 lmfdmft lsco -vnk=4 -rs=1,0 --ldadc=82.2 -job=1
 ~~~
 You can check that a file called *sig.inp* has been created. It is formatted with the first column being the Matsubara frequencies and then a number of columns equal to twice the number of m channels (ten columns for d-type impurity: real and imaginary parts).
----
 
 ### Running the loop:
 The DMFT loop is composed by alternated runs of **lmfdmft** and **ctqmc**, the output of each run being the input for the successive. To do that, do the following steps:
