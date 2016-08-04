@@ -95,7 +95,9 @@ The switch '--wt' includes additional timing information in the printed output, 
 
 Run the command and inspect the output. Take a look at the line containing the file name llmf.
 
+~~~
     lmgw  15:26:47 : invoking         mpix -np=8 /h/ms4/bin/lmf-MPIK --no-iactive  cspi >llmf
+~~~
 
 Each QSGW iteration begins with a self-consistent calculation by calling the program lmf and writing the output to llmf. We are starting from a self-consitent LDA density (we already ran lmf above) so the llmf output will only contain a single iteration. The next few lines are preparatory steps. The main GW calculation begins on the line containing the file name 'lbasC':
 
