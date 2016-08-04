@@ -59,9 +59,9 @@ To carry out a self-consistent LDA calculation, we use the lmf code. Try running
 
 {::nomarkdown}</div>{:/}
 
-Note that we have included an extra --gw switch, which tailors the ctrl file for a GW calculation. To see how it affects the ctrl file, try running blm without --gw. The basis set section is modified (see the autobas line) to increase the size of the basis set as GW calculations require a larger basis.
+Note that we have included an extra --gw switch, which tailors the ctrl file for a GW calculation. To see how it affects the ctrl file, try running blm without --gw. Note that the basis set section is modified (see the autobas line) to increase the size of the basis set as GW calculations require a larger basis.
 
-Two new blocks of text, the HAM and GW categories, are also added towards the end of the ctrl file. The extra parameters in the HAM category handle the inclusion of the self-energy in a DFT calculation. The GW category provides some default values for parameters that are required in the GW calculation. The GW code has its own input file and the DFT ctrl file influences what defaults are set in it, we will come back to this later. One thing to note is the NKABC= token, which defines the GW k mesh. It is specified in the same way as the lower case nkabc= for the LDA calculation. 
+Two new blocks of text, the HAM and GW categories, are also added towards the end of the ctrl file. The extra parameters in the HAM category handle the inclusion of a self-energy (converted to an effective exchange-correlation potential) in a DFT calculation. The GW category provides some default values for parameters that are required in the GW calculation. The GW code has its own input file and the DFT ctrl file influences what defaults are set in it, we will come back to this later. One thing to note is the NKABC= token, which defines the GW k mesh. It is specified in the same way as the lower case nkabc= for the LDA calculation. 
 
 Now check the output file out.lmfsc. The self-consistent gap is reported to be 0.58 eV as can be seen by searching for the word 'gap'. Note that this result differs slightly to that from the LDA tutorial because the gw swtich increases the size of the basis set. 
 
