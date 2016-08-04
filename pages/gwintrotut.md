@@ -99,49 +99,52 @@ Run the command and inspect the output. Take a look at the line containing the f
     lmgw  15:26:47 : invoking         mpix -np=8 /h/ms4/bin/lmf-MPIK --no-iactive  cspi >llmf
 ~~~
 
-Each QSGW iteration begins with a self-consistent calculation by calling the program lmf and writing the output to llmf. We are starting from a self-consitent LDA density (we already ran lmf above) so the llmf output will only contain a single iteration. The next few lines are preparatory steps. The main GW calculation begins on the line containing the file name 'lbasC':
+Each QSGW iteration begins with a self-consistent calculation by calling the program lmf and writing the output to the file llmf. We are starting from a self-consitent LDA density (we already ran lmf above) so this step is not necessary. The next few lines are preparatory steps. The main GW calculation begins on the line containing the file name 'lbasC':
 
 ~~~
     lmgw  16:27:55 : invoking /h/ms4/bin/code2/hbasfp0 --job=3 >lbasC
     lmgw  16:27:55 : invoking /h/ms4/bin/code2/hvccfp0 --job=0 >lvccC ... 0.0m (0.0h)
     lmgw  16:27:58 : invoking /h/ms4/bin/code2/hsfp0_sc --job=3 >lsxC ... 0.0m (0.0h)
+    lmgw  16:27:59 : invoking /h/ms4/bin/code2/hbasfp0 --job=0 >lbas
+    lmgw  16:27:59 : invoking /h/ms4/bin/code2/hvccfp0 --job=0 >lvcc ... 0.0m (0.0h)
+    lmgw  16:28:02 : invoking /h/ms4/bin/code2/hsfp0_sc --job=1 >lsx ... 0.0m (0.0h)
+    lmgw  16:28:02 : invoking /h/ms4/bin/code2/hx0fp0_sc --job=11 >lx0 ... 0.1m (0.0h)
+    lmgw  16:28:07 : invoking /h/ms4/bin/code2/hsfp0_sc --job=2  >lsc ... 0.1m (0.0h)
+    lmgw  16:28:13 : invoking /h/ms4/bin/code2/hqpe_sc 4 >lqpe
 ~~~
 
-The three lines with lbasC, lvccC and lsxC are the steps that calculate the core contributions to the self-energy and the following lines up to the one with lsc are for the valence contribution to the self-energy. The lsc step, calculating the correlation part of the self-energy, is usually the most expensive step. The self-energy is converted into an effective exchange-correlation potential in the lqpe step and the final few lines are to do with its handling. A full account of the GW steps can be found here (link) in the annotated output file. 
+The three lines with lbasC, lvccC and lsxC are the steps that calculate the core contributions to the self-energy and the following lines up to the one with lsc are for the valence contribution to the self-energy. The lsc step, calculating the correlation part of the self-energy, is usually the most expensive step. The self-energy is converted into an effective exchange-correlation potential in the lqpe step and the final few lines are to do with its handling. A full account of the GW steps can be found here (link) in the annotated output file.
 
 Run the command again but this time set the number of iterations (maxit) to something like 5: 
 
     $ lmgwsc --wt --insul=4 --tol=2e-5 --maxit=5 si
     
-This time the iteration count starts from 0 since we are now starting with the self-energy from the zeroth iteration.  
-    
+This time the iteration count starts from 1 since we are now starting with a self-energy created in the zeroth iteration. Again, the iteration starts with a self-consistent DFT calculation but this time the zeroth iteration GW potential is used. The following line in the llmf file specifies that the GW potential is being used:
+~~~
+RDSIGM: read file sigm and create COMPLEX sigma(R) by FT ...
+~~~
+The GW potential is contained in the file sigm, lmgwsc also makes a soft link sigm.si so lmf can read it. The GW potential is automatically used if present, this is specified by the RDSIG variable in the ctrl file. Take a look at the GW output again and you can see that the rest of the steps are the same as before. After 3 iterations the RMS change in the self-energy is below the tolerance and the calculation is converged.
 
-Look at the line ending in 'llmf', this is a DFT calculation with the output being written to the file 'llmf'. We already ran a self-consistent DFT calculation so this step will 
+~~~
+lmgwsc : iter 3 of 5  RMS change in sigma = 1.19E-05  Tolerance = 2e-5
+~~~
 
-
-
-The first iteration is 0 of 10, zeroth. Starts off with lmf calc... Then some preparation then the GW calc... The most expensive step is lsc which is... Then have self-energy and next iteration beings... After 3 iterations the calculation is converged
-
-At this point you should have a file sigm residing in your working directory. Because ctrl.si has HAM_RDSIG=12, it will automatically read sigm.si and effectively add it as an external potential. The actual file is sigm; lmgwsc makes a soft link to sigm.si so lmf can read it.
-
-Do a band pass substituting the QSGW exchange-correlation potential for the LDA one: 
+Now that we have a converged self-energy (sigm) we can go back to using lmf to calculate additional properties. Run the following command to do a single iteration:
 
     $ lmf si -vnit=1 --rs=1,0 
 
-Inspect the lmf output and you can find that the Γ-X gap is now 1.28 eV. 
+Inspect the lmf output and you can find that the Γ-X gap is now 1.28 eV. QSGW overestimation...
 
 To make the QSGW energy bands, do: 
 
     $ lmf si --band:fn=syml                            
     $ cp bnds.si bnds-qsgw.si
 
+Check your directory and you will see that a large number of files were created. The following command removes many redundant files:
 
-However, please note that the file is only a template and care must be taken in selecting appropriate parameter values.
+    $ lmgwclear
 
-
-
-
-The k mesh data that the GW codes actually reads comes from the following tag in the GWinput file: 
+Further details can be found in the Additional exercises below. 
 
 <hr style="height:5pt; visibility:hidden;" />
 ###Additional exercises
