@@ -51,21 +51,24 @@ You can check that a file called *sig.inp* has been created. It is formatted wit
 
 ### Running the loop:
 The DMFT loop is composed by alternated runs of **lmfdmft** and **ctqmc**, the output of each run being the input for the successive. To do that, do the following steps:
+
 * **Prepare and launch the lmfdmft run**
+
+  First you have to copy the standard input files:
   ~~~
   mkdir itX_lmfrun                            # with X=iteration , X=1 if first run
   cp lmfinput/* itX_lmfrun                    # copy standard input files 
   ~~~
-  You also have to copy the (broadened) impurity self-energy then :
+  Then you also have to copy the (broadened) impurity self-energy.
+  If you are running an iteration X>1 then type:
   ~~~
   cp it(X1)_qmcrun/Sig.out.brd  itX_lmfrun/sig.inp
   cp it(X-1)_qmcrun/g_qmc.dat   itX_lmfrun/gimp.prev.lsco
   ~~~
-  if you are not running the first iteration, or 
+  else, if you are running the first iteration  
   ~~~
   cp siginp0/sig.inp it1_lmfrun/sig.inp
   ~~~
-  if you are running the first iteration.
 
   Let now U=10 eV and J=0.7 eV be the Hubbard on-site interaction and Hunds coupling respectively, and n=9 the nominal occupancy (n=9 for cuprates). Then launch **lmfdmft** with the command 
   ~~~
@@ -74,6 +77,7 @@ The DMFT loop is composed by alternated runs of **lmfdmft** and **ctqmc**, the o
   where 82.2 is the double counting according to the formula Edc=U(n-1/2)-J(n-1)/2. The hybridization function Delta is stored in *delta.lsco* (first column are Matsubaras energies and then five d-channels with real and imaginary parts).The impurity levels are recorded in *eimp1.lsco* 
 
 * **Prepare and launch the ctqmc run**
+
   At the Xth iteration you can launch the following commands
   ~~~
   mkdir itX_qmcrun                                 # the running folder
