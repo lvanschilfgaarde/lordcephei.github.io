@@ -87,7 +87,7 @@ The k mesh of 3×3×3 divisions is rough, but it makes the calculation fast and 
 ### Running QSGW
 We are now ready for a QSGW calculation, this is run using the shell script lmgwsc.  
 
-    $ lmgwsc --wt  --insul=4 --tol=2e-5 --maxit=2 -vnit=10 si
+    $ lmgwsc --wt --insul=4 --tol=2e-5 --maxit=10 si
 
 The first iteration is 0 of 10, zeroth. Starts off with lmf calc... Then some preparation then the GW calc... The most expensive step is lsc which is... Then have self-energy and next iteration beings... After 3 iterations the calculation is converged
 
