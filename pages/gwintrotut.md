@@ -11,7 +11,9 @@ header: no
 <hr style="height:5pt; visibility:hidden;" />
 # Introduction to a QSGW calculation
 
-Notes: add annotated GW output file with explanation of steps
+Notes: 
+- add annotated GW output file with explanation of steps
+- Why llmf runs for 2 iterations with self-consistent density?
 
 This tutorial begins with an LDA calculation for Si, starting from an init file. Following this is a demonstration of a quasi-particle self-consistent GW (QSGW) calculation. An example of the 1-shot GW code is provided in a separate tutorial. Click on the 'QSGW' dropdown menu below for a brief description of the QSGW scheme. A complete summary of the commands used throughout is provided in the 'Commands' dropdown menu. Theory notes for GW and QSGW can be found here (add link).  
 
@@ -85,9 +87,19 @@ The k mesh of 3×3×3 divisions is rough, but it makes the calculation fast and 
 
 <hr style="height:5pt; visibility:hidden;" />
 ### Running QSGW
-We are now ready for a QSGW calculation, this is run using the shell script lmgwsc.  
+We are now ready for a QSGW calculation, this is run using the shell script lmgwsc:  
 
-    $ lmgwsc --wt --insul=4 --tol=2e-5 --maxit=10 si
+    $ lmgwsc --wt --insul=4 --tol=2e-5 --maxit=0 si
+
+The switch '--wt' includes additional timing information in the printed output, insul refers to the number of occupied bands (normally spin degenerate so half the number of electrons), tol is the tolerance for the RMS change in the self-energy between iterations and maxit is the maximum number of QSGW iterations. Note that maxit is zero, this specifies that a single iteration (zeroth iteration) is to be carried out starting from DFT with no self-energy.
+
+Run the command and inspect the output. The first few lines are preparatory steps and the main calculation begins with the calculation fo the fermi energy, see the line containing heftet. The three lines with lbasC, lvccC and lsxC are the steps that calculate the core contributions to the self-energy and the following lines up to the one with lsc are for the valence contribution to the self-energy. The lsc step, correlation part of the self-energy, is usually the most expensive step. The self-energy is converted into an effective exchange-correlation potential in the lqpe step and the final few lines are to do with its handling. A full account of the GW steps can be found in annotated output here. 
+
+
+
+Look at the line ending in 'llmf', this is a DFT calculation with the output being written to the file 'llmf'. We already ran a self-consistent DFT calculation so this step will 
+
+
 
 The first iteration is 0 of 10, zeroth. Starts off with lmf calc... Then some preparation then the GW calc... The most expensive step is lsc which is... Then have self-energy and next iteration beings... After 3 iterations the calculation is converged
 
