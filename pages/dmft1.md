@@ -18,9 +18,9 @@ header: no
 As explained in the introduction to QSGW+DMFT (tutorial dmft0 TO BE DONE), the fundamental step of DMFT is the self-consistent solution of the (local) Anderson impurity problem. This is connected to the electronic structure of the material (bath) through the hybridization function, the impurity level and the effective interactions U and J.
  
 The self-consistent DMFT loop is composed by the following steps:
-1. The lattice Green's function is projected onto the local correlated subsystem (Gloc) to define the hybridization function (Delta) and the impurity levels (Eimp).
-2. These two quantities together with the effective interactions U and J are passed to the Continuous Time Quantum Monte Carlo (CTQMC) solver which computes the corresponding impurity self-energy and the impurity Greens function (Gimp).
-3. The double counting is subtracted from it and result is embedded into an updated lattice Green's function. The loop then starts again from point 1 until Gimp is equal to Gloc.
+* The lattice Green's function is projected onto the local correlated subsystem (Gloc) to define the hybridization function (Delta) and the impurity levels (Eimp).
+* These two quantities together with the effective interactions U and J are passed to the Continuous Time Quantum Monte Carlo (CTQMC) solver which computes the corresponding impurity self-energy and the impurity Greens function (Gimp).
+* The double counting is subtracted from it and result is embedded into an updated lattice Green's function. The loop then starts again from point 1 until Gimp is equal to Gloc.
 
 In this tutorial, we will go through the steps needed to run the DMFT loop until convergence. 
 This will be done starting from a converged QSGW of the paramagnetic phase of La2CuO4.
@@ -92,37 +92,37 @@ The DMFT loop is composed by alternated runs of lmfdmft and ctqmc, the output of
   ~~~ 
   where the variable $EIMP is a copy of the third line of Eimp.inp. This generates a file called actqmc.cix used by the solver.
   * Add correct values of U, J, nf0 (equivalent of n) and beta in PARAMS. The Params file at the end should look like the following 
-~~~
-Ntau  1000
-OffDiagonal  real
-Sig  Sig.out
-Naver  100000000
-SampleGtau  1000
-Gf  Gf.out
-Delta  Delta.inp
-cix  actqmc.cix
-Nmax  200         # Maximum perturbation order allowed
-nom  130          # Number of Matsubara frequency points sampled
-exe  ctqmc        # Name of the executable
-tsample  50       # How often to record measurements
-nomD  150         # Number of Matsubara frequency points sampled
-Ed=[ -84.811465, -84.562847, -84.169182, -84.562583, -84.129468]     # Impurity levels updated by bash script
-M  20000000.0     # Total number of Monte Carlo steps per core
-Ncout  200000     # How often to print out info
-PChangeOrder  0.9         # Ratio between trial steps: add-remove-a-kink / move-a-kink
-CoulombF  'Ising'         # Ising Coulomb interaction
-mu   84.811465  # QMC chemical potential by bash script
-warmup  500000            # Warmup number of QMC steps
-GlobalFlip  200000        # How often to try a global flip
-OCA_G  False      # No OCA diagrams being computed - for speed
-sderiv  0.02      # Maximum derivative mismatch accepted for tail concatenation
-aom  3            # Number of frequency points used to determin the value of sigma at nom
-HB2  False        # Should we compute self-energy with the Bullas trick?
-U    10.0
-J    0.7
-nf0  9.0
-beta 50.0
-~~~
+  ~~~
+  Ntau  1000  
+  OffDiagonal  real
+  Sig  Sig.out
+  Naver  100000000
+  SampleGtau  1000
+  Gf  Gf.out
+  Delta  Delta.inp
+  cix  actqmc.cix
+  Nmax  200         # Maximum perturbation order allowed
+  nom  130          # Number of Matsubara frequency points sampled
+  exe  ctqmc        # Name of the executable
+  tsample  50       # How often to record measurements
+  nomD  150         # Number of Matsubara frequency points sampled
+  Ed=[ -84.811465, -84.562847, -84.169182, -84.562583, -84.129468]     # Impurity levels updated by bash script
+  M  20000000.0     # Total number of Monte Carlo steps per core
+  Ncout  200000     # How often to print out info
+  PChangeOrder  0.9         # Ratio between trial steps: add-remove-a-kink / move-a-kink
+  CoulombF  'Ising'         # Ising Coulomb interaction
+  mu   84.811465  # QMC chemical potential by bash script
+  warmup  500000            # Warmup number of QMC steps
+  GlobalFlip  200000        # How often to try a global flip
+  OCA_G  False      # No OCA diagrams being computed - for speed
+  sderiv  0.02      # Maximum derivative mismatch accepted for tail concatenation
+  aom  3            # Number of frequency points used to determin the value of sigma at nom
+  HB2  False        # Should we compute self-energy with the Bullas trick?
+  U    10.0
+  J    0.7
+  nf0  9.0
+  beta 50.0
+  ~~~
   The run	should now be send using a submission script on, let's say 20 cores. Important parameters (that may need to be adjusted during the loop) are nom, Nmax and M. To start with, we can set them to nom 130 Nmax 200 and M 20000000.
 
   After the run you need to broad sigma using the program brad_sig.x
