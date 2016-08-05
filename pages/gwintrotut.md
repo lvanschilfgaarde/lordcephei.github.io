@@ -31,13 +31,12 @@ In short, a QSGW calculation consists of the following steps. The starting point
 <div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Commands - Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
 
-    $ mkdir si; cd si; cp path/init.si .     #create working directory, move into it and copy file     
-    $ blm init.si --express                  #use blm tool to create actrl and site files
-    $ cp actrl.si ctrl.si                    #copy actrl to recognised ctrl prefix
-    $ lmfa ctrl.si                           #use lmfa to make basp file, atm file and to get gmax
-    $ cp basp0.si basp.si                    #copy basp0 to recognised basp prefix   
-    $ vi ctrl.si                             #set iterations number nit, k mesh nkabc and gmax
-    $ lmf ctrl.si > out.lmfsc                #make self-consistent
+    $ cp path/init.si .                                    #copy init file to working directory
+    $ blm init.si --express --gmax=5 --nk=4 --nit=20 --gw  #use blm tool to create actrl and site files
+    $ cp actrl.si ctrl.si                                  #copy actrl to recognised ctrl prefix
+    $ lmfa ctrl.si; cp basp0.si basp.si                    #run lmfa and copy basp file
+    $ lmf ctrl.si > out.lmfsc                              #make self-consistent
+    $ lmf si --band:fn=syml                                #plot LDA band structure
 
 {::nomarkdown}</div>{:/}
 
@@ -58,6 +57,8 @@ To carry out a self-consistent LDA calculation, we use the lmf code. Try running
     $ lmfa ctrl.si; cp basp0.si basp.si                    #run lmfa and copy basp file
     $ lmf ctrl.si > out.lmfsc                              #make self-consistent
     $ lmf si --band:fn=syml                                #plot LDA band structure
+    $ echo -1 | lmfgwd si                                  #makes a GWinput file
+    $ lmgwsc --wt --insul=4 --tol=2e-5 --maxit=5 si        #self-consistent GW calculation
 
 {::nomarkdown}</div>{:/}
 
