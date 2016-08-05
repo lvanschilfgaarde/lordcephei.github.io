@@ -42,7 +42,7 @@ The token **DMFT_NLOHI** defines the projection window in band index, **DMFT_BET
 
 After that, you can create an empty impurity self-energy to start the loop.
 ~~~
-mkdir sigfreq0
+mkdir siginp0
 cd siginp0
 cp ../lmfinput/*  . 
 lmfdmft lsco -vnk=4 -rs=1,0 --ldadc=82.2 -job=1
