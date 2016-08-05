@@ -37,7 +37,7 @@ In short, a QSGW calculation consists of the following steps. The starting point
     $ lmfa ctrl.si; cp basp0.si basp.si                    #run lmfa and copy basp file
     $ lmf ctrl.si > out.lmfsc                              #make self-consistent
     $ lmf si --band:fn=syml; cp bnds.si bnds-lda.si        #calculate LDA band structure
-    $ echo -1 | lmfgwd si                                  #makes a GWinput file
+    $ echo -1 | lmfgwd si                                  #make GWinput file
     $ lmgwsc --wt --insul=4 --tol=2e-5 --maxit=5 si        #self-consistent GW calculation
     $ lmf si -vnit=1 --rs=1,0                              #lmf with QSGW potential to get QSGW band gap
     $ lmf si --band:fn=syml; cp bnds.si bnds-lda.si        #calculate QSGW band structure
@@ -77,7 +77,7 @@ Now that we have the input eigenfunctions and eigenvalues, the next step is to c
 ### Making GWinput
 The GW package (both one-shot and QSGW) uses one main user-supplied input file, GWinput. The script lmfgwd can create a template GWinput file for you by running the following command: 
 
-    $ echo -1 | lmfgwd si                              #makes a GWinput file
+    $ echo -1 | lmfgwd si                              #make GWinput file
 
 The lmfgwd script has multiple options and is designed to run interactively. Using 'echo -1' automatically passes it the '-1' option that specifies making a template input file. You can try running it interactively by just using the command 'lmfgwd si' and then entering '-1'. Take a look at GWinput, it is a rather complicated input file but we will only consider the GW k mesh for now (further information can be found on the GWinput page). The k mesh is specified by n1n2n3 in the GWinput file, look for the following line:
 
@@ -93,7 +93,7 @@ The k mesh of 3×3×3 divisions is rough, but it makes the calculation fast and 
 ### Running QSGW
 We are now ready for a QSGW calculation, this is run using the shell script lmgwsc:  
 
-    $ lmgwsc --wt --insul=4 --tol=2e-5 --maxit=0 si
+    $ lmgwsc --wt --insul=4 --tol=2e-5 --maxit=0 si         #zeroth iteration of QSGW calculation
 
 The switch '--wt' includes additional timing information in the printed output, insul refers to the number of occupied bands (normally spin degenerate so half the number of electrons), tol is the tolerance for the RMS change in the self-energy between iterations and maxit is the maximum number of QSGW iterations. Note that maxit is zero, this specifies that a single iteration (zeroth iteration) is to be carried out starting from DFT with no self-energy.
 
@@ -121,7 +121,7 @@ The three lines with lbasC, lvccC and lsxC are the steps that calculate the core
 
 Run the command again but this time set the number of iterations (maxit) to something like 5: 
 
-    $ lmgwsc --wt --insul=4 --tol=2e-5 --maxit=5 si
+    $ lmgwsc --wt --insul=4 --tol=2e-5 --maxit=5 si        #self-consistent GW calculation
     
 This time the iteration count starts from 1 since we are now starting with a self-energy created in the zeroth iteration. Again, the iteration starts with a self-consistent DFT calculation but this time the zeroth iteration GW potential is used. The following line in the llmf file specifies that the GW potential is being used:
 ~~~
@@ -135,18 +135,18 @@ lmgwsc : iter 3 of 5  RMS change in sigma = 1.19E-05  Tolerance = 2e-5
 
 Now that we have a converged self-energy (sigm) we can go back to using lmf to calculate additional properties. Run the following command to do a single iteration:
 
-    $ lmf si -vnit=1 --rs=1,0 
+    $ lmf si -vnit=1 --rs=1,0                              #lmf with QSGW potential to get QSGW band gap
 
 Inspect the lmf output and you can find that the Γ-X gap is now 1.28 eV. QSGW overestimation...
 
 To make the QSGW energy bands, do: 
 
-    $ lmf si --band:fn=syml                            
+    $ lmf si --band:fn=syml                                #calculate QSGW band structure
     $ cp bnds.si bnds-qsgw.si
 
 Check your directory and you will see that a large number of files were created. The following command removes many redundant files:
 
-    $ lmgwclear
+    $ lmgwclear                 #clean up directory
 
 Further details can be found in the Additional exercises below. 
 
