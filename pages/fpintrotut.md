@@ -85,7 +85,7 @@ Now take a look at the output file "out.lmfsc". Look for the line beginning with
 
 You can also check how the bandgap changes by grepping out.lmfsc for 'gap'.
 
-ADD BAND STRUCTURE PLOTTING!!!
+[//]: # (ADD BAND STRUCTURE PLOTTING!!!)
 
 And that's it! You now have a self-consistent density and have calculated some basic properties such as the band gap and total energy.  
 
@@ -120,5 +120,4 @@ For example, try running the command "blm init.si --express --wsitex" and you wi
     
 You can see that values for gmax, nkabc and nit have been set by blm.  If you modify the input file this way, be sure to copy actrl.si to ctrl.si before continuing.
 
-3) 
 
