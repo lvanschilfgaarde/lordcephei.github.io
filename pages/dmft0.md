@@ -24,6 +24,7 @@ header: no
 The general framework of the QSGW+DMFT method (but also in LDA+DMFT) relies on a separation of the whole problem into a lattice and an impurity problem (see theoretical details). The solution of the joint problem is found by repeatedly hoping from one picture to the other, each time using the output of one calculation to improve the input of the successive. Projection and embedding operations allow for transitions from one picture to the other.
 
 The solution of each of the two pictures relies on a self-consisten procedure. For the lattice problem it is the QSGW loop (see dedicated tutorials), whereas for the impurity picture we speak of the DMFT loop. The two loops are closed in a larger loop (density or self-energy loop) that allows for a fully self-consistent description. A pictorial representation is depicted in the figure below.
+
 ![alt text][qsgwdmft-loop]
 
 [qsgwdmft-loop]: https://github.com/lorenzo-sponza/lordcephei.github.io/pages/qsgwdmft-loop.png "QSGW+DMFT loop"
