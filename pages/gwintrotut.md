@@ -12,8 +12,8 @@ header: no
 # Introduction to a QSGW calculation
 
 [//]: # (Notes:)
-- add annotated GW output file with explanation of steps
-- Why llmf runs for 2 iterations with self-consistent density?
+[//]: # (- add annotated GW output file with explanation of steps)
+[//]: # (- Why llmf runs for 2 iterations with self-consistent density?)
 
 This tutorial begins with an LDA calculation for Si, starting from an init file. Following this is a demonstration of a quasi-particle self-consistent GW (QSGW) calculation. An example of the 1-shot GW code is provided in a separate tutorial. Click on the 'QSGW' dropdown menu below for a brief description of the QSGW scheme. A complete summary of the commands used throughout is provided in the 'Commands' dropdown menu. Theory notes for GW and QSGW can be found here (add link).  
 
