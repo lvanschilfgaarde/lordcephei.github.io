@@ -51,12 +51,14 @@
       content:
       - title: "Tutorial for the full-potential LDA program lmf"
         url: "/fpnew/"
-      - title: "Building the FP Input File"
+      - title: "Building The FP Input File"
         url: "/buildingfpinput/"
-      - title: "FP basis optimisation"
+      - title: "FP Basis Optimisation"
         url: "/fpoptbas/"
-      - title: "Generating a Partial DOS with lmf"
+      - title: "Generating a Partial DOS"
         url: "/lmf_pdos/"
+      - title: "Performing Mulliken Analysis"
+        url: "/lmf_mulliken/"
     - name: "lm"
       content:
       - title: "ASA tutorial"

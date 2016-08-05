@@ -1,6 +1,6 @@
 ---
 layout: page-fullwidth
-title: "Input File Guide"
+title: "The Input File"
 permalink: "/docs/inputfile/"
 header: no
 ---
@@ -14,7 +14,7 @@ header: no
 _____________________________________________________________
 This guide aims to detail the structure and use of the input file and related topics. Additionally, the guide details the different categories that the input file uses and the tokens that can be set within each category.
 
-### _Input Methods: The Input File_
+### _The Input File_
 _____________________________________________________________
 
 ##### _Introduction_
@@ -136,66 +136,6 @@ The preprocessor treats text inside brackets {...} as an expression (usually an 
 The preprocessor’s programming language makes it possible for a single file to serve as input for many materials systems in the manner of a database; or as documentation. Also you can easily vary input conditions in a parameteric fashion.  
 
 Many files other than  `ctrl.ext‘ are first parsed by the preprocessor: files for site positions, Euler angles for noncollinear magnetism, among others.  
-
-### _Input Methods: Command Line Arguments_
-
-Command-line arguments allow for a second, very convenient input stream. In particular you can use them to declare and assign values to variables which can modify the input file via the preprocessor. A number of other directives are also possible. Here is an example:
-
-         lmchk -vns=4 -vnm=5 --wpos=pos ... 
-
-lmchk reads site positions, checks for augmentation sphere overlaps, and can print out a wealth of other structural data.  
-
-The switches tell lmchk to create variables  ns  and  nm  (assigning values 4 and 5 respectively), and includes an instruction to dump site positions to file  pos.ext.  
-
-Following unix style, switches always begin with `−‘. There are many command-line arguments that are specific to a particular executable; here are some generic command-line switches common to most or all programs described.  
-
-Some switches have a single "−"; some have two ("−−"). Those with a single "−" tend to have an "assignment" function, such as a variables declaration (eg −vx=3), while those with two tend to control program flow (eg. −−wpos=name). Sometimes there is not a clear distinction , e.g. −−pr and −pr  perform the same function, namely setting the output verbosity via the command line.  
-
-You can also put these switches in the  CMD  category in the input file. The function is similar to a command-line argument, but not identical, since preprocessor has already read the input file before the "CMD" switches are read. Thus the  "−v"  and  "−c"  variable declarations have no effect.  
-
-Some switches are common to most or all programs.  
-<div onclick="elm = document.getElementById('commonSwitch'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click to show common switches.</div>
-{::nomarkdown}<div style="display:none;padding:25px;" id="commonSwitch">{:/} 
-
-        --h                     lists switches for that program and quits
-                                (warning: sometimes documentation is slightly out of date)
-
-        --input                 same as turning on HELP=T in category IO; see HELP= above.
-
-        --show                  same as turning on SHOW=T in category IO; see SHOW= above.
-
-        --showp                 prints out input file after having run through the
-                                preprocessor, and exits.
-
-        --pr#1[,#2]             sets print verbosities.  #2 is verbosity for generation
-         -pr#1[,#2]             of the potential, and assumes the value of #1 unless specified.
-
-        --time=#1[,#2]          prints out a summary of timings in various branches of
-                                the code at the close of program execution.  Timings
-                                are kept to a nesting level of #1.  If #2 is
-                                nonzero, timings are printed 'on the fly'
-
-        --iactive               turns on 'interactive' mode.  User is queried at
-                                various points, such as whether to continue iterations.
-                                You can specify this in ctrl file 'IO IACTIV='
-        --no-iactive            turns off 'interactive' mode
-
-        -v"name=expr"           declares a numeric variable and assigns to the value of
-                                expression `expr'. Be advised that only the first
-                                declaration of a variable is used.  Later declarations
-                                have no effect.  In addition to the declaration
-                                `name=...'  there are assignment operators
-                                '*=','/=','+=','-=','^=' modify existing variables,
-                                following C syntax, as described in the preprocessor documentation.
-
-        -c"name=strn"           declares a character variable and assigns to value `strn'
-
-        --rpos=filnam           After reading input file, read site positions from "filnam"
-
-        --fixpos[:tol=#]        Adjust positions slightly, rendering them as
-                                exactly as possible consistent with the symmetry group
-
-{::nomarkdown}</div>{:/}
 
 ### _Input File Categories_
 _____________________________________________________________
