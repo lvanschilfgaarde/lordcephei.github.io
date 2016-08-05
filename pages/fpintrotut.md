@@ -34,13 +34,14 @@ This tutorial carries out a basic DFT calculation for silicon. The goal is to in
 <hr style="height:5pt; visibility:hidden;" />
 ### Main tutorial
 
-To get started, create a new working directory and move into it, here we will call it "si". Then copy the silicon init file "init.si" from path/. The init file is the starting point, it contains basic structural information in a format that is recognised by the code (analogous to the POSCAR file in VASP). 
+To get started, create a new working directory and move into it, here we will call it "si". Then copy the silicon init file "init.si". The init file is the starting point, it contains basic structural information in a format that is recognised by the code (analogous to the POSCAR file in VASP). 
 
     $ mkdir si 
     $ cd si
-    $ cp path/init.si .
+    $ cp lm/doc/demos/qsgw-si/init.si .
 
-Take a look at the init file using a text editor (e.g. vi) and you will see it contains only the basic structural information. The lattice constant "ALAT" and primitive lattice vectors "PLAT" are shown in the "LATTICE" section. The "UNITS=A" specifies that the lattice constant is in Angstroms (the lattice vectors are in units of the lattice constant). The primitive lattice vectors are in row format (i.e. the first row contains the x, y and z components of the first lattice vector and so forth). In the "SITE" section, the atom type and coordinates are shown. The "X=" label specifices that the coordinates are in fractional (or direct) representation. It is also possible to use cartesian coordinates and in this case the "X=" label would be replaced by "POS=" (see additional exercises below).
+Take a look at the init file using a text editor (e.g. vi) and you will see it contains only the basic structural information. The lattice constant "ALAT" and primitive lattice vectors "PLAT" are shown in the "LATTICE" section. The "UNITS=A" specifies that the lattice constant is in Angstroms (the lattice vectors are in units of the lattice constant). The primitive lattice vectors are in row format (i.e. the first row contains the x, y and z components of the first lattice vector and so forth). In the "SITE" section, the atom type and coordinates are shown. The "X=" label specifices that the coordinates are in fractional (or direct) representation. It is also possible to use cartesian coordinates and in this case the "X=" label would be replaced by "POS=". 
+[//]: # ((see additional exercises below).)
 
     $ vi init.si
 
@@ -53,7 +54,7 @@ The start of the blm output shows some structural and symmetry information. Furt
 
     $ vi site.si
 
-Next take a look at the input file "ctrl.si". The first few lines are just header information, then you have a number of basic parameters for a calculation. We won't talk about these values now but a full description is provided on the ctrl file page. Defaults are provided by blm for most of the variables except "gmax" and "nkabc", which are left as "NULL". The "gmax" value specifies how fine a real space mesh is used for the interstitial charge density and this depends on the basis set. The "nkabc" specifies the k mesh and has to be set manually (it depends on what system you are looking at). A 4x4x4 k mesh is sufficient for us, set this value now by simply changing "nkabc=NULL" to "nkabc=4" (4 is automatically used for each mesh dimension, you could equivlaently use "nkabc=4 4 4").  Take a look at the last line, it contains information about the different atoms in the system (here we only have silicon) and their associated augmentation spheres.
+Next take a look at the input file "ctrl.si". The first few lines are just header information, then you have a number of basic parameters for a calculation. We won't talk about these values now but a full description is provided on the ctrl file page. Defaults are provided by blm for most of the variables except "gmax" and "nkabc", which are left as "NULL". The "gmax" value specifies how fine a real space mesh is used for the interstitial charge density and this will depend on the basis set. The "nkabc" specifies the k mesh and has to be set manually (it depends on what system you are looking at). A 4x4x4 k mesh is sufficient for us, set this value now by simply changing "nkabc=NULL" to "nkabc=4" (4 is automatically used for each mesh dimension, you could equivlaently use "nkabc=4 4 4").  Take a look at the last line, it contains information about the different atoms in the system (here we only have silicon) and their associated augmentation spheres.
 
     $ vi ctrl.si
 
