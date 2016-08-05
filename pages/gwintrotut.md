@@ -11,7 +11,7 @@ header: no
 <hr style="height:5pt; visibility:hidden;" />
 # Introduction to a QSGW calculation
 
-[comment]: # (Notes:)
+[//]: # (Notes:)
 - add annotated GW output file with explanation of steps
 - Why llmf runs for 2 iterations with self-consistent density?
 
