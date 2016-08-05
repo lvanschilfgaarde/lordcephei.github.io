@@ -43,8 +43,8 @@ In short, a QSGW calculation consists of the following steps. The starting point
     $ lmf si --rs=1,0                                      #lmf with QSGW potential to get QSGW band gap
     $ lmgwclear                                            #clean up directory    
 
-[//]: # (    $ lmf si --band:fn=syml; cp bnds.si bnds-lda.si        #calculate QSGW band structure)
-[//]: # (    $ lmf si --band:fn=syml; cp bnds.si bnds-lda.si        #calculate LDA band structure)
+[//]: # (    $ lmf si --band:fn=syml; cp bnds.si bnds-lda.si        #calculate QSGW band structure )
+[//]: # (    $ lmf si --band:fn=syml; cp bnds.si bnds-lda.si        #calculate LDA band structure )
 
 
 {::nomarkdown}</div>{:/}
