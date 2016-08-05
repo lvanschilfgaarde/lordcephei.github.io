@@ -12,7 +12,7 @@ header: no
 # Introduction to the QSGW+DMFT tutorials
 
 ### General introduction to the QSGW+DMFT idea 
-[comment:] # (The basic idea of Dynamical Mean Field Theory is to treat the electronic properties of highly localised) [comment:] # (electronic levels (d- or f-electrons) interacting with the other electrons of the system as local impurities in) [comment:] # (interaction with an external bath.)
+[comment]: # (The basic idea of Dynamical Mean Field Theory is to treat the electronic properties of highly localised) [comment:] # (electronic levels (d- or f-electrons) interacting with the other electrons of the system as local impurities in) [comment:] # (interaction with an external bath.)
 [comment:] # (This approach requires a partitioning of the system into a correlated subspace and the rest.)
 [comment:] # (The correlated subspace is mapped onto an equivalent Anderson impurity model and solved with dedicated) [comment:] # (techniques able to account for all local correlations (beyond the Random Phase Approximation). )
 [comment:] # (The rest is treated at a lower level of theory (in our case QSGW).  )
