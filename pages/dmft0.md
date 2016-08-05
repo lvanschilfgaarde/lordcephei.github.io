@@ -12,10 +12,10 @@ header: no
 # Introduction to the QSGW+DMFT tutorials
 
 ### General introduction to the QSGW+DMFT idea 
-[comment:] <> (The basic idea of Dynamical Mean Field Theory is to treat the electronic properties of highly localised) [comment:] <> (electronic levels (d- or f-electrons) interacting with the other electrons of the system as local impurities in) [comment:] <> (interaction with an external bath.)
-[comment:] <> (This approach requires a partitioning of the system into a correlated subspace and the rest.)
-[comment:] <> (The correlated subspace is mapped onto an equivalent Anderson impurity model and solved with dedicated) [comment:] <> (techniques able to account for all local correlations (beyond the Random Phase Approximation). )
-[comment:] <> (The rest is treated at a lower level of theory (in our case QSGW).  )
+[comment:] # (The basic idea of Dynamical Mean Field Theory is to treat the electronic properties of highly localised) [comment:] # (electronic levels (d- or f-electrons) interacting with the other electrons of the system as local impurities in) [comment:] # (interaction with an external bath.)
+[comment:] # (This approach requires a partitioning of the system into a correlated subspace and the rest.)
+[comment:] # (The correlated subspace is mapped onto an equivalent Anderson impurity model and solved with dedicated) [comment:] # (techniques able to account for all local correlations (beyond the Random Phase Approximation). )
+[comment:] # (The rest is treated at a lower level of theory (in our case QSGW).  )
 
 [comment:] <> (This partitioning brings also a conceptual distinction between the lattice problem and the impurity problem.) [comment:] <> (Lattice quantities are defined in the actual material. Relevant lattice quantities can be the Green's function,) [comment:] <> (the Self-energy or the chemical potential. Moreover they can be non-local (for instance the Green's function G) [comment:] <> (as in QSGW) or they can be projected to a local subspace. In the latter case we will refer to the local Green's) [comment:] <> (function as Gloc.)
 
