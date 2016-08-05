@@ -39,7 +39,8 @@ In short, a QSGW calculation consists of the following steps. The starting point
     $ echo -1 | lmfgwd si                                  #make GWinput file
     $ vim GWinput                                          #change GW k mesh to 3x3x3
     $ lmgwsc --wt --insul=4 --tol=2e-5 --maxit=5 si        #self-consistent GW calculation
-    $ lmf si -vnit=1 --rs=1,0                              #lmf with QSGW potential to get QSGW band gap
+    $ vim ctrl.si                                          #change number of iterations to 1
+    $ lmf si --rs=1,0                                      #lmf with QSGW potential to get QSGW band gap
     $ lmgwclear                                            #clean up directory    
 
 [//]: # (    $ lmf si --band:fn=syml; cp bnds.si bnds-lda.si        #calculate QSGW band structure)
@@ -136,11 +137,11 @@ The GW potential is contained in the file sigm, lmgwsc also makes a soft link si
 lmgwsc : iter 3 of 5  RMS change in sigma = 1.19E-05  Tolerance = 2e-5
 ~~~
 
-Now that we have a converged self-energy (sigm) we can go back to using lmf to calculate additional properties. Run the following command to do a single iteration:
+Now that we have a converged self-energy (sigm) we can go back to using lmf to calculate additional properties. We only want to run a single iteration so change the number of iterations (nit) to 1 in the ctrl file. Run the following command:
 
-    $ lmf si -vnit=1 --rs=1,0                              #lmf with QSGW potential to get QSGW band gap
+    $ lmf si --rs=1,0                              #lmf with QSGW potential to get QSGW band gap
 
-Inspect the lmf output and you can find that the Γ-X gap is now 1.28 eV. 
+Inspect the lmf output and you can find that the gap is now around 1.41 eV. 
 [//]: # (QSGW overestimation...)
 
 [//]: # (To make the QSGW energy bands, do: $ lmf si --band:fn=syml                                #calculate QSGW band structure)
