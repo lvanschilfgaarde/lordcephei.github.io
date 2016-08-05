@@ -11,7 +11,7 @@ header: no
 <hr style="height:5pt; visibility:hidden;" />
 # Basic introduction to full-potential program lmf 
 
-Notes: add annotated lmf output file with explanation of steps
+[//]: # (Notes: add annotated lmf output file with explanation of steps)
 
 This tutorial carries out a basic DFT calculation for silicon. The goal is to introduce you to the different file types and the basics of running the code. It is assumed that you have installed the executables and that they are in your path (see installation tutorial for more). The full tutorial starts under the heading "Main tutorial". You can get straight to the commands by clicking on the "Command summary" dropdown menu below.
 
@@ -20,13 +20,14 @@ This tutorial carries out a basic DFT calculation for silicon. The goal is to in
 <div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Commands - Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
 
-    $ mkdir si; cd si; cp path/init.si .     #create working directory, move into it and copy file     
-    $ blm init.si --express                  #use blm tool to create actrl and site files
-    $ cp actrl.si ctrl.si                    #copy actrl to recognised ctrl prefix
-    $ lmfa ctrl.si                           #use lmfa to make basp file, atm file and to get gmax
-    $ cp basp0.si basp.si                    #copy basp0 to recognised basp prefix   
-    $ vi ctrl.si                             #set iterations number nit, k mesh nkabc and gmax
-    $ lmf ctrl.si > out.lmfsc                #make self-consistent
+    $ mkdir si; cd si                               #create working directory and move into it
+    $ cp lm/doc/demos/qsgw-si/init.si .             #copy init file     
+    $ blm init.si --express                         #use blm tool to create actrl and site files
+    $ cp actrl.si ctrl.si                           #copy actrl to recognised ctrl prefix
+    $ lmfa ctrl.si                                  #use lmfa to make basp file, atm file and to get gmax
+    $ cp basp0.si basp.si                           #copy basp0 to recognised basp prefix   
+    $ vi ctrl.si                                    #set iterations number nit, k mesh nkabc and gmax
+    $ lmf ctrl.si > out.lmfsc                       #make self-consistent
 
 {::nomarkdown}</div>{:/}
 
