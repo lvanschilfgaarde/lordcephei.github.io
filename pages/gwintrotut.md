@@ -31,7 +31,7 @@ In short, a QSGW calculation consists of the following steps. The starting point
 <div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Commands - Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
 
-    $ cp path/init.si .                                    #copy init file to working directory
+    $ cp lm/doc/demos/qsgw-si/init.si/init.si .            #copy init file to working directory
     $ blm init.si --express --gmax=5 --nk=4 --nit=20 --gw  #use blm tool to create actrl and site files
     $ cp actrl.si ctrl.si                                  #copy actrl to recognised ctrl prefix
     $ lmfa ctrl.si; cp basp0.si basp.si                    #run lmfa and copy basp file
@@ -60,7 +60,7 @@ To carry out a self-consistent LDA calculation, we use the lmf code. Try running
 <div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
 
-    $ cp path/init.si .                                    #copy init file to working directory
+    $ cp lm/doc/demos/qsgw-si/init.si/init.si .            #copy init file to working directory
     $ blm init.si --express --gmax=5 --nk=4 --nit=20 --gw  #use blm tool to create actrl and site files
     $ cp actrl.si ctrl.si                                  #copy actrl to recognised ctrl prefix
     $ lmfa ctrl.si; cp basp0.si basp.si                    #run lmfa and copy basp file
