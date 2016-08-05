@@ -36,7 +36,12 @@ In short, a QSGW calculation consists of the following steps. The starting point
     $ cp actrl.si ctrl.si                                  #copy actrl to recognised ctrl prefix
     $ lmfa ctrl.si; cp basp0.si basp.si                    #run lmfa and copy basp file
     $ lmf ctrl.si > out.lmfsc                              #make self-consistent
-    $ lmf si --band:fn=syml                                #plot LDA band structure
+    $ lmf si --band:fn=syml; cp bnds.si bnds-lda.si        #calculate LDA band structure
+    $ echo -1 | lmfgwd si                                  #makes a GWinput file
+    $ lmgwsc --wt --insul=4 --tol=2e-5 --maxit=5 si        #self-consistent GW calculation
+    $ lmf si -vnit=1 --rs=1,0                              #lmf with QSGW potential to get QSGW band gap
+    $ lmf si --band:fn=syml; cp bnds.si bnds-lda.si        #calculate QSGW band structure
+    $ lmgwclear                                            #clean up directory    
 
 {::nomarkdown}</div>{:/}
 
@@ -56,9 +61,7 @@ To carry out a self-consistent LDA calculation, we use the lmf code. Try running
     $ cp actrl.si ctrl.si                                  #copy actrl to recognised ctrl prefix
     $ lmfa ctrl.si; cp basp0.si basp.si                    #run lmfa and copy basp file
     $ lmf ctrl.si > out.lmfsc                              #make self-consistent
-    $ lmf si --band:fn=syml                                #plot LDA band structure
-    $ echo -1 | lmfgwd si                                  #makes a GWinput file
-    $ lmgwsc --wt --insul=4 --tol=2e-5 --maxit=5 si        #self-consistent GW calculation
+    $ lmf si --band:fn=syml                                #calculate LDA band structure
 
 {::nomarkdown}</div>{:/}
 
