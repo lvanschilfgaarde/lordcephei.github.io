@@ -42,36 +42,36 @@ _____________________________________________________________
                                       as in computing corrections to the Helman-Feynman
                                       forces; see token FORCES= in HAM.
 							
-							Additionally, if you read from rst or rsta
+                            Additionally, if you read from rst or rsta
                             you can add 10 to #1
 							
-						 #2=0: exactly as #1, but except switches apply to
+                         #2=0: exactly as #1, but except switches apply to
                                writing. Value zero suppresses writing.
                             1: write binary restart file rst (default)
                             2: write ascii restart file rsta
                             3: write binary file to rst.#, where # = iteration number
 						   
-						 #3=0: read site positions from restart file,
+                         #3=0: read site positions from restart file,
                                overwriting positions from input file
                                (this is the default)
                             1: ignore positions in restart file
 						   
-						 #4=0: read guess for Fermi level and window from
+                         #4=0: read guess for Fermi level and window from
                                restart file, overwriting data from input
                                file.  This data is needed when the BZ
                                integration is performed by sampling.
                                (this is the default)
                             1: ignore data in restart file
 						   
-						 #5=0: read linearization pnu from restart file,
+                         #5=0: read linearization pnu from restart file,
                                overwriting data from input file
                                (this is the default)
                             1: ignore pnu in restart file
 							
-					 Default switches:
+                     Default switches:
                      If not specified, lmf defaults to --rs=1,1,0,0,0
 					
-					 Look at lmf's standard output around lines
+                     Look at lmf's standard output around lines
                          iors  : read restart file (binary, mesh density)
                      It tells you what bits are read and what is ignored.
 					
@@ -189,6 +189,7 @@ _____________________________________________________________
                           #=-3 interstitial and local smoothed densities
 					   
                           Default: core=2
+						  
                      fn=name  specifies the file name for file I/O
                               The default name is ``smrho''.
 							  

@@ -70,4 +70,4 @@ Which generates a _plot.dos_{: style="color: green"} file readable by _fplot_{: 
 
     $ fplot -disp -pr10 -f plot.dos
 
-Which should result in a viewable image of the partial DOS.
+Which should result in a viewable image of the Mulliken DOS.
