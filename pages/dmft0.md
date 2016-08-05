@@ -28,6 +28,7 @@ The general framework of the QSGW+DMFT (but also LDA+DMFT) precisely reflects th
 
 The solution of each picture relies on a self-consisten procedure. For the lattice problem it is the QSGW loop (see tutorial ...), for the impurity picture we speak about the DMFT loop. The two loops are closed in a larger loop (density or self-energy loop) that allows for a fully self-consistent description. A pictorial representation is depicted in the figure below.
 ![alt text][qsgwdmft-loop]
+
 [qsgwdmft-loop]: https://github.com/lorenzo-sponza/lordcephei.github.io/pages/qsgwdmft-loop.png "QSGW+DMFT loop"
 
 ### Structure of this tuotrial section
