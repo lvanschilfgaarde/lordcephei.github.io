@@ -38,6 +38,7 @@ In short, a QSGW calculation consists of the following steps. The starting point
     $ lmf ctrl.si > out.lmfsc                              #make self-consistent
     $ lmf si --band:fn=syml; cp bnds.si bnds-lda.si        #calculate LDA band structure
     $ echo -1 | lmfgwd si                                  #make GWinput file
+    $ vim GWinput                                          #change GW k mesh to 3x3x3
     $ lmgwsc --wt --insul=4 --tol=2e-5 --maxit=5 si        #self-consistent GW calculation
     $ lmf si -vnit=1 --rs=1,0                              #lmf with QSGW potential to get QSGW band gap
     $ lmf si --band:fn=syml; cp bnds.si bnds-lda.si        #calculate QSGW band structure
@@ -65,11 +66,11 @@ To carry out a self-consistent LDA calculation, we use the lmf code. Try running
 
 {::nomarkdown}</div>{:/}
 
-Note that we have included an extra --gw switch, which tailors the ctrl file for a GW calculation. To see how it affects the ctrl file, try running blm without --gw. Note that the basis set section is modified (see the autobas line) to increase the size of the basis set as GW calculations require a larger basis.
+Note that we have included an extra --gw switch, which tailors the ctrl file for a GW calculation. To see how it affects the ctrl file, try running blm without --gw. The switch modifies the basis set section (see the autobas line) to increase the size of the basis, which is necessary for GW calculations.
 
-Two new blocks of text, the HAM and GW categories, are also added towards the end of the ctrl file. The extra parameters in the HAM category handle the inclusion of a self-energy (converted to an effective exchange-correlation potential) in a DFT calculation. The GW category provides some default values for parameters that are required in the GW calculation. The GW code has its own input file and the DFT ctrl file influences what defaults are set in it, we will come back to this later. One thing to note is the NKABC= token, which defines the GW k mesh. It is specified in the same way as the lower case nkabc= for the LDA calculation. 
+Two new blocks of text, the HAM and GW categories, are also added towards the end of the ctrl file. The extra parameters in the HAM category handle the inclusion of a self-energy, actually a GW potential (see theory notes above), in a DFT calculation. The GW category provides some default values for parameters that are required in the GW calculation. The GW code has its own input file and the DFT ctrl file influences what defaults are set in it, we will come back to this later. One thing to note is the NKABC= token, which defines the GW k mesh. It is specified in the same way as the lower case nkabc= for the LDA calculation. 
 
-Now check the output file out.lmfsc. The self-consistent gap is reported to be 0.58 eV as can be seen by searching for the word 'gap'. Note that this result differs slightly to that from the LDA tutorial because the gw swtich increases the size of the basis set. 
+Now check the output file out.lmfsc. The self-consistent gap is reported to be around 0.58 eV as can be seen by searching for the last occurence of the word 'gap'. Note that this result differs slightly to that from the LDA tutorial because the gw switch increases the size of the basis set. 
 
 Now that we have the input eigenfunctions and eigenvalues, the next step is to carry out a GW calculation. For this, we need an input file for the GW code.  
 
@@ -83,7 +84,7 @@ The lmfgwd script has multiple options and is designed to run interactively. Usi
 
     $ n1n2n3  4  4  4 ! for GW BZ mesh
 
-When creating the GWinput file, lmfgwd checks the GW section of the ctrl file for default values. The 'NKABC= 4' part of the DFT input file is read by lmfgwd and used for n1n2n3 in the GW input file. Remember if only one number is supplied in NKABC then that number is used as the division in each direction of the reciprocal lattice vectors, so 4 alone means a 4x4x4 mesh. To make things run a bit quicker, change the k mesh to 3x3x3 by editing the GWinput file line:
+When creating the GWinput file, lmfgwd checks the GW section of the ctrl file for default values. The 'NKABC= 4' part of the DFT input file (ctrl.si) is read by lmfgwd and used for n1n2n3 in the GW input file. Remember if only one number is supplied in NKABC then that number is used as the division in each direction of the reciprocal lattice vectors, so 4 alone means a 4x4x4 k mesh. To make things run a bit quicker, change the k mesh to 3x3x3 by editing the GWinput file line:
 
     $ n1n2n3  3  3  3 ! for GW BZ mesh
     
@@ -95,7 +96,7 @@ We are now ready for a QSGW calculation, this is run using the shell script lmgw
 
     $ lmgwsc --wt --insul=4 --tol=2e-5 --maxit=0 si         #zeroth iteration of QSGW calculation
 
-The switch '--wt' includes additional timing information in the printed output, insul refers to the number of occupied bands (normally spin degenerate so half the number of electrons), tol is the tolerance for the RMS change in the self-energy between iterations and maxit is the maximum number of QSGW iterations. Note that maxit is zero, this specifies that a single iteration (zeroth iteration) is to be carried out starting from DFT with no self-energy.
+The switch '--wt' includes additional timing information in the printed output, insul refers to the number of occupied bands (normally spin degenerate so half the number of electrons), tol is the tolerance for the RMS change in the self-energy between iterations and maxit is the maximum number of QSGW iterations. Note that maxit is zero, this specifies that a single iteration is to be carried out starting from DFT with no self-energy (zeroth iteration).
 
 Run the command and inspect the output. Take a look at the line containing the file name llmf.
 
@@ -103,7 +104,7 @@ Run the command and inspect the output. Take a look at the line containing the f
     lmgw  15:26:47 : invoking         mpix -np=8 /h/ms4/bin/lmf-MPIK --no-iactive  cspi >llmf
 ~~~
 
-Each QSGW iteration begins with a self-consistent calculation by calling the program lmf and writing the output to the file llmf. We are starting from a self-consitent LDA density (we already ran lmf above) so this step is not necessary. The next few lines are preparatory steps. The main GW calculation begins on the line containing the file name 'lbasC':
+Each QSGW iteration begins with a self-consistent DFT calculation by calling the program lmf and writing the output to the file llmf. We are starting from a self-consitent LDA density (we already ran lmf above) so this step is not actually necessary here. The next few lines are preparatory steps. The main GW calculation begins on the line containing the file name 'lbasC':
 
 ~~~
     lmgw  16:27:55 : invoking /h/ms4/bin/code2/hbasfp0 --job=3 >lbasC
@@ -123,7 +124,7 @@ Run the command again but this time set the number of iterations (maxit) to some
 
     $ lmgwsc --wt --insul=4 --tol=2e-5 --maxit=5 si        #self-consistent GW calculation
     
-This time the iteration count starts from 1 since we are now starting with a self-energy created in the zeroth iteration. Again, the iteration starts with a self-consistent DFT calculation but this time the zeroth iteration GW potential is used. The following line in the llmf file specifies that the GW potential is being used:
+This time the iteration count starts from 1 since we are now starting with a self-energy from the zeroth iteration. Again, the iteration starts with a self-consistent DFT calculation but this time the zeroth iteration GW potential is used. The following line in the llmf file specifies that the GW potential is being used:
 ~~~
 RDSIGM: read file sigm and create COMPLEX sigma(R) by FT ...
 ~~~
@@ -137,12 +138,11 @@ Now that we have a converged self-energy (sigm) we can go back to using lmf to c
 
     $ lmf si -vnit=1 --rs=1,0                              #lmf with QSGW potential to get QSGW band gap
 
-Inspect the lmf output and you can find that the Γ-X gap is now 1.28 eV. QSGW overestimation...
+Inspect the lmf output and you can find that the Γ-X gap is now 1.28 eV. 
+[//]: # (QSGW overestimation...)
 
-To make the QSGW energy bands, do: 
-
-    $ lmf si --band:fn=syml                                #calculate QSGW band structure
-    $ cp bnds.si bnds-qsgw.si
+[//]: # (To make the QSGW energy bands, do: $ lmf si --band:fn=syml                                #calculate QSGW band structure)
+[//]: # ($ cp bnds.si bnds-qsgw.si)
 
 Check your directory and you will see that a large number of files were created. The following command removes many redundant files:
 
