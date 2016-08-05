@@ -11,11 +11,8 @@ header: no
 
 # Introduction to the QSGW+DMFT tutorials
 
-### General introduction to the QSGW+DMFT idea 
-[comment]: # (The basic idea of Dynamical Mean Field Theory is to treat the electronic properties of highly localised) [comment]: # (electronic levels (d- or f-electrons) interacting with the other electrons of the system as local impurities in) [comment]: # (interaction with an external bath.)
-[comment]: # (This approach requires a partitioning of the system into a correlated subspace and the rest.)
-[comment]: # (The correlated subspace is mapped onto an equivalent Anderson impurity model and solved with dedicated) [comment:] # (techniques able to account for all local correlations (beyond the Random Phase Approximation). )
-[comment]: # (The rest is treated at a lower level of theory (in our case QSGW).  )
+[comment]: # (### General introduction to the QSGW+DMFT idea )
+[comment]: # (The basic idea of Dynamical Mean Field Theory is to treat the electronic properties of highly localised electronic levels (d- or f-electrons) interacting with the other electrons of the system as local impurities in interaction with an external bath. This approach requires a partitioning of the system into a correlated subspace and the rest. The correlated subspace is mapped onto an equivalent Anderson impurity model and solved with dedicated techniques able to account for all local correlations (beyond the Random Phase Approximation). The rest is treated at a lower level of theory (in our case QSGW).  )
 
 [comment]: # (This partitioning brings also a conceptual distinction between the lattice problem and the impurity problem. Lattice quantities are defined in the actual material. Relevant lattice quantities can be the Green's function, the Self-energy or the chemical potential. Moreover they can be non-local (for instance the Green's function G as in QSGW) or they can be projected to a local subspace. In the latter case we will refer to the local Green's function as $$G_{\rm loc}$$.)
 
@@ -24,9 +21,9 @@ header: no
 [comment]: # (These two in principle unrelated pictures are actually linked by the hybridization function that in the present framework is constructed from the QSGW electronic structure. The full picture is self-consistent whenever the local part of the lattice Green's function equals the impurity Green's function. Namely, the self-consistent relation reads $$G_{\rm loc}=G_{\rm imp}$$)
 
 ### General introduction to the QSGW+DMFT algorithm 
-The general framework of the QSGW+DMFT (but also LDA+DMFT) precisely reflects this separation in two pictures. The solution of the joint problem is then found by repeatedly hoping from one picture to the other, each time using the output of one calculation to improve the input of the successive. All transitions between the two pictures are done by exploiting the self-consisten relation above.  
+The general framework of the QSGW+DMFT method (but also in LDA+DMFT) relies on a separation of the whole problem into a lattice and an impurity problem (see theoretical details). The solution of the joint problem is found by repeatedly hoping from one picture to the other, each time using the output of one calculation to improve the input of the successive. Projection and embedding operations allow for transitions from one picture to the other.
 
-The solution of each picture relies on a self-consisten procedure. For the lattice problem it is the QSGW loop (see tutorial ...), for the impurity picture we speak about the DMFT loop. The two loops are closed in a larger loop (density or self-energy loop) that allows for a fully self-consistent description. A pictorial representation is depicted in the figure below.
+The solution of each of the two pictures relies on a self-consisten procedure. For the lattice problem it is the QSGW loop (see dedicated tutorials), whereas for the impurity picture we speak of the DMFT loop. The two loops are closed in a larger loop (density or self-energy loop) that allows for a fully self-consistent description. A pictorial representation is depicted in the figure below.
 ![alt text][qsgwdmft-loop]
 
 [qsgwdmft-loop]: https://github.com/lorenzo-sponza/lordcephei.github.io/pages/qsgwdmft-loop.png "QSGW+DMFT loop"
