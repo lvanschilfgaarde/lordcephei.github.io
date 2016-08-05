@@ -154,9 +154,9 @@ Further details can be found in the Additional exercises below.
 ###Additional exercises
 
 - Correct gap
-(This is actually the Γ-X gap; the true gap is 0.44 eV as can be seen by running lmf with a fine k mesh).
-- Changing k mesh:
-We want the calculation to run quickly so let's use a coarser 3x3x3 mesh. Change NKABC in the ctrl file and rerun the lmfgwd command. The GWinput file  
+This is actually the Γ-X gap; the true gap is 0.44 eV as can be seen by running lmf with a fine k mesh.
+- Changing k mesh
+
 - Adding floating orbitals
 Note  that the basis set for this calculation isn't quite converged. For Si this is not much of an issue but it can matter a bit for other materials (making errors of order 0.1 eV). The atom-centered LMTO basis set is sufficient for LDA calculations, but it is not quite adequate for GW (work is in progress for a next-generation basis which should address this limitation). To make the basis complete you should add floating orbitals (you cannot add (you cannot add APWs in the QSGW context because the self-energy interpolator does not work with delocalized orbitals). Floating orbitals are like the empty spheres often required by the ASA, but they have no augmentation radius. You can automatically locate them using lmchk (the same way the empty sphere locator works for the ASA). 
 
