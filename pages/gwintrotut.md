@@ -36,12 +36,12 @@ In short, a QSGW calculation consists of the following steps. The starting point
     $ cp actrl.si ctrl.si                                  #copy actrl to recognised ctrl prefix
     $ lmfa ctrl.si; cp basp0.si basp.si                    #run lmfa and copy basp file
     $ lmf ctrl.si > out.lmfsc                              #make self-consistent
-    $ lmf si --band:fn=syml; cp bnds.si bnds-lda.si        #calculate LDA band structure
+[//]: # (    $ lmf si --band:fn=syml; cp bnds.si bnds-lda.si        #calculate LDA band structure)
     $ echo -1 | lmfgwd si                                  #make GWinput file
     $ vim GWinput                                          #change GW k mesh to 3x3x3
     $ lmgwsc --wt --insul=4 --tol=2e-5 --maxit=5 si        #self-consistent GW calculation
     $ lmf si -vnit=1 --rs=1,0                              #lmf with QSGW potential to get QSGW band gap
-    $ lmf si --band:fn=syml; cp bnds.si bnds-lda.si        #calculate QSGW band structure
+[//]: # (    $ lmf si --band:fn=syml; cp bnds.si bnds-lda.si        #calculate QSGW band structure)
     $ lmgwclear                                            #clean up directory    
 
 {::nomarkdown}</div>{:/}
@@ -153,10 +153,10 @@ Further details can be found in the Additional exercises below.
 <hr style="height:5pt; visibility:hidden;" />
 ###Additional exercises
 
-- Correct gap
+- Correct gap:
 This is actually the Γ-X gap; the true gap is 0.44 eV as can be seen by running lmf with a fine k mesh.
-- Changing k mesh
-
-- Adding floating orbitals
+- Changing k mesh:
+Test the convergence with respect to the GW k mesh by increasing to a 4x4x4 k mesh.
+- Adding floating orbitals:
 Note  that the basis set for this calculation isn't quite converged. For Si this is not much of an issue but it can matter a bit for other materials (making errors of order 0.1 eV). The atom-centered LMTO basis set is sufficient for LDA calculations, but it is not quite adequate for GW (work is in progress for a next-generation basis which should address this limitation). To make the basis complete you should add floating orbitals (you cannot add (you cannot add APWs in the QSGW context because the self-energy interpolator does not work with delocalized orbitals). Floating orbitals are like the empty spheres often required by the ASA, but they have no augmentation radius. You can automatically locate them using lmchk (the same way the empty sphere locator works for the ASA). 
 
