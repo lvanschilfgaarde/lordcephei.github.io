@@ -91,9 +91,14 @@ The DMFT loop is composed by alternated runs of **lmfdmft** and **ctqmc**, the o
   * Change accordingly the mu variable in *PARAMS*. It has to be the first value of the Ed string with inverted sign.
   * Run **atom_d.py** using the command
   ~~~
-  python atom_d.py J=0.7 l=2 cx=0.0 OCA_G=False qatom=0 "CoulombF='Ising'" HB2=False $EIMP
+  python atom_d.py J=0.7 l=2 cx=0.0 OCA_G=False qatom=0 "CoulombF='Ising'" HB2=False "$EIMP"
   ~~~ 
-  where the variable $EIMP is a copy of the third line of *Eimp.inp*. This generates a file called *actqmc.cix* used by the solver.
+  where the variable $EIMP is a copy of the third line of *Eimp.inp*.
+  At the end the command has to look like:
+  ~~~
+  python atom_d.py J=0.7 l=2 cx=0.0 OCA_G=False qatom=0 "CoulombF='Ising'" HB2=False "Eimp=[ ........]"
+  ~~~
+  This generates a file called *actqmc.cix* used by the solver.
   * Add correct values of U, J, nf0 (equivalent of n) and beta in *PARAMS*. The Params file at the end should look like the following 
   ~~~
   Ntau  1000  
