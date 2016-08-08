@@ -87,19 +87,9 @@ The DMFT loop is composed by alternated runs of **lmfdmft** and **ctqmc**, the o
   ~~~
 
   Now there are some manual operations to do:
-  * Copy the forth line of *Eimp.inp* in the *PARAMS* file (in such a way to have one line like Ed=[ ..... ) 
+  * Copy the forth line of *Eimp.inp* in the *PARAMS* file (in such a way to have one line like Ed=[ .....] ) 
   * Change accordingly the mu variable in *PARAMS*. It has to be the first value of the Ed string with inverted sign.
-  * Run **atom_d.py** using the command
-  ~~~
-  python atom_d.py J=0.7 l=2 cx=0.0 OCA_G=False qatom=0 "CoulombF='Ising'" HB2=False "$EIMP"
-  ~~~ 
-  where the variable $EIMP is a copy of the third line of *Eimp.inp*.
-  At the end the command has to look like:
-  ~~~
-  python atom_d.py J=0.7 l=2 cx=0.0 OCA_G=False qatom=0 "CoulombF='Ising'" HB2=False "Eimp=[ ........]"
-  ~~~
-  This generates a file called *actqmc.cix* used by the solver.
-  * Add correct values of U, J, nf0 (equivalent of n) and beta in *PARAMS*. The Params file at the end should look like the following 
+  * Add correct values of U, J, nf0 (equivalent of n) and beta in *PARAMS*. The Params file at the end should look like the following :
   ~~~
   Ntau  1000  
   OffDiagonal  real
@@ -131,7 +121,18 @@ The DMFT loop is composed by alternated runs of **lmfdmft** and **ctqmc**, the o
   nf0  9.0
   beta 50.0
   ~~~
-  The run	should now be sent using a submission script on, let's say 20 cores. Important parameters (that may need to be adjusted during the loop) are nom, Nmax and M. Their explanation is reported as a comment in the *PARAMS* file itself. To start with, we can set them to nom=130 Nmax=200 and M=20000000. As shown above.
+  * Run **atom_d.py** using the command
+  ~~~
+  python atom_d.py J=0.7 l=2 cx=0.0 OCA_G=False qatom=0 "CoulombF='Ising'" HB2=False "$EIMP"
+  ~~~ 
+  where the variable $EIMP is a copy of the third line of *Eimp.inp*.
+  At the end the command has to look like:
+  ~~~
+  python atom_d.py J=0.7 l=2 cx=0.0 OCA_G=False qatom=0 "CoulombF='Ising'" HB2=False "Eimp=[ ........]"
+  ~~~
+  This generates a file called *actqmc.cix* used by the solver.
+
+  The run	should now be sent using a submission script on, let's say, 20 cores. Important parameters (that may need to be adjusted during the loop) are nom, Nmax and M. Their explanation is reported as a comment in the *PARAMS* file itself. To start with, we can set them to nom=130 Nmax=200 and M=20000000. As shown above.
 
   After the run you need to broad sigma using the program **brad_sig**
   ~~~ 
