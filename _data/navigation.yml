@@ -49,6 +49,8 @@
   - program:
     - name: "lmf"
       content:
+      - title: "Basic Full Potential (lmf) Tutorial"
+        url: "/lmf_tutorial/"
       - title: "Tutorial for the full-potential LDA program lmf"
         url: "/fpnew/"
       - title: "Building The FP Input File"
@@ -65,6 +67,10 @@
         url: "/asadoc/"
       - title: "Basic GW Tutorial"
         url: "/lmtut/"
+    - name: "qsgw"
+      content:
+      - title: "QSGW Tutorial"
+        url: "/qsgw_tutorial/"
     - name: "Miscellaneous"
       content:
       - title: "Installation"

@@ -1,24 +1,19 @@
 ---
 layout: page-fullwidth
-title: "LM Tutorial"
-subheadline: ""
-show_meta: false
-teaser: ""
-permalink: "/lmtut/"
+title: "GSGW Tutorial"
+permalink: "/qsgw_tutorial/"
 sidebar: "left"
 header: no
 ---
 <hr style="height:5pt; visibility:hidden;" />
 # Introduction to a QSGW calculation
 
-Notes: add annotated GW output file with explanation of steps
-
 This tutorial begins with an LDA calculation for Si, starting from an init file. Following this is a demonstration of a quasi-particle self-consistent GW (QSGW) calculation. An example of the 1-shot GW code is provided in a separate tutorial. Click on the 'QSGW' dropdown menu below for a brief description of the QSGW scheme. A complete summary of the commands used throughout is provided in the 'Commands' dropdown menu. Theory notes for GW and QSGW can be found here (add link).  
 
 <hr style="height:5pt; visibility:hidden;" />
 ### QSGW summary
-<div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">QSGW - Click to show.</button></div>
-{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
+<div onclick="elm = document.getElementById('1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">QSGW - Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="1">{:/}
 
 In this code, each iteration of a QSGW calculation has two main parts. It begins with a self-consistent DFT calculation to calculate eigenfunctions and eigenvalues. These are then used in the second part, the GW calculation, that constructs a self-energy. 
 
@@ -28,8 +23,8 @@ The QSGW calculation takes as input the self-consistent DFT eigenfunctions and e
 
 <hr style="height:5pt; visibility:hidden;" />
 ### Command summary
-<div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Commands - Click to show.</button></div>
-{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
+<div onclick="elm = document.getElementById('2'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Commands - Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="2">{:/}
 
     $ mkdir si; cd si; cp path/init.si .     #create working directory, move into it and copy file     
     $ blm init.si --express                  #use blm tool to create actrl and site files
@@ -49,8 +44,8 @@ The self-consistent LDA calculation can be run with the following commands. More
 
 <hr style="height:5pt; visibility:hidden;" />
 ### LDA commands     
-<div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
-{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
+<div onclick="elm = document.getElementById('3'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="3">{:/}
 
     $ cp path/init.si .                                    #copy init file to working directory
     $ blm init.si --express --gmax=5 --nk=4 --nit=20 --gw  #use blm tool to create actrl and site files
