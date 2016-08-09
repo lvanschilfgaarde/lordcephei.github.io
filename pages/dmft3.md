@@ -18,5 +18,6 @@ The basic idea of this method is to split the charge contributions to the self-e
 *  Make a non-magnetic calculation at the QSGW level (**HAM_NSPIN=1**). In this case, the resulting _sigm_ and _rst_ files can be added to the spin-flip component of the impurity self-energy as described above, without any additional manipulation. 
 *  A better approach is to perform a magnetic calculation (**HAM_NSPIN=2**) and to extract only the spin-averaged components of both the self-energy _sigm_ and the density _rst_. To do this, one has to initialise the DMFT cycle with spin-averaged quantities.
    Once this is done, the averaged _sigm_ file has only one spin channel. For this to be added to the spin-flip component of the impurity self-energy, one has to double the spin channel. This is done by setting **HAM_NSPIN=2** and launching **lmf** with '--wsig' flag. 
-
-### Converting 1-spin to 2-spin self-energies
+* A similar procedure can be done by starting from an LDA (nsp=1) or an LSDA (nsp=2). In this case though, because there is no _sigm_ file to average out only the electronic density has to be manipulated as described above. 
+   Moreover, the addition of the spin-flip component of the impurity self-energy does not require step 4 of the procedure above.
+   Instead, all lmfdmft calculations have to be run with the **HAM_BXC0=t** flag, in order to construct Vxc from the average density.
