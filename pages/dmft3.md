@@ -14,5 +14,9 @@ To do that you first need to complete a full DMFT loop. You can do it with the _
   5.  The electronic density corresponding to this new self-energy can be obtained by running a normal *lmf* run using sigm2 as sigm and adding to the ctrl file the tag **HAM_BXC0=t**.
 
 ### Obtaining a spin-averaged QSGW self-energy
+The basic idea of this method is to split the charge contributions to the self-energy (computed via LDA or QSGW) and the magnetic contributions (static spin-flip component of the impurity self-energy). Because of this reason, the QSGW starting point has to be non-magnetic. This can be achieved in two ways.
+*  Make a non-magnetic calculation at the QSGW level (**HAM_NSPIN=1**). In this case, the resulting _sigm_ and _rst_ files can be added to the spin-flip component of the impurity self-energy as described above, without any additional manipulation. 
+*  A better approach is to perform a magnetic calculation (**HAM_NSPIN=2**) and to extract only the spin-averaged components of both the self-energy _sigm_ and the density _rst_. To do this, one has to initialise the DMFT cycle with spin-averaged quantities.
+   Once this is done, the averaged _sigm_ file has only one spin channel. For this to be added to the spin-flip component of the impurity self-energy, one has to double the spin channel. This is done by setting **HAM_NSPIN=2** and launching **lmf** with '--wsig' flag. 
 
 ### Converting 1-spin to 2-spin self-energies
