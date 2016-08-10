@@ -88,8 +88,12 @@ The DMFT loop is composed by alternated runs of **lmfdmft** and **ctqmc**, the o
   Now there are some manual operations to do:
   * Copy the forth line of *Eimp.inp* in the *PARAMS* file (in such a way to have one line like Ed=[ .....] ) 
   * Change accordingly the mu variable in *PARAMS*. It has to be the first value of the Ed string with inverted sign.
-  * Add correct values of U, J, nf0 (equivalent of n) and beta in *PARAMS*. The Params file at the end should look like the following :
-  ~~~
+  * Add correct values of U, J, nf0 (equivalent of n) and beta in *PARAMS*.
+  The Params file at the end should look like that one in the dropdown box.
+<div onclick="elm = document.getElementById('ParamsDmft1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="ParamsDmft1">{:/}
+
+~~~
   Ntau  1000  
   OffDiagonal  real
   Sig  Sig.out
@@ -120,15 +124,20 @@ The DMFT loop is composed by alternated runs of **lmfdmft** and **ctqmc**, the o
   nf0  9.0
   beta 50.0
   ~~~
+
+{::nomarkdown}</div>{:/}
   * Run **atom_d.py** using the command
   ~~~
   python atom_d.py J=0.7 l=2 cx=0.0 OCA_G=False qatom=0 "CoulombF='Ising'" HB2=False "$EIMP"
-  ~~~ 
-  where the variable $EIMP is a copy of the third line of *Eimp.inp*. At the end the command has to look like:
   ~~~
-  python atom_d.py J=0.7 l=2 cx=0.0 OCA_G=False qatom=0 "CoulombF='Ising'" HB2=False "Eimp=[ ........]"
-  ~~~
-  Pay attention to quotes and double quotes!
+  where the variable $EIMP is a copy of the third line of *Eimp.inp*. At the end the command has to look like that one in the dropdown box.
+<div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
+~~~
+python atom_d.py J=0.7 l=2 cx=0.0 OCA_G=False qatom=0 "CoulombF='Ising'" HB2=False "Eimp=[ ........]"
+~~~
+Pay attention to quotes and double quotes!
+{::nomarkdown}</div>{:/}
 
   Running **atom_d.py** generates a file called *actqmc.cix* used by the ctqmc solver.
 
