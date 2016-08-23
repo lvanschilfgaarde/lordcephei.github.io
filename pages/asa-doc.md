@@ -76,8 +76,8 @@ here we have used two command-line switches, the first is to invoke the procedur
 
      spec  name        old rmax    new rmax     ratio
      	1   Pb          3.300000    3.300000    1.000000
-        2   Te          3.300000    3.300000    1.000000
-   	3   E           1.959808    2.598601    1.325947
+     	2   Te          3.300000    3.300000    1.000000
+     	3   E           1.959808    2.598601    1.325947
 
 which indicates two new empty spheres have been found and are that the new sphere packing is 100\%. The control file has to be changed to reflect the new basis. first change
 
