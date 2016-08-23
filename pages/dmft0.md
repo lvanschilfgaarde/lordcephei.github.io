@@ -1,10 +1,7 @@
 ---
 layout: page-fullwidth
 title: "First tutorial on QSGW+DMFT"
-subheadline: ""
-show_meta: false
-teaser: ""
-permalink: "/dmft1/"
+permalink: "/dmft0/"
 sidebar: "left"
 header: no
 ---
@@ -27,7 +24,7 @@ The solution of each of the two pictures relies on a self-consisten procedure. F
 
 ![alt text][qsgwdmft-loop]
 
-[qsgwdmft-loop]: https://github.com/lorenzo-sponza/lordcephei.github.io/pages/qsgwdmft-loop.png "QSGW+DMFT loop"
+[qsgwdmft-loop]: assets/img/qsgwdmft-loop.png "QSGW+DMFT loop"
 
 ### Structure of this tuotrial section
 1. The first tutorial (_dmft1_) is about how to perform a DMFT loop until convergence.

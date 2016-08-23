@@ -1,13 +1,11 @@
 ---
 layout: page-fullwidth
 title: "First tutorial on QSGW+DMFT"
-subheadline: ""
-show_meta: false
-teaser: ""
-permalink: ""
+permalink: "/dmft1/"
 sidebar: "left"
 header: no
 ---
+
 <hr style="height:5pt; visibility:hidden;" />
 # First tutorial on QSGW+DMFT calculation: The DMFT loop
 
@@ -25,7 +23,7 @@ From a software perspective, these operations are accomplished in a four-step pr
 
 ![alt text][inout_dmftloop]
 
-[inout_dmftloop]: https://github.com/lorenzo-sponza/lordcephei.github.io/pages/inout_dmftloop.eps "Input/Output in DMFT loop"
+[inout_dmftloop]: assets/img/inout_dmftloop.eps "Input/Output in DMFT loop"
 
 In this tutorial, we will go through all these steps and we will indicate what quantity to monitor to judge the convergence of the DMFT loop. This will be done starting from a converged QSGW of the paramagnetic phase of La$$_2$$CuO$$_4$$.
 

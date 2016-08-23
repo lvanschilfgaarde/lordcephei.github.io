@@ -1,3 +1,11 @@
+---
+layout: page-fullwidth
+title: "Third tutorial on QSGW+DMFT"
+permalink: "/dmft3/"
+sidebar: "left"
+header: no
+---
+
 # Third QSGW+DMFT tutorial : static spin-averaged+spin-flip method
 
 This method is a way to close the outer loop (density loop) in a QSGW+DMFT or LDA+DMFT calculation, but instead of doing an update of the density it actually relies on an (approximate) update of the self-energy.
