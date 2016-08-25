@@ -37,8 +37,8 @@ For the purposes of demonstration we will use PbTe in this tutorial. Under norma
                      0.5000000    0.0000000    0.5000000
                      0.5000000    0.5000000    0.0000000
     SITE
-	    ATOM=Pb   X=     0.0000000    0.0000000    0.0000000
-      	    ATOM=Te   X=     0.5000000    0.5000000    0.5000000
+	ATOM=Pb   X=     0.0000000    0.0000000    0.0000000
+	ATOM=Te   X=     0.5000000    0.5000000    0.5000000
 
 The init file shown here can be splitt in to two section: lattice and site. The Lattice section will include information regarding the lattice structure such as lattice constant (ALAT=) and it's units (UNITS=, \angstrom in this case) plus the primitive lattice constants (PLAT=). The site section of the init file includes the basis information, in the case of PbTe this is simply two one Pb one Te at the postion indicated by "X=" (X= indicates frocational formalism while POS= is used for cartesian  coordinate formalisim).
 
