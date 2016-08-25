@@ -16,7 +16,7 @@ In this Tutorial the basics of creating an input file and running a full self co
 
 ### _Preliminaries_
 _____________________________________________________________
-For this tutorial the **blm**{: style="color: blue"},**lmchk**{: style="color: blue"}, **lmstr**{: style="color: blue"} and **lm**{: style="color: blue"} executibles are required and are assumed to be in your PATH; the source code for all Questaal exectuables can be found here[here](https://bitbucket.org/lmto/lm).
+For this tutorial the **blm**{: style="color: blue"},**lmchk**{: style="color: blue"}, **lmstr**{: style="color: blue"} and **lm**{: style="color: blue"} executibles are required and are assumed to be in your PATH; the source code for all Questaal exectuables can be found [here](https://bitbucket.org/lmto/lm).
 
 ### _Tutorial_
 _____________________________________________________________
