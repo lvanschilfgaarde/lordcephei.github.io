@@ -37,8 +37,8 @@ For the purposes of demonstration we will use PbTe in this tutorial. Under norma
                      0.5000000    0.0000000    0.5000000
                      0.5000000    0.5000000    0.0000000
     SITE
-	ATOM=Pb   X=     0.0000000    0.0000000    0.0000000
-	ATOM=Te   X=     0.5000000    0.5000000    0.5000000
+		ATOM=Pb   X=     0.0000000    0.0000000    0.0000000
+		ATOM=Te   X=     0.5000000    0.5000000    0.5000000
 
 The init file shown here can be splitt in to two section: lattice and site. The Lattice section will include information regarding the lattice structure such as lattice constant (ALAT=) and it's units (UNITS=, \angstrom in this case) plus the primitive lattice constants (PLAT=). The site section of the init file includes the basis information, in the case of PbTe this is simply two one Pb one Te at the postion indicated by "X=" (X= indicates frocational formalism while POS= is used for cartesian  coordinate formalisim).
 
@@ -75,9 +75,9 @@ here we have used two command-line switches, the first is to invoke the procedur
      actual omax1=   8.7  12.1   0.0 %    omax2=  16.0  24.6   0.0 %
 
      spec  name        old rmax    new rmax     ratio
-     	1   Pb          3.300000    3.300000    1.000000
-     	2   Te          3.300000    3.300000    1.000000
-     	3   E           1.959808    2.598601    1.325947
+        1   Pb          3.300000    3.300000    1.000000
+        2   Te          3.300000    3.300000    1.000000
+        3   E           1.959808    2.598601    1.325947
 
 which indicates two new empty spheres have been found and are that the new sphere packing is 100\%. The control file has to be changed to reflect the new basis. first change
 
