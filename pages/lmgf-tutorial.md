@@ -13,6 +13,11 @@ header: no
 *  Auto generated table of contents
 {:toc} 
 
+### _Preliminaries_
+_____________________________________________________________
+For this tutorial the **blm**{: style="color: blue"}, **lmchk**{: style="color: blue"}, **lmstr**{: style="color: blue"}, **lm**{: style="color: blue"} and **lmgf**{: style="color: blue"} executibles are required and are assumed to be in your PATH; the source code for all Questaal exectuables can be found [here](https://bitbucket.org/lmto/lm).
+
+
 ### _Purpose_
 _____________________________________________________________
 This package implements the ASA local spin-density approximation using Green's functions. The Green's functions are contructed by approximating KKR multiple-scattering theory with an analytic potential function. The approximation to KKR is essentially similar to the linear approximation employed in band methods such as LMTO and LAPW. It can be shown that this approximation is nearly equivalent to the LMTO hamiltonian without the "combined correction" term. With this package a new program, **lmgf**{: style="color: blue"} is added to the suite of executables. **lmgf**{: style="color: blue"} plays approximately the same role as the LMTO-ASA band program **lm**{: style="color: blue"}: a potential is generated from energy moments $$Q_0$$, $$Q_1$$, and $$Q_2$$ of the density of states. in the same way as the **lm**{: style="color: blue"} code. You can use **lmgf**{: style="color: blue"} to make a self-consistent density as you can do with **lm**{: style="color: blue"}. lmgf is a Green's function method: Green's functions have less information than wave functions, so in one sense the things you can do with lmgf are more limited: you cannot make the bands directly, for example. However **lmgf**{: style="color: blue"} enables you do do things you cannot do with **lm**{: style="color: blue"}. The two most imprortant are:
@@ -27,7 +32,7 @@ _You can find some extra information on the way **lmgf**{: style="color: blue"} 
 ##### _lmgf vs lm_
 
 
-**lmgf**{: style="color: blue"} is a Green's function program complementary to the ASA band code **lm**{: style="color: blue"}. For some properties, e.g. calculating moments $$Q_{0..2}$$ **lmgf**{: style="color: blue"} can be straightforwardly substituted for lm because both calculate the DOS. The DOS is $$1/(2\pi ) Im G$$: it can be decomposed into site contributions and thus moments Q0..2 can be generated for each site and l channel, as an alternative to decomposing the eigenfunctions of the bands, as lm does. Thus it can achieve self-consistency in a manner similar to lm, but generating $$Q_{0..2,{\bf R}l}$$ by an alternate route. If the ASA hamiltionian built by lm is suitably simplified, i.e. by
+**lmgf**{: style="color: blue"} is a Green's function program complementary to the ASA band code **lm**{: style="color: blue"}. For some properties, e.g. calculating moments $$Q_{0..2}$$ **lmgf**{: style="color: blue"} can be straightforwardly substituted for lm because both calculate the DOS. The DOS is $$1/(2\pi ) {\rm Im} G$$: it can be decomposed into site contributions and thus moments Q0..2 can be generated for each site and l channel, as an alternative to decomposing the eigenfunctions of the bands, as lm does. Thus it can achieve self-consistency in a manner similar to lm, but generating $$Q_{0..2,{\bf R}l}$$ by an alternate route. If the ASA hamiltionian built by lm is suitably simplified, i.e. by
 
 + omitting the "combined correction term" (OPTIONS_ASA_CCOR)
 + generating $$Q_{0..2,{\bf R}l}$$ from true power moments as the Green's function does (HAM_QASA=0), 
