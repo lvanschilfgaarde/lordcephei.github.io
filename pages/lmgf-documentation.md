@@ -1,6 +1,6 @@
 ---
 layout: page-fullwidth
-title: "lmgf Tutorial"
+title: "lmgf Documentation"
 subheadline: ""
 show_meta: false
 teaser: ""
