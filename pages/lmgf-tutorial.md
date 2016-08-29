@@ -17,10 +17,18 @@ header: no
 
 This package implements the ASA local spin-density approximation using Green's functions. The Green's functions are contructed by approximating KKR multiple-scattering theory with an analytic potential function. The approximation to KKR is essentially similar to the linear approximation employed in band methods such as LMTO and LAPW. It can be shown that this approximation is nearly equivalent to the LMTO hamiltonian without the "combined correction" term. With this package a new program, **lmgf**{: style="color: blue"} is added to the suite of executables. **lmgf**{: style="color: blue"} plays approximately the same role as the LMTO-ASA band program **lm**{: style="color: blue"}: a potential is generated from energy moments $$Q_0$$, $$Q_1$$, and $$Q_2$$ of the density of states. in the same way as the **lm**{: style="color: blue"} code. You can use **lmgf**{: style="color: blue"} to make a self-consistent density as you can do with **lm**{: style="color: blue"}. lmgf is a Green's function method: Green's functions have less information than wave functions, so in one sense the things you can do with lmgf are more limited: you cannot make the bands directly, for example. However **lmgf**{: style="color: blue"} enables you do do things you cannot do with **lm**{: style="color: blue"}. The two most imprortant are:
 
-+ Calculate magnetic exchange interactions (essentially the static magnetic susceptibility)
++ Calculate magnetic exchange interactions 
++ Calculate magnetic susceptibility (spin-spin, spin-orbit, orbit-orbit parts)
 + Calculate properties of disordered materials, either chemically disordered or spin disorder from finite temperature, within the Coherent Potential Approximation, or CPA.
 + Calculate the ASA static susceptibility at $$q=0$$ to help converge calculations to self-consistency. 
 
 ### _lmgf vs lm_
+
+**lmgf**{: style="color: blue"} is a Green's function program complementary to the ASA band code **lm**{: style="color: blue"}. For some properties, e.g. calculating moments $$Q_{0..2}$$ **lmgf**{: style="color: blue"} can be straightforwardly substituted for lm because both calculate the DOS. The DOS is $$1/(2\pi )\Im G$$: it can be decomposed into site contributions and thus moments Q0..2 can be generated for each site and l channel, as an alternative to decomposing the eigenfunctions of the bands, as lm does. Thus it can achieve self-consistency in a manner similar to lm, but generating Q0..2, Rl by an alternate route. If the ASA hamiltionian built by lm is suitably simplified, i.e. by
+
++ omitting the "combined correction term" (OPTIONS_ASA_CCOR)
++ generating Q0..2, Rl from true power moments as the Green's function does (HAM_QASA=0), 
+
+then lmgf and lm will produce nearly identical self-consistent solutions. When potential functions are parameterized to 2nd order in both lm and lmgf, and both methods are fully k converged, they should product nearly identical results. By default lm parameterizes the potential function to 3rd order; lmgf can do the same. The 3rd order parameterizations are similar in the two methods, but not identical. To verify this, try the following test: 
 
 ### _Tutorial_
