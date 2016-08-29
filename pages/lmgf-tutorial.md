@@ -29,6 +29,12 @@ This package implements the ASA local spin-density approximation using Green's f
 + omitting the "combined correction term" (OPTIONS_ASA_CCOR)
 + generating $$Q_{0..2,{\bf R}l}$$ from true power moments as the Green's function does (HAM_QASA=0), 
 
-then **lmgf**{: style="color: blue"} and **lm**{: style="color: blue"} will produce nearly identical self-consistent solutions. When potential functions are parameterized to 2nd order in both **lm**{: style="color: blue"} and **lmgf**{: style="color: blue"}, and both methods are fully k converged, they should product nearly identical results. By default lm parameterizes the potential function to 3rd order; **lmgf**{: style="color: blue"} can do the same. The 3rd order parameterizations are similar in the two methods, but not identical. To verify this, try the following test: 
+then **lmgf**{: style="color: blue"} and **lm**{: style="color: blue"} will produce nearly identical self-consistent solutions. When potential functions are parameterized to 2nd order in both **lm**{: style="color: blue"} and **lmgf**{: style="color: blue"}, and both methods are fully k converged, they should product nearly identical results. By default lm parameterizes the potential function to 3rd order; **lmgf**{: style="color: blue"} can do the same. The 3rd order parameterizations are similar in the two methods, but not identical. To verify this, try the following test:
+~~~
+gf/test/test.gf co 1 2   ← Test 1 for 2nd order parameterization; test 2 for 3rd order
+~~~
 
 ### _Tutorial_
+
+##### _1\.Building input file_
+
