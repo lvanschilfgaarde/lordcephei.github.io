@@ -24,7 +24,7 @@ This package implements the ASA local spin-density approximation using Green's f
 
 ### _lmgf vs lm_
 
-**lmgf**{: style="color: blue"} is a Green's function program complementary to the ASA band code **lm**{: style="color: blue"}. For some properties, e.g. calculating moments $$Q_{0..2}$$ **lmgf**{: style="color: blue"} can be straightforwardly substituted for lm because both calculate the DOS. The DOS is $$1/(2\pi )\Im G$$: it can be decomposed into site contributions and thus moments Q0..2 can be generated for each site and l channel, as an alternative to decomposing the eigenfunctions of the bands, as lm does. Thus it can achieve self-consistency in a manner similar to lm, but generating Q0..2, Rl by an alternate route. If the ASA hamiltionian built by lm is suitably simplified, i.e. by
+**lmgf**{: style="color: blue"} is a Green's function program complementary to the ASA band code **lm**{: style="color: blue"}. For some properties, e.g. calculating moments $$Q_{0..2}$$ **lmgf**{: style="color: blue"} can be straightforwardly substituted for lm because both calculate the DOS. The DOS is $$1/(2\pi ) Im G$$: it can be decomposed into site contributions and thus moments Q0..2 can be generated for each site and l channel, as an alternative to decomposing the eigenfunctions of the bands, as lm does. Thus it can achieve self-consistency in a manner similar to lm, but generating $$Q_{0..2,{\bf R}l}$$ by an alternate route. If the ASA hamiltionian built by lm is suitably simplified, i.e. by
 
 + omitting the "combined correction term" (OPTIONS_ASA_CCOR)
 + generating Q0..2, Rl from true power moments as the Green's function does (HAM_QASA=0), 
