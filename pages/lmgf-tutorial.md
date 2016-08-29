@@ -27,7 +27,7 @@ This package implements the ASA local spin-density approximation using Green's f
 + Calculate properties of disordered materials, either chemically disordered or spin disorder from finite temperature, within the Coherent Potential Approximation, or CPA.
 + Calculate the ASA static susceptibility at $$q=0$$ to help converge calculations to self-consistency. 
 
-_You can find some extra information on the way **lmgf**{: style="color: blue"} works in [lmgf documentation](https://lordcephei.github.io/lmgf-documentation/)._
+**You can find some extra information on the way **lmgf**{: style="color: blue"} works in [lmgf documentation](https://lordcephei.github.io/lmgf-documentation/).**
 
 ##### _lmgf vs lm_
 
@@ -50,7 +50,7 @@ But **lmgf**{: style="color: blue"} can do things **lm**{: style="color: blue"} 
 ### _Tutorial_
 _____________________________________________________________
 
-##### _1\.Building input file_
+##### _1\.Building an input file_
 
 Before starting working with this tutorial we advise you to read through the [ASA-tutorial](https://lordcephei.github.io/asadoc/) which explains building an imput file in more details. Here we'll focus on the part of it specific for using with **lmgf**{: style="color: blue"}.
 
