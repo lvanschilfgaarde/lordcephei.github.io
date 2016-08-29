@@ -35,7 +35,7 @@ This fact highlights the strengths and weaknesses of a Green's function approach
 
 **lmgf**{: style="color: blue"} always loops over some energy contour; what contour you use depends on the context as described see below. **gfasa** accumulates various kinds of data for each mesh point, such as the point's contribution the from energy moments used in an ASA self-consistent cycle. Finally an estimate for the Fermi level EF is determined using a from Pade approximation. If the original guess for EF is sufficiently close, the cycle is finished as in program **lm**{: style="color: blue"}. If the estimate is too far off, a new energy mesh is taken and the process repeated. 
 
-###_Energy Contours, Potential Shifts and the Determination of the Fermi Level_
+### _Energy Contours, Potential Shifts and the Determination of the Fermi Level_
 _____________________________________________________________
 
 For energy-integrated properties, a very fine energy mesh would be required if the energy integration were carried out close to the real axis. It is much more efficient to deform the integration contour is deformed into an elliptical path in the complex plane, approaching the real axis only at the lower and upper integration limits.
