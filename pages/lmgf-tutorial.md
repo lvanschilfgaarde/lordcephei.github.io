@@ -44,8 +44,8 @@ But **lmgf**{: style="color: blue"} can do things **lm**{: style="color: blue"} 
 
 ### _Tutorial_
 _____________________________________________________________
-##### _1\.Building input file_
 
+##### _1\.Building input file_
 
 Before starting working with this tutorial we advise you to read through the [ASA-tutorial](https://lordcephei.github.io/asadoc/) which explains building an imput file in more details. Here we'll focus on the part of it specific for using with **lmgf**{: style="color: blue"}.
 
