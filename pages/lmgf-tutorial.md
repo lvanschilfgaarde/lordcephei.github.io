@@ -96,7 +96,27 @@ Without any other information the spin polarized calculation will proceed with z
 
 ###### _The \-\-gf switch_
 
-When **\-\-gf**{: style="color: green"} is used, **blm**{: style="color: blue"} prepares the input file for the Green's function program **lmgf**{: style="color: blue"}. This tutorial uses **lmgf**{: style="color: blue"} to calculate magnetic exchange interactions; we'll explaine **lmgf**-related modifications later.
+When **\-\-gf**{: style="color: green"} is used, **blm**{: style="color: blue"} prepares the input file for the Green's function program **lmgf**{: style="color: blue"}. This tutorial uses **lmgf**{: style="color: blue"} to calculate magnetic exchange interactions.  Adding **\-\-gf**{: style="color: green"} to the **blm**{: style="color: blue"} command line argument modifies **actrl.copt**{: style="color: green"} in two ways:
+
+1. The GF category is created: 
+
+~~~
+% const gfmode=1 c3=t
+GF      MODE={gfmode} GFOPTS={?~c3~p3;~p2;}
+~~~
+
+2. EMESH is added to BZ: EMESH is added to BZ: 
+
+~~~
+% const nz=16 ef=0
+        EMESH={nz},10,-1,{ef},.5,.3  # nz-pts;contour mode;emin;emax;ecc;bunching
+~~~
+
+To see the purpose of **GF_MODE**, do:
+
+~~~
+lmgf --input
+~~~
 
 ##### _2\. Making ctrl file_
 _____________________________________________________________
@@ -104,4 +124,7 @@ _____________________________________________________________
 Invoking **blm**{: style="color: blue"} with the switches given above is sufficient to make a working input file. Normally you can copy **actrl.copt**{: style="color: green"} to **ctrl.copt**{: style="color: green"} as it is.
 
 For a fuller description of the ctrl file, see the the [ASA-tutorial](https://lordcephei.github.io/asa-doc/), the [FP tutorial](https://lordcephei.github.io/lmf_tutorial/), and also [Building FP input file](https://lordcephei.github.io/buildingfpinput/). 
+
+##### _3\. The Green's function program lmgf_
+_____________________________________________________________
 
