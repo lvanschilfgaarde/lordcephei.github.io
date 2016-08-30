@@ -54,7 +54,7 @@ _____________________________________________________________
 
 Before starting working with this tutorial we advise you to read through the [ASA-tutorial](https://lordcephei.github.io/asa-doc/) which explains building an imput file in more details. Here we'll focus on the part of it specific for using with **lmgf**{: style="color: blue"}.
 
-To get started, copy **doc/demos/asa-copt/init.copt**{: style="color: green"} to your working directory. Inspect the init file and you will see it contains just the minimum structural information, apart from one line supplying some information about the magnetic structure:
+To get started, **copy** **doc/demos/asa-copt/init.copt**{: style="color: green"} to your working directory. Inspect the init file and you will see it contains just the minimum structural information, apart from one line supplying some information about the magnetic structure:
 
 <div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
@@ -73,4 +73,9 @@ To get started, copy **doc/demos/asa-copt/init.copt**{: style="color: green"} to
 
 {::nomarkdown}</div>{:/}
 
-Then use the blm tool 
+Then **use the** **blm**{: style="color: blue"} tool (described in more details in [ASA-tutorial](https://lordcephei.github.io/asa-doc/))
+
+~~~
+blm --mag --nk=8 --asa --gf copt
+~~~
+
