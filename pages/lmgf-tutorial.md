@@ -89,13 +89,13 @@ This switch tailors the ctrl file for the ASA. To see how it affects the ctrl fi
 
 ###### _The --mag switch_
 
-This switch tells **blm**{: style="color: blue"} that you plan on doing a spin polarized calculation. All it does is change the preprocessor variable nsp to 2. This turns on the spin polarization through NSPIN={nsp}.
+This switch tells **blm**{: style="color: blue"} that you plan on doing a spin polarized calculation. All it does is change the preprocessor variable _nsp_ to 2. This turns on the spin polarization through **NSPIN={nsp}**.
 
 Without any other information the spin polarized calculation will proceed with zero magnetic moment. You have to supply some initial information about the magnetic structure. Since we know that the magnetization is concentrated on the Co (Pt is paramagnetic, though it has a high magnetic susceptibility), the init file supplies an initial magnetic moment on the Co site of about 2 Bohr on the Co d orbital, in the SPEC category (**SPEC ATOM=Co MMOM=0,0,2.2** in the initial file). Of course the actual magnetic moment is determined self-consistently later.
 
 ###### _The --gf switch_
 
-When ** --gf**{: style="color: green"} is used, **blm**{: style="color: blue"} prepares the input file for the Green's function program **lmgf**{: style="color: blue"}. This tutorial uses **lmgf**{: style="color: blue"} to calculate magnetic exchange interactions; we'll explaine **lmgf**-related modifications later.
+When **\-\-gf**{: style="color: green"} is used, **blm**{: style="color: blue"} prepares the input file for the Green's function program **lmgf**{: style="color: blue"}. This tutorial uses **lmgf**{: style="color: blue"} to calculate magnetic exchange interactions; we'll explaine **lmgf**-related modifications later.
 
 
 
