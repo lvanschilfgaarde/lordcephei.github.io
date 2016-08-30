@@ -136,8 +136,8 @@ So, if **MODE=1**, **lmgf**{: style="color: blue"} does a self-consistent calcul
 GFOPTS={?~c3~p3;~p2;}
 ~~~
 
-becomes _`GFOPTS=p3;'_ after parsing by the preprocessor, because _c3_ is nonzero (see preprocessor documentation). 
-_`p3'_ tells **lmgf**{: style="color: blue"} to use $$3^{rd}$$ order potential functions (somewhat more accurate than $$2^{nd}$$ order, but also prone to generating false poles not too far from the real axis).
+becomes `GFOPTS=p3;' after parsing by the preprocessor, because _c3_ is nonzero (see preprocessor documentation). 
+`p3' tells **lmgf**{: style="color: blue"} to use $$3^{rd}$$ order potential functions (somewhat more accurate than $$2^{nd}$$ order, but also prone to generating false poles not too far from the real axis).
 
 ##### _2\. Making ctrl file_
 _____________________________________________________________
