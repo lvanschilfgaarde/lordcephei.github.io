@@ -97,5 +97,10 @@ Without any other information the spin polarized calculation will proceed with z
 
 When **\-\-gf**{: style="color: green"} is used, **blm**{: style="color: blue"} prepares the input file for the Green's function program **lmgf**{: style="color: blue"}. This tutorial uses **lmgf**{: style="color: blue"} to calculate magnetic exchange interactions; we'll explaine **lmgf**-related modifications later.
 
+##### _2\. Making the ctrl file_
 
+blm should generate file actrl.copt, which should be essentially the same as doc/demos/asa-copt/ctrl.copt.
+Invoking blm with the switches given above is sufficient to make a working input file. Normally you can copy actrl.copt to ctrl.copt as is1.
+
+For a fuller description of the ctrl file, see the the ASA tutorial, the FP tutorial, and also Building_FP_input_file.html. 
 
