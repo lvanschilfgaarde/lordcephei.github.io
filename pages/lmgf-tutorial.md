@@ -118,10 +118,31 @@ To see the purpose of **GF_MODE**, do:
 lmgf --input
 ~~~
 
+and look for **GF_MODE**. You should see:
+
+~~~
+    GF_MODE           reqd   i4       1,  1          default = 0
+           0: do nothing
+           1: self-consistent cycle
+           10: Transverse exchange interactions J(q), MST
+           11: Read J(q) from disk and print derivative properties
+           ...
+~~~
+So, if **MODE=1**, **lmgf**{: style="color: blue"} does a self-consistent calculation, generating the _P_ and $$Q_{0..2}$$ for each _l_ channel using Green's functions rather than wave functions as **lm**{: style="color: blue"} does. 
+
+**GFOPTS** bundles a variety of lmgf-specific options, which you supply through a sequence of strings separated by semicolons. This tag: 
+
+~~~
+GFOPTS={?~c3~p3;~p2;}
+~~~
+
+becomes _`GFOPTS=p3;'_ after parsing by the preprocessor, because _c3_ is nonzero (see preprocessor documentation). 
+_`p3'_ tells **lmgf**{: style="color: blue"} to use $$3^{rd}$$ order potential functions (somewhat more accurate than $$2^{nd}$$ order, but also prone to generating false poles not too far from the real axis).
+
 ##### _2\. Making ctrl file_
 _____________________________________________________________
 
-Invoking **blm**{: style="color: blue"} with the switches given above is sufficient to make a working input file. Normally you can copy **actrl.copt**{: style="color: green"} to **ctrl.copt**{: style="color: green"} as it is.
+Invoking **blm**{: style="color: blue"} with the switches given above is sufficient to make a working input file. Normally you can **copy** **actrl.copt**{: style="color: green"} to **ctrl.copt**{: style="color: green"} as it is.
 
 For a fuller description of the ctrl file, see the the [ASA-tutorial](https://lordcephei.github.io/asa-doc/), the [FP tutorial](https://lordcephei.github.io/lmf_tutorial/), and also [Building FP input file](https://lordcephei.github.io/buildingfpinput/). 
 
