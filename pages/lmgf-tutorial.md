@@ -52,7 +52,7 @@ _____________________________________________________________
 
 ##### _1\.Building an input file_
 
-Before starting working with this tutorial we advise you to read through the [ASA-tutorial](https://lordcephei.github.io/asa-doc/) which explains building an imput file in more details. Here we'll focus on the part of it specific for using with **lmgf**{: style="color: blue"}.
+Before starting working with this tutorial we advise you to read through the [ASA-tutorial](https://lordcephei.github.io/asa-doc/) which explains building an imput file in more details (you can allso look through the [input](https://lordcephei.github.io/buildingfpinput/) described in a full-potential context). Here we'll focus on the part of it specific for using with **lmgf**{: style="color: blue"} not covered there.
 
 To get started, **copy** **doc/demos/asa-copt/init.copt**{: style="color: green"} to your working directory. Inspect the init file and you will see it contains just the minimum structural information, apart from one line supplying some information about the magnetic structure:
 
@@ -73,9 +73,12 @@ To get started, **copy** **doc/demos/asa-copt/init.copt**{: style="color: green"
 
 {::nomarkdown}</div>{:/}
 
-Then **use the** **blm**{: style="color: blue"} tool (described in more details in [ASA-tutorial](https://lordcephei.github.io/asa-doc/))
+Then **use the** **blm**{: style="color: blue"} tool (described in more details in [ASA-tutorial](https://lordcephei.github.io/asa-doc/) and [full-potential tutorial](https://lordcephei.github.io/buildingfpinput/). )
 
 ~~~
 blm --mag --nk=8 --asa --gf copt
 ~~~
 
+**blm**{: style="color: blue"} should generate file **actrl.copt**{: style="color: green"}, which should be essentially the same as **doc/demos/asa-copt/ctrl.copt**{: style="color: blue"} (commented lines might be different though). (If this is not the case, something is wrong with your configuration. **You should not continue** if your template does not agree with the one supplied.)
+
+The command-line arguments are not required, but they supply quantities **blm**{: style="color: blue"} cannot determine automatically, that you will have to supply at some point. If you supply them on the command-line they are folded into the ctrl file at the outset; or, you can edit the ctrl file after it is generated. Command-line switches **blm**{: style="color: blue"} recognizes are summarized in [Building_FP_input_file.html](https://lordcephei.github.io/buildingfpinput/). 
