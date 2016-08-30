@@ -92,7 +92,7 @@ This switch tailors the ctrl file for the ASA. To see how it affects the ctrl fi
 
 This switch tells **blm**{: style="color: blue"} that you plan on doing a spin polarized calculation. All it does is change the preprocessor variable _nsp_ to 2. This turns on the spin polarization through **NSPIN={nsp}**.
 
-Without any other information the spin polarized calculation will proceed with zero magnetic moment. You have to supply some initial information about the magnetic structure. Since we know that the magnetization is concentrated on the Co (Pt is paramagnetic, though it has a high magnetic susceptibility), the init file supplies an initial magnetic moment on the Co site of about 2 Bohr on the Co d orbital, in the SPEC category (**SPEC ATOM=Co MMOM=0,0,2.2** in the initial file). Of course the actual magnetic moment is determined self-consistently later.
+Without any other information the spin polarized calculation will proceed with zero magnetic moment. The system needs a "push" in the initial direction to find the magnetic state. You have to supply some initial information about the magnetic structure. Since we know that the magnetization is concentrated on the Co (Pt is paramagnetic, though it has a high magnetic susceptibility), the init file supplies an initial magnetic moment on the Co site of about 2 Bohr on the Co d orbital, in the SPEC category (**SPEC ATOM=Co MMOM=0,0,2.2** in the initial file). The precise value 2.2 is not important: this quantity is determined self-consistently later. Choosing it rather large (the bulk moment is 1.8 $$\mu_B$$) gives it a strong initial push so to encourage it not revert to a (metastable) nonmagnetic state in the course of a self-consistent calculation. 
 
 ###### _The \-\-gf switch_
 
@@ -179,7 +179,7 @@ In usual LDA calculations, a trial density is obtained by generating densities f
 
 The ASA code can either start from "potential parameters", which gives it enough information to generate energy bands and calculate moments ($$P_l$$, $$Q_{0..2,l}$$) , or from the moments ($$P_l$$, $$Q_{0..2,l}$$)  which is sufficient for the sphere routine to fix the potential and calculated potential parameters. The band and sphere blocks of the code are thus complementary: one takes the input of the other and generates output required by the other. The cycle is described in the **LMTO-ASA documentation**{: style="color: red"}.
 
-The ctrl file is built with the following START category:
+The ctrl file is built with the following **START** category:
 
     START CNTROL={nit==0} BEGMOM={nit==0}
 
