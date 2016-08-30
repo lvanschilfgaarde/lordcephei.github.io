@@ -85,7 +85,7 @@ The command-line arguments are not required, but they supply quantities **blm**{
 
 ###### _The --asa switch_
 
-This switch tailors the ctrl file for the ASA. To see how it affects the ctrl file, try running **blm**{: style="color: blue"} without **--asa**{: style="color: green"}. For more details see the [ASA-tutorial](https://lordcephei.github.io/asa-doc/).
+This switch tailors the ctrl file for the ASA. To see how it affects the ctrl file, try running **blm**{: style="color: blue"} without ** --asa**{: style="color: green"}. For more details see the [ASA-tutorial](https://lordcephei.github.io/asa-doc/).
 
 ###### _The --mag switch_
 
@@ -95,7 +95,7 @@ Without any other information the spin polarized calculation will proceed with z
 
 ###### _The --gf switch_
 
-When **--gf**{: style="color: green"} is used, **blm**{: style="color: blue"} prepares the input file for the Green's function program **lmgf**{: style="color: blue"}. This tutorial uses **lmgf**{: style="color: blue"} to calculate magnetic exchange interactions; we'll explaine **lmgf**-related modifications later.
+When ** --gf**{: style="color: green"} is used, **blm**{: style="color: blue"} prepares the input file for the Green's function program **lmgf**{: style="color: blue"}. This tutorial uses **lmgf**{: style="color: blue"} to calculate magnetic exchange interactions; we'll explaine **lmgf**-related modifications later.
 
 
 
