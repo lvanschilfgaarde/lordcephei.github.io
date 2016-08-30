@@ -157,18 +157,18 @@ We don't know what $$E_F$$ is _a priori_. In the ASA, a general reasonable guess
 If you want to find $$E_F$$ using **lm**{: style="color: blue"} use the following commands (for the details see [ASA-tutorial](https://lordcephei.github.io/asa-doc/)):
 
 <div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
-{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
+{::lm}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
 
-Content
+All the ASA electronic structure codes (lm, **lmgf**{: style="color: blue"}, and lmpg) use a tight-binding form of the LMTO basis, where the envelope functions are screened to make them short ranged. This information is carried through screened structure constants, which in this package are precomputed and stored using lmstr. Run this setup to make the structure constants:
 
-{::nomarkdown}</div>{:/}
-
-
-All the ASA electronic structure codes (lm, lmgf, and lmpg) use a tight-binding form of the LMTO basis, where the envelope functions are screened to make them short ranged. This information is carried through screened structure constants, which in this package are precomputed and stored using lmstr. Run this setup to make the structure constants:
-
-lmstr ctrl.copt                             ← Make and store structure constants
+     lmstr ctrl.copt                             ← Make and store structure constants
 
 It should store str.copt and sdot.copt on disk. (If not, something is wrong and you should not proceed.)
+
+{::lm}</div>{:/}
+
+
+
 
 
 
