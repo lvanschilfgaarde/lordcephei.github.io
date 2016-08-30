@@ -186,9 +186,21 @@ The ctrl file is built with the following START category:
 If **BEGMOM** is nonzero, **lm**{: style="color: blue"} will start from potential parameters (which don't exist yet, in the present case).
 If **BEGMOM=0** **lm**{: style="color: blue"} will start from the ($$P_l$$, $$Q_{0..2,l}$$). These haven't been given either, but **lm**{: style="color: blue"} can pick defaults for them. We get an initial potential by doing:
 
-    lm ctrl.copt -vnit=0                             ← Because -vnit=0, BEGMOM={nit} is preprocessed into BEGMOM=0
+    lm ctrl.copt -vnit=0         ← Because -vnit=0, BEGMOM={nit} is preprocessed into BEGMOM=0
  
+**lm**{: style="color: blue"} will start from (default) moments and generate a trial density for each sphere, together with potential parameters corresponding to potential generated.
 
+The output should generate a table of potential parameters like this:
+
+    PPAR:  Pt        nl=4  nsp=2  ves=  0.00000000
+      l     e_nu          C        +/-del     1/sqrt(p)      gam         alp
+      ...
+      1 -0.33739987  0.66438324  0.17542338   6.2239779  0.13462479  0.13462479
+      2 -0.21536757 -0.17914263  0.02841817   1.1299418  0.01358564  0.01358564
+      ...
+      1 -0.33739987  0.66438324  0.17542338   6.2239779  0.13462479  0.13462479
+      2 -0.21536757 -0.17914263  0.02841817   1.1299418  0.01358564  0.01358564
+      ...
 
 
 
