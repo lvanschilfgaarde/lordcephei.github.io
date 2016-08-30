@@ -85,7 +85,7 @@ The command-line arguments are not required, but they supply quantities **blm**{
 
 ###### _The --asa switch_
 
-This switch tailors the ctrl file for the ASA. To see how it affects the ctrl file, try running **blm**{: style="color: blue"} without **\-\- asa**{: style="color: green"}. For more details see the [ASA-tutorial](https://lordcephei.github.io/asa-doc/).
+This switch tailors the ctrl file for the ASA. To see how it affects the ctrl file, try running **blm**{: style="color: blue"} without **\-\-asa**{: style="color: green"}. For more details see the [ASA-tutorial](https://lordcephei.github.io/asa-doc/).
 
 ###### _The --mag switch_
 
