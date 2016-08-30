@@ -161,7 +161,7 @@ If you want to find $$E_F$$ using **lm**{: style="color: blue"} use the followin
 
 All the ASA electronic structure codes (lm, **lmgf**{: style="color: blue"}, and lmpg) use a tight-binding form of the LMTO basis, where the envelope functions are screened to make them short ranged. This information is carried through screened structure constants, which in this package are precomputed and stored using lmstr. Run this setup to make the structure constants:
 
-     lmstr ctrl.copt                             ← Make and store structure constants
+lmstr ctrl.copt                             ← Make and store structure constants
 
 It should store str.copt and sdot.copt on disk. (If not, something is wrong and you should not proceed.)
 
