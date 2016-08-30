@@ -81,7 +81,7 @@ blm --mag --nk=8 --asa --gf copt
 
 **blm**{: style="color: blue"} should generate file **actrl.copt**{: style="color: green"}, which should be essentially the same as **doc/demos/asa-copt/ctrl.copt**{: style="color: green"} (commented lines might be different though). If this is not the case, something is wrong with your configuration. **You should not continue** if your template does not agree with the one supplied.
 
-The command-line arguments are not required, but they supply quantities **blm**{: style="color: blue"} cannot determine automatically, that you will have to supply at some point. If you supply them on the command-line they are folded into the ctrl file at the outset; or, you can edit the ctrl file after it is generated. Command-line switches **blm**{: style="color: blue"} recognizes are summarized in [Building_FP_input_file.html](https://lordcephei.github.io/buildingfpinput/). 
+The command-line arguments are not required, but they supply quantities **blm**{: style="color: blue"} cannot determine automatically, that you will have to supply at some point. If you supply them on the command-line they are folded into the ctrl file at the outset; or, you can edit the ctrl file after it is generated. Command-line switches **blm**{: style="color: blue"} recognizes are summarized in [Building FP input file](https://lordcephei.github.io/buildingfpinput/). 
 
 ###### _The \-\-asa switch_
 
@@ -99,8 +99,7 @@ When **\-\-gf**{: style="color: green"} is used, **blm**{: style="color: blue"} 
 
 ##### _2\. Making the ctrl file_
 
-blm should generate file actrl.copt, which should be essentially the same as doc/demos/asa-copt/ctrl.copt.
-Invoking blm with the switches given above is sufficient to make a working input file. Normally you can copy actrl.copt to ctrl.copt as is1.
+Invoking **blm**{: style="color: blue"} with the switches given above is sufficient to make a working input file. Normally you can copy **actrl.copt**{: style="color: green"} to **ctrl.copt**{: style="color: green"} as it is.
 
-For a fuller description of the ctrl file, see the the ASA tutorial, the FP tutorial, and also Building_FP_input_file.html. 
+For a fuller description of the ctrl file, see the the [ASA-tutorial](https://lordcephei.github.io/asa-doc/), the [FP tutorial](https://lordcephei.github.io/lmf_tutorial/), and also [Building FP input file](https://lordcephei.github.io/buildingfpinput/). 
 
