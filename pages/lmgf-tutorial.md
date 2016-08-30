@@ -129,7 +129,7 @@ So, if **MODE=1**, **lmgf**{: style="color: blue"} does a self-consistent calcul
 GFOPTS={?~c3~p3;~p2;}
 ~~~
 
-becomes **GFOPTS=p3** after parsing by the preprocessor, because _c3_ is nonzero (see preprocessor documentation). 
+becomes **GFOPTS=p3** after parsing by the preprocessor, because _c3_ is nonzero (**see preprocessor documentation**{: style="color: red"}). 
 _p3_ tells **lmgf**{: style="color: blue"} to use $$3^{rd}$$ order potential functions (somewhat more accurate than $$2^{nd}$$ order, but also prone to generating false poles not too far from the real axis).
 
 **2\. EMESH is added to BZ:**{: style="color: orange"}
@@ -177,7 +177,7 @@ The program **will stop** with this message:
 
 In usual LDA calculations, a trial density is obtained by generating densities for free atoms, and superposing them (Mattheis construction). While the ASA code could have been written to do just this, it does something different. This code takes advantage of the simplification the ASA offers, namely that the sphere density is completely determined by a small number of parameters, namely the log derivative parameters _P_ and energy moments of the charge density $$Q_{0..2}$$ for each _l_ channel. We can supply reasonable guesses through the ctrl file, or let the program pick some defaults as a first guess. Defaults are typically assigned so that $$Q_0$$ is the charge in the _l_ channel of the atom and $$Q_{1..2}$$ are taken to be zero. While this is a pretty crude guess (cruder than the Mattheis construction) usually it is good enough that the program can find its way to the proper self-consistent solution.
 
-The ASA code can either start from "potential parameters", which gives it enough information to generate energy bands and calculate moments ($$P_l$$, $$Q_{0..2,l}$$) , or from the moments ($$P_l$$, $$Q_{0..2,l}$$)  which is sufficient for the sphere routine to fix the potential and calculated potential parameters. The band and sphere blocks of the code are thus complementary: one takes the input of the other and generates output required by the other. The cycle is described in the LMTO-ASA documentation.
+The ASA code can either start from "potential parameters", which gives it enough information to generate energy bands and calculate moments ($$P_l$$, $$Q_{0..2,l}$$) , or from the moments ($$P_l$$, $$Q_{0..2,l}$$)  which is sufficient for the sphere routine to fix the potential and calculated potential parameters. The band and sphere blocks of the code are thus complementary: one takes the input of the other and generates output required by the other. The cycle is described in the **LMTO-ASA documentation**{: style="color: red"}.
 
 The ctrl file is built with the following START category:
 
@@ -202,6 +202,7 @@ The output should generate a table of potential parameters like this:
       2 -0.21536757 -0.17914263  0.02841817   1.1299418  0.01358564  0.01358564
       ...
 
+and a similar table for Co. Particularly important are _C_, the band center of gravity _C_ and the bandwidth _del_. You can see that $$C_p$$ sits far above zero while $$C_d$$ is a little below. It tells you that the Pt _d_ orbital is important for bonding while the Pt _p_ orbital is pretty far above from the Fermi level and of much less importance. del is the bandwidth parameter; a little more detail is given in the **LMTO-ASA documentation**{: style="color: red"}. A disk file is created for each class. It contains the ($$P_l$$, $$Q_{0..2,l}$$), the potential parameters, and possibly other things. Take a look at files **co.copt**{: style="color: green"} and **pt.copt**{: style="color: green"}. You can see what defaults were chosen for ($$P_l$$, $$Q_{0..2,l}$$). 
 
 
 
@@ -220,7 +221,7 @@ _____________________________________________________________
 
 ###### _a) Finding $$E_F$$_{: style="color: orange"}
 
-If **GF_MODE=1**, **lmgf**{: style="color: blue"} will generate the $$Q_{0..2,{\bf R}l}$$ for whatever $$E_F$$ you give it. However there is only one physically meaningful $$E_F$$ -- the one that satifies charge neutrality. The input file is constructed so you can supply $$E_F$$ through command-line argument **-vef=expr**{: style="color: green"}: the preprocessor evaluates  ef  from  expr, substitutes it for  {ef}  in the input file (see preprocessor documentation).
+If **GF_MODE=1**, **lmgf**{: style="color: blue"} will generate the $$Q_{0..2,{\bf R}l}$$ for whatever $$E_F$$ you give it. However there is only one physically meaningful $$E_F$$ -- the one that satifies charge neutrality. The input file is constructed so you can supply $$E_F$$ through command-line argument **-vef=expr**{: style="color: green"}: the preprocessor evaluates  ef  from  expr, substitutes it for  {ef}  in the input file (**see preprocessor documentation****{: style="color: red"}).
 
 The simplest way to find the charge neutrality point is to run lmgf interactively in the self-consistent mode (**GF_MODE=1**). By running **lmgf**{: style="color: blue"} interactively you can monitor convergence. **Do**: 
 
