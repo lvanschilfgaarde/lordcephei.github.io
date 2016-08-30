@@ -34,8 +34,8 @@ This package implements the ASA local spin-density approximation using Green's f
 
 **lmgf**{: style="color: blue"} is a Green's function program complementary to the ASA band code **lm**{: style="color: blue"}. For some properties, e.g. calculating moments $$Q_{0..2}$$ **lmgf**{: style="color: blue"} can be straightforwardly substituted for lm because both calculate the DOS. The DOS is $$1/(2\pi ) {\rm Im} G$$: it can be decomposed into site contributions and thus moments Q0..2 can be generated for each site and l channel, as an alternative to decomposing the eigenfunctions of the bands, as lm does. Thus it can achieve self-consistency in a manner similar to lm, but generating $$Q_{0..2,{\bf R}l}$$ by an alternate route. If the ASA hamiltionian built by lm is suitably simplified, i.e. by
 
-+ omitting the "combined correction term" (OPTIONS_ASA_CCOR)
-+ generating $$Q_{0..2,{\bf R}l}$$ from true power moments as the Green's function does (HAM_QASA=0), 
++ omitting the "combined correction term" (**OPTIONS_ASA_CCOR**)
++ generating $$Q_{0..2,{\bf R}l}$$ from true power moments as the Green's function does (**HAM_QASA=0**), 
 
 then **lmgf**{: style="color: blue"} and **lm**{: style="color: blue"} will produce nearly identical self-consistent solutions. When potential functions are parameterized to 2nd order in both **lm**{: style="color: blue"} and **lmgf**{: style="color: blue"}, and both methods are fully k converged, they should product nearly identical results. By default lm parameterizes the potential function to 3rd order; **lmgf**{: style="color: blue"} can do the same. The 3rd order parameterizations are similar in the two methods, but not identical. To verify this, try the following test:
 
@@ -52,5 +52,25 @@ _____________________________________________________________
 
 ##### _1\.Building an input file_
 
-Before starting working with this tutorial we advise you to read through the [ASA-tutorial](https://lordcephei.github.io/asadoc/) which explains building an imput file in more details. Here we'll focus on the part of it specific for using with **lmgf**{: style="color: blue"}.
+Before starting working with this tutorial we advise you to read through the [ASA-tutorial](https://lordcephei.github.io/asa-doc/) which explains building an imput file in more details. Here we'll focus on the part of it specific for using with **lmgf**{: style="color: blue"}.
 
+To get started, copy **doc/demos/asa-copt/init.copt**{: style="color: green"} to your working directory. Inspect the init file and you will see it contains just the minimum structural information, apart from one line supplying some information about the magnetic structure:
+
+<div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
+
+LATTICE
+        ALAT=7.1866
+        PLAT=    1.000000   0.000000   0.000000
+                 0.000000   1.000000   0.000000
+                 0.000000   0.000000   1.000000
+SPEC ATOM=Co MMOM=0,0,2.2
+SITE
+     ATOM=Pt POS=  0.0  0.0   0.0 
+     ATOM=Co POS=  0.5  0.5   0.0 
+     ATOM=Co POS=  0.0  0.5   0.5
+     ATOM=Co POS=  0.5  0.0   0.5 
+
+{::nomarkdown}</div>{:/}
+
+Then use the blm tool 
