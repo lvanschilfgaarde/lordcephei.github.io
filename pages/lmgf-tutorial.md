@@ -210,6 +210,9 @@ We are now ready for a self-consistent calculation. **Doing**:
                                                     --pr31,20 sets verbosity fairly low
 
 will perform up to 30 self-consistent cycles, that is 
+
+$$PPAR\stackrel{crystal}{\longrightarrow} (P_l, Q_{0..2,l})\stackrel{sphere}{\longrightarrow} PPAR \stackrel{crystal}{\longrightarrow}$$
+
    PPAR → ($$P_l$$, $$Q_{0..2,l}$$) → PPAR    → ($$P_l$$, $$Q_{0..2,l}$$) →  PPAR ...
         ↑              ↑          ↑              ↑
       crystal        sphere    crystal        sphere
