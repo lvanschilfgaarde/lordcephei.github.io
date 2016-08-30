@@ -98,14 +98,14 @@ Without any other information the spin polarized calculation will proceed with z
 
 When **\-\-gf**{: style="color: green"} is used, **blm**{: style="color: blue"} prepares the input file for the Green's function program **lmgf**{: style="color: blue"}. This tutorial uses **lmgf**{: style="color: blue"} to calculate magnetic exchange interactions.  Adding **\-\-gf**{: style="color: green"} to the **blm**{: style="color: blue"} command line argument modifies **actrl.copt**{: style="color: green"} in two ways:
 
-\1. The GF category is created: 
+1\. The GF category is created: 
 
 ~~~
 % const gfmode=1 c3=t
 GF      MODE={gfmode} GFOPTS={?~c3~p3;~p2;}
 ~~~
 
-\2. EMESH is added to BZ: EMESH is added to BZ: 
+2\. EMESH is added to BZ: EMESH is added to BZ: 
 
 ~~~
 % const nz=16 ef=0
