@@ -204,7 +204,15 @@ The output should generate a table of potential parameters like this:
 
 and a similar table for Co. Particularly important are _C_, the band center of gravity _C_ and the bandwidth _del_. You can see that $$C_p$$ sits far above zero while $$C_d$$ is a little below. It tells you that the Pt _d_ orbital is important for bonding while the Pt _p_ orbital is pretty far above from the Fermi level and of much less importance. del is the bandwidth parameter; a little more detail is given in the **LMTO-ASA documentation**{: style="color: red"}. A disk file is created for each class. It contains the ($$P_l$$, $$Q_{0..2,l}$$), the potential parameters, and possibly other things. Take a look at files **co.copt**{: style="color: green"} and **pt.copt**{: style="color: green"}. You can see what defaults were chosen for ($$P_l$$, $$Q_{0..2,l}$$). 
 
+We are now ready for a self-consistent calculation. **Doing**:
 
+    lm ctrl.copt -vnit=30 --pr31,20                ← NIT={nit} is preprocessed into NIT=30.
+                                                    --pr31,20 sets verbosity fairly low
+
+will perform up to 30 self-consistent cycles, that is 
+   PPAR → ($$P_l$$, $$Q_{0..2,l}$$) → PPAR    → ($$P_l$$, $$Q_{0..2,l}$$) →  PPAR ...
+        ↑              ↑          ↑              ↑
+      crystal        sphere    crystal        sphere
 
 {::nomarkdown}</div>{:/}
 
@@ -221,7 +229,7 @@ _____________________________________________________________
 
 ###### _a) Finding $$E_F$$_{: style="color: orange"}
 
-If **GF_MODE=1**, **lmgf**{: style="color: blue"} will generate the $$Q_{0..2,{\bf R}l}$$ for whatever $$E_F$$ you give it. However there is only one physically meaningful $$E_F$$ -- the one that satifies charge neutrality. The input file is constructed so you can supply $$E_F$$ through command-line argument **-vef=expr**{: style="color: green"}: the preprocessor evaluates  ef  from  expr, substitutes it for  {ef}  in the input file (**see preprocessor documentation****{: style="color: red"}).
+If **GF_MODE=1**, **lmgf**{: style="color: blue"} will generate the $$Q_{0..2,{\bf R}l}$$ for whatever $$E_F$$ you give it. However there is only one physically meaningful $$E_F$$ -- the one that satifies charge neutrality. The input file is constructed so you can supply $$E_F$$ through command-line argument **-vef=expr**{: style="color: green"}: the preprocessor evaluates  ef  from  expr, substitutes it for  {ef}  in the input file (**see preprocessor documentation**{: style="color: red"}).
 
 The simplest way to find the charge neutrality point is to run lmgf interactively in the self-consistent mode (**GF_MODE=1**). By running **lmgf**{: style="color: blue"} interactively you can monitor convergence. **Do**: 
 
