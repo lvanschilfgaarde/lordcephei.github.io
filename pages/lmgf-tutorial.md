@@ -83,17 +83,17 @@ blm --mag --nk=8 --asa --gf copt
 
 The command-line arguments are not required, but they supply quantities **blm**{: style="color: blue"} cannot determine automatically, that you will have to supply at some point. If you supply them on the command-line they are folded into the ctrl file at the outset; or, you can edit the ctrl file after it is generated. Command-line switches **blm**{: style="color: blue"} recognizes are summarized in [Building_FP_input_file.html](https://lordcephei.github.io/buildingfpinput/). 
 
-###### _The --asa switch_
+###### _The \-\-asa switch_
 
 This switch tailors the ctrl file for the ASA. To see how it affects the ctrl file, try running **blm**{: style="color: blue"} without **\-\-asa**{: style="color: green"}. For more details see the [ASA-tutorial](https://lordcephei.github.io/asa-doc/).
 
-###### _The --mag switch_
+###### _The \-\-mag switch_
 
 This switch tells **blm**{: style="color: blue"} that you plan on doing a spin polarized calculation. All it does is change the preprocessor variable _nsp_ to 2. This turns on the spin polarization through **NSPIN={nsp}**.
 
 Without any other information the spin polarized calculation will proceed with zero magnetic moment. You have to supply some initial information about the magnetic structure. Since we know that the magnetization is concentrated on the Co (Pt is paramagnetic, though it has a high magnetic susceptibility), the init file supplies an initial magnetic moment on the Co site of about 2 Bohr on the Co d orbital, in the SPEC category (**SPEC ATOM=Co MMOM=0,0,2.2** in the initial file). Of course the actual magnetic moment is determined self-consistently later.
 
-###### _The --gf switch_
+###### _The \-\-gf switch_
 
 When **\-\-gf**{: style="color: green"} is used, **blm**{: style="color: blue"} prepares the input file for the Green's function program **lmgf**{: style="color: blue"}. This tutorial uses **lmgf**{: style="color: blue"} to calculate magnetic exchange interactions; we'll explaine **lmgf**-related modifications later.
 
