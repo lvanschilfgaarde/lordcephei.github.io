@@ -98,7 +98,7 @@ Without any other information the spin polarized calculation will proceed with z
 
 When **\-\-gf**{: style="color: green"} is used, **blm**{: style="color: blue"} prepares the input file for the Green's function program **lmgf**{: style="color: blue"}. This tutorial uses **lmgf**{: style="color: blue"} to calculate magnetic exchange interactions.  Adding **\-\-gf**{: style="color: green"} to the **blm**{: style="color: blue"} command line argument modifies **actrl.copt**{: style="color: green"} in two ways:
 
-1\. **The GF category is created:**{: style="color: orange"}
+**1\. The GF category is created:**{: style="color: orange"}
 
 ~~~
 % const gfmode=1 c3=t
@@ -132,7 +132,7 @@ GFOPTS={?~c3~p3;~p2;}
 becomes **GFOPTS=p3** after parsing by the preprocessor, because _c3_ is nonzero (see preprocessor documentation). 
 _p3_ tells **lmgf**{: style="color: blue"} to use $$3^{rd}$$ order potential functions (somewhat more accurate than $$2^{nd}$$ order, but also prone to generating false poles not too far from the real axis).
 
-2\. **EMESH is added to BZ: EMESH is added to BZ:**{: style="color: orange"}
+**2\. EMESH is added to BZ: EMESH is added to BZ:**{: style="color: orange"}
 
 ~~~
 % const nz=16 ef=0
