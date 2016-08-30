@@ -50,7 +50,8 @@ But **lmgf**{: style="color: blue"} can do things **lm**{: style="color: blue"} 
 ### _Tutorial_
 _____________________________________________________________
 
-##### _1\. Building an input file_
+##### _1\. Building input file_
+_____________________________________________________________
 
 Before starting working with this tutorial we advise you to read through the [ASA-tutorial](https://lordcephei.github.io/asa-doc/) which explains building the imput file in more details (you can also look through the input described in a [full-potential context](https://lordcephei.github.io/buildingfpinput/)). In the present tutorial we'll focus on the part of the input specific for using with **lmgf**{: style="color: blue"}.
 
@@ -97,7 +98,8 @@ Without any other information the spin polarized calculation will proceed with z
 
 When **\-\-gf**{: style="color: green"} is used, **blm**{: style="color: blue"} prepares the input file for the Green's function program **lmgf**{: style="color: blue"}. This tutorial uses **lmgf**{: style="color: blue"} to calculate magnetic exchange interactions; we'll explaine **lmgf**-related modifications later.
 
-##### _2\. Making the ctrl file_
+##### _2\. Making ctrl file_
+_____________________________________________________________
 
 Invoking **blm**{: style="color: blue"} with the switches given above is sufficient to make a working input file. Normally you can copy **actrl.copt**{: style="color: green"} to **ctrl.copt**{: style="color: green"} as it is.
 
