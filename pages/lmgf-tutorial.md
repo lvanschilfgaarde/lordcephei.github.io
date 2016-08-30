@@ -59,17 +59,17 @@ To get started, copy **doc/demos/asa-copt/init.copt**{: style="color: green"} to
 <div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
 
-LATTICE
-        ALAT=7.1866
-        PLAT=    1.000000   0.000000   0.000000
-                 0.000000   1.000000   0.000000
-                 0.000000   0.000000   1.000000
-SPEC ATOM=Co MMOM=0,0,2.2
-SITE
-     ATOM=Pt POS=  0.0  0.0   0.0 
-     ATOM=Co POS=  0.5  0.5   0.0 
-     ATOM=Co POS=  0.0  0.5   0.5
-     ATOM=Co POS=  0.5  0.0   0.5 
+    LATTICE
+             ALAT=7.1866
+             PLAT=    1.000000   0.000000   0.000000
+                      0.000000   1.000000   0.000000
+                      0.000000   0.000000   1.000000
+    SPEC ATOM=Co MMOM=0,0,2.2
+    SITE
+          ATOM=Pt POS=  0.0  0.0   0.0 
+          ATOM=Co POS=  0.5  0.5   0.0 
+          ATOM=Co POS=  0.0  0.5   0.5
+          ATOM=Co POS=  0.5  0.0   0.5 
 
 {::nomarkdown}</div>{:/}
 
