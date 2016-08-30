@@ -213,7 +213,7 @@ will perform up to 30 self-consistent cycles, that is
 
 $$PPAR\stackrel{crystal}{\longrightarrow} (P_l, Q_{0..2,l})\stackrel{sphere}{\longrightarrow} PPAR \stackrel{crystal}{\longrightarrow} (P_l, Q_{0..2,l})\stackrel{sphere}{\longrightarrow}$$
 
-
+**lm**{: style="color: blue"} will continue until the RMS change in ($$P_l$$, $$Q_{0..2,l}$$) falls below tolerance **ITER_CONVC**, or until 30 iterations is reached. In this demo convergence should be reached in 21 iterations. 
 
 
 
