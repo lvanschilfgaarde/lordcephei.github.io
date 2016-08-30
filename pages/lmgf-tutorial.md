@@ -166,6 +166,6 @@ _____________________________________________________________
 
 ###### _a) Finding $$E_F$$_{: style="color: orange"}
 
-If $$GF_MODE=1$$, **lmgf**{: style="color: blue"} will generate the $$Q_{0..2,{\bf R}l}$$ for whatever $$E_F$$ you give it. However there is only one physcially meaningful $$E_F$$ -- the one that satifies charge neutrality. The input file is constructed so you can supply $$E_F$$ through command-line argument **-vef=expr**{: style="color: green"}: the preprocessor evaluates  ef  from  expr, substitutes it for  {ef}  in the input file (see preprocessor documentation).
+If **GF_MODE=1**, **lmgf**{: style="color: blue"} will generate the $$Q_{0..2,{\bf R}l}$$ for whatever $$E_F$$ you give it. However there is only one physcially meaningful $$E_F$$ -- the one that satifies charge neutrality. The input file is constructed so you can supply $$E_F$$ through command-line argument **-vef=expr**{: style="color: green"}: the preprocessor evaluates  ef  from  expr, substitutes it for  {ef}  in the input file (see preprocessor documentation).
 
 The simplest way to find the charge neutrality point is to run **lmgf**{: style="color: blue"} interactively in the self-consistent mode (**GF_MODE=1**). By running **lmgf**{: style="color: blue"} interactively you can monitor convergence. Do: 
