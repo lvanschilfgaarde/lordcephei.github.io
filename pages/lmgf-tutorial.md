@@ -156,12 +156,12 @@ We don't know what $$E_F$$ is _a priori_. In the ASA, a general reasonable guess
 
 If you want to find $$E_F$$ using **lm**{: style="color: blue"} use the following commands (for the details see [ASA-tutorial](https://lordcephei.github.io/asa-doc/)):
 
-<div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
-{::lm}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
+<div onclick="elm = document.getElementById('lm'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show/hide the lm-part.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="lm">{:/}
 
 Content
 
-{::lm}</div>{:/}
+{::nomarkdown}</div>{:/}
 
 Invoking **blm**{: style="color: blue"} with the switches given above is sufficient to make a working input file. Normally you can **copy** **actrl.copt**{: style="color: green"} to **ctrl.copt**{: style="color: green"} as it is.
 
