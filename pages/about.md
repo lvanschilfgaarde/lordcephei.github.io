@@ -31,3 +31,5 @@ been used to examine transport in devices ranging from magnetic tunnel junctions
 + **QSGW:**   LM Suite also has the ability to perform quasiparticle self-consistent GW calculations. Unlike standard
 density functional calculations that underestimate the band gap of a material, this approach can describe the optical
 properties for a wide range of materials.
+
++ **QSGW + DMFT:** When localised electronic orbitals (*d-* or *f-* type) participate to the valence region, the effect of electronic correlation can not be included as a small perturbation (RPA) and more accurate methods have to be invoked. The Questaal code has been interfaced with the Continuous Time Quantum Monte Carlo solver [developed](http://journals.aps.org/prb/abstract/10.1103/PhysRevB.75.155113) by K. Haule and coworkers. This couples the QSGW description of the lattice with state-of-the-art Dynamical Mean Field Theory approaches.
