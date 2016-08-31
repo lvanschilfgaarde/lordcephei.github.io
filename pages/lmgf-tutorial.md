@@ -242,7 +242,7 @@ The same line also provides you with the Fermi energy:
 ##### _2\. Making ctrl file and structure constants_
 _____________________________________________________________
 
-**If you've done the lm above go straight to 'The Green's function program lmgf' **{: style="color: red"}
+**If you've done the lm-part above go straight to 'The Green's function program lmgf' **{: style="color: red"}
 
 Invoking **blm**{: style="color: blue"} with the switches given above is sufficient to make a working input file. Normally you can **copy** **actrl.copt**{: style="color: green"} to **ctrl.copt**{: style="color: green"} as it is.
 
@@ -256,7 +256,11 @@ It should store **str.copt**{: style="color: green"} and **sdot.copt**{: style="
 
 As of yet we **have no starting density or potential**.We get an initial potential by doing:
 
-    lm ctrl.copt -vnit=0         ← Because -vnit=0, BEGMOM={nit} is preprocessed into BEGMOM=0
+    lm ctrl.copt -vnit=0        
+    
+We are now ready for a self-consistent calculation. **Do**:
+
+    lm ctrl.copt -vnit=30 --pr31,20
 
 ##### _3\. The Green's function program lmgf_
 _____________________________________________________________
