@@ -314,7 +314,7 @@ After the cycle you should see
 
     deviation from charge neutrality: 0.015468
 
-The Pade correction reduces the deviation from neutrality but overestimates the shift. A new estimate is made for the potential shift and the prompt reappears. You can repeat the GF cycle as many times as you like. (If you see **QUERY: odify vbar (def=...)?** just hit return**) If you iterate enough you should see something like: 
+The Pade correction reduces the deviation from neutrality but overestimates the shift. A new estimate is made for the potential shift and the prompt reappears. You can repeat the GF cycle as many times as you like. (If you see **QUERY: modify vbar (def=...)?** just hit return) If you iterate enough you should see something like: 
 
     gfasa:  potential shift this iter = 0.000001.  Cumulative shift = -0.000423
 
