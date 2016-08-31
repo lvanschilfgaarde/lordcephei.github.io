@@ -221,8 +221,18 @@ If it's converged you'll get following phrase at the end of your output:
     
 In this demo convergence should be reached in 21 iterations. 
 
+**Interpreting the output:**
 
+The output can provide some very useful information. For example, the self-consistent Co moment is 1.8 $$\mu_B$$; Pt has a moment (induced by the neighboring Co) of 0.3 $$\mu_B$$. You can see it in the line of the following form
 
+    ATOM=PT Z=78 Qc=68 R=2.928343 Qv=-0.008929 mom=0.35606 a=0.025 nr=481
+    ATOM=Co ...
+
+Scrolling up you can find the density-of-states at the Fermi level $$E_F$$ is **D(Ef)=72** (units of $$Ry^{−1}$$ per unit cell), or about 1.3 $$eV^{−1}/atom$$. Had the calculation been done without spin polarization, D(Ef) would be ~187, more than twice larger. This is a very large number and suggests there is a likely instability. Indeed, the system can lower its energy by spontaneously magnetizing. Consider the Stoner criterion for spontaneous magnetization, I D(EF) > 1. In 3d transition metals I is about 1 eV. Thus the Stoner criterion is easily satisfied and the system should spontaneously magnetize. In magnetizes so strongly that the Co moment (1.8 $$\mu_B$$) is larger than that for elemental Co (1.6 $$\mu_B$$). 
+
+The same line also provides you with the Fermi energy:
+
+    BZINTS: Fermi energy:   -0.129278; ...
 
 {::nomarkdown}</div>{:/}
 
