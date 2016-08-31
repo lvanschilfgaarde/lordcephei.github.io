@@ -185,4 +185,4 @@ An other easy way to estimate convergence (and pretty accurate too) is to look a
 A third method is of course to visualise the convergence of each separate channel of local quantities like _Sig.out.brd_ or *g_qmc.dat* 
 
 In this tutorial, a reasonable convergence is achieved after around 10 iterations.
-How to handle the converged DMFT result is the subject of the [third](https://lordcephei.githu.io/dmft3) and the [fourth](https://lordcephei.githu.io/dmft4) tutorials, while in the [second one](https://lordcephei.githu.io/dmft2) we will focus on possible source of errors, technical aspects to speed up the convergence and rule of thumbs to define the input parameters.
+How to handle the converged DMFT result is the subject of the [third](https://lordcephei.github.io/dmft3) and the [fourth](https://lordcephei.github.io/dmft4) tutorials, while in the [second one](https://lordcephei.github.io/dmft2) we will focus on possible source of errors, technical aspects to speed up the convergence and rule of thumbs to define the input parameters.
