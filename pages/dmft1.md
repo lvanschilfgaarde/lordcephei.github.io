@@ -18,13 +18,11 @@ The DMFT loop is composed by the following steps:
 
 * The lattice Green's function is projected onto the local correlated subsystem ($$G_{\rm loc}$$). This leads to the definition of the hybridization function ($$\Delta(i\omega)$$) and the impurity levels ($$E_{\rm imp}$$).
 * These two quantities together with the effective interactions $$U$$ and $$J$$ are passed to the Continuous Time Quantum Monte Carlo (CTQMC) solver which computes the corresponding impurity self-energy and the impurity Greens function ($$G_{\rm imp}$$).
-* The double counting is subtracted from it and result is embedded into an updated lattice Green's function. After adjusting the chemical potential, the loop starts again from point 1 until $$G_{\rm imp}$$ is equal to $$G_{\rm loc}$$.
+* The double counting is subtracted from it and the result is embedded into an updated lattice Green's function. After adjusting the chemical potential, the loop starts again from the starting point until $$G_{\rm imp}$$ is equal to $$G_{\rm loc}$$.
 
 From a software perspective, these operations are accomplished in a four-step procedure. Each step relies on a specific software (lmfdmft.f, atom_d.py, ctqmc.cc and broad_sig.f90). The operations performed by each code and the input/output handling needed to cycle the loop are indicated schematically in the figure.
 
-![alt text][inout_dmftloop]
-
-[inout_dmftloop]: assets/img/inout_dmftloop.eps "Input/Output in DMFT loop"
+![Input/Output in DMFT loop](https://lordcephei.github.io/assets/img/inout_dmftloop.eps)
 
 In this tutorial, we will go through all these steps and we will indicate what quantity to monitor to judge the convergence of the DMFT loop. This will be done starting from a converged QSGW of the paramagnetic phase of La$$_2$$CuO$$_4$$.
 
