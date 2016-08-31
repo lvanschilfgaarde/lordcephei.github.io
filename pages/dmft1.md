@@ -7,14 +7,15 @@ header: no
 ---
 
 <hr style="height:5pt; visibility:hidden;" />
-# First tutorial on QSGW+DMFT calculation: The DMFT loop
+#The DMFT loop
 
 
 <hr style="height:5pt; visibility:hidden;" />
 ### Introduction
-As explained in the introduction to QSGW+DMFT (tutorial _dmft0_), the fundamental step of DMFT is the self-consistent solution of the (local) Anderson impurity problem. This is connected to the electronic structure of the material (bath) through the hybridization function, the impurity level and the effective interactions $$U$$ and $$J$$. The loop of operations leading to the self-consistent result of the DMFT, is called DMFT loop.
+As explained in the [introduction to QSGW+DMFT](https://lordcephei.github.io/dmft0), the fundamental step of DMFT is the self-consistent solution of the (local) Anderson impurity problem. This is connected to the electronic structure of the material (bath) through the hybridization function, the impurity level and the effective interactions $$U$$ and $$J$$. The loop of operations leading to the self-consistent result of the DMFT, is called DMFT loop.
  
 The DMFT loop is composed by the following steps:
+
 * The lattice Green's function is projected onto the local correlated subsystem ($$G_{\rm loc}$$). This leads to the definition of the hybridization function ($$\Delta(i\omega)$$) and the impurity levels ($$E_{\rm imp}$$).
 * These two quantities together with the effective interactions $$U$$ and $$J$$ are passed to the Continuous Time Quantum Monte Carlo (CTQMC) solver which computes the corresponding impurity self-energy and the impurity Greens function ($$G_{\rm imp}$$).
 * The double counting is subtracted from it and result is embedded into an updated lattice Green's function. After adjusting the chemical potential, the loop starts again from point 1 until $$G_{\rm imp}$$ is equal to $$G_{\rm loc}$$.
