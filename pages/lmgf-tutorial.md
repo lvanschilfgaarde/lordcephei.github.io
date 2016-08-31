@@ -159,6 +159,8 @@ If you want to practice finding $$E_F$$ using **lm**{: style="color: blue"} use 
 <div onclick="elm = document.getElementById('lm'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show/hide the lm-part.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="lm">{:/}
 
+Invoking **blm**{: style="color: blue"} with the switches given above is sufficient to make a working input file. Normally you can **copy** **actrl.copt**{: style="color: green"} to **ctrl.copt**{: style="color: green"} as it is.
+
 All the ASA electronic structure codes (**lm**{: style="color: blue"}, **lmgf**{: style="color: blue"}, and **lmpg**{: style="color: blue"}) use a tight-binding form of the LMTO basis, where the envelope functions are screened to make them short ranged. This information is carried through screened structure constants, which in this package are precomputed and stored using lmstr. Run this setup to make the structure constants:
 
      lmstr ctrl.copt                             ← Make and store structure constants
@@ -215,7 +217,7 @@ $$PPAR\stackrel{crystal}{\longrightarrow} (P_l, Q_{0..2,l})\stackrel{sphere}{\lo
 
 **lm**{: style="color: blue"} will continue until the RMS change in ($$P_l$$, $$Q_{0..2,l}$$) falls below tolerance **ITER_CONVC**, or until 30 iterations is reached.
 
-If it's converged you'll get following phrase at the end of your output:
+If it's converged you'll get the following phrase at the end of your output:
 
     Jolly good show! You converged to ...
     
@@ -237,12 +239,18 @@ The same line also provides you with the Fermi energy:
 {::nomarkdown}</div>{:/}
 
 
-##### _2\. Making ctrl file_
+##### _2\. Making ctrl file and structure constants_
 _____________________________________________________________
 
 Invoking **blm**{: style="color: blue"} with the switches given above is sufficient to make a working input file. Normally you can **copy** **actrl.copt**{: style="color: green"} to **ctrl.copt**{: style="color: green"} as it is.
 
 For a fuller description of the ctrl file, see the the [ASA-tutorial](https://lordcephei.github.io/asa-doc/), the [FP tutorial](https://lordcephei.github.io/lmf_tutorial/), and also [Building FP input file](https://lordcephei.github.io/buildingfpinput/). 
+
+All the ASA electronic structure codes (**lm**{: style="color: blue"}, **lmgf**{: style="color: blue"}, and **lmpg**{: style="color: blue"}) use a tight-binding form of the LMTO basis, where the envelope functions are screened to make them short ranged. This information is carried through screened structure constants, which in this package are precomputed and stored using lmstr. Run this setup to make the structure constants:
+
+     lmstr ctrl.copt                             ← Make and store structure constants
+
+It should store **str.copt**{: style="color: green"} and **sdot.copt**{: style="color: green"} on disk. (**If not, something is wrong and you should not proceed.**)
 
 ##### _3\. The Green's function program lmgf_
 _____________________________________________________________
