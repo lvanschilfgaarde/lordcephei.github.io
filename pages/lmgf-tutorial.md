@@ -275,9 +275,28 @@ The simplest way to find the charge neutrality point is to run **lmgf**{: style=
 lmgf ctrl.copt -vnit=30 --pr31,20 --iactiv -vef=-.1293
 ~~~
 
-Since we're using the switch **\-\-iactiv** the code is going to stop and ask us to make some choices. At first you'll see
+Since we're using **\-\-iactiv** switch the code is going to stop and ask us to make some choices. At first you'll see
 
     QUERY: max it (def=30)?
 
-Just hit Enter to confirm
+Just hit Enter to confirm. Output contains two tables the first of which looks like
 
+    GFASA:  integrated quantities to efermi = -0.1293
+        PL      D(Ef)      N(Ef)       E_band      2nd mom      Q-Z
+    spin 1   11.457550   21.527384   -7.139500    2.654650    3.027384
+    spin 2   79.622866   15.413290   -4.696401    1.699871   -3.086710
+    total   91.080415   36.940675  -11.835901    4.354521   -0.059325
+           deviation from charge neutrality: -0.059325
+
+The non-zetro deviation from charge neutrality means that ef=-.1293 results in a slight electron deficiency. **lmgf**{: style="color: blue"} will estimate a constant shift to crystal potential to make the system neutral, and interpolate _G_ to contour adjusted by this shift using a Pade approximant.
+
+**Note**  **lmgf**{: style="color: blue"} shifts the average crystal potential: ef  is kept fixed. 
+
+Then **lmgf**{: style="color: blue"} prints out some results of the Pade correction in a subsequent table. 
+
+    Corrections to integrated quantities estimated by Pade interpolation
+        PL      D(Ef)      N(Ef)       E_band      2nd mom      Q-Z
+    spin 1    8.853521   21.530102   -7.151426    2.654705    3.030102
+    spin 2  110.784521   15.469898   -4.712034    1.700815   -3.030102
+     total  119.638042   37.000000  -11.863460    4.355519   -0.000000
+            deviation from charge neutrality: 0
