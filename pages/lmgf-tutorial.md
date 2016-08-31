@@ -328,4 +328,4 @@ At the prompt enter
 
 to prevent **lmgf**{: style="color: blue"} from continuing its self-consistency cycle. The constant potential shift is just the negative the the requisite Fermi level shift to achieve charge neutrality:  ef needs to be adjsted to -0.1293−(-0.000423) = −0.128877 Ry. 
 
-To confirm that this is the correct  ef, repeat the interactive lmgf calculation with  -vef=-.1289. 
+To confirm that this is the correct  ef, repeat the interactive lmgf calculation with  -vef=-0.1289. 
