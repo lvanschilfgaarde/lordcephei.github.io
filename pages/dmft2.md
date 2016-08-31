@@ -6,7 +6,7 @@ sidebar: "left"
 header: no
 ---
 
-# Second tutorial on QSGW+DMFT: set up and errors
+# Set up and errors
   The aim of this tutorial is to give some indications on how to set the parameters of the dmft calculation, giving examples of how the output should look like and, more importantly, how it shouldn't.
 
 ### The PARAMS file 
