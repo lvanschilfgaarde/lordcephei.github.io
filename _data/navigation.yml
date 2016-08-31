@@ -71,6 +71,10 @@
       content:
       - title: "QSGW Tutorial"
         url: "/qsgw_tutorial/"
+    - name: "qsgwdmft"
+      content:
+      - title: "QSGW + DMFT"
+        url: "/dmft0/"
     - name: "Miscellaneous"
       content:
       - title: "Installation"
