@@ -71,10 +71,18 @@
       content:
       - title: "QSGW Tutorial"
         url: "/qsgw_tutorial/"
-    - name: "qsgwdmft"
+    - name: "qsgw + dmft"
       content:
-      - title: "QSGW + DMFT"
+      - title: "Introduction"
         url: "/dmft0/"
+      - title: "The DMFT loop"
+        url: "/dmft1/"
+      - title: "Set up and errors"
+        url: "/dmft2/"
+      - title: "Static self-energy loop"
+        url: "/dmft3/"
+      - title: "The density loop"
+        url: "/dmft4/"
     - name: "Miscellaneous"
       content:
       - title: "Installation"
