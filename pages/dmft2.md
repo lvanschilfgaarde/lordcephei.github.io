@@ -105,6 +105,7 @@ They contain some information about the sampling and should be used as restart f
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="ParamsDmft1">{:/}
 
 They can be used basically in two ways.
+
 + If you are performing iteration N, you can copy the *status* files from iteration N-1 to speed up the convergence of the calculation. 
 + If you realise that in one ctqmc run, you haven't achieved a good sampling (e.g. **M** too low, or close to phase transition), than you can run again the calculation.
 
