@@ -382,7 +382,7 @@ to see:
 
 ach array has 64×8 entries, for T vectors derived from 8×8×8 k-points (the 3D array is stored in a 2D format). **lmgf**{: style="color: blue"} unpacks these (**GFMODE=11**) and prints them out in a sequence of tables, e.g. this one coupling all pairs of atoms belong to sites 2 and 3 in the unit cell. Pairs are ordered by separation distance d. Interactions fall off rapidly with d, and oscillate around 0, as might be expected from RKKY theory. Then follow estimates for the critical temperature $$T_c$$. $$T_c$$ is estimated in Weiss mean-field theory, and also according to a spin-waves theory by Tyablikov (sometimes called the "RPA"). Mean-field tends to overestimate $$T_c$$; RPA tends to be a little more accurate but tends to underestimate it. From these two estimates $$T_c$$ should be around 1000K (see the **GFMODE=11** output).
 
-Next follows an estimate for the spin wave stiffness. We need a symmetry lines file, let's copy it from **/lm/startup/**{: style="color: green"} (make sure you have the correct path there. The folder has symmetry files for different structures, e.g. **syml.fcc**{: style="color: green", **syml.hcp**{: style="color: green", etc):
+Next follows an estimate for the spin wave stiffness. We need a symmetry lines file, let's copy it from **/lm/startup/**{: style="color: green"} (make sure you have the correct path there. The folder has symmetry files for different structures, e.g. **syml.fcc**{: style="color: green"}, **syml.hcp**{: style="color: green"}, etc):
 
     cp startup/syml.sc syml.copt
 
