@@ -63,10 +63,12 @@
         url: "/lmf_mulliken/"
     - name: "lm"
       content:
-      - title: "ASA tutorial"
+      - title: "ASA Tutorial"
         url: "/asadoc/"
       - title: "Basic GW Tutorial"
         url: "/lmtut/"
+      - title: "LMGF Tutorial"
+        url: ""
     - name: "qsgw"
       content:
       - title: "QSGW Tutorial"
