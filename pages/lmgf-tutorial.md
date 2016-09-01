@@ -242,7 +242,7 @@ The same line also provides you with the Fermi energy:
 ##### _2\. Making ctrl file and structure constants_
 _____________________________________________________________
 
-**If you've done the lm-part above go straight to 'The Green's function program lmgf'**{: style="color: red"}
+**If you've done the lm-part above go straight to ['The Green's function program lmgf'](https://lordcephei.github.io/lmgf-tutorial/#the-greens-function-program-lmgf)**{: style="color: red"}
 
 Invoking **blm**{: style="color: blue"} with the switches given above is sufficient to make a working input file. Normally you can **copy** **actrl.copt**{: style="color: green"} to **ctrl.copt**{: style="color: green"} as it is.
 
