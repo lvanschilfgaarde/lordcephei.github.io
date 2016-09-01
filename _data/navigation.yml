@@ -91,7 +91,7 @@
       - title: "The density loop"
         url: "/dmft4/"
       - title: "The maximum entropy method"
-        url: "/maxent/" 
+        url: "/maxent1/" 
     - name: "Miscellaneous"
       content:
       - title: "Installation"
