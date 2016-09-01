@@ -60,6 +60,8 @@ You should chose **Nmax** high enough for the Gaussian distribution of *histogra
 
 ![Chosing Nmax](https://lordcephei.github.io/assets/img/histogram-cut.png)
 
+![Weird Sigma](https://lordcephei.github.io/assets/img/sig-cut.png)
+
 **Note:** the value of **beta** affects the number **Nmax**, so calculations on the same material at different temperatures will require different **Nmax**. At low **beta**, the Gaussian distribution is sharper and centered on lower order terms, as shown below. Therefore lower **Nmax** correspond to lower **beta**. 
 
 ![beta and Nmax](https://lordcephei.github.io/assets/img/beta-histogram.png)
