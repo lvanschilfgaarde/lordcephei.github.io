@@ -83,6 +83,8 @@
         url: "/dmft3/"
       - title: "The density loop"
         url: "/dmft4/"
+      - title: "The maximum entropy method"
+        url: "/maxent/" 
     - name: "Miscellaneous"
       content:
       - title: "Installation"
