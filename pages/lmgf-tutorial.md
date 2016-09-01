@@ -344,10 +344,14 @@ Look into **ctrl.copt**{: style="color: green"}. Two lines are important here:
     % const gfmode=1 c3=t
     GF      MODE={gfmode} GFOPTS={?~c3~p3;~p2;}
 
-**MODE={gfmode}** means that you can define MODE in the command line by adding **-vgfmode=10**; if you don't it equals 1 (from _const gfmode=1_). In the previous example we used **MODE=1** now we'll need **MODE=10** that invokes a special branch computing magnetic exchange interactions using a linear response technique. 
+**MODE={gfmode}** means that you can define MODE in the command line by adding **-vgfmode=1/10/11/26**; if you don't it equals to 1 (from _const gfmode=1_). In the previous example we used **MODE=1** now we'll need **MODE=10** that invokes a special branch computing magnetic exchange interactions using a linear response technique. 
 
 The Heisenberg model is an empirical model that postulates a set of interacting rigid local spins. The Hamiltonian is 
 
 $$H = − \sum_{RR'} J_{RR'} S_RS_{R'}$$
 
 The $$J_{RR'}$$ are called "Heisenberg exchange parameters". The Heisenberg applies to a system of rigid spins undergoing small excursions about equilibrium. R and R' are any pair sites and $$J_{RR'}$$ is a kind of magnetic analog to the dynamical matrix describing small oscillations of nuclei around their equilibrium point. In a crystal with periodic boundary conditions $$J_{RR'}$$ can be Bloch transformed to read:
+
+$$J_{RR'}(q) = \sum_T \exp(iqT) J_{R+T,R'}$$, where R and R' are now confined to sites within a unit cell.
+
+**lmgf**{: style="color: blue"} calculates J_{RR'}(q) from the "Lichtenstein formula." This famous expression ([J. Magn. Magn. Mater. 67, 65 (1987)](http://www.sciencedirect.com/science/article/pii/0304885387907219)), closely related the static transverse magnetic susceptibility $$\chi^{+−}$$, is derived from density functional perturbation theory. It establishes a first-principles basis for the Heisenberg model. One elegant (though approximate) feature of the ASA is that the magnetization is everywhere associated with an atomic sphere. For local moment systems, the magnetization is well confined inside a sphere; thus associated with every site R there is a well defined local moment. If sufficiently localized it rotates rigidly under the influence of an external perturbation.  
