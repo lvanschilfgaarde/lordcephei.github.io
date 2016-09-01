@@ -43,3 +43,23 @@ For energy-integrated properties, a very fine energy mesh would be required if t
 To integrate quantities over occupied states, integration to the Fermi level $$E_F$$ is required. EF is not known but must be fixed by charge neutrality. Thus $$E_F$$ must be guessed at and iteratively refined until the charge neutrality condition is satisfied. **lmgf**{: style="color: blue"} does not vary $$E_F$$; the user specifies it at the outset. Instead **lmgf**{: style="color: blue"} looks for a constant potential shift that satisfies charge neutrality; this must be searched for iteratively. Both the potential shift and $$E_F$$ are maintained in a file **vshft.ext**{: style="color: green"}. Inspection of **vshft.ext**{: style="color: green"} may look unecessarily complicated; it's because you can use the file to add site-dependent shifts. **vshft.ext**{: style="color: green"} is also used by the layer Green's function code **lmpg**{: style="color: blue"}, which requires extra information about shifts on the left and right leads.
 
 Metals and nonmetals are distinguished in that in the latter case, there is no DOS in the gap and therefore the Fermi level (or potential shift) cannot be specified precisely. 
+
+**Metal case** (set by **BZ_METAL=1**): once the k- and energy-points are summed over and the deviation from charge neutrality is determined, the code will attempt to find the potential shift that fixes charge neutrality. It does this in one of two ways:
+
++ Using a Pade approximant, **lmgf**{: style="color: blue"} interpolates the diagonal elements of G. The interpolation is used to evaluate the GF on the starting elliptical contour shifted rigidly by a constant, and the shift is iterated until the charge-neutrality condition is satisfied. At this stage, there are two possibilities:
+
+  1\. repeat the integration of G over k and the energy contour with the constant shift added to the potential.
+  2\. Assume that the Pade-approximant to the diagonal G is a sufficiently good estimate for the actual G. 
+  
+If the potential shift is larger than a user-specifed tolerance (see padtol in **GF_GFOPTS** below), option 1 is taken and the Pade shift re-evaluated. A new Pade estimate is made for the potential shift requiring charge neutrality, and it is tested once against the user-specified tolerance.
+
+When the shift falls below the tolerance, option 2 is taken and **lmgf**{: style="color: blue"} proceeds to the next step. The user is advised to monitor these shifts and the deviation from charge neutrality.
+
++ The charge is integrated in a contour near the real axis subsequent to the elliptical contour. In this mode, the determination of the potential shift is accomplished by continuing the integration contour on the real axis starting from the originally estimated Fermi level. A trapezoidal rule is used (or Simpson's rule using a Pade approximate for the midpoint), and new energy points are computed and integrals accumulated until charge neutrality is found. There is no iterative scheme as with the Pade approximation. This option tends to be a little less accurate than the Pade, but somewhat more stable as it is less susceptible to interpolation errors.
+
+One last comment about the METAL case: by default the program will save the potential shift to use in the next iteration. You can suppress this save (see frzvc below), which again can be less accurate, but more stable. In particular if you are working with an insulator where stability can be an issue (determination of the Fermi level is somewhat ill conditioned), a stable procedure is to use this option together with second energy integration scheme described above (the integration contour on the real axis).
+
+**Nonmetal case** (set by **BZ METAL=0**): **lmgf**{: style="color: blue"} will not attempt to shift the potential, or ensure charge neutrality. The user is cautioned to to pay rather closer attention to deviations from charge neutrality. It can happen because of numerical integration errors, or because your assumed Fermi level does not fall within the gap. You can use **METAL=1** even if the material is a nonmetal. 
+
+##### _Some Details concerning how lmgf works internally_
+_____________________________________________________________
