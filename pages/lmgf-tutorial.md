@@ -265,7 +265,7 @@ We are now ready for a self-consistent calculation. **Do**:
 ##### _3\. The Green's function program lmgf_
 _____________________________________________________________
 
-###### _a) Finding $$E_F$$_{: style="color: orange"}
+###### _a) Finding $$E_F$$_
 
 If **GF_MODE=1**, **lmgf**{: style="color: blue"} will generate the $$Q_{0..2,{\bf R}l}$$ for whatever $$E_F$$ you give it. However there is only one physically meaningful $$E_F$$ -- the one that satifies charge neutrality. The input file is constructed so you can supply $$E_F$$ through command-line argument **-vef=expr**{: style="color: green"}: the preprocessor evaluates  ef  from  expr, substitutes it for  {ef}  in the input file (**see preprocessor documentation**{: style="color: red"}). We're going to use the one obtained by running **lm**{: style="color: blue"} (see above).
 
@@ -330,7 +330,7 @@ to prevent **lmgf**{: style="color: blue"} from continuing its self-consistency 
 
 To confirm that this is the correct  ef, repeat the interactive **lmgf**{: style="color: blue"} calculation with  -vef=-0.1289. 
 
-##### _4\. Magnetic Exchange Interactions_
+####### _b) Magnetic Exchange Interactions_
 _____________________________________________________________
 
 As we mentioned before **lmgf**{: style="color: blue"} requires a GF-specific category (look into the **ctrl.copt**{: style="color: green"}).
