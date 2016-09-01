@@ -21,7 +21,7 @@ This file is one of the input files read by the CTQMC sovler.
 The variables contained in this file define the kind of calculation, allowing for a tuning of the Quantum Monte Carlo algorithm and details on how to treat the connection between the low-energy and the high-energy part of the self-energy. 
 An example of the PARAMS file is reported in the [first tutorial](https://lordcephei.github.io/dmft1) (box-like botton). 
 
-<div onclick="elm = document.getElementById('ParamsDmft1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">More details - Click to show.</button></div> {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="ParamsDmft1">{:/}
+[//]: # <div onclick="elm = document.getElementById('ParamsDmft1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">More details - Click to show.</button></div> {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="ParamsDmft1">{:/}
 
 ##### _**Basic parameters (U, J, nf0 and beta)**_
 Among the possible parameters are **U** and **J** defining respectively the Hubbard in-site interaction and the Hund's coupling constant in eV. 
@@ -39,6 +39,8 @@ Let $$N$$ be the total number of Matsubara's frequencies. This number has been d
 Excessively low values of **nom** will miss important features of the self-energy (e.g. a convex point in $$\text{Im}[\Sigma(i\omega_n)]$$), while too high values will give excessively noisy results.
 As a rule-of-thumb, a good initial guess is **nom** $$\approx 3$$ **beta**, to be adjusted.
 Some examples of how the $$\text{Im}[\Sigma(i\omega_n)]$$ looks like at different values of **nom** are given in the figures below.
+
+![Setting nom](https://lordcephei.github.io/assets/img/sig-nom.png)
 
 Add explanation of **nomD** (used only with HB2).
 
@@ -80,7 +82,7 @@ The potential **mu** is set as the first entry of the **Ed** variable with inver
 
 Actually the information about the impurity levels is already contained in the input file *actqmc.cix* (output of **atom_d.py**) but they are shifted by **mu**. So if **Ed** is probably ignored in the PARAMS file, **mu** must be correctly  defined.   
 
-{::nomarkdown}</div>{:/}
+[//]: # {::nomarkdown}</div>{:/}
 
 ### Phase transition boundaries
 It may happen that, despite the high number of QMC steps, the *histogram.dat* file displays a double peak distribution simiar to the sum of two Gaussians. This is the case when the material is close to a phase transition.
