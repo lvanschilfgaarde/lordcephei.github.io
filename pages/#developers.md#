@@ -21,9 +21,9 @@ There have been many contributors;  a partial list is provided below:
 #### *Questaal Developers*
 _________________________
 
-[Athanasios Chantis]() *(LANL)*
+[Athanasios Chantis]() *(Formulation of the Dirac equation into the ASA package, for studying transport)*
 
-[Alena Vishina]()
+[Alena Vishina]() (Self-consistent fully relativistic Dirac equation; relativistic linear response)
 
 [Ben Kaube]()
 
