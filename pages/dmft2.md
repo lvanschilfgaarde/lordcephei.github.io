@@ -11,9 +11,9 @@ The aim of this tutorial is to give some indications on how to set the parameter
 We will give some examples of how the output should look like and, more importantly, how it shouldn't.
 
 The basic input files for the CTQMC solver are the *PARAMS* file, the *actqmc.cix* file, the *Delta.inp*, the *Eimp.inp* and finally the *status* files.
-Below there is a section for each of these files. 
+A description of how to set the relevant parameters of the *PARAMS* file is given below. You are not supposed to edit the other files, so we don't give an explanation of them here. 
 
-Among the output files, the more important ones are *Sig.out*, *Gf.out* and *histogram.dat*.
+Among the output files, the more important ones are *Sig.out* and *histogram.dat*.
 
 ### The PARAMS file 
 This file is one of the input files read by the CTQMC sovler.
