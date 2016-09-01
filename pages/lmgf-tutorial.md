@@ -379,3 +379,20 @@ to see:
     % rows 64 cols 8 real  rs  ib=1  jb=1
     % rows 64 cols 8 real  rs  ib=1  jb=2
      ...
+
+ach array has 64×8 entries, for T vectors derived from 8×8×8 k-points (the 3D array is stored in a 2D format). **lmgf**{: style="color: blue"} unpacks these ($$GF_MODE=11$$) and prints them out in a sequence of tables, e.g. this one coupling all pairs of atoms belong to sites 2 and 3 in the unit cell. Pairs are ordered by separation distance d. Interactions fall off rapidly with d, and oscillate around 0, as might be expected from RKKY theory. Then follow estimates for the critical temperature $$T_c$$. $$T_c$$ is estimated in Weiss mean-field theory, and also according to a spin-waves theory by Tyablikov (sometimes called the "RPA"). Mean-field tends to overestimate $$T_c$$; RPA tends to be a little more accurate but tends to underestimate it. From these two estimates $$T_c$$ should be around 1000K (see the $$GF_MODE=11$$ output).
+
+Next follows an estimate for the spin wave stiffness. We have a symmetry lines file, let's copy it from **/lm/startup/**{: style="color: green"} (make sure you have the correct path there):
+
+    cp startup/syml.sc syml.copt
+
+**lmgf**{: style="color: blue"} reads this file and calculates the spin wave spectrum from the Heisenberg model, along the lines specified. Results are saved in **bnds.copt**{: style="color: green"} (the energy scale is now mRy). So let's **run** **MODE=11** again to get it:
+
+    lmgf -vgfmode=11 ctrl.copt -vef=-.1289
+
+Plot magnon spectra using the same technology you use for plotting energy bands. If you have the plbnds and fplot packages installed:
+
+    echo 0 350 5 10 | plbnds -scl=13.6 -fplot -lbl=X,G,M,R,G bnds.copt
+    fplot -f plot.plbnds
+
+Rename this file to some-name.ps and use your favorite postscript reader to view it. You should see something close to what is shown in the Figure. Magnon energies are in meV. 
