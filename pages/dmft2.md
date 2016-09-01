@@ -21,15 +21,13 @@ This file is one of the input files read by the CTQMC sovler.
 The variables contained in this file define the kind of calculation, allowing for a tuning of the Quantum Monte Carlo algorithm and details on how to treat the connection between the low-energy and the high-energy part of the self-energy. 
 An example of the PARAMS file is reported in the [first tutorial](https://lordcephei.github.io/dmft1) (box-like botton). 
 
-##### Basic parameters (**U**, **J**, **nf0** and **beta**)
+##### _**Basic parameters (U, J, nf0 and beta)**_
 Among the possible parameters are **U** and **J** defining respectively the Hubbard in-site interaction and the Hund's coupling constant in eV. 
-**Note:** The same **J** has also to be passed to **atom_d.py*.
-
-The variable **nf0** is the nominal occupancy of the correlated orbitals (e.g. **nf0 9** for $$Cu$$).  
-
+**Note:** The same **J** has also to be passed to **atom_d.py**.
+The variable **nf0** is the nominal occupancy of the correlated orbitals (e.g. **nf0    9** for $$Cu$$).  
 Finally **beta** fixes the inverse temperature in eV$$^{-1}$$.
 
-##### Setting the number of frequencies sampled (**nom** and **nomD**)
+##### _**Setting the number of frequencies sampled (nom and nomD)**_
 The CTQMC gives a very accurate description of the self-energy in the low frequency range (for Matsubara's frequencies close to 0), but it becomes too noisy at high frequencies.
 
 Let $$N$$ be the total number of Matsubara's frequencies. This number is defined through **NOMEGA** in the *ctrl.* file during the **lmfdmft** run. Only the first **nom** frequencies are actually sampled by the CTQMC solver, while the other points (high-frequency range) are obtained through the approximated Hubbard 1 solver.
@@ -40,7 +38,7 @@ Some example of how the $$\text{Im}[\Sigma(i\omega_n)]$$ should look like is giv
 
 Add explanation of **nomD** (used only with HB2).
 
-##### Setting the number of Monte Carlo steps (**M** and **warmup**)
+##### _**Setting the number of Monte Carlo steps (M and warmup)**_
 The higher is the number of Monte Carlo steps, the lower the noise in the QMC calculation. 
 The parameter **M** defines the number of MC steps per core. 
 Reliable calculations easily require at least 500 millions of steps in total.
@@ -52,16 +50,20 @@ You can judge the quality of your sampling by looking at the file *histogranm.da
 During the first **warmup** steps results are not accumulated, as it is normal on Monte Carlo procedures.
 You can set **warmup**=**M**/1000. 
 
-##### Setting the cutoff expansion order (**Nmax**)
+##### _**Setting the cutoff expansion order (Nmax)**_
 The variable **Nmax** defines the highest order accounted for in the hybrdization expansion. 
 If you have chosen an excessively low values of **Nmax**, the *histogram.dat* file will be cut and $$\text{Im}[\Sigma(i\omega_n)]$$ will look weird. 
 
 You should chose **Nmax** high enough for the Gaussian distribution of *histogram.dat* to be comfortably displayed. However note that the higher **Nmax** the longer the calculation, so stop at values just above the Guassian.
 See figures for some examples.
 
-**Note:** the value of **beta** affects the number **Nmax**, so calculations on the same material at different temperatures will require different **Nmax**.
+**Note:** the value of **beta** affects the number **Nmax**, so calculations on the same material at different temperatures will require different **Nmax**. At low **beta**, the Gaussian distribution is sharper and centered on lower order terms. So lower **Nmax** are required. 
+See the figure for an example.
 
-##### Other varaibles of the PARAMS file
+##### _**Connecting the tail (sderiv and aom)**_
+The connection between the QMC part and the Hubbard 1 part is done with a straight line starting at frequency number (**nom+1**) and running until it intersect the Hubbard 1 self-energy.
+You can see it by comparing the *Sig.out* file with the *s_hb1.dat* (Hubbrad 1 only).
+The two variables controlling the connection are **sderiv**, which is related to the angle of the straight line, and **aom** related to its starting point.
 
 ### Phase transition boundaries
  
