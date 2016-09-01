@@ -403,4 +403,3 @@ Magnon energies are in meV.
 
 _Note:  The 8×8×8 mesh is a bit coarse. Use a finer k mesh for a smoother and more accurate magnon spectrum._ 
 
-t
