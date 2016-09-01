@@ -22,7 +22,8 @@ The variables contained in this file define the kind of calculation, allowing fo
 An example of the PARAMS file is reported in the [first tutorial](https://lordcephei.github.io/dmft1) (box-like botton). 
 
 
-<div onclick="elm = document.getElementById('ParamsDmft1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">More details - Click to show.</button></div> {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="ParamsDmft1">{:/}
+<div onclick="elm = document.getElementById('ParamsDmft1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">More details - Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="ParamsDmft1">{:/}
 
 ##### _**Basic parameters (U, J, nf0 and beta)**_
 Among the possible parameters are **U** and **J** defining respectively the Hubbard in-site interaction and the Hund's coupling constant in eV. 
@@ -91,7 +92,8 @@ It may happen that, despite the high number of QMC steps, the *histogram.dat* fi
 In this case usually one or more channels of the self-energy are very noisy. One has to run for longer time, or use the status files to restart the calculation many times until only one peaks dominate and the histogram looks like a Gaussian. 
 An example is given in the boxes below.
 
-<div onclick="elm = document.getElementById('ParamsDmft1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Examples of plots - Click to show.</button></div> {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="ParamsDmft1">{:/}
+<div onclick="elm = document.getElementById('ParamsDmft1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Examples of plots - Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="ParamsDmft1">{:/}
 
 ![histogram close to transition](https://lordcephei.github.io/assets/img/transition-histo.png)
 
