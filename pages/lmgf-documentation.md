@@ -49,11 +49,12 @@ Metals and nonmetals are distinguished in that in the latter case, there is no D
 + Using a Pade approximant, **lmgf**{: style="color: blue"} interpolates the diagonal elements of G. The interpolation is used to evaluate the GF on the starting elliptical contour shifted rigidly by a constant, and the shift is iterated until the charge-neutrality condition is satisfied. At this stage, there are two possibilities:
 
   1\. repeat the integration of G over k and the energy contour with the constant shift added to the potential.
-  2\. Assume that the Pade-approximant to the diagonal G is a sufficiently good estimate for the actual G. 
   
-If the potential shift is larger than a user-specifed tolerance (see padtol in **GF_GFOPTS** below), option 1 is taken and the Pade shift re-evaluated. A new Pade estimate is made for the potential shift requiring charge neutrality, and it is tested once against the user-specified tolerance.
-
-When the shift falls below the tolerance, option 2 is taken and **lmgf**{: style="color: blue"} proceeds to the next step. The user is advised to monitor these shifts and the deviation from charge neutrality.
+  2\. Assume that the Pade-approximant to the diagonal G is a sufficiently good estimate for the actual G.
+  
+  If the potential shift is larger than a user-specifed tolerance (see padtol in **GF_GFOPTS** below), option 1 is taken and the Pade shift re-evaluated. A new Pade estimate is made for the potential shift requiring charge neutrality, and it is tested once against the user-specified tolerance.
+  
+  When the shift falls below the tolerance, option 2 is taken and **lmgf**{: style="color: blue"} proceeds to the next step. The user is advised to monitor these shifts and the deviation from charge neutrality.
 
 + The charge is integrated in a contour near the real axis subsequent to the elliptical contour. In this mode, the determination of the potential shift is accomplished by continuing the integration contour on the real axis starting from the originally estimated Fermi level. A trapezoidal rule is used (or Simpson's rule using a Pade approximate for the midpoint), and new energy points are computed and integrals accumulated until charge neutrality is found. There is no iterative scheme as with the Pade approximation. This option tends to be a little less accurate than the Pade, but somewhat more stable as it is less susceptible to interpolation errors.
 
