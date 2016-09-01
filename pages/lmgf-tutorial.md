@@ -330,7 +330,7 @@ to prevent **lmgf**{: style="color: blue"} from continuing its self-consistency 
 
 To confirm that this is the correct  ef, repeat the interactive **lmgf**{: style="color: blue"} calculation with  -vef=-0.1289. 
 
-####### _b) Magnetic Exchange Interactions_
+###### _b) Magnetic Exchange Interactions_
 _____________________________________________________________
 
 As we mentioned before **lmgf**{: style="color: blue"} requires a GF-specific category (look into the **ctrl.copt**{: style="color: green"}).
