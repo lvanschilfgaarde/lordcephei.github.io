@@ -86,10 +86,14 @@ It may happen that, despite the high number of QMC steps, the *histogram.dat* fi
 In this case usually one or more channels of the self-energy are very noisy. One has to run for longer time, or use the status files to restart the calculation many times until only one peaks dominate and the histogram looks like a Gaussian. 
 An example is given in the boxes below.
 
+<div onclick="elm = document.getElementById('ParamsDmft1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Example of plots - Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="ParamsDmft1">{:/}
+
 ![histogram close to transition](https://lordcephei.github.io/assets/img/transition-histo.png)
 
 ![sigma close to transition](https://lordcephei.github.io/assets/img/transition-sigma.png)
 
+{::nomarkdown}</div>{:/}
 
 ### Using status files
 During the calculation, each core generates a *status* file.
