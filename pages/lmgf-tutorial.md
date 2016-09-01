@@ -404,3 +404,5 @@ And here is a referenced ![Figure 1]
 [Figure]: https://github.com/lordcephei/lordcephei.github.io/blob/master/images/magnon.png
 
 Test
+
+And here is a referenced ![Figure]
