@@ -84,14 +84,19 @@ Actually the information about the impurity levels is already contained in the i
 {::nomarkdown}</div>{:/}
 
 ### Phase transition boundaries
-It may happen that, despite the high number of QMC steps, the *histogram.dat* file displays a double peak distribution like the sum of two Gaussians.
-This is the case when the material is close to a phase transition and the calculation has to be repeated several time in order to make one of the two peaks (phase) dominate. 
-Usually this is accompained by an extremely noise self-energy in one or more channels. 
-An example is given in the figures below.
+It may happen that, despite the high number of QMC steps, the *histogram.dat* file displays a double peak distribution simiar to the sum of two Gaussians. This is the case when the material is close to a phase transition.
+
+In this case usually one or more channels of the self-energy are very noisy. One has to run for longer time, or use the status files to restart the calculation many times until only one peaks dominate and the histogram looks like a Gaussian. 
+An example is given in the boxes below.
+
+<div onclick="elm = document.getElementById('ParamsDmft1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Examples of plots - Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="ParamsDmft1">{:/}
 
 ![histogram close to transition](https://lordcephei.github.io/assets/img/transition-histo.png)
 
 ![sigma close to transition](https://lordcephei.github.io/assets/img/transition-sigma.png)
+
+{::nomarkdown}</div>{:/}
 
 ### Using status files
 The
