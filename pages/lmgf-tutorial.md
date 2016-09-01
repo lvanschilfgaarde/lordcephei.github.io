@@ -396,3 +396,5 @@ You can plot magnon spectra using the same technology you use for plotting energ
     fplot -f plot.plbnds
 
 Rename this file to **some-name.ps**{: style="color: green"} and use your favorite postscript reader to view it. You should see something close to what is shown in the Figure. Magnon energies are in meV. 
+
+_Note  The 8×8×8 mesh is a bit coarse. Use a finer k mesh for a smoother and more accurate magnon spectrum._ 
