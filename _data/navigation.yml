@@ -40,6 +40,11 @@
       content:
       - title: "Full Potential Overview"
         url: "/overview/"
+    - name: "lmgf"
+      prefix: "/lmgf"
+      content:
+      - title: "lmgf documentation"
+        url: "/lmgf-documentation/"
 
 - title: "Tutorials"
   url: ""
