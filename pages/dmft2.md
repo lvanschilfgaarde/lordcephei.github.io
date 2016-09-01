@@ -24,7 +24,6 @@ An example of the PARAMS file is reported in the [first tutorial](https://lordce
 
 <div onclick="elm = document.getElementById('ParamsDmft1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">More details - Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="ParamsDmft1">{:/}
-
 ##### _**Basic parameters (U, J, nf0 and beta)**_
 Among the possible parameters are **U** and **J** defining respectively the Hubbard in-site interaction and the Hund's coupling constant in eV. 
 **Note:** The same **J** has also to be passed to **atom_d.py**.
@@ -94,7 +93,6 @@ An example is given in the boxes below.
 
 <div onclick="elm = document.getElementById('ParamsDmft1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Examples of plots - Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="ParamsDmft1">{:/}
-
 ![histogram close to transition](https://lordcephei.github.io/assets/img/transition-histo.png)
 
 ![sigma close to transition](https://lordcephei.github.io/assets/img/transition-sigma.png)
