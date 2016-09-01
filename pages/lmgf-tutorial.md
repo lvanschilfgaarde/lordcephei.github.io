@@ -366,7 +366,16 @@ Results are saved in file **jr.copt**{: style="color: green"} (see below).
 
 Most of the analysis is done in the next step, but already the output from **gfmode=10** contains some useful information. In the first of this pair of tables you see **J_0** and **2/3 J_0**. J_0 is the net Weiss magnetic field from the surrounding neighbors; 2/3 J_0 would be the (classical) mean-field estimate for the critical temperature $$T_c$$ if there were one atom/cell. Since the Pt moment is very small it is weakly magnetic and has little effect on $$T_c$$. In the second table (**J_0 resolved by L**) J_0 is decomposed into lm contributions. As expected, the contributions to J_0 originates almost entirely from the d states.
 
-Now if you run **lmgf**{: style="color: blue"} with **GF_MODE=11**, it reads **jr.copt**{: style="color: green"} and does some analysis with the parameters. Invoke **lmgf**{: style="color: blue"} with
+Now if you run **lmgf**{: style="color: blue"} with **GF_MODE=11**, it reads **jr.copt**{: style="color: green"} (which means you have to run **MODE=10** first) and does some analysis with the parameters. **Invoke** **lmgf**{: style="color: blue"} with
 
     lmgf -vgfmode=11 ctrl.copt -vef=-.1289
 
+A unit cell of N sites has $$N^2$$ pairs. Thus **jr.copt**{: style="color: green"} holds a succession of $$N^2$$ tables of J, one array for each RR' pair in the unit cell. Each array has $$n_1n_2n_3$$ exchange parameters, corresponding to the lattice translation vectors that follow from the Fast Fourier Transform of a k mesh of $$n_1n_2n_3$$ points. You can find the headers for each array (headers follow a standard format this package uses) by doing, e.g.  
+
+    grep rows jr.copt
+
+to see:
+
+    % rows 64 cols 8 real  rs  ib=1  jb=1
+    % rows 64 cols 8 real  rs  ib=1  jb=2
+     ...
