@@ -24,17 +24,19 @@ An example of the PARAMS file is reported in the [first tutorial](https://lordce
 ##### _**Basic parameters (U, J, nf0 and beta)**_
 Among the possible parameters are **U** and **J** defining respectively the Hubbard in-site interaction and the Hund's coupling constant in eV. 
 **Note:** The same **J** has also to be passed to **atom_d.py**.
+
 The variable **nf0** is the nominal occupancy of the correlated orbitals (e.g. **nf0    9** for $$Cu$$).  
+
 Finally **beta** fixes the inverse temperature in eV$$^{-1}$$.
 
-##### _**Setting the number of frequencies sampled (nom and nomD)**_
-The CTQMC gives a very accurate description of the self-energy in the low frequency range (for Matsubara's frequencies close to 0), but it becomes too noisy at high frequencies.
+##### _**Setting the number of sampled frequencies (nom and nomD)**_
+The CTQMC solver gives a very accurate description of the self-energy in the low frequency range (for Matsubara's frequencies close to 0), but it becomes too noisy at high frequencies.
 
-Let $$N$$ be the total number of Matsubara's frequencies. This number is defined through **NOMEGA** in the *ctrl.* file during the **lmfdmft** run. Only the first **nom** frequencies are actually sampled by the CTQMC solver, while the other points (high-frequency range) are obtained through the approximated Hubbard 1 solver.
+Let $$N$$ be the total number of Matsubara's frequencies. This number has been defined through **NOMEGA** in the *ctrl* file during the **lmfdmft** run. Only the first **nom** frequencies are actually sampled by the CTQMC solver, while the other points (high-frequency range) are obtained through the approximated Hubbard 1 solver (high-frequency tail).
 
-Too low values of **nom** will not be able to get the important features of the self-energy (e.g. a convex point in $$\text{Im}[\Sigma(i\omega_n)]$$) while too high values will be excessively noisy.
-As a rule-of-thumb a good guess is **nom**$$\approx 3$$**beta** to be adjusted.
-Some example of how the $$\text{Im}[\Sigma(i\omega_n)]$$ should look like is given in the three figures below.
+Excessively low values of **nom** will miss important features of the self-energy (e.g. a convex point in $$\text{Im}[\Sigma(i\omega_n)]$$), while too high values will give excessively noisy results.
+As a rule-of-thumb, a good initial guess is **nom** $$\approx 3$$ **beta**, to be adjusted.
+Some examples of how the $$\text{Im}[\Sigma(i\omega_n)]$$ looks like at different values of **nom** are given in the figures below.
 
 Add explanation of **nomD** (used only with HB2).
 
@@ -45,25 +47,30 @@ Reliable calculations easily require at least 500 millions of steps in total.
 For instance, if you're running on 10 cores, you can set **M   50000000**.
 You can judge the quality of your sampling by looking at the file *histogranm.dat*. The closer it looks to a Gaussian distribution, the better is the sampling.
 
-**Note:** The variable **M** should be set keeping in mind that the high it is, the longer the calculation. This is very important when running on public clusters, where the elapsed time is computed per core. Too high values of **M** may consume your accounted hours very quickly!
+**Note:** The variable **M** should be set keeping in mind that the higher it is, the longer the calculation. This is crucial when running on public clusters, where the elapsed time is computed per core. Too high values of **M** may consume your accounted hours very quickly!
 
-During the first **warmup** steps results are not accumulated, as it is normal on Monte Carlo procedures.
+During the first **warmup** steps results are not accumulated, as it is normal on Monte Carlo procedures. This gives the 'time' to the algorithm to thermalise before the significative sampling.
 You can set **warmup**=**M**/1000. 
 
 ##### _**Setting the cutoff expansion order (Nmax)**_
 The variable **Nmax** defines the highest order accounted for in the hybrdization expansion. 
-If you have chosen an excessively low values of **Nmax**, the *histogram.dat* file will be cut and $$\text{Im}[\Sigma(i\omega_n)]$$ will look weird. 
+If you have chosen an excessively low values of **Nmax**, the *histogram.dat* file will be cut and $$\text{Im}[\Sigma(i\omega_n)]$$ will look weird, as shown below.
 
-You should chose **Nmax** high enough for the Gaussian distribution of *histogram.dat* to be comfortably displayed. However note that the higher **Nmax** the longer the calculation, so stop at values just above the Guassian.
-See figures for some examples.
+You should chose **Nmax** high enough for the Gaussian distribution of *histogram.dat* to be comfortably displayed. However note that the higher **Nmax** the longer the calculation, so chose values just above the higher Guassian tail.
 
-**Note:** the value of **beta** affects the number **Nmax**, so calculations on the same material at different temperatures will require different **Nmax**. At low **beta**, the Gaussian distribution is sharper and centered on lower order terms. So lower **Nmax** are required. 
-See the figure for an example.
+**Note:** the value of **beta** affects the number **Nmax**, so calculations on the same material at different temperatures will require different **Nmax**. At low **beta**, the Gaussian distribution is sharper and centered on lower order terms, as shown below. Therefore lower **Nmax** correspond to lower **beta**. 
 
 ##### _**Connecting the tail (sderiv and aom)**_
 The connection between the QMC part and the Hubbard 1 part is done with a straight line starting at frequency number (**nom+1**) and running until it intersect the Hubbard 1 self-energy.
 You can see it by comparing the *Sig.out* file with the *s_hb1.dat* (Hubbrad 1 only).
 The two variables controlling the connection are **sderiv**, which is related to the angle of the straight line, and **aom** related to its starting point.
+
+##### _**Impurity levels (Ed and mu)**_
+The impurity levels as reported at the fourth line of *Eimp.inp* enters in the PARAMS as **Ed**. 
+
+The potential **mu** is set as the first entry of the **Ed** variable with inverse sign. 
+
+Actually the information about the impurity levels is already contained in the input file *actqmc.cix* (output of **atom_d.py**) but they are shifted by **mu**. So if **Ed** is probably ignored in the PARAMS file, **mu** must be correctly  defined.   
 
 ### Phase transition boundaries
  
