@@ -40,6 +40,11 @@
       content:
       - title: "Full Potential Overview"
         url: "/overview/"
+    - name: "lmgf"
+      prefix: "/lmgf"
+      content:
+      - title: "lmgf documentation"
+        url: "/lmgf-documentation/"
 
 - title: "Tutorials"
   url: ""
@@ -63,14 +68,30 @@
         url: "/lmf_mulliken/"
     - name: "lm"
       content:
-      - title: "ASA tutorial"
+      - title: "ASA Tutorial"
         url: "/asadoc/"
       - title: "Basic GW Tutorial"
         url: "/lmtut/"
+      - title: "LMGF Tutorial"
+        url: "/lmgf-tutorial/"
     - name: "qsgw"
       content:
       - title: "QSGW Tutorial"
         url: "/qsgw_tutorial/"
+    - name: "qsgw + dmft"
+      content:
+      - title: "Introduction"
+        url: "/dmft0/"
+      - title: "The DMFT loop"
+        url: "/dmft1/"
+      - title: "Set up and errors"
+        url: "/dmft2/"
+      - title: "Static self-energy loop"
+        url: "/dmft3/"
+      - title: "The density loop"
+        url: "/dmft4/"
+      - title: "The maximum entropy method"
+        url: "/maxent1/" 
     - name: "Miscellaneous"
       content:
       - title: "Installation"

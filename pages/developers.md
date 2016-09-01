@@ -33,6 +33,8 @@ _________________________
 
 [Liqin Ke]()
 
+[Lorenzo Sponza](https://scholar.google.sk/citations?user=vtDqbNQAAAAJ&hl=en) *(King's College London, U.K.)*
+
 [Mark van Schilfgaarde](http://www.kcl.ac.uk/nms/depts/physics/people/academicstaff/van-Schilfgaarde-.aspx) *(King’s College London, U.K.)*
 
 [Michael Methfessel]() *(IHP, Germany)*
