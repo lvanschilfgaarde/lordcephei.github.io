@@ -64,3 +64,5 @@ One last comment about the METAL case: by default the program will save the pote
 
 ##### _Some Details concerning how lmgf works internally_
 _____________________________________________________________
+
+For each energy point, the BZ integration is accomplished by routine in **gf/gfibz.f**{: style="color: green"}, which loops over all irreducible points, generating the "scattering path operator" g and the corresponding g for all the points in the star of k to generate a properly symmetrized g. Within the ASA, second-generation LMTO, g is converted to proper Green's function G, corresponding to the orthogonal gamma representation by an energy scaling. The scaling is carried out in routine **gf/gfg2g.f**{: style="color: green"}. Next the various integrated quantities sought are assembled (done by **gf/gfidos.f**{: style="color: green"}). The potential shift to satisfy charge neutrality is found, and stored in **vshft.ext**{: style="color: green"}. The I/O is handled by routine **subs/iovshf.f**{: style="color: green"}.
