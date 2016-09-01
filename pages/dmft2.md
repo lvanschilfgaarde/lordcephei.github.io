@@ -101,9 +101,13 @@ An example is given in the boxes below.
 During the calculation, each core generates a *status* file.
 They contain some information about the sampling and should be used as restart files for other CTQMC calculations with similar parameters. They are read authomatically if they are in the folder where **ctqmc** is running.
 
+<div onclick="elm = document.getElementById('ParamsDmft1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">More details - Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="ParamsDmft1">{:/}
+
 They can be used basically in two ways.
 + If you are performing iteration N, you can copy the *status* files from iteration N-1 to speed up the convergence of the calculation. 
 + If you realise that in one ctqmc run, you haven't achieved a good sampling (e.g. **M** too low, or close to phase transition), than you can run again the calculation.
 
 Since there is one *status* file per processor, you must pay attention to run on as many cores as *status* files you have. It should be safe to run with a smaller number of cores, while running on more cores than *status* files gives wrong results.
 
+{::nomarkdown}</div>{:/}
