@@ -382,19 +382,19 @@ to see:
 
 ach array has 64×8 entries, for T vectors derived from 8×8×8 k-points (the 3D array is stored in a 2D format). **lmgf**{: style="color: blue"} unpacks these (**GFMODE=11**) and prints them out in a sequence of tables, e.g. this one coupling all pairs of atoms belong to sites 2 and 3 in the unit cell. Pairs are ordered by separation distance d. Interactions fall off rapidly with d, and oscillate around 0, as might be expected from RKKY theory. Then follow estimates for the critical temperature $$T_c$$. $$T_c$$ is estimated in Weiss mean-field theory, and also according to a spin-waves theory by Tyablikov (sometimes called the "RPA"). Mean-field tends to overestimate $$T_c$$; RPA tends to be a little more accurate but tends to underestimate it. From these two estimates $$T_c$$ should be around 1000K (see the **GFMODE=11** output).
 
-Next follows an estimate for the spin wave stiffness. We have a symmetry lines file, let's copy it from **/lm/startup/**{: style="color: green"} (make sure you have the correct path there):
+Next follows an estimate for the spin wave stiffness. We need a symmetry lines file, let's copy it from **/lm/startup/**{: style="color: green"} (make sure you have the correct path there. The folder has symmetry files for different structures, e.g. **syml.fcc**{: style="color: green", **syml.hcp**{: style="color: green", etc):
 
     cp startup/syml.sc syml.copt
 
-**lmgf**{: style="color: blue"} reads this file and calculates the spin wave spectrum from the Heisenberg model, along the lines specified. Results are saved in **bnds.copt**{: style="color: green"} (the energy scale is now mRy). So let's **run** **GFMODE=11** again to get it:
+**lmgf**{: style="color: blue"} reads this file and calculates the spin wave spectrum from the Heisenberg model, along the lines specified. Results are saved in **bnds.copt**{: style="color: green"} (the energy scale is now mRy). So let's **run** **GFMODE=11** again to get it (now we have the symmetry lines file):
 
     lmgf -vgfmode=11 ctrl.copt -vef=-.1289
 
-You can plot magnon spectra using the same technology you use for plotting energy bands, see [ASA-tutorial](https://lordcephei.github.io/asa-doc/). If you have the **plbnds**{: style="color: blue"} and **fplot**{: style="color: blue"} packages installed:
+You can plot magnon spectra using the same technology you use for plotting energy bands, see [ASA-tutorial](https://lordcephei.github.io/asa-doc/). If you have the **plbnds**{: style="color: blue"} and **fplot**{: style="color: blue"} packages installed **do**:
 
     echo 0 350 5 10 | plbnds -scl=13.6 -fplot -lbl=X,G,M,R,G bnds.copt
     fplot -f plot.plbnds
 
-Rename this file to **some-name.ps**{: style="color: green"} and use your favorite postscript reader to view it. You should see something close to what is shown in the Figure. Magnon energies are in meV. 
+Now you have the **fplot.ps**{: style="color: green"} file with the spectra (you can rename this file to **some-name.ps**{: style="color: green"}) and use your favorite postscript reader to view it. You should see something close to what is shown in the Figure. Magnon energies are in meV. 
 
 _Note  The 8×8×8 mesh is a bit coarse. Use a finer k mesh for a smoother and more accurate magnon spectrum._ 
