@@ -68,7 +68,7 @@
       - title: "Basic GW Tutorial"
         url: "/lmtut/"
       - title: "LMGF Tutorial"
-        url: ""
+        url: "/lmgf-tutorial/"
     - name: "qsgw"
       content:
       - title: "QSGW Tutorial"
