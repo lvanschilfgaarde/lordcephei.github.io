@@ -344,7 +344,7 @@ Look into **ctrl.copt**{: style="color: green"}. Two lines are important here:
     % const gfmode=1 c3=t
     GF      MODE={gfmode} GFOPTS={?~c3~p3;~p2;}
 
-**MODE={gfmode}** means that you can define MODE in the command line by adding **-vgfmode=1/10/11/26**; if you don't it equals to 1 (from _const gfmode=1_). In the previous example we used **MODE=1** now we'll need **MODE=10** that invokes a special branch computing magnetic exchange interactions using a linear response technique. 
+**MODE={gfmode}** means that you can define MODE in the command line by adding **-vgfmode=1/10/11/26**; if you don't it will be set to 1 (from **const gfmode=1**). In the previous example we used **MODE=1** now we'll need **MODE=10** that invokes a special branch computing magnetic exchange interactions using a linear response technique. 
 
 The Heisenberg model is an empirical model that postulates a set of interacting rigid local spins. The Hamiltonian is 
 
@@ -363,3 +363,10 @@ $$J_{RR'}(q) = \sum_T \exp(iqT) J_{R+T,R'}$$, where R and R' are now confined to
     lmgf -vgfmode=10 ctrl.copt -vef=-.1289
 
 Results are saved in file **jr.copt**{: style="color: green"} (see below). 
+
+Most of the analysis is done in the next step, but already the output from **gfmode=10** contains some useful information. In the first of this pair of tables you see **J_0** and **2/3 J_0**. J_0 is the net Weiss magnetic field from the surrounding neighbors; 2/3 J_0 would be the (classical) mean-field estimate for the critical temperature $$T_c$$ if there were one atom/cell. Since the Pt moment is very small it is weakly magnetic and has little effect on $$T_c$$. In the second table (**J_0 resolved by L**) J_0 is decomposed into lm contributions. As expected, the contributions to J_0 originates almost entirely from the d states.
+
+Now if you run **lmgf**{: style="color: blue"} with **GF_MODE=11**, it reads **jr.copt**{: style="color: green"} and does some analysis with the parameters. Invoke **lmgf**{: style="color: blue"} with
+
+    lmgf -vgfmode=11 ctrl.copt -vef=-.1289
+
