@@ -84,5 +84,14 @@ Actually the information about the impurity levels is already contained in the i
 {::nomarkdown}</div>{:/}
 
 ### Phase transition boundaries
- 
+It may happen that, despite the high number of QMC steps, the *histogram.dat* file displays a double peak distribution like the sum of two Gaussians.
+This is the case when the material is close to a phase transition and the calculation has to be repeated several time in order to make one of the two peaks (phase) dominate. 
+Usually this is accompained by an extremely noise self-energy in one or more channels. 
+An example is given in the figures below.
+
+![histogram close to transition](https://lordcephei.github.io/assets/img/transition-histo.png)
+
+![sigma close to transition](https://lordcephei.github.io/assets/img/transition-sigma.png)
+
 ### Using status files
+The
