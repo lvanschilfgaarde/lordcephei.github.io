@@ -60,6 +60,8 @@ You should chose **Nmax** high enough for the Gaussian distribution of *histogra
 
 **Note:** the value of **beta** affects the number **Nmax**, so calculations on the same material at different temperatures will require different **Nmax**. At low **beta**, the Gaussian distribution is sharper and centered on lower order terms, as shown below. Therefore lower **Nmax** correspond to lower **beta**. 
 
+![beta-and-Nmax](https://lordcephei.github.io/assets/img/beta-histogram.png)
+
 ##### _**Connecting the tail (sderiv and aom)**_
 The connection between the QMC part and the Hubbard 1 part is done with a straight line starting at frequency number (**nom+1**) and running until it intersect the Hubbard 1 self-energy.
 You can see it by comparing the *Sig.out* file with the *s_hb1.dat* (Hubbrad 1 only).
