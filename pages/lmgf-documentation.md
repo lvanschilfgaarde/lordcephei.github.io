@@ -4,7 +4,7 @@ title: "lmgf Documentation"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "/lmgf-documentation/"
+permalink: "/docs/lmgf/lmgf-documentation/"
 header: no
 ---
 
