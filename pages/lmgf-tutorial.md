@@ -399,10 +399,3 @@ Now you have the **fplot.ps**{: style="color: green"} file with the spectra (you
 
 _Note:  The 8×8×8 mesh is a bit coarse. Use a finer k mesh for a smoother and more accurate magnon spectrum._ 
 
-And here is a referenced ![Figure 1]
-
-[Figure]: https://github.com/lordcephei/lordcephei.github.io/blob/master/images/magnon.png
-
-Test
-
-And here is a referenced ![Figure]
