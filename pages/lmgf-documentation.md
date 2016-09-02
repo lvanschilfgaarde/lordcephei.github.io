@@ -135,7 +135,7 @@ The last argument plays the role of delne specifically for computing the self-en
 ##### _Modifications of energy contour for layer geometry_
 _____________________________________________________________
 
-When computing transmission coefficients via the Landauer-Buttiker formalism, one chooses a contour as in **mode=0**. However, a there is a problem in how to choose $${\rm Im}\ z$$. A small Im-z is needed for a reliable calculation of the transmission coefficient, but using a small Im-z to determine the surface Green's function may not succeed because the GF can become long range and the iterative cycle used to generate it may not be stable. To accomodate these conflicting requirements, a surface-specific Im-z should be used, called **del00**. The **mode=0** mesh is specified as
+When computing transmission coefficients via the Landauer-Buttiker formalism, one chooses a contour as in **mode=0**. However, a there is a problem in how to choose $${\rm Im}\, z$$. A small Im-z is needed for a reliable calculation of the transmission coefficient, but using a small Im-z to determine the surface Green's function may not succeed because the GF can become long range and the iterative cycle used to generate it may not be stable. To accomodate these conflicting requirements, a surface-specific Im-z should be used, called **del00**. The **mode=0** mesh is specified as
 
     EMESH= nz 0 emin emax delta xx xx xx xx del00
 
