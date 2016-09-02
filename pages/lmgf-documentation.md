@@ -65,7 +65,7 @@ One last comment about the METAL case: by default the program will save the pote
 ##### _Some Details concerning how lmgf works internally_
 _____________________________________________________________
 
-For each energy point, the BZ integration is accomplished by routine in **gf/gfibz.f**{: style="color: green"}, which loops over all irreducible points, generating the "scattering path operator" g and the corresponding g for all the points in the star of k to generate a properly symmetrized g. Within the ASA, second-generation LMTO, g is converted to proper Green's function G, corresponding to the orthogonal gamma representation by an energy scaling. The scaling is carried out in routine **gf/gfg2g.f**{: style="color: green"}. Next the various integrated quantities sought are assembled (done by **gf/gfidos.f**{: style="color: green"}). The potential shift to satisfy charge neutrality is found, and stored in **vshft.ext**{: style="color: green"}. The I/O is handled by routine **subs/iovshf.f**{: style="color: green"}.
+For each energy point, the BZ integration is accomplished by routine in **gf/gfibz.f**{: style="color: green"}, which loops over all irreducible points, generating the "scattering path operator" $$g$$ and the corresponding $$g$$ for all the points in the star of k to generate a properly symmetrized g. Within the ASA, second-generation LMTO, g is converted to proper Green's function $$G$$, corresponding to the orthogonal gamma representation by an energy scaling. The scaling is carried out in routine **gf/gfg2g.f**{: style="color: green"}. Next the various integrated quantities sought are assembled (done by **gf/gfidos.f**{: style="color: green"}). The potential shift to satisfy charge neutrality is found, and stored in **vshft.ext**{: style="color: green"}. The I/O is handled by routine **subs/iovshf.f**{: style="color: green"}.
 
 ### _GF specific input_
 _____________________________________________________________
@@ -73,7 +73,7 @@ _____________________________________________________________
 ##### _Energy integration contour_
 _____________________________________________________________
 
-Green's functions are always performed on some energy contour, which is discretized into a mesh of points in the complex energy plane. (A description of the various kinds of contours this code uses is documented in the comments to **gf/emesh.f**{: style="color: green"}.) G is "spikey" for energies on the real axis (it has poles where there are eigenstates). To compute energy-integrated properties such as magnetic moments or the static susceptibility, the calculation is most efficiently done by deforming the contour in an ellipse in the complex plane. 
+Green's functions are always performed on some energy contour, which is discretized into a mesh of points in the complex energy plane. (A description of the various kinds of contours this code uses is documented in the comments to **gf/emesh.f**{: style="color: green"}.) $$G$$ is "spikey" for energies on the real axis (it has poles where there are eigenstates). To compute energy-integrated properties such as magnetic moments or the static susceptibility, the calculation is most efficiently done by deforming the contour in an ellipse in the complex plane. 
 
 At other times you want properties on the real axis, e.g. density-of-states or spectral functions. You specify the contour in category BZ as:
 
@@ -93,7 +93,7 @@ Right now there are the following contours:
     EMESH= nz 0 emin emax Im-z [... + possible args for layer geometry.]
            Im-z is the (constant) imaginary component.
 
-This mode is generally not recommended for self-consistent cycles because the GF has a lot of structure close to the real axis (small Im-z), while shifting off the real axis introduces errors. It is used, however, in other contexts, e.g. transport. 
+This mode is generally not recommended for self-consistent cycles because the GF has a lot of structure close to the real axis (small $${\rm Im}\, z$$), while shifting off the real axis introduces errors. It is used, however, in other contexts, e.g. transport. 
 
 **mode=10**: a Gaussian quadrature on an ellipse.
 
@@ -108,7 +108,7 @@ This mode is generally not recommended for self-consistent cycles because the GF
 
  After the integration is completed, there will be some deviation from charge neutrality, because emax will not exactly correspond to the Fermi level. This deviation is ignored if **METAL=0**; otherwise, the mesh is rigidly shifted by a constant amount, and the diagonal GF interpolated using a Pade approximant to the shifted mesh. The shifting+interpolation is iterated until charge neutrality is found, as described in section 2. If the rigid shift exceeds a specified tolerance, the Pade interpolation may be suspect. Thus, the entire cycle is repeated from scratch, on the shifted mesh where the shift is estimated by Pade. 
 
-**mode=310**: a Gaussian quadrature on an ellipse to a trial emax, as in mode 2. However, the search for the Fermi level is not done by Pade approximant, as in mode 10. Instead, a second integration proceeds along a uniform mesh from emax to some (Fermi) energy which satisfies charge neutrality. This procedure is not iterative.
+**mode=310**: a Gaussian quadrature on an ellipse to a trial emax, as in mode 2. However, the search for the Fermi level is not done by Pade approximant, as in **mode 10**. Instead, a second integration proceeds along a uniform mesh from emax to some (Fermi) energy which satisfies charge neutrality. This procedure is not iterative.
 
     EMESH= nz 310 emin emax e1 e2 delz
 
@@ -130,16 +130,16 @@ The mesh is specified as
 
     EMESH= nz 110 emin ef(L) ecc eps nzne vne delne [del00]
 
-The last argument plays the role of delne specifically for computing the self-energy that determines the end boundary conditions. There is an incompatibility in the requirements for Im-z in the central and end regions. the same incompatibility applies to transport and is discussed [below].
+The last argument plays the role of delne specifically for computing the self-energy that determines the end boundary conditions. There is an incompatibility in the requirements for $${\rm Im}\, z$$ in the central and end regions. the same incompatibility applies to transport and is discussed [below].
 
 ##### _Modifications of energy contour for layer geometry_
 _____________________________________________________________
 
-When computing transmission coefficients via the Landauer-Buttiker formalism, one chooses a contour as in **mode=0**. However, a there is a problem in how to choose $${\rm Im}\, z$$. A small Im-z is needed for a reliable calculation of the transmission coefficient, but using a small Im-z to determine the surface Green's function may not succeed because the GF can become long range and the iterative cycle used to generate it may not be stable. To accomodate these conflicting requirements, a surface-specific Im-z should be used, called **del00**. The **mode=0** mesh is specified as
+When computing transmission coefficients via the Landauer-Buttiker formalism, one chooses a contour as in **mode=0**. However, a there is a problem in how to choose $${\rm Im}\, z$$. A small $${\rm Im}\, z$$ is needed for a reliable calculation of the transmission coefficient, but using a small $${\rm Im}\, z$$ to determine the surface Green's function may not succeed because the GF can become long range and the iterative cycle used to generate it may not be stable. To accomodate these conflicting requirements, a surface-specific $${\rm Im}\, z$$ should be used, called **del00**. The **mode=0** mesh is specified as
 
     EMESH= nz 0 emin emax delta xx xx xx xx del00
 
-delta is $${\bf Im} z$$ for the central region; **del00** is _Im z_ for the surfaces.
+delta is $${\rm Im}\, z$$ for the central region; **del00** is $${\rm Im}\, z$$ for the surfaces.
 
 Entries xx have no meaning but are put there for compatibility with the contour used in nonequilibrium calculations. (A similar situation applies to the nonequilibrium part of the contour).
 
