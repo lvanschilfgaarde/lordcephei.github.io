@@ -27,7 +27,7 @@ quantities such as the bare and screened coulomb interaction.  The primary
 function of this package is to calculate quasiparticle levels (or more generally
 energy band structure) within GW theory.  Also part of this package is the
 ability to calculate optical and spin response functions, and spectral
-functions. See Phys. Rev. B76, 165106 (2007) for the theory corresponding to
+functions. See [this paper](http://link.aps.org/abstract/PRB/v76/e165106) for the theory corresponding to
 this implementation.  The present package is a descendent of the original
 [original ecalj package](github.com/tkotani/ecalj) developed by Kotani, Faleev and van Schilfgaarde.
 
@@ -39,10 +39,12 @@ removes dependence on the starting point and also makes it possible to generate
 ground state properties that are sensitive to self-consistency, such as the
 magnetic moment.
 
-Both GW and self-consistent GW are executed through a family of scripts.
-The script for one-shot calculations is called **lmgwsc**{: style="color: blue"}; one-shot GW calculations use **lmgw1-shot**{: style="color: blue"}; and other parts such as the
- dielectric function calculator and self-energy maker use **lmgw**{: style="color: blue"}.
- **lmfgws**{: style="color: blue"} carries out post-processing analysis of the dynamical self energy.
+Both GW and self-consistent GW are executed through a family of scripts.  The
+script for self-consistent calculations is called **lmgwsc**{: style="color:
+blue"}; one-shot GW calculations use **lmgw1-shot**{: style="color: blue"}; and
+other parts such as the dielectric function calculator and self-energy maker use
+**lmgw**{: style="color: blue"}.  **lmfgws**{: style="color: blue"} carries out
+post-processing analysis of the dynamical self energy.
 
 + **LMTO-ASA:** The original formulation of the LMTO method included
 the Atomic Spheres Approximation (ASA). Crystals are divided up into
