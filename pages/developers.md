@@ -25,9 +25,9 @@ _________________________
 
 [Michael Methfessel](methfessel@ihp-microelectronics.com) *(IHP, Germany)* Primary developer of the antecedent to the full-potential package.
 
-[John Klepeis](https://pls.llnl.gov/people/staff-bios/physics/klepeis-j) *(Lawrence Livermore National Lab, California)* Additions to the tight-binding package
+[Tony Paxton](http://www.kcl.ac.uk/nms/depts/physics/people/academicstaff/paxton.aspx) *(King’s College London, U.K.)*  Original Developer of the tight-binding package; ASA Downfolding
 
-[Tony Paxton](http://www.kcl.ac.uk/nms/depts/physics/people/academicstaff/paxton.aspx) *(King’s College London, U.K.)*  Original Developer of the tight-binding package
+[John Klepeis](https://pls.llnl.gov/people/staff-bios/physics/klepeis-j) *(Lawrence Livermore National Lab, California)* Additions to the tight-binding package
 
 [Walter Lambrecht](http://physics.case.edu/faculty/walter-lambrecht/) *(Case Western Reserve, Ohio)* Primary developer of LDA+U and the optics packages
 
@@ -44,7 +44,7 @@ _________________________
 [Liqin Ke](https://www.ameslab.gov/users/liqinke) *(Ames Lab, Iowa)* magnetic linear response, magnetic symmetry, Empty sphere finder
 
 [Dimitar Pashov](https://kclpure.kcl.ac.uk/portal/dimitar.pashov.html) *(King’s College London, U.K.)*
-Primary developer of the tight-binding package and the Jigsaw Puzzle Orbitals.  Primary Suite maintainer.
+Primary developer of the tight-binding package and the Jigsaw Puzzle Orbitals.  Primary Questaal suite maintainer.
 
 [Alena Vishina](alena.vishina@kcl.ac.uk) *(King’s College London, U.K.)*
 Self-consistent fully relativistic Dirac equation; relativistic linear response
