@@ -6,35 +6,34 @@ header:
     image_nologo: "banner_grey.jpg"
 ---
 
-The *Questaal* Suite offers a range of electronic structure programs that can be used to model different materials and nanoscale structures.  Most of the codes use an all-electron implementation of density-functional theory. there is additionally an all-electron implementation of GW theory, including a quasiparticle self-consistent form of it.  Additionally there is package that enables tight-binding calculations based on user-supplied empirical hamiltonians.
+The *Questaal* Suite offers a range of electronic structure programs that can be used to model different materials and nanoscale structures.  Most of the codes use an all-electron implementation of density-functional theory. This includes several forms (hamiltonian and Green's function) that serve different purposes.  There is additionally an all-electron implementation of GW theory, including a quasiparticle self-consistent form of it.  Finally there is package that enables tight-binding calculations based on user-supplied empirical hamiltonians.
 
-These codes share in common a basis set of atom-centred functions.  These functions have their genesis in the Linear Muffin Tin Orbitals basis of O. K. Andersen, who formulated the theory of linear methods in band theory [Phys. Rev. B12, 3060 (1975)].  The LMTO and LAPW methods are the most common direct forms of the linear methods, though other schemes such as pseudopotentials depend on a linearization as well.  The present code is a descendent of the "tight binding linear method" that formed the mainstay of Andersen's group in Stuttgart for many years.
+These codes share in common a basis set of atom-centred functions.  The basis has its genesis in the Linear Muffin Tin Orbitals (LMTO) method of O. K. Andersen, who formulated the theory of linear methods in band theory [Phys. Rev. B12, 3060 (1975)].  The LMTO and LAPW (Linear Augmented Plane Wave) methods are the most common direct forms of the linear methods, though most approaches (including those based on pseudopotentials) depend on a linearization as well.  The present code is a descendent of the "tight binding linear method" that formed the mainstay of Andersen's group in Stuttgart for many years.                     
 
 Applications include modeling electronic structure, magnetic properties of materials, Landauer-Buttiker formulation of electronic transport, impurity effects in solids, and linear response.
 
 Packages distributed in the Questaal package include:
 
-+ **Full Potential LMTO:**   This is an all-electron implementation of density-functional theory using convolutions of Hankel functions and Gaussian orbitals as a basis set.  Th
-is code also provides an interface to a GW package. It is a fairly accurate basis, and has been benchmarked against other all-electron schemes [XXX ... check with Jerome].  You can also use Augmented Plane Waves as a basis, or a combination of the two, as described in 
++ **Full Potential LMTO:**   This is an all-electron implementation of density-functional theory using convolutions of Hankel functions and Gaussian orbitals as a basis set.  This code also provides an interface to a GW package. It is a fairly accurate basis, and has been benchmarked against other all-electron schemes [XXX ... check with Jerome].  You can also use Augmented Plane Waves as a basis, or a combination of the two, as described in 
 [this paper](http://link.aps.org/doi/10.1103/PhysRevB.81.125117).
-A highly accurate tight-binding form will soon be available, with the moniker "Jigsaw Puzzle Orbitals" or JPO's.
 The main executable code is called **lmf.**{: style="color: blue"}
+A highly accurate tight-binding form will soon be available, with the moniker "Jigsaw Puzzle Orbitals" or JPO's.
 
 + **GW:** A separate package contains an all-electron implementation of the GW
-approximation, using the full-potential package to set up the single particle
-basis, and provide an interface, and a "product basis" set for two-particle
-quantities such as the bare and screened coulomb interaction.  The primary
-function of this package is to calculate quasiparticle levels (or more generally
+approximation, using the full-potential package to supply a front end with single particle
+quantities GW requires. The GW packages also a "product basis" set for two-particle
+quantities such as the bare and screened coulomb interaction.  Its primary
+function is to calculate quasiparticle levels (or more generally
 energy band structure) within GW theory.  Also part of this package is the
 ability to calculate optical and spin response functions, and spectral
 functions. See [this paper](http://link.aps.org/abstract/PRB/v76/e165106) for the theory corresponding to
-this implementation.  The present package is a descendent of the original
+the present implementation.  The present package is a descendent of the original
 [original ecalj package](github.com/tkotani/ecalj) developed by Kotani, Faleev and van Schilfgaarde.
 
 The GW package also has the ability to carry out quasiparticle
-self-consistency. It is more expensive than usual formulations of GW based on a
-perturbation of density functional theory, but [much more accurate and
-systematic](http://link.aps.org/abstract/PRL/v96/e226402).  Self-consistency
+self-consistency. Self-consistent calculations are more expensive than usual formulations of GW based on a
+perturbation of density functional theory, but it is [much more accurate and
+systematic](http://link.aps.org/abstract/PRL/v96/e226402).  Self-consistency also
 removes dependence on the starting point and also makes it possible to generate
 ground state properties that are sensitive to self-consistency, such as the
 magnetic moment.
