@@ -6,6 +6,7 @@ header: no
 ---
 _____________________________________________________________
 ### _Prerequisite_
+
 To calculate the optical and electronic properties which can be accessed through the OPTICS mode a full selfc-consistent calculation is needed.
 For this tutorials the **lm**{: style="color: blue"} or  **lmf**{: style="color: blue"} are needed (the same executable as for the self-consistent calculation should be used)..
 _____________________________________________________________
@@ -16,6 +17,7 @@ _____________________________________________________________
 The full-optential (FP) and the atomic spherical approximation (ASA) implementations of the code executed through  **lmf**{: style="color: blue"} and  **lm**{: style="color: blue"} respectivily have the capacity to preform a number of equlibrium and non-equlibrim optical and electronic calculations. This tutorial will only focus on the equilibrium calculation for optical properties and the joint density of states (JDOS), non-equlibrium modes will be covered here(HYPERLINKTHIS).
 
 #### _Input File_
+
 Using the optics mode for calculating JDOS or the imaginary part of the complex dielectric function  can be done in two steps. The first step is to include a new category in the control file with associated tokens, an example of what needs to be included for a simple calculation is shown below:
 
       OPTICS  MODE=1 NPTS=1001 WINDOW=0 1 LTET=3
@@ -23,6 +25,7 @@ Using the optics mode for calculating JDOS or the imaginary part of the complex 
 the category above describes all neccessery information needed to calculate the imaginary part of the complex dielectric function. The tokens above indicate an optics calculation mode 1 which is the imaginary part of the dielectric function, calculated for an energy range of 0-1 Ry (indicated by WINDOW token) with an enegy mesh density of 1001 using the  enhanced tetrahedron integration method (determined through LTET).
 
 #### _Preforming calculations_
+
 To preform this calculation simply add the text above to the ctrl file (in this tutorial we will use **lm**{: style="color: blue"} and GaAs) and invoke:
 
     lm -vnit=1 ctrl.gas
