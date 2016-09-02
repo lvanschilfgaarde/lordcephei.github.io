@@ -53,7 +53,7 @@ Self-consistent fully relativistic Dirac equation; relativistic linear response
 
 [Lorenzo Sponza](https://scholar.google.sk/citations?user=vtDqbNQAAAAJ&hl=en) *(King's College London, U.K.)*  Primary developer of a QSGW+DMFT implementation
 
-[Nicola Bonini Lac](www.kcl.ac.uk/nms/depts/physics/people/academicstaff/bonini.aspx) *(King's College London, U.K.)*  Supervises implementation of phonons and the electron-phonon interaction into the GW package
+[Nicola Bonini](www.kcl.ac.uk/nms/depts/physics/people/academicstaff/bonini.aspx) *(King's College London, U.K.)*  Supervises implementation of phonons and the electron-phonon interaction into the GW package
 
 [Savio Laricchia](savio.laricchia@gmail.com) *(King's College London, U.K.)*
 Primary developer of implementation of phonons and the electron-phonon interaction into the GW package
