@@ -1,6 +1,6 @@
 ---
 layout: page-fullwidth
-title: "Optics Documentation"
+title: "Optics Tutorial"
 permalink: "/docs-equ-optics/"
 header: no
 ---
@@ -12,6 +12,7 @@ For this tutorials the **lm**{: style="color: blue"} or  **lmf**{: style="color:
 _____________________________________________________________
 
 ### _Tutorial_
+
 #### _Introduction_
 
 The full-optential (FP) and the atomic spherical approximation (ASA) implementations of the code executed through  **lmf**{: style="color: blue"} and  **lm**{: style="color: blue"} respectivily have the capacity to preform a number of equlibrium and non-equlibrim optical and electronic calculations. This tutorial will only focus on the equilibrium calculation for optical properties and the joint density of states (JDOS), non-equlibrium modes will be covered here(HYPERLINKTHIS).
@@ -60,4 +61,17 @@ The six modes described above correlate to
 
 The output files for all six optic ppmodes described above  consiste of 2 columns ( the number of rows is optics ppnpts +1), the first of which is energy (in Ry) followed by the corresponding JDOS or DOS values.
 
-#### _Additional options_
+#### _Resolving output_
+Both pplm and pplmf offer a range of option to resolve Im$\eps$,DOS and JDOS through OPTICS_PART, OPTICS_FILBND and OPTICS_EMPBND, the options described here apply to all of the optic modes described above (Im$\eps$,JDOS and DOS).
+
+##### _Occupied and unoccupied bands_
+
+It is possible to perform any of the optics mode calculations described above for a restricted number of bands, this can greatly speed up the calculation and allow for isolation and identification of individual band contributions. To restric the bands involved in tha calculation simply provide a range of values for occupied and unoccupied bands through OPTICS_PART, OPTICS_FILBND and OPTICS_EMPBND respectively. Below is an example of an optics category which calculates the contribution to  Im$\eps$ from the highest two valence bands and the lowest two conduction bands for silicon:
+
+      OPTICS  MODE=1 NPTS=1001 WINDOW=0 1 LTET=3
+              FILBND=7,8 EMPBND=9,10
+              
+The optics output file generated with restricted bands will have the same name and format as unrestricted band calculations, which has be described previously in this tutorial.
+##### _Resolve by k,$\eps$ and band to band contibution_
+
+
