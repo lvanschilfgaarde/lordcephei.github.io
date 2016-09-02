@@ -31,7 +31,13 @@ functions. See Phys. Rev. B76, 165106 (2007) for the theory corresponding to
 this implementation.  The present package is a descendent of the original
 [original ecalj package](github.com/tkotani/ecalj) developed by Kotani, Faleev and van Schilfgaarde.
 
-The GW package also has the ability to carry out quasiparticle self-consistency. It is more expensive than usual formulations of GW based on a perturbation of density functional theory, but vastly more accurate and more systematic; see Phys. Rev. Lett. 96, 226402 (2006).  Self-consistency removes dependence on the starting point and also makes it possible to generate ground state properties that are sensitive to self-consistency, such as the magnetic moment.
+The GW package also has the ability to carry out quasiparticle
+self-consistency. It is more expensive than usual formulations of GW based on a
+perturbation of density functional theory, but [much more accurate and
+systematic](http://link.aps.org/abstract/PRL/v96/e226402).  Self-consistency
+removes dependence on the starting point and also makes it possible to generate
+ground state properties that are sensitive to self-consistency, such as the
+magnetic moment.
 
 Both GW and self-consistent GW are executed through a family of scripts.
 The script for one-shot calculations is called **lmgwsc**{: style="color: blue"}; one-shot GW calculations use **lmgw1-shot**{: style="color: blue"}; and other parts such as the
