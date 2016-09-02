@@ -8,7 +8,7 @@ _____________________________________________________________
 ###_Prerequisite_
 To calculate the optical and electronic properties which can be accessed through the OPTICS mode a full selfc-consistent calculation is needed.
 For this tutorials the **lm**{: style="color: blue"} or  **lmf**{: style="color: blue"} are needed (the same executable as for the self-consistent calculation should be used).
-
+_____________________________________________________________
 ###_Tutorial_
 ####_Introduction_
 
