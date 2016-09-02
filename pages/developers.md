@@ -49,7 +49,8 @@ Primary developer of the tight-binding package and the Jigsaw Puzzle Orbitals.  
 [Alena Vishina](alena.vishina@kcl.ac.uk) *(King’s College London, U.K.)*
 Self-consistent fully relativistic Dirac equation; relativistic linear response
 
-[Paolo Pisanti](p.pisanti13@gmail.com) Primary developer of interface between this package and Rutger's DMFT
+[Paolo Pisanti](p.pisanti13@gmail.com) *(King’s College London, U.K.)*
+Primary developer of interface between this package and Rutger's DMFT
 
 [Lorenzo Sponza](https://scholar.google.sk/citations?user=vtDqbNQAAAAJ&hl=en) *(King's College London, U.K.)*  Primary developer of a QSGW+DMFT implementation
 
@@ -63,9 +64,9 @@ Supervises the addition of ladder diagrams to the GW package
 
 [Brian Cunningham](b.cunningham@qub.ac.uk) *(Queen's University Belfast, U.K.)* Primary developer of ladder diagrams added to GW by Bethe-Salpeter.
 
-[Pooya Azarhoosh](pooya.azarhoosh@kcl.ac.uk) Additions to the optics packaged; involved in code dissemination and documentation
+[Pooya Azarhoosh](pooya.azarhoosh@kcl.ac.uk) *(King’s College London, U.K.)* Additions to the optics packaged; involved in code dissemination and documentation
 
-[Scott McKechnie](scott.mckechnie@kcl.ac.uk) Electric Fields for Spin orbit coupling; involved in redesign of input system and documentation
+[Scott McKechnie](scott.mckechnie@kcl.ac.uk) *(King’s College London, U.K.)* Electric Fields for Spin orbit coupling; involved in redesign of input system and documentation
 
 [Lewis Christiansen](lewis.christiansen@kcl.ac.uk) *(King's College London, U.K.)*
 Primary developer of Questaal web site, with Gergely Kantor
