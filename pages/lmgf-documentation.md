@@ -105,3 +105,45 @@ This mode is generally not recommended for self-consistent cycles because the GF
                tends to bunch points near emax.  
                As a rule, e2=0 is good, or maybe e2=.5 
                 to emphasize points near Ef.
+
+ After the integration is completed, there will be some deviation from charge neutrality, because emax will not exactly correspond to the Fermi level. This deviation is ignored if **METAL=0**; otherwise, the mesh is rigidly shifted by a constant amount, and the diagonal GF interpolated using a Pade approximant to the shifted mesh. The shifting+interpolation is iterated until charge neutrality is found, as described in section 2. If the rigid shift exceeds a specified tolerance, the Pade interpolation may be suspect. Thus, the entire cycle is repeated from scratch, on the shifted mesh where the shift is estimated by Pade. 
+
+**mode=310**: a Gaussian quadrature on an ellipse to a trial emax, as in mode 2. However, the search for the Fermi level is not done by Pade approximant, as in mode 10. Instead, a second integration proceeds along a uniform mesh from emax to some (Fermi) energy which satisfies charge neutrality. This procedure is not iterative.
+
+    EMESH= nz 310 emin emax e1 e2 delz
+
+           e1 and e2 are just as in mode 10
+           delz      is the spacing between energy points for the 
+                     second integration on the uniform mesh.
+
+
+
+**mode=2**: is the same contour as mode=0. However, it is designed for cases when you want to resolve the energy dependence of some quantity, such as the DOS or magnetic exchange coupling. These are discussed in the GF category below. 
+
+**mode=110**: is a contour input specific to nonequilibrium Green's function. The nonequilibrium Green's function requires additional information for the energy window between the left and right leads. (The nonequilibrium Green's function is implemented for the layer geometry in lmpg.) Thus the integration proceeds in two parts: first an integration on an elliptical path is taken to the left Fermi level (as in **mode=10**). Then an integration over is performed on the nonequilibrium contour, i.e. the energy window from the left to the right Fermi level. This integration is performed on a uniform mesh close to the real axis, as in **mode=0**. For the nonequilibrium contour, three additional pieces of information must be supplied:
+
+      nzne  number of (uniformly spaced energy points on the nonequilibrium contour
+      vne   difference in fermi energies of right and left leads, ef(R)-ef(L)
+      delne Im-z on the nonequilibrium contour
+
+The mesh is specified as
+
+    EMESH= nz 110 emin ef(L) ecc eps nzne vne delne [del00]
+
+The last argument plays the role of delne specifically for computing the self-energy that determines the end boundary conditions. There is an incompatibility in the requirements for Im-z in the central and end regions. the same incompatibility applies to transport and is discussed [below].
+
+##### _Modifications of energy contour for layer geometry_
+_____________________________________________________________
+
+When computing transmission coefficients via the Landauer-Buttiker formalism, one chooses a contour as in **mode=0**. However, a there is a problem in how to choose Im-z. A small Im-z is needed for a reliable calculation of the transmission coefficient, but using a small Im-z to determine the surface Green's function may not succeed because the GF can become long range and the iterative cycle used to generate it may not be stable. To accomodate these conflicting requirements, a surface-specific Im-z should be used, called **del00**. The **mode=0** mesh is specified as
+
+    EMESH= nz 0 emin emax delta xx xx xx xx del00
+
+delta is Im-z for the central region; del00 is Im-z for the surfaces.
+
+Entries xx have no meaning but are put there for compatibility with the contour used in nonequilibrium calculations. (A similar situation applies to the nonequilibrium part of the contour).
+
+The mesh for self-consistent nonequilibrium calculations is
+
+    EMESH= nz 110 emin ef(L) ecc eps nzne vne delne del00
+
