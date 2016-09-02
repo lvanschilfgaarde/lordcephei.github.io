@@ -16,57 +16,56 @@ including an ASA-GW code by Aryasetiawan, the original formulation of LDA+U, an
 early formulation of noncollinear magnetism and of linear response for
 spin waves, and a the first implementation of excact exchange.
 
-There have been many contributors;  a partial list is provided below:
+There have been many contributors; a partial list is provided below, in approximate chronological order.
 
 #### *Questaal Developers*
 _________________________
 
-[Athanasios Chantis]() *(LANL)*
+[Mark van Schilfgaarde](http://www.kcl.ac.uk/nms/depts/physics/people/academicstaff/van-Schilfgaarde-.aspx) *(King’s College London, U.K.)*  Primary Developer
 
-[Alena Vishina]()
+[Michael Methfessel](methfessel@ihp-microelectronics.com) *(IHP, Germany)* Primary developer of the antecedent to the full-potential package.
 
-[Ben Kaube]()
+[John Klepeis](https://pls.llnl.gov/people/staff-bios/physics/klepeis-j) *(Lawrence Livermore National Lab, California)* Additions to the tight-binding package
 
-[Derek Stewart](https://sites.google.com/site/dft4nano/) *(Cornell University, U.S.)*
+[Tony Paxton](http://www.kcl.ac.uk/nms/depts/physics/people/academicstaff/paxton.aspx) *(King’s College London, U.K.)*  Original Developer of the tight-binding package
 
-[Dimitar Pashov]()
+[Walter Lambrecht](http://physics.case.edu/faculty/walter-lambrecht/) Primary developer of LDA+U and the optics packages
 
-[H. Donfack]()
+[Athanasios Chantis](https://journals.aps.org/prb/staff) *(Implementation of the fully relativistic Dirac equation into the ASA package, for studying transport)*
 
-[JEK]()
+[Takao Kotani](http://newton.damp.tottori-u.ac.jp/wiki/index.php/Tkotani) *(Tottori University, Japan)*  Primary developer of the GW package
 
-[Jialei Xu]()
+[Sergei Faleev](gs01sfx@hotmail.com) Primary developer of Quasiparticle Self-Consistency in GW, and of nonequilibrium Keldysh transport
 
-[Kino]()
+[Derek Stewart](das.nanofly@gmail.com) Transmission in the Landauer-Buttiker formalism (layer Green's function), maintainer of LMSuite website
 
-[Kiril Belashchenko](http://physics.unl.edu/~kirillb/index.html) *(University of Nebraska)*
+[Kiril Belashchenko](http://physics.unl.edu/~kirillb/index.html) *(University of Nebraska)* CPA, Spin-Orbit Coupling, in the Green's function package
 
-[Liqin Ke]()
+[Liqin Ke](https://www.ameslab.gov/users/liqinke) magnetic linear response, magnetic symmetry, Empty sphere finder
 
-[Lorenzo Sponza](https://scholar.google.sk/citations?user=vtDqbNQAAAAJ&hl=en) *(King's College London, U.K.)*
+[Dimitar Pashov](https://kclpure.kcl.ac.uk/portal/dimitar.pashov.html) primary developer of the tight-binding package and the Jigsaw Puzzle Orbitals.  Primary Suite maintainer.
 
-[Mark van Schilfgaarde](http://www.kcl.ac.uk/nms/depts/physics/people/academicstaff/van-Schilfgaarde-.aspx) *(King’s College London, U.K.)*
+[Alena Vishina]() (Self-consistent fully relativistic Dirac equation; relativistic linear response)
 
-[Michael Methfessel]() *(IHP, Germany)*
+[Paolo Pisanti](p.pisanti13@gmail.com) Primary developer of interface between this package and Rutger's DMFT
 
-[P. Larson]()
+[Lorenzo Sponza](https://scholar.google.sk/citations?user=vtDqbNQAAAAJ&hl=en) *(King's College London, U.K.)*  Primary developer of a QSGW+DMFT implementation
 
-[Paolo Pisanti]()
+[Nicola Bonini Lac](www.kcl.ac.uk/nms/depts/physics/people/academicstaff/bonini.aspx) *(King's College London, U.K.)*  Supervises implementation of phonons and the electron-phonon interaction into the GW package
 
-[Pooya Azarhoosh]()
+[Savio Laricchia](savio.laricchia@gmail.com) *(King's College London, U.K.)*
+Primary developer of implementation of phonons and the electron-phonon interaction into the GW package
 
-[Pujari]()
+[Myrta Gruening](titus.phy.qub.ac.uk/members/myrta/) *(Queen's University Belfast, U.K.)*
+Supervises the addition of ladder diagrams to the GW package
 
-[Sasha Lozovoi]()
+[Brian Cunningham](b.cunningham@qub.ac.uk) *(Queen's University Belfast, U.K.)* Primary developer of ladder diagrams added to GW by Bethe-Salpeter.
 
-[Sergei Faleev]() *(Snami LLC)*
+[Pooya Azarhoosh]() Additions to the optics packaged; involved in code dissemination and documentation
 
-[Takao Kotani](http://newton.damp.tottori-u.ac.jp/wiki/index.php/Tkotani) *(Tottori University, Japan)*
+[Lewis Christiansen]  Web site construction and documentation
 
-[Tony Paxton](http://www.kcl.ac.uk/nms/depts/physics/people/academicstaff/paxton.aspx) *(King’s College London, U.K.)*
+[Gergeley Christiansen]  Web site construction and documentation
 
-[T. Sandu]()
+[Ben Kaube](Designed an ACX?? interface to the Questaal package; (frozen) phonon contribution to dielectric optical properties
 
-[Uk-Jin Rho]()
-
-[Walter Lambrecht]()

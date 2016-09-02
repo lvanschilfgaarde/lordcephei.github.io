@@ -18,7 +18,7 @@ Packages distributed in the Questaal package include:
 is code also provides an interface to a GW package. It is a fairly accurate basis, and has been benchmarked against other all-electron schemes [XXX ... check with Jerome].  You can also use Augmented Plane Waves as a basis, or a combination of the two, as described in 
 [this paper](http://link.aps.org/doi/10.1103/PhysRevB.81.125117).
 A highly accurate tight-binding form will soon be available, with the moniker "Jigsaw Puzzle Orbitals" or JPO's.
-The main executable code is called **lmf.**
+The main executable code is called **lmf.**{: style="color: blue"}
 
 + **GW:** A separate package contains an all-electron implementation of the GW
 approximation, using the full-potential package to set up the single particle
@@ -34,7 +34,7 @@ this implementation.  The present package is a descendent of the original
 The GW package also has the ability to carry out quasiparticle self-consistency. It is more expensive than usual formulations of GW based on a perturbation of density functional theory, but vastly more accurate and more systematic; see Phys. Rev. Lett. 96, 226402 (2006).  Self-consistency removes dependence on the starting point and also makes it possible to generate ground state properties that are sensitive to self-consistency, such as the magnetic moment.
 
 Both GW and self-consistent GW are executed through a family of scripts.
-The script for one-shot calculations is called **lmgwsc**; one-shot GW calculations use **lmgw1-shot**; and other parts such as the dielectric function calculator and self-energy maker use **lmgw**.
+The script for one-shot calculations is called **lmgwsc**{: style="color: blue"}; one-shot GW calculations use **lmgw1-shot**{: style="color: blue"}; and other parts such as the dielectric function calculator and self-energy maker use **lmgw**{: style="color: blue"}.
 
 + **LMTO-ASA:** The original formulation of the LMTO method included
 the Atomic Spheres Approximation (ASA). Crystals are divided up into
@@ -47,10 +47,10 @@ spheres overlap too much. It works best for close-packed systems, and
 still remains today one of the best and most highly efficient approach
 to studying magnetic properties of reasonably close-packed systems.
 The ASA package can be used in a non-collinear framework.  The executable
-binary is called **lm.**
+binary is called **lm.**{: style="color: blue"}
 
 + **Green's Function LMTO :** An ASA based density-functional Green's
-function formulation.  The program, **lmgf**, calculates the Green’s
+function formulation.  The program, **lmgf**{: style="color: blue"}, calculates the Green’s
 function for a periodic system, and is a Green's function counterpart
 to the lm code.  It can be used to determine a range of properties
 including the density of states, energy band structure, and magnetic
@@ -61,8 +61,8 @@ fully relativistic Dirac formulation.  It also implements the
 Coherent Potential Approximation, for the study of alloys, or for
 disordered local moments, re a combination of the two.
 
-+ **Principal Layer Green's Function :** This code, **lmpg**, is an analog of
-**lmgf** for layered systems.  Periodic boundary conditions are used in two
++ **Principal Layer Green's Function :** This code, **lmpg**{: style="color: blue"}, is an analog of
+**lmgf**{: style="color: blue"} for layered systems.  Periodic boundary conditions are used in two
 dimensions.  A Principal layer technique is used for the dimension.  This is
 advantageous because (1) periodic boundary conditions in this dimension are not
 needed and (2) the computation time scales only linearly in the number of
@@ -77,7 +77,7 @@ in the third dimension. The device region is divided up into a series of layers
 where only nearest neighbor interactions between layers are considered. Green’s
 function approaches are a natural choice for transport calculations since the
 information on the contacts can be incorporated into the Hamiltonian for the
-device region through an additional self energy term. **lmpg** has been used to
+device region through an additional self energy term. **lmpg**{: style="color: blue"} has been used to
 examine transport in devices ranging from magnetic tunnel junctions to atomic
 point contacts.
 
@@ -88,9 +88,10 @@ invoked. The Questaal code has been interfaced with the Continuous Time Quantum
 Monte Carlo solver
 [developed](http://journals.aps.org/prb/abstract/10.1103/PhysRevB.75.155113) by
 K. Haule and coworkers. This couples the QSGW description of the lattice with
-state-of-the-art Dynamical Mean Field Theory approaches.
+state-of-the-art Dynamical Mean Field Theory approaches.  This code requires
+that Haule's CTQMC be installed.  The interface to that code is **lmfdmft**{: style="color: blue"}.
 
-+ **Empirical Tight-Binding :** The **tbe** code evaluates properties of the
++ **Empirical Tight-Binding :** The **tbe**{: style="color: blue"} code evaluates properties of the
 electronic structure from an empirical hamiltonian.  The user supplies rules
 that defines the matrix elements of an atom-centred, tight-binding hamiltonian.
 It has various features, including self-consistency for ionic systems, molecular
