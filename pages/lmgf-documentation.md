@@ -66,3 +66,42 @@ One last comment about the METAL case: by default the program will save the pote
 _____________________________________________________________
 
 For each energy point, the BZ integration is accomplished by routine in **gf/gfibz.f**{: style="color: green"}, which loops over all irreducible points, generating the "scattering path operator" g and the corresponding g for all the points in the star of k to generate a properly symmetrized g. Within the ASA, second-generation LMTO, g is converted to proper Green's function G, corresponding to the orthogonal gamma representation by an energy scaling. The scaling is carried out in routine **gf/gfg2g.f**{: style="color: green"}. Next the various integrated quantities sought are assembled (done by **gf/gfidos.f**{: style="color: green"}). The potential shift to satisfy charge neutrality is found, and stored in **vshft.ext**{: style="color: green"}. The I/O is handled by routine **subs/iovshf.f**{: style="color: green"}.
+
+### _GF specific input_
+_____________________________________________________________
+
+##### _Energy integration contour_
+_____________________________________________________________
+
+Green's functions are always performed on some energy contour, which is discretized into a mesh of points in the complex energy plane. (A description of the various kinds of contours this code uses is documented in the comments to **gf/emesh.f**{: style="color: green"}.) G is "spikey" for energies on the real axis (it has poles where there are eigenstates). To compute energy-integrated properties such as magnetic moments or the static susceptibility, the calculation is most efficiently done by deforming the contour in an ellipse in the complex plane. 
+
+At other times you want properties on the real axis, e.g. density-of-states or spectral functions. You specify the contour in category BZ as:
+
+    EMESH= nz mode emin emax [other args, depending mode]
+
+where
+
+           nz         number of energy points
+           mode       specifies the kind of contour; see below
+           emin,emax  are the energy window (emax is usually the Fermi level)
+
+
+Right now there are the following contours:
+
+**mode=0**: a uniform mesh of points between emin and emax, with a constant imaginary component.
+
+    EMESH= nz 0 emin emax Im-z [... + possible args for layer geometry.]
+           Im-z is the (constant) imaginary component.
+
+This mode is generally not recommended for self-consistent cycles because the GF has a lot of structure close to the real axis (small Im-z), while shifting off the real axis introduces errors. It is used, however, in other contexts, e.g. transport. 
+
+**mode=10**: a Gaussian quadrature on an ellipse.
+
+    EMESH= nz 10 emin emax ecc eps
+
+           ecc is the eccentricity of the ellipse, 
+               ranging from 0 (circle) to 1 (line)
+           eps is a 'bunching' parameter that, as made larger,
+               tends to bunch points near emax.  
+               As a rule, e2=0 is good, or maybe e2=.5 
+                to emphasize points near Ef.
