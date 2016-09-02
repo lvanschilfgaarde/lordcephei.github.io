@@ -31,7 +31,7 @@ _________________________
 
 [Walter Lambrecht](http://physics.case.edu/faculty/walter-lambrecht/) *(Case Western Reserve, Ohio)* Primary developer of LDA+U and the optics packages
 
-[Athanasios Chantis](https://journals.aps.org/prb/staff) *(Implementation of the fully relativistic Dirac equation into the ASA package, for studying transport)*
+[Athanasios Chantis](https://journals.aps.org/prb/staff) *(Editor, Physical Review)* Implementation of the fully relativistic Dirac equation into the ASA package, for studying transport)*
 
 [Takao Kotani](http://newton.damp.tottori-u.ac.jp/wiki/index.php/Tkotani) *(Tottori University, Japan)*  Primary developer of the GW package
 
@@ -41,11 +41,13 @@ _________________________
 
 [Kiril Belashchenko](http://physics.unl.edu/~kirillb/index.html) *(University of Nebraska)* CPA, Spin-Orbit Coupling, in the Green's function package
 
-[Liqin Ke](https://www.ameslab.gov/users/liqinke) magnetic linear response, magnetic symmetry, Empty sphere finder
+[Liqin Ke](https://www.ameslab.gov/users/liqinke) *(Ames Lab, Iowa)* magnetic linear response, magnetic symmetry, Empty sphere finder
 
-[Dimitar Pashov](https://kclpure.kcl.ac.uk/portal/dimitar.pashov.html) primary developer of the tight-binding package and the Jigsaw Puzzle Orbitals.  Primary Suite maintainer.
+[Dimitar Pashov](https://kclpure.kcl.ac.uk/portal/dimitar.pashov.html) *(King’s College London, U.K.)*
+Primary developer of the tight-binding package and the Jigsaw Puzzle Orbitals.  Primary Suite maintainer.
 
-[Alena Vishina]() (Self-consistent fully relativistic Dirac equation; relativistic linear response)
+[Alena Vishina](alena.vishina@kcl.ac.uk) *(King’s College London, U.K.)*
+Self-consistent fully relativistic Dirac equation; relativistic linear response
 
 [Paolo Pisanti](p.pisanti13@gmail.com) Primary developer of interface between this package and Rutger's DMFT
 
@@ -61,7 +63,9 @@ Supervises the addition of ladder diagrams to the GW package
 
 [Brian Cunningham](b.cunningham@qub.ac.uk) *(Queen's University Belfast, U.K.)* Primary developer of ladder diagrams added to GW by Bethe-Salpeter.
 
-[Pooya Azarhoosh]() Additions to the optics packaged; involved in code dissemination and documentation
+[Pooya Azarhoosh](pooya.azarhoosh@kcl.ac.uk) Additions to the optics packaged; involved in code dissemination and documentation
+
+[Scott McKechnie](scott.mckechnie@kcl.ac.uk) Electric Fields for Spin orbit coupling; involved in redesign of input system and documentation
 
 [Lewis Christiansen](lewis.christiansen@kcl.ac.uk) *(King's College London, U.K.)*
 Primary developer of Questaal web site, with Gergely Kantor
@@ -69,5 +73,6 @@ Primary developer of Questaal web site, with Gergely Kantor
 [Gergely Kantor](gergely.kantor@kcl.ac.uk) *(King's College London, U.K.)*
 Primary developer of Questaal web site, with Lewis Christiansen
 
-[Ben Kaube]()  *(Imperial College London, U.K.)* Designed an ACX?? interface to the Questaal package; (frozen) phonon contribution to dielectric optical properties
+[Ben Kaube](BENJAMIN.KAUBE08@imperial.ac.uk) *(Imperial College London, U.K.)* 
+Designed an ACX?? interface to the Questaal package; (frozen) phonon contribution to dielectric optical properties
 
