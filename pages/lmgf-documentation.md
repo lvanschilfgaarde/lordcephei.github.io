@@ -139,7 +139,7 @@ When computing transmission coefficients via the Landauer-Buttiker formalism, on
 
     EMESH= nz 0 emin emax delta xx xx xx xx del00
 
-delta is Im-z for the central region; del00 is Im-z for the surfaces.
+delta is Im-z for the central region; **del00** is _Im-z_ for the surfaces.
 
 Entries xx have no meaning but are put there for compatibility with the contour used in nonequilibrium calculations. (A similar situation applies to the nonequilibrium part of the contour).
 
