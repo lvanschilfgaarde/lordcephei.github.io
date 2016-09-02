@@ -12,7 +12,6 @@ For this tutorials the **lm**{: style="color: blue"} or  **lmf**{: style="color:
 _____________________________________________________________
 
 ### _Tutorial_
-
 #### _Introduction_
 
 The full-optential (FP) and the atomic spherical approximation (ASA) implementations of the code executed through  **lmf**{: style="color: blue"} and  **lm**{: style="color: blue"} respectivily have the capacity to preform a number of equlibrium and non-equlibrim optical and electronic calculations. This tutorial will only focus on the equilibrium calculation for optical properties and the joint density of states (JDOS), non-equlibrium modes will be covered here(HYPERLINKTHIS).
