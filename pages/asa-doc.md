@@ -11,7 +11,7 @@ _____________________________________________________________
 
 ### _Purpose_
 {:.no_toc}
-In this Tutorial the basics of creating an input file and running a full self consistent LDA atomic speherical approximation (ASA) will be covered.
+In this Tutorial the basics running a self consistent LDA calculation in the Atomic Spheres Approximation (ASA) will be covered, starting with the creation of an input file.
 
 
 ### _Preliminaries_
@@ -20,16 +20,16 @@ For this tutorial the **blm**{: style="color: blue"},**lmchk**{: style="color: b
 
 ### _Tutorial_
 _____________________________________________________________
-This tutotiral will consist of three main sections:
+This tutorial consists of three main sections:
 
 1. Building a suitible input file for an ASA-LDA calculation
 2. Running a self consistent calculaion
-3. A breif break down of the output.
+3. A break down of the output.
 
-A detailed theoretical discription of the methods used with in the ASA calculation will not be provided here.
+A detailed theoretical description of the ASA and uses of it can be found [here](ASA-notes.pdf).
 
 ##### _1\.Building input file_
-For the purposes of demonstration we will use PbTe in this tutorial. Under normal pressure/conditions PbTe crystalises in the rocksalt structure with lattice constant 6.428\angstrom. The first step in building an input file is the init.ext (ext is can be replace with any other indicator,pbte in this case) file, which will contain all the structual information about the system of interest. for PbTe we can use:
+This tutorial looks at properties of PbTe. Under normal pressure/conditions PbTe crystalises in the rocksalt structure with lattice constant 6.428\angstrom. The first step in building an input file is the init.ext (ext is can be replace with any other indicator, pbte in this case) file, which will contain all the structual information about the system of interest. for PbTe we can use:
     
     LATTICE
 	    ALAT=6.427916  UNITS=A
@@ -40,7 +40,7 @@ For the purposes of demonstration we will use PbTe in this tutorial. Under norma
 		ATOM=Pb   X=     0.0000000    0.0000000    0.0000000
 		ATOM=Te   X=     0.5000000    0.5000000    0.5000000
 
-The init file shown here can be splitt in to two section: lattice and site. The Lattice section will include information regarding the lattice structure such as lattice constant (ALAT=) and it's units (UNITS=, \angstrom in this case) plus the primitive lattice constants (PLAT=). The site section of the init file includes the basis information, in the case of PbTe this is simply two one Pb one Te at the postion indicated by "X=" (X= indicates frocational formalism while POS= is used for cartesian  coordinate formalisim).
+The init file shown above has two sections: lattice and site. The lattice section includes information regarding the lattice structure such as lattice constant (ALAT=) and its units (UNITS=, \angstrom in this case) plus the primitive lattice translation vectors (PLAT=). The site section of the init file includes the basis information, in the case of PbTe this is simply two one Pb one Te at the position indicated by "X=" (X= indicates positions as fractional multiples of the lattice vectors.  Alternatively you can supply the position with take POS=, which specifies positions in Cartesian coordinates, in units of the lattice constant.
 
 Now that the init.pbte file has been created the input file (also refered to as the control file) can be generated easily through
 
