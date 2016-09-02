@@ -6,7 +6,7 @@ header:
     image_nologo: "banner_grey.jpg"
 ---
 
-The development and expansion of LM Suite has been led by Mark van
+The development and expansion of Questaal Suite has been led by Mark van
 Schilfgaarde since its inception. During his time with Ole Anderson’s
 group at the Max Planck Institute for Solid State Institute
 (1987-1988), Mark implemented Ole’s new tight-binding formulation of
