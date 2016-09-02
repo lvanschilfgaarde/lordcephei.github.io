@@ -29,7 +29,7 @@ _________________________
 
 [Tony Paxton](http://www.kcl.ac.uk/nms/depts/physics/people/academicstaff/paxton.aspx) *(King’s College London, U.K.)*  Original Developer of the tight-binding package
 
-[Walter Lambrecht](http://physics.case.edu/faculty/walter-lambrecht/) Primary developer of LDA+U and the optics packages
+[Walter Lambrecht](http://physics.case.edu/faculty/walter-lambrecht/) *(Case Western Reserve, Ohio)* Primary developer of LDA+U and the optics packages
 
 [Athanasios Chantis](https://journals.aps.org/prb/staff) *(Implementation of the fully relativistic Dirac equation into the ASA package, for studying transport)*
 
@@ -63,9 +63,11 @@ Supervises the addition of ladder diagrams to the GW package
 
 [Pooya Azarhoosh]() Additions to the optics packaged; involved in code dissemination and documentation
 
-[Lewis Christiansen]  Web site construction and documentation
+[Lewis Christiansen](lewis.christiansen@kcl.ac.uk) *(King's College London, U.K.)*
+Primary developer of Questaal web site, with Gergely Kantor
 
-[Gergeley Christiansen]  Web site construction and documentation
+[Gergely Kantor](gergely.kantor@kcl.ac.uk) *(King's College London, U.K.)*
+Primary developer of Questaal web site, with Lewis Christiansen
 
-[Ben Kaube](Designed an ACX?? interface to the Questaal package; (frozen) phonon contribution to dielectric optical properties
+[Ben Kaube]()  *(Imperial College London, U.K.)* Designed an ACX?? interface to the Questaal package; (frozen) phonon contribution to dielectric optical properties
 
