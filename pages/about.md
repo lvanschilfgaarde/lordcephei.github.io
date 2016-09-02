@@ -34,7 +34,9 @@ this implementation.  The present package is a descendent of the original
 The GW package also has the ability to carry out quasiparticle self-consistency. It is more expensive than usual formulations of GW based on a perturbation of density functional theory, but vastly more accurate and more systematic; see Phys. Rev. Lett. 96, 226402 (2006).  Self-consistency removes dependence on the starting point and also makes it possible to generate ground state properties that are sensitive to self-consistency, such as the magnetic moment.
 
 Both GW and self-consistent GW are executed through a family of scripts.
-The script for one-shot calculations is called **lmgwsc**{: style="color: blue"}; one-shot GW calculations use **lmgw1-shot**{: style="color: blue"}; and other parts such as the dielectric function calculator and self-energy maker use **lmgw**{: style="color: blue"}.
+The script for one-shot calculations is called **lmgwsc**{: style="color: blue"}; one-shot GW calculations use **lmgw1-shot**{: style="color: blue"}; and other parts such as the
+ dielectric function calculator and self-energy maker use **lmgw**{: style="color: blue"}.
+ **lmfgws**{: style="color: blue"} carries out post-processing analysis of the dynamical self energy.
 
 + **LMTO-ASA:** The original formulation of the LMTO method included
 the Atomic Spheres Approximation (ASA). Crystals are divided up into
