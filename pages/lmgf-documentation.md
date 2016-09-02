@@ -229,3 +229,53 @@ Option strings are:
            Pade interpolation, as described above
     frzvc  Suppress saving the constant potential shift used 
            to determine charge neutrality
+
+
+### _lmgf-specific command-line arguments_
+_____________________________________________________________
+
+    -ef=# overrides upper limit of energy integration (Fermi level) 
+          and assigns to #
+
+The following are specific to the exchange calculation **modes 10** and **11**:
+
+    --sites[:pair]:site-list  Make the exchange parameters J_ij only for 
+          sites i in the site list.  In mode 11, option :pair means
+          that only parameters J_ij where both i and j are printed.
+          See here for the syntax of `site-list'.
+
+Example: running **lmgf**{: style="color: blue"} using **MODE=10** and this command line argument
+
+    --sites:pair:1,3,5,7
+
+generates $$J$$ connecting sites 1, 3, 5 and 7 to all neighbors.
+
+Running **lmgf**{: style="color: blue"} using **MODE=11** with the same **\-\-sites** switch argument will print out the exchanges just between pairs of these sites.
+
+Running **lmgf**{: style="color: blue"} using **MODE=11** without any **\-\-sites** argument will print out the exchanges between these sites and all neighbors.
+
+    --wrsj[:fn=name][:scl=#][:tol=#]  (mode 11 only)
+      Writes the Heisenberg exchange parameters in a standard format,
+      suitable for use in spin dynamics simulations.
+        fn=name writes to file 'name'  (default name is rsj)
+        scl=#   scales the parameters by #
+        tol=#   writes only parameters with energy > tol
+
+    --rcut=# 
+      Truncates the range of the R.S exchange paremeters ... 
+      useful to assist in the determination of the effect distant neighbors.
+
+    --2xmsh
+      When integrating over the BZ to estimate Tc from Tablikov formula, this option 
+      doubles the k-mesh.  Can be helpful in testing k-convergence
+      of the singular q->0 limit entering into the formula.
+
+    --amoms=mom1,mom2,...
+    --amom=mom1,mom2,...
+      This switch overrides ASA moments (which are automatically generated).
+      The first switch reads a vector of nbas moments, one for each site
+      The first switch reads a vector of nclass moments, one for each class
+
+Sphere magnetic moments are tabulated in the printout at the end of **mode 10**, and the start of **mode 11**.
+If you are importing exchange parameters (file **jr.ext**{: style="color: green"} , e.g. from the full-potential code, you will want to supply the moments calculated from that program.
+
