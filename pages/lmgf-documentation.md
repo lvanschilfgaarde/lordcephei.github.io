@@ -277,5 +277,15 @@ Running **lmgf**{: style="color: blue"} using **MODE=11** without any **\-\-site
       The first switch reads a vector of nclass moments, one for each class
 
 Sphere magnetic moments are tabulated in the printout at the end of **mode 10**, and the start of **mode 11**.
-If you are importing exchange parameters (file **jr.ext**{: style="color: green"} , e.g. from the full-potential code, you will want to supply the moments calculated from that program.
+If you are importing exchange parameters (file **jr.ext**{: style="color: green"} , e.g. from the full-potential code, you will want to supply the moments calculated from that program.)
 
+### _Test cases and examples_
+_____________________________________________________________
+
+This script:
+
+    gf/test/test.gf
+
+carries out a number of tests, which also demonstrate various branches of the code. To see the materials and corresponding tests try
+
+    gf/test/test.gf --list
