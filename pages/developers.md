@@ -25,13 +25,16 @@ _________________________
 
 [Michael Methfessel](methfessel@ihp-microelectronics.com) *(IHP, Germany)* Primary developer of the antecedent to the full-potential package.
 
-[Tony Paxton](http://www.kcl.ac.uk/nms/depts/physics/people/academicstaff/paxton.aspx) *(King’s College London, U.K.)*  Original Developer of the tight-binding package; ASA Downfolding
+[Tony Paxton](http://www.kcl.ac.uk/nms/depts/physics/people/academicstaff/paxton.aspx) *(King’s College London, U.K.)*  
+Original Developer of the tight-binding package; ASA Downfolding
 
 [John Klepeis](https://pls.llnl.gov/people/staff-bios/physics/klepeis-j) *(Lawrence Livermore National Lab, California)* Additions to the tight-binding package
 
-[Walter Lambrecht](http://physics.case.edu/faculty/walter-lambrecht/) *(Case Western Reserve, Ohio)* Primary developer of LDA+U and the optics packages
+[Walter Lambrecht](http://physics.case.edu/faculty/walter-lambrecht/) *(Case Western Reserve, Ohio)* 
+Added several features to the ASA and full-potential codes, e.g. LDA+U and the optics packages
 
-[Athanasios Chantis](https://journals.aps.org/prb/staff) *(Editor, Physical Review)* Implementation of the fully relativistic Dirac equation into the ASA package, for studying transport)*
+[Athanasios Chantis](https://journals.aps.org/prb/staff) *(Editor, Physical Review)*
+Implementation of the fully relativistic Dirac equation into the ASA package, for studying transport
 
 [Takao Kotani](http://newton.damp.tottori-u.ac.jp/wiki/index.php/Tkotani) *(Tottori University, Japan)*  Primary developer of the GW package
 
