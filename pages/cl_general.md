@@ -30,31 +30,28 @@ Some switches have a single “-” ; some have two (“–”). Those with two 
 
 In the example above, “-vns=4 -vnm=5“ assigns variables ns and nm to 4 and 5, respectively, while “--rpos=pos” tells lmf to read site positions from file pos.cafeas.
 
-You can also put these switches in the CMD category in the input file. The function is similar to a command-line argument, but
-not identical since the preprocessor has already read the input file before the “CMD” switches are read. Thus the "-v” and “-c” variable declarations may behave somewhat differently.
-
 ##### _Switches Common to Most or All Programs_
 
     --h             lists command-line switches for that program
                     and quits.  (warning: sometimes documentation
                     is slightly out of date)
     
-	--input         same as turning on HELP=T in category IO; see
-                    HELP= in the description of the IO category
-                    above.
+	--input         Lists tags (categories and tokens) a program will read. Same as turning on HELP=T in category IO; see
+                    HELP= in the description of the IO category.
 	
-	--show          same as turning on SHOW=T in category IO; see
-                    SHOW= in the description of the IO category
-                    above.
-	
-	--showp         prints out input file after having run through
-                    the preprocessor, and exits.  This can be
+	--showp         Prints out input file after after parsing by preprocessor, and exits.  This can be
                     useful because it shows the action of the
                     preprocessor.  When trying to parse a
-                    complicated input file, it is often simpler to
+                    complicated input file, it can be simpler to
                     run it through the preprocessor, and use the
                     output of the preprocessor as the input file
-					
+
+	--show          Prints the input file parsing by preprocessor (similar to --showp), and the value of the tags
+			the program has parsed or will take as defaults.
+			
+	--show=2        Same as --show, except program exits after printing out results of parsing the input file.
+			
+			Same as turning on SHOW=T in category IO; see SHOW= in the description of the IO category.					
 	--pr#1[,#2]     sets print verbosities, overriding any
      -pr#1[,#2]     specification in the input file's IO category.
                     #2 is verbosity for the potential generation
