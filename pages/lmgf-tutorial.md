@@ -80,7 +80,7 @@ Then **use the** **blm**{: style="color: blue"} tool (described in more details 
 blm --mag --nk=8 --asa --gf copt
 ~~~
 
-**blm**{: style="color: blue"} should generate file **actrl.copt**{: style="color: green"}, which should be essentially the same as **doc/demos/asa-copt/ctrl.copt**{: style="color: green"} (commented lines might be different though). If this is not the case, something is wrong with your configuration. **You should not continue** if your template does not agree with the one supplied.
+**blm**{: style="color: blue"} should generate file **actrl.copt**{: style="color: green"}, which should be essentially the same as **doc/demos/asa-copt/ctrl.copt**{: style="color: green"} (commented lines might be different though). If this is not the case, something is wrong with your configuration. _At the moment if actrl looks slightly different from the one provided just move on to the next steps._{: style="color: red"}
 
 The command-line arguments are not required, but they supply quantities **blm**{: style="color: blue"} cannot determine automatically, that you will have to supply at some point. If you supply them on the command-line they are folded into the ctrl file at the outset; or, you can edit the ctrl file after it is generated. Command-line switches **blm**{: style="color: blue"} recognizes are summarized in [Building FP input file](https://lordcephei.github.io/buildingfpinput/). 
 
