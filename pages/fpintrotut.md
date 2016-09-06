@@ -131,7 +131,7 @@ You can also check how the bandgap changes by grepping out.lmfsc for 'gap'.  For
 And that's it! You now have a self-consistent density and have calculated some basic properties such as the band gap and total energy.
 Other tutorials to look at are those to generate energy band structures, and density-of-states, or calculate a mechanical property such as the optical mode frequency.
 
-For more detailed tutorial with annotated output, see the tutorials on PbTe and CoPt.
+For more detailed tutorial with annotated output, see one on PbTe and CoPt, a ferromagnetic metal.
 
 <hr style="height:5pt; visibility:hidden;" />
 ### FAQ
