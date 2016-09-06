@@ -8,7 +8,7 @@ header: no
 <hr style="height:5pt; visibility:hidden;" />
 # Basic introduction to full-potential program **lmf**{: style="color: blue"} 
 
-This tutorial carries out a basic DFT calculation for silicon. The goal is to introduce you to the different file types and the basics of running the code. It is assumed that you have installed the executables and that they are in your path (see installation tutorial for more). The full tutorial starts under the heading "Main tutorial". You can get straight to the commands by clicking on the "Command summary" dropdown menu below.
+This tutorial carries out a basic density-functional calculation for silicon. The goal is to introduce you to the different file types and the basics of running the code. It is assumed that you have installed the executables and that they are in your path (see installation tutorial for more). The tutorial starts under the heading "Main tutorial"; you can jump straight to the commands by clicking on the "Command summary" dropdown menu.
 
 <hr style="height:5pt; visibility:hidden;" />
 ### Command summary     
@@ -113,11 +113,26 @@ Now take a look at the output file "out.lmfsc". Look for the line beginning with
     $ grep 'DQ' out.lmfsc
     $ grep 'ehk=-' out.lmfsc
 
-You can also check how the bandgap changes by grepping out.lmfsc for 'gap'.
+You can also check how the bandgap changes by grepping out.lmfsc for 'gap'.  For more detail, click on Output below to see the relevant section of output.
 
-ADD BAND STRUCTURE PLOTTING!!!
+<hr style="height:5pt; visibility:hidden;" />
+### Output : bandgap
+<div onclick="elm = document.getElementById('1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="1">{:/}
 
-And that's it! You now have a self-consistent density and have calculated some basic properties such as the band gap and total energy.  
+ BZWTS : --- Tetrahedron Integration ---
+ ... only filled or empty bands encountered:  ev=0.185509  ec=0.229539
+ VBmax = 0.185509  CBmin = 0.229539  gap = 0.044029 Ry = 0.59880 eV
+ BZINTS: Fermi energy:      0.185509;   8.000000 electrons;  D(Ef):    0.000
+         Sum occ. bands:   -1.4864280  incl. Bloechl correction:    0.000000
+
+{::nomarkdown}</div>{:/}
+
+And that's it! You now have a self-consistent density and have calculated some basic properties such as the band gap and total energy.
+
+Other things to do are to generate energy band structures, and density-of-states, or calculate a mechanical property such as the optical mode frequency.
+
+For more detailed information with annotated output, see the tutorials on PbTe and CoPt.
 
 <hr style="height:5pt; visibility:hidden;" />
 ### FAQ
@@ -141,14 +156,13 @@ It is a functional of the input density, rather than the output density.  At sel
 
 1) Converting between fractional and cartesian coordinates
 
-For example, try running the command "blm init.si --express --wsitex" and you will see that "xpos" has been added to the first line, this indicates that the coordinates are now in fractional form. Note that in this case the cartesian and fractional coordinates happen to be the same.
+For example, try running the command "blm init.si --express --wsitex" and you will see that "xpos" has been added to the first line; this indicates that the coordinates are now in fractional form. Note that in this case the cartesian and fractional coordinates happen to be the same.
 
-2) You can avoid editing **ctrl.si** by invoking **blm**{: style="color: blue"} with extra switches:
+2) One byproduct of the self-consistent calculation
 
     $ blm init.si --express --gmax=5 --nk=4 --nit=20
     $ diff actrl.si ctrl.si
     
-You can see that values for **gmax**, **nkabc** and **nit** have been set by **blm**{: style="color: blue"}.  If you modify the input file this way, be sure to copy actrl.si to ctrl.si before continuing.
 
-3) 
+
 
