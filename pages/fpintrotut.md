@@ -28,28 +28,28 @@ This tutorial carries out a basic DFT calculation for silicon. The goal is to in
 <hr style="height:5pt; visibility:hidden;" />
 ### Main tutorial
 
-To get started, create a new working directory and move into it, here we will call it "si". Then copy the silicon init file _init.si_ from path/. The _init_ file is the starting point, it contains basic structural information in a format that is recognised by the code (analogous to the POSCAR file in VASP). 
+To get started, create a new working directory and move into it, here we will call it "si". Then copy the silicon init file _init.si_ from path/. The init file is the starting point, it contains basic structural information in a format that is recognised by the code (analogous to the POSCAR file in VASP). 
 
     $ mkdir si 
     $ cd si
     $ cp path/init.si .
 
-Take a look at the init file using a text editor (e.g. vi) and you will see it contains only the basic structural information. The lattice constant **ALAT** and primitive lattice vectors **PLAT** are shown in the **LATTICE** section. **UNITS=A** sppecifies that the lattice constant is in Angstroms (the lattice vectors are in units of the lattice constant). The primitive lattice vectors are in row format (i.e. the first row contains the x, y and z components of the first lattice vector and so forth). In the **SITE** section, the atom type and coordinates are shown. The **X=** tag specifies that the coordinates are in "direct" representation, meaning as fractional multiples of the **PLAT**. It is also possible to use cartesian coordinates and in this case the **X=** tag would be replaced by **POS=** (see additional exercises below).
+Take a look at _init.si_ using a text editor (e.g. **vi**{: style="color: blue"}) and you will see it contains only the basic structural information. The lattice constant **ALAT** and primitive lattice vectors **PLAT** are shown in the **LATTICE** section. **UNITS=A** sppecifies that the lattice constant is in Angstroms (the lattice vectors are in units of the lattice constant). The primitive lattice vectors are in row format (i.e. the first row contains the x, y and z components of the first lattice vector and so forth). In the **SITE** section, the atom type and coordinates are shown. The **X=** tag specifies that the coordinates are in "direct" representation, that is, as fractional multiples of the **PLAT**. It is also possible to use cartesian coordinates and in this case the **X=** tag would be replaced by **POS=** (see additional exercises below).
 
     $ vi init.si
 
-In order to run a DFT calculation, you need an input file and structural information. The blm tool takes the init file as input and creates a template input file "actrl.si" and structure file "site.si". Note that the code recognises certain prefixes as file types (such as "ctrl" for input file and "site" for structure file) and extensions as file names (which the user can specify). The additional prefix "a" in "actrl.si" is used to prevent overwriting of an existing ctrl file. Run the blm command and then copy the template file "actrl.si" to "ctrl.si", which is now recognised by the code as an input file. The "--express" switch tells blm to make a particularly simple input file, we will see more complicated examples in later tutorials.    
+In order to run a DFT calculation, you need an input file and structural information. The **blm**{: style="color: blue"} tool takes the init file as input and creates a template input file **actrl.si** and structure file "site.si". Note that the code recognises certain prefixes as file types (such as "ctrl" for input file and "site" for structure file) and extensions as file names (which the user can specify). The additional prefix "a" in **actrl.si** is used to prevent overwriting of an existing ctrl file. Run the **blm**{: style="color: blue"} command and then copy the template file **actrl.si** to **ctrl.si**, which is now recognised by the code as an input file. The "--express" switch tells **blm**{: style="color: blue"} to make a particularly simple input file, we will see more complicated examples in later tutorials.    
 
     $ blm init.si --express --nit=1
     $ cp actrl.si ctrl.si
     
-Switch '--nit=1' tells blm to make actrl.si limiting the self-consistency cycle to 1 iteration.  We will return to the issue of self-consistency shortly.   
+Switch '--nit=1' tells **blm**{: style="color: blue"} to make **actrl.si** limiting the self-consistency cycle to 1 iteration.  We will return to the issue of self-consistency shortly.   
 
-The start of the blm output shows some structural and symmetry information. Further down, the "makrm0:" part gives information about creating the augmentation spheres, both silicon atoms were assigned spheres of radii 2.22 Bohr. Now open up the site file and you can see it contains the lattice constant and lattice vectors in the first line. Note that the lattice constant has been converted from Angstroms to Bohr since the code works in atomic units. The other terms in the first line are just standard settings and a full explanation can be found in the online page for the site file. The second line is a comment line and the subsequent lines contain the atomic species labels and coordinates. Note that blm writes cartesian coordinates by default (they happen to be the same as fractional coordinates in this case) and that running blm produces a new actrl and site file each time. 
+The start of the **blm**{: style="color: blue"} output shows some structural and symmetry information. Further down, the "makrm0:" part gives information about creating the augmentation spheres, both silicon atoms were assigned spheres of radii 2.22 Bohr. Now open up the site file and you can see it contains the lattice constant and lattice vectors in the first line. Note that the lattice constant has been converted from Angstroms to Bohr since the code works in atomic units. The other terms in the first line are just standard settings and a full explanation can be found in the online page for the site file. The second line is a comment line and the subsequent lines contain the atomic species labels and coordinates. Note that **blm**{: style="color: blue"} writes cartesian coordinates by default (they happen to be the same as fractional coordinates in this case) and that running **blm**{: style="color: blue"} produces a new actrl and site file each time. 
 
     $ vi site.si
 
-Next take a look at the input file "ctrl.si". The first few lines are just header information, then you have a number of basic parameters for a calculation. We won't talk about these values now but a full description is provided on the ctrl file page. Defaults are provided by blm for most of the variables except "gmax" and "nkabc", which are left as "NULL". The "gmax" value specifies how fine a real space mesh is used for the interstitial charge density and this depends on the basis set. The "nkabc" specifies the k mesh and has to be set manually (it depends on what system you are looking at). A 4x4x4 k mesh is sufficient for us, set this value now by simply changing "nkabc=NULL" to "nkabc=4" (4 is automatically used for each mesh dimension, you could equivlaently use "nkabc=4 4 4").  Take a look at the last line, it contains information about the different atoms in the system (here we only have silicon) and their associated augmentation spheres.
+Next take a look at the input file **ctrl.si**. The first few lines are just header information, then you have a number of basic parameters for a calculation. We won't talk about these values now but a full description is provided on the ctrl file page. Defaults are provided by **blm**{: style="color: blue"} for most of the variables except "gmax" and "nkabc", which are left as "NULL". The "gmax" value specifies how fine a real space mesh is used for the interstitial charge density and this depends on the basis set. The "nkabc" specifies the k mesh and has to be set manually (it depends on what system you are looking at). A 4x4x4 k mesh is sufficient for us, set this value now by simply changing "nkabc=NULL" to "nkabc=4" (4 is automatically used for each mesh dimension, you could equivlaently use "nkabc=4 4 4").  Take a look at the last line, it contains information about the different atoms in the system (here we only have silicon) and their associated augmentation spheres.
 
     $ vi ctrl.si
 
@@ -109,12 +109,12 @@ It is a functional of the input density, rather than the output density.  At sel
 
 For example, try running the command "blm init.si --express --wsitex" and you will see that "xpos" has been added to the first line, this indicates that the coordinates are now in fractional form. Note that in this case the cartesian and fractional coordinates happen to be the same.
 
-2) You can avoid editing ctrl.si by invoking blm with extra switches:
+2) You can avoid editing **ctrl.si** by invoking **blm**{: style="color: blue"} with extra switches:
 
     $ blm init.si --express --gmax=5 --nk=4 --nit=20
     $ diff actrl.si ctrl.si
     
-You can see that values for gmax, nkabc and nit have been set by blm.  If you modify the input file this way, be sure to copy actrl.si to ctrl.si before continuing.
+You can see that values for **gmax**, **nkabc** and **nit** have been set by **blm**{: style="color: blue"}.  If you modify the input file this way, be sure to copy actrl.si to ctrl.si before continuing.
 
 3) 
 
