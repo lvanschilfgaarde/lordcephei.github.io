@@ -30,3 +30,4 @@ It's assumed that you understand how to perform a QSGW loop and what are the bas
 2. [The second one](https://lordcephei.github.io/dmft2) is about possible errors and some indications and rules-of-thumb to adjust parameters in performing a DMFT loop.
 3. [The third tutorial](https://lordcephei.github.io/dmft3) is about how to close the density loop by means of the static spin-averaged+spin-flip approach.
 4. [The forth tutorial](https://lordcephei.github.io/dmft4) is about how to close the density loop by updating the density with the dynamical approach (standard method).
+5. [The fifth tutorial](https://lordcephei.github.io/maxent1) focuses on the maximum entropy method, used to analytically continue the self-energy from the Matsubara's frequency mesh to the real frequency axis. 
