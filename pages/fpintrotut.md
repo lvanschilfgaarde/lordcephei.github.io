@@ -117,7 +117,7 @@ You can also check how the bandgap changes by grepping out.lmfsc for 'gap'.  For
 
 <hr style="height:5pt; visibility:hidden;" />
 <div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
-{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="1">{:/}
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
 
  BZWTS : --- Tetrahedron Integration ---
  ... only filled or empty bands encountered:  ev=0.185509  ec=0.229539
