@@ -120,17 +120,22 @@ You can also check how the bandgap changes by grepping out.lmfsc for 'gap'.  For
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
 
  BZWTS : --- Tetrahedron Integration ---
+
  ... only filled or empty bands encountered:  ev=0.185509  ec=0.229539
+
  VBmax = 0.185509  CBmin = 0.229539  gap = 0.044029 Ry = 0.59880 eV
+
  BZINTS: Fermi energy:      0.185509;   8.000000 electrons;  D(Ef):    0.000
+
          Sum occ. bands:   -1.4864280  incl. Bloechl correction:    0.000000
 
 {::nomarkdown}</div>{:/}
 
 And that's it! You now have a self-consistent density and have calculated some basic properties such as the band gap and total energy.
 Other tutorials to look at are those to generate energy band structures, and density-of-states, or calculate a mechanical property such as the optical mode frequency.
+This is the first step you need to carry out a GW calculations.
 
-For more detailed tutorial with annotated output, see one on PbTe and CoPt, a ferromagnetic metal.
+For more detailed tutorials on other materials, see those for PbTe, for which there is a corresponding tutorial for the ASA, and another for optics, and one for CoPt, a ferromagnetic metal.
 
 <hr style="height:5pt; visibility:hidden;" />
 ### FAQ
