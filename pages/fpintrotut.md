@@ -38,11 +38,13 @@ Take a look at the init file using a text editor (e.g. vi) and you will see it c
 
     $ vi init.si
 
-In order to run a DFT calculation, you need an input file and structural information. The blm tool takes the init file as input and creates a template input file "actrl.si" and structure file "site.si". Note that the code recognises certain prefixes as file types (such as "ctrl" for input file and "site" for structure file) and extensions as file names (which the user can specify). The additional prefix "a" in "actrl.si" is used to prevent overwriting of an existing ctrl file. Run the blm command and then copy the template file "actrl.si" to "ctrl.si", which is now recognised by the code as an input file. The "--express" switch tells blm to make a particularly simple input file, we will see more complicated examples in later tutorials.
+In order to run a DFT calculation, you need an input file and structural information. The blm tool takes the init file as input and creates a template input file "actrl.si" and structure file "site.si". Note that the code recognises certain prefixes as file types (such as "ctrl" for input file and "site" for structure file) and extensions as file names (which the user can specify). The additional prefix "a" in "actrl.si" is used to prevent overwriting of an existing ctrl file. Run the blm command and then copy the template file "actrl.si" to "ctrl.si", which is now recognised by the code as an input file. The "--express" switch tells blm to make a particularly simple input file, we will see more complicated examples in later tutorials.    
 
     $ blm init.si --express
     $ cp actrl.si ctrl.si
     
+Switch '--nit=1' tells blm to make actrl.si limiting the self-consistency cycle to 1 iteration.  We will return to the issue of self-consistency shortly.   
+
 The start of the blm output shows some structural and symmetry information. Further down, the "makrm0:" part gives information about creating the augmentation spheres, both silicon atoms were assigned spheres of radii 2.22 Bohr. Now open up the site file and you can see it contains the lattice constant and lattice vectors in the first line. Note that the lattice constant has been converted from Angstroms to Bohr since the code works in atomic units. The other terms in the first line are just standard settings and a full explanation can be found in the online page for the site file. The second line is a comment line and the subsequent lines contain the atomic species labels and coordinates. Note that blm writes cartesian coordinates by default (they happen to be the same as fractional coordinates in this case) and that running blm produces a new actrl and site file each time. 
 
     $ vi site.si
