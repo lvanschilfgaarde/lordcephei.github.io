@@ -40,7 +40,7 @@ Take a look at the init file using a text editor (e.g. vi) and you will see it c
 
 In order to run a DFT calculation, you need an input file and structural information. The blm tool takes the init file as input and creates a template input file "actrl.si" and structure file "site.si". Note that the code recognises certain prefixes as file types (such as "ctrl" for input file and "site" for structure file) and extensions as file names (which the user can specify). The additional prefix "a" in "actrl.si" is used to prevent overwriting of an existing ctrl file. Run the blm command and then copy the template file "actrl.si" to "ctrl.si", which is now recognised by the code as an input file. The "--express" switch tells blm to make a particularly simple input file, we will see more complicated examples in later tutorials.    
 
-    $ blm init.si --express
+    $ blm init.si --express --nit=1
     $ cp actrl.si ctrl.si
     
 Switch '--nit=1' tells blm to make actrl.si limiting the self-consistency cycle to 1 iteration.  We will return to the issue of self-consistency shortly.   
