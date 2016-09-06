@@ -15,13 +15,13 @@ This tutorial carries out a basic DFT calculation for silicon. The goal is to in
 <div onclick="elm = document.getElementById('1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="1">{:/}
 
-    $ mkdir si; cd si; cp path/init.si .     #create working directory, move into it and copy file     
-    $ blm init.si --express                  #use blm tool to create actrl and site files
-    $ cp actrl.si ctrl.si                    #copy actrl to recognised ctrl prefix
-    $ lmfa ctrl.si                           #use lmfa to make basp file, atm file and to get gmax
-    $ cp basp0.si basp.si                    #copy basp0 to recognised basp prefix   
-    $ vi ctrl.si                             #set iterations number nit, k mesh nkabc and gmax
-    $ lmf ctrl.si > out.lmfsc                #make self-consistent
+    $ mkdir si; cd si; cp path/init.si .                #create working directory, move into it and copy file     
+    $ blm init.si --express --nit=1 --gmax=5 --nk=4     #use blm tool to create actrl and site files
+    $ cp actrl.si ctrl.si                               #copy actrl to recognised ctrl prefix
+    $ lmfa ctrl.si                                      #use lmfa to make basp file, atm file and to get gmax
+                $ cp basp0.si basp.si                   #copy basp0 to recognised basp prefix   
+                $ vi ctrl.si                            #set iterations number nit, k mesh nkabc and gmax
+    $ lmf ctrl.si > out.lmfsc                           #make self-consistent
 
 {::nomarkdown}</div>{:/}
 
