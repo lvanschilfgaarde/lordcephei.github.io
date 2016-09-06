@@ -21,8 +21,8 @@ This file is one of the input files read by the CTQMC sovler.
 The variables contained in this file define the kind of calculation, allowing for a tuning of the Quantum Monte Carlo algorithm and details on how to treat the connection between the low-energy and the high-energy part of the self-energy. 
 An example of the PARAMS file is reported in the [first tutorial](https://lordcephei.github.io/dmft1) (box-like botton).
 
-<div onclick="elm = document.getElementById('ParamsDmft1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">More details - Click to show.</button></div>
-{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="ParamsDmft1">{:/}
+<div onclick="elm = document.getElementById('ParamsVariables'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">More details - Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="ParamsVariables">{:/}
 
 ##### _**Basic parameters (U, J, nf0 and beta)**_
 Among the possible parameters are **U** and **J** defining respectively the Hubbard in-site interaction and the Hund's coupling constant in eV. 
@@ -88,6 +88,9 @@ Actually the information about the impurity levels is already contained in the i
 ### Phase transition boundaries
 It may happen that, despite the high number of QMC steps, the *histogram.dat* file displays a double peak distribution simiar to the sum of two Gaussians. This is the case when the material is close to a phase transition.
 
+<div onclick="elm = document.getElementById('PhaseTrans'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Example - Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="PhaseTrans">{:/}
+
 In this case usually one or more channels of the self-energy are very noisy. One has to run for longer time, or use the status files to restart the calculation many times until only one peaks dominate and the histogram looks like a Gaussian. 
 An example is given in the boxes below.
 
@@ -95,9 +98,14 @@ An example is given in the boxes below.
 
 ![sigma close to transition](https://lordcephei.github.io/assets/img/transition-sigma.png)
 
+{::nomarkdown}</div>{:/}
+
 ### Using status files
 During the calculation, each core generates a *status* file.
 They contain some information about the sampling and should be used as restart files for other CTQMC calculations with similar parameters. They are read authomatically if they are in the folder where **ctqmc** is running.
+
+<div onclick="elm = document.getElementById('StatusFiles'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">More details - Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="StatusFiles">{:/}
 
 They can be used basically in two ways.
 
@@ -105,3 +113,5 @@ They can be used basically in two ways.
 + If you realise that in one ctqmc run, you haven't achieved a good sampling (e.g. **M** too low, or close to phase transition), than you can run again the calculation.
 
 Since there is one *status* file per processor, you must pay attention to run on as many cores as *status* files you have. It should be safe to run with a smaller number of cores, while running on more cores than *status* files gives wrong results.
+
+{::nomarkdown}</div>{:/}
