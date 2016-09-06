@@ -113,11 +113,10 @@ Now take a look at the output file "out.lmfsc". Look for the line beginning with
     $ grep 'DQ' out.lmfsc
     $ grep 'ehk=-' out.lmfsc
 
-You can also check how the bandgap changes by grepping out.lmfsc for 'gap'.  For more detail, click on Output below to see the relevant section of output.
+You can also check how the bandgap changes by grepping out.lmfsc for 'gap'.  For more detail, click on the snippet below to see the relevant section of output.
 
 <hr style="height:5pt; visibility:hidden;" />
-### Output snippet : Fermi level and bandgap
-<div onclick="elm = document.getElementById('1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
+<div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="1">{:/}
 
  BZWTS : --- Tetrahedron Integration ---
