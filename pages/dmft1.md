@@ -28,6 +28,7 @@ In this tutorial, we will go through all these steps and we will indicate what q
 
 ### Set up of the calculation 
 First of all, you have to [download the input files](https://lordcephei.github.io/assets/inputfiles_dmft1.tar.gz). Some of them are actually binary files obtained from a converged QSGW calculation on the paramagnetic phase of La$$_2$$CuO$$_4$$.
+
 After copying the relevant files in the input folders, you need to compile *broad_sig.f90* and add a command line to the *ctrl.lsco* file. 
 
 ```
