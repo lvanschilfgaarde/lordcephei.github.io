@@ -116,7 +116,7 @@ Now take a look at the output file "out.lmfsc". Look for the line beginning with
 You can also check how the bandgap changes by grepping out.lmfsc for 'gap'.  For more detail, click on Output below to see the relevant section of output.
 
 <hr style="height:5pt; visibility:hidden;" />
-### Output : bandgap
+### Output snippet : Fermi level and bandgap
 <div onclick="elm = document.getElementById('1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="1">{:/}
 
@@ -129,10 +129,9 @@ You can also check how the bandgap changes by grepping out.lmfsc for 'gap'.  For
 {::nomarkdown}</div>{:/}
 
 And that's it! You now have a self-consistent density and have calculated some basic properties such as the band gap and total energy.
+Other tutorials to look at are those to generate energy band structures, and density-of-states, or calculate a mechanical property such as the optical mode frequency.
 
-Other things to do are to generate energy band structures, and density-of-states, or calculate a mechanical property such as the optical mode frequency.
-
-For more detailed information with annotated output, see the tutorials on PbTe and CoPt.
+For more detailed tutorial with annotated output, see the tutorials on PbTe and CoPt.
 
 <hr style="height:5pt; visibility:hidden;" />
 ### FAQ
