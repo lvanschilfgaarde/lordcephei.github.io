@@ -51,27 +51,58 @@ The start of the **blm**{: style="color: blue"} output shows some structural and
 
     $ vi site.si
 
-Next take a look at the input file **ctrl.si**. The first few lines are just header information, then you have a number of basic parameters for a calculation. We won't talk about these values now but a full description is provided on the ctrl file page. Defaults are provided by **blm**{: style="color: blue"} for most of the variables except **gmax** and **nkabc**, which are left as "NULL". The "gmax" value specifies how fine a real space mesh is used for the interstitial charge density and this depends on the basis set.  "nkabc" specifies the k mesh.  There is no sensible way for blm to select default values (it depends on what system you are looking at); both must be specified by the user. A 4x4x4 k mesh is sufficient for us.  Set this value in your text editor by simply changing "nkabc=NULL" to "nkabc=4" (4 is automatically used for each mesh dimension, you could equivlaently use "nkabc=4 4 4").  Take a look at the last line, it contains information about the different atoms in the system (here we only have silicon) and their associated augmentation spheres.
+Next take a look at the input file **ctrl.si**. The first few lines are just header information, then you have a number of basic parameters for a calculation. We won't talk about these values now but a full description is provided on the ctrl file page. Defaults are provided by **blm**{: style="color: blue"} for most of the variables except **gmax** and **nkabc**, which are left as "NULL". The "gmax" value specifies how fine a real space mesh is used for the interstitial charge density and this depends on the basis set.  "nkabc" specifies the k mesh.  There is no sensible way for blm to select default values (it depends on what system you are looking at); both must be specified by the user.  We will return to this shortly.
 
-    $ vi ctrl.si
-
-We now need a basis set and an estimate for gmax. This is done by using the **lmfa**{: style="color: blue"} tool. **lmfa**{: style="color: blue"} also calculates free atom wavefunctions and densities. The latter will be used later to make a trial density for the crystal calculation; the free atom wavefunctions are used to fit the basis set parameters. Note that in the all electron approach, the space is partitioned in two: an augmentation sphere part (around each atom) and an interstitial part (region between spheres). In the augmentation spheres, the basis set is composed of local atomic functions. In the interstitial regions, the basis consists of smooth-Hankel functions, characterised by their smoothing radius (**RSMH**) and Hankel energies (**EH**). The number of interstitial functions and their parameters (**RSMH** and **EH**) are defined in the basp file (the size of which is determined by parameters in the ctrl file). There are a few more subtleties to the code's basis set but we will leave further details to the theory pages and the input file pages. Run the following command: 
+We now need a basis set, which will give us an estimate for gmax.  This can done automatically by using the **lmfa**{: style="color: blue"}
+tool. **lmfa**{: style="color: blue"} also calculates free atom wavefunctions and densities. The latter will be used later to make a trial density for
+the crystal calculation; the free atom wavefunctions are used to fit the basis set parameters. Note that in the all electron approach, space is
+partitioned in two kinds of regions: an augmentation sphere part (around each atom) and an interstitial part (region between spheres). 
+In the augmentation spheres, the basis set is composed of local atomic functions, tabulated numerically. 
+In the interstitial regions, the basis consists of analytic, smooth-Hankel functions, characterised by their
+smoothing radius (**RSMH**) and Hankel energies (**EH**). The number of interstitial functions and their parameters (**RSMH** and **EH**) are defined
+in the basp file (the size of which is determined by parameters in the ctrl file). There are a few more subtleties to the code's basis set but we will
+leave further details to the theory pages and the input file pages. Run the following command:
 
     $ lmfa ctrl.si
     
-Again the output shows some structural information and then details about finding the free atom density, basis set fitting and estimation of gmax. Note that the Barth-Hedin exchange-correlation functional is used, as indicated by "XC:BH", this was specified by **xcfun=  2** in the ctrl file (the default). We won't go into more detail now, but a full description can be found on the **lmfa**{: style="color: blue"} page. One thing to note is the **gmax** value given towards the end: "GMAX=5.0". Now that we have a gmax value, open up the ctrl file and change the default NULL value to 5.0.
+Again the output shows some structural information and then details about finding the free atom density, basis set fitting and, at the end an estimate of gmax is printed out. Note that the Barth-Hedin exchange-correlation functional is used, as indicated by "XC:BH", this was specified by **xcfun=  2** in the ctrl file (the default). We won't go into more detail now, but a full description can be found on the **lmfa**{: style="color: blue"} page. One thing to note is the **gmax** value given towards the end: "GMAX=5.0". Now that we have a gmax value, open up the ctrl file and change the default NULL value to 5.0.
 
     $ vi ctrl.si
 
-Check the contents of your working directory and you will find two new files **atm.si** and **basp0.si**. The **atm.si** file contains the free atom densities calculated by **lmfa**{: style="color: blue"}. File **basp0.si** is the template basis set file; the standard basis set name is basp and the extra 0 is added to avoid overwriting. Take a look at the **basp0.si** file and you will see that it contains basis set parameters that define silicon's smooth Hankel functions. Changing these values would change their functional form, but **lmfa**{: style="color: blue"} does a reasonable job (also later on parameters can be automatically optimized, if desired) so we will leave them as they are. Copy **basp0.si** to the file **lmf** recognises, **basp.si**.
+Alternatively, you can supply the information through **blm**{: style="color: blue"}.  We will do this here to avoid the need to edit the file.  Run blm with an extra argument and compare to the original ctrl file:
+
+    $ blm init.si --express --nit=1 --gmax=5
+    $ diff actrl.si ctrl.si
+
+The last switch enables blm to use a value for **gmax**.
+
+Check the contents of your working directory and you will find two new files **atm.si** and **basp0.si**. **atm.si** contains the free atom densities calculated by **lmfa**{: style="color: blue"}. File **basp0.si** is the template basis set file; the standard basis set name is basp and the extra 0 is appended to avoid overwriting. Take a look at **basp0.si** and you will see that it contains basis set parameters that define silicon's smooth Hankel functions. Changing these values would change their functional form, but **lmfa**{: style="color: blue"} does a reasonable job (also later on parameters can be automatically optimized, if desired) so we will leave them as they are. Copy **basp0.si** to **basp.si**, which is the name **lmf** recognises for the basis set file
 
     $ cp basp0.si basp.si
     
-We now have everything we need to run an all-electron, full-potential DFT calculation; this is done using the **lmf**{: style="color: blue"} program. Double check that you have specified the k mesh (nkabc) and a gmax value and then run the following command:
+The second unknown parameter is the k-mesh.  A 4x4x4 k mesh is sufficient for Si.  Set this value in your text editor by simply changing "nkabc=NULL" to "nkabc=4" (4 is automatically used for each mesh dimension, you could equivlaently use "nkabc=4 4 4").  Take a look at the last line, it contains information about the different atoms in the system (here we only have silicon) and their associated augmentation spheres.
 
-    $ lmfp ctrl.si
+    $ vi ctrl.si
 
-The first part of the output is similar to what we've seen from the other programs. Look for the line beginning with "lmfp", it should be around 60 lines down. This line tells us about what input density is used. **lmf**{: style="color: blue"} first looks for a restart file **rst.si** and if it's not found it then looks for the free atom density file **atm.si**. **lmf**{: Style="Color: Blue"} then overlaps the free atom densities to form a trial density (Mattheis construction) and this is used as the input density. Next **lmf**{: style="color: blue"} begins the first iteration of a self-consistent cycle: calculate the potential from the input density, use this potential to solve the Kohn-Sham equations and then perform Brillouin zone integration to get the output density. Towards the end of the output, the Kohn-Sham total energy is reported along with the Harris-Foulkes total energy. These two energies will be the same at self-consistency (or very close at near self-consistency). Note that the calculation stopped here after a single iteration.  This is because the number of iterations "nit" is set to 1 by default in the ctrl file. Now increase the number of iterations to something like 20 and run **lmf**{: style="color: blue"} again. A lot of text is produced so it will be easier to redirect the output to a file, here we call it out.lmfsc (the sc indicates self-consistent).
+You can also supply the information through **blm**{: style="color: blue"} with a switch.  Compare the effect of this new switch:
+
+    $ blm init.si --express --nit=1 --gmax=5 --nk=4
+    $ diff actrl.si ctrl.si
+
+Whichever way you supply **gmax** and **nk** to the ctrl file, it should now have no NULL entries and we now have everything we need to run an all-electron, full-potential DFT calculation.  This is done using the **lmf**{: style="color: blue"} program. Double check that you have specified the k mesh (nkabc) and a gmax value and then run the following command:
+
+    $ lmf ctrl.si
+
+The first part of the output is similar to what we've seen from the other programs. Look for the line beginning with "lmfp", it should be around 60
+lines down. This line tells us about what input density is used. **lmf**{: style="color: blue"} first looks for a restart file **rst.si** and if it's
+not found it then looks for the free atom density file **atm.si**. **lmf**{: Style="Color: Blue"} then overlaps the free atom densities to form a
+trial density (Mattheis construction) and this is used as the input density. Next **lmf**{: style="color: blue"} begins the first iteration of a
+self-consistent cycle: calculate the potential from the input density, use this potential to solve the Kohn-Sham equations and then perform Brillouin
+zone integration to get the output density. Towards the end of the output, the Kohn-Sham total energy is reported along with the Harris-Foulkes total
+energy. These two energies will be the same at self-consistency (or very close at near self-consistency). Note that the calculation stopped here after
+a single iteration.  This is because the number of iterations **nit** was set to 1 by blm, because --nit=1 was given.  Now increase the number of iterations to
+something like 20 and run **lmf**{: style="color: blue"} again. A lot of text is produced so it will be easier to redirect the output to a file, here
+we call it **out.lmfsc** (the sc indicates a self-consistent cycle).
 
     $ vi ctrl.si
     $ lmf ctrl.si > out.lmfsc
