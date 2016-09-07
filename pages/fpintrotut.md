@@ -28,7 +28,7 @@ This tutorial carries out a basic density-functional calculation for silicon. Th
 <hr style="height:5pt; visibility:hidden;" />
 ### Main tutorial
 
-To get started, create a new working directory and move into it, here we will call it "si". Then copy the silicon init file _init.si_ from path/. The init file is the starting point, it contains basic structural information in a format that is recognised by the code (analogous to the POSCAR file in VASP). 
+To get started, create a new working directory and move into it, here we will call it "si". Then copy the silicon init file _init.si_{: style="color: green"} from path/. The init file is the starting point, it contains basic structural information in a format that is recognised by the code (analogous to the POSCAR file in VASP). 
 
     $ mkdir si 
     $ cd si
@@ -95,47 +95,58 @@ Whichever way you supply **gmax** and **nk** to the ctrl file, it should now hav
     $ lmf ctrl.si
 
 The first part of the output is similar to what we've seen from the other programs. Look for the line beginning with "lmfp", it should be around 60
-lines down. This line tells us about what input density is used. **lmf**{: style="color: blue"} first looks for a restart file **rst.si** and if it's
-not found it then looks for the free atom density file **atm.si**. **lmf**{: Style="Color: Blue"} then overlaps the free atom densities to form a
+lines down. This line tells us about what input density is used. **lmf**{: style="color: blue"} first looks for a restart file _rst.si_{: style="color: green"} and if it's
+not found it then looks for the free atom density file _atm.si_{: style="color: green"}. **lmf**{: Style="Color: Blue"} then overlaps the free atom densities to form a
 trial density (Mattheis construction) and this is used as the input density. Next **lmf**{: style="color: blue"} begins the first iteration of a
 self-consistent cycle: calculate the potential from the input density, use this potential to solve the Kohn-Sham equations and then perform Brillouin
 zone integration to get the output density. Towards the end of the output, the Kohn-Sham total energy is reported along with the Harris-Foulkes total
 energy. These two energies will be the same at self-consistency (or very close at near self-consistency). Note that the calculation stopped here after
 a single iteration.  This is because the number of iterations **nit** was set to 1 by blm, because --nit=1 was given.  Now increase the number of iterations to
 something like 20 and run **lmf**{: style="color: blue"} again. A lot of text is produced so it will be easier to redirect the output to a file, here
-we call it **out.lmfsc** (the sc indicates a self-consistent cycle).
+we call it _out.lmfsc_{: style="color: green"} (appending sc to indicate a self-consistent cycle).
 
     $ vi ctrl.si
     $ lmf ctrl.si > out.lmfsc
     
-Now take a look at the output file "out.lmfsc". Look for the line beginning with "iors", again around line 60, and you will see that this time the rst file was found and the density is used as the input density (the rst file was created after the single iteration). Now move to the end of the file, the "c" in front of the Harris Foulkes "ehf" and Kohn-Sham "ehk" energies indicates that convergence was reached (note how similar the ehf and ehk energies are). A few lines up you can see that it took 8 iterations to converge: "it 8 of 20". At the end of each iteration the ehf and ehk total energies are printed and a check is made for self-consistency. The two parameters conv and convc in the ctrl file specify, respectively, the self-consistency tolerances for the total energy and root mean square (RMS) change in the density. Note that by default both tolerances have to be met, to use a single tolerance you simply set the one that you don't want to zero. Further up again the converged Fermi energy and band gap values are reported in the Brillouin zone integration section (look for last occurence of "BZWTS" in the file). To see how the density and energy changes between iterations, try grepping for "DQ" and "ehk=-" 
+Now take a look at the output file _out.lmfsc_{: style="color: green"}. Look for the line beginning with "iors", again around line 60,
+<hr style="height:5pt; visibility:hidden;" />
 
-    $ grep 'DQ' out.lmfsc
-    $ grep 'ehk=-' out.lmfsc
+<div onclick="elm = document.getElementById('iors'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="iors">{:/}
+~~~
+ iors  : read restart file (binary, mesh density) 
+         use from  restart file: ef window, positions, pnu 
+         ignore in restart file: *
+~~~ 
+{::nomarkdown}</div>{:/}
 
-You can also check how the bandgap changes by grepping out.lmfsc for 'gap'.  For more detail, click on the snippet below to see the relevant section of output.
+and you will see that this time the rst file was found and the density is used as the input density (the rst file was created after the single iteration). Now move to the end of the file, the "c" in front of the Harris Foulkes "ehf" and Kohn-Sham "ehk" energies indicates that convergence was reached (note how similar the ehf and ehk energies are). A few lines up you can see that it took 8 iterations to converge: "it 8 of 20". At the end of each iteration the ehf and ehk total energies are printed and a check is made for self-consistency. The two parameters conv and convc in the ctrl file specify, respectively, the self-consistency tolerances for the total energy and root mean square (RMS) change in the density. Note that by default both tolerances have to be met. To use a single tolerance you simply set the one that you don't want to zero. 
+
+Further up again the Fermi energy and band gap values, and other key bits of information are reported in the Brillouin zone integration section.  You should find something similar to the output snippet below.
 
 <hr style="height:5pt; visibility:hidden;" />
 <div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
-
+~~~
  BZWTS : --- Tetrahedron Integration ---
-
  ... only filled or empty bands encountered:  ev=0.185509  ec=0.229539
-
  VBmax = 0.185509  CBmin = 0.229539  gap = 0.044029 Ry = 0.59880 eV
-
- BZINTS: Fermi energy:      0.185509;   8.000000 electrons;  D(Ef):    0.000
-
-         Sum occ. bands:   -1.4864280  incl. Bloechl correction:    0.000000
-
+ BZINTS: Fermi energy:      0.185518;   8.000000 electrons;  D(Ef):    0.000
+         Sum occ. bands:   -1.4864297  incl. Bloechl correction:    0.000000
+~~~ 
 {::nomarkdown}</div>{:/}
+
+To see how the density and energy changes between iterations, try grepping for "DQ" and "ehk=-" 
+
+    $ grep 'DQ' out.lmfsc
+    $ grep 'ehk=-' out.lmfsc
+
+You can also check how the bandgap changes as iterations proceed to self-consistency by grepping out.lmfsc for 'gap'.  
 
 And that's it! You now have a self-consistent density and have calculated some basic properties such as the band gap and total energy.
 Other tutorials to look at are those to generate energy band structures, and density-of-states, or calculate a mechanical property such as the optical mode frequency.
-This is the first step you need to carry out a GW calculations.
 
-For more detailed tutorials on other materials, see those for PbTe, for which there is a corresponding tutorial for the ASA, and another for optics, and one for CoPt, a ferromagnetic metal.
+Other tutorials offer more detail. See those for and one for CoPt, a ferromagnetic metal, and for PbTe, for which there is a corresponding tutorial for the ASA, and another for optics. 
 
 <hr style="height:5pt; visibility:hidden;" />
 ### FAQ
@@ -151,7 +162,7 @@ The log file "log.si" keeps a compact record of key outputs in the current direc
 
 3) What is the Harris-Foulkes energy?
 
-It is a functional of the input density, rather than the output density.  At self-consistency it should be the same as the standard Kohn-Sham functional.  The Harris-Foulkes functional tends to be more stable, and like the Kohn-Sham functional, it is stationary at the self-consistent density. But it is not necessarily a minimum there. See M. Foulkes and R. Haydock, Phys. Rev. B 39, 12520 (1989).
+It is a functional of the input density, rather than the output density.  At self-consistency it should be the same as the standard Kohn-Sham functional.  The Harris-Foulkes functional tends to be more stable, and like the Kohn-Sham functional, it is stationary at the self-consistent density. But it is not necessarily a minimum there. See [this paper](http://dx.doi.org/10.1103/PhysRevB.39.12520) by M. Foulkes and R. Haydock.
  
 
 <hr style="height:5pt; visibility:hidden;" />
@@ -161,10 +172,11 @@ It is a functional of the input density, rather than the output density.  At sel
 
 For example, try running the command "blm init.si --express --wsitex" and you will see that "xpos" has been added to the first line; this indicates that the coordinates are now in fractional form. Note that in this case the cartesian and fractional coordinates happen to be the same.
 
-2) One byproduct of the self-consistent calculation
+2) The bandgap printed out by the code is not the actual LDA gap, but the smallest separation between the highest occupied and lowest unoccupied state it found on a discrete 4x4x4 k mesh.  The actual minimum occurs near k=(1,0,0), commonly referred to as the X point. The X point is on the 4x4x4 k-mesh, but the conduction band minimum itself is not quite at X.  Rerun the calculation with a very fine k mesh (not self-consistently this time) and observe that the bandgap is slightly smaller.  Use your text editor to set nkabc to 12 or 16 and do:
 
-    $ blm init.si --express --gmax=5 --nk=4 --nit=20
-    $ diff actrl.si ctrl.si
+    $ lmf ctrl.si --quit=rho
+    
+You should find that the gap gets smaller by about 0.13 eV, which is close to the experimentally observed splitting between the conduction minimum and the conduction band at X.    There is a script that enables you to locate the position of the conduction band.
     
 
 
