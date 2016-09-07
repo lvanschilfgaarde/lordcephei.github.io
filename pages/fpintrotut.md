@@ -127,7 +127,7 @@ and you will see that this time the rst file was found and the density is used a
 Further up again the Fermi energy and band gap values, and other key bits of information are reported in the Brillouin zone integration section.  You should find something similar to the output snippet below.
 
 <hr style="height:5pt; visibility:hidden;" />
-<div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show Brillouin integration section.</button></div>
+<div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show Brillouin zone integration section.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
 
 ~~~
