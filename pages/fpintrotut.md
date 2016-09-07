@@ -115,11 +115,9 @@ Now take a look at the output file _out.lmfsc_{: style="color: green"}. Look for
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="iors">{:/}
 
 ~~~
-
  iors  : read restart file (binary, mesh density) 
          use from  restart file: ef window, positions, pnu 
          ignore in restart file: *
-
 ~~~ 
 
 {::nomarkdown}</div>{:/}
@@ -132,11 +130,13 @@ Further up again the Fermi energy and band gap values, and other key bits of inf
 <div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
 ~~~
+
  BZWTS : --- Tetrahedron Integration ---
  ... only filled or empty bands encountered:  ev=0.185509  ec=0.229539
  VBmax = 0.185509  CBmin = 0.229539  gap = 0.044029 Ry = 0.59880 eV
  BZINTS: Fermi energy:      0.185518;   8.000000 electrons;  D(Ef):    0.000
          Sum occ. bands:   -1.4864297  incl. Bloechl correction:    0.000000
+
 ~~~ 
 {::nomarkdown}</div>{:/}
 
