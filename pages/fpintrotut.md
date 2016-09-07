@@ -111,7 +111,7 @@ we call it _out.lmfsc_{: style="color: green"} (appending sc to indicate a self-
 Now take a look at the output file _out.lmfsc_{: style="color: green"}. Look for the line beginning with "iors", again around line 60 (click below to see the output snippet)
 
 <hr style="height:5pt; visibility:hidden;" />
-<div onclick="elm = document.getElementById('iors'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show restart file input.</button></div>
+<div onclick="elm = document.getElementById('iors'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="iors">{:/}
 
 ~~~
