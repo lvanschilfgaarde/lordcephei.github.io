@@ -174,7 +174,7 @@ It is a functional of the input density, rather than the output density.  At sel
 
 1) Converting between fractional and cartesian coordinates
 
-For example, try running the command "blm init.si --express --wsitex" and you will see that "xpos" has been added to the first line; this indicates that the coordinates are now in fractional form. Note that in this case the cartesian and fractional coordinates happen to be the same.
+For example, try running the command "blm init.si --express --wsitex" and you will see that **xpos** has been added to the first line of _site.si_{: style="color: green"}; this indicates that the coordinates are now in fractional form. Note that in this case the cartesian and fractional coordinates happen to be the same.
 
 2) The bandgap printed out by the code is not the actual LDA gap, but the smallest separation between the highest occupied and lowest unoccupied state it found on a discrete 4x4x4 k mesh.  The actual minimum occurs near k=(1,0,0), commonly referred to as the X point. The X point is on the 4x4x4 k-mesh, but the conduction band minimum itself is not quite at X.  Rerun the calculation with a very fine k mesh (not self-consistently this time) and observe that the bandgap is slightly smaller.  Use your text editor to set nkabc to 12 or 16 and do:
 
