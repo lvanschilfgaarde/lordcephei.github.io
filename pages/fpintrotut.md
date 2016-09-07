@@ -108,9 +108,9 @@ we call it _out.lmfsc_{: style="color: green"} (appending sc to indicate a self-
     $ vi ctrl.si
     $ lmf ctrl.si > out.lmfsc
     
-Now take a look at the output file _out.lmfsc_{: style="color: green"}. Look for the line beginning with "iors", again around line 60,
-<hr style="height:5pt; visibility:hidden;" />
+Now take a look at the output file _out.lmfsc_{: style="color: green"}. Look for the line beginning with "iors", again around line 60 (click below to see the output snippet)
 
+<hr style="height:5pt; visibility:hidden;" />
 <div onclick="elm = document.getElementById('iors'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="iors">{:/}
 
@@ -129,15 +129,15 @@ Further up again the Fermi energy and band gap values, and other key bits of inf
 <hr style="height:5pt; visibility:hidden;" />
 <div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
-~~~
 
+~~~
  BZWTS : --- Tetrahedron Integration ---
  ... only filled or empty bands encountered:  ev=0.185509  ec=0.229539
  VBmax = 0.185509  CBmin = 0.229539  gap = 0.044029 Ry = 0.59880 eV
  BZINTS: Fermi energy:      0.185518;   8.000000 electrons;  D(Ef):    0.000
          Sum occ. bands:   -1.4864297  incl. Bloechl correction:    0.000000
-
 ~~~ 
+
 {::nomarkdown}</div>{:/}
 
 To see how the density and energy changes between iterations, try grepping for "DQ" and "ehk=-" 
