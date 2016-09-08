@@ -47,7 +47,7 @@ Now that the init.pbte file has been created the input file (also refered to as 
     blm --express=0 --asa --wsitex --findes  init.pbte
 
 This command will generate three new files which are log.pbte, site.pbte and actrl.pbte, for this tutorial we will only discuss the two latter files which contain information about the location of the atoms and parameters for the LDA-ASA calculations.
-The **blm**{: style="color: blue"} executable which is used to generate the initial control file was invoked using four commandline tags (command line tags/switches start with '--'), the first of which is regarding the  brevity of the control file and takes values 0-7, it is worth experimenting with this switch to find which style of control file you are most confortable with. Using the "--asa" tag the control file generated is modified to suit an ASA calculation,. The tag "--wsitex" simply creates the site.pbte file in the fractional formalism. The last tag **--findes** indicates that **blm**{: style="color: blue"} should find empty spheres to fill the unit cell, this is necessery when using ASA as the volume of the potential sphere should be equale to that of the unit cell. now the only thing left to do is to rename the input file created to a name recognised by Questaal executables i.e.
+The **blm**{: style="color: blue"} executable which is used to generate the initial control file was invoked using four commandline tags (command line tags/switches start with '- -'), the first of which is **- -express=**regarding the  brevity of the control file and takes values 0-7, it is worth experimenting with this switch to find which style of control file you are most confortable with. Using the **- -asa** tag the control file generated is modified to suit an ASA calculation,. The tag **- -wsitex** simply creates the site.pbte file in the fractional formalism. The last tag **- -findes** indicates that **blm**{: style="color: blue"} should find empty spheres to fill the unit cell, this is necessery when using ASA as the volume of the potential sphere should be equale to that of the unit cell. now the only thing left to do is to rename the input file created to a name recognised by Questaal executables i.e.
 
 	cp actrl.pbte ctrl.pbte
 
@@ -94,18 +94,18 @@ to
 	
       NBAS=2+{les?2:0}  NL=4  NSPEC=2+{les?1:0}
 
-these two simple logic statments, first one can be interpreted as  "if les>0 then  NBAS=4 else if les<0 then NBAS=2" and the second "if les>0 NSPEC=3 else if les<0 then NSPEC=2", here "les" is a variable which we have defined with in the control file through the following line
+these two simple logic statments, first one can be interpreted as  "if **les**>0 then  **NBAS=4** else if **les**<0 then **NBAS=2**" and the second "if **les**>0 **NSPEC**=3 else if **les**<0 then **NSPEC=2**", here "les" is a variable which we have defined with in the control file through the following line
 
       % const nit=10 les=1
 
-here we have also defined nit with value of 10. Next step is to pass the information about the empty sphere sites to the control file, we do this by commenting all instances of "FILE=site" and uncommenting all "FILE=essite" as the new essite.pbte has the new appropiate information, the last stp is to copy the new species information from the poses.pbte file to the SPEC category within the control file (including the new empty spheres).
+here we have also defined nit with value of 10. Next step is to pass the information about the empty sphere sites to the control file, we do this by commenting all instances of **FILE=site** and uncommenting all **FILE=essite** as the new essite.pbte has the new appropiate information, the last stp is to copy the new species information from the poses.pbte file to the SPEC category within the control file (including the new empty spheres).
 
 ###### _2.2 Self-consistent_
 Before a  self consistant calculation can be preforem the real-space structure constants have to be generated through:
 
        lmstr ctrl.pbte
 
-the penultimate step is to generate the initial the multiple moments Q$_0$,Q$_1$,Q$_2$, for this we first change the nkabc variable within the control file to for (nkabc=4, this variable represents the k-mesh density):
+the penultimate step is to generate the initial the multiple moments Q$_0$,Q$_1$,Q$_2$, for this we first change the nkabc variable within the control file to for (**nkabc=4**, this variable represents the k-mesh density):
 change 
 	
 	% const nkabc=0
@@ -119,7 +119,7 @@ next  the  **lm**{: style="color: blue"} executable is invoked with zero number 
 
     lm -vnit=0 ctrl.pbte
 
-and lastly for a fully consistant LDA-ASA calculation **lm**{: style="color: blue"} is invoked with -vnit>1 so that
+and lastly for a fully consistant LDA-ASA calculation **lm**{: style="color: blue"} is invoked with **-vnit**>1 so that
 
     lm -vnite=20 ctrl.pbte
 
