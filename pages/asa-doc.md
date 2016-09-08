@@ -29,7 +29,8 @@ This tutorial consists of three main sections:
 A detailed theoretical description of the ASA and uses of it can be found [here](ASA-notes.pdf).
 
 ##### _1\.Building input file_
-This tutorial looks at properties of PbTe. Under normal pressure/conditions PbTe crystalises in the rocksalt structure with lattice constant 6.428\angstrom. The first step in building an input file is the init.ext (ext is can be replace with any other indicator, pbte in this case) file, which will contain all the structual information about the system of interest. for PbTe we can use:
+This tutorial uses PbTe for porpuses of demonstration, under normal pressure/conditions PbTe crystalises in the rocksalt structure with lattice constant 6.428\angstrom. 
+The first step in building an input file is the init.ext  file(ext is replaced by an extension related to the material being studied, pbte in this case), which will contain all the structual information needed for the calculations demonstrated here. For PbTe the file will look similar to:
     
     LATTICE
 	    ALAT=6.427916  UNITS=A
@@ -40,24 +41,29 @@ This tutorial looks at properties of PbTe. Under normal pressure/conditions PbTe
 		ATOM=Pb   X=     0.0000000    0.0000000    0.0000000
 		ATOM=Te   X=     0.5000000    0.5000000    0.5000000
 
-The init file shown above has two sections: lattice and site. The lattice section includes information regarding the lattice structure such as lattice constant (ALAT=) and its units (UNITS=, \angstrom in this case) plus the primitive lattice translation vectors (PLAT=). The site section of the init file includes the basis information, in the case of PbTe this is simply two one Pb one Te at the position indicated by "X=" (X= indicates positions as fractional multiples of the lattice vectors.  Alternatively you can supply the position with take POS=, which specifies positions in Cartesian coordinates, in units of the lattice constant.
+The init.pbte file shown above has two sections: lattice and site. The lattice section includes information regarding the lattice structure such as lattice constant (ALAT=) and its units (UNITS=, \angstrom in this case) plus the primitive lattice translation vectors (PLAT=). The site section of the init file includes the basis information, in the case of PbTe this is simply two, one Pb one Te at the position indicated by "X=" (X= indicates positions as fractional multiples of the lattice vectors.  Alternatively you can supply the position with take POS=, which specifies positions in Carteasian coordinates, in units of the lattice constant).
 
 Now that the init.pbte file has been created the input file (also refered to as the control file) can be generated easily through
 
-    blm --express=0 --asa --addes --wsitex init.pbte
+    blm --express=0 --asa --wsitex --findes  init.pbte
 
-This command will generate log.pbte,site.pbte and actrl.pbte, for this tutorial we will only discuss the two latter files which contain information about the location of the atoms and options for LDA-ASA calculations.
-The **blm**{: style="color: blue"} executable which is used to generate the initial control file was invoked using three commandline tags, the first of which is regarding the  brevity of the control file and takes values 0-7, it is worth experimenting with this switch to find which style of control file you are most confortable with. Using the "--asa" tag the control file generated is modified to suit an ASA calculation. The last tag "--wsitex" simply creates the site.pbte file in the fractional formalism.
+This command will generate three new files which are log.pbte, site.pbte and actrl.pbte, for this tutorial we will only discuss the two latter files which contain information about the location of the atoms and parameters for the LDA-ASA calculations.
+The **blm**{: style="color: blue"} executable which is used to generate the initial control file was invoked using four commandline tags (command line tags/switches start with '--'), the first of which is regarding the  brevity of the control file and takes values 0-7, it is worth experimenting with this switch to find which style of control file you are most confortable with. Using the "--asa" tag the control file generated is modified to suit an ASA calculation,. The tag "--wsitex" simply creates the site.pbte file in the fractional formalism. The last tag '--findes' indicates that **blm**{: style="color: blue"} should find empty spheres to fill the unit cell, this is necessery when using ASA as the volume of the potential sphere should be equale to that of the unit cell. now the only thing left to do is to rename the input file created to a name recognised by Questaal executables i.e.
 
-For ASA caculation the sume of the potential sphere volumes has to match the unit cell volume, for this task  **lmchk**{: style="color: blue"} can be invoked by:
+	cp actrl.pbte ctrl.pbte
+
+##### _2\.Building input file_
+If **blm**{: style="color: blue"} was used to find the empty spheres (ES) as indicated in the procedure section 2.1 of the self-consistent calculation can be skipped, however if empty spheres have not been included or have been included manually the procedure below should be followed.
+###### _2.1Empty Spheres_
+To check ES and volume packing invoke: 
 
     lmchk ctrl.pbte
 
-the full output can be viewed by clicking here, however the important information regarding the overlap is towards jthe end of the stdout and in this particular case it can be seen in one line
+the full output can be viewed by clicking here(waiting for file storing system), however the important informations regarding the volume packing and overlap are towards the end of the stdout and in this particular case it can be seen (in the case of no ES) in one line
     
     Cell volume= 448.07190   Sum of sphere volumes= 301.06511 (0.67191)
 
-here the cell volume, summ of all potential volumes and their ratio are presented, the later of which has to equal to 1 for a ASA calculation. Another important value is the overlap percentage, which in this cas is given by
+here the cell volume, summ of all potential volumes and their ratio are presented, the later of which has to be equal to 1 for an ASA calculation. Another important value is the overlap percentage, which in this cas is given by
 
       OVMIN, 38 pairs:  fovl = 4.24366e-7   <ovlp> = 8.7%   max ovlp = 8.7%
 
@@ -93,11 +99,22 @@ these two simple logic statments, first one can be interpreted as  "if les>0 the
 
 here we have also defined nit with value of 10. Next step is to pass the information about the empty sphere sites to the control file, we do this by commenting all instances of "FILE=site" and uncommenting all "FILE=essite" as the new essite.pbte has the new appropiate information, the last stp is to copy the new species information from the poses.pbte file to the SPEC category within the control file (including the new empty spheres).
 
+###### _2.2 Self-consistent_
 Before a  self consistant calculation can be preforem the real-space structure constants have to be generated through:
 
        lmstr ctrl.pbte
 
-the penultimate step is to generate the initial the multiple moments Q$_0$,Q$_1$,Q$_2$, for this we first change the nkabc variable within the control file to for (nkabc=4, this variable represents the k-mesh density)next  the  **lm**{: style="color: blue"} executable is invoked with zero number of iterations such that
+the penultimate step is to generate the initial the multiple moments Q$_0$,Q$_1$,Q$_2$, for this we first change the nkabc variable within the control file to for (nkabc=4, this variable represents the k-mesh density):
+change 
+	
+	% const nkabc=0
+	
+to
+
+	% const nkabc=4
+
+
+next  the  **lm**{: style="color: blue"} executable is invoked with zero number of iterations such that
 
     lm -vnit=0 ctrl.pbte
 
