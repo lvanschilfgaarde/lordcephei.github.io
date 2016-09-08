@@ -11,25 +11,25 @@ _____________________________________________________________
 
 ### _Purpose_
 {:.no_toc}
-In this Tutorial the basics running a self consistent LDA calculation in the Atomic Spheres Approximation (ASA) will be covered, starting with the creation of an input file.
+This Tutorial covers the basics running a self consistent LDA calculation in the Atomic Spheres Approximation (ASA), starting with the creation of an input file.  We will use PbTe as the materials
 
 
 ### _Preliminaries_
 _____________________________________________________________
-For this tutorial the **blm**{: style="color: blue"},**lmchk**{: style="color: blue"}, **lmstr**{: style="color: blue"} and **lm**{: style="color: blue"} executibles are required and are assumed to be in your PATH; the source code for all Questaal exectuables can be found [here](https://bitbucket.org/lmto/lm).
+Executables **blm**{: style="color: blue"},**lmchk**{: style="color: blue"}, **lmstr**{: style="color: blue"} and **lm**{: style="color: blue"} are required and are assumed to be in your path.  The source code for all Questaal executables can be found [here](https://bitbucket.org/lmto/lm).
 
 ### _Tutorial_
 _____________________________________________________________
 This tutorial consists of two main sections:
 
-1. Building a suitible input file for an ASA-LDA calculation
-2. Running a self consistent calculaion
+1. Building a suitable input file for an ASA-LDA calculation
+2. Running a self consistent calculation
 
 A detailed theoretical description of the ASA and uses of it can be found [here](ASA-notes.pdf).
 
 ##### _1\.Building input file_
-This tutorial uses PbTe for porpuses of demonstration, under normal pressure/conditions PbTe crystalises in the rocksalt structure with lattice constant 6.428\angstrom. 
-The first step in building an input file is the init.ext  file(ext is replaced by an extension related to the material being studied, pbte in this case), which will contain all the structual information needed for the calculations demonstrated here. For PbTe the file will look similar to:
+Under normal atmospherica conditions PbTe crystallises in the rocksalt structure with lattice constant 6.428\angstrom. 
+To build an input file, the first step is to construct file _init.ext_{: style="color: green"} (_ext_{: style="color: green"} is replaced by a name of your choosing, usually related to the material being studied, pbte in this case).  _init.pbte_{: style="color: green"} will contain the structural information needed for the calculations demonstrated here. For PbTe the file will look similar to:
     
     LATTICE
 	    ALAT=6.427916  UNITS=A
@@ -40,14 +40,29 @@ The first step in building an input file is the init.ext  file(ext is replaced b
 		ATOM=Pb   X=     0.0000000    0.0000000    0.0000000
 		ATOM=Te   X=     0.5000000    0.5000000    0.5000000
 
-The init.pbte file shown above has two sections: lattice and site. The lattice section includes information regarding the lattice structure such as lattice constant (**ALAT=**) and its units (**UNITS**=, \angstrom in this case) plus the primitive lattice translation vectors (**PLAT=**). The site section of the init file includes the basis information, in the case of PbTe this is simply two, one Pb one Te at the position indicated by "X=" (X= indicates positions as fractional multiples of the lattice vectors.  Alternatively you can supply the position with take POS=, which specifies positions in Carteasian coordinates, in units of the lattice constant).
+The init.pbte file shown above has two sections: lattice and site. The lattice section includes information regarding the lattice structure such as lattice constant (**ALAT=**) and its units (**UNITS**=, \angstrom in this case) plus the primitive lattice translation vectors (**PLAT=**). The site section of the init file includes the basis information, in the case of PbTe this is simply two, one Pb one Te at the position indicated by "X=" (X= indicates positions as fractional multiples of the lattice vectors.  Alternatively you can supply the position with take **POS=**, which specifies positions in Cartesian coordinates, in units of the lattice constant).
 
-Now that the init.pbte file has been created the input file (also refered to as the control file) can be generated easily through
+Now that the init.pbte file has been created the input file (also referred to as the control file) can be generated easily through
 
     blm --express=0 --asa --wsitex --findes  init.pbte
 
-This command will generate three new files which are log.pbte, site.pbte and actrl.pbte, for this tutorial we will only discuss the two latter files which contain information about the location of the atoms and parameters for the LDA-ASA calculations.
-The **blm**{: style="color: blue"} executable which is used to generate the initial control file was invoked using four commandline tags (command line tags/switches start with '- -'), the first of which is **- -express=**regarding the  brevity of the control file and takes values 0-7, it is worth experimenting with this switch to find which style of control file you are most confortable with. Using the **- -asa** tag the control file generated is modified to suit an ASA calculation,. The tag **- -wsitex** simply creates the site.pbte file in the fractional formalism. The last tag **- -findes** indicates that **blm**{: style="color: blue"} should find empty spheres to fill the unit cell, this is necessery when using ASA as the volume of the potential sphere should be equale to that of the unit cell. now the only thing left to do is to rename the input file created to a name recognised by Questaal executables i.e.
+This command will generate three new files which are _site.pbte_{: style="color: green"} and _actrl.pbte_{: style="color: green"}, and _log.pbte_{: style="color: green"}.
+(The log file keeps track of key information generated by each program and will not be considered here.)  The site file contains structural information in a form the 
+Questaal package uses it, and the ctrl file contains all other information needed to carry out a self-consistent calculation (LDA-ASA calculation in this case).
+The **blm**{: style="color: blue"} tool which is used to generate the initial control file was invoked using four command line switches.
+
+   --express=0  controls the brevity of the input file (smaller numbers make more verbose files with more information. it is worth experimenting with this switch to find which style of control file you are most confortable with.
+   --asa        tells blm that you are preparing to do an ASA calculation
+   --wsitex     causes blm to write site positions as fractional multiples of the lattice vectors.
+   --findes     causes **blm**{: style="color: blue"} to find empty spheres to fill the unit cell. this is necessary when using ASA as the sum of sphere volumes must equal the cell volume.  The ASA only works well when sites are closely packed.  Close packing of open systems can be artificially accomplished by adding "empty" sites with Z=0.
+
+**blm**{: style="color: blue"} has a number of other command-line switches; type
+
+	blm --h
+
+to see them.
+
+Now the only thing left to do is to rename the input file created to a standard input file Questaal executables read
 
 	cp actrl.pbte ctrl.pbte
 
