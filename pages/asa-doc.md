@@ -20,11 +20,10 @@ For this tutorial the **blm**{: style="color: blue"},**lmchk**{: style="color: b
 
 ### _Tutorial_
 _____________________________________________________________
-This tutorial consists of three main sections:
+This tutorial consists of two main sections:
 
 1. Building a suitible input file for an ASA-LDA calculation
 2. Running a self consistent calculaion
-3. A break down of the output.
 
 A detailed theoretical description of the ASA and uses of it can be found [here](ASA-notes.pdf).
 
