@@ -53,7 +53,8 @@ The **blm**{: style="color: blue"} executable which is used to generate the init
 
 ##### _2\.Building input file_
 If **blm**{: style="color: blue"} was used to find the empty spheres (ES) as indicated in the procedure section 2.1 of the self-consistent calculation can be skipped, however if empty spheres have not been included or have been included manually the procedure below should be followed.
-###### _2.1Empty Spheres_
+
+###### _2.1 Empty Spheres_
 To check ES and volume packing invoke: 
 
     lmchk ctrl.pbte
