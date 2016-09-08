@@ -5,13 +5,15 @@ permalink: "/docs-equ-optics/"
 header: no
 ---
 _____________________________________________________________
+
 ### _Prerequisite_
 
 To calculate the optical and electronic properties which can be accessed through the OPTICS mode a full selfc-consistent calculation is needed.
-For this tutorials the **lm**{: style="color: blue"} or  **lmf**{: style="color: blue"} are needed (the same executable as for the self-consistent calculation should be used)..
+For this tutorials the **lm**{: style="color: blue"} or  **lmf**{: style="color: blue"} are needed (the same executable as for the self-consistent calculation should be used).
 _____________________________________________________________
 
 ### _Tutorial_
+
 #### _Introduction_
 
 The full-optential (FP) and the atomic spherical approximation (ASA) implementations of the code executed through  **lmf**{: style="color: blue"} and  **lm**{: style="color: blue"} respectivily have the capacity to preform a number of equlibrium and non-equlibrim optical and electronic calculations. This tutorial will only focus on the equilibrium calculation for optical properties and the joint density of states (JDOS), non-equlibrium modes will be covered here(HYPERLINKTHIS).
@@ -71,6 +73,7 @@ It is possible to perform any of the optics mode calculations described above fo
               FILBND=7,8 EMPBND=9,10
               
 The optics output file generated with restricted bands will have the same name and format as unrestricted band calculations, which has be described previously in this tutorial.
+
 ##### _Resolve by k,$\eps$ and band to band contibution_
 
 
