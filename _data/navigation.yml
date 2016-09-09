@@ -69,7 +69,7 @@
     - name: "lm"
       content:
       - title: "ASA Tutorial"
-        url: "/asadoc/"
+        url: "/asa-doc/"
       - title: "Basic GW Tutorial"
         url: "/lmtut/"
       - title: "LMGF Tutorial"
