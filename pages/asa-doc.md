@@ -51,10 +51,10 @@ This command will generate three new files which are _site.pbte_{: style="color:
 Questaal package uses it, and the ctrl file contains all other information needed to carry out a self-consistent calculation (LDA-ASA calculation in this case).
 The **blm**{: style="color: blue"} tool which is used to generate the initial control file was invoked using four command line switches.
 
-   --express=0  controls the brevity of the input file (smaller numbers make more verbose files with more information. it is worth experimenting with this switch to find which style of control file you are most confortable with.
-   --asa        tells blm that you are preparing to do an ASA calculation
-   --wsitex     causes blm to write site positions as fractional multiples of the lattice vectors.
-   --findes     causes **blm**{: style="color: blue"} to find empty spheres to fill the unit cell. this is necessary when using ASA as the sum of sphere volumes must equal the cell volume.  The ASA only works well when sites are closely packed.  Close packing of open systems can be artificially accomplished by adding "empty" sites with Z=0.
+	--express=0  controls the brevity of the input file (smaller numbers make more verbose files with more information. it is worth experimenting with this switch to find which style of control file you are most confortable with.
+	--asa        tells blm that you are preparing to do an ASA calculation
+	--wsitex     causes blm to write site positions as fractional multiples of the lattice vectors.
+	--findes     causes **blm**{: style="color: blue"} to find empty spheres to fill the unit cell. this is necessary when using ASA as the sum of sphere volumes must equal the cell volume.  The ASA only works well when sites are closely packed.  Close packing of open systems can be artificially accomplished by adding "empty" sites with Z=0.
 
 **blm**{: style="color: blue"} has a number of other command-line switches; type
 
