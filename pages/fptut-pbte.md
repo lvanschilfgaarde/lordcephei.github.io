@@ -14,15 +14,15 @@ _____________________________________________________________
 
 This tutorial carries out a self-consistent density-functional calculation for PbTe using the _lmf_{: style="color: green"} code.  Some of the basics are covered in this tutorial, and you may wish to go through it first.  This tutorial
 
-1. Generates a self consistent potential within the LDA
+1. generates a self consistent potential within the LDA
 
-2. illustrates some features of the programming language capabilities of the input file
+2. illustrates some features of the programming language capabilities in reading the input file
 
-3. Demonstrates how to get neighbour tables using the _lmchk_{: style="color: green"} tool
+3. demonstrates how to get neighbour tables using the _lmchk_{: style="color: green"} tool
 
-4. Synchronizes with an ASA tutorial enabling a comparison of the ASA and full potential methods.
+4. synchronizes with an [ASA tutorial](https://github.com/lordcephei/lordcephei.github.io/blob/master/pages/fptut-pbte.md) enabling a comparison of the ASA and full potential methods.
 
-5. Is the first step for other tutorials showing how to calculate optics, carrying out corresponding calculations with QSGW, and comparing energy bands
+5. is the starting point for other tutorials on optics, corresponding calculations with QSGW, and drawing energy bands.
 
 
 ### _Preliminaries_
@@ -53,13 +53,13 @@ Create the input file (_ctrl.pbte_{: style="color: green"}) and the site file wi
     $ blm init.pbte
     $ cp actrl.pbte ctrl.pbte
 
-##### _2\. How the input file is organizid_
+##### _2\. How the input file is organized_
 
 Take a look at the ctrl file.  Lines which have the first character containing one of the following are treated specially:
 
-    * Lines beginning with `#' are comment lines and are ignored. (More generally, text after a `#' in any line is ignored)
+    Lines beginning with `#' are comment lines and are ignored. (More generally, text after a `#' in any line is ignored)
 
-    * Lines beginning with `%' may be interpreted as directives to the preprocessor.  They are not part of the the post-processed input programs read to get data
+    Lines beginning with `%' may be interpreted as directives to the preprocessor.  They are not part of the the post-processed input programs read to get data
 
 Near the top, beginning with **% const**, are a series of variable declarations
 Click on the box below to see a snippet showing what **blm**{: style="color: blue"} should have produced.
@@ -79,7 +79,7 @@ Click on the box below to see a snippet showing what **blm**{: style="color: blu
 
 {::nomarkdown}</div>{:/}
 
-**nit**, **met**, etc,  are variables used in expressions further down.  The parser converts expressions **{..}** into numbers, which are finally read as numerical values associated with a tag.  The parser is explained in further detail [here](file-preprocessor.html)
+**nit**, **met**, etc,  are variables used in expressions further down.  The parser interprets the side of brackets {..} as expressions, converts it into numbers, which are finally read as numerical values associated with a tag.  The parser is explained in further detail [here](file-preprocessor.html)
 
 For example this line
   metal=  {met}                    # Management of k-point integration weights in metals
