@@ -44,7 +44,7 @@ To identify the order of the k points it is necessery to invoke the lm program w
    
 here the switch "- -pr81"  increases the verbosity setting of the program to print out the required information. With such high verbosity setting a large amount of data is printed, however we are looking for the brillouin zone q-point mapping shown, a complete list of reducible k-points is also provided in this output.
 
-<div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
+<div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to see brillouin zone q-point mapping output.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
 
  BZMESH: qp mapping
