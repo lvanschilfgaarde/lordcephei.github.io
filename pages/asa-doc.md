@@ -16,7 +16,7 @@ This Tutorial covers the basics running a self consistent LDA calculation in the
 
 ### _Preliminaries_
 _____________________________________________________________
-Executables **blm**{: style="color: blue"},**lmchk**{: style="color: blue"}, **lmstr**{: style="color: blue"} and **lm**{: style="color: blue"} are required and are assumed to be in your path.  The source code for all Questaal executables can be found [here](https://bitbucket.org/lmto/lm).
+Executables **blm**{: style="color: blue"}, **lmchk**{: style="color: blue"}, **lmstr**{: style="color: blue"} and **lm**{: style="color: blue"} are required and are assumed to be in your path.  The source code for all Questaal executables can be found [here](https://bitbucket.org/lmto/lm).
 
 ### _Tutorial_
 _____________________________________________________________
