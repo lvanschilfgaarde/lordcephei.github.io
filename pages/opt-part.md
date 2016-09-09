@@ -48,8 +48,8 @@ here the switch "- -pr81"  increases the verbosity setting of the program to pri
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
 
  BZMESH: qp mapping
- i1..i3                         qp                    iq   ig  g
  
+ i1..i3                           qp                    iq  ig  g
  (1,1,1)           0.000000    0.000000    0.000000     1    1 i*i
  (2,1,1)          -0.250000    0.250000    0.250000     2    1 i*i
  (4,1,1)           0.250000   -0.250000   -0.250000     2    2 i
