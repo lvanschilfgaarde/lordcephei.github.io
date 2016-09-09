@@ -9,7 +9,7 @@ _____________________________________________________________
 ### _Prerequisite_
 
 To calculate the optical and electronic properties which can be accessed through the **OPTICS** mode a full selfc-consistent calculation is needed.
-For this tutorials the **lm**{: style="color: blue"} or  **lmf**{: style="color: blue"} are needed (the same executable as for the self-consistent calculation should be used). For this tutorial PbTe will be used for the porpuses of demonstration, instruction for self-consistent calculation for PbTe can be found here[/asa-doc/].
+For this tutorials the **lm**{: style="color: blue"} or  **lmf**{: style="color: blue"} are needed (the same executable as for the self-consistent calculation should be used). For this tutorial PbTe will be used for the porpuses of demonstration, instruction for self-consistent calculation for PbTe can be found [here](https://lordcephei.github.io/asa-doc/).
 _____________________________________________________________
 
 ### _Tutorial_
@@ -75,8 +75,8 @@ It is possible to perform any of the optics mode calculations described above fo
 The optics output file generated with restricted bands will have the same name and format as unrestricted band calculations, which has been described previously in this tutorial.
 
 ##### _Resolve by k,$\eps$ and band to band contibution_
-The optical and electronic properties described above can also be sperated by band to band contribution through **OPTICS_PART=1**, this method has the advantage that the band to band contributions for a number of bands can be preformed quickly. The output of optical calculations while using **OPTICS_PART=1** is popt.pbte, the format of this file differes from opt.pbte. Details of output format for **OPTICS_PART=1** can be found here[]
+The optical and electronic properties described above can also be sperated by band to band contribution through **OPTICS_PART=1**, this method has the advantage that the band to band contributions for a number of bands can be preformed quickly. The output of optical calculations while using **OPTICS_PART=1** is popt.pbte, the format of this file differes from opt.pbte. Details of output format for **OPTICS_PART=1** can be found [here](https://lordcephei.github.io/opt-part/).
 
-The contributions to the optical and electronic properties can also be resolved by contributions from single k-points, this can be acheived by preforming the optical calcualtions above with the added switch **OPTICS_PART=2**. A full tuorial for this option os provided here[].
+The contributions to the optical and electronic properties can also be resolved by contributions from single k-points, this can be acheived by preforming the optical calcualtions above with the added switch **OPTICS_PART=2**. A full tuorial for this option os provided [here](https://lordcephei.github.io/opt-part/).
 
-Finally options **OPTICS_PART=1** and **OPTICS_PART=2** can be preformed simultaniously, the output of this option is descibed here[].
+Finally options **OPTICS_PART=1** and **OPTICS_PART=2** can be preformed simultaniously, the output of this option is descibed [here](https://lordcephei.github.io/opt-part/).
