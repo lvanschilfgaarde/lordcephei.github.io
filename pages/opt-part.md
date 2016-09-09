@@ -50,6 +50,7 @@ here the switch "- -pr81"  increases the verbosity setting of the program to pri
  BZMESH: qp mapping
  
  i1..i3                           qp                    iq  ig  g
+ 
  (1,1,1)           0.000000    0.000000    0.000000     1    1 i*i
  (2,1,1)          -0.250000    0.250000    0.250000     2    1 i*i
  (4,1,1)           0.250000   -0.250000   -0.250000     2    2 i
