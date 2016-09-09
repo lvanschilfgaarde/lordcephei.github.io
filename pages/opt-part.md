@@ -13,13 +13,13 @@ header: no
 This tutorial is designed to describe the procedure and output of **OPTICS_PART=1**,**OPTICS_PART=2** and **OPTICS_PART=3**. 
 
 ### _Prerequsites_
-This tutorial follows from the self-consistent and optics tutorial preformed on PbTe, it is highly recomended that you go through those before this tutorial, for this tutorials the **lm**{: style="color: blue"} or  **lmf**{: style="color: blue"} are needed.
+This tutorial follows from the [self-consistent](http://lordcephei.github.io/asa-doc/) and [optics]() tutorial preformed on PbTe, it is highly recomended that you go through those before this tutorial, for this tutorials the **lm**{: style="color: blue"} or  **lmf**{: style="color: blue"} are needed.
 
-### _**OPTICS_PART=1**_
+### _Individual band to band contribution _
 
 Will be comming soon, sorry.
 
-### _**OPTICS_PART=2**_
+### _Resolving by k-points_
 In both the **lm**{: style="color: blue"} and **lmf**{: style="color: blue"} implementations of the code it is possible to separate the contribution to the optical properites by individual k-points, this calculation can be done by simply adding **PART=2** to the optics category, however few additional steps are needed to interpret the out put. Lets start by running an optics calculation for PbTe with the following setup in the control file:
 
   OPTICS  MODE=1 NPTS=1001 WINDOW=0 1 ESCISS=0 LTET=3
@@ -41,5 +41,6 @@ In this way the optical contibution is restricted to the top two valence and bot
 now produces a popt.pbte file with significantly reduced information (this is done for the porpuses of demonstration). the first row of the popt file is shown below:
 
 
+### _Resolving by k-points and band to band contributions_
 
-
+Will be comming soon, sorry.
