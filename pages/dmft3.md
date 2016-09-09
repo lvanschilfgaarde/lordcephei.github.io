@@ -49,7 +49,11 @@ The result will be saved in the *sigm1.lsco* file.
 You now have a static spin-flip only self-energy produced by DMFT. This has to be added to either a charge-only L(S)DA potential or to a charge-only QSGW self-energy.
 
 * **LDA and LSDA calculations:** you don't need any manipulation of the L(S)DA data. 
-* **QSGW calculations:** Irrespectively to the origin of your _sigm_ file (NSPIN=1 or spin-averaged NSPIN=2), the latter is formatted as a NSPIN=1  self-energy. So first you have to run **lmfdmft** with the flag --wsig and NSPIN=2 to convert it in a NSPIN=2 format (you can check with ls -sh). Then you run once more *lmfdmft* adding *--wsig --mixsig=1,1* to the command line. As a result files *sigm.* and *sigm1* are summed together and exported in *sigm2*. This is a new QSGW+DMFT self-energy.
+* **QSGW calculations:** Irrespectively to the origin of your _sigm_ file (NSPIN=1 or spin-averaged NSPIN=2), the latter is formatted as a NSPIN=1  self-energy. So first you have to run **lmfdmft** with the flag --wsig and NSPIN=2 to convert it in a NSPIN=2 format (you can check with ls -sh).
+```
+mv sigm2.ext sigm.ext
+```
+Then you run once more *lmfdmft* adding *--wsig --mixsig=1,1* to the command line. As a result files *sigm.* and *sigm1* are summed together and exported in *sigm2*. This is a new QSGW+DMFT self-energy.
 
 Once you are done, you can close finally the loop by running one **lmf** calculation with the tag **HAM_BXC0=t** and **HAM_NSPIN=2** added to the _ctrl_ file. This flag forces the LDA exchange-correlation potential to be computed from a spin-averaged density.
 
