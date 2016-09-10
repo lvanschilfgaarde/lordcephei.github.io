@@ -1,0 +1,979 @@
+<!DOCTYPE html><html>
+
+<head>
+<title>Preprocessor </title>
+<style>
+
+/* For hyperlinks */
+a:link {color:#FF0000;}      /* unvisited link */
+a:link {color:#222288;}      /* unvisited link */
+a:visited {color:#228822;}  /* visited link */
+a:hover {color:#FF00FF;}  /* mouse over link */
+a:active {color:#0000FF;}  /* selected link */
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;}
+a:hover {text-decoration:underline;}
+a:active {text-decoration:underline;}
+
+body {
+       background-color:#ffffgg;
+     }
+ h1 {
+      color:#880000;
+      text-align:center;
+      font-size:12px;
+    }
+ h2 {
+      color:#bb3300;
+      font-size:120%;
+      font-weight:normal;
+      font-style:italic;
+    }
+
+ h3 {
+      color:#33bb00;
+      font-size:110%;
+      font-weight:normal;
+      font-style:italic;
+      text-indent: 0.5em;
+    }
+
+ h4 {
+      color:#000000;
+      font-size:100%;
+      font-weight:bold;
+      text-indent: 1.0em;
+    }
+
+ h5 {
+      color:#444488;
+      font-size:100%;
+      font-weight:bold;
+      font-style:normal;
+      text-indent: 1.5em;
+    }
+
+ hn {
+      color:#000000;
+      font-size:100%;
+      font-weight:normal;
+      font-style:normal;
+      text-indent: 1.5em;
+    }
+
+  P {
+<!--  font-family:"Times New Roman"; -->
+<!--  font-size:12px; -->
+<!--  color: red; -->
+    }
+
+  q {
+      color: red;
+    }
+
+  a {
+        color: blue;
+    }
+
+  tlarge {
+       <font-size="+1">
+    }
+
+  p.pos_left
+  {
+  position:relative;
+  left:-20px;
+  }
+
+  p.pos_right
+  {
+  position:relative;
+  left:20px;
+  right:520px;
+  }
+
+div.ex
+{
+width:3in;
+padding:10px;
+border:5px solid gray;
+margin:0px;
+}
+
+
+</style>
+
+<!-- Enables the use of latex
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+-->
+
+</head>
+
+<H1><B><FONT size="+2">File Preprocessor (v7.11)</FONT></B></H1>
+
+This page documents the functioning of the preprocessor, to which many
+input files in this package (e.g. the main input file
+<FONT size="+1"><tt>ctrl.<i>ext</i></tt></FONT>) are initially
+subjected before the input is parsed to read data.
+
+<P> The preprocessor can be quite a powerful tool: it allows you to declare variables and evaluate expressions. It also possesses some
+<A href="#sourcecodes">programming language capability</A>, with branching control to skip or loop over a selected block of
+lines.
+
+<P> Lines which have the first character containing one of the following are treated specially:
+<pre>
+   Lines beginning with `#' are comment lines and are ignored.
+         (More generally, text after a `#' in any line is ignored)
+
+   Lines beginning with `%' may be interpreted as <A href="#introdirectives">directives to the preprocessor</A>.
+         They are not part of the the post-processed input.</pre>
+
+<h2><A name="intro"></A>Main Features</h2>
+
+<b>rdfiln</b> is the main routine that parses and transforms input line, and is found in <A href="#sourcecodes">rdfiln.f</A>.
+
+<h3><A name="introexpressions"></A>Expression substitution</h3>
+
+<b>rdfiln</b> treats anything inside `<FONT size="+1"><tt>{...}</tt></FONT>' specially, and substitutes the contents for
+`<FONT size="+1"><tt><i>something-else</i></tt></FONT>'.  Typically the contents of &nbsp;<FONT size="+1"><tt>{...}</tt></FONT>&nbsp;
+is an ASCII representation of an algebraic expression, and &nbsp;<FONT size="+1"><tt><i>something-else</i></tt></FONT>&nbsp; is
+an ASCII representation of the numerical result of the expression.
+<b>rdfiln</b> evaluates the expression as a binary number, and <A href="#sourcecodes">renders it back</A> into ASCII form. Thus the line
+<pre>
+    talk {4/2} me </pre>
+becomes
+<pre>
+    talk 2 me </pre>
+`<FONT size="+1"><tt>{...}</tt></FONT>' can contain constructs other than algebraic expressions (e.g. some string manipulation functions),
+as described <A href="#expressions">below</A>.
+
+<P> <FONT color="#0000bb"><I>*Caution</I>&nbsp;</FONT>
+The substitution <FONT size="+1"><tt>{...}</tt></FONT>&rarr;<FONT size="+1"><tt><i>string</i></tt></FONT>
+may increase the length of the line.  If the modified line exceeds the maximum allowed size it is truncated.
+This maximum length is controlled by variable <FONT size="+1"><tt>recln0</tt></FONT> in the main program.
+Source codes are distributed with <FONT size="+1"><tt>recln0=120</tt></FONT>.
+
+<h3><A name="variables"></A>Variables</h3>
+
+<b>rdfiln</b> permits three kinds of variables, floating point scalar,
+floating-point vector, and strings.  They can be declared with <A href="#introdirectives">preprocessor directives</A>
+declared by lines beginning with &nbsp;`<FONT size="+1"><tt>% ...</tt></FONT>'.
+<br>Variables can also be on the command-line, with an argument like <FONT size="+1"><tt>-vnam=<i>expr</i></tt></FONT>.
+
+<br> <A href="#sourcecodes">Symbol tables</A> are maintained for each kind
+of variable (scalar, vector, and strings).  Algebraic expressions can include
+scalar variables and vector elements.
+
+<P> <FONT color="#0000bb"><I>*Note</I>&nbsp;</FONT>
+As <b>rdfiln</b> parses a file, it may create new variables through a preprocessor directive such as
+<pre>%const var=val ... </pre>
+and accordingly the symbols table is enlarged.  The variables allocated
+this way are temporary, however.  When <b>rdfiln</b> has finished with whatever file it is reading,
+it destroys variables created in the course of reading the file.
+You can preserve variables for future use (e.g. in parsing expressions after the preprocessor has returned the transformed input)
+with the <A href="#misc">`<FONT size="+1"><tt>% save</tt></FONT>'&nbsp; directive</A>.
+
+<h3><A name="introdirectives"></A>Preprocessor Directives</h3>
+
+Lines beginning with `<FONT size="+1"><tt>% directive ... </tt></FONT>' are interpreted as instructions
+to the preprocessor.  &nbsp;`<FONT size="+1"><tt>directive</tt></FONT>' is one of the following keywords:
+<pre>
+   <A href="#variabledecl">const cconst cvar udef var vec char char0 cchar getenv vfind</A>   &larr; allocate variables and assigns values
+   <A href="#branching">if ifdef ifndef iffile else elseif elseifd endif</A>               &larr; branching constructs for conditional reading of lines
+   <A href="#loops">while repeat end</A>                                               &larr; looping constructs for repeated looping of lines
+   <A href="#misc">echo exit include includo macro save show stop trace udef</A>      &larr; miscellaneous other constructs
+</pre>
+Such lines interpreted not as part of the input, but as a directive to
+do something, such as assign a value to a variable.
+
+<h2><A name="expressions"></A>Expression substitution</h2>
+
+By enclosing a string in curly brackets, <i>viz</i>
+<FONT size="+1"><tt>{<i>strn</i>}</tt></FONT>, you instruct the preprocessor to
+parse the contents of &nbsp;<FONT size="+1"><tt>{<i>strn</i>}</tt></FONT>&nbsp; and substitute it with something else.
+
+<FONT size="+1"><tt><i>strn</i></tt></FONT> must &nbsp; (1) begin with the name of a character variable; &nbsp; (2) begin with `<FONT size="+1"><tt>?</tt></FONT>';
+&nbsp; (3) be a vector variable; &nbsp; or (4) be an algebraic expression (C-like syntax).
+When it encounters &nbsp;<FONT size="+1"><tt>{<i>strn</i>}</tt></FONT>&nbsp; <b>rdfiln</b> does the following,
+emphasizing the order of precedence:
+
+<UL>
+
+<LI> (<i>string substitution</i>) it checks whether &nbsp;<FONT size="+1"><tt>{<i>strn</i>}</tt></FONT>&nbsp; contains the name of a
+     <b>character variable</b>, in which case it substitutes the
+     contents of the variable; or if the name is followed by a
+     qualification <FONT size="+1"><tt>(...)</tt></FONT>, it
+     substitutes whatever string the qualification generates. See
+     1<i>a</i> and 1<i>b</i> below.
+
+<LI> (<i>conditional string substitution</i>) it checks whether the first character
+     in &nbsp;<FONT size="+1"><tt>{<i>strn</i>}</tt></FONT>&nbsp; is
+     `<FONT size="+1"><tt><b>?</b></tt></FONT>'.  If so it will return
+     one of two character strings based on the result of an
+     expression.  See 1<i>c</i> below.
+
+<LI> (<i>vector display</i>) it checks whether <FONT size="+1"><tt>&nbsp;{...} </tt></FONT> contains the name of a
+     variable in the <b>vector table</b>. If so,
+     &nbsp;<FONT size="+1"><tt>{<i>strn</i>}</tt></FONT>&nbsp; is replaced by a
+     character representation of the vector. See 2 below.
+
+<LI> (<i>algebraic expression</i>) <FONT size="+1"><tt>{<i>strn</i>}</tt></FONT> is parsed as an algebraic expression, or a sequence
+      of expressions, and is replaced by a character representation of
+      the numerical value of the (last) expression. See 3<i>a</i> and
+      3<i>b</i> below.
+
+</UL>
+
+The syntax for string, vector, and algebraic substitutions is explained in sections 1, 2, 3 below, listing them in order of precedence.
+<b>rdfiln</b> parses <FONT size="+1"><tt>{<i>strn</i>}</tt></FONT> as follows:
+
+<pre>
+   1a. <i>strn</i> is the name of a character variable, say `myvar'
+       <b>rdfiln</b> replaces `{myvar}' with contents of `myvar'.
+       This rule takes precedence if a character variable `myvar' exists
+
+   1b. Similar to (1a), but <i>strn</i> is followed by a qualifier (...),
+       which must be one of the following:
+
+      *(integer1,integer2) returns a substring of <i>strn</i>.
+       {myvar(n1,n2)} is replaced by the (n1:n2) substring of `myvar'.
+         <i>Example</i>: If myvar="foo bar", "{myvar(2,3)}" &rarr; "oo".
+
+      *('<i>chrlst</i>',<i>n</i>) marks a position in contents of `myvar.'
+       '<i>chrlst</i>' is a sequence of characters, equivalent to regular expression [<i>chrlst</i>].
+       {myvar('<i>chrlst</i>',<i>n</i>)} causes rdfiln to search the contents of myvar for any character in '<i>chrlst</i>'.
+       For definiteness let myvar="foo bar" and chrlst='abc'.
+       Note that "foo bar" contains characters 'b' and 'a' and
+       {myvar('abc',<b>n</b>)} will return the index position in "foo bar" that contains
+       the <i>n</i><sup>th</sup> occurrence of 'a' or 'b'.
+         <i>Example</i>: If myvar="foo bar", {myvar('abc',2)} &rarr; 6.
+       because myvar(6:6) is the second occurrence of a character in 'abc'.
+       <i>n</i> is optional: if omitted, the preprocessor uses <i>n</i>=1.
+
+      *(:e) returns an integer marking last nonblank character.
+         <i>Example</i>: If myvar='foo bar', {myvar(:e)} &rarr; 7.
+
+      *(/'<i>strn1</i>'/'<i>strn2</i>'/,<i>n</i>1,<i>n</i>2) substitutes <i>strn2</i> for <i>strn1</i>.
+         <i>Example</i>: If myvar="foo boor", {myvar(/'oo'/a/,2,2)} &rarr; "foo bar"
+       Substitutions are made for the <i>n</i>1<sup>th</sup> to <i>n</i>2<sup>th</sup> occurrence of <i>strn1</i>.
+       <i>n</i>1 and <i>n</i>2 are optional, as are the quotation marks.
+
+   1c. The following format returns either <i>strn1</i> or <i>strn2</i>, depending on the result of <i>expr</i>:
+         {?~<i>expr</i>~<i>strn1</i>~<i>strn2</i>}    &larr;  the '~' can be any character.
+       <i>expr</i> is an algebraic expression; <i>strn1</i> and <i>strn2</i> are strings.
+       If <i>expr</i> evaluates to nonzero, {...} is replaced by <i>strn1</i>.
+       If <i>expr</i> evaluates to zero, {...} is replaced by <i>strn2</i>.
+
+    2. <i>strn</i> is name of a vector variable, say `myvec'.
+       <b>rdfiln</b> replaces  {myvec}  with a sequence of numbers separated
+       by one space, which are the contents of `myvec'.
+       <i>Example</i> : suppose a `myvec' <A href="#vectordef">has been declared</A> as a 5-element quantity:
+         % vec myvec[5] 6-1 6-2 5-2 5-3 4-3
+       Then
+         {myvec}
+       is turned into
+         5 4 3 2 1
+       You can also substitute a single element.  Thus
+         {myvec(2)}
+       is transformed into
+         4
+
+   3a. <i>strn</i> is an algebraic expression composed of, numbers, <A href="#variabledecl">scalar variables</A>,
+       elements of <A href="#vectordef">vector variables</A>, and <A href="#macrodef">macros</A>, combined with unary and binary operators.
+       The <A href="#exprsyntax">syntax is very similar to C</A>.
+       rdfiln parses &nbsp;<i>strn</i>&nbsp; to obtain a binary number, renders the result in ASCII form, and
+       substitutes the result in place of &nbsp;<i>strn</i>.
+
+   3b. is an extension of 3a.  <i>strn</i>&nbsp; may consist of a sequence of assignments of variables to expressions.
+       The assignment may be a simple one (`<FONT size="+1"><tt>=</tt></FONT>') or <A href="#assignmentops">involve an arithmetic operation</A>.
+       Members of the sequence separated by commas.  For each member a variable is assigned to an expression.
+       rdfiln returns the value of the last expression.
+         <i>Examples</i>:
+         {x=3}               &larr;  assigns x to 3 and returns '3'
+         {x=3,y=4}           &larr;  assigns x to 3 and y to 4, and returns '4'
+         {x=3,y=4,x*=y}      &larr;  assigns x to 3*4 and y to 4, and returns '4'
+
+       The last expression need not have an <A href="#assignmentops">assignment operator</A>.  Thus
+
+         {x=3,y=4,x*=y,x*2}  &larr;  assigns x to 3*4 and y to 4, and returns '24'
+</pre>
+
+<h3><A name="nesting"></A>Further properties of curly brackets {...} </h3>
+
+Brackets <FONT size="+1"><tt>{..}</tt></FONT> may be <FONT color="#0000bb"><I>nested</I></FONT>.
+<b>rdfiln</b> will work recursively
+through deeper levels of bracketing, substituting <FONT size="+1"><tt>{..}</tt></FONT> at each level with
+a result before returning to the higher level.  <br>
+<i>Example</i>: Suppose &nbsp;<FONT size="+1"><tt>{foo}</tt></FONT>&nbsp; evaluates to 2. Then:
+<pre>
+  {my{foo}bar}</pre>
+will be transformed into
+<pre>
+  {my2bar}</pre>
+and finally the result of &nbsp;<FONT size="+1"><tt>{my2bar}</tt></FONT>&nbsp; evaluated.
+
+If <b>rdfiln</b> cannot evaluate <FONT size="+1"><tt>{my2bar}</tt></FONT> it will abort with a message similar to this one:
+<pre>
+ rdfile: bad expression in line
+ {  ...  my2bar}
+</pre>
+
+<P> <FONT color="#0000bb"><I>*Note</I>&nbsp;</FONT> the syntactical difference between <FONT size="+1"><tt>{..}</tt></FONT> and
+<FONT size="+1"><tt>(..)</tt></FONT>.  The latter applies to only algebraic expressions, while the former offers other possibilities
+as we have noted.  But even when <FONT size="+1"><tt>{..}</tt></FONT> contains an algebraic expression its effect can be a little different from
+<FONT size="+1"><tt>(..)</tt></FONT>. Curly brackets put <b>rdfiln</b> in a special mode where it replaces <FONT size="+1"><tt>{..}</tt></FONT> with
+another string.  Thus &nbsp;<FONT size="+1"><tt>{pi-3}</tt></FONT>&nbsp; is replaced by
+<A href="#sourcecodes">&nbsp;<FONT size="+1"><tt>.14159265</tt></FONT></A>&nbsp;, whereas
+&nbsp;<FONT size="+1"><tt>(pi-3)</tt></FONT>&nbsp; is kept in a binary representation of
+&nbsp;<FONT size="+1"><tt>&pi;-3</tt></FONT>, with about 16 decimal digits precision.
+Note moreover that you can use expressions <FONT size="+1"><tt>(..)</tt></FONT> either <i>inside</i> curly brackets, in which case they form
+part of an expression that will be rendered in ASCII form as a modification of the input, or <i>outside</i> curly brackets.  The input system
+(which reads whatever the preprocessor returns) can also parse algebraic expressions.
+
+<h3><A name="exprsyntax"></A>Syntax of Algebraic Expressions</h3>
+
+The general syntax for an expression is a sequence of one or more expressions of the form
+<pre>
+   {<i>var</i> <i>assignment-op</i> <i>expr</i> [, ... ]}.
+</pre>
+Commas separate expressions in the sequence.
+The final may (and typically does) consist of <i>expr</i> only,
+omitting the <FONT size="+1"><tt><i>var <A href="#assignmentops">assignment-op</A></i></tt></FONT> part.
+
+<P> <FONT size="+1"><tt><i>expr</i></tt></FONT>&nbsp; is a algebraic expression, 
+with a syntax very similar to C.  
+<FONT color="#0000bb"><I>*Note</I>&nbsp;</FONT> <i>expr</i> may not contain any blanks or tabs.
+<br>It is composed of numbers, <A href="#variabledecl">scalar variables</A>,
+elements of <A href="#vectordef">vector variables</A>, and <A href="#macrodef">macros</A>, combined with unary and binary operators.
+<pre>
+       <i>Unary</i> operators take first precedence:
+       1.   - arithmetic negative
+            ~ logical negative (.not.)
+              functions abs(), exp(), log(), sin(), asin(), sinh(), cos(), acos()
+                        cosh(), tan(), atan(), tanh(), flor(), ceil(), erfc(), sqrt()
+              (flor() rounds to the next lowest integer; ceil() rounds up)
+
+       The remaining operators are <i>binary</i>, listed here in order of precedence with associativity
+       2.   ^  (exponentiation)
+       3.   *  (times), / (divide), % (modulus)
+       4.   +  (add), - (subtract)
+       5.   <  (.lt.); > (.gt.); = (.eq.); <> (.ne.); <= (.le.);  >= (.ge.)
+       6.   &  (.and.)
+       7.   |  (.or.)
+       8&9  ?: conditional operators, used as: <i>test</i>?<i>expr1</i>:<i>expr2</i>
+       10&11 () parentheses 
+</pre>
+
+<P> The &nbsp;`<FONT size="+1"><tt>?:</tt></FONT>'&nbsp; pair of operators follow a C-like syntax.
+<FONT size="+1"><tt><i>test</i></tt></FONT>, <FONT size="+1"><tt><i>expr1</i></tt></FONT>, and <FONT size="+1"><tt><i>expr2</i></tt></FONT>,
+are all algebraic expressions.  
+<br> If &nbsp;<FONT size="+1"><tt><i>test</i></tt></FONT>&nbsp; is nonzero,
+&nbsp;<FONT size="+1"><tt><i>expr1</i></tt></FONT>&nbsp; is evaluated and becomes the result.  
+Otherwise &nbsp;<FONT size="+1"><tt><i>expr2</i></tt></FONT>&nbsp; is evaluated and becomes the result.
+
+<h4><A name="assignmentops"></A>Assignment Operators</h4>
+
+The following are the allowed assignment operators:
+<pre>
+       assignment-op         function
+         '='            simple assignment
+         '*='           replace 'var' by var*expr
+         '/='           replace 'var' by var/expr
+         '+='           replace 'var' by var+expr
+         '-='           replace 'var' by var-expr
+         '^-'           replace 'var' by var^expr
+</pre>
+
+<h3><A name="exprsamples"></A>Examples of expressions</h3>
+
+Suppose that the variables table looks like:
+<pre>
+   Var       Name                 Val
+    1        t                   1.0000
+    2        f                  0.00000
+    3        pi                  3.1416
+    4        a                   2.0000
+ ...
+   Vec       Name            Size   Val[1..n]
+    1        firstnums          5    1.0000        5.0000
+    2        nextnums           5    6.0000        10.000
+ ...
+     char symbol                     value
+    1 c                               half
+    2 a                               whole
+    3 blank
+</pre>
+
+<P>
+ You can print out the tables of current variables with the &nbsp;`<FONT size="+1"><tt><A href="#showdef">show</A></tt></FONT>'&nbsp; directive.
+ As described in more detail <A href="#variabledecl">below</A>, such a variables table can be created with the following directives:
+<pre>
+ % const a=2
+ % char c half a whole blank " "
+ % vec firstnums[5] 1 2 3 4 5
+ % vec nextnums[5] 6 7 8 9 10
+</pre>
+
+Then the line
+<pre>
+  {c} of the {a} {pi} is {pi/2}</pre>
+is turned into the following;
+<pre>
+  half of the whole 3.14159265 is 1.57079633</pre>
+whereas the line
+<pre>
+  one quarter is {1/(nextnums(4)-5)}</pre>
+ becomes
+<pre>
+  one quarter is .25</pre>
+
+The following illustrates substitution of character substrings:
+<pre>
+ % char c half a whole
+  To {c(1,3)}ve a cave is to make a {a(2,5)}!
+</pre>
+ becomes
+<pre>
+  To halve a cave is to make a hole!
+</pre>
+
+The following line illustrates substitution of vector name
+<pre>
+  {firstnums}, I caught a hare alive, {nextnums} I let him go again ...
+</pre>
+becomes
+<pre>
+  1 2 3 4 5, I caught a hare alive, 6 7 8 9 10  I let him go again ...
+</pre>
+
+The following illustrates nesting of <FONT size="+1"><tt>{...}</tt></FONT>.
+The innermost block s substituted first, as the following illustrates.
+<pre>
+    % const xx{1{2+{3+4}1}} = 2
+</pre>
+undergoes substitution in three passes
+<pre>
+    % const xx{1{2+71}} = 2
+    % const xx{173} = 2
+    % const xx173 = 2
+</pre>
+
+The example below combines nesting and <FONT size="+1"><tt>'{?~expr~strn1~strn2}'</tt></FONT> syntax:
+<pre>
+    MODE={?~k~B~C}3</pre>
+ evaluates to, if <FONT size="+1"><tt><i>k</i></tt></FONT> is nonzero:
+<pre>
+    MODE=B3
+</pre>
+or, if <FONT size="+1"><tt><i>k</i></tt></FONT> is zero:
+<pre>
+    MODE=C3
+</pre>
+
+<P> <FONT color="#0000bb"><I>*Note</I>&nbsp;</FONT> the scalar variables table is always initialized with predefined variables
+&nbsp;<FONT size="+1"><tt>t=1</tt></FONT>, &nbsp;<FONT size="+1"><tt>f=0</tt></FONT> and &nbsp;<FONT size="+1"><tt>pi=</tt></FONT>&pi;.  It is STRONGLY ADVISED that you never alter any of these variables.
+
+
+<h2><A name="directives"></A>Preprocessor directives</h2>
+
+Lines beginning with `<FONT size="+1"><tt>% keyword</tt></FONT>' are be interpreted as preprocessor
+directives.  Such lines are not part of the the post-processed input.
+Recognized keywords are
+<pre>
+   <A href="#variabledecl">const cconst cvar udef var vec char char0 cchar getenv vfind</A>   &larr; allocate variables and assigns values
+   <A href="#branching">if ifdef ifndef iffile else elseif elseifd endif</A>               &larr; branching constructs for conditional reading of lines
+   <A href="#loops">while repeat end</A>                                               &larr; looping constructs for repeated looping of lines
+   <A href="#misc">echo exit include includo macro save show stop trace udef</A>      &larr; miscellaneous other constructs
+</pre>
+
+<h3><A name="variabledecl"></A>Variable declarations and assignments </h3>
+
+&nbsp;&nbsp;Keywords&nbsp;:&nbsp;&nbsp; <FONT size="+1"><tt>const cconst cvar udef var vec char char0 cchar getenv vfind</tt></FONT>
+
+<OL>
+<A name="constdef"></A>
+<LI> `<FONT size="+1"><tt>const</tt></FONT>'&nbsp; and &nbsp;`<FONT size="+1"><tt>var</tt></FONT>'&nbsp; load or alter the variables table.
+<pre>
+ <i>Example</i>
+ % const  myvar=<i>expr</i>
+</pre>
+does two things:
+<pre>
+  (1) add `myvar' to the scalar variables symbols table if it is not there already.
+      `const' and `var' are equivalent in this respect.
+
+  (2) assign the result of <i>expr</i> to it, if <i>either</i>
+      * you use the `var' directive  <i>or</i>
+      * you use the `const' directive <i>and</i> the variable had not yet been created.
+</pre>
+In other words, if &nbsp;<FONT size="+1"><tt>myvar</tt></FONT>&nbsp;
+already exists prior to the directive,
+&nbsp;<FONT size="+1"><tt>const</tt></FONT>&nbsp; will not alter its value but
+&nbsp;<FONT size="+1"><tt>var</tt></FONT>&nbsp; will.  Thus the lines
+<pre>
+   % const a=2
+   % const a=3</pre>
+incorporate <i>a</i> into the symbols table with value 2, while
+<pre>
+   % const a=2
+   % var a=3
+</pre>
+does the same but assigns 3 to <i>a</i>.
+
+<P> <FONT color="#0000bb"><I>*Note</I>&nbsp;</FONT>
+<FONT size="+1"><tt><i>expr</i></tt></FONT> may be multiplied into, divided into, added into,
+ subtracted from or exponentiated into an already-declared variable
+ using one of the following C-like syntax:
+<pre>
+   myvar*=expr  myvar/=expr  myvar+=expr  myvar-=expr  myvar^=expr
+</pre>
+These operators modify &nbsp;<FONT size="+1"><tt>myvar</tt></FONT>&nbsp; for both &nbsp;`<FONT size="+1"><tt>const</tt></FONT>'&nbsp; and &nbsp;`<FONT size="+1"><tt>var</tt></FONT>'&nbsp; directives.
+
+<LI> `<FONT size="+1"><tt>cconst</tt></FONT>' and `<FONT size="+1"><tt>cvar</tt></FONT>' <i>conditionally</i> load or alter the variables table.
+<pre>
+ <i>Example</i>:
+ % cconst <i>test-expr</i> myvar=<i>expr</i>
+</pre>
+<FONT size="+1"><tt><i>test-expr</i></tt></FONT>&nbsp; is an algebraic expression (e.g., <FONT size="+1"><tt>i==3</tt></FONT>)
+that evaluates to zero or nonzero. <br>
+If <FONT size="+1"><tt><i>test-expr</i></tt></FONT> evaluates to nonzero, the remainder
+of the directive proceeds as &nbsp;<FONT size="+1"><tt>const</tt></FONT>&nbsp; or &nbsp;<FONT size="+1"><tt>var</tt></FONT>&nbsp; do.<br>
+If <FONT size="+1"><tt><i>test-expr</i></tt></FONT> evaluates to zero, no further action is taken.
+
+<br>&nbsp;&nbsp;&nbsp;<i>Example</i>:  the input segment
+<pre>
+   % const a = 2 b=3 c=4 d=5
+   A={a} B={b} C={c} D={d}
+   % const a=3
+   % var d=-1
+   % const b*=2 c+=3
+   A={a} B={b} C={c} D={d}
+   % cconst b==6  b+=3 c-=3
+   A={a} B={b} C={c} D={d}
+   % cconst b==6  b+=3 c-=3
+   A={a} B={b} C={c} D={d}
+</pre>
+ generates four lines:
+<pre>
+   A=2 B=3 C=4 D=5
+   A=2 B=6 C=7 D=-1
+   A=2 B=9 C=4 D=-1
+   A=2 B=9 C=4 D=-1
+</pre>
+<i>a</i> is unchanged from its initial assignment while <i>d</i> changes.
+
+<P> Compare the two &nbsp;<FONT size="+1"><tt>cconst</tt></FONT>&nbsp; directives. <i>b</i> and <i>c</i> are altered in the first
+instance, since the condition &nbsp;<FONT size="+1"><tt>b==6</tt></FONT>&nbsp; evaluates to 1, while they do not change in
+the second instance, since now &nbsp;<FONT size="+1"><tt>b==6</tt></FONT>&nbsp; evaluates to zero.
+
+<LI> `<FONT size="+1"><tt>char</tt></FONT>' loads or alters the character table.
+<br>&nbsp;&nbsp;<i>Example</i>:
+<pre>
+ % char  c half     a whole      blank
+</pre>
+loads the character table as follows:
+<pre>
+     char symbol                     value
+    1 c                               half
+    2 a                               whole
+    3 blank
+</pre>
+The last declaration can omit an associated string, in which case its value is a blank, as &nbsp;<FONT size="+1"><tt>blank</tt></FONT>&nbsp; is in this case.
+<br> <FONT color="#0000bb"><I>*Note</I>&nbsp;</FONT>
+Re-declaration of any previously defined variable will change the contents of the variable.
+
+<LI> `<FONT size="+1"><tt>char0</tt></FONT>' is the same as `<FONT size="+1"><tt>char</tt></FONT>', except re-assignment of an existing
+variable is ignored.  Thus `<FONT size="+1"><tt>char0</tt></FONT>' is to `<FONT size="+1"><tt>const</tt></FONT>' as `<FONT size="+1"><tt>char</tt></FONT>' is to `<FONT size="+1"><tt>var</tt></FONT>'.
+
+<LI> `<FONT size="+1"><tt>cchar</tt></FONT>' is similar to &nbsp;`<FONT size="+1"><tt>char</tt></FONT>'&nbsp; but tests are made
+to enable different strings to be loaded depending on the results of the tests.
+The syntax is
+<pre>
+ % cchar nam  <i>expr1 str1 expr2 str2</i> ...
+</pre>
+`<FONT size="+1"><tt>nam</tt></FONT>'&nbsp; is the name of the character variable;
+ <FONT size="+1"><tt><i>expr1 expr2</i></tt></FONT> etc are algebraic expressions.
+
+<br> `<FONT size="+1"><tt>nam</tt></FONT>'&nbsp; takes the
+value &nbsp;<FONT size="+1"><tt><i>str1</i></tt></FONT>&nbsp; if &nbsp;<FONT size="+1"><tt><i>expr1</i></tt></FONT>&nbsp; evaluates to nonzero, the value &nbsp;<FONT size="+1"><tt><i>str2</i></tt></FONT>&nbsp; if &nbsp;<FONT size="+1"><tt><i>expr2</i></tt></FONT>&nbsp; evaluates to nonzero, etc.
+
+<LI> `<FONT size="+1"><tt>getenv</tt></FONT>' has a function similar to `<FONT size="+1"><tt>char</tt></FONT>'.
+ Only the contents of the variable are read from the unix environment variables table.  Thus
+<pre>
+% getenv myhome HOME
+</pre>
+ puts the string of your home directory into variable `<FONT size="+1"><tt>myhome</tt></FONT>.'
+
+<A name="vectordef"></A>
+<LI>`<FONT size="+1"><tt>vec</tt></FONT>' loads or alters elements in the table of vector variables.
+<pre>
+ % vec v[n]                      &larr; creates a vector variable of length n
+ % vec v[n] n1 n2 n3 ...         &larr; does the same, also setting the first elements
+</pre>
+ Once `<FONT size="+1"><tt>v</tt></FONT>' has been declared, individual elements of &nbsp;<FONT size="+1"><tt>v</tt></FONT>&nbsp; may be set with
+ the following syntax
+<pre>
+ % vec v(<i>i</i>) <i>n</i>                    &larr; assigns <i>n</i> to v(<i>i</i>)
+ % vec v(<i>i1</i>:<i>in</i>)  <i>n1</i> <i>n2</i> ... <i>nn</i>    &larr; assigns range of elements <i>i1</i>..<i>in</i> to <i>n1 n2 ... nn</i>
+</pre>
+ There must be exactly <FONT size="+1"><tt><i>in&minus;i1</i>+1</tt></FONT> elements <FONT size="+1"><tt><i>n1 ... nn</i></tt></FONT>.
+<br> <FONT color="#0000bb"><I>*Note</I>&nbsp;</FONT>
+ if `<FONT size="+1"><tt>v</tt></FONT>' is already declared, it is an error to re-declare it.
+
+<LI> `<FONT size="+1"><tt>vfind</tt></FONT>' finds which element in a vector that matches a specified value.
+The syntax is
+<pre>
+ % vfind v(i1:i2)  svar  <i>match-value</i>
+</pre>
+`<FONT size="+1"><tt>svar</tt></FONT>' is a scalar variable and
+`<FONT size="+1"><tt><i>match-value</i></tt></FONT>' a number or expression.
+Elements &nbsp;<FONT size="+1"><tt>v(i1:i2)</tt></FONT>&nbsp; are parsed.
+&nbsp;<FONT size="+1"><tt>svar</tt></FONT>&nbsp; is
+assigned to the the first instance i for which
+&nbsp;<FONT size="+1"><tt><tt>v(i)</tt>=<i>match-value</i></tt></FONT>.
+If no match is found, `<FONT size="+1"><tt>svar</tt></FONT>' is set to zero.
+<br>&nbsp;&nbsp;<i>Example</i>:
+<pre>
+ % vec  a[3] 101 2002 30003
+ % vfind a(1:3) k 2002           &larr; sets k=2
+ % vfind a(1:3) k 10             &larr; sets k=0
+</pre>
+</OL>
+
+
+<h3><A name="branching"></A>Branching constructs</h3>
+&nbsp;&nbsp;Keywords&nbsp;:&nbsp;&nbsp; <FONT size="+1"><tt>if ifdef ifndef iffile else elseif elseifd endif</tt></FONT>
+
+<P> These branching constructs have a function similar to the C constructs
+<br> &nbsp;&nbsp; <FONT size="+1"><tt>if {text ;} else if {text ;} else {text ;}</tt></FONT>
+<br> or Fortran constructs
+<br> &nbsp;&nbsp; <FONT size="+1"><tt>if (<i>expr</i>) then;  ... elseif (<i>expr</i>) then; ... else; ... endif</tt></FONT>
+
+<OL>
+<LI> `<FONT size="+1"><tt>if <i>expr</i></tt></FONT>',&nbsp;
+`<FONT size="+1"><tt>elseif <i>expr</i></tt></FONT>',&nbsp;
+`<FONT size="+1"><tt>else</tt></FONT>'&nbsp; and &nbsp;
+`<FONT size="+1"><tt>endif</tt></FONT>'&nbsp; are conditional read blocks.  Lines between these directives are read or not,
+depending on the value of &nbsp;<FONT size="+1"><tt><i>expr</i></tt></FONT>.
+
+<br>&nbsp;&nbsp;<i>Example</i>:
+<pre>
+ % if Quartz
+  is clear
+ % elseif Ag
+  is bright
+ % else
+  neither is right
+ % endif
+</pre>
+generate the line
+<br> &nbsp;<FONT size="+1"><tt>is clear</tt></FONT>
+<br> if <FONT size="+1"><tt>Quartz</tt></FONT> evaluates to nonzero; otherwise
+<br> &nbsp;<FONT size="+1"><tt>is bright</tt></FONT>
+<br> if <FONT size="+1"><tt>Ag</tt></FONT> evaluates to zero; otherwise
+<br> &nbsp;<FONT size="+1"><tt>neither is right</tt></FONT>
+
+<LI>
+
+`<FONT size="+1"><tt>ifdef</tt></FONT>' is similar to `<FONT size="+1"><tt>if</tt></FONT>', but has a more general idea of what
+constitutes an expression.
+
+<UL>
+
+<LI> `<FONT size="+1"><tt>if <i>expr</i></tt></FONT>'&nbsp; requires that <FONT size="+1"><tt><i>expr</i></tt></FONT> be a valid
+expression, while &nbsp;`<FONT size="+1"><tt>ifdef <i>expr</i></tt></FONT>' evaluates <FONT size="+1"><tt><i>expr</i></tt></FONT>
+as false if it invalid (e.g. it contains an undefined variable).
+
+<LI>
+<FONT size="+1"><tt><i>expr</i></tt></FONT>&nbsp; can be an algebraic expression, or
+a sequence of expressions separated by
+&nbsp;`<FONT size="+1"><tt>&</tt></FONT>'&nbsp; or &nbsp;&nbsp;`<FONT size="+1"><tt>|</tt></FONT>'&nbsp;
+(<i>AND</i> or <i>OR</i> binary operators), <i>viz</i>:
+<pre>
+  % ifdef <i>expr1</i> | <i>expr2</i> | <i>expr3</i> ...
+</pre>
+If any of &nbsp;<FONT size="+1"><tt><i>expr1</i></tt></FONT>&nbsp;, &nbsp;<FONT size="+1"><tt><i>expr2</i></tt></FONT>&nbsp;, ... evaluate to nonzero, the result
+is nonzero, whether or not preceding expressions are valid.
+<br> <FONT color="#0000bb"><I>*Note</I>&nbsp;</FONT> the syntactical significance of the spaces.
+&nbsp;<FONT size="+1"><tt><i>expr1</i>|<i>expr2</i></tt></FONT>&nbsp; cannot be evaluated unless both &nbsp;<FONT size="+1"><tt><i>expr1</i></tt></FONT>&nbsp; and &nbsp;<FONT size="+1"><tt><i>expr2</i></tt></FONT>&nbsp; are valid expressions, while &nbsp;<FONT size="+1"><tt><i>expr1</i> | <i>expr2</i></tt></FONT>&nbsp; may be nonzero if either is valid.
+<LI> `<FONT size="+1"><tt>ifdef</tt></FONT>'&nbsp; allows a limited use of character variables in expressions. Either of the following are permissible expressions:
+<pre>
+   char-variable            &larr; T if char-variable exists, otherwise F
+   char-variable=='<i>string</i>'  &larr; T ifchar-variable has the value <i>string</i>
+</pre>
+<i>Example</i>:
+<pre>
+% ifdef  x1==2 & atom=='Mg' | x1===1
+</pre>
+is nonzero if scalar &nbsp;<FONT size="+1"><tt>x1</tt></FONT>&nbsp; is 2 <i>and</i> if character variable &nbsp;`<FONT size="+1"><tt>atom</tt></FONT>'&nbsp; is equal to "Mg",
+<i>or</i> if scalar &nbsp;<FONT size="+1"><tt>x1</tt></FONT>&nbsp; is 1.
+
+<br> <FONT color="#0000bb"><I>*Note</I>&nbsp;</FONT> binary operators
+&nbsp;`<FONT size="+1"><tt>&</tt></FONT>'&nbsp; and &nbsp;&nbsp;`<FONT size="+1"><tt>|</tt></FONT>'&nbsp; 
+are evaluated left to right: &nbsp;`<FONT size="+1"><tt>&</tt></FONT>'&nbsp; does not take precedence
+over &nbsp;`<FONT size="+1"><tt>|</tt></FONT>'.
+
+</UL>
+
+<LI> `<FONT size="+1"><tt>elseifd</tt></FONT>'&nbsp; is to &nbsp;`<FONT size="+1"><tt>elseif</tt></FONT>'&nbsp; as &nbsp;`<FONT size="+1"><tt>ifdef</tt></FONT>'&nbsp; is to &nbsp;`<FONT size="+1"><tt>if</tt></FONT>'.
+
+<LI> `<FONT size="+1"><tt>ifndef <i>expr</i></tt></FONT>' ... is the mirror image of &nbsp;`<FONT size="+1"><tt>ifdef <i>expr</i></tt></FONT>'.
+Lines following this construct are read only if &nbsp;`<FONT size="+1"><tt><i>expr</i></tt></FONT>'&nbsp; evaluates to 0.
+
+<LI> `<FONT size="+1"><tt>iffile filename</tt></FONT>'&nbsp; is a construct analogous to &nbsp;`<FONT size="+1"><tt>%if</tt></FONT>'&nbsp; or &nbsp;`<FONT size="+1"><tt>%ifdef</tt></FONT>'&nbsp; for conditional reading of input lines.  
+<br> The test condition is set not by an expression, but whether file &nbsp;`<FONT size="+1"><tt>filename</tt></FONT>'&nbsp; exists or not.
+
+</OL>
+
+<FONT color="#0000bb"><I>*Note</I>&nbsp;</FONT>
+`<FONT size="+1"><tt>if</tt></FONT>'&nbsp;, &nbsp;`<FONT size="+1"><tt>ifdef</tt></FONT>'&nbsp;,
+and &nbsp;`<FONT size="+1"><tt>ifndef</tt></FONT>'&nbsp;  constructs may be nested to a depth of <FONT size="+1"><tt>mxlev</tt></FONT>.
+The codes are distributed with <FONT size="+1"><tt>mxlev=6</tt></FONT> (see subroutine <b>rdfile</b>).
+
+
+<h3><A name="loops"></A>Looping constructs</h3>
+&nbsp;&nbsp;Keywords&nbsp;:&nbsp;&nbsp; <FONT size="+1"><tt>while repeat end</tt></FONT>
+
+<OL>
+<LI>`<FONT size="+1"><tt>while</tt></FONT>'&nbsp; and &nbsp;`<FONT size="+1"><tt>end</tt></FONT>'&nbsp; mark the beginning and end of a looping construct.
+Lines inside the loop are repeatedly read until a test expression evaluates to 0.
+
+<br> The &nbsp;`<FONT size="+1"><tt>while ... end</tt></FONT>'&nbsp; construct has the syntax
+<pre>
+  % while [<i>expr1</i> <i>expr2</i> ...] <i>exprn</i>                             &larr; skip to `% end' if <i>exprn</i> is 0
+    ...                                                       &larr; these lines become part of the input while <i>exprn</i> is nonzero
+  % end                                                       &larr; return to the `% while' directive unless <i>exprn</i> is 0
+</pre>
+The (optional) expressions `<FONT size="+1"><tt>[<i>expr1</i> <i>expr2</i> ...]</tt></FONT>'
+follow the rules of the &nbsp;`<FONT size="+1"><tt><A href="#constdef">const</A></tt></FONT>'&nbsp; directive.  That is,
+<UL>
+<LI> Each of <FONT size="+1"><tt><i>expr1</i></tt></FONT>, <FONT size="+1"><tt><i>expr2</i></tt></FONT>, ... take the form
+&nbsp;`<FONT size="+1"><tt>nam = <i>expr</i></tt></FONT>'&nbsp; or &nbsp;`<FONT size="+1"><tt>nam op= <i>expr</i></tt></FONT>'.
+<LI> A simple assignment &nbsp;`<FONT size="+1"><tt>nam=<i>expr</i></tt></FONT>'&nbsp;
+has effect only when &nbsp;`<FONT size="+1"><tt>nam</tt></FONT>'&nbsp;
+has not yet been loaded into the variables table.  Thus it has effect on the first pass through the &nbsp;<FONT size="+1"><tt>while</tt></FONT>&nbsp; loop
+(provided &nbsp;`<FONT size="+1"><tt>nam</tt></FONT>'&nbsp; isn't declared yet) but not subsequent passes.
+</UL>
+These rules make it very convenient to construct loops, as the following shows.
+<br><i>Example</i>
+<pre>
+ % udef -f db                       &larr; removes db from symbols table, if it already exists
+ % while db=-1 db+=2 db<=3          &larr; db is initialized to -1 only once
+ this is db={db}                    &larr; the body of the loop that becomes the input
+ % end                              &larr; return file pointer to %while until test db<=3 is 0
+</pre>
+generates
+<pre>
+  this is db=1
+  this is db=3
+</pre>
+On the <i>first</i> pass, &nbsp;`db'&nbsp; is created and assigned the value &minus;1; then
+&nbsp;`<FONT size="+1"><tt>db+=2</tt></FONT>'&nbsp; increments &nbsp;<FONT size="+1"><tt>db</tt></FONT>&nbsp; to 1.
+Condition &nbsp;<FONT size="+1"><tt>db<=3</tt></FONT>&nbsp; evaluates to 1 and the loop proceeds.
+<br> On the <i>second</i> pass, &nbsp;`db'&nbsp; already exists so &nbsp;`db=-1'&nbsp; has no effect.
+&nbsp;`<FONT size="+1"><tt>db+=2</tt></FONT>' increments &nbsp;<FONT size="+1"><tt>db</tt></FONT>&nbsp; to 3.
+<br> On the <i>third</i> pass, &nbsp;`<FONT size="+1"><tt>db</tt></FONT>'&nbsp; increments to 5 causing the condition
+&nbsp;<FONT size="+1"><tt>db<=3</tt></FONT>&nbsp; to become 0.  The loop terminates.
+
+<LI>
+`<FONT size="+1"><tt>% repeat</tt></FONT>'&nbsp; ... &nbsp;`<FONT size="+1"><tt>% end</tt></FONT>'&nbsp; is another looping construct with the syntax
+<pre>
+   % repeat varnam <i>list</i>
+    ...                             &larr; lines parsed for each element in list
+   % end
+</pre>
+As with the &nbsp;`<FONT size="+1"><tt>while</tt></FONT>'&nbsp;
+construct, multiple passes are made through the input lines.
+&nbsp;<FONT size="+1"><tt><i>list</i></tt></FONT>&nbsp; generates a sequence of integers
+(see <A href="Integer-list-syntax.html">&nbsp;<FONT size="+1"><tt>this page</tt></FONT></A> for the syntax),
+For each member of the sequence &nbsp;`<FONT size="+1"><tt>varnam</tt></FONT>'&nbsp; takes its value
+and the body of the loop passed through.
+&nbsp;<FONT size="+1"><tt><i>list</i></tt></FONT>&nbsp; can be just an integer (e.g. &nbsp;`<FONT size="+1"><tt>7</tt></FONT>') or define a
+more complex sequence,
+e.g. &nbsp;`<FONT size="+1"><tt>1:3,6,2</tt></FONT>'&nbsp;
+<A href="Integer-list-syntax.html">generates the sequence</A> &nbsp;`<FONT size="+1"><tt>1 2 3 6 2</tt></FONT>'.
+
+<br><i>Example</i> of nested &nbsp;`<FONT size="+1"><tt>while</tt></FONT>'&nbsp; and &nbsp;`<FONT size="+1"><tt>repeat</tt></FONT>' loops (the &nbsp;`<FONT size="+1"><tt>while</tt></FONT>'&nbsp; loop was used above):
+<pre>
+ % const nm=-3 nn=4
+ % while db=-1 db+=2 db<=3
+ % repeat k= 2,7
+ this is k={k} and db={db}
+ {db+k+nn+nm} is db + k + nn+nm, where nn+nm={nn+nm}
+ % end (loop over k)
+ % end (loop over db)
+</pre>
+The nested loops are expanded into:
+<pre>
+ this is k=2 and db=1
+ 4 is db + k + nn+nm, where nn+nm=1
+ this is k=7 and db=1
+ 9 is db + k + nn+nm, where nn+nm=1
+ this is k=2 and db=3
+ 6 is db + k + nn+nm, where nn+nm=1
+ this is k=7 and db=3
+ 11 is db + k + nn+nm, where nn+nm=1
+</pre>
+
+</OL>
+
+<h3><A name="misc"></A>Other directives</h3>
+
+&nbsp;&nbsp;Keywords&nbsp;:&nbsp;&nbsp;
+<FONT size="+1"><tt>echo exit include includo macro save show stop trace udef</tt></FONT>
+
+<OL>
+
+<LI> `<FONT size="+1"><tt>echo <i>contents</i></tt></FONT>'&nbsp; echoes &nbsp;`<FONT size="+1"><tt><i>contents</i></tt></FONT>'&nbsp; to standard output.
+<br><i>Example</i> :
+<pre>
+  % echo hello world
+</pre>
+prints
+<pre>
+  #rf    <i>##</i>: hello world
+</pre>
+where &nbsp;<FONT size="+1"><tt><i>##</i></tt></FONT>&nbsp; is the current line number.
+
+<LI> `<FONT size="+1"><tt>exit [<i>expr</i>]</tt></FONT>'&nbsp; causes the program to stop parsing the input file, as though it encountered an <FONT size="+1"><tt>end-of-file</tt></FONT>.
+<br> If &nbsp;`<FONT size="+1"><tt><i>expr</i></tt></FONT>'&nbsp; evaluates to nonzero, or if it is omitted, parsing ends.
+<br> If &nbsp;`<FONT size="+1"><tt><i>expr</i></tt></FONT>'&nbsp; evaluates to 0 the directive has no effect.
+<br><FONT color="#0000bb"><I>*Compare to</I>&nbsp;</FONT> the &nbsp;`<FONT size="+1"><tt>stop</tt></FONT>'&nbsp; directive.
+
+<LI> `<FONT size="+1"><tt>include filename</tt></FONT>'&nbsp; causes
+<b>rdfiln</b> to include the contents file
+&nbsp;`<FONT size="+1"><tt>filename</tt></FONT>'&nbsp; into the input.
+
+If &nbsp;`<FONT size="+1"><tt>filename</tt></FONT>' exists,
+<b>rdfiln</b> opens it and the file pointer is transferred to this file until no further lines are to be read.
+At that point file pointer returns to the original file.
+If &nbsp;`<FONT size="+1"><tt>filename</tt></FONT>' does not exist, the directive has no effect.
+
+<br><FONT color="#0000bb"><I>*Note</I>&nbsp;</FONT>
+`<FONT size="+1"><tt>%include</tt></FONT>'&nbsp; may be nested to a depth of 10.
+
+<br><FONT color="#0000bb"><I>*Note</I>&nbsp;</FONT>
+looping and branching constructs <i>must</i> reside in the
+same file.
+
+<LI> `<FONT size="+1"><tt>includo filename</tt></FONT>'&nbsp; is identical to &nbsp;`<FONT size="+1"><tt>include</tt></FONT>', except that
+<i>rdfiln</i> aborts if &nbsp;`<FONT size="+1"><tt>filename</tt></FONT>'&nbsp; does not exist.
+
+<A name="macrodef"></A>
+<LI> `<FONT size="+1"><tt>macro(arg1,arg2,..) <i>expr</i></tt></FONT>'&nbsp; defines a macro which acts in a manner similar to a function.
+<FONT size="+1"><tt>arg1,arg2,...</tt></FONT> are substituted into `<FONT size="+1"><tt><i>expr</i></tt></FONT>'&nbsp; before it is evaluated.
+<br><i>Example</i> :
+<pre>
+  % macro xp(x1,x2,x3,x4) x1+2*x2+3*x3+4*x4
+  The result of xp(1,2,3,4) is {xp(1,2,3,4)}
+</pre>
+generates
+<pre>
+  The result of xp(1,2,3,4) is 30
+</pre>
+<P> <FONT color="#0000bb"><I>*Caution</I>&nbsp;</FONT> macros are not quite identical to function declarations.  The following lines illustrate this:
+<pre>
+  % macro xp(x1,x2,x3,x4) x1+2*x2+3*x3+4*x4
+  The result of xp(1,2,3,4) is {xp(1,2,3,4)}
+  The result of xp(1,2,3,3+1) is {xp(1,2,3,3+1)}
+  The result of xp(1,2,3,(3+1)) is {xp(1,2,3,(3+1))}
+</pre>
+generates
+<pre>
+  The result of xp(1,2,3,4) is 30
+  The result of xp(1,2,3,3+1) is 27
+  The result of xp(1,2,3,(3+1)) is 30
+</pre>
+`<FONT size="+1"><tt>macro</tt></FONT>'&nbsp; merely substitutes 1,2,3,.. for &nbsp;<FONT size="+1"><tt>x1,x2,x3,x4</tt></FONT>&nbsp; in &nbsp;`<FONT size="+1"><tt><i>expr</i></tt></FONT>'&nbsp; as follows:
+<pre>
+  1+2*2+3*3+4*4              &larr xp(1,2,3,4)
+  1+2*2+3*3+4*3+1            &larr xp(1,2,3,3+1)
+  1+2*2+3*3+4*(3+1)          &larr xp(1,2,3,(3+1))
+</pre>
+Because operator order matters, &nbsp;`<FONT size="+1"><tt>4</tt></FONT>'&nbsp; and &nbsp;`<FONT size="+1"><tt>3+1</tt></FONT>'&nbsp; behave differently.
+By using &nbsp;`<FONT size="+1"><tt>(3+1)</tt></FONT>'&nbsp; in the fourth argument, operator precedence is maintained.
+
+<LI> `<FONT size="+1"><tt>save</tt></FONT>'&nbsp; preserves variables after the preprocessor exits.
+The syntax is:
+<pre>
+ % save                       &larr; preserves all variables defined to this point
+ % save <i>name</i> [<i>name2</i> ...]      &larr; saves only variables named
+</pre>
+Only variables in the scalar symbols table are saved.
+
+<A name="showdef"></A>
+<LI> `<FONT size="+1"><tt>show ...</tt></FONT>'&nbsp; prints various things to standard output:
+<pre>
+ % show vars        prints out the state of the variables table
+ % show lines       echos each line generated to the screen until:
+ % show stop        is encountered
+</pre>
+<FONT color="#0000bb"><I>*Note</I>&nbsp;</FONT>
+because the vector variables can have arbitrary length, &nbsp;`<FONT size="+1"><tt>show</tt></FONT>'&nbsp; prints only the size of the vector and the first and last entries.  
+
+<LI> `<FONT size="+1"><tt>stop [<i>expr</i> msg</tt></FONT>]' : causes the program to stop execution.
+<br> If &nbsp;`<FONT size="+1"><tt><i>expr</i></tt></FONT>'&nbsp; evaluates to nonzero, or if it is omitted, program stops (&nbsp;`<FONT size="+1"><tt>msg</tt></FONT>', if present, is printed to standard out before aborting).
+<br> If &nbsp;`<FONT size="+1"><tt><i>expr</i></tt></FONT>'&nbsp; evaluates to 0 the directive has no effect.
+<br><FONT color="#0000bb"><I>*Compare to</I>&nbsp;</FONT> the &nbsp;`<FONT size="+1"><tt>exit</tt></FONT>'&nbsp; directive.
+
+<LI> `<FONT size="+1"><tt>trace</tt></FONT>'&nbsp;
+turns on debugging printout.  <b>rdfiln</b> prints to standard output information about what it is doing
+<pre>
+'trace 0' turns the tracing off
+'trace 1' turns the tracing on at the lowest level.
+          rdfiln traces directives having to do with execution flow
+          (if-else-endif, repeat/while-end).
+'trace 2' prints some information about most directives.
+'trace 4' is the most verbose
+'trace  ' (no argument) toggles whether it is on or off.
+</pre>
+
+<LI> `<FONT size="+1"><tt>udef [&minus;f]</tt></FONT> <i>name</i> [<i>name2</i> ...]'&nbsp; remove one or more variables from the symbols table.
+If the &nbsp;`<FONT size="+1"><tt>&minus;f</tt></FONT>'&nbsp;
+is omitted, <b>rdfiln</b> aborts with error if you remove a nonexistent variable.
+If &nbsp;`<FONT size="+1"><tt>&minus;f</tt></FONT>'&nbsp; is included, removing
+nonexistent variable does not generate an error.
+Only scalar and character variables may be deleted.
+
+</OL>
+
+<h2><A name="footnotes"></A>Notes</h2>
+
+<FN ID=sourcecodes><P>
+
+Source codes the preprocessor uses are found in
+the &nbsp;<FONT size="+1"><tt>slatsm</tt></FONT>&nbsp; directory:
+
+<pre>
+   rdfiln.f  The source code for the preprocessor.
+             Subroutine <b>rdfile</b> parses an entire file and returns
+             a preprocessed one, can be found in rdfiln.f
+             The key subroutine is <b>rdfiln</b>, which parses one line of a file.
+   symvar.f  maintains the table of variables for floating point scalars.
+   symvec.f  maintains the table of vector variables.
+   a2bin.f   evaluates ASCII representations of algebraic expressions using a
+             C-like syntax, converting the result into a binary number.
+             Expressions may include variables and vector elements.
+   bin2a.f   converts a binary number into a character string
+             (inverse function to a2bin.f).
+   mkilst.f  generates a list of integers for looping constructs,
+             as described below. <A href="Integer-list-syntax.html">This page</A> describes the syntax of integer lists.
+</pre>
+The reader also maintains a table of character variables.  It is kept in the character array
+<b>ctbl</b>, and is passed as an argument to <b>rdfiln</b>.
+
+<P> <FONT color="#0000bb"><I>*Note</I>&nbsp;</FONT> The ASCII representation of an expression
+is represented to 8 to 9 decimal places; thus ASCII representation of a floating point number has
+less precision than the binary form.  Thus <FONT size="+1"><tt>'{1.2345678987654e-8}'</tt></FONT>
+is turned into <FONT size="+1"><tt>1.2345679e-8</tt></FONT>.
+
+
+<BR><BR><BR><BR><BR><BR><BR><BR>
+<BR><BR><BR><BR><BR><BR><BR><BR>
+<BR><BR><BR><BR><BR><BR><BR><BR>
+</HTML>
