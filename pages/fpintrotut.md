@@ -145,7 +145,7 @@ To see how the density and energy changes between iterations, try grepping for "
     $ grep 'DQ' out.lmfsc
     $ grep 'ehk=-' out.lmfsc
 
-You can also check how the bandgap changes as iterations proceed to self-consistency by grepping out.lmfsc for 'gap'.  
+You can also check how the bandgap changes as iterations proceed to self-consistency by grepping _out.lmfsc_{: style="color: green"} for 'gap'.  
 
 And that's it! You now have a self-consistent density and have calculated some basic properties such as the band gap and total energy.
 Other tutorials to look at are those to generate energy band structures, and density-of-states, or calculate a mechanical property such as the optical mode frequency.
