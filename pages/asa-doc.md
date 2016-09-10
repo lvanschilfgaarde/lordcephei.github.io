@@ -27,8 +27,10 @@ This tutorial consists of two main sections:
 
 A detailed theoretical description of the ASA and uses of it can be found [here](ASA-notes.pdf).
 
+Test latex :   $$ x = 3+4 $$.
+
 ##### _1\.Building input file_
-Under normal atmospherica conditions PbTe crystallises in the rocksalt structure with lattice constant _a_=6.428$\AA$. 
+Under normal atmospherica conditions PbTe crystallises in the rocksalt structure with lattice constant _a_=6.428$$\AA$$.   
 To build an input file, the first step is to construct file _init.ext_{: style="color: green"} (_ext_{: style="color: green"} is replaced by a name of your choosing, usually related to the material being studied, pbte in this case).  _init.pbte_{: style="color: green"} will contain the structural information needed for the calculations demonstrated here. For PbTe it will look similar to the following.  Copy the context of the below into _init.pbte_{: style="color: green"}:
     
     LATTICE
