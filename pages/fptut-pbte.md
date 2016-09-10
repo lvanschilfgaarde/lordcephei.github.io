@@ -7,32 +7,28 @@ teaser: ""
 permalink: "/lmf_pbte_tutorial/"
 header: no
 ---
-_____________________________________________________________
 
+(U+262E)
 
 ### _Purpose_
 {:.no_toc}
 
-This tutorial carries out a self-consistent density-functional calculation for PbTe using the **lmf**{: style="color: blue"} code.  Some of the basics are covered in the [basic lmf tutorial for Si](https://lordcephei.github.io/lmf_tutorial/), whicy you may wish to go through first.  This tutorial
+This tutorial carries out a self-consistent density-functional calculation for PbTe using the **lmf**{: style="color: blue"} code.  Some of the basics are covered in the [basic lmf tutorial for Si](https://lordcephei.github.io/lmf_tutorial/), which you may wish to go through first.  This tutorial
 
 1. generates a self consistent potential within the LDA
-
 2. illustrates some features of the input file's programming language capabilities
-
 3. demonstrates how to make neighbour tables using the **lmchk**{: style="color: blue"} tool
-
 4. synchronizes with an [ASA tutorial](https://lordcephei.github.io/asa-doc/) on the same system, enabling a comparison of the ASA and full potential methods.
-
-5. is the starting point for other tutorials on optics, a QSGW calculation of PbTe, and comparing energy bands
+5. is the starting point for other tutorials on optics, a QSGW calculation of PbTe, and comparing energy bands computed in different ways.
 
 
 ### _Preliminaries_
 
 ____________________________________________________________
 
-Executables **blm**{: style="color: blue"}, **lmfa**{: style="color: blue"}, and **lmf**{: style="color: blue"} are required and are assumed to be in your path.  The source code for all Questaal executables can be found [here](https://bitbucket.org/lmto/lm).  The tutorial starts under the heading "Tutorial"; you can jump straight to the commands by clicking on the "Command summary" dropdown menu.
+Executables **blm**{: style="color: blue"}, **lmfa**{: style="color: blue"}, and **lmf**{: style="color: blue"} are required and are assumed to be in your path. 
+The tutorial starts under the heading "Tutorial"; or see synopsis of the commands by clicking on the "Command summary" dropdown menu.
 
-<hr style="height:5pt; visibility:hidden;" />
 ### _Command summary_     
 <div onclick="elm = document.getElementById('1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="1">{:/}
@@ -49,14 +45,13 @@ Executables **blm**{: style="color: blue"}, **lmfa**{: style="color: blue"}, and
 
 _____________________________________________________________
 
-### _Tutorial_
 
-_____________________________________________________________
+### _Tutorial_
 
 ##### _Building the input file_
 
-PbTe crystallizes in the rocksalt structure with lattice constant _a_=6.428$\AA$. You need the structural information in the box below to construct the main input file,
-_ctrl.pbte_{: style="color: green"}. Start in a fresh working directory and cut and paste its the box's contents to _init.pbte_{: style="color: green"}.
+PbTe crystallizes in the rocksalt structure with lattice constant _a_ = 6.428 Angstrom. You need the structural information in the box below to construct the main input file,
+_ctrl.pbte_{: style="color: green"}. Start in a fresh working directory and cut and paste the box's contents to _init.pbte_{: style="color: green"}.
 
     LATTICE
 	    ALAT=6.427916  UNITS=A
@@ -76,7 +71,7 @@ Create the input file (_ctrl.pbte_{: style="color: green"}) and the site file (_
 ##### _How the input file is organized_
 
 Take a look at the ctrl file. 
-Click on the box below to see a snippet showing what **blm**{: style="color: blue"} should have produced.
+Click on the box below to see a snippet showing the beginning of the file.
 <hr style="height:5pt; visibility:hidden;" />
 <div onclick="elm = document.getElementById('iors'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="iors">{:/}
@@ -95,8 +90,8 @@ Click on the box below to see a snippet showing what **blm**{: style="color: blu
 
 Lines which begin with '**#**' are comment lines and are ignored. (More generally, text after a `#' in any line is ignored).
 
-Also lines beginning with '**%**' are directives to the preprocessor.  They can do various things similar to a normal programming language,
-such as assign variables, conditionally read some lines, loop over sections of input, etc.  In 
+Also lines beginning with '**%**' are directives to the preprocessor.  Directives can perform various functions similar to a normal programming language,
+assigning variables, evaluating expressions, conditionally readings some lines, looping over sections of input, etc.  In 
 
 Near the top, beginning with **% const**, begin a series of variable declarations. **nit**, **met**, etc,  are variables used in expressions further down.  The parser interprets the side of brackets {..} as expressions, converts it into numbers, which are finally read as numerical values associated with a tag.  The parser is explained in further detail [here](file-preprocessor.html)
 
