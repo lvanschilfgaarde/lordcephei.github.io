@@ -121,7 +121,7 @@ See "Other Resources" below to follow links with further information on the synt
 
 **blm**{: style="color: blue"} builds input files with only a subset of the tags an executable will try to read.
 Defaults are used for the vast majority of tags.
-In any case each executable has its own unique set of tags, though they share many tags in common.
+In any case each executable has its own unique set of tags, though most executables share many tags in common.
 
 Executables accept input from two primary streams : tags in the ctrl file and additional information through command-line switches.
 
@@ -198,6 +198,10 @@ If you supply only one, it is copied to elements 2 and 3.
 ~~~ 
 
 {::nomarkdown}</div>{:/}
+
+#####  _Making use of **lmchk**{: style="color: blue"}_
+
+
 
 ### _Other Resources_
 
