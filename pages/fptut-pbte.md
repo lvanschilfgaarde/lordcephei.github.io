@@ -199,8 +199,10 @@ If you supply only one, it is copied to elements 2 and 3.
 
 {::nomarkdown}</div>{:/}
 
-#####  _Making use of **lmchk**{: style="color: blue"}_
+#####  _Features of **lmchk**{: style="color: blue"}_
 
+**lmchk**{: style="color: blue"}'s default mode is to check sphere overlaps.  But it has several other useful options (e.g. the empty sphere finder, described in
+the [sister [ASA tutorial](https://lordcephei.github.io/asa-doc/) for PbTe.)
 
 
 ### _Other Resources_
