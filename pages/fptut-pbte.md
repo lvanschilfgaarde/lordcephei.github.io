@@ -130,7 +130,7 @@ To see what an executable tries to read from the ctrl file, invoke the executabl
    lmchk --input
 
 `--input` tells **lmchk**{: style="color: blue"} to print out what it seeks.  It exits
-without trying read any input.  Instead, it  print out a table of all the tags it tries to read, together with a brief description of the tag.  
+without trying read any input; instead, it prints out a table of all the tags it tries to read, together with a brief description of the tag.  
 
 The remainder of this section explains the output of `lmchk --input`.  It is not necessary to the tutorial, 
 but it is useful to see how tags and categories are organized, and how missing or partial tags are handled.
