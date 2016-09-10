@@ -1,6 +1,6 @@
 ---
 layout: page-fullwidth
-title: "Basic introduction to full-potential program **lmf**{: style="color: blue"}"
+title: "Basic introduction to full-potential program lmf"
 permalink: "/lmf_tutorial/"
 sidebar: "left"
 header: no
