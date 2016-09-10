@@ -163,14 +163,14 @@ _____________________________________________________________
 ### _Other Resources_
 
 A tutorial on [PbTe](https://github.com/lordcephei/lordcephei.github.io/blob/master/pages/fptut-pbte.md)
-also covers the basics, in somewhat more detail, which you can compare to a [corresponding tutorial for the ASA](/https://lordcephei.github.io/asa-doc.md/),  See [this tutorial](xx) for the calculation of a ferromagnetic metal.  [This tutorial](xxx) shows how to calculate optical properties for PbTe.  See [this tutorial](xx) for the calculation of the optical mode frequency in Si.
+also covers the basics, in somewhat more detail, which you can compare to a [corresponding tutorial for the ASA](/https://lordcephei.github.io/asa-doc.md/),  See [this tutorial](xx) for the calculation of a ferromagnetic metal.  [This tutorial](xxx) shows how to calculate optical properties for PbTe.  See [this tutorial](xx) for the calculation of the optical mode frequency in Si.  [This document](xxx) gives an overview of the lmf implementation; the formalism behind the method is described in this [book chapter](xx)
 
 _____________________________________________________________
 
 ### _FAQ_
 Below is a list of frequently asked questions. Please get in contact if you have other questions.
 
-1) How does **blm**{: style="color: blue"} determine the augmentation spheres?
+1) How does **blm**{: style="color: blue"} determine the augmentation sphere radii?
 
 Overlaps free atom densities and looks for where potential is flat. 
 
