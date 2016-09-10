@@ -90,12 +90,11 @@ Click on the box below to see a snippet showing the beginning of the file.
 
 {::nomarkdown}</div>{:/}
 
-Lines which begin with '**#**' are comment lines and are ignored. (More generally, text following a `#' in any line is ignored).
-
-Lines beginning with '**%**' are directives to the preprocessor.  Directives can perform various functions similar to a normal programming language, such as 
+* Lines which begin with '**#**' are comment lines and are ignored. (More generally, text following a `#' in any line is ignored).
+* Lines beginning with '**%**' are directives to the preprocessor.  Directives can perform various functions similar to a normal programming language, such as 
 assigning variables, evaluating expressions, conditionally readings some lines, and repeated loops over sections of input.
 
-Near the top, beginning with **% const**, follow a series of variable declarations. **nit**, **met**, etc,  are variables used in expressions further down.  The parser interprets the contents of brackets **{...}** as algrebraic expressions.  **{...}** is evaluated and the numerical result is substituted for it.  Expression substitution works for input lines proper, and also in the directives.  
+Near the top of the ctrl file, beginning with **% const**, follow a series of variable declarations. **nit**, **met**, etc,  are variables used in expressions further down.  The parser interprets the contents of brackets **{...}** as algrebraic expressions:  **{...}** is evaluated and the numerical result is substituted for it.  Expression substitution works for input lines proper, and also in the directives.  
 
 For example this line
 
@@ -105,9 +104,7 @@ becomes
 
     metal=  5
 
-because **met** is a numerical expression (admittedly a trivial one) that evaluates to 5, since **met** is an algebraic variable that is assigned value 5.  The advantage is that you can do algebra in the input file, and you can also assign values to variables from the command line, as we will see shortly.
-
-See "Other Resources" below to follow links with further information on the syntax of input files, and building them from different sources.
+because **met** is a numerical expression (admittedly a trivial one).  It evaluates to 5 because **met** is declared as an algebraic variable and assigned value 5 near the top of the ctrl file.  The advantage is that you can do algebra in the input file, and you can also re-assign values to variables from the command line, as we will see shortly.
 
 Lines corresponding to actual input are divided into categories and tokens within the categories.
 A category begins when a character (other than **%** or **#**) occurs in the
@@ -117,11 +114,14 @@ first column.  Each token belongs to a category; for example in this line
 
 **SHOW=** is a token within category; the full tag name is **IO_SHOW**.
 
+See "Other Resources" below to follow links with further information on the syntax of input files, and building them from different sources.
+
+
 #####  _Determining the tags an executable seeks_
 
 **blm** builds input files with only a subset of the tags an executable will try to read.
 Defaults are used for the vast majority of tags.
-In any case each executable has its own set of tags, though many tags are shared in common.  
+In any case each executable has its own set of tags, though they share many tags in common.
 
 
 ### _Other Resources_
@@ -129,7 +129,7 @@ In any case each executable has its own set of tags, though many tags are shared
 A more complete description of the structure of an input file's structure, and features of the programming language capaability, is explained in some detail [here](file-preprocessor.html). A reference defining the syntax of categories and tokens can be found in [this pdf file](input.pdf).
 
 [This tutorial](https://lordcephei.github.io/buildingfpinput/) more fully describes some important tags the **lmf** package reads
-and also ways to build input files from various sources such as the VAPS _POSCAR_{: style="color: green"} file.
+and also ways to build input files from various sources such as the VASP _POSCAR_{: style="color: green"} file.
 
 There is a corresponding tutorial on the basics of a [self-consistent ASA calculation for PbTe](https://github.com/lordcephei/lordcephei.github.io/blob/master/pages/fptut-pbte.md).  [A tutorial on optics](xx) can be gone through after you have understood this one.
 
