@@ -8,16 +8,14 @@ permalink: "/lmf_pbte_tutorial/"
 header: no
 ---
 
-(U+262E)
-
 ### _Purpose_
 {:.no_toc}
 
-This tutorial carries out a self-consistent density-functional calculation for PbTe using the **lmf**{: style="color: blue"} code.  Some of the basics are covered in the [basic lmf tutorial for Si](https://lordcephei.github.io/lmf_tutorial/), which you may wish to go through first.  This tutorial
+This tutorial carries out a self-consistent density-functional calculation for PbTe using the **lmf**{: style="color: blue"} code.  Some of the basics are covered in the [basic lmf tutorial for Si](https://lordcephei.github.io/lmf_tutorial/), which you may wish to go through first.  This tutorial has a similar purpose but is more detailed.  It
 
 1. generates a self consistent potential within the LDA
-2. illustrates some features of the input file's programming language capabilities
-3. demonstrates how to make neighbour tables using the **lmchk**{: style="color: blue"} tool
+2. illustrates some of the input file's programming language capabilities
+3. makes neighbour tables using the **lmchk**{: style="color: blue"} tool
 4. synchronizes with an [ASA tutorial](https://lordcephei.github.io/asa-doc/) on the same system, enabling a comparison of the ASA and full potential methods.
 5. is the starting point for other tutorials on optics, a QSGW calculation of PbTe, and comparing energy bands computed in different ways.
 
@@ -26,8 +24,8 @@ This tutorial carries out a self-consistent density-functional calculation for P
 
 ____________________________________________________________
 
-Executables **blm**{: style="color: blue"}, **lmfa**{: style="color: blue"}, and **lmf**{: style="color: blue"} are required and are assumed to be in your path. 
-The tutorial starts under the heading "Tutorial"; or see synopsis of the commands by clicking on the "Command summary" dropdown menu.
+Executables **blm**{: style="color: blue"}, **lmchk**{: style="color: blue"}, **lmfa**{: style="color: blue"}, and **lmf**{: style="color: blue"} are required and are assumed to be in your path. 
+The tutorial starts under the heading "Tutorial"; you can see a synopsis of the commands by clicking on the "Command summary" dropdown menu.
 
 ### _Command summary_     
 <div onclick="elm = document.getElementById('1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
@@ -50,7 +48,7 @@ _____________________________________________________________
 
 ##### _Building the input file_
 
-PbTe crystallizes in the rocksalt structure with lattice constant _a_ = 6.428 Angstrom. You need the structural information in the box below to construct the main input file,
+PbTe crystallizes in the rocksalt structure with lattice constant _a_ = 6.428&#x212B;. You need the structural information in the box below to construct the main input file,
 _ctrl.pbte_{: style="color: green"}. Start in a fresh working directory and cut and paste the box's contents to _init.pbte_{: style="color: green"}.
 
     LATTICE
@@ -88,28 +86,30 @@ Click on the box below to see a snippet showing the beginning of the file.
 
 {::nomarkdown}</div>{:/}
 
-Lines which begin with '**#**' are comment lines and are ignored. (More generally, text after a `#' in any line is ignored).
+Lines which begin with '**#**' are comment lines and are ignored. (More generally, text following a `#' in any line is ignored).
 
-Also lines beginning with '**%**' are directives to the preprocessor.  Directives can perform various functions similar to a normal programming language,
-assigning variables, evaluating expressions, conditionally readings some lines, looping over sections of input, etc.  In 
+Lines beginning with '**%**' are directives to the preprocessor.  Directives can perform various functions similar to a normal programming language, such as 
+assigning variables, evaluating expressions, conditionally readings some lines, and repeated loops over sections of input.
 
-Near the top, beginning with **% const**, begin a series of variable declarations. **nit**, **met**, etc,  are variables used in expressions further down.  The parser interprets the side of brackets {..} as expressions, converts it into numbers, which are finally read as numerical values associated with a tag.  The parser is explained in further detail [here](file-preprocessor.html)
+Near the top, beginning with **% const**, begin a series of variable declarations. **nit**, **met**, etc,  are variables used in expressions further down.  The parser interprets the contents of brackets {...} as algrebraic expressions.  {...} is evaluated an the result is substituted for it.  This substitution applies for input lines proper, and also in the directives.  
 
 For example this line
   metal=  {met}                    # Management of k-point integration weights in metals
 beomes
   metal=  5
-because met is a numerical expression (admittedly a trivial one) that evaluates to 5, since met is an algebraic variable that is assigned the value 5.  The advantage is that you can do algebra in the input file, and you can also assign values to variables from the command line, as we will see shortly.
+because **met** is a numerical expression (admittedly a trivial one) that evaluates to 5, since met is an algebraic variable that is assigned the value 5.  The advantage is that you can do algebra in the input file, and you can also assign values to variables from the command line, as we will see shortly.
 
-The actual input is divided into categories and token within the categories.
+Expressions can also be nested.  The parser is explained in further detail [here](file-preprocessor.html)
+
+Lines corresponding to actual input are divided into categories and tokens within the categories.
 A category begins when a character (other than **%** or **#**) occurs in the
 first column.  Each token belongs to a category; for example in this line
 
     IO    SHOW=f HELP=f IACTIV=f VERBOS=35,35  OUTPUT=*
 
-SHOW is a token within category; the full tag name is IO_SHOW.
+**SHOW=** is a token within category; the full tag name is **IO_SHOW**.
 
-##### _3\. Finding what an executable looks for when reading the input file_
+#####  _Determining what tags executable seeks_
 
 
 
