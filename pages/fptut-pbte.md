@@ -123,11 +123,11 @@ See "Other Resources" below to follow links with further information on the synt
 Defaults are used for the vast majority of tags.
 In any case each executable has its own unique set of tags, though they share many tags in common.
 
-Executables accept input from two primary streams : tags in the ctrl file and information through command-line switches.
+Executables accept input from two primary streams : tags in the ctrl file and additional information through command-line switches.
 
 To see what an executable tries to read from the ctrl file, invoke the executable with `--input`, e.g.
 
-   lmchk --input
+    $ lmchk --input
 
 `--input` tells **lmchk**{: style="color: blue"} to print out what it seeks.  It exits
 without trying read any input; instead, it prints out a table of all the tags it tries to read, together with a brief description of the tag.  
