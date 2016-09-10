@@ -18,7 +18,7 @@ header: no
 This tutorial carries out a self-consistent density-functional calculation for PbTe using the **lmf**{: style="color: blue"} code.  Some of the basics are covered in the [basic lmf tutorial for Si](https://lordcephei.github.io/lmf_tutorial/), which you may wish to go through first.  This tutorial has a similar purpose but is more detailed. It:
 
 1. generates a self consistent potential within the LDA
-2. illustrates some of the input file's programming language capabilities
+2. explains the input file's structure and illustrates some of its programming language capabilities
 3. makes neighbour tables using the **lmchk**{: style="color: blue"} tool
 4. synchronizes with an [ASA tutorial](https://lordcephei.github.io/asa-doc/) on the same system, enabling a comparison of the ASA and full potential methods.
 5. forms the starting point for other tutorials on optics, a QSGW calculation of PbTe, and comparing energy bands computed in different ways.
@@ -95,16 +95,19 @@ Lines which begin with '**#**' are comment lines and are ignored. (More generall
 Lines beginning with '**%**' are directives to the preprocessor.  Directives can perform various functions similar to a normal programming language, such as 
 assigning variables, evaluating expressions, conditionally readings some lines, and repeated loops over sections of input.
 
-Near the top, beginning with **% const**, begin a series of variable declarations. **nit**, **met**, etc,  are variables used in expressions further down.  The parser interprets the contents of brackets **{...}** as algrebraic expressions.  **{...}** is evaluated and the numerical result is substituted for it.  Expression substitution works for input lines proper, and also in the directives.  
+Near the top, beginning with **% const**, follow a series of variable declarations. **nit**, **met**, etc,  are variables used in expressions further down.  The parser interprets the contents of brackets **{...}** as algrebraic expressions.  **{...}** is evaluated and the numerical result is substituted for it.  Expression substitution works for input lines proper, and also in the directives.  
 
 For example this line
+
     metal=  {met}                    # Management of k-point integration weights in metals
+
 becomes
+
     metal=  5
 
-because **met** is a numerical expression (admittedly a trivial one) that evaluates to 5, since met is an algebraic variable that is assigned the value 5.  The advantage is that you can do algebra in the input file, and you can also assign values to variables from the command line, as we will see shortly.
+because **met** is a numerical expression (admittedly a trivial one) that evaluates to 5, since **met** is an algebraic variable that is assigned value 5.  The advantage is that you can do algebra in the input file, and you can also assign values to variables from the command line, as we will see shortly.
 
-Expressions can also be nested.  The parser is explained in further detail [here](file-preprocessor.html)
+See "Other Resources" below to follow links with further information on the syntax of input files, and building them from different sources.
 
 Lines corresponding to actual input are divided into categories and tokens within the categories.
 A category begins when a character (other than **%** or **#**) occurs in the
@@ -114,10 +117,25 @@ first column.  Each token belongs to a category; for example in this line
 
 **SHOW=** is a token within category; the full tag name is **IO_SHOW**.
 
-#####  _Determining what tags executable seeks_
+#####  _Determining the tags an executable seeks_
+
+**blm** builds input files with only a subset of the tags an executable will try to read.
+Defaults are used for the vast majority of tags.
+In any case each executable has its own set of tags, though many tags are shared in common.  
 
 
+### _Other Resources_
 
+A more complete description of the structure of an input file's structure, and features of the programming language capaability, is explained in some detail [here](file-preprocessor.html). A reference defining the syntax of categories and tokens can be found in [this pdf file](input.pdf).
+
+[This tutorial](https://lordcephei.github.io/buildingfpinput/) more fully describes some important tags the **lmf** package reads
+and also ways to build input files from various sources such as the VAPS _POSCAR_{: style="color: green"} file.
+
+There is a corresponding tutorial on the basics of a [self-consistent ASA calculation for PbTe](https://github.com/lordcephei/lordcephei.github.io/blob/master/pages/fptut-pbte.md).  [A tutorial on optics](xx) can be gone through after you have understood this one.
+
+[This document](https://lordcephei.github.io/docs/lmf/overview/) gives an overview of some of **lmf**'s unique features and capabilities.
+
+The theoretical formalism behind the method is described in this [book chapter](xx).
 
 ###### _2.2 Self-consistency_
 Before a  self consistant calculation can be preforem the real-space structure constants have to be generated.  They are made once, for a given structure, with a separate tool
