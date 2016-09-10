@@ -125,20 +125,21 @@ In any case each executable has its own set of tags, though they share many tags
 
 Executables accept input from two primary streams : the ctrl file and through command-line switches.
 
-The remainder of section is not necessary to the tutorial
-
-
-<hr style="height:5pt; visibility:hidden;" />
-<div onclick="elm = document.getElementById('help1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
-{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="help1">{:/}
-
-~~~
 To see what an executable tries to read from the ctrl file, invoke the executable with `--input`, e.g.
 
    lmchk --input
 
 `--input` tells **lmchk**{: style="color: blue"} to print out what it seeks and exit,
 rather than try to read any input.  It will print out a long table of all the tags it tries to read, along with a brief description of the tag.  
+
+The remainder of this section explains the output of `lmchk --input`.  It is not necessary to the tutorial, 
+but it is useful to see how tags and categories are organized, and how missing or partial tags are handled.
+
+<hr style="height:5pt; visibility:hidden;" />
+<div onclick="elm = document.getElementById('help1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="help1">{:/}
+
+~~~
 Below is snippet of the output:
 
     Tag                    Input   cast  (size,min)
@@ -197,72 +198,6 @@ Some
 ~~~ 
 
 {::nomarkdown}</div>{:/}
-
-
-
-
-
-To see what an executable tries to read from the ctrl file, invoke the executable with `--input`, e.g.
-
-   lmchk --input
-
-`--input` tells **lmchk**{: style="color: blue"} to print out what it seeks and exit,
-rather than try to read any input.  It will print out a long table of all the tags it tries to read, along with a brief description of the tag.  
-Below is snippet of the output:
-
-    Tag                    Input   cast  (size,min)
-    ------------------------------------------
-
-    ...
-
-    --- Parameters for species data ---
-    ... The next four tokens apply to the automatic sphere resizer
-    SPEC_SCLWSR            opt    r8       1,  1     default = 0
-      Scales sphere radii, trying to reach volume = SCLWSR * cell volume
-      SCLWSR=0 turns off this option.
-      Add  10  to initially scale non-ES first;
-       or  20  to scale ES independently.
-    SPEC_OMAX1             opt    r8v      3,  1     default = 0.16 0.18 0.2
-      Limits max sphere overlaps when adjusting MT radii
-
-    ...
-
-    SPEC_ATOM              reqd   chr      1,  0
-      Species label
-    SPEC_ATOM_Z            reqd   r8       1,  1
-      Atomic number
-    SPEC_ATOM_R            reqd*  r8       1,  1
-      Augmentation sphere radius rmax
-
-    ...
-     SPEC_ATOM_LMX          opt    i4       1,  1     (default depends on prior input)
-       l-cutoff for basis
-     SPEC_ATOM_LMXA         opt    i4       1,  1     (default depends on prior input)
-       l-cutoff for augmentation
-
-    ...
-
-    BZ_NKABC               reqd   i4v      3,  1
-      (Not used if data read from EXPRESS_nkabc)
-      No. qp along each of 3 lattice vectors.
-      Supply one number for all vectors or a separate number for each vector.
-
-
-
-
-**lmchk**{: style="color: blue"} prints the full name of each tag, e.g. **SPEC_ATOM** and **SPEC_ATOM_Z**, 
-even though only components of the tag appear in the ctrl file.  In this tutorial the it contains:
-
-    SPEC 
-      ATOM=Pb         Z= 82  R= 3.044814  LMX=3  LMXA=4
-
-Some tags (**SPEC_SCLWSR**, *SPEC_ATOM_LMX**, **SPEC_ATOM_LMXA**) are optional:
-**lmchk**{: style="color: blue"} will substitute defaults if you don't supply them;
-those indicated as **reqd** (*SPEC_ATOM**, **SPEC_ATOM_Z**, **SPEC_ATOM_R**) you must supply.
-The cast (real, integer, character) of each tag is indicated, and also how many numbers are to be read.
-Sometime
-
-Some
 
 ### _Other Resources_
 
