@@ -150,7 +150,7 @@ You can also check how the bandgap changes as iterations proceed to self-consist
 And that's it! You now have a self-consistent density and have calculated some basic properties such as the band gap and total energy.
 Other tutorials to look at are those to generate energy band structures, and density-of-states, or calculate a mechanical property such as the optical mode frequency.
 
-Other tutorials offer more detail. See those for and one for CoPt, a ferromagnetic metal, and for PbTe, for which there is [a corresponding tutorial for the ASA](/asa-doc.md/), and another for optics. 
+Other tutorials offer more detail. See those for and one for CoPt, a ferromagnetic metal, and for PbTe, for which there is [a corresponding tutorial for the ASA](/https://lordcephei.github.io/asa-doc.md/), and another for optics. 
 
 <hr style="height:5pt; visibility:hidden;" />
 ### FAQ
