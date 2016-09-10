@@ -131,6 +131,8 @@ To see what an executable tries to read from the ctrl file, invoke the executabl
 
 `--input` puts **lmchk**{: style="color: blue"} in a special mode.  It doesn't attempt to read anything; instead, it prints out a table of all the tags it tries to read, together with a brief description of the tag, and then exits.
 
+`--help` plays a similar role for the command line arguments: it prints out a brief summary of arguments effective in the code you are using.
+
 `--show` tells **lmchk**{: style="color: blue"} to print out tags as it reads them (or the defaults it uses in the absence of user's specification)
 
 The remainder of this section explains the output of `lmchk --input`.  It is not necessary to the tutorial, 
@@ -205,10 +207,12 @@ If you supply only one, it is copied to elements 2 and 3.
 the [sister [ASA tutorial](https://lordcephei.github.io/asa-doc/) for PbTe.)
 
 
+
+
 ### _Other Resources_
 
 A more complete description of the structure of an input file's structure, and features of the programming language capaability, is explained in some detail 
-[in this html document](https://lordcephei.github.io/file-preprocessor.html). A reference defining the syntax of categories and tokens can be found in [this pdf file](input.pdf).
+[in this html document](https://lordcephei.github.io/pages/file-preprocessor.html). A reference defining the syntax of categories and tokens can be found in [this pdf file](input.pdf).
 
 [This tutorial](https://lordcephei.github.io/buildingfpinput/) more fully describes some important tags the **lmf**{: style="color: green"} reads.  It also
 presents alternative ways to build input files from various sources such as the VASP _POSCAR_{: style="color: green"} file.
