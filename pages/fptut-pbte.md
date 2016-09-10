@@ -117,20 +117,20 @@ first column.  Each token belongs to a category; for example in this line
 See "Other Resources" below to follow links with further information on the syntax of input files, and building them from different sources.
 
 
-#####  _Determining the tags an executable seeks_
+#####  _Determining what input an executable seeks_
 
-**blm** builds input files with only a subset of the tags an executable will try to read.
+**blm**{: style="color: blue"} builds input files with only a subset of the tags an executable will try to read.
 Defaults are used for the vast majority of tags.
-In any case each executable has its own set of tags, though they share many tags in common.
+In any case each executable has its own unique set of tags, though they share many tags in common.
 
-Executables accept input from two primary streams : the ctrl file and through command-line switches.
+Executables accept input from two primary streams : tags in the ctrl file and information through command-line switches.
 
 To see what an executable tries to read from the ctrl file, invoke the executable with `--input`, e.g.
 
    lmchk --input
 
-`--input` tells **lmchk**{: style="color: blue"} to print out what it seeks and exit,
-rather than try to read any input.  It will print out a long table of all the tags it tries to read, along with a brief description of the tag.  
+`--input` tells **lmchk**{: style="color: blue"} to print out what it seeks.  It exits
+without trying read any input.  Instead, it  print out a table of all the tags it tries to read, together with a brief description of the tag.  
 
 The remainder of this section explains the output of `lmchk --input`.  It is not necessary to the tutorial, 
 but it is useful to see how tags and categories are organized, and how missing or partial tags are handled.
@@ -180,21 +180,20 @@ Below is snippet of the output:
       Supply one number for all vectors or a separate number for each vector.
 
 
-
-
-**lmchk**{: style="color: blue"} prints the full name of each tag, e.g. **SPEC_ATOM** and **SPEC_ATOM_Z**, 
+lmchk prints the full name of each tag, e.g. SPEC_ATOM and SPEC_ATOM_Z, 
 even though only components of the tag appear in the ctrl file.  In this tutorial the it contains:
 
     SPEC 
       ATOM=Pb         Z= 82  R= 3.044814  LMX=3  LMXA=4
 
-Some tags (**SPEC_SCLWSR**, *SPEC_ATOM_LMX**, **SPEC_ATOM_LMXA**) are optional:
-**lmchk**{: style="color: blue"} will substitute defaults if you don't supply them;
-those indicated as **reqd** (*SPEC_ATOM**, **SPEC_ATOM_Z**, **SPEC_ATOM_R**) you must supply.
-The cast (real, integer, character) of each tag is indicated, and also how many numbers are to be read.
-Sometime
+Some tags (SPEC_SCLWSR, *SPEC_ATOM_LMX, SPEC_ATOM_LMXA) are optional:
+lmchk will substitute defaults if you don't supply them;
+those indicated as reqd (*SPEC_ATOM, SPEC_ATOM_Z, SPEC_ATOM_R) you must supply.
 
-Some
+The cast (real, integer, character) of each tag is indicated, and also how many numbers are to be read.
+tags look for more than one number, but you can supply fewer.  For example, BZ_NKABC looks for
+three numbers to fix the k-mesh, namely the number of divisions only each of the reciprocal lattice vectors.
+If you supply only one, it is copied to elements 2 and 3.
 ~~~ 
 
 {::nomarkdown}</div>{:/}
