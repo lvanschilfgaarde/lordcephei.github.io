@@ -29,11 +29,21 @@ _____________________________________________________________
 ##### _General Document Style_
 The document should start with a "Purpose" section and a "Preliminary" section, where "Purpose" contains the purpose/aims of the tutorial and "Preliminary" contains the prerequesites, recommended reading or guidelines that should be read before progressing with the tutorial.
 Next should be the content of the document, split up in to short and easily followed sections (large tutorials and documents should be split in to multiple smaller tutorials and documents where possible).
-A 'Further Reading' section can be supplied if there are tutorials/papers/other useful documents that are relevant to the current document.
+An 'Other Resources' section can be supplied if there are tutorials/papers/other useful documents that are relevant to the current document.
 An 'Issues or Comments' section can be included with contact details should the reader have an issue or suggestion about the document.
 
+Tutorials, unless they are very involved (e.g. the DMFT tutorial) should have a "Command Summary" section that assembles all the commands in the tutorial together in one place, for quick reference.   Thus Tutorials generally should have the following sections, in order shown.  The [basic lmf tutorial](https://github.com/lordcephei/lordcephei.github.io/blob/master/pages/fpintrotut.md) has a useful template to follow.
+
+    Purpose
+    Preliminaries
+    Command summary (optional)
+    Tutorial
+    Other Resources (optional)
+    FAQ (optional)
+    Additional Exercises (optional)
+    
 ##### _Table of Contents_
-The document should contain a table of contents, usually before any other text. Jekyll/Kramdown has support for auto-generating this ToC as shown here:
+Documents with multiple references or subsections should contain a table of contents, usually before any other text. Jekyll/Kramdown has support for auto-generating this ToC as shown here:
 
 ~~~
 ### _Table of Contents_
