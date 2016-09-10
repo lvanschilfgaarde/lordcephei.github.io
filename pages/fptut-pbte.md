@@ -112,7 +112,7 @@ first column.  Each token belongs to a category; for example in this line
 
     IO    SHOW=f HELP=f IACTIV=f VERBOS=35,35  OUTPUT=*
 
-**SHOW=** is a token within category; the full tag name is **IO_SHOW**.
+**SHOW=** is a token within category; the full tag name is **IO_SHOW=**.
 
 See "Other Resources" below to follow links with further information on the syntax of input files, and building them from different sources.
 
@@ -123,13 +123,56 @@ See "Other Resources" below to follow links with further information on the synt
 Defaults are used for the vast majority of tags.
 In any case each executable has its own set of tags, though they share many tags in common.
 
+Executables accept input from two primary streams : the ctrl file and through command-line switches.
+
+To see what an executable tries to read from the ctrl file, invoke the executable with `--input`, e.g.
+
+   lmchk --input
+
+lmchk will print out a long table of all the tags it tries to read.  Below is  snippet of the
+output from the above command:
+
+     -----------------------  START LMCHK -----------------------
+
+     Tag                    Input   cast  (size,min)
+     ------------------------------------------
+
+     ...
+
+     --- Parameters for species data ---
+     ... The next four tokens apply to the automatic sphere resizer
+     SPEC_SCLWSR            opt    r8       1,  1     default = 0
+       Scales sphere radii, trying to reach volume = SCLWSR * cell volume
+       SCLWSR=0 turns off this option.
+       Add  10  to initially scale non-ES first;
+        or  20  to scale ES independently.
+     SPEC_OMAX1             opt    r8v      3,  1     default = 0.16 0.18 0.2
+       Limits max sphere overlaps when adjusting MT radii
+     SPEC_OMAX2             opt    r8v      3,  1     default = 0.4 1 1
+       Sphere overlap constraints of second type
+     SPEC_WSRMAX            opt    r8       1,  1     default = 0
+       If WSRMAX is nonzero, no sphere radius may exceed its value
+
+     - The following tokens are read for each species. Data sandwiched
+       between successive occurences of token ATOM apply to one species.
+
+     SPEC_ATOM              reqd   chr      1,  0
+       Species label
+     SPEC_ATOM_Z            reqd   r8       1,  1
+       Atomic number
+     SPEC_ATOM_R            reqd*  r8       1,  1
+       Augmentation sphere radius rmax
+
+
+
 
 ### _Other Resources_
 
-A more complete description of the structure of an input file's structure, and features of the programming language capaability, is explained in some detail [here](file-preprocessor.html). A reference defining the syntax of categories and tokens can be found in [this pdf file](input.pdf).
+A more complete description of the structure of an input file's structure, and features of the programming language capaability, is explained in some detail 
+[in this html document](https://lordcephei.github.io/file-preprocessor.html). A reference defining the syntax of categories and tokens can be found in [this pdf file](input.pdf).
 
-[This tutorial](https://lordcephei.github.io/buildingfpinput/) more fully describes some important tags the **lmf** package reads
-and also ways to build input files from various sources such as the VASP _POSCAR_{: style="color: green"} file.
+[This tutorial](https://lordcephei.github.io/buildingfpinput/) more fully describes some important tags the **lmf**{: style="color: green"} reads.  It also
+presents alternative ways to build input files from various sources such as the VASP _POSCAR_{: style="color: green"} file.
 
 There is a corresponding tutorial on the basics of a [self-consistent ASA calculation for PbTe](https://github.com/lordcephei/lordcephei.github.io/blob/master/pages/fptut-pbte.md).  [A tutorial on optics](xx) can be gone through after you have understood this one.
 
