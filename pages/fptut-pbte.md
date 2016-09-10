@@ -1,6 +1,6 @@
 ---
 layout: page-fullwidth
-title: "Self-Consistent LDA calculation in PbTe"
+title: "Self-Consistent LDA calculation for PbTe"
 subheadline: ""
 show_meta: false
 teaser: ""
@@ -8,16 +8,20 @@ permalink: "/lmf_pbte_tutorial/"
 header: no
 ---
 
-### _Purpose_
+### _Table of Contents_
 {:.no_toc}
+*  Auto generated table of contents
+{:toc}  
 
-This tutorial carries out a self-consistent density-functional calculation for PbTe using the **lmf**{: style="color: blue"} code.  Some of the basics are covered in the [basic lmf tutorial for Si](https://lordcephei.github.io/lmf_tutorial/), which you may wish to go through first.  This tutorial has a similar purpose but is more detailed.  It
+### _Purpose_
+
+This tutorial carries out a self-consistent density-functional calculation for PbTe using the **lmf**{: style="color: blue"} code.  Some of the basics are covered in the [basic lmf tutorial for Si](https://lordcephei.github.io/lmf_tutorial/), which you may wish to go through first.  This tutorial has a similar purpose but is more detailed. It:
 
 1. generates a self consistent potential within the LDA
 2. illustrates some of the input file's programming language capabilities
 3. makes neighbour tables using the **lmchk**{: style="color: blue"} tool
 4. synchronizes with an [ASA tutorial](https://lordcephei.github.io/asa-doc/) on the same system, enabling a comparison of the ASA and full potential methods.
-5. is the starting point for other tutorials on optics, a QSGW calculation of PbTe, and comparing energy bands computed in different ways.
+5. forms the starting point for other tutorials on optics, a QSGW calculation of PbTe, and comparing energy bands computed in different ways.
 
 
 ### _Preliminaries_
@@ -91,12 +95,13 @@ Lines which begin with '**#**' are comment lines and are ignored. (More generall
 Lines beginning with '**%**' are directives to the preprocessor.  Directives can perform various functions similar to a normal programming language, such as 
 assigning variables, evaluating expressions, conditionally readings some lines, and repeated loops over sections of input.
 
-Near the top, beginning with **% const**, begin a series of variable declarations. **nit**, **met**, etc,  are variables used in expressions further down.  The parser interprets the contents of brackets {...} as algrebraic expressions.  {...} is evaluated an the result is substituted for it.  This substitution applies for input lines proper, and also in the directives.  
+Near the top, beginning with **% const**, begin a series of variable declarations. **nit**, **met**, etc,  are variables used in expressions further down.  The parser interprets the contents of brackets **{...}** as algrebraic expressions.  **{...}** is evaluated and the numerical result is substituted for it.  Expression substitution works for input lines proper, and also in the directives.  
 
 For example this line
-  metal=  {met}                    # Management of k-point integration weights in metals
-beomes
-  metal=  5
+    metal=  {met}                    # Management of k-point integration weights in metals
+becomes
+    metal=  5
+
 because **met** is a numerical expression (admittedly a trivial one) that evaluates to 5, since met is an algebraic variable that is assigned the value 5.  The advantage is that you can do algebra in the input file, and you can also assign values to variables from the command line, as we will see shortly.
 
 Expressions can also be nested.  The parser is explained in further detail [here](file-preprocessor.html)
