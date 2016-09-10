@@ -1,6 +1,6 @@
 ---
 layout: page-fullwidth
-title: "Basic lmf Tutorial for PbTe"
+title: "Self-Consistent LDA calculation in PbTe"
 subheadline: ""
 show_meta: false
 teaser: ""
@@ -17,20 +17,37 @@ This tutorial carries out a self-consistent density-functional calculation for P
 
 1. generates a self consistent potential within the LDA
 
-2. illustrates some features of the programming language capabilities in reading the input file
+2. illustrates some features of the input file's programming language capabilities
 
-3. demonstrates how to get neighbour tables using the **lmchk**{: style="color: blue"} tool
+3. demonstrates how to make neighbour tables using the **lmchk**{: style="color: blue"} tool
 
-4. synchronizes with an [ASA tutorial](https://github.com/lordcephei/lordcephei.github.io/blob/master/pages/fptut-pbte.md) enabling a comparison of the ASA and full potential methods.
+4. synchronizes with an [ASA tutorial](https://lordcephei.github.io/asa-doc/) on the same system, enabling a comparison of the ASA and full potential methods.
 
-5. is the starting point for other tutorials on optics, corresponding calculations with QSGW, and drawing energy bands.
+5. is the starting point for other tutorials on optics, a QSGW calculation of PbTe, and comparing energy bands
 
 
 ### _Preliminaries_
 
 ____________________________________________________________
 
-Executables **blm**{: style="color: blue"}, **lmchk**{: style="color: blue"}, **lmstr**{: style="color: blue"} and **lm**{: style="color: blue"} are required and are assumed to be in your path.  The source code for all Questaal executables can be found [here](https://bitbucket.org/lmto/lm).
+Executables **blm**{: style="color: blue"}, **lmfa**{: style="color: blue"}, and **lmf**{: style="color: blue"} are required and are assumed to be in your path.  The source code for all Questaal executables can be found [here](https://bitbucket.org/lmto/lm).  The tutorial starts under the heading "Tutorial"; you can jump straight to the commands by clicking on the "Command summary" dropdown menu.
+
+<hr style="height:5pt; visibility:hidden;" />
+### _Command summary_     
+<div onclick="elm = document.getElementById('1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="1">{:/}
+
+    $ not ready yet  ....                #create working directory, move into it and copy file     
+    $ blm init.si --express --nit=1 --gmax=5 --nk=4     #use blm tool to create actrl and site files
+    $ cp actrl.si ctrl.si                               #copy actrl to recognised ctrl prefix
+    $ lmfa ctrl.si                                      #use lmfa to make basp file, atm file and to get gmax
+    $ cp basp0.si basp.si                               #copy basp0 to recognised basp prefix   
+    $ vi ctrl.si                                        #set iterations number nit, k mesh nkabc and gmax
+    $ lmf ctrl.si > out.lmfsc                           #make self-consistent
+
+{::nomarkdown}</div>{:/}
+
+_____________________________________________________________
 
 ### _Tutorial_
 
@@ -39,7 +56,7 @@ _____________________________________________________________
 ##### _Building the input file_
 
 PbTe crystallizes in the rocksalt structure with lattice constant _a_=6.428$\AA$. You need the structural information in the box below to construct the main input file,
-_ctrl.pbte_{: style="color: green"}. Cut and paste its contents to _init.pbte_{: style="color: green"}.
+_ctrl.pbte_{: style="color: green"}. Start in a fresh working directory and cut and paste its the box's contents to _init.pbte_{: style="color: green"}.
 
     LATTICE
 	    ALAT=6.427916  UNITS=A
@@ -51,20 +68,14 @@ _ctrl.pbte_{: style="color: green"}. Cut and paste its contents to _init.pbte_{:
 		ATOM=Te   X=     0.5000000    0.5000000    0.5000000
 
 
-Create the input file (_ctrl.pbte_{: style="color: green"}) and the site file with structural information (_site.pbte_{: style="color: green"}) with
+Create the input file (_ctrl.pbte_{: style="color: green"}) and the site file (_site.pbte_{: style="color: green"}) with
 
     $ blm init.pbte
     $ cp actrl.pbte ctrl.pbte
 
-##### _2\. How the input file is organized_
+##### _How the input file is organized_
 
-Take a look at the ctrl file.  Lines which have the first character containing one of the following are treated specially:
-
-    Lines beginning with `#' are comment lines and are ignored. (More generally, text after a `#' in any line is ignored)
-
-    Lines beginning with `%' may be interpreted as directives to the preprocessor.  They are not part of the the post-processed input programs read to get data
-
-Near the top, beginning with **% const**, are a series of variable declarations
+Take a look at the ctrl file. 
 Click on the box below to see a snippet showing what **blm**{: style="color: blue"} should have produced.
 <hr style="height:5pt; visibility:hidden;" />
 <div onclick="elm = document.getElementById('iors'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
@@ -82,7 +93,12 @@ Click on the box below to see a snippet showing what **blm**{: style="color: blu
 
 {::nomarkdown}</div>{:/}
 
-**nit**, **met**, etc,  are variables used in expressions further down.  The parser interprets the side of brackets {..} as expressions, converts it into numbers, which are finally read as numerical values associated with a tag.  The parser is explained in further detail [here](file-preprocessor.html)
+Lines which begin with '**#**' are comment lines and are ignored. (More generally, text after a `#' in any line is ignored).
+
+Also lines beginning with '**%**' are directives to the preprocessor.  They can do various things similar to a normal programming language,
+such as assign variables, conditionally read some lines, loop over sections of input, etc.  In 
+
+Near the top, beginning with **% const**, begin a series of variable declarations. **nit**, **met**, etc,  are variables used in expressions further down.  The parser interprets the side of brackets {..} as expressions, converts it into numbers, which are finally read as numerical values associated with a tag.  The parser is explained in further detail [here](file-preprocessor.html)
 
 For example this line
   metal=  {met}                    # Management of k-point integration weights in metals
