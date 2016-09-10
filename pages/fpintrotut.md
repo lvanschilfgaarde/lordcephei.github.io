@@ -42,7 +42,7 @@ To get started, create a new working directory and move into it, here we will ca
     $ cd si
     $ cp path/init.si .
 
-Take a look at _init.si_ using a text editor (e.g. **vi**{: style="color: blue"}) and you will see it contains only the basic structural information. The lattice constant and primitive lattice vectors **PLAT** are shown in the **LATTICE** section. **UNITS=A** specifies that the lattice constant is in Angstroms (the lattice vectors are in units of the lattice constant). The primitive lattice vectors are in row format (i.e. the first row contains the x, y and z components of the first lattice vector and so forth). In the **SITE** section, the atom type and coordinates are shown. The **X=** tag specifies that the coordinates are in "direct" representation, that is, as fractional multiples of lattice vectors **PLAT**. It is also possible to use cartesian coordinates and in this case the **X=** tag would be replaced by **POS=** (see additional exercises below).  Positions in Cartesian coordinates are in units of **ALAT**, like the lattice vectors.
+Take a look at _init.si_{: style="color: green"} using a text editor (e.g. **vi**{: style="color: blue"}) and you will see it contains only the basic structural information. The lattice constant and primitive lattice vectors **PLAT** are shown in the **LATTICE** section. **UNITS=A** specifies that the lattice constant is in Angstroms (the lattice vectors are in units of the lattice constant). The primitive lattice vectors are in row format (i.e. the first row contains the x, y and z components of the first lattice vector and so forth). In the **SITE** section, the atom type and coordinates are shown. The **X=** tag specifies that the coordinates are in "direct" representation, that is, as fractional multiples of lattice vectors **PLAT**. It is also possible to use Cartesian coordinates and in this case the **X=** tag would be replaced by **POS=** (see additional exercises below).  Positions in Cartesian coordinates are in units of **ALAT**, like the lattice vectors.
 
     $ vi init.si
 
@@ -55,7 +55,7 @@ Run **blm**{: style="color: blue"} as shown below and then copy the template fil
     
 
 
-The start of the **blm**{: style="color: blue"} output shows some structural and symmetry information. Further down, the "makrm0:" part gives information about creating the augmentation spheres, both silicon atoms were assigned spheres of radii 2.22 Bohr. Now open up the site file and you can see it contains the lattice constant and lattice vectors in the first line. Note that the lattice constant has been converted from Angstroms to Bohr since the code works in atomic units. The other terms in the first line are just standard settings and a full explanation can be found in the online page for the site file. The second line is a comment line and the subsequent lines contain the atomic species labels and coordinates. Note that **blm**{: style="color: blue"} writes cartesian coordinates by default (they happen to be the same as fractional coordinates in this case) and that running **blm**{: style="color: blue"} produces a new actrl and site file each time. 
+The start of the **blm**{: style="color: blue"} output shows some structural and symmetry information. Further down, the "makrm0:" part gives information about creating the augmentation spheres, both silicon atoms were assigned spheres of radii 2.22 Bohr. Now open up the site file and you can see it contains the lattice constant and lattice vectors in the first line. Note that the lattice constant has been converted from Angstroms to Bohr since the code works in atomic units. The other terms in the first line are just standard settings and a full explanation can be found in the online page for the site file. The second line is a comment line and the subsequent lines contain the atomic species labels and coordinates. Note that **blm**{: style="color: blue"} writes Cartesian coordinates by default (they happen to be the same as fractional coordinates in this case) and that running **blm**{: style="color: blue"} produces a new actrl and site file each time. 
 
     $ vi site.si
 
@@ -158,13 +158,19 @@ You can also check how the bandgap changes as iterations proceed to self-consist
 And that's it! You now have a self-consistent density and have calculated some basic properties such as the band gap and total energy.
 Other tutorials to look at are those to generate energy band structures, and density-of-states, or calculate a mechanical property such as the optical mode frequency.
 
-Other tutorials offer more detail. See those for and one for CoPt, a ferromagnetic metal, and for PbTe, for which there is [a corresponding tutorial for the ASA](/https://lordcephei.github.io/asa-doc.md/), and another for optics. 
+_____________________________________________________________
 
-<hr style="height:5pt; visibility:hidden;" />
-### FAQ
+### _Other Resources_
+
+A tutorial on [PbTe](https://github.com/lordcephei/lordcephei.github.io/blob/master/pages/fptut-pbte.md)
+also covers the basics, in somewhat more detail, which you can compare to a [corresponding tutorial for the ASA](/https://lordcephei.github.io/asa-doc.md/),  See [this tutorial](xx) for the calculation of a ferromagnetic metal.  [This tutorial](xxx) shows how to calculate optical properties for PbTe.  See [this tutorial](xx) for the calculation of the optical mode frequency in Si.
+
+_____________________________________________________________
+
+### _FAQ_
 Below is a list of frequently asked questions. Please get in contact if you have other questions.
 
-1) How does blm determine the augmentation spheres?
+1) How does **blm**{: style="color: blue"} determine the augmentation spheres?
 
 Overlaps free atom densities and looks for where potential is flat. 
 
@@ -177,12 +183,13 @@ The log file _log.si_{: style="color: green"} keeps a compact record of key outp
 It is a functional of the input density, rather than the output density.  At self-consistency it should be the same as the standard Kohn-Sham functional.  The Harris-Foulkes functional tends to be more stable, and like the Kohn-Sham functional, it is stationary at the self-consistent density. But it is not necessarily a minimum there. See [this paper](http://dx.doi.org/10.1103/PhysRevB.39.12520) by M. Foulkes and R. Haydock.
  
 
-<hr style="height:5pt; visibility:hidden;" />
-### Additional exercises
+_____________________________________________________________
 
-1) Converting between fractional and cartesian coordinates
+### _Additional Exercises_
 
-For example, try running the command "blm init.si --express --wsitex" and you will see that **xpos** has been added to the first line of _site.si_{: style="color: green"}; this indicates that the coordinates are now in fractional form. Note that in this case the cartesian and fractional coordinates happen to be the same.
+1) Converting between fractional and Cartesian coordinates
+
+For example, try running the command "blm init.si --express --wsitex" and you will see that **xpos** has been added to the first line of _site.si_{: style="color: green"}; this indicates that the coordinates are now in fractional form. Note that in this case the Cartesian and fractional coordinates happen to be the same.
 
 2) The bandgap printed out by the code is not the actual LDA gap, but the smallest separation between the highest occupied and lowest unoccupied state it found on a discrete 4x4x4 k mesh.  The actual minimum occurs near k=(1,0,0), commonly referred to as the X point. The X point is on the 4x4x4 k-mesh, but the conduction band minimum itself is not quite at X.  Rerun the calculation with a very fine k mesh (not self-consistently this time) and observe that the bandgap is slightly smaller.  Use your text editor to set nkabc to 12 or 16 and do:
 
