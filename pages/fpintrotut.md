@@ -10,7 +10,7 @@ _____________________________________________________________
 ### _Purpose_
 {:.no_toc}
 
-This Tutorial covers the basics running a self consistent LDA calculation for silicon. The goal is to introduce you to the different file types and the basics of running the code.  
+This Tutorial covers the basics for running a self consistent LDA calculation for silicon. The goal is to introduce you to the different file types and the basics of running the code.  
 
 _____________________________________________________________
 
