@@ -32,7 +32,7 @@ Next should be the content of the document, split up in to short and easily foll
 An 'Other Resources' section can be supplied if there are tutorials/papers/other useful documents that are relevant to the current document.
 An 'Issues or Comments' section can be included with contact details should the reader have an issue or suggestion about the document.
 
-Tutorials, unless they are very involved (e.g. the DMFT tutorial) should have a "Command Summary" section that assembles all the commands in the tutorial together in one place, for quick reference.   Thus Tutorials generally should have the following sections, in order shown.  The [basic lmf tutorial](https://github.com/lordcephei/lordcephei.github.io/blob/master/pages/fpintrotut.md) has a useful template to follow.
+Tutorials, unless they are very involved (e.g. the DMFT tutorial) should have a "Command Summary" section that assembles all the commands in the tutorial together in one place, for quick reference.   Thus tutorials generally should contain the following sections, in order shown.  You can use the [basic lmf tutorial](https://github.com/lordcephei/lordcephei.github.io/blob/master/pages/fpintrotut.md) for a template.
 
     Purpose
     Preliminaries
