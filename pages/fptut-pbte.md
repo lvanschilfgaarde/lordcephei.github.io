@@ -129,8 +129,8 @@ The remainder of section is not necessary to the tutorial
 
 
 <hr style="height:5pt; visibility:hidden;" />
-<div onclick="elm = document.getElementById('iors'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
-{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="iors">{:/}
+<div onclick="elm = document.getElementById('help1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="help1">{:/}
 
 ~~~
 To see what an executable tries to read from the ctrl file, invoke the executable with `--input`, e.g.
