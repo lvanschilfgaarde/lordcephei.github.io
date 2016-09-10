@@ -1,17 +1,23 @@
 ---
 layout: page-fullwidth
-title: "Basic lmf (Full Potential) Tutorial"
+title: "Basic introduction to full-potential program **lmf**{: style="color: blue"}"
 permalink: "/lmf_tutorial/"
 sidebar: "left"
 header: no
 ---
-<hr style="height:5pt; visibility:hidden;" />
-# Basic introduction to full-potential program **lmf**{: style="color: blue"} 
+_____________________________________________________________
 
-This tutorial carries out a basic density-functional calculation for silicon. The goal is to introduce you to the different file types and the basics of running the code. It is assumed that you have installed the executables and that they are in your path (see installation tutorial for more). The tutorial starts under the heading "Main tutorial"; you can jump straight to the commands by clicking on the "Command summary" dropdown menu.
+### _Purpose_
+{:.no_toc}
+
+This Tutorial covers the basics running a self consistent LDA calculation for silicon. The goal is to introduce you to the different file types and the basics of running the code.  The tutorial starts under the heading "Main tutorial"; you can jump straight to the commands by clicking on the "Command summary" dropdown menu.
+
+### _Preliminaries_
+_____________________________________________________________
+Executables **blm**{: style="color: blue"}, **lmfa**{: style="color: blue"}, and **lmf**{: style="color: blue"} are required and are assumed to be in your path.  The source code for all Questaal executables can be found [here](https://bitbucket.org/lmto/lm).
 
 <hr style="height:5pt; visibility:hidden;" />
-### Command summary     
+### _Command summary_     
 <div onclick="elm = document.getElementById('1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="1">{:/}
 
@@ -26,7 +32,7 @@ This tutorial carries out a basic density-functional calculation for silicon. Th
 {::nomarkdown}</div>{:/}
 
 <hr style="height:5pt; visibility:hidden;" />
-### Main tutorial
+### _Tutorial_
 
 To get started, create a new working directory and move into it, here we will call it "si". Then copy the silicon init file _init.si_{: style="color: green"} from path/. The init file is the starting point, it contains basic structural information in a format that is recognised by the code (analogous to the POSCAR file in VASP). 
 
