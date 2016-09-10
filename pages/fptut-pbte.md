@@ -131,7 +131,7 @@ To see what an executable tries to read from the ctrl file, invoke the executabl
 
 `--input` puts **lmchk**{: style="color: blue"} in a special mode.  It doesn't attempt to read anything; instead, it prints out a table of all the tags it tries to read, together with a brief description of the tag, and then exits.
 
-`--help` plays a similar role for the command line arguments: it prints out a brief summary of arguments effective in the code you are using.
+`--help` plays a similar role for the command line arguments: it prints out a brief summary of arguments effective in the executable you are using.
 
 `--show` tells **lmchk**{: style="color: blue"} to print out tags as it reads them (or the defaults it uses in the absence of user's specification)
 
@@ -205,8 +205,6 @@ If you supply only one, it is copied to elements 2 and 3.
 
 **lmchk**{: style="color: blue"}'s default mode is to check sphere overlaps.  But it has several other useful options (e.g. the empty sphere finder, described in
 the [sister [ASA tutorial](https://lordcephei.github.io/asa-doc/) for PbTe.)
-
-
 
 
 ### _Other Resources_
