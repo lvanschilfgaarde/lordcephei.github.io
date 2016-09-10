@@ -18,7 +18,6 @@ _____________________________________________________________
 
 Executables **blm**{: style="color: blue"}, **lmfa**{: style="color: blue"}, and **lmf**{: style="color: blue"} are required and are assumed to be in your path.  The source code for all Questaal executables can be found [here](https://bitbucket.org/lmto/lm).  The tutorial starts under the heading "Tutorial"; you can jump straight to the commands by clicking on the "Command summary" dropdown menu.
 
-
 <hr style="height:5pt; visibility:hidden;" />
 ### _Command summary_     
 <div onclick="elm = document.getElementById('1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
