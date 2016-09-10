@@ -10,11 +10,11 @@ _____________________________________________________________
 ### _Purpose_
 {:.no_toc}
 
-This Tutorial covers the basics running a self consistent LDA calculation for silicon. The goal is to introduce you to the different file types and the basics of running the code.  The tutorial starts under the heading "Main tutorial"; you can jump straight to the commands by clicking on the "Command summary" dropdown menu.
+This Tutorial covers the basics running a self consistent LDA calculation for silicon. The goal is to introduce you to the different file types and the basics of running the code.  
 
-### _Preliminaries_
 _____________________________________________________________
-Executables **blm**{: style="color: blue"}, **lmfa**{: style="color: blue"}, and **lmf**{: style="color: blue"} are required and are assumed to be in your path.  The source code for all Questaal executables can be found [here](https://bitbucket.org/lmto/lm).
+### _Preliminaries_
+Executables **blm**{: style="color: blue"}, **lmfa**{: style="color: blue"}, and **lmf**{: style="color: blue"} are required and are assumed to be in your path.  The source code for all Questaal executables can be found [here](https://bitbucket.org/lmto/lm).  The tutorial starts under the heading "Main tutorial"; you can jump straight to the commands by clicking on the "Command summary" dropdown menu.
 
 <hr style="height:5pt; visibility:hidden;" />
 ### _Command summary_     
