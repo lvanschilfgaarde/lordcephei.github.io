@@ -19,11 +19,16 @@
   prefix: "/docs"
   dropdown:
   - program:
-    - name: "Universal"
-      prefix: ""
+    - name: "Input Methods"
+      prefix: "/input"
       content:
       - title: "The Input File"
         url: "/inputfile/"
+      - title: "Symmetry Line Files"
+        url: "/symfile/"
+    - name: "Universal"
+      prefix: ""
+      content:
       - title: "Optics"
         url: "/optics/"
     - name: "Command Line Options"
@@ -100,6 +105,8 @@
         url: "/extbfield/"
       - title: "Generating a Fermi surface in spin polarized Fe"
         url: "/fstut/"
+      - title: "Building a TBE Ctrl File"
+        url: "/tbectrl/"
 
 - title: "Site Contribution"
   url: "/formatting/"
