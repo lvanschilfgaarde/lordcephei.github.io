@@ -112,6 +112,38 @@ first column.  Each token belongs to a category; for example in this line
 
 See "Other Resources" below to follow links with further information on the syntax of input files, and building them from different sources.
 
+#####  _The **EXPRESS** category_
+
+**blm**{: style="color: blue"} generated _ctrl.pbte_{: style="color: greeen"} with
+and **EXPRESS** category.  Clock on the box below to see the beginning of it
+
+<hr style="height:5pt; visibility:hidden;" />
+<div onclick="elm = document.getElementById('2'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="2">{:/}
+
+~~~
+EXPRESS
+# Lattice vectors and site positions
+  file=   site
+
+# Basis set
+  gmax=   {gmax}                   # PW cutoff for charge density
+  autobas[pnu=1 loc=1 lmto=5 mto=4 gw=0]
+~~~ 
+
+{::nomarkdown}</div>{:/}
+
+
+
+The tags in the **EXPRESS** category are effectively
+aliases for tags in other categories, e.g. **EXPRESS_nkabc** performs the
+same function as **BZ_NKABC**.  If you put a tag into **EXPRESS**, it will
+be ignored in its usual location; thus 
+
+**EXPRESS** is there for convenience: the
+most frequently used tags are 
+
+
 
 #####  _Determining what input an executable seeks_
 
@@ -131,7 +163,7 @@ To see what an executable tries to read from the ctrl file, invoke the executabl
 
 `--show` tells **lmchk**{: style="color: blue"} to print out tags as it reads them (or the defaults it uses in the absence of user's specification)
 
-The remainder of this section explains what you get when an executable such as **lmchk**{: style="color: blue"} is invoked with `--input`.  You do not need it to complete the tutorial, and can skip to the next section.  Read the remainder of this section to see how tags and categories are organized, and how missing or partial tags are handled.
+The remainder of this section explains what you receive when an executable such as **lmchk**{: style="color: blue"} is invoked with `--input`.  It is not essential to the tutorial, but read it if you want to see how tags and categories are organized, and how missing or partial tags are handled.
 
 <hr style="height:5pt; visibility:hidden;" />
 <div onclick="elm = document.getElementById('help1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
@@ -184,9 +216,9 @@ even though only components of the tag appear in the ctrl file.  In this tutoria
     SPEC 
       ATOM=Pb         Z= 82  R= 3.044814  LMX=3  LMXA=4
 
-Some tags (SPEC_SCLWSR, *SPEC_ATOM_LMX, SPEC_ATOM_LMXA) are optional:
-lmchk will substitute defaults if you don't supply them;
-those indicated as reqd (*SPEC_ATOM, SPEC_ATOM_Z, SPEC_ATOM_R) you must supply.
+Some tags (SPEC_SCLWSR, SPEC_ATOM_LMX, SPEC_ATOM_LMXA) are optional:
+lmchk will substitute defaults if you don't supply them.
+Any marked 'reqd' (SPEC_ATOM, SPEC_ATOM_Z, SPEC_ATOM_R) you must supply.
 
 The cast (real, integer, character) of each tag is indicated, and also how many numbers are to be read.
 tags look for more than one number, but you can supply fewer.  For example, BZ_NKABC looks for
