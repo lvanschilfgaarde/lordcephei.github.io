@@ -46,7 +46,7 @@ _____________________________________________________________
 
 ### _Tutorial_
 
-##### _Building the input file_
+##### 1. _Building the input file_
 
 PbTe crystallizes in the rocksalt structure with lattice constant _a_ = 6.428&#x212B;. You need the structural information in the box below to construct the main input file,
 _ctrl.pbte_{: style="color: green"}. Start in a fresh working directory and cut and paste the box's contents to _init.pbte_{: style="color: green"}.
@@ -66,7 +66,7 @@ Create the input file (_ctrl.pbte_{: style="color: green"}) and the site file (_
     $ blm init.pbte
     $ cp actrl.pbte ctrl.pbte
 
-##### _How the input file is organized_
+##### 2. _How the input file is organized_
 
 Take a look at the ctrl file. 
 Click on the box below to see a snippet showing the beginning of the file.
@@ -112,7 +112,7 @@ first column.  Each token belongs to a category; for example in this line
 
 See "Other Resources" below to follow links with further information on the syntax of input files, and building them from different sources.
 
-#####  _The **EXPRESS** category_
+#####  3. _The **EXPRESS** category_
 
 **blm**{: style="color: blue"} generated _ctrl.pbte_{: style="color: greeen"} with
 an **EXPRESS** category.  Clock on the box below to see the beginning of it.
@@ -135,13 +135,13 @@ EXPRESS
 Tags in the **EXPRESS** category are effectively
 aliases for tags in other categories, e.g. **EXPRESS_gmax** corresponds to
 the same input as **HAM_GMAX**.  If you put a tag into **EXPRESS**, it will
-be read there and ignored in its usual location; thus the tag **HAM_GMAX**
-would have no effect if added to the _ctrl.pbte_{: style="color: green"}.
+be read there and ignored in its usual location; thus in this instance adding **GMAX**
+to the **HAM** category would have no effect.
 
-The purpose of **EXPRESS** is to to simplify the input file,
+The purpose of **EXPRESS** is to simplify the input file,
 collecting the most commonly used tags in one place.
 
-#####  _Determining what input an executable seeks_
+#####  4. _Determining what input an executable seeks_
 
 **blm**{: style="color: blue"} builds input files with only a subset of the tags an executable will try to read.
 Defaults are used for the vast majority of tags.
@@ -153,11 +153,11 @@ To see what an executable tries to read from the ctrl file, invoke the executabl
 
     $ lmchk --input
 
-`--input` puts **lmchk**{: style="color: blue"} in a special mode.  It doesn't attempt to read anything; instead, it prints out a table of all the tags it tries to read, together with a brief description of the tag, and then exits.
+`--input` puts **lmchk**{: style="color: blue"} in a special mode.  It doesn't attempt to read anything; instead, it prints out a table of all the tags it would try to read, together with a brief description of the tag, and then exits.
 
 `--help` performs a similar function for the command line arguments: it prints out a brief summary of arguments effective in the executable you are using.
 
-`--show` tells **lmchk**{: style="color: blue"} to print out tags as it reads them (or the defaults it uses in the absence of user's specification)
+`--show` tells **lmchk**{: style="color: blue"} to print out tags as it reads them (or the defaults it uses)
 
 The remainder of this section explains what you receive when an executable such as **lmchk**{: style="color: blue"} is invoked with `--input`.  It is not essential to the tutorial, but read it if you want to see how tags and categories are organized, and how missing or partial tags are handled.
 
@@ -224,12 +224,12 @@ If you supply only one, it is copied to elements 2 and 3.
 
 {::nomarkdown}</div>{:/}
 
-#####  _Features of **lmchk**{: style="color: blue"}_
+#####  5. _Features of **lmchk**{: style="color: blue"}_
 
 **lmchk**{: style="color: blue"}'s default mode is to check sphere overlaps.  But it has several other useful options (e.g. the empty sphere finder, described in
 the [sister [ASA tutorial](https://lordcephei.github.io/asa-doc/) for PbTe.)
 
-#####  _Self-consistency_
+#####  6. _Self-consistency_
 
 
 ### _Other Resources_
