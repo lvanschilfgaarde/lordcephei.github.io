@@ -140,7 +140,7 @@ next the  **lm**{: style="color: blue"} executable is invoked with zero number o
 
 Lastly, for a self consistant LDA-ASA calculation **lm**{: style="color: blue"} is invoked with **-vnit**>1 so that:
 
-    $ lm -vnite=20 ctrl.pbte
+    $ lm -vnit=20 ctrl.pbte
 
-The message at the end of the standard output will indicate if self-consistency has been achieved, which in this case it has.
+You should see "Jolly good show" at the end of the standard output will indicate if self-consistency has been achieved, which in this case it has.
 	    
