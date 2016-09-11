@@ -159,15 +159,15 @@ To see what an executable tries to read from the ctrl file, invoke the executabl
 
 `--show` tells **lmchk**{: style="color: blue"} to print out tags as it reads them (or the defaults it uses)
 
-The remainder of this section explains what you receive when an executable such as **lmchk**{: style="color: blue"} is invoked with `--input`.  It is not essential to the tutorial, but read it if you want to see how tags and categories are organized, and how missing or partial tags are handled.
+The remainder of this section is not essential to this tutorial and you can safely skip to section 5 or 6.  It explains what you receive when an executable such as **lmchk**{: style="color: blue"} is invoked with `--input`, and is useful if you want to see how tags and categories are organized, and how missing or partial tags are handled.
+
+Below is snippet of output from `lmchk --input`:
 
 <hr style="height:5pt; visibility:hidden;" />
 <div onclick="elm = document.getElementById('help1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="help1">{:/}
 
 ~~~
-Below is snippet of the output:
-
     Tag                    Input   cast  (size,min)
     ------------------------------------------
 
