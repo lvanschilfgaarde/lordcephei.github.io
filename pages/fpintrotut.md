@@ -39,7 +39,7 @@ _____________________________________________________________
 <hr style="height:5pt; visibility:hidden;" />
 ### _Tutorial_
 
-To get started, create a new working directory and move into it, here we will call it "si". Then copy the silicon init file "init.si"{: style="color: green"}. The init file is the starting point, it contains basic structural information in a format that is recognised by the code (analogous to the POSCAR file in VASP). 
+To get started, create a new working directory and move into it, here we will call it "si". Then copy the silicon init file _init.si_{: style="color: green"}. The init file is the starting point, it contains basic structural information in a format that is recognised by the code (analogous to the POSCAR file in VASP). 
 
     $ mkdir si 
     $ cd si
