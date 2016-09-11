@@ -61,11 +61,11 @@ The last switch is necessary when using ASA, because the sum of sphere volumes m
 
 **blm**{: style="color: blue"} has a number of other command-line switches; to see what they are, type:
 
-	$ blm --h
+    $ blm --h
 
 Now the only thing left to do is to rename _actrl.pbte_{: style="color: green"} to _ctrl.pbte_{: style="color: green"}, which is the name of the main input file.  
 
-	$ cp actrl.pbte ctrl.pbte
+    $ cp actrl.pbte ctrl.pbte
 
 **blm**{: style="color: blue"} writes to actrl, rather than ctrl, to avoid overwriting a file you may wish to keep.
 
@@ -123,15 +123,15 @@ here we have also defined **nit** with value of 10. Next step is to pass the inf
 ###### _2.2 Self-consistency_
 Before a self consistant calculation can be performed the real-space structure constants have to be generated. They are made once, for a given structure, with a separate tool
 
-       $ lmstr ctrl.pbte
+    $ lmstr ctrl.pbte
 
-The penultimate step, is to generate the initial multiple moments Q$_0$,Q$_1$,Q$_2$. For this we first change the nkabc variable within the control file to (**nkabc=4**, this variable represents the k-mesh density). Use your text editor to change:
-	
-	% const nkabc=0
+The penultimate step, is to generate the initial multipole moments Q$$_0$$,Q$$_1$$,Q$$_2$$. For this we first change the nkabc variable within the control file to (**nkabc=4**, this variable represents the k-mesh density). Use your text editor to change:
+
+    % const nkabc=0
 	
 to
 
-	% const nkabc=4
+    % const nkabc=4
 
 
 next the  **lm**{: style="color: blue"} executable is invoked with zero number of iterations as:
