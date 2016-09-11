@@ -35,13 +35,9 @@ The tutorial starts under the heading "Tutorial"; you can see a synopsis of the 
 <div onclick="elm = document.getElementById('1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="1">{:/}
 
-    $ not ready yet  ....                #create working directory, move into it and copy file     
-    $ blm init.si --express --nit=1 --gmax=5 --nk=4     #use blm tool to create actrl and site files
-    $ cp actrl.si ctrl.si                               #copy actrl to recognised ctrl prefix
-    $ lmfa ctrl.si                                      #use lmfa to make basp file, atm file and to get gmax
-    $ cp basp0.si basp.si                               #copy basp0 to recognised basp prefix   
-    $ vi ctrl.si                                        #set iterations number nit, k mesh nkabc and gmax
-    $ lmf ctrl.si > out.lmfsc                           #make self-consistent
+    $ blm init.pbte
+    $ cp actrl.pbte ctrl.pbte
+    ... to be finished
 
 {::nomarkdown}</div>{:/}
 
@@ -131,12 +127,11 @@ To see what an executable tries to read from the ctrl file, invoke the executabl
 
 `--input` puts **lmchk**{: style="color: blue"} in a special mode.  It doesn't attempt to read anything; instead, it prints out a table of all the tags it tries to read, together with a brief description of the tag, and then exits.
 
-`--help` plays a similar role for the command line arguments: it prints out a brief summary of arguments effective in the executable you are using.
+`--help` performs a similar function for the command line arguments: it prints out a brief summary of arguments effective in the executable you are using.
 
 `--show` tells **lmchk**{: style="color: blue"} to print out tags as it reads them (or the defaults it uses in the absence of user's specification)
 
-The remainder of this section explains the output of `lmchk --input`.  It is not necessary to the tutorial, 
-but it is useful to see how tags and categories are organized, and how missing or partial tags are handled.
+The remainder of this section explains what you get when an executable such as **lmchk**{: style="color: blue"} is invoked with `--input`.  You do not need it to complete the tutorial, and can skip to the next section.  Read the remainder of this section to see how tags and categories are organized, and how missing or partial tags are handled.
 
 <hr style="height:5pt; visibility:hidden;" />
 <div onclick="elm = document.getElementById('help1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
@@ -206,13 +201,15 @@ If you supply only one, it is copied to elements 2 and 3.
 **lmchk**{: style="color: blue"}'s default mode is to check sphere overlaps.  But it has several other useful options (e.g. the empty sphere finder, described in
 the [sister [ASA tutorial](https://lordcephei.github.io/asa-doc/) for PbTe.)
 
+#####  _Self-consistency_
+
 
 ### _Other Resources_
 
 A more complete description of the structure of an input file's structure, and features of the programming language capaability, is explained in some detail 
 [in this html document](https://lordcephei.github.io/pages/file-preprocessor.html). A reference defining the syntax of categories and tokens can be found in [this pdf file](input.pdf).
 
-[This tutorial](https://lordcephei.github.io/buildingfpinput/) more fully describes some important tags the **lmf**{: style="color: green"} reads.  It also
+[This tutorial](https://lordcephei.github.io/buildingfpinput/) more fully describes some important tags the **lmf**{: style="color: blue"} reads.  It also
 presents alternative ways to build input files from various sources such as the VASP _POSCAR_{: style="color: green"} file.
 
 There is a corresponding tutorial on the basics of a [self-consistent ASA calculation for PbTe](https://github.com/lordcephei/lordcephei.github.io/blob/master/pages/fptut-pbte.md).  [A tutorial on optics](xx) can be gone through after you have understood this one.
