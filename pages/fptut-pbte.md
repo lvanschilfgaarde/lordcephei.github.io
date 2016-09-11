@@ -115,9 +115,8 @@ See "Other Resources" below to follow links with further information on the synt
 #####  _The **EXPRESS** category_
 
 **blm**{: style="color: blue"} generated _ctrl.pbte_{: style="color: greeen"} with
-and **EXPRESS** category.  Clock on the box below to see the beginning of it
+an **EXPRESS** category.  Clock on the box below to see the beginning of it.
 
-<hr style="height:5pt; visibility:hidden;" />
 <div onclick="elm = document.getElementById('2'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="2">{:/}
 
@@ -133,17 +132,14 @@ EXPRESS
 
 {::nomarkdown}</div>{:/}
 
+Tags in the **EXPRESS** category are effectively
+aliases for tags in other categories, e.g. **EXPRESS_gmax** corresponds to
+the same input as **HAM_GMAX**.  If you put a tag into **EXPRESS**, it will
+be read there and ignored in its usual location; thus the tag **HAM_GMAX**
+would have no effect if added to the _ctrl.pbte_{: style="color: green"}.
 
-
-The tags in the **EXPRESS** category are effectively
-aliases for tags in other categories, e.g. **EXPRESS_nkabc** performs the
-same function as **BZ_NKABC**.  If you put a tag into **EXPRESS**, it will
-be ignored in its usual location; thus 
-
-**EXPRESS** is there for convenience: the
-most frequently used tags are 
-
-
+The purpose of **EXPRESS** is to to simplify the input file,
+collecting the most commonly used tags in one place.
 
 #####  _Determining what input an executable seeks_
 
