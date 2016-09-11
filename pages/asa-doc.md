@@ -138,7 +138,7 @@ next the  **lm**{: style="color: blue"} executable is invoked with zero number o
 
     $ lm -vnit=0 ctrl.pbte
 
-Lastly, for a fully consistant LDA-ASA calculation **lm**{: style="color: blue"} is invoked with **-vnit**>1 so that:
+Lastly, for a self consistant LDA-ASA calculation **lm**{: style="color: blue"} is invoked with **-vnit**>1 so that:
 
     $ lm -vnite=20 ctrl.pbte
 
