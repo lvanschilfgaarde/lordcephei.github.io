@@ -159,7 +159,8 @@ To see what an executable tries to read from the ctrl file, invoke the executabl
 
 `--show` tells **lmchk**{: style="color: blue"} to print out tags as it reads them (or the defaults it uses)
 
-The remainder of this section is not essential to this tutorial and you can safely skip to section 5 or 6.  It explains what you receive when an executable such as **lmchk**{: style="color: blue"} is invoked with `--input`, and is useful if you want to see how tags and categories are organized, and how missing or partial tags are handled.
+The remainder of this section is not essential to this tutorial and you can safely skip to section 5 or 6.  It explains what you receive when you use
+`--input`; it is useful if you want to see how tags and categories are organized, and how missing or partial tags are handled.
 
 Below is snippet of output from `lmchk --input`:
 
@@ -204,23 +205,22 @@ Below is snippet of output from `lmchk --input`:
       (Not used if data read from EXPRESS_nkabc)
       No. qp along each of 3 lattice vectors.
       Supply one number for all vectors or a separate number for each vector.
+~~~ 
 
-
-lmchk prints the full name of each tag, e.g. SPEC_ATOM and SPEC_ATOM_Z, 
+**lmchk**{: style="color: blue"} prints the full name of each tag, e.g. **SPEC_ATOM** and **SPEC_ATOM_Z**, 
 even though only components of the tag appear in the ctrl file.  In this tutorial the it contains:
 
     SPEC 
       ATOM=Pb         Z= 82  R= 3.044814  LMX=3  LMXA=4
 
-Some tags (SPEC_SCLWSR, SPEC_ATOM_LMX, SPEC_ATOM_LMXA) are optional:
+Some tags (**SPEC_SCLWSR**, **SPEC_ATOM_LMX**, **SPEC_ATOM_LMXA**) are optional:
 lmchk will substitute defaults if you don't supply them.
-Any marked 'reqd' (SPEC_ATOM, SPEC_ATOM_Z, SPEC_ATOM_R) you must supply.
+Any marked **reqd** (**SPEC_ATOM**, **SPEC_ATOM_Z**, **SPEC_ATOM_R**) you must supply.
 
 The cast (real, integer, character) of each tag is indicated, and also how many numbers are to be read.
-tags look for more than one number, but you can supply fewer.  For example, BZ_NKABC looks for
+tags look for more than one number, but you can supply fewer.  For example, **BZ_NKABC** looks for
 three numbers to fix the k-mesh, namely the number of divisions only each of the reciprocal lattice vectors.
 If you supply only one, it is copied to elements 2 and 3.
-~~~ 
 
 {::nomarkdown}</div>{:/}
 

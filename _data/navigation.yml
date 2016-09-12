@@ -61,12 +61,14 @@
   - program:
     - name: "lmf"
       content:
-      - title: "Basic Full Potential (lmf) Tutorial"
+      - title: "Basic Tutorial for Full-Potential lmf"
         url: "/lmf_tutorial/"
-      - title: "Tutorial for the full-potential LDA program lmf"
-        url: "/fpnew/"
-      - title: "Building The FP Input File"
+      - title: "Standard Tutorial for lmf"
+        url: "/lmf_pbte_tutorial/"
+      - title: "Detailed Tutorial for lmf"
         url: "/buildingfpinput/"
+      - title: "lmf tutorial: elastic constant in Al"
+        url: "/fpnew/"
       - title: "FP Basis Optimisation"
         url: "/fpoptbas/"
       - title: "Generating a Partial DOS"
