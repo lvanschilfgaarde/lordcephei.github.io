@@ -23,7 +23,7 @@ This tutorial also explains a few features of **lmf**{: style="color: blue"}:
 
 ### _Command summary_
 
-The tutorial starts under the heading "Tutorial"; you can jump straight to the commands by clicking on "Command summary" below.
+The tutorial starts under the heading "Tutorial"; you can see a synopsis of the commands by clicking on the box below.
 
 <div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Commands - Click to show command summary.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}

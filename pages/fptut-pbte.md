@@ -25,7 +25,7 @@ _____________________________________________________________
 
 ### _Command summary_     
 
-The tutorial starts under the heading "Tutorial"; you can jump straight to the commands by clicking on the box below.
+The tutorial starts under the heading "Tutorial"; you can see a synopsis of the commands by clicking on the box below.
 
 <div onclick="elm = document.getElementById('1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Commands - Click to show</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="1">{:/}
@@ -69,6 +69,7 @@ _ctrl.pbte_{: style="color: green"}. Start in a fresh working directory and cut 
 		ATOM=Pb   X=     0.0000000    0.0000000    0.0000000
 		ATOM=Te   X=     0.5000000    0.5000000    0.5000000
 
+The primitive lattice vectors are in row format (i.e. the first row contains the x, y and z components of the first lattice vector and so forth). In the **SITE** section, the atom type and coordinates are shown. The **X=** tag specifies that the coordinates are in "direct" representation, that is, as fractional multiples of lattice vectors **PLAT**. It is also possible to use Cartesian coordinates and in this case the **X=** tag would be replaced by **POS=** (see additional exercises below).  Positions in Cartesian coordinates are in units of **ALAT**, like the lattice vectors.
 
 Create the input file (_ctrl.pbte_{: style="color: green"}) and the site file (_site.pbte_{: style="color: green"}) with
 
