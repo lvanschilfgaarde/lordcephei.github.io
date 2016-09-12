@@ -1,16 +1,12 @@
 ---
 layout: page-fullwidth
-title: "Building An Input File For The FP Program"
+title: "Detailed lmf tutorial"
 subheadline: ""
 show_meta: false
 teaser: ""
 permalink: "/buildingfpinput/"
 header: no
 ---
-_____________________________________________________________
-
-### _Tutorial Outline_
-{:.no_toc}
 
 _____________________________________________________________
 
@@ -21,10 +17,16 @@ _____________________________________________________________
 
 ### _Purpose_
 _____________________________________________________________
-This tutorial aims to explain how to use the **blm**{: style="color: blue"} tool, amongst others, to automatically generate input files.
+
+This tutorial serves two primary purposes:
+
+1. It shows how to construct input files from various sources,
+2. It explains the main features of the **lmf**{: style="color: blue"} basis set.
 
 ### _Preliminaries_
+
 _____________________________________________________________
+
 This tutorial assumes you have **blm**{: style="color: blue"} installed. Additionally, **poscar2init**{: style="color: blue"}, **lmchk**{: style="color: blue"}, **lmscell**{: style="color: blue"}, **poscar2site**{: style="color: blue"} and **cif2site**{: style="color: blue"} may be required for some sections.  
 
 **blm**{: style="color: blue"} can either make a new input file, saved as _actrl.ext_{: style="color: green"} or you can use your current _ctrl.ext_{: style="color: green"} input file and specify structural data in a seperate file, _site.ext_{: style="color: green"}. Additional files are needed in either case. These come in the form _init.ext_{: style="color: green"} which contains the basic structural information **blm**{: style="color: blue"} needs to generate the template input file, or _site.ext_{: style="color: green"} which contains additional structural data for use with a current input file.
@@ -32,9 +34,9 @@ This tutorial assumes you have **blm**{: style="color: blue"} installed. Additio
 ### _Tutorial_
 _____________________________________________________________
 
-#### _Importing Crystal Structure_
+#### 1. _Importing Crystal Structure_
 
-#####  _Supplying Crystal Structure by hand_
+##### 1.1 _Supplying Crystal Structure by hand_
 
 Typically you have structural information about your material, e.g. _space group number_ (e.g. number 99 or name P4_mm_) and _lattice parameters_ related to the space group (_a_ and _b_ in the P4_mm_ case). This page will use Bi2Te3 as an example, which belongs to space group R3m with lattice constants _a_ and _c_. (See Wykoff, [_Structure of Crystals_](https://archive.org/stream/structureofcryst030914mbp#page/n107/mode/2up/search/Bi), to obtain this information.) You also need information about the chemical species and positions of the atoms in the basis. The minimum information for Bi2Te3 is:
 

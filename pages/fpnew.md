@@ -6,7 +6,6 @@ show_meta: false
 teaser: ""
 permalink: "/fpnew/"
 header: no
-
 ---
 
 ### _Purpose_
@@ -22,11 +21,11 @@ This tutorial also explains a few features of **lmf**{: style="color: blue"}:
 3. shows how to compute shear constants *c*<sub>11</sub>−*c*<sub>12</sub> and *c*<sub>44</sub> in Al.
 4. Briefly describes commands to create energy bands and density-of-states
 
-### Command summary     
+### _Command summary_
 
-The tutorial starts under the heading "Tutorial"; you can jump straight to the commands by clicking on the "Command summary" dropdown menu.
+The tutorial starts under the heading "Tutorial"; you can jump straight to the commands by clicking on "Command summary" below.
 
-<div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Commands - Click to show.</button></div>
+<div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Commands - Click to show command summary.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
 
     $ mkdir si; cd si                               #create working directory and move into it
