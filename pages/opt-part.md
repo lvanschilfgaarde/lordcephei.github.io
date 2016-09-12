@@ -47,8 +47,8 @@ here the switch "- -pr81"  increases the verbosity setting of the program to pri
 <div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to see brillouin zone q-point mapping output.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
 ~~~   
- BZMESH:| qp |mapping
-  i1..i3|                         qp                    |iq|   |ig|  g
+ BZMESH: qp mapping
+  i1..i3                         qp                    iq   ig  g
  (1,1,1)           0.000000    0.000000    0.000000     1    1 i*i
  (2,1,1)          -0.250000    0.250000    0.250000     2    1 i*i
  (4,1,1)           0.250000   -0.250000   -0.250000     2    2 i
