@@ -1,6 +1,6 @@
 ---
 layout: page-fullwidth
-title: "Self-Consistent LDA calculation for PbTe"
+title: "lmf tutorial: Self-Consistent LDA calculation for PbTe"
 subheadline: ""
 show_meta: false
 teaser: ""

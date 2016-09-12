@@ -1,6 +1,6 @@
 ---
 layout: page-fullwidth
-title: "LM Suite - Full Potential LDA Tutorial"
+title: "lmf tutorial : Elastic Constants in Al"
 subheadline: ""
 show_meta: false
 teaser: ""
@@ -9,36 +9,46 @@ header: no
 
 ---
 
-# Tutorial For The Full-Potential LDA Program **lmf** (v0.00)  
-
-
-
 ### _Purpose_
 ________________________________________
 
-This tutorial demonstrates the all-electron, full-potential LDA program **lmf**. It:
+In this tutorial two of the three independent elastic constants in Al are calculated. Build the input file yourself, or 
+copy the repositorie's [ctrl.al](https://lordcephei.github.io/assets/download/inputfiles/ctrl.al).
 
-1. describes how to build the input file, by categories. You can build input files automatically from structural data, but this section is worth going through nevertheless.
+This tutorial also explains a few features of **lmf**{: style="color: blue"}:
 
-2. Some checks are made and a band pass is explained.
+1. The basis set is tuned.
+2. explains how charged densities are mixed as it proceeds towards self-consistency calculation
+3. shows how to compute shear constants *c*<sub>11</sub>−*c*<sub>12</sub> and *c*<sub>44</sub> in Al.
+4. Briefly describes commands to create energy bands and density-of-states
 
-3. The basis set is tuned.
-
-4. explains the output of a self-consistent calculation, and how to create energy bands and density-of-states
-
-5. shows how to compute shear constants *c*<sub>11</sub>−*c*<sub>12</sub> and *c*<sub>44</sub> in Al.
-
-In this tutorial two of the three elastic constants in Al are calculated. Build the input file yourself, or copy [ctrl.al](http://titus.phy.qub.ac.uk/packages/LMTO/v7.11/doc/FPsamples/ctrl.al) and skip immediately to the electronic structure calculations.  
-
-
-
-### _Prerequisites_
+### _Preliminaries_
 ________________________________________
 
-You will need the executables **lmchk**, **lm**, **lmstr** etc in your path (all of these are installed when scons is run with the target flag *all*).
+The input file uses some features of the preprocessor (mainly it uses
+symbolic variables), so you may wish to go through the [standard lmf
+tutorial](https://lordcephei.github.io/lmf_tutorial/),first.
 
-It is assumed you have read the ASA documentation and the FP documentation, how the input file is structured and have gone through the ASA tutorial, and you understand how the file preprocessor works.  
+[This tutorial](https://lordcephei.github.io/assets/download/inputfiles/buildingfpinput.md) explains in more detail the input file, and the workings of the
+**lmf**{: style="color: blue"} basis set.
 
+Executables **blm**{: style="color: blue"}, **lmfa**{: style="color: blue"}, and **lmf**{: style="color: blue"} are required and are assumed to be in your path.  The tutorial starts under the heading "Tutorial"; you can jump straight to the commands by clicking on the "Command summary" dropdown menu.
+
+<hr style="height:5pt; visibility:hidden;" />
+### Command summary     
+<div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Commands - Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
+
+    $ mkdir si; cd si                               #create working directory and move into it
+    $ cp lm/doc/demos/qsgw-si/init.si .             #copy init file     
+    $ blm init.si --express                         #use blm tool to create actrl and site files
+    $ cp actrl.si ctrl.si                           #copy actrl to recognised ctrl prefix
+    $ lmfa ctrl.si                                  #use lmfa to make basp file, atm file and to get gmax
+    $ cp basp0.si basp.si                           #copy basp0 to recognised basp prefix   
+    $ vi ctrl.si                                    #set iterations number nit, k mesh nkabc and gmax
+    $ lmf ctrl.si > out.lmfsc                       #make self-consistent
+
+{::nomarkdown}</div>{:/}
 
 
 ### _Tutorial_

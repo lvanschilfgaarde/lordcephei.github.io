@@ -69,7 +69,7 @@
         url: "/buildingfpinput/"
       - title: "lmf tutorial: elastic constant in Al"
         url: "/fpnew/"
-      - title: "FP Basis Optimisation"
+      - title: "lmf Basis Set Optimisation"
         url: "/fpoptbas/"
       - title: "Generating a Partial DOS"
         url: "/lmf_pdos/"
