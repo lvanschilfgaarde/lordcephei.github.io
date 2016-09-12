@@ -10,13 +10,6 @@ header: no
 
 _____________________________________________________________
 
-### _Table of Contents_
-{:.no_toc}
-*  Auto generated table of contents
-{:toc}  
-
-_____________________________________________________________
-
 ### _Purpose_
 
 This tutorial carries out a self-consistent density-functional calculation for PbTe using the **lmf**{: style="color: blue"} code.  Some of the basics are covered in the [basic lmf tutorial for Si](https://lordcephei.github.io/lmf_tutorial/), which you may wish to go through first.  This tutorial has a similar purpose but is more detailed. It:
@@ -41,6 +34,13 @@ The tutorial starts under the heading "Tutorial"; you can jump straight to the c
     ... to be finished
 
 {::nomarkdown}</div>{:/}
+
+_____________________________________________________________
+
+### _Table of Contents_
+{:.no_toc}
+*  Auto generated table of contents
+{:toc}  
 
 _____________________________________________________________
 
