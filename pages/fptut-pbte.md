@@ -12,10 +12,11 @@ _____________________________________________________________
 
 ### _Purpose_
 
-This tutorial carries out a self-consistent density-functional calculation for PbTe using the **lmf**{: style="color: blue"} code.  Some of the basics are covered in the [basic lmf tutorial for Si](https://lordcephei.github.io/lmf_tutorial/), which you may wish to go through first.  This tutorial has a similar purpose but is more detailed. It:
+This tutorial carries out a self-consistent density-functional calculation for PbTe using the **lmf**{: style="color: blue"} code.
+This tutorial has a similar purpose but shows some additional features. It:
 
-1. generates a self consistent potential within the LDA
-2. explains the input file's structure and illustrates some of its programming language capabilities
+1. explains the input file's structure and illustrates some of its programming language capabilities
+2. generates a self consistent potential within the LDA
 3. makes neighbour tables using the **lmchk**{: style="color: blue"} tool
 4. synchronizes with an [ASA tutorial](https://lordcephei.github.io/asa-doc/) on the same system, enabling a comparison of the ASA and full potential methods.
 5. forms the starting point for other tutorials on optics, a QSGW calculation of PbTe, and comparing energy bands computed in different ways.
@@ -46,8 +47,9 @@ _____________________________________________________________
 
 ### _Preliminaries_
 
+Some of the basics are covered in the [basic lmf tutorial for Si](https://lordcephei.github.io/lmf_tutorial/), which you may wish to go through first.
+
 Executables **blm**{: style="color: blue"}, **lmchk**{: style="color: blue"}, **lmfa**{: style="color: blue"}, and **lmf**{: style="color: blue"} are required and are assumed to be in your path. 
-The tutorial starts under the heading "Tutorial"; you can see a synopsis of the commands by clicking on the "Command summary" dropdown menu.
 
 ____________________________________________________________
 

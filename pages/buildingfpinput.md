@@ -43,7 +43,6 @@ The tutorial starts under the heading "Tutorial"; you can jump straight to the c
             $ lmfa bi2te3
     $ blm --gw bi2te3
 
-
     ... to be finished
 
 {::nomarkdown}</div>{:/}
@@ -59,14 +58,24 @@ _____________________________________________________________
 
 ### _Preliminaries_
 
+The materials system in this tutorial is Bi2Te3; you will build an input file _ctrl.bi2te3_{: style="color: green"} by one of several possible paths.
+
+The input file structure is briefly described in [this lmf tutorial for Pbte](https://lordcephei.github.io/lmf_tutorial/), which you may wish to go through first.
 
 This tutorial assumes you have **blm**{: style="color: blue"} installed. Additionally, **poscar2init**{: style="color: blue"}, **lmchk**{: style="color: blue"}, **lmscell**{: style="color: blue"}, **poscar2site**{: style="color: blue"} and **cif2site**{: style="color: blue"} may be required for some sections.
-
-**blm**{: style="color: blue"} can either make a new input file, saved as _actrl.ext_{: style="color: green"} or you can use your current _ctrl.ext_{: style="color: green"} input file and specify structural data in a seperate file, _site.ext_{: style="color: green"}. Additional files are needed in either case. These come in the form _init.ext_{: style="color: green"} which contains the basic structural information **blm**{: style="color: blue"} needs to generate the template input file, or _site.ext_{: style="color: green"} which contains additional structural data for use with a current input file.
 
 _____________________________________________________________
 
 ### _Tutorial_
+
+**blm**{: style="color: blue"} is an input file generator. You can use it autogenerate an input file (_ctrl.ext_{: style="color: green"}); or you can build it yourself.
+**blm**{: style="color: blue"} usually writes the structural data to a site file (_site.bi2te3_{: style="color: green"}).  Site files are a primary way structural
+data is kept in a form the Questaal programs can read.
+
+In either case, you need structural information to get started.  In default mode **blm**{: style="color: blue"} reads structural data from a file
+_init.ext_{: style="color: green"}, and writes a ctrl file and a site file.  It can read structural data from a site file.
+
+
 
 #### 1. _Importing Crystal Structure_
 
