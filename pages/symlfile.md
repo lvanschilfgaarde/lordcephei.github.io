@@ -41,7 +41,7 @@ To use this symmetry line file, save the below text in to some file which we wil
 
 {::nomarkdown}</div>{:/}
 
-### _ Face-centered Cubic (FCC) Symmetry File_
+### _Face-centered Cubic (FCC) Symmetry File_
 _____________________________________________________________
 To use this symmetry line file, save the below text in to some file which we will call _syml.fcc_{: style="color: green"} and use with tools that take symmetry-line files as input parameters, such as _lmf_{: style="color: blue"}.
 

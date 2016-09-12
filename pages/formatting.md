@@ -1,9 +1,6 @@
 ---
 layout: page-fullwidth
 title: "Site Formatting Guide"
-subheadline: ""
-show_meta: false
-teaser: ""
 permalink: "/formatting/"
 header: no
 ---
@@ -41,7 +38,7 @@ Tutorials, unless they are very involved (e.g. the DMFT tutorial) should have a 
     Other Resources (optional)
     FAQ (optional)
     Additional Exercises (optional)
-    
+
 ##### _Table of Contents_
 Documents with multiple references or subsections should contain a table of contents, usually before any other text. Jekyll/Kramdown has support for auto-generating this ToC as shown here:
 
@@ -65,9 +62,6 @@ Front matter is always placed at the top of *.md files. Jekyll uses this data to
 ---
 layout: page-fullwidth
 title: "Site Formatting Guide"
-subheadline: ""
-show_meta: false
-teaser: ""
 permalink: "/formatting/"
 header: no
 ---

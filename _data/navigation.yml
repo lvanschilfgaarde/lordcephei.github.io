@@ -56,6 +56,8 @@
   side: left
   prefix: ""
   dropdown:
+  - title: "Installation"
+    url: "/install/"
   - program:
     - name: "lmf"
       content:
@@ -71,12 +73,16 @@
         url: "/lmf_pdos/"
       - title: "Performing Mulliken Analysis"
         url: "/lmf_mulliken/"
-    - name: "lm"
+    - name: "ASA"
       content:
-      - title: "ASA Tutorial"
+      - title: "LM Tutorial"
         url: "/asa-doc/"
+    - name: "GW"
+      content:
       - title: "Basic GW Tutorial"
         url: "/lmtut/"
+    - name: "lmgf"
+      content:
       - title: "LMGF Tutorial"
         url: "/lmgf-tutorial/"
     - name: "qsgw"
@@ -99,8 +105,6 @@
         url: "/maxent1/" 
     - name: "Miscellaneous"
       content:
-      - title: "Installation"
-        url: "/install/"
       - title: "Adding external Zeeman field to the potential"
         url: "/extbfield/"
       - title: "Generating a Fermi surface in spin polarized Fe"

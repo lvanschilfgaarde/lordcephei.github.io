@@ -27,7 +27,7 @@ From a software perspective, these operations are accomplished in a four-step pr
 In this tutorial, we will go through all these steps and we will indicate what quantity to monitor to judge the convergence of the DMFT loop. This will be done starting from a converged QSGW of the paramagnetic phase of La$$_2$$CuO$$_4$$.
 
 ### Set up of the calculation 
-First of all, you have to [download the input files](https://lordcephei.github.io/assets/inputfiles_dmft1.tar.gz). Some of them are actually binary files obtained from a converged QSGW calculation on the paramagnetic phase of La$$_2$$CuO$$_4$$.
+First of all, you have to [download the input files](https://lordcephei.github.io/assets/download/inputfiles/dmft1.tar.gz). Some of them are actually binary files obtained from a converged QSGW calculation on the paramagnetic phase of La$$_2$$CuO$$_4$$.
 
 After copying the relevant files in the input folders, you need to compile *broad_sig.f90* and add a command line to the *ctrl.lsco* file. 
 
