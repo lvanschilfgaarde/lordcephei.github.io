@@ -124,8 +124,7 @@ See "Other Resources" below to follow links with further information on the synt
 
 #####  3. _The **EXPRESS** category_
 
-**blm**{: style="color: blue"} generated _ctrl.pbte_{: style="color: greeen"} with
-an **EXPRESS** category.  Clock on the box below to see the beginning of it.
+**blm**{: style="color: blue"} included an **EXPRESS** category in _ctrl.pbte_{: style="color: green"}.  Clock on the box below to see the beginning of it.
 
 <div onclick="elm = document.getElementById('2'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="2">{:/}
