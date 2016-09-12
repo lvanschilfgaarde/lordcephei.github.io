@@ -113,7 +113,8 @@ here the switch "- -pr81"  increases the verbosity setting of the program to pri
      (3,4,2)          -0.500000    1.000000    0.000000     8    4 i*r3(1,1,-1)   
      (4,2,3)          -1.000000    0.000000   -0.500000     8    5 r3(-1,-1,1)   
      (2,4,3)           1.000000    0.000000    0.500000     8    6 i*r3(-1,-1,1)      
-{::nomarkdown}</div>{:/}
+
+    {::nomarkdown}</div>{:/}
 
 
 ### _Resolving by k-points and band to band contributions_
