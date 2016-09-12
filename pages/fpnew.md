@@ -22,20 +22,10 @@ This tutorial also explains a few features of **lmf**{: style="color: blue"}:
 3. shows how to compute shear constants *c*<sub>11</sub>−*c*<sub>12</sub> and *c*<sub>44</sub> in Al.
 4. Briefly describes commands to create energy bands and density-of-states
 
-### _Preliminaries_
-________________________________________
-
-The input file uses some features of the preprocessor (mainly it uses
-symbolic variables), so you may wish to go through the [standard lmf
-tutorial](https://lordcephei.github.io/lmf_tutorial/),first.
-
-[This tutorial](https://lordcephei.github.io/assets/download/inputfiles/buildingfpinput.md) explains in more detail the input file, and the workings of the
-**lmf**{: style="color: blue"} basis set.
-
-Executables **blm**{: style="color: blue"}, **lmfa**{: style="color: blue"}, and **lmf**{: style="color: blue"} are required and are assumed to be in your path.  The tutorial starts under the heading "Tutorial"; you can jump straight to the commands by clicking on the "Command summary" dropdown menu.
-
-<hr style="height:5pt; visibility:hidden;" />
 ### Command summary     
+
+The tutorial starts under the heading "Tutorial"; you can jump straight to the commands by clicking on the "Command summary" dropdown menu.
+
 <div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Commands - Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
 
@@ -49,6 +39,18 @@ Executables **blm**{: style="color: blue"}, **lmfa**{: style="color: blue"}, and
     $ lmf ctrl.si > out.lmfsc                       #make self-consistent
 
 {::nomarkdown}</div>{:/}
+
+### _Preliminaries_
+________________________________________
+
+The input file uses some features of the preprocessor (mainly it uses
+symbolic variables), so you may wish to go through the [standard lmf
+tutorial](https://lordcephei.github.io/lmf_tutorial/),first.
+
+[This tutorial](https://lordcephei.github.io/assets/download/inputfiles/buildingfpinput.md) explains in more detail the input file, and the workings of the
+**lmf**{: style="color: blue"} basis set.
+
+Executables **blm**{: style="color: blue"}, **lmfa**{: style="color: blue"}, and **lmf**{: style="color: blue"} are required and are assumed to be in your path.  
 
 
 ### _Tutorial_
