@@ -16,9 +16,9 @@ _____________________________________________________________
 
 ### Command summary     
 
-The tutorial starts under the heading "Tutorial"; you can jump straight to the commands by clicking on "Command summary" below.
+The tutorial starts under the heading "Tutorial"; you can jump straight to the commands by clicking on the "Commands" box below
 
-<div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Commands - Click to show command summary.</button></div>
+<div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Commands - Click to show</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
 
     $ mkdir si; cd si                               #create working directory and move into it
@@ -38,10 +38,8 @@ _____________________________________________________________
 
 Executables **blm**{: style="color: blue"}, **lmfa**{: style="color: blue"}, and **lmf**{: style="color: blue"} are required and are assumed to be in your path.  The source code for all Questaal executables can be found [here](https://bitbucket.org/lmto/lm).
 
-
 _____________________________________________________________
 
-<hr style="height:5pt; visibility:hidden;" />
 ### _Tutorial_
 
 To get started, create a new working directory and move into it, here we will call it "si". Then copy the silicon init file _init.si_{: style="color: green"}. The init file is the starting point, it contains basic structural information in a format that is recognised by the code (analogous to the POSCAR file in VASP). 

@@ -8,31 +8,65 @@ permalink: "/buildingfpinput/"
 header: no
 ---
 
-_____________________________________________________________
-
-### _Table of Contents_
-{:.no_toc}
-*  Auto generated table of contents
-{:toc}  
-
 ### _Purpose_
-_____________________________________________________________
 
 This tutorial serves two primary purposes:
 
 1. It shows how to construct input files from various sources,
 2. It explains the main features of the **lmf**{: style="color: blue"} basis set.
 
-### _Preliminaries_
+_____________________________________________________________
+
+### _Command summary_
+
+The tutorial starts under the heading "Tutorial"; you can jump straight to the commands by clicking on the "Commands" box below.
+
+<div onclick="elm = document.getElementById('1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Commands - Click to show</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="1">{:/}
+
+    $ blm init.pbte
+    $ cp actrl.pbte ctrl.pbte
+    $ cp testing/cif2cell.batio3 .
+    $ cif2init cif2cell.batio3        # creates an init file from 
+    $ poscar2init                     # creates an init file from a VASP POSCAR file
+    $ poscar2site                     # creates a  site file from a VASP POSCAR file
+    $ testing/test.blm 2
+    $ poscar2init > init.zn3as2
+    $ blm zn3as2 --fixpos:tol=1e-6 > out.zn3as2
+    $ testing/test.blm 3
+        $ blm bi2te3
+    $ cp actrl.bi2te3 ctrl.bi2te3
+    $ lmchk bi2te3
+    $ cp actrl.bi2te3 ctrl.bi2te3
+    $ lmfa bi2te3
+            $ cp basp0.bi2te3 basp.bi2te3
+            $ lmfa bi2te3
+    $ blm --gw bi2te3
+
+
+    ... to be finished
+
+{::nomarkdown}</div>{:/}
 
 _____________________________________________________________
 
-This tutorial assumes you have **blm**{: style="color: blue"} installed. Additionally, **poscar2init**{: style="color: blue"}, **lmchk**{: style="color: blue"}, **lmscell**{: style="color: blue"}, **poscar2site**{: style="color: blue"} and **cif2site**{: style="color: blue"} may be required for some sections.  
+### _Table of Contents_
+{:.no_toc}
+*  Auto generated table of contents
+{:toc}
+
+_____________________________________________________________
+
+### _Preliminaries_
+
+
+This tutorial assumes you have **blm**{: style="color: blue"} installed. Additionally, **poscar2init**{: style="color: blue"}, **lmchk**{: style="color: blue"}, **lmscell**{: style="color: blue"}, **poscar2site**{: style="color: blue"} and **cif2site**{: style="color: blue"} may be required for some sections.
 
 **blm**{: style="color: blue"} can either make a new input file, saved as _actrl.ext_{: style="color: green"} or you can use your current _ctrl.ext_{: style="color: green"} input file and specify structural data in a seperate file, _site.ext_{: style="color: green"}. Additional files are needed in either case. These come in the form _init.ext_{: style="color: green"} which contains the basic structural information **blm**{: style="color: blue"} needs to generate the template input file, or _site.ext_{: style="color: green"} which contains additional structural data for use with a current input file.
 
-### _Tutorial_
 _____________________________________________________________
+
+### _Tutorial_
 
 #### 1. _Importing Crystal Structure_
 
@@ -56,7 +90,7 @@ The three coordinates e.g. (0 0 0.788) correspond to fractions of the first, sec
 
 creates the same input template.
 
-##### _Importing a CIF file_
+##### 1.2 _Importing a CIF file_
 
 [Crystallographic Information Files](http://en.wikipedia.org/wiki/Crystallographic_Information_File) (CIF files for short) is a standard text file format for representing crystallographic information, whose standards are set by the International Union of Crystallography. If you have a CIF file, you can automatically make _either_ an _init.ext_{: style="color: green"} file, _or_ a _site.ext_{: style="color: green"} file. The tools in this package do not read CIF files directly, but parse the output of the **cif2cell**{: style="color: blue"} program (version 1.1.0). **cif2cell**{: style="color: blue"} is a very versatile tool, [freely available on the web](http://sourceforge.net/projects/cif2cell).
 
@@ -64,12 +98,12 @@ To import data from a CIF file you need **cif2cell**{: style="color: blue"} inst
 
 1\. Run **cif2cell** (without any special switches) and capture the output in a file, e.g.         cif2cell.out        .
 2\. Run **cif2init** to generate an         init         file (called simply `        init        ').
-3\. Rename         init         to         init._ext_         and use the [blm](#run) tool.    
+3\. Rename         init         to         init._ext_         and use the [blm](#run) tool.
 
 _Example_  : create an init file for the orthorhombic form of BaTiO3:
 
-    cp testing/cif2cell.batio3 .
-    cif2init cif2cell.batio3  
+    $ cp testing/cif2cell.batio3 .
+    $ cif2init cif2cell.batio3
 
 *Note:*{: style="color: red"} _cif2cell.batio3_{: style="color: green"} was obtained by running **cif2cell**{: style="color: blue"} on the CIF file supplied with the cif2cell-1.1.0 distribution: _cif2cell-1.1.0/cifs/BaTiO3_orthorhombic.cif_{: style="color: green"}.
 
@@ -89,44 +123,44 @@ The following init file should be generated:
          ATOM=Ti       X=     0.5000000    0.4900000    0.5100000
          ATOM=O        X=     0.5000000    0.0100000    0.9900000
          ATOM=O        X=     0.5000000    0.0129000    0.4921000
-         ATOM=O        X=     0.5000000    0.5079000    0.9871000 
+         ATOM=O        X=     0.5000000    0.5079000    0.9871000
 
 If you prefer to make your own input file but import structure information via a site file, use **cif2site**{: style="color: blue"} in place of **cif2init**{: style="color: blue"}. To summarize:
 
 cif2init     creates an init file from the output of **cif2cell**
 cif2site     creates a  site file from the output of **cif2cell**
 
-##### _Importing a POSCAR file_
+##### 1.3 _Importing a POSCAR file_
 
 [VASP](http://www.vasp.at) is a very popular electronic structure program which can store structural information in the POSCAR files. If you want to import data from such a file in a form suitable for this program suite, use one of the following commands:
 
-    poscar2init     creates an init file from a VASP POSCAR file
-    poscar2site     creates a  site file from a VASP POSCAR file
+    $ poscar2init     creates an init file from a VASP POSCAR file
+    $ poscar2site     creates a  site file from a VASP POSCAR file
 
 If you already have an input file, use **poscar2site**{: style="color: blue"} to translate structural data from a POSCAR file into _site.ext_{: style="color: green"}. If you want an input file instead, use **poscar2init**{: style="color: blue"}; then run **blm**{: style="color: blue"}.
 
 _Example:_{: style="color: red"} create an input file for Zn3As2 from a POSCAR file:
 
-    testing/test.blm 2 
+    $ testing/test.blm 2
 
 The script has the following steps
 
-    poscar2init > init.zn3as2
-    blm zn3as2 --fixpos:tol=1e-6 > out.zn3as2
+    $ poscar2init > init.zn3as2
+    $ blm zn3as2 --fixpos:tol=1e-6 > out.zn3as2
 
 which creates an input file template (_actrl.zn3as2_{: style="color: green"}) from a POSCAR file in two steps.
 
 _Example:_{: style="color: red"} create a site file for the Kesterite Cu2ZnSnS4:
 
-    testing/test.blm 3 
+    $ testing/test.blm 3
 
 It creates file _site_{: style="color: green"} from file _POSCAR_{: style="color: green"}.
 
-#### _Running blm_
+#### 2. _Running blm_
 
 Almost all programs in this package require the input file _ctrl.ext_{: style="color: green"}. You can do an entire calculation starting only with this file; but often you supply other files such as site files to supplement _ctrl.ext_{: style="color: green"}. **blm**{: style="color: blue"} will create a skeleton or template file from basic material structural information; it is called _actrl.ext_{: style="color: green"}, so as not to overwrite any file named _ctrl.ext_{: style="color: green"}.
 
-1.  Create a file named init.bi2te3 containing the following lines:
+1.  Create a file named _init.bi2te3_{: style="color: green"} containing the following lines:
 
         # from http://cst-www.nrl.navy.mil/lattice/struk/c33.html
         # Bi2Te3 from Wyckoff
@@ -139,13 +173,13 @@ Almost all programs in this package require the input file _ctrl.ext_{: style="c
             ATOM=Te X=0     0    0
             ATOM=Te X=0     0   {uTe}
             ATOM=Bi X=0     0   {uBi}
-        
+
 
     [This tutorial](input-file-style.html) explains how the input files _init.ext_{: style="color: green"} and _ctrl.ext_{: style="color: green"} are structured.
-	
+
 2.  To create the skeleton input file invoke **blm**{: style="color: blue"}:
 
-        blm bi2te3  
+        $ blm bi2te3
 
     As the [output](FPsamples/out.bi2te3.blm) shows, it found all five atoms that were implicit in the specification of the symmetry group, R-3m.
 
@@ -174,20 +208,20 @@ Almost all programs in this package require the input file _ctrl.ext_{: style="c
         BZ      NKABC={nk}  METAL={met}  # NKABC requires 1 to 3 positive numbers
         #SYMGRP i r3z my
         % const a=4.782549
-        STRUC 
+        STRUC
           NSPEC=2  NBAS=5  NL=5
           ALAT={a}
           PLAT= 1  0  4.0154392  -0.5  0.8660254  4.0154392  -0.5  -0.8660254  4.0154392
-        SPEC 
+        SPEC
           ATOM=Te         Z= 52  R= 2.870279  LMX=3  LMXA=3
           ATOM=Bi         Z= 83  R= 2.856141  LMX=3  LMXA=4
-        SITE 
+        SITE
           ATOM=Te         POS=  0.0000000   0.0000000   0.0000000
           ATOM=Te         POS= -0.5000000  -0.8660254   1.4616199
           ATOM=Te         POS=  0.5000000   0.8660254  -1.4616199
           ATOM=Bi         POS=  0.5000000   0.8660254   0.8030878
           ATOM=Bi         POS= -0.5000000  -0.8660254  -0.8030878
-        
+
 
 *Note:*{: style="color: red"} The following applies to the FP code **lmf**{: style="color: blue"}. For ASA calculations, ignore the remainder of this section.
 
@@ -209,20 +243,20 @@ Tokens in AUTOBAS tell **lmfa**{: style="color: blue"} to do the following:
 
     PNU=1    Calculate [logarithmic derivative](lmto.html#logderivative) parameter for the free atom; save P parameters in file         basp0._ext_        .
              Nothing about P is written if         PNU=0        .
-    
+
     LOC=1    Look for shallow cores to be explicitly treated as valence electrons, using [local orbitals](fp.html#localorbitals).
              Shallow cores that meet specific criteria are identified and written to         basp0._ext_         as PZ=.
              No search is made if         LOC=0        .
-    
+
     LMTO=3   Pick a default choice about the size of basis.  LMTO=3 is a standard minimal basis.
              Run lmfa --input and look for HAM_AUTOBAS_LMTO to see what other choices there are.
-    
+
              Note that **lmfa** will pick some defaults for the _l_-cutoff
              e.g. _spd_ or _spdf_ depending on the value of LMTO.
-    
+
     MTO=1    Choose 1-kappa basis set (single orbital per _l_ channel).
              For better quality calculations, it is recommended you use MTO=2.
-    
+
     GW=0     If GW=1, tailor basis for a GW calculation, e.g. changing the
              criteria for including shallow cores as valence, and the size of basis.
 
@@ -230,41 +264,41 @@ These tokens thus define some reasonable default basis for you. **lmfa**{: style
 
 The AUTOBAS tokens tell **lmf**{: style="color: blue"} what to read from _basp.ext_{: style="color: green"}. It uses tokens in a manner similar, but not identical, to the way **lmfa**{: style="color: blue"} uses them:
 
-    PNU=1    Read parameters P for all species present in         basp._ext_        
-    
+    PNU=1    Read parameters P for all species present in         basp._ext_
+
     LOC=1    LOC=1 or 2 tell **lmf** to read local orbital parameters PZ.
              Since these parameters may also be specified by the input file,
              LOC=1 tells lmf to give precedence to parameters specified by ctrl file
              LOC=2 tells lmf to give precedence to parameters specified by basp.
-    
+
     LMTO=    is not used by **lmf**.
-    
+
     MTO=1    RSMH and EH may also be specified by the input file
              LMTO=1 or 3 tells lmf to read 1-kappa parameters specified by basp
              LMTO=2 or 4 tells lmf to read 2-kappa parameters specified by basp
              LMTO=1 or 2 tells lmf that parameters in the ctrl file take precedence
              LMTO=2 or 4 tells lmf that parameters in the basp file take precedence
-    
+
     GW=0     If GW=1, tune basis for a GW calculation: log derivative parameters P
              are floated a little differently in the self-consistency cycle.
              They are weighted to better represent unoccupied states, at a slight cost
-             to their representation of occupied states.    
+             to their representation of occupied states.
 
-#### _Checking sphere overlaps_
+#### 3. _Checking sphere overlaps_
 
 Sphere overlaps can be checked using **lmchk**{: style="color: blue"}. To do this copy the template _actrl.bi2te3_{: style="color: green"} to the input file and run **lmchk**{: style="color: blue"}:
 
-    cp actrl.bi2te3 ctrl.bi2te3
-    lmchk bi2te3  
+    $ cp actrl.bi2te3 ctrl.bi2te3
+    $ lmchk bi2te3
 
 By default, **blm**{: style="color: blue"} makes the spheres as large as possible without overlapping, as the [output](FPsamples/out.bi2te3.lmchk) shows. In this case the Bi and Te radii are nearly the same.
 
-#### _Making the atomic density_
+#### 4. _Making the atomic density_
 
-Make the free atom density. If you did not do so already copy actrl.bi2te3 to the input file (changing [.. LMTO=4 MTO=4] to [.. LMTO=3 MTO=3]) and invoke **lmfa**:
+Make the free atom density. If you did not do so already copy _actrl.bi2te3_{: style="color: green"} to the input file (changing [.. LMTO=4 MTO=4] to [.. LMTO=3 MTO=3]) and invoke **lmfa**{: style="color: blue"}:
 
-    cp actrl.bi2te3 ctrl.bi2te3
-    lmfa bi2te3
+    $ cp actrl.bi2te3 ctrl.bi2te3
+    $ lmfa bi2te3
 
 The primary purpose of **lmfa**{: style="color: blue"} is to generate a free atom density. A secondary purpose is to supply additional information about the basis set in an automatic way. All of this information can be supplied manually in the input file, but the autogenerated input file supplies a minimum amount of information. **lmfa**{: style="color: blue"} generates _basp0.bi2te3_{: style="color: green"} which contains
 
@@ -276,69 +310,69 @@ Every species gets one line. This file specifies a basis set consisting of _spdf
 
 *Note:*{: style="color: red"} Remember that **lmf**{: style="color: blue"} reads from _basp.ext_{: style="color: green"}, not _basp0.ext_{: style="color: green"}.
 
-##### _Automatically finding deep states to include as valence electrons_  
+##### 3.1 _Automatically finding deep states to include as valence electrons_ 
 
-The partitioning between valence and core states is something that requires a judgement call. **lmfa** has made a default choice for you: the [output](FPsamples/out.bi2te3.lmfa1#bihead) shows that for Bi, **lmfa** selected the 6_s_, 6_p_, 6_d_, 5_f_ states, populating them with charges   2, 3, 0, 0. Note that the total sphere charge is Q=0. You can override the default, e.g. choose the 5_d_ over the 6_d_ with SPEC_ATOM_P; override the _l_ channel charges with SPEC_ATOM_Q.
+The partitioning between valence and core states is something that requires a judgement call. **lmfa**{: style="color: blue"} has made a default choice for you: the [output](FPsamples/out.bi2te3.lmfa1#bihead) shows that for Bi, **lmfa**{: style="color: blue"} selected the 6_s_, 6_p_, 6_d_, 5_f_ states, populating them with charges   2, 3, 0, 0. Note that the total sphere charge is Q=0. You can override the default, e.g. choose the 5_d_ over the 6_d_ with SPEC_ATOM_P; override the _l_ channel charges with SPEC_ATOM_Q.
 
-As was explained [earlier](#autobas), when HAM_AUTOBAS_QLOC is set **lmfa** will look for shallow core levels below 6_s_, 6_p_, 6_d_, 5_f_ states, and as [this table](FPsamples/out.bi2te3.lmfa1#localorbital) shows **lmfa** selected the 5_d_ orbital which is normally a core state, to be included as a [local orbital](fp.html#localorbitals) so that the usual 6_d_ state and the 5_d_ state are simultaneously included in the basis. Even though the 5_d_ state is fairly deep (the [output](FPsamples/out.bi2te3.lmfa1#bicore) shows it lies at −2 Ry), the criterion of having a charge density outside the smoothing radius greater than 3×10−3 was met. (Use HAM_AUTOBAS_ELOC and HAM_AUTOBAS_QLOC to change these criteria.) **lmfa** supplies information about this to basp0.bi2te3, in the form  PZ=0 0 15.936 (no local orbitals for _s_ or _p_ states). The 0.936 is significant: it tells **lmf** what boundary condition to use for the 5_d_ radial function.
+As was explained [earlier](#autobas), when HAM_AUTOBAS_QLOC is set **lmfa**{: style="color: blue"} will look for shallow core levels below 6_s_, 6_p_, 6_d_, 5_f_ states, and as [this table](FPsamples/out.bi2te3.lmfa1#localorbital) shows **lmfa**{: style="color: blue"} selected the 5_d_ orbital which is normally a core state, to be included as a [local orbital](fp.html#localorbitals) so that the usual 6_d_ state and the 5_d_ state are simultaneously included in the basis. Even though the 5_d_ state is fairly deep (the [output](FPsamples/out.bi2te3.lmfa1#bicore) shows it lies at −2 Ry), the criterion of having a charge density outside the smoothing radius greater than 3×10−3 was met. (Use HAM_AUTOBAS_ELOC and HAM_AUTOBAS_QLOC to change these criteria.) **lmfa**{: style="color: blue"} supplies information about this to _basp0.bi2te3_{: style="color: green"}, in the form  PZ=0 0 15.936 (no local orbitals for _s_ or _p_ states). The 0.936 is significant: it tells **lmf**{: style="color: blue"} what boundary condition to use for the 5_d_ radial function.
 
-##### _Automatically finding linearization energies_
+##### 3.2 _Automatically finding linearization energies_
 
-Because HAM_AUTOBAS_P is set, **lmfa** save estimates for logarithmic derivative parameters P into basp0._ext_. As is well known from elementary quantum mechanics, and as described [here](lmto.html#pbasp), there is a relation between the energy of a wave function and its logaritmic derivative at some radius. This information is supplied through the parameters P.
+Because HAM_AUTOBAS_P is set, **lmfa**{: style="color: blue"} save estimates for logarithmic derivative parameters P into basp0._ext_. As is well known from elementary quantum mechanics, and as described [here](lmto.html#pbasp), there is a relation between the energy of a wave function and its logaritmic derivative at some radius. This information is supplied through the parameters P.
 
-**lmfa** calculates P for the free-atom potential. Since this potential is not so far removed from the crystal potential, these parameters can find the "band center" reasonably well for each partial wave _l_. In any case, these are only estimates; they normally get "floated" in the self-consistency cycle.
+**lmfa**{: style="color: blue"} calculates P for the free-atom potential. Since this potential is not so far removed from the crystal potential, these parameters can find the "band center" reasonably well for each partial wave _l_. In any case, these are only estimates; they normally get "floated" in the self-consistency cycle.
 
-##### _Automatically finding envelope function parameters_
+##### 3.3 _Automatically finding envelope function parameters_
 
-Finally, the input file contains AUTOBAS[MTO=1]. This causes **lmfa** to envelope function parameters [RSMH and EH](fp.html#spec) (RSMH is the [most important](FPtutorial.html#optimizebasis) of the two) that fit the free atom wave functions well, and save the result in basp0.bi2te3. Unfortunately, what is optimum for the free atom is not optimum for the crystal, but the parameters are a reasonable starting point. These parameters are important, as they determine the quality of the basis. Later we discuss ways to optimize them, or improve the basis quality by adding APWs. **blm** cannot automatically determine every required input from the structural data. But for the following reasons: **lmf** will not run properly as the situation now stands
+Finally, the input file contains AUTOBAS[MTO=1]. This causes **lmfa**{: style="color: blue"} to envelope function parameters [RSMH and EH](fp.html#spec) (RSMH is the [most important](FPtutorial.html#optimizebasis) of the two) that fit the free atom wave functions well, and save the result in _basp0.bi2te3_{: style="color: green"}. Unfortunately, what is optimum for the free atom is not optimum for the crystal, but the parameters are a reasonable starting point. These parameters are important, as they determine the quality of the basis. Later we discuss ways to optimize them, or improve the basis quality by adding APWs. **blm** cannot automatically determine every required input from the structural data. But for the following reasons: **lmf**{: style="color: blue"} will not run properly as the situation now stands
 
 
 
-1.   The [basis set](fp.html) has to be specified. **lmfa** autogenerated parameters for a basis set, and saved the result to basp0.bi2te3. A decision must be made whether to use **lmfa**'s choices for RSMH, EH, P, and PZ, to supply your own, or to modify **lmfa**'s choice. In any case, you can do it in one of two ways:
+1.   The [basis set](fp.html) has to be specified. **lmfa**{: style="color: blue"} autogenerated parameters for a basis set, and saved the result to _basp0.bi2te3_{: style="color: green"}. A decision must be made whether to use **lmfa**{: style="color: blue"}'s choices for RSMH, EH, P, and PZ, to supply your own, or to modify **lmfa**{: style="color: blue"}'s choice. In any case, you can do it in one of two ways:
 
-    *   With your text editor pick up the lines in basp0.bi2te3 for Te and Bi, and copy them to ctrl.bi2te3, e.g.
+    *   With your text editor pick up the lines in _basp0.bi2te3_{: style="color: green"} for Te and Bi, and paste them into _ctrl.bi2te3_{: style="color: green"}, e.g.
 
             ATOM=Te Z= 52  R= 2.870279
             RSMH= 1.615 1.681 1.914 1.914 EH= -0.888 -0.288 -0.1 -0.1 P= 5.901 5.853 5.419 4.187
             ATOM=Bi Z= 83  R= 2.856141
-            RSMH= 1.674 1.867 1.904 1.904 EH= -0.842 -0.21 -0.1 -0.1 P= 6.896 6.817 6.267 5.199 PZ= 0 0 15.936  
+            RSMH= 1.674 1.867 1.904 1.904 EH= -0.842 -0.21 -0.1 -0.1 P= 6.896 6.817 6.267 5.199 PZ= 0 0 15.936
 
-    *   Copy basp0.bi2te3 to basp.bi2te3, and modify it as you like. File basp._ext_ is read after the main input file is read. If basp._ext_ exists, and one or more of the following tokens is present, their corresponding parameters _may_ be read from basp._ext_:
+    *   Copy _basp0.bi2te3_{: style="color: green"} to _basp.bi2te3_{: style="color: green"}, and modify it as you like. File basp._ext_ is read after the main input file is read. If basp._ext_ exists, and one or more of the following tokens is present, their corresponding parameters _may_ be read from basp._ext_:
     *   AUTOBAS[MTO]: read RSMH,EH (also possibly RSMH2,EH2)
     *   AUTOBAS[P]: read P
     *   AUTOBAS[PZ]: read PZ
 
-    If some this information is given in both the ctrl file and the basp file, the AUTOBAS settings tell **lmf** which to use, as described [here](#basprules).
+    If some this information is given in both the ctrl file and the basp file, the AUTOBAS settings tell **lmf**{: style="color: blue"} which to use, as described [here](#basprules).
 
-2.  The atm file was created by **lmfa** without prior knowledge that the 5_d_ local orbital is to be included as a valence state (via a local orbital). Thus it incorrectly partitioned the core and valence charge. You must do one of the following:
+2.  The atm file was created by **lmfa**{: style="color: blue"} without prior knowledge that the 5_d_ local orbital is to be included as a valence state (via a local orbital). Thus it incorrectly partitioned the core and valence charge. You must do one of the following:
 
-    *   Remove  PZ=0 0 15.936 from basp.bi2te3. It will no longer be treated as a valence state. Removing it means the remaining envelope functions are much smoother, which allows you to get away with a coarser mesh density, as described [below](#gmax). Whether you need it or not depends on the context.
+    *   Remove **PZ=0 0 15.936** from _basp.bi2te3_{: style="color: green"}. It will no longer be treated as a valence state. Removing it means the remaining envelope functions are much smoother, which allows you to get away with a coarser mesh density, as described [below](#gmax). Whether you need it or not depends on the context.
 
-    *   Copy basp0.bi2te3 to basp.bi2te3 and run **lmfa** over again:
+    *   Copy _basp0.bi2te3_{: style="color: green"} to _basp.bi2te3_{: style="color: green"} and run **lmfa**{: style="color: blue"} over again:
 
-            cp basp0.bi2te3 basp.bi2te3
-            lmfa bi2te3
+            $ cp basp0.bi2te3 basp.bi2te3
+            $ lmfa bi2te3
 
-    With the latter choice **lmfa** operates a little differently from before as can be seen by comparing [new output](FPsamples/out.bi2te3.lmfa2) with the old. Initially the Bi 5_d_ was part of the [core](FPsamples/out.bi2te3.lmfa1#bicore); now is included as part of the [valence](FPsamples/out.bi2te3.lmfa2#xxx2).
+    With the latter choice **lmfa**{: style="color: blue"} operates a little differently from before as can be seen by comparing [new output](FPsamples/out.bi2te3.lmfa2) with the old. Initially the Bi 5_d_ was part of the [core](FPsamples/out.bi2te3.lmfa1#bicore); now is included as part of the [valence](FPsamples/out.bi2te3.lmfa2#xxx2).
 
-3.  **blm** does not by default assign any value to the plane wave cutoff for the interstitial density. **lmf** reads this information through [HAM_GMAX](FPtutorial.html#GMAX). It is a required input; but **blm** does not pick a value because its [proper choice](FPtutorial.html#meshdensity) depends on the smoothness of the basis. **lmfa** will determine a suggested value for HAM_GMAX for you. In the present instance, when the usual 6_s_, 6_p_, 6_d_, 5_f_ states are included **lmfa** recommends GMAX=4.4 as can be seen by inspecting the [first **lmfa** run](FPsamples/out.bi2te3.lmfa1#gmax). In the second run it recommends GMAX=4.1 from the valence states alone (as before), but because of the 5_d_ state **lmfa** recommends that [GMAX=8.1](FPsamples/out.bi2te3.lmfa2#gmax). The 5_d_ state is strongly peaked at around the atom, and requires more plane waves to represent reasonably, even a smoothed version of it, than the other states. The difference between 8.1 and 4.4 is substantial, and it reflects the additional computational cost of including deep core-like states in the valence. This is the all-electron analog of the "hardness" of the pseudopotential in pseudopotential schemes. If you want high-accuracy calculations (especially in the _GW_ context), you will need to include these states as valence. This particular choice of local orbital is rather overkill for LDA calculations however. If you eliminate the Bi 5_d_ local orbital you can set GMAX=4.4 and significantly speed up the execution time.
+3.  **blm** does not by default assign any value to the plane wave cutoff for the interstitial density. **lmf**{: style="color: blue"} reads this information through [HAM_GMAX](FPtutorial.html#GMAX). It is a required input; but **blm** does not pick a value because its [proper choice](FPtutorial.html#meshdensity) depends on the smoothness of the basis. **lmfa**{: style="color: blue"} will determine a suggested value for HAM_GMAX for you. In the present instance, when the usual 6_s_, 6_p_, 6_d_, 5_f_ states are included **lmfa**{: style="color: blue"} recommends GMAX=4.4 as can be seen by inspecting the [first **lmfa**{: style="color: blue"} run](FPsamples/out.bi2te3.lmfa1#gmax). In the second run it recommends GMAX=4.1 from the valence states alone (as before), but because of the 5_d_ state **lmfa**{: style="color: blue"} recommends that [GMAX=8.1](FPsamples/out.bi2te3.lmfa2#gmax). The 5_d_ state is strongly peaked at around the atom, and requires more plane waves to represent reasonably, even a smoothed version of it, than the other states. The difference between 8.1 and 4.4 is substantial, and it reflects the additional computational cost of including deep core-like states in the valence. This is the all-electron analog of the "hardness" of the pseudopotential in pseudopotential schemes. If you want high-accuracy calculations (especially in the _GW_ context), you will need to include these states as valence. This particular choice of local orbital is rather overkill for LDA calculations however. If you eliminate the Bi 5_d_ local orbital you can set GMAX=4.4 and significantly speed up the execution time.
 
-4.  **blm** assigns the initial _k_-point mesh to zero. Note the following lines in actrl.bi2te3:
+4.  **blm** assigns the initial _k_-point mesh to zero. Note the following lines in _actrl.bi2te3_{: style="color: green"}:
 
         % const met=5 nk=0
-        BZ      NKABC={nk}  METAL={met}  # NKABC requires 1 to 3 positive numbers  
+        BZ      NKABC={nk}  METAL={met}  # NKABC requires 1 to 3 positive numbers
 
     BZ_NKABC governs the mesh of _k_-points. An appropriate choice will depend strongly on the context of the calculation and the sytem of interest; the density-of-states at the Fermi level; whether Fermi surface properties are important; whether you want optical properties as well as total energies well described; the precision you need; the integration method, and so on. Any automatic formula can be dangerous, so **blm** will not choose a default for you. In this case, a 4×4×4 mesh works well. Use your text editor to change nk=0 to nk=4. Alternatively, supply --nk=.. to **blm** on the command line, as was done in [this tutorial](Demo_QSGW_Si.html#nk).
 
-    Note that as generated, ctrl.bi2te3 will reflect METAL=5. Using METAL=5 with the tetrahedron integration is the recommended way to handle Fermi surface integration in metals. See [this tutorial](FPtutorial.html#metal) for some discussion.
+    Note that as generated, _ctrl.bi2te3_{: style="color: green"} will reflect METAL=5. Using METAL=5 with the tetrahedron integration is the recommended way to handle Fermi surface integration in metals. See [this tutorial](FPtutorial.html#metal) for some discussion.
 
 #### _Input files for GW_
 
 _GW_ calculations demand more of the basis set because unuoccupied states are important. To set up a job in preparation for a _GW_ calculation, invoke **blm** as :
 
-    blm --gw bi2te3  
+    $ blm --gw bi2te3
 
-Compare actrl.bi2te3 generated with the --gw switch to one without. One important difference will be that the default basis parameters are modified because AUTOBAS becomes:
+Compare _actrl.bi2te3_{: style="color: green"} generated with the --gw switch to one without. One important difference will be that the default basis parameters are modified because AUTOBAS becomes:
 
     AUTOBAS[PNU=1 LOC=1 LMTO=5 MTO=4 GW=1]
 

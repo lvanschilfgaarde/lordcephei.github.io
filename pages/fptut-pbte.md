@@ -8,10 +8,14 @@ permalink: "/lmf_pbte_tutorial/"
 header: no
 ---
 
+_____________________________________________________________
+
 ### _Table of Contents_
 {:.no_toc}
 *  Auto generated table of contents
 {:toc}  
+
+_____________________________________________________________
 
 ### _Purpose_
 
@@ -23,11 +27,13 @@ This tutorial carries out a self-consistent density-functional calculation for P
 4. synchronizes with an [ASA tutorial](https://lordcephei.github.io/asa-doc/) on the same system, enabling a comparison of the ASA and full potential methods.
 5. forms the starting point for other tutorials on optics, a QSGW calculation of PbTe, and comparing energy bands computed in different ways.
 
+_____________________________________________________________
+
 ### _Command summary_     
 
-The tutorial starts under the heading "Tutorial"; you can jump straight to the commands by clicking on the "Command summary" dropdown menu.
+The tutorial starts under the heading "Tutorial"; you can jump straight to the commands by clicking on the "Commands" box below.
 
-<div onclick="elm = document.getElementById('1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
+<div onclick="elm = document.getElementById('1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Commands - Click to show</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="1">{:/}
 
     $ blm init.pbte
@@ -40,10 +46,10 @@ _____________________________________________________________
 
 ### _Preliminaries_
 
-____________________________________________________________
-
 Executables **blm**{: style="color: blue"}, **lmchk**{: style="color: blue"}, **lmfa**{: style="color: blue"}, and **lmf**{: style="color: blue"} are required and are assumed to be in your path. 
 The tutorial starts under the heading "Tutorial"; you can see a synopsis of the commands by clicking on the "Command summary" dropdown menu.
+
+____________________________________________________________
 
 ### _Tutorial_
 
