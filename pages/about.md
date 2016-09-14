@@ -17,19 +17,18 @@ Packages distributed in the Questaal suite include:
 + **Full Potential LMTO:**   This is an all-electron implementation of density-functional theory using convolutions of Hankel functions and Gaussian orbitals as a basis set.  This code also provides an interface to a GW package. It is a fairly accurate basis, and has been benchmarked against other all-electron schemes [XXX ... check with Jerome].  You can also use Augmented Plane Waves as a basis, or a combination of the two, as described in
 [this paper](http://link.aps.org/doi/10.1103/PhysRevB.81.125117).
 A new, highly accurate tight-binding basis will soon be available, with the moniker "Jigsaw Puzzle Orbitals" (JPO's).
-[This page](https://lordcephei.github.io/fpintrotut.md) presents a basic tutorial
-for the main program **lmf.**{: style="color: blue"}.
+A basic tutorial for the main full-potential program **lmf.**{: style="color: blue"} can be found [here](https://lordcephei.github.io/lmf_tutorial).
 
 + **GW:** A separate package contains an all-electron implementation of the _GW_
 approximation, using the full-potential package to supply a front end with single particle
-quantities GW requires. The _GW_ packages also a "product basis" set for two-particle
+quantities GW requires. The _GW_ code uses a "mixed product basis" set for two-particle
 quantities such as the bare and screened coulomb interaction.  Its primary
 function is to calculate quasiparticle levels (or more generally
 energy band structure) within _GW_ theory.  Also part of this package is the
 ability to calculate optical and spin response functions, and spectral
 functions. See [this paper](http://link.aps.org/abstract/PRB/v76/e165106) for the theory corresponding to
 the present implementation.  The present code is a descendent of the original
-[original ecalj package](github.com/tkotani/ecalj) developed by Kotani, Faleev and van Schilfgaarde.
+[ecalj package](https://github.com/tkotani/ecalj) developed by Kotani, Faleev and van Schilfgaarde.
 
 + **QSGW:** _GW_ is usually implemented as an extension
 to the LDA, i.e. _G_ and _W_ are generated from the LDA.
@@ -53,7 +52,7 @@ post-processing analysis of the dynamical self energy.
 
 + **LMTO-ASA:** The original formulation of the LMTO method included
 the Atomic Spheres Approximation (ASA). Crystals are divided up into
-overlapping spheres, and only the l=0 component of the potential
+overlapping spheres, and only the _l_=0 component of the potential
 inside each sphere is kept.  This approximation is very efficient ---
 speeds rival those found in empirical tight-binding approaches, but
 its range of validity is limited.  This is because sphere must fill
@@ -78,16 +77,16 @@ disordered local moments, re a combination of the two.
 
 + **Principal Layer Green's Function :** This code, **lmpg**{: style="color: blue"}, is an analog of
 **lmgf**{: style="color: blue"} for layered systems.  Periodic boundary conditions are used in two
-dimensions.  A Principal layer technique is used for the dimension.  This is
-advantageous because (1) periodic boundary conditions in this dimension are not
-needed and (2) the computation time scales only linearly in the number of
-principal layers.  It can be used in a self-consistent framework, and also to
-calculation transmission using Landauer-Buttiker theory.  There is a
-non-equilibrium Keldysh formulation of the ASA hamiltonian of the theory
+dimensions, while the third dimension is treated in real space with a principal layer technique.  This is
+advantageous because (1) semi-infinite boundary conditions are used this dimension, which correspond
+to the physical realisation of layered materials and (2) the computation time scales only linearly in the number of
+principal layers.  **lmpg**{: style="color: blue"} can be used in a self-consistent framework, and also to
+calculate transmission and reflection in the context of Landauer-Buttiker theory.  There is a
+non-equilibrium Keldysh formulation of the ASA hamiltonian, as
 described in [this paper](http://link.aps.org/doi/10.1103/PhysRevB.71.195422).
 
 + **QSGW + DMFT :** When localised electronic orbitals (*d-* or *f-* type)
-participate to the valence region, the effect of electronic correlation can not
+participate in the states near the fermi level, the effect of electronic correlation can not
 be included as a small perturbation (RPA) and more accurate methods have to be
 invoked. The Questaal code has been interfaced with the Continuous Time Quantum
 Monte Carlo solver

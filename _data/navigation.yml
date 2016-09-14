@@ -21,6 +21,10 @@
     url: "/package_overview/"
   - title: "Installation"
     url: "/install/"
+  - title: "Full Potential Overview"
+    url: "/fpoverview/"
+  - title: "lmgf documentation"
+    url: "/lmgf-documentation/"
   - program:
     - name: "Input Files"
       prefix: "/input"
@@ -43,15 +47,6 @@
         url: "/lm/"
       - title: "lmf"
         url: "/lmf/"
-    - name: "lmf"
-      content:
-      - title: "Full Potential Overview"
-        url: "/fpoverview/"
-    - name: "lmgf"
-      prefix: "/lmgf"
-      content:
-      - title: "lmgf documentation"
-        url: "/lmgf-documentation/"
 
 - title: "Tutorials"
   url: ""
