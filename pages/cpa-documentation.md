@@ -35,7 +35,7 @@ To turn on chemical and/or magnetic CPA, additons are required to the **SPEC** a
 
 #### _SPEC category_
 
-**Chemical Disorder**{: style="color: purple"}. Additional species must be defined for chemical CPA, and their concentrations.
+**Chemical Disorder**{: style="color: orange"}. Additional species must be defined for chemical CPA, and their concentrations.
 
 **SPEC ATOM CPA=** and **C=** together turn on chemical CPA for a particular species.
 
@@ -47,7 +47,7 @@ specifies that species Fe (whenever it appears in the basis (defined in **SITE**
 
 A CPA species may refer to itself. For example, if the Fe species above is the first species to be read from the ctrl file, then **CPA=1** refers to itself. All other parameters like _Z_, _R_, will be taken from this species. 
 
-**Spin Disorder**{: style="color: purple"}. No additional species are required, but the number of orientations must be specified.
+**Spin Disorder**{: style="color: orange"}. No additional species are required, but the number of orientations must be specified.
 
 **SPEC ATOM NTHET=** turns on spin disorder for a particular atom type.
 
@@ -55,4 +55,4 @@ A species with non-zero **NTHET** can be listed as a CPA component, and it will 
 
 **NTHET=2** specifies that there will be two CPA-DLM components with polar angles 0 and π. **NTHET=N** with $$N>2$$ specifies a vector-DLM model, for which N polar angles for the local moment direction are selected using the Gaussian quadrature for the sphere. (Axial symmetry is always assumed and the integral over the azimuthal angle is taken analytically.)
 
-**Combined Chemical and Spin Disorder**{: style="color: purple"}. Either spin or chemical disorder may be specified; they may also be included simultaneously. If only **CPA=** is chosen, that species will be treated with chemical, not spin, disorder. If only **NTHET=** is chosen, that species be treated with spin disorder only. Specifying both means that the CPA will include both chemical and spin disorder. For example, in the above example for CPA, if **SPEC ATOM=Fe** includes a tag **NTHET=2** (while species 4 and 5 have **NTHET=0**), species Fe describes a CPA site with 4 components: 25% Fe, 25% Fe with a reversed local moment, 30% species 4 and 20% species 5. 
+**Combined Chemical and Spin Disorder**{: style="color: orange"}. Either spin or chemical disorder may be specified; they may also be included simultaneously. If only **CPA=** is chosen, that species will be treated with chemical, not spin, disorder. If only **NTHET=** is chosen, that species be treated with spin disorder only. Specifying both means that the CPA will include both chemical and spin disorder. For example, in the above example for CPA, if **SPEC ATOM=Fe** includes a tag **NTHET=2** (while species 4 and 5 have **NTHET=0**), species Fe describes a CPA site with 4 components: 25% Fe, 25% Fe with a reversed local moment, 30% species 4 and 20% species 5. 
