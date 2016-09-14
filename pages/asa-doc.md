@@ -70,6 +70,7 @@ Now the only thing left to do is to rename _actrl.pbte_{: style="color: green"} 
 **blm**{: style="color: blue"} writes to actrl, rather than ctrl, to avoid overwriting a file you may wish to keep.
 
 **Note**{: style="color: red"}
+
 + Lines which begin with ‘#’ are comment lines and are ignored. (More generally, text following a `#’ in any line is ignored).
 + Lines beginning with ‘%’ are directives to the preprocessor. Directives can perform various functions similar to a normal programming language, such as assigning variables, evaluating expressions, conditionally readings some lines, and repeated loops over sections of input.
 
