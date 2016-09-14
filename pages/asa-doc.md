@@ -113,7 +113,7 @@ to
 	
       NBAS=2+{les?2:0}  NL=4  NSPEC=2+{les?1:0}
 
-Quantities in brackets **{...}** are algebraic expressions. In particular, **{les?2:0}** uses C-like syntax consisting of three expressions separated by '**?**' and '**:**'.  The first (**les** in this case) is evaluated.  If **les** is nonzero, the result of the entire bracket is the result of the second expression (**2** in this case) and otherwise the result of the third (**0**).  Returning to the line above,
+Quantities in brackets **{...}** are algebraic expressions. In particular, **{les?2:0}** uses C-like syntax consisting of three expressions separated by '**?**' and '**:**'.  The first (**les** in this case) is evaluated.  If **les** is nonzero, the result of the entire bracket is the result of the second expression (**2** in this case) and otherwise the result of the third (**0**). In the line above,
 the contents of tag **NBAS=** can be interpreted as  "if **les**>0 then  **NBAS=4** else **NBAS=2**". Similarly the contents of **NSPEC** can be interpreted as "if **les**>0 **NSPEC**=3 else **NSPEC=2**".  "**les**" is a variable that is defined in the control file through the following line
 
       % const nit=10 les=1
