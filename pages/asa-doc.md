@@ -74,6 +74,13 @@ If you used **blm**{: style="color: blue"} as above to find the empty spheres (E
 
 
 ###### _2.1 Empty Spheres_
+Begin by running **blm**{: style="color: blue"} with a slightly different set of switches:
+
+    $ blm --express=0 --asa --wsitex --addes init.pbte
+    $ cp actrl.pbte ctrl.pbte
+    
+`--addes` differs from `--findes` in that in the former case, **blm**{: style="color: blue"} prepares the input file for adding empty spheres, without actually adding them, while in the latter case **blm**{: style="color: blue"} addes them automatically.
+
 To check ES and volume packing invoke: 
 
     $ lmchk ctrl.pbte
@@ -86,7 +93,7 @@ here the cell volume, sum of all potential volumes and their ratio are presented
 
       OVMIN, 38 pairs:  fovl = 4.24366e-7   <ovlp> = 8.7%   max ovlp = 8.7%
 
-This line tells us about the average and maximum sphere overlaps. Generally, for ASA the overlaps should be kept below 16% where possible.  For full potential calculations generally 5\% and below is safe. For _GW_ calculations it should be below 2\%. As the sum of sphere volumes is less than the cell volume, we have to add an empty sphere to meet this requirement. Empty spheres can be thought of as "atoms" with zero atomic number.
+This line tells us about the average and maximum sphere overlaps. Generally, for ASA the overlaps should be kept below 16% where possible.  For full potential calculations generally 5% and below is safe. For _GW_ calculations it should be below 2%. As the sum of sphere volumes is less than the cell volume, we have to add an empty sphere to meet this requirement. Empty spheres can be thought of as "atoms" with zero atomic number.
 
 The appropiate space filling spheres can be found using **lmchk**{: style="color: blue"} by invoking:
 
