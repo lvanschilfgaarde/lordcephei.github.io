@@ -90,7 +90,7 @@ To check ES and volume packing invoke:
 
     $ lmchk ctrl.pbte
 
-the full output can be viewed by clicking here (waiting for file storing system), however the important informations regarding the volume packing and overlap are towards the end of the standard output (stdout) and in this particular case it can be seen (in the case of no ES) in one line
+The full output can be viewed by clicking here (waiting for file storing system), however the important informations regarding the volume packing and overlap are towards the end of the standard output (stdout) and in this particular case it can be seen (in the case of no ES) in one line
     
     Cell volume= 448.07190   Sum of sphere volumes= 301.06511 (0.67191)
 
@@ -130,7 +130,7 @@ the contents of tag **NBAS=** can be interpreted as  "if **les**>0 then  **NBAS=
 
       % const nit=10 les=1
 
-here we have also defined **nit** with value of 10. Next step is to pass the information about the empty sphere sites to the control file. We do this by commenting the line beginning **FILE=site** and uncommenting the line **FILE=essite** as the new essite.pbte has the new appropiate information. The last step is to copy the new species information from file _poses.pbte_{: style="color: green"} file to the SPEC category within the control file (including the new empty spheres).
+Here we have also defined **nit** with value of 10.  Finally, we have to pass the information about the empty sphere sites to the control file. We do this by commenting the line beginning **FILE=site** and uncommenting the line **FILE=essite**, as the newly generated _essite.pbte_{: style="color: green"} has the new appropiate information. The last step is to copy the new species information from file _poses.pbte_{: style="color: green"} file to the **SPEC** category within the control file (including the new empty spheres).
 
 ###### _2.2 Self-consistency_
 Before a self consistant calculation can be performed the real-space structure constants have to be generated. They are made once, for a given structure, with a separate tool
