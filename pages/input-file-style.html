@@ -1,0 +1,723 @@
+<!DOCTYPE html><html>
+
+<head>
+<title>LMTO Input System </title>
+<style>
+
+/* For hyperlinks */
+a:link {color:#FF0000;}      /* unvisited link */
+a:link {color:#222288;}      /* unvisited link */
+a:visited {color:#228822;}  /* visited link */
+a:hover {color:#FF00FF;}  /* mouse over link */
+a:active {color:#0000FF;}  /* selected link */
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;}
+a:hover {text-decoration:underline;}
+a:active {text-decoration:underline;}
+
+<body {
+       background-color:#ffffgg;
+     }
+ h1 {
+      color:#880000;
+      text-align:center;
+      font-size:12px;
+    }
+ h2 {
+      color:#bb3300;
+      font-size:120%;
+      font-weight:normal;
+      font-style:italic;
+    }
+
+ h3 {
+      color:#33bb00;
+      font-size:110%;
+      font-weight:normal;
+      font-style:italic;
+      text-indent: 0.5em;
+    }
+
+ h4 {
+      color:#000000;
+      font-size:100%;
+      font-weight:bold;
+      text-indent: 1.0em;
+    }
+
+ h5 {
+      color:#444488;
+      font-size:100%;
+      font-weight:bold;
+      font-style:normal;
+      text-indent: 1.5em;
+    }
+
+ hn {
+      color:#000000;
+      font-size:100%;
+      font-weight:normal;
+      font-style:normal;
+      text-indent: 1.5em;
+    }
+
+  P {
+<!--  font-family:"Times New Roman"; -->
+<!--  font-size:12px; -->
+<!--  color: red; -->
+    }
+
+  q {
+      color: red;
+    }
+
+  a {
+        color: blue;
+    }
+
+  tlarge {
+       <font-size="+1">
+    }
+
+  p.pos_left
+  {
+  position:relative;
+  left:-20px;
+  }
+
+  p.pos_right
+  {
+  position:relative;
+  left:20px;
+  right:520px;
+  }
+
+div.ex
+{
+width:3in;
+padding:10px;
+border:5px solid gray;
+margin:0px;
+}
+
+
+</style>
+
+<!-- Enables the use of latex -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</head>
+
+<H1><B><FONT size="+2">Input File, Structure and Format (v7.10)</FONT></B></H1>
+
+This page documents how the the main input
+file, <FONT size="+1"><tt>ctrl.<i>ext</i></tt></FONT>, is structured.
+
+<h2><A name="intro"></A>Introduction</h2>
+
+<P> The following shows a minimal input file for the compound Bi<sub>2</sub>Te<sub>3</sub>,
+written for the full-potential program <b>lmf</b>.
+
+<pre>
+<FONT color="#bb0000">categories</FONT>                  <FONT color="#0000ff">tokens</FONT>
+ <FONT color="#ff0000">&darr;</FONT>                            <FONT color="#0000ff">&darr;</FONT>
+<FONT color="#bb0000">VERS</FONT>    <FONT color="#0000ff">LM:</FONT>7 <FONT color="#0000ff">FP:</FONT>7
+<FONT color="#bb0000">HAM</FONT>     <FONT color="#00bb00">AUTOBAS</FONT>[<FONT color="#0000ff">PNU=</FONT>1 <FONT color="#0000ff">LOC=</FONT>1 <FONT color="#0000ff">LMTO=</FONT>3 <FONT color="#0000ff">MTO=</FONT>1 <FONT color="#0000ff">GW=</FONT>0]
+        <FONT color="#0000ff">GMAX=</FONT>8.1
+<FONT color="#bb0000">ITER</FONT>    <FONT color="#0000ff">MIX=</FONT>B2,b=.3  <FONT color="#0000ff">NIT=</FONT>10  <FONT color="#0000ff">CONVC=</FONT>1e-5
+<FONT color="#bb0000">BZ</FONT>      <FONT color="#0000ff">NKABC=</FONT>3  <FONT color="#0000ff">METAL=</FONT>5  <FONT color="#0000ff">N=</FONT>2 <FONT color="#0000ff">W=</FONT>.01
+<FONT color="#bb0000">STRUC</FONT>
+  <FONT color="#0000ff">NSPEC=</FONT>2  <FONT color="#0000ff">NBAS=</FONT>5  <FONT color="#0000ff">NL=</FONT>4
+  <FONT color="#0000ff">ALAT=</FONT>4.7825489
+  <FONT color="#0000ff">PLAT=</FONT> 1     0          4.0154392
+       -0.5   0.8660254  4.0154392
+       -0.5  -0.8660254  4.0154392
+<FONT color="#bb0000">SPEC</FONT>
+  <FONT color="#0000ff">ATOM=</FONT>Te         <FONT color="#0000ff">Z=</FONT> 52  <FONT color="#0000ff">R=</FONT> 2.870279
+  <FONT color="#0000ff">ATOM=</FONT>Bi         <FONT color="#0000ff">Z=</FONT> 83  <FONT color="#0000ff">R=</FONT> 2.856141
+<FONT color="#bb0000">SITE</FONT>
+ <FONT color="#0000ff"> ATOM=</FONT>Te         <FONT color="#0000ff">POS=</FONT>  0.0000000   0.0000000   0.0000000
+  <FONT color="#0000ff">ATOM=</FONT>Te         <FONT color="#0000ff">POS=</FONT> -0.5000000  -0.8660254   1.4616199
+  <FONT color="#0000ff">ATOM=</FONT>Te         <FONT color="#0000ff">POS=</FONT>  0.5000000   0.8660254  -1.4616199
+  <FONT color="#0000ff">ATOM=</FONT>Bi         <FONT color="#0000ff">POS=</FONT>  0.5000000   0.8660254   0.8030878
+  <FONT color="#0000ff">ATOM=</FONT>Bi         <FONT color="#0000ff">POS=</FONT> -0.5000000  -0.8660254  -0.8030878
+&minus;&minus;&minus;&minus;&minus;&minus;&minus;&minus;&minus;&minus;&minus;&minus;&minus;&minus;&minus;&minus;&minus;&minus;&minus;
+</pre>
+
+Each element of <b>data</b> (shown in black) follows a 
+<FONT color="#0000ff">token</FONT> (shown in blue).  The 
+<FONT color="#0000ff">token</FONT> tells the reader
+what the data signifies.
+
+<P> Each <FONT color="#0000ff">token</FONT> belongs to a <FONT color="#ff0000">category</FONT>
+(shown in red).  
+<FONT color="#ff0000"><FONT size="+1"><tt>VERS</tt></FONT></FONT>, 
+<FONT color="#ff0000"><FONT size="+1"><tt>ITER</tt></FONT></FONT>,
+<FONT color="#ff0000"><FONT size="+1"><tt>BZ</tt></FONT></FONT>,
+<FONT color="#ff0000"><FONT size="+1"><tt>STRUC</tt></FONT></FONT>,
+<FONT color="#ff0000"><FONT size="+1"><tt>SPEC</tt></FONT></FONT>,
+<FONT color="#ff0000"><FONT size="+1"><tt>SITE</tt></FONT></FONT>
+are categories that organize the input by topic.
+<br>Any text that begins in the first column is a category.
+
+<P> Thus the full identifier consists of a sequence of tags, e.g. <FONT size="+1"><tt><FONT color="#bb0000">BZ</FONT>_<FONT color="#0000ff">METAL</FONT></tt></FONT>,
+whose components are stuctured like a tree.  
+
+<P> Sometimes the identifier has three tags, e.g.
+<FONT size="+1"><tt><FONT color="#bb0000">HAM</FONT>_<FONT color="#00bb00">AUTOBAS</FONT>_<FONT color="#0000ff">LOC</FONT></tt></FONT>.
+The leading tag is the 
+<FONT color="#bb0000">category</FONT>; the last is the
+<FONT color="#0000bb">token</FONT>.
+
+
+<h2><A name="intro"></A>Tags, Categories, and Tokens</h2>
+
+The input file offers a very flexible free format: tags identify
+data to be read by a program, e.g.
+<pre>
+   W=.01
+</pre>
+reads a parameter (.01) from tag <FONT size="+1"><tt>W</tt></FONT>.
+
+Tags are organized in a tree structure: a tag connected to the trunk of the tree is
+called a <FONT color="#ff0000">category</FONT>.  A category holds information for a family
+of data, for example &nbsp;<FONT size="+1"><tt><FONT color="#ff0000">BZ</FONT></tt></FONT>&nbsp; contains parameters associated with Brillouin zone
+integration.  The entire input system has at present a grand total
+of <A href="tokens.html">17 categories</A>, though any one
+program uses only a subset of them.
+
+<P> A tag in the outermost branch of the tree points to actual data
+and is called a <FONT color="#0000ff">token</FONT>.  Each category
+contains a collection of tags within it &minus;&minus; usually tokens,
+but sometimes an intermediate tag which contains a collection of
+tokens within it, as described below.
+
+<P> Suppose for example, the calculation you want to do requires Brillouin
+zone integrations of a metallic material, which you plan to to carry out using the
+<A href="bzintegration.html#methods">Methfessel-Paxton sampling method</A>.
+
+two parameters: polynomial order <i>n</i> and
+gaussian width <i>w</i>.  Two tags are used
+to identify them: <i>internally</i> they are represented
+as <FONT size="+1"><tt>BZ_N</tt></FONT>
+and <FONT size="+1"><tt>BZ_W</tt></FONT>, but
+in the input file they are usually expressed as follows:
+<pre>
+BZ  N=2 W=.01
+</pre>
+This format style is the most commonly used because it is clean
+and easy to read; but it conceals the tree structure a little.  The
+same data can equally be written
+<pre>
+BZ[N=2 W=.01]
+</pre>
+Now the tree structure is apparent: <FONT size="+1"><tt>[..]</tt></FONT> delimits the scope of tag <FONT size="+1"><tt>BZ</tt></FONT>.
+See <A href="input.pdf">here</A> for a more complete description of the syntax.
+
+<P>
+The root tag, or category, is <FONT size="+1"><tt>BZ</tt></FONT> in this case.
+Any tag that starts in the first column is a category.  Thus any non-white character appearing
+in the first column automatically starts a new category, and also terminates any
+prior category, if it hasn't been terminated already. <FONT size="+1"><tt>N=</tt></FONT> and <FONT size="+1"><tt>W=</tt></FONT>
+mark tokens <FONT size="+1"><tt>BZ_N</tt></FONT> and <FONT size="+1"><tt>BZ_W</tt></FONT>.
+</P>
+
+<P>
+Apart from the special use of the first column to identify categories, data is free-format,
+apart from a few mild exceptions.  Thus
+<pre>
+BZ  N=2
+    W=.01
+BZ  W=.01 N=2
+BZ[ W=.01 N=2]
+</pre>
+all represent the same information.
+
+<P>
+<FONT color="#0000bb"><I>*Note</I>&nbsp;</FONT> if two categories appear in an input file, only the first is used.
+Subsequent categories are ignored.  Generally, only the first tag is used when more than one appears within a given scope.
+
+<P>
+Usually the tag tree has only two levels (category and token) but not always.  For example, data associated with atomic sites must be supplied for each site.
+In this case the tree has three levels, e.g. <FONT size="+1"><tt>SITE_ATOM_POS</tt></FONT>.
+Site data is typically represented in a format along the following lines:
+<pre>
+SITE    ATOM=Ga  POS=  0   0   0    RELAX=T
+        ATOM=As  POS= .25 .25 .25
+        ATOM=...
+        ...
+END
+</pre>
+The scope of &nbsp;<FONT size="+1"><tt>SITE</tt></FONT>&nbsp; starts at &nbsp;`<FONT size="+1"><tt>SITE</tt></FONT>'&nbsp; and
+terminates just before &nbsp;`<FONT size="+1"><tt>END</tt></FONT>'.
+There will be multiple instances of the &nbsp;<FONT size="+1"><tt>SITE_ATOM</tt></FONT>&nbsp; tag, one for each site.
+The scope of the first instance begins with the first occurrence of &nbsp;<FONT size="+1"><tt>ATOM</tt></FONT>&nbsp;
+and terminates just before the second:
+<pre>
+        ATOM=Ga  POS=  0   0   0    RELAX=T
+</pre>
+And the scope of the second &nbsp;<FONT size="+1"><tt>SITE_ATOM</tt></FONT>&nbsp; is
+<pre>
+        ATOM=As  POS= .25 .25 .25
+</pre>
+Note that &nbsp;<FONT size="+1"><tt>ATOM</tt></FONT>&nbsp; simultaneously acts like a token pointing to data (e.g. <FONT size="+1"><tt>Ga</tt></FONT>)
+and as a tag holding tokens within it, in this case <FONT size="+1"><tt>SITE_ATOM_POS</tt></FONT> and (for the first site)
+<FONT size="+1"><tt>SITE_ATOM_RELAX</tt></FONT>.
+
+<P>
+Some tags are required; others are optional; still others (in fact most) may not be used at all by a particular program.
+If a code needs site data, <FONT size="+1"><tt>SITE_ATOM_POS</tt></FONT> is required, but
+<FONT size="+1"><tt>SITE_ATOM_RELAX</tt></FONT> is probably optional, or not read at all.
+
+
+<P> <A name="preprocessor"></A>
+<P>
+<FONT size="+1">
+<FONT color="#bb3300"><I>Preprocessor</I>&nbsp;</FONT>
+</FONT>
+
+<P>Input lines are passed through a <A href="file-preprocessor.html">preprocessor</A>, which provides a
+wide flexibility in how input files are structured.  The preprocessor has
+many features in common with a programming language, including the
+ability to <A href="file-preprocessor.html#variabledecl">declare variables</A>, evaluate
+<A href="file-preprocessor.html#expressions">algebraic expressions</A>; and it has
+constructs for <A href="file-preprocessor.html#branching">branching</A> and
+<A href="file-preprocessor.html#loops">looping</A>, to make possible multiple or
+conditional reading of input lines.
+
+<P> For example, supposing through a prior preprocessor instruction you have declared a
+variable <FONT size="+1"><tt>range</tt></FONT>, and it has been assigned the
+value <FONT size="+1"><tt>3</tt></FONT>.  This line in the input file
+<pre>
+   RMAX={range+1/4}
+</pre>
+is parsed and turned into
+<pre>
+   RMAX=3.25
+</pre>
+The preprocessor treats text inside
+brackets <FONT size="+1"><tt>{...}</tt></FONT> as an expression
+(usually an algebraic expression), which is evaluated and rendered back as
+an ASCII string.
+
+<P> The preprocessor's programming language makes it possible for a single
+file to serve as input for many materials systems in the manner of a
+database; or as documentation.  Also you can easily vary input
+conditions in a parameteric fashion.
+
+<P> Many files other than &nbsp;`<FONT size="+1"><tt>ctrl.<i>ext</i></tt></FONT>' are first parsed by the preprocessor:
+files for site positions, Euler angles for noncollinear magnetism, among others.
+
+<!-- <h2><FONT color="#bb3300"><I>Command-line arguments</h2> -->
+
+<P>
+<FONT size="+1">
+<FONT color="#bb3300"><I>Command-line arguments</I></FONT>
+</FONT>
+
+<P>Command-line arguments allow for a second, very convenient input
+stream.  In particular you can use them to declare
+and assign values to variables which can modify the input file via the
+preprocessor.  A number of other directives are also possible.
+Here is an example:
+<pre>
+  lmchk -vns=4 -vnm=5 --wpos=pos ...
+</pre>
+<b>lmchk</b> reads site positions, checks for augmentation sphere overlaps,
+and can print out a wealth of other structural data.
+
+The switches tell <b>lmchk</b> to create variables &nbsp;<FONT size="+1"><tt>ns</tt></FONT>&nbsp;
+and &nbsp;<FONT size="+1"><tt>nm</tt></FONT>&nbsp; (assigning values 4 and 5 respectively), and includes
+an instruction to dump site positions to file &nbsp;<FONT size="+1"><tt>pos.<i>ext</i></tt></FONT>.
+
+<P> Following unix style, switches always begin with `<FONT size="+1"><tt>&minus;</tt></FONT>'.  There are many command-line arguments
+that are specific to a particular executable; here some generic ones
+common to most or all programs are described.
+
+Some switches have a single `<FONT size="+1"><tt>&minus;</tt></FONT>'; some
+have two (`<FONT size="+1"><tt>&minus;&minus;</tt></FONT>').  Those with a single
+`<FONT size="+1"><tt>&minus;</tt></FONT>' tend to have an `assignment' function, such as a variables
+declaration (eg <FONT size="+1"><tt>&minus;vx=3</tt></FONT>), while those with two tend to control program
+flow (eg. <FONT size="+1"><tt>&minus;&minus;wpos=<i>name</i></tt></FONT>).  Sometimes there is not a clear distinction ,
+e.g. <FONT size="+1"><tt>&minus;&minus;pr</tt></FONT> and <FONT size="+1"><tt>&minus;pr</tt></FONT>&nbsp; perform the
+same function, namely setting the output verbosity via the command line.
+
+<P> You can also put these switches in the &nbsp;<FONT size="+1"><tt>CMD</tt></FONT>&nbsp; category in the input file.
+The function is similar to a command-line argument, but not identical,
+since preprocessor has already read the input file before the 'CMD'
+switches are read.  Thus the &nbsp;`<FONT size="+1"><tt>&minus;v</tt></FONT>'&nbsp; and &nbsp;`<FONT size="+1"><tt>&minus;c</tt></FONT>'&nbsp; variable declarations have
+no effect.
+
+<P> <A name="genericswitches"></A>
+Some switches common to most or all programs.  These are:
+<pre>
+  --h             lists switches for that program and quits
+                  (warning: sometimes documentation is slightly out of date)
+
+  --input         same as turning on HELP=T in category IO; see HELP= above.
+
+  --show          same as turning on SHOW=T in category IO; see SHOW= above.
+
+  --showp         prints out input file after having run through the
+                  preprocessor, and exits.
+
+  --pr#1[,#2]     sets print verbosities.  #2 is verbosity for generation
+   -pr#1[,#2]     of the potential, and assumes the value of #1 unless specified.
+
+  --time=#1[,#2]  prints out a summary of timings in various branches of
+                  the code at the close of program execution.  Timings
+                  are kept to a nesting level of #1.  If #2 is
+                  nonzero, timings are printed 'on the fly'
+
+  --iactive       turns on 'interactive' mode.  User is queried at
+                  various points, such as whether to continue iterations.
+                  You can specify this in ctrl file 'IO IACTIV='
+  --no-iactive    turns off 'interactive' mode
+
+  -v"name=expr"   declares a numeric variable and assigns to the value of
+                  expression `expr'. Be advised that only the first
+                  declaration of a variable is used.  Later declarations
+                  have no effect.  In addition to the declaration
+                  `name=...'  there are assignment operators
+                  '*=','/=','+=','-=','^=' modify existing variables,
+                  following C syntax, as described in the <A href=file-preprocessor.html>preprocessor documentation</A>.
+
+  -c"name=strn"   declares a character variable and assigns to value `strn'
+
+  --rpos=filnam  After reading input file, read site positions from "filnam"
+
+  --fixpos[:tol=#] Adjust positions slightly, rendering them as
+                  exactly as possible consistent with the symmetry group
+</pre>
+
+<A name="sampleinput"></A>
+<P><FONT size="+1">
+<FONT color="#bb3300"><I>A Sample Input File</I>&nbsp;</FONT>
+</FONT>
+
+<P>The easiest way to see how the input file system and <A href="file-preprocessor.html">preprocessor</A> work is to
+look at a sample input file. All programs use <FONT size="+1"><tt>ctrl.<i>ext</i></tt></FONT>
+as the main input file; below is a sample input file suitable for a calculation within the
+<A href="lmto.html#section2">Atomic Spheres Approximation</A>.
+
+<BR><BR>
+
+Lines beginning with:
+
+<dl>
+ <dd><FONT size="+1"><tt>#</tt></FONT> &nbsp;&nbsp; are comment lines and
+are discarded (as is, more generally, any text following "<FONT size="+1"><tt>#</tt></FONT>")</dd>
+ <dd><FONT size="+1"><tt>%</tt></FONT> &nbsp;&nbsp; are treated as instructions to the preprocessor.
+They not part of the input per se, but affect subsequent input that uses the preprocessor.
+<BR> Preprocessor instructions can declare and assign variables, tell the parser to conditionally
+read parts of code, and read parts of the code in a loop.
+</dd>
+</dl>
+
+All other lines form the input file proper.  A line of text is read;
+it may be modified by the preprocessor before it finally turns into
+categories, tokens, and the data associated with them.
+
+<P> Many auxiliary files are created by the various programs.
+Extension <FONT size="+1"><tt><i>ext</i></tt></FONT> is appended to
+nearly all auxiliary files, e.g. files containing charge densities are
+<FONT size="+1"><tt>rst.<i>ext</i></tt></FONT> or <FONT
+size="+1"><tt>rsta.<i>ext</i></tt></FONT>.  Thus, each materials
+system has a unique indentifier and multiple kinds of calculations can
+be run in a single directory.
+
+<P>
+<A name="sampleinputfile"></A>
+Sample ASA input file for Si:
+<pre>
+------ Cut these lines and copy to file ctrl.si ------ <FONT color="#10810">
+# Any line beginning with `#' is a comment and is ignored.
+# Any text after `#' on any line is also ignored.
+
+# The <A href="tokens.html#VERScat">VERS</A> category is for version check: package 7, prepared for ASA input version 7.<FONT color="#3300bb">
+VERS    LM:7 ASA:7 </FONT color="#3300bb">
+
+This is the <A href="tokens.html#HEADERcat">HEADER</A> category; it is used only for printout.<FONT color="#3300bb">
+HEADER  Si in diamond lattice with empty spheres.
+        You can put as many lines in the header as you like.
+        Lines beginning with a non-blank character demarcate the start of new category.
+        A category ends where the next category begins.
+        Categories can appear in any order.</FONT>
+
+# The <A href="tokens.html#SYMGRPcat">SYMGRP</A> category is optional.
+# Normally symmetry operations are determined automatically.<FONT color="#3300bb">
+SYMGRP  i*r3(1,1,-1)::(1/4,1/4,1/4) r4x::(1/4,1/4,1/4)<FONT color="#108010">
+
+# Most input is of the form TOKEN=value TOKEN=value ... as follows:<FONT color="#3300bb">
+IO      SHOW=F HELP=F VERBOS=31,20 WKP=F <FONT color="#108010">
+# In the preceding line, <FONT size="+0"><tt>SHOW=</tt></FONT>, <FONT size="+0"><tt>HELP=</tt></FONT>, <FONT size="+0"><tt>VERBOS=</tt></FONT> and <FONT size="+0"><tt>WKP=</tt></FONT> are tokens that indicate where data is to be read.
+# The data (token's contents) are respectively, "<FONT size="+0"><tt>F</tt></FONT>", "<FONT size="+0"><tt>F</tt></FONT>", "<FONT size="+0"><tt>31,20</tt></FONT>" and "<FONT size="+0"><tt>F</tt></FONT>".
+
+# Brackets [...] can also be used demarcate the beginning and end of any tag, including categories.
+HEADER [ The contents of HEADER reside within the category delimiters,
+       ] so this line isn't part of it.
+# Only the first declaration of a category (or token) is read; thus
+# the preceding category will only be used if you remove or comment the first appearance of HEADER.
+
+# The next two lines for the <A href="tokens.html#STRcat">STR</A> category are equivalent.<FONT color="#3300bb">
+STR     RMAX=3.6
+STR     RMAX[3.6] <FONT color="#108010">
+
+<FONT color="#bb3300">#<I> Nesting</I>&nbsp;:</FONT> sometimes tags are nested: that is a tag's contents are more tags (a tree structure)
+# In the <A href="tokens.html#OPTIONScat">OPTIONS</A> category, tag <FONT size="+0"><tt>ASA</tt></FONT> contains multiple tokens, e.g. <FONT size="+0"><tt>CCOR</tt></FONT>.<FONT color="#3300bb">
+OPTIONS NSPIN=1 ASA[ADNF=T TWOC=F CCOR=T] <FONT color="#108010">
+# The full identifier of <FONT size="+0"><tt>CCOR</tt></FONT> above is <FONT size="+0"><tt>OPTIONS_ASA_CCOR</tt></FONT>,
+# represented in the input as "<FONT size="+0"><tt>OPTIONS ASA[CCOR=]</tt></FONT>" or "<FONT size="+0"><tt>OPTIONS[ASA[CCOR=]]</tt></FONT>"
+# To avoid logical ambiguities, you are not allowed to represent this nested token as "<FONT size="+0"><tt>OPTIONS ASA CCOR=</tt></FONT>".
+
+<FONT color="#bb3300">#<I> Preprocessor</I>&nbsp;</FONT>
+# Lines beginning with a '%' are instructions to the preprocessor.
+# The following line declares to the preprocessor variables a0 and nk and assigns values to them: <FONT color="#3300bb">
+% var a0=.5292 nk=3+1 <FONT color="#108010">
+# Lines beginning with '%' are not part of the input file, but preprocessor instructions.
+
+# Text inside brackets {..} are taken by the preprocessor to be expressions (usually algebraic ones).
+# Algebraic expressions are evaluated numerically and the result converted into an ASCII string.
+# For example, in the <A href="tokens.html#BZcat">BZ</A> category below:<FONT color="#3300bb">
+BZ      NKABC={nk} {nk} {nk}  METAL=F DOSWT=T SAVDOS=F
+        BZJOB=0 <FONT color="#108010">
+# The preprocessor parses each of the brackets and modifies the input to read:
+BZ      NKABC=4 4 4 METAL=F DOSWT=T SAVDOS=F
+        BZJOB=0
+# Note that brackets can be nested: thus both "<FONT size="+0"><tt>{nk*nk/2}</tt></FONT>" and "<FONT size="+0"><tt>{nk*{nk/2}}</tt></FONT>"
+# would be replaced by "<FONT size="+0"><tt>8</tt></FONT>".
+
+# Some tokens take a vector of numbers, e.g. PLAT in the <A href="tokens.html#STRUCcat">STRUC</A> category requires 9 numbers:<FONT color="#3300bb">
+STRUC   NBAS=4 NCLASS=2 NL=3
+        ALAT=5.431/{a0} PLAT= 0 .5 .5   .5 0 .5   .5 .5 0 <FONT color="#108010">
+# Elements can be separated by spaces or commas.
+
+# A few tokens require multiple instances, e.g. information about sites and chemical species
+# in the <A href="tokens.html#SPECcat">SPEC</A> and <A href="tokens.html#SITEcat">SITE</A> categories: <FONT color="#3300bb">
+SITE    ATOM=SI   POS= 0 0 0
+        ATOM=SI   POS= .25 .25 .25
+        ATOM=ES   POS= .5 .5 .5
+        ATOM=ES   POS= .75 .75 .75
+SPEC    ATOM=SI   R/W=1  Z=14
+        ATOM=ES   R/W=1  Z=0 <FONT color="#108010">
+# Here "Empty" atoms are put where large interstitial regions occur.
+# They are included here because this file is set up for a calculation using the
+# Atomic Spheres Approximation (ASA) to the LDA.  The ASA makes shape approximations
+# to the potential, so large interstitial regions are problematic
+
+# The <A href="tokens.html#ITERcat">ITER</A> category governs mixing and convergence of charge densities: <FONT color="#3300bb">
+ITER    MIX=B2,wc=3,b0 CONVC=1D-5 NIT=10 <FONT color="#108010">
+
+# The <A href="tokens.html#STARTcat">START</A> category is unique to the ASA.
+# This category sets starting values for <A href="lmto.html#section2">P and Q</A> which specifies a potential.
+START
+        BEGMOM=T (=T to begin with moments, =F to begin with band-structure)
+        CNTROL=T (=T to use following to override disk; =F to ignore following)
+          ATOM=SI  P=3.5 3.5 3.5    Q=1 0 0    2 0 0   0 0 0
+          ATOM=ES  P=1.5 2.5 3.5    Q=.5 0 0  .5 0 0   0 0 0 <FONT color="#000000">
+------ End of input file ------
+</pre>
+
+<A name="inputswitch"></A>
+<FONT size="+1">
+<FONT color="#bb3300"><I>Help with finding tokens: the --input switch</I>&nbsp;</FONT>
+</FONT>
+
+<P> To see what a particular program would try to read, without actually reading
+anything, run your executable code
+with <FONT size="+1"><tt>--input</tt></FONT>, e.g.
+<pre>
+  lmchk --input
+</pre>
+This switch tells the parser not to try and read anything, but print
+out information about what it would would try to read.  Several bits
+of information are given, including a brief description of each token,
+in the following format (only a few tokens are reproduced here):
+<pre>
+ Token            Input   cast  (size,min)
+ ------------------------------------------
+ IO_SHOW           opt    i4       1,  1          default = 0
+   Echo data as it is read from input file
+ IO_VERBOS         opt    i4v      5,  1          default = 30
+   Verbosity stack for printout
+   May also be set from the command-line: --pr#1[,#2]
+...
+ STRUC_PLAT        reqd   r8v      9,  9
+   Primitive lattice vectors, in units of alat
+...
+ STRUC_NSPEC       opt    i4       1,  1
+   Number of species to read from SPEC category.
+   If not present, NSPEC will be obtained by counting entries in the SPEC category
+...
+ OPTICS_WINDOW     reqd   r8v      2,  1          default = 0 1
+   Energy window over which to calc. Im epsilon
+...
+ SITE_ATOM_POS     reqd   r8v      3,  1
+   Atom coordinates, in units of alat
+ * If token is not parsed, attempt to read the following:
+</pre>
+
+Consider <FONT size="+1"><tt>IO_SHOW</tt></FONT>.  The table tells you
+that this token is optional, and that at one integer will be read. A
+default value (<FONT size="+1"><tt>0</tt></FONT>) will be used if no
+token is found.  There is a brief description explaining its function
+(namely print out the input after it has passed through the
+<A href="file-preprocessor.html">preprocessor</A>).
+
+<P> By contrast, when parsing data for  <FONT size="+1"><tt>STRUC_PLAT</tt></FONT>,
+(primitive lattice vectors in the unit cell)
+a vector of 9 floating point numbers are required.  Since there is no default,
+the program will stop with an error message if it fails to read nine numbers.
+
+<P> <FONT size="+1"><tt>IO_VERBOS</tt></FONT>&nbsp; is also designed to read multiple numbers
+(maximum of 5), but in this case if it reads, say 3, default values will be supplied for the remainder.
+
+<P>
+<FONT size="+1">
+<FONT color="#bb3300"><I>Help with command line arguments: the --help switch</I>&nbsp;</FONT>
+</FONT>
+
+<P>
+Use the &nbsp;<FONT size="+1"><tt>--help</tt></FONT>&nbsp; switch to see what command-line
+arguments a program accepts.  For example,
+<pre>
+lmchk --help
+</pre>
+prints out switches <b>lmchk</b> will look for.
+Switches generic to most programs, described
+<A href="#genericswitches">above</A>, are listed first.
+<b>lmchk</b> also prints out a brief summary of switches specific to it:
+<pre>
+   --shell[:v][:e][:r=#][:sites:site-list][:pairs:pair-list]...
+          ...[:tab[=#]][:disp=fnam][:nn][:fn=fnam]
+   --mino[:dxmx=#][:xtol=#][:maxit=#][:style=#]:list
+   --getwsr find augmentation sphere radii
+   --findes locate possible sites for empty spheres
+   --wpos=fnam  write site positions to file
+   --angles[~r=rmax][~sites=site-list]
+   --euler[~r=rmax[,rmin]][~sign][~sites=site-list]
+   --terse
+</pre>
+These lines are intended only to remind you what switches are available,
+what form they take, and possible options within a switch.
+For proper documentation refer to
+<A href="Command-line-options.html#section1lmchk">Command-line-options.html</A>.
+
+<P>
+<FONT size="+1">
+<FONT color="#bb3300"><I>Seeing what the input file system Reads</I>&nbsp;</FONT>
+</FONT>
+
+<P> As noted, some tokens are optional or not even read by a program.
+This may lead to confusion. Since by default
+the parser doesn't print out what it reads, a few switches enable
+you see what occurs on input: these are
+<pre>
+  --showp     &larr; show the input file after preproccessing, and stop
+  --show=2    &larr; show the values actually taken by the parser for each token, and stop
+  --show      &larr; same as show=2, but program execution continues
+</pre>
+
+<P>
+<FONT size="+1">
+<FONT color="#bb3300"><I>Try a Sample Calculation</I>&nbsp;</FONT>
+</FONT>
+
+<P> Cut and paste the input file above, saving it as file <FONT size="+1"><tt>ctrl.si</tt></FONT>.
+
+Run the following commands to make a self-consistent ASA calculation of Si.
+<b>lmstr</b> generates structure constants for the ASA;
+<b>lm</b> is an ASA band code.
+Before doing the steps as given, try out some of the switches
+(<FONT size="+1"><tt>--input</tt></FONT>, <FONT size="+1"><tt>--help</tt></FONT>,
+ <FONT size="+1"><tt>--showp</tt></FONT>,  <FONT size="+1"><tt>--show=2</tt></FONT>) for
+both <b>lmstr</b> and <b>lm</b>.
+
+<P> For example, try
+<pre>
+  lm si --show=2
+</pre>
+First the input is printed after its modification by the preprocessor.
+<FONT size="+1"><tt>{a0}</tt></FONT> is turned into <FONT size="+1"><tt>.5292</tt></FONT>
+so the &nbsp;<FONT size="+1"><tt>STRUC</tt></FONT>&nbsp; category becomes
+<pre>
+STRUC   NBAS=4 NCLASS=2 NL=3
+        ALAT=5.431/.5292 PLAT= 0 .5 .5   .5 0 .5   .5 .5 0
+</pre>
+The follows all the tokens that were parsed (if data is supplied) or default
+values supplied (if not).  Extracting a few lines from the output:
+
+<pre>
+ Token            Input   cast  (size,min,read,def)     result
+ IO_SHOW           opt    i4       1,  1,   1,  0       0
+ ...
+ IO_VERBOS         opt    i4v      5,  1,   2,  0       31 20
+ ...
+ STRUC_PLAT        reqd   r8v      9,  9,   9, --       0 0.5 0.5 0.5 0 0.5 0.5 0.5 0
+ ...
+ STRUC_NSPEC       opt    i4       1,  1,   *, --
+ ...
+ OPTICS_MODE       opt    i4       1,  1,   *,  1       0
+</pre>
+One and two integers were read respectively, for <FONT size="+1"><tt>IO_SHOW</tt></FONT> and
+<FONT size="+1"><tt>IO_VERBOSE</tt></FONT>.  Had tokens been omitted default values would be supplied.
+<FONT size="+1"><tt>STRUC_PLAT</tt></FONT> was read (9 numbers): in this case, if the
+the parser fails to read them it will stop with an error.
+<FONT size="+1"><tt>OPTICS_MODE</tt></FONT> is not present;
+its default value was 0, while <FONT size="+1"><tt>STRUC_NSPEC</tt></FONT>
+is not present and the parser assigns no value.  (As
+<A href="#inputswitch">already noted</A>
+<FONT size="+1"><tt>STRUC_NSPEC</tt></FONT> need not be supplied; it can be inferred from
+the number of species in the <FONT size="+1"><tt>SPEC</tt></FONT> category).
+
+<P> Run <b>lmchk</b> without switches and look at the output.
+<pre>
+  lmchk si
+</pre>
+The
+<A href="ASAtutorial.html#section2">ASA tutorial</A> explains <b>lmchk</b>'s output.
+
+<P> To carry out the self-consistent calculation, the ASA first requires
+"structure constants,", generated by <b>lmstr</b>.  Then you can
+do the calculation itself:
+<pre>
+  lmstr si
+  lm si
+</pre>
+Doing the two steps above should result in a self-consistent ASA density.
+It should yield a bandgap of about 0.58 eV (look for line VBmax in the
+output), close to the exact LDA bandgap.
+
+<P>
+<FONT size="+1">
+<FONT color="#bb3300"><I>More help in Setting up and Running Jobs</I>&nbsp;</FONT>
+</FONT>
+
+<P> For a tutorial that gives you step-by-step instructions in setting
+up and running an ASA calcualtion, look at the
+<A href="ASAtutorial.html">ASA tutorial</A>.  Even if you are not
+planning to use the ASA, it should be useful.
+
+<P> There is also a
+<A href="FPtutorial.html">tutorial for the full potential code</A>, <b>lmf</b>,
+and <A href="Building_FP_input_file.html">another tutorial</A>
+that shows how to construct input files for FP calculations with minimum effort.
+Nearly every piece of input can be determined automatically.
+
+<P> File <A href="tokens.html">tokens.html</A> documents all the categories and tokens
+the input system uses.
+
+<P> File <A href="file-preprocessor.html">file-preprocessor.html</A> describes
+the preprocessor.
+
+<P> File <A href="Command-line-options.htm">Command-line-options.html</A>.
+describes command line switches for the various executables.
+
+
+<br><br>
+

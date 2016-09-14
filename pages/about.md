@@ -1,6 +1,6 @@
 ---
 layout: page-fullwidth
-title: "About"
+title: "About the Questaal Suite"
 permalink: "/about/"
 header:
     image_nologo: "banner_grey.jpg"
@@ -33,7 +33,7 @@ the present implementation.  The present code is a descendent of the original
 + **QSGW:** _GW_ is usually implemented as an extension
 to the LDA, i.e. _G_ and _W_ are generated from the LDA.
 The _GW_ package also has the ability to carry out quasiparticle
-self-consistency (QSGW).  QS_GW_ may be thought of as an
+self-consistency (QSGW).  QSGW may be thought of as an
 optimised form of the _GW_ approximation of Hedin.
 Self-consistent calculations are more expensive than usual
 formulations of _GW_ based on a perturbation of density functional

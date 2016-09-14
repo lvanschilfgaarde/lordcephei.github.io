@@ -74,8 +74,10 @@ Such a basis has significant advantages --- basis sets are much smaller for a gi
 also more complex.  It is also possible to take a combination of these functions and plane waves -- another unique
 feature of this package.
 
-**Note**{: style="color: red"} Some codes in this package are based on the [Atomic Spheres Approximation](https://lordcephei.github.io/lmto_asa_doc.md/);
+**Note**{: style="color: red"}: some codes in this package are based on the [Atomic Spheres Approximation](https://lordcephei.github.io/lmto_asa_doc.md/);
 they use LMTO basis sets.
+
+_____________________________________________________________
 
 ### _Augmentation_
 
@@ -84,19 +86,17 @@ somewhat resembles the PAW method, though in the limit of large angular momentum
 that standard augmented-wave methods do.  The advantage to the current scheme is that it converges more rapidly with
 angular momentum cutoff.
 
+_____________________________________________________________
+
+
 ### _Executable codes in the Questaal suite_
 
-The Questaal family of executable programs share a common, elegant
-<A href="input-file-style.html">input system</A>, which has some elements of a programming language.
+The Questaal family of executable programs share a common, elegant [input system](https://lordcephei.github.io/pages/input-file-style.html),
+and has some elements of a programming language.  A reference defining the syntax of categories and tokens can be found in [this pdf file](https://lordcephei.github.io/pages/input.pdf).
+
 The family consists of the following:
 
-<LI> <B><A href="lmto.html">lm</A></B>: the standard LDA band program, in the Atomic Spheres Approximation,
-     and its companion <b>lmstr</b>, which makes structure constants <b>lm</b> requires to execute.
-     There is a <A href="ASAtutorial.html">tutorial</A> that goes through a sample calculation,
-     as well as <A href="Demo_ASA_copt.html">a demo</A> that highlights some of its features.
-
-<LI> <b><A href="fp.html">lmf</A></B>: the standard full-potential LDA band
-     program, and a companion program <b>lmfa</b> for free atoms (needed to
++ **lmf**{: style="color: blue"}: the standard full-potential LDA band program.  It has a companion program **lmfa**{: style="color: blue"} to calculate starting wave functions for free atoms and set up trial envelope functions.  See [this page] for a basic tutorial
      start <b>lmf</b>).  Both the basis and the form of implementation of
      density-functional theory are original with this code; a reference
      describing the implementation can be found in this <A href="#fnlmf">book
@@ -104,6 +104,12 @@ The family consists of the following:
      <A href="#smhankel">J. Math Phys.</A> article. One
      <A href="FPtutorial.html">tutorial</A> explains the input and output; another shows to build input files
      <A href="Building_FP_input_file.html">automatically</A>.
+
+
+<LI> <B><A href="lmto.html">lm</A></B>: the standard LDA band program, in the Atomic Spheres Approximation,
+     and its companion <b>lmstr</b>, which makes structure constants <b>lm</b> requires to execute.
+     There is a <A href="ASAtutorial.html">tutorial</A> that goes through a sample calculation,
+     as well as <A href="Demo_ASA_copt.html">a demo</A> that highlights some of its features.
 
 <LI> <B><A href="gf.html">lmgf</A></B>: a Green's function program based on the
      ASA.  Its unique contribution to the suite is that it permits the
