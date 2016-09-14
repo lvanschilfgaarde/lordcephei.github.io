@@ -96,75 +96,41 @@ and has some elements of a programming language.  A reference defining the synta
 
 The family consists of the following:
 
-+ **lmf**{: style="color: blue"}: the standard full-potential LDA band program.  It has a companion program **lmfa**{: style="color: blue"} to calculate starting wave functions for free atoms and set up trial envelope functions.  See [this page] for a basic tutorial
-     start <b>lmf</b>).  Both the basis and the form of implementation of
-     density-functional theory are original with this code; a reference
-     describing the implementation can be found in this <A href="#fnlmf">book
-     chapter</a>.  The theory for the envelope functions can be found in this
-     <A href="#smhankel">J. Math Phys.</A> article. One
-     <A href="FPtutorial.html">tutorial</A> explains the input and output; another shows to build input files
-     <A href="Building_FP_input_file.html">automatically</A>.
++ **blm**{: style="color: blue"}: an input file generator, given structural information.  The basic tutorials all use **blm**{: style="color: blue"}.
 
++ **lmf**{: style="color: blue"}: the standard full-potential LDA band program.  It has a companion program **lmfa**{: style="color: blue"} to calculate starting wave functions for free atoms and set up trial envelope functions.  [This page](https://lordcephei.github.io/lmf_tutorial/) has a basic tutorial.
 
-<LI> <B><A href="lmto.html">lm</A></B>: the standard LDA band program, in the Atomic Spheres Approximation,
-     and its companion <b>lmstr</b>, which makes structure constants <b>lm</b> requires to execute.
-     There is a <A href="ASAtutorial.html">tutorial</A> that goes through a sample calculation,
-     as well as <A href="Demo_ASA_copt.html">a demo</A> that highlights some of its features.
++ **lmgw1-shot**{: style="color: blue"} and **lmgwsc**{: style="color: blue"}: scripts that perform GW calculations (one-shot or self-consistent), or properties related to GW. The interface connecting to the _GW_ code is **lmfgwd**{: style="color: blue"}.  A basic tutorial for the GW package can be found [here](https://lordcephei.github.io/lmtut/).
 
-<LI> <B><A href="gf.html">lmgf</A></B>: a Green's function program based on the
-     ASA.  Its unique contribution to the suite is that it permits the
-     calculation of magnetic exchange interactions, and (starting with v7.8) has
-     an implementation of the
-     <A href="cpa.html">coherent potential approximation</A> to treat
-     chemical and/or spin disorder.
++ **lm**{: style="color: blue"}: a density functional band program based on the ASA.  It requires a companion program **lmstr**{: style="color: blue"} to make structure contants for it.  A basic tutorial can be found [here](https://lordcephei.github.io/asa-doc/).
 
-<LI> <B><A href="pgf.pdf">lmpg</A></B>: a layer Green's function
-     program also based on the ASA that works for layered
-     systems (periodic in 2D).  It can calculate transport using the
-     Landauer-Buttiker formalism, and has a non-equilibrium
-     capability.  There a
-     <A href="lmpg_tutorial.v2.0.pdf">tutorial</A>, though it is somewhat out of date.
++ **lmgf**{: style="color: blue"}: a density functional band program based on the ASA, using a Green's function formalism.
+Its unique contribution to the suite is that it permits the calculation of magnetic exchange interactions, and it 
+has an implementation of the coherent potential approximation to treat chemical and/or spin disorder.
+A basic tutorial can be found [here](https://lordcephei.github.io/lmgf-tutorial/).
 
-<LI> <B><A href="gw.html">lmfgwd</A></B>: a driver for an
-     all-electron <i>GW</i> package, which has a
-     highly robust product basis for the construction of the
-     dielectric function and coulomb interaction.  It can be run in
-     1-shot mode, or the quasiparticle self-consistent mode.
++ **lmpg**{: style="color: blue"}: a program similar to **lmgf**{: style="color: blue"}, but it is designed for layered geometries with periodic boundary conditions in
+ two dimensions.  It can calculate transport using the Landauer-Buttiker formalism, and has a non-equilibrium capability.  There 
+[a tutorial](https://lordcephei.github.io/lmpg_tutorial.v2.0.pdf/), though it is somewhat out of date.
 
-<LI> <b>lmmc</b>: a (fast) LDA-based molecules program (not documented).
++ **lmmc**{: style="color: blue"}: a (fast) LDA-based molecules program (not documented).
 
-<LI> <B><A href="tbe.html">tbe</A></B>: a band structure program that uses empirical
-     tight-binding hamiltonians. One
-     unique feature of this package is that self-consistent
-     calculations can be done (important for polar compounds), and
-     includes Hubbard parameters.  It is also highly parallelized, and versions can be built that work with GPU's.
++ **tbe**{: style="color: blue"}: an efficient band structure program that uses empirical tight-binding hamiltonians. One unique feature of this package is that self-consistent calculations can be done (important for polar compounds), and includes Hubbard parameters.  It is also highly parallelized, and versions can be built that work with GPU's.
 
-</LI>
++ **lmdos**{: style="color: blue"}: generates partial densities of states, run as a postprocessor after
+     execution of **lmf**{: style="color: blue"}, **lm**{: style="color: blue"}, ro **tbe**{: style="color: blue"}.
 
-<BR>
-The following executables are compiled with the basic package:
++ **lmfdmft**{: style="color: blue"}: an interface connected to  the DMFT package
 
-<LI> <A href="Building_FP_input_file.html"><b>blm</b></A>: an input file maker for the full-potential program <b>lmf</b>; see
-     <A href="Building_FP_input_file.html">Building_FP_input_file.html</A> for a tutorial.
++ **lmfgws**{: style="color: blue"}: a postprocessing code run after a _GW_ calculation to analyze spectral functions.
 
-<LI> <B><A href="Command-line-options.html#section1lmscell">lmscell</A></B>: a supercell maker.
++ **lmscell**{: style="color: blue"}: a supercell maker.
 
-<LI> <B><A href="Command-line-options.html#section1lmchk">lmchk</A></B>: a neighbor
-     table generator and augmentation sphere overlap checker. There is an
-     option to automatically determine sphere radii. (There is another
-     option to locate interstitial sites where empty spheres or
-     floating orbitals may be placed --- important for ASA and some
-     <i>GW</i> calculations).
++ **lmchk**{: style="color: blue"}: a neighbor table generator and augmentation sphere overlap checker. There is an
+option to automatically determine sphere radii, and another option to locate interstitial sites where empty spheres or
+floating orbitals may be placed --- important for ASA and some _GW_ calculations.
 
-<LI> <B><A href="Command-line-options.html#section1lmxbs">lmxbs</A></B>: generates
-     input for the graphics program &thinsp;<FONT size="+1"><tt>xbs</tt></FONT>&thinsp; written by M. Methfessel,
-     which draws pictures of crystals.
-
-<LI> <B><A href="Command-line-options.html#section1lmdos">lmdos</A></B>: generates
-     partial densities of states, run as a postprocessor after
-     execution of <b>lmf</b>, <b>lm</b>, or <b>tbe</b>.
-
-</LI>
++ **lmxbs**{: style="color: blue"}: generates input for the graphics program **xbs**{: style="color: blue"} written by M. Methfessel, which draws pictures of crystals
 
 <br>
 Some other auxiliary programs are also made; see <A href="lmto.html#section3">here</A>.  To plot the bands or density-of-states
