@@ -96,31 +96,34 @@ and has some elements of a programming language.  A reference defining the synta
 
 The family consists of the following:
 
-+ **blm**{: style="color: blue"}: an input file generator, given structural information.  The basic tutorials all use **blm**{: style="color: blue"}.
++ **blm**{: style="color: blue"}: an input file generator, given structural information.  The introductory tutorial use **blm**{: style="color: blue"}.
 
-+ **lmf**{: style="color: blue"}: the standard full-potential LDA band program.  It has a companion program **lmfa**{: style="color: blue"} to calculate starting wave functions for free atoms and set up trial envelope functions.  [This page](https://lordcephei.github.io/lmf_tutorial/) has a basic tutorial.
++ **lmf**{: style="color: blue"}: the standard full-potential LDA band program.  It has a companion program **lmfa**{: style="color: blue"} to calculate starting wave functions for free atoms and set up trial envelope functions.  See [here](https://lordcephei.github.io/lmf_tutorial/) for a basic tutorial.
+There is an MPI version, **lmf-MPIK**.
 
 + **lmgw1-shot**{: style="color: blue"} and **lmgwsc**{: style="color: blue"}: scripts that perform GW calculations (one-shot or self-consistent), or properties related to GW. The interface connecting to the _GW_ code is **lmfgwd**{: style="color: blue"}.  A basic tutorial for the GW package can be found [here](https://lordcephei.github.io/lmtut/).
 
 + **lm**{: style="color: blue"}: a density functional band program based on the ASA.  It requires a companion program **lmstr**{: style="color: blue"} to make structure contants for it.  A basic tutorial can be found [here](https://lordcephei.github.io/asa-doc/).
+There is an MPI version, **lm-MPIK**.
 
 + **lmgf**{: style="color: blue"}: a density functional band program based on the ASA, using a Green's function formalism.
 Its unique contribution to the suite is that it permits the calculation of magnetic exchange interactions, and it 
 has an implementation of the coherent potential approximation to treat chemical and/or spin disorder.
+There is an MPI version, **lmgf-MPIK**.
+
 A basic tutorial can be found [here](https://lordcephei.github.io/lmgf-tutorial/).
 
 + **lmpg**{: style="color: blue"}: a program similar to **lmgf**{: style="color: blue"}, but it is designed for layered geometries with periodic boundary conditions in
  two dimensions.  It can calculate transport using the Landauer-Buttiker formalism, and has a non-equilibrium capability.  There 
-[a tutorial](https://lordcephei.github.io/lmpg_tutorial.v2.0.pdf/), though it is somewhat out of date.
+[a tutorial](https://lordcephei.github.io/pages/lmpg_tutorial.v2.0.pdf/), though it is somewhat out of date.
+There is an MPI version, **lmpg-MPIK**.
 
-+ **lmmc**{: style="color: blue"}: a (fast) LDA-based molecules program (not documented).
++ **lmfdmft**{: style="color: blue"}: an interface connected to  the DMFT package
 
 + **tbe**{: style="color: blue"}: an efficient band structure program that uses empirical tight-binding hamiltonians. One unique feature of this package is that self-consistent calculations can be done (important for polar compounds), and includes Hubbard parameters.  It is also highly parallelized, and versions can be built that work with GPU's.
 
 + **lmdos**{: style="color: blue"}: generates partial densities of states, run as a postprocessor after
      execution of **lmf**{: style="color: blue"}, **lm**{: style="color: blue"}, ro **tbe**{: style="color: blue"}.
-
-+ **lmfdmft**{: style="color: blue"}: an interface connected to  the DMFT package
 
 + **lmfgws**{: style="color: blue"}: a postprocessing code run after a _GW_ calculation to analyze spectral functions.
 
@@ -131,6 +134,15 @@ option to automatically determine sphere radii, and another option to locate int
 floating orbitals may be placed --- important for ASA and some _GW_ calculations.
 
 + **lmxbs**{: style="color: blue"}: generates input for the graphics program **xbs**{: style="color: blue"} written by M. Methfessel, which draws pictures of crystals
+
++ **lmmc**{: style="color: blue"}: a (fast) LDA-based molecules program (not documented).
+
++ **rdcme**{: style="color: blue"}:
+
++ **cif2init**{: style="color: blue"} and **cif2site**{: style="color: blue"}: convert **cif** files into init files or site files.
+
++ **poscar2init**{: style="color: blue"} and **poscar2site**{: style="color: blue"}: convert VASP **POSCAR** files into init files or site files.
+
 
 <br>
 Some other auxiliary programs are also made; see <A href="lmto.html#section3">here</A>.  To plot the bands or density-of-states
