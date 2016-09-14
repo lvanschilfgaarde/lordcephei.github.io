@@ -69,6 +69,10 @@ Now the only thing left to do is to rename _actrl.pbte_{: style="color: green"} 
 
 **blm**{: style="color: blue"} writes to actrl, rather than ctrl, to avoid overwriting a file you may wish to keep.
 
+**Note**{: style="color: red"}
++ Lines which begin with ‘#’ are comment lines and are ignored. (More generally, text following a `#’ in any line is ignored).
++ Lines beginning with ‘%’ are directives to the preprocessor. Directives can perform various functions similar to a normal programming language, such as assigning variables, evaluating expressions, conditionally readings some lines, and repeated loops over sections of input.
+
 ##### _2\.Building the input file_
 If you used **blm**{: style="color: blue"} as above to find the empty spheres (ES) you can skip section 2.1 below. It is included here to explain how to add empty spheres to an already existing ctrl file.
 
@@ -112,7 +116,7 @@ here we have used two command-line switches, the first is to invoke the procedur
         2   Te          3.300000    3.300000    1.000000
         3   E           1.959808    2.598601    1.325947
 
-which indicates two new empty spheres have been found, and the new sphere packing is 100\%. The control file has to be changed to reflect the new basis. First, change:
+which indicates two new empty spheres have been found, and the new sphere packing is 100%. The control file has to be changed to reflect the new basis. First, change:
 
       NBAS=2+{les?0:0}  NL=4  NSPEC=2+{les?0:0}
 
