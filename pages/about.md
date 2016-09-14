@@ -31,11 +31,11 @@ functions. See [this paper](http://link.aps.org/abstract/PRB/v76/e165106) for th
 the present implementation.  The present code is a descendent of the original
 [original ecalj package](github.com/tkotani/ecalj) developed by Kotani, Faleev and van Schilfgaarde.
 
-The _GW_ package also has the ability to carry out quasiparticle
-self-consistency (QSGW).  _GW_ is usually implemented as an extension
++ **QSGW:** _GW_ is usually implemented as an extension
 to the LDA, i.e. _G_ and _W_ are generated from the LDA.
-QS<i>GW</i> may be thought of as an
-optimised form of the <i>GW</i> approximation of Hedin.
+The _GW_ package also has the ability to carry out quasiparticle
+self-consistency (QSGW).  QS_GW_ may be thought of as an
+optimised form of the _GW_ approximation of Hedin.
 Self-consistent calculations are more expensive than usual
 formulations of _GW_ based on a perturbation of density functional
 theory, but it is [much more accurate and
@@ -44,7 +44,7 @@ Self-consistency also removes dependence on the starting point and
 also makes it possible to generate ground state properties that are
 sensitive to self-consistency, such as the magnetic moment.
 
-Both _GW_ and self-consistent _GW_ are executed through a family of scripts.  The
+  Both _GW_ and self-consistent _GW_ are executed through a family of scripts.  The
 script for self-consistent calculations is called **lmgwsc**{: style="color:
 blue"}; one-shot _GW_ calculations use **lmgw1-shot**{: style="color: blue"}; and
 other parts such as the dielectric function calculator and self-energy maker use

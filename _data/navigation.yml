@@ -44,7 +44,6 @@
       - title: "lmf"
         url: "/lmf/"
     - name: "lmf"
-      prefix: "/lmf"
       content:
       - title: "Full Potential Overview"
         url: "/fpoverview/"
