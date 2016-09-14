@@ -34,10 +34,11 @@ _____________________________________________________________
 To turn on chemical and/or magnetic CPA, additons are required to the **SPEC** and **GF** categories in the ctrl file. 
 
 #### _SPEC category_
+_____________________________________________________________
 
 **Chemical Disorder**{: style="color: orange"}. Additional species must be defined for chemical CPA, and their concentrations.
 
-**SPEC ATOM CPA=** and **C=** together turn on chemical CPA for a particular species.
+    SPEC ATOM CPA= and C= together turn on chemical CPA for a particular species.
 
 They specify which species are to be alloyed with this species, and the concentrations of the other species. For example,
 
@@ -49,10 +50,45 @@ A CPA species may refer to itself. For example, if the Fe species above is the f
 
 **Spin Disorder**{: style="color: orange"}. No additional species are required, but the number of orientations must be specified.
 
-**SPEC ATOM NTHET=** turns on spin disorder for a particular atom type.
+    SPEC ATOM NTHET= turns on spin disorder for a particular atom type.
 
 A species with non-zero **NTHET** can be listed as a CPA component, and it will be included as NTHET components with different directions of the local moment.
 
 **NTHET=2** specifies that there will be two CPA-DLM components with polar angles 0 and π. **NTHET=N** with $$N>2$$ specifies a vector-DLM model, for which N polar angles for the local moment direction are selected using the Gaussian quadrature for the sphere. (Axial symmetry is always assumed and the integral over the azimuthal angle is taken analytically.)
 
 **Combined Chemical and Spin Disorder**{: style="color: orange"}. Either spin or chemical disorder may be specified; they may also be included simultaneously. If only **CPA=** is chosen, that species will be treated with chemical, not spin, disorder. If only **NTHET=** is chosen, that species be treated with spin disorder only. Specifying both means that the CPA will include both chemical and spin disorder. For example, in the above example for CPA, if **SPEC ATOM=Fe** includes a tag **NTHET=2** (while species 4 and 5 have **NTHET=0**), species Fe describes a CPA site with 4 components: 25% Fe, 25% Fe with a reversed local moment, 30% species 4 and 20% species 5. 
+
+####_ GF category_
+_____________________________________________________________
+
+The following token turns on the CPA and/or DLM:
+
+    GF DLM= controls what is being calculated. 
+
+At present, these values are supported:
+
+    DLM=12: normal CPA calculation; both charges and Ω's are iterated
+    DLM=32: no charge self-consistency; only CPA it iterated until Ω reaches
+            prescribed tolerance for each z-point.
+    DLM=112: special-purpose experimental branch (not documented)
+
+The following are optional inputs:
+
+    GF BXY=1 turns on the self-consistent determination of the
+       constraining fields for vector DLM calculations.
+
+    GF TEMP= supplies the spin temperature (not implemented yet)
+
+Self-consistency in Ω is controlled by the following tags supplied in GF GFOPTS:
+
+    lotf    if present, Ω is iterated at each z-point until converged to omgtol (recommended)
+    nitmax= maximum number of Ω iterations (30 is usually sufficient)
+    omgmix= linear mixing parameter for Ω (0.4 works well in most cases)
+    omgtol= tolerance for Ω
+    padtol= same meaning as usual, but note that Ω is not mixed unless padtol is reached (1d-3 is recommended for all CPA calculations)
+    dz=     special branch, in which z-points are shifted by dz along the real axis (experimental)
+
+Recommended options:
+
+    GF GFOPTS=[...];omgmix=0.4;padtol=1d-3;omgtol=1d-3;lotf;nitmax=30
+
