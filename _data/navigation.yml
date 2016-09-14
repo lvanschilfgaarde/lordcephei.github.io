@@ -18,15 +18,17 @@
   side: left
   prefix: "/docs"
   dropdown:
+  - title: "Package Overview"
+    url: "/package_overview/"
   - program:
-    - name: "Input Methods"
+    - name: "Input Files"
       prefix: "/input"
       content:
       - title: "The Input File"
         url: "/inputfile/"
       - title: "Symmetry Line Files"
         url: "/symfile/"
-    - name: "Universal"
+    - name: "Miscellaneous"
       prefix: ""
       content:
       - title: "Optics"
@@ -65,7 +67,7 @@
         url: "/lmf_tutorial/"
       - title: "Standard Tutorial for lmf"
         url: "/lmf_pbte_tutorial/"
-      - title: "Detailed Tutorial for lmf"
+      - title: "Tutorial : lmf basis sets"
         url: "/buildingfpinput/"
       - title: "lmf tutorial: elastic constant in Al"
         url: "/fpnew/"
