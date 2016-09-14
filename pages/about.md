@@ -8,39 +8,44 @@ header:
 
 The *Questaal* Suite offers a range of electronic structure programs that can be used to model different materials and nanoscale structures.  Most of the codes use an all-electron implementation of density-functional theory. This includes several forms (hamiltonian and Green's function) that serve different purposes.  There is additionally an all-electron implementation of GW theory, including a quasiparticle self-consistent form of it.  Finally there is package that enables tight-binding calculations based on user-supplied empirical hamiltonians.
 
-These codes share in common a basis set of atom-centred functions.  The basis has its genesis in the Linear Muffin Tin Orbitals (LMTO) method of O. K. Andersen, who formulated the theory of [linear methods in band theory](http://dx.doi.org/10.1103/PhysRevB.12.3060).  The LMTO and LAPW (Linear Augmented Plane Wave) methods are the most common direct forms of the linear methods, though most approaches (including those based on pseudopotentials) depend on a linearization as well.  The present code is a descendent of the "tight binding linear method" that formed the mainstay of Andersen's group in Stuttgart for many years.                     
+These codes share in common a basis set of atom-centred functions.  The basis has its genesis in the Linear Muffin Tin Orbitals (LMTO) method of O. K. Andersen, who formulated the theory of [linear methods in band theory](http://dx.doi.org/10.1103/PhysRevB.12.3060).  The LMTO and LAPW (Linear Augmented Plane Wave) methods are the most common direct forms of the linear methods, though most approaches (including those based on pseudopotentials) depend on a linearization as well.  The present code is a descendent of the "tight binding linear method" that formed the mainstay of Andersen's group in Stuttgart for many years.
 
 Applications include modeling electronic structure, magnetic properties of materials, Landauer-Buttiker formulation of electronic transport, impurity effects in solids, and linear response.
 
-Packages distributed in the Questaal package include:
+Packages distributed in the Questaal suite include:
 
-+ **Full Potential LMTO:**   This is an all-electron implementation of density-functional theory using convolutions of Hankel functions and Gaussian orbitals as a basis set.  This code also provides an interface to a GW package. It is a fairly accurate basis, and has been benchmarked against other all-electron schemes [XXX ... check with Jerome].  You can also use Augmented Plane Waves as a basis, or a combination of the two, as described in 
++ **Full Potential LMTO:**   This is an all-electron implementation of density-functional theory using convolutions of Hankel functions and Gaussian orbitals as a basis set.  This code also provides an interface to a GW package. It is a fairly accurate basis, and has been benchmarked against other all-electron schemes [XXX ... check with Jerome].  You can also use Augmented Plane Waves as a basis, or a combination of the two, as described in
 [this paper](http://link.aps.org/doi/10.1103/PhysRevB.81.125117).
 The main executable code is called **lmf.**{: style="color: blue"}
 A highly accurate tight-binding form will soon be available, with the moniker "Jigsaw Puzzle Orbitals" or JPO's.
 
-+ **GW:** A separate package contains an all-electron implementation of the GW
++ **GW:** A separate package contains an all-electron implementation of the _GW_
 approximation, using the full-potential package to supply a front end with single particle
-quantities GW requires. The GW packages also a "product basis" set for two-particle
+quantities GW requires. The _GW_ packages also a "product basis" set for two-particle
 quantities such as the bare and screened coulomb interaction.  Its primary
 function is to calculate quasiparticle levels (or more generally
-energy band structure) within GW theory.  Also part of this package is the
+energy band structure) within _GW_ theory.  Also part of this package is the
 ability to calculate optical and spin response functions, and spectral
 functions. See [this paper](http://link.aps.org/abstract/PRB/v76/e165106) for the theory corresponding to
-the present implementation.  The present package is a descendent of the original
+the present implementation.  The present code is a descendent of the original
 [original ecalj package](github.com/tkotani/ecalj) developed by Kotani, Faleev and van Schilfgaarde.
 
-The GW package also has the ability to carry out quasiparticle
-self-consistency. Self-consistent calculations are more expensive than usual formulations of GW based on a
-perturbation of density functional theory, but it is [much more accurate and
-systematic](http://link.aps.org/abstract/PRL/v96/e226402).  Self-consistency also
-removes dependence on the starting point and also makes it possible to generate
-ground state properties that are sensitive to self-consistency, such as the
-magnetic moment.
+The _GW_ package also has the ability to carry out quasiparticle
+self-consistency (QSGW).  _GW_ is usually implemented as an extension
+to the LDA, i.e. _G_ and _W_ are generated from the LDA.
+QS<i>GW</i> may be thought of as an
+optimised form of the <i>GW</i> approximation of Hedin.
+Self-consistent calculations are more expensive than usual
+formulations of _GW_ based on a perturbation of density functional
+theory, but it is [much more accurate and
+systematic](http://link.aps.org/abstract/PRL/v96/e226402).
+Self-consistency also removes dependence on the starting point and
+also makes it possible to generate ground state properties that are
+sensitive to self-consistency, such as the magnetic moment.
 
-Both GW and self-consistent GW are executed through a family of scripts.  The
+Both _GW_ and self-consistent _GW_ are executed through a family of scripts.  The
 script for self-consistent calculations is called **lmgwsc**{: style="color:
-blue"}; one-shot GW calculations use **lmgw1-shot**{: style="color: blue"}; and
+blue"}; one-shot _GW_ calculations use **lmgw1-shot**{: style="color: blue"}; and
 other parts such as the dielectric function calculator and self-energy maker use
 **lmgw**{: style="color: blue"}.  **lmfgws**{: style="color: blue"} carries out
 post-processing analysis of the dynamical self energy.
@@ -105,4 +110,3 @@ electronic structure from an empirical hamiltonian.  The user supplies rules
 that defines the matrix elements of an atom-centred, tight-binding hamiltonian.
 It has various features, including self-consistency for ionic systems, molecular
 dynamics, and implementation on GPU cards for fast execution.
-
