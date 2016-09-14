@@ -105,3 +105,21 @@ Broyden mixing for charged works fine if omgtol is set to a sufficiently low val
 _____________________________________________________________
 
 It is important to understand the atomic file handling with CPA. For a CPA site (say, species Fe) the code creates an atomic file per each CPA component. In the above example with **SPEC ATOM=Fe ... NTHET=2 CPA=1 4 5** there will be four atomic files: **fe#1.ext**{: style="color: green"} for Fe with angle 0, **fe#2.ext**{: style="color: green"} for Fe with angle π, **fe#3.ext**{: style="color: green"} for species type 4, and **fe#4.ext**{: style="color: green"} for species type 5. Note that fe#3 and **fe#4**{: style="color: green"} will not actually correspond to Fe atoms, but to those described by species 4 and 5. Because convergence can be delicate, it is always recommended to copy appropriately prepared atomic files before attempting a CPA calculation. In the above example, converge a Fe atom and copy the atom file to **fe#1.ex**{: style="color: green"}t and **fe#2.ext**{: style="color: green"}; then converge species type 4 and copy it to **fe#3.ext**{: style="color: green"}, and so on. For DLM with **NTHET=N**, make N copies of the atomic file: say, **fe#1.ext**{: style="color: green"}, **fe#2.ext**{: style="color: green"}, ..., **fe#N.ext**{: style="color: green"}. 
+
+### _Outputs_
+_____________________________________________________________
+
+At the beginning of the run, some debugging information is printed, listing the indexing for the CPA sites. **DLMWGTS** lists the polar angles (0 for non-DLM classes) and weights for all CPA classes (this is also for debugging purposes). **GETZV** prints the total valence charge, which in CPA is generally not integer. Output for each CPA component includes the usual information (charge, local moment, etc.). Exchange constants J0 are automatically calculated for all CPA components using the linear response formula from Liechtenstein et al. (it can not be disabled, but the computational cost in any case negligible). Off-diagonal local moments and constraining fields are always printed out, even if DLM is not used. These include the diagonal local moment as well. All these moments are output, unmixed values. In the self-consistent state the z-component should equal to the input moment.
+
+At the end of the iteration Ω is mixed, and its misfit for each CPA site is printed out (see "_Mixed Omega for site ..._") The total energy is correctly calculated and printed out as ehk, as usual.
+
+### _Partial densities of states_
+_____________________________________________________________
+
+Partial DOS can be calculated as usual using contour type 2 and adding pdos to the **GFOPTS** tag. Note that in this case Ω needs to be converged anew at each point of the new contour. This destroys the old converged Ω file, so it is recommended to create a separate directory for a DOS calculation. The file **dos.ext**{: style="color: green"} contains the usual information, but the data for CPA sites are averaged over components. The partial DOS for all components are separately recorded in files **dosN.ext**{: style="color: green"}, where N is the number of the CPA site. The format of this file is the same as that of dos.ext, as if it described a system with M sites (where M is the number of CPA components). For example, for a binary CPA on site 2 with spd basis, file **dos2.ext**{: style="color: green"} contains channels 1:6 for the first CPA component and channels 7:12 for the second CPA component. This file can be processed using **pldos**, as a conventional dos file.
+
+### _Spectral Functions_
+_____________________________________________________________
+
+
+**lmgf**{: style="color: blue"} can generate spectral functions. It is very useful way to see the broadening of states from disorder, and you can plot energy bands with it. This document explains how to make them and draw energy bands. 
