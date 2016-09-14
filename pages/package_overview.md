@@ -10,7 +10,7 @@ _____________________________________________________________
 ### _Purpose_
 {:.no_toc}
 
-This page gives an overview of the Questaal package, a family of codes
+This page gives an overview of the Questaal suite, a family of codes
 that use augmented-wave methods to solve the Schrodinger equation in solids and
 obtain properties derived from it.
 
@@ -25,15 +25,10 @@ _____________________________________________________________
 
 ### _Introduction_
 
-The Questaal suite consists of a collection of electronic structure codes
-based on the local-density approximation (LDA) to density-functional
-theory (DFT) to solids, with extensions to _GW_ and interface to a
-Dynamical Mean Field theory code (DMFT) written by K. Haule.
-
-The entire Questaal suite contains several kinds of codes to solve
-Schrodinger's equation and properties derived from it, to be described
-below.  Most of them descended the LMTO methodology developed in the
-1980's by O.K. Andersen's group in Stuttgart.
+The Questaal suite consists of a collection of electronic structure codes based on the local-density approximation (LDA)
+to density-functional theory (DFT) to solids, with extensions to _GW_ and interface to a Dynamical Mean Field theory
+code (DMFT) written by K. Haule.  Most of the programs in the Questaal suite descended the LMTO methodology developed in
+the 1980's by O.K. Andersen's group in Stuttgart.
 
 [This page](https://lordcephei.github.io/about/) outlines some of
 Questaal's unique features, in particular the ability to carry out
@@ -59,7 +54,7 @@ augmentation sphere.  The reason for augmentation is to allow basis
 functions to vary rapidly near nuclei where they must be orthogonalized to
 core states.
 
-Augmented-wave methods consist of an ``atomic'' part that solves for the partial waves on a numerical mesh inside
+Augmented-wave methods consist of an "atomic" part that solves for the partial waves on a numerical mesh inside
 augmentation spheres and makes the relevant matrix elements needed, e.g. for the hamiltonian or some other property
 (e.g. optics) and a ``band'' part, that diagonalizes the secular matrix of the hamiltonian made by the
 augmented envelope functions.

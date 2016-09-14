@@ -16,8 +16,9 @@ Packages distributed in the Questaal suite include:
 
 + **Full Potential LMTO:**   This is an all-electron implementation of density-functional theory using convolutions of Hankel functions and Gaussian orbitals as a basis set.  This code also provides an interface to a GW package. It is a fairly accurate basis, and has been benchmarked against other all-electron schemes [XXX ... check with Jerome].  You can also use Augmented Plane Waves as a basis, or a combination of the two, as described in
 [this paper](http://link.aps.org/doi/10.1103/PhysRevB.81.125117).
-The main executable code is called **lmf.**{: style="color: blue"}
-A highly accurate tight-binding form will soon be available, with the moniker "Jigsaw Puzzle Orbitals" or JPO's.
+A new, highly accurate tight-binding basis will soon be available, with the moniker "Jigsaw Puzzle Orbitals" (JPO's).
+[This page](https://lordcephei.github.io/fpintrotut.md) presents a basic tutorial
+for the main program **lmf.**{: style="color: blue"}.
 
 + **GW:** A separate package contains an all-electron implementation of the _GW_
 approximation, using the full-potential package to supply a front end with single particle
@@ -84,16 +85,6 @@ principal layers.  It can be used in a self-consistent framework, and also to
 calculation transmission using Landauer-Buttiker theory.  There is a
 non-equilibrium Keldysh formulation of the ASA hamiltonian of the theory
 described in [this paper](http://link.aps.org/doi/10.1103/PhysRevB.71.195422).
-
-In more detail, the system is divided up into three regions, two contacts and a
-central device region. The two contact regions are taken to extend to infinity
-in the third dimension. The device region is divided up into a series of layers
-where only nearest neighbor interactions between layers are considered. Green’s
-function approaches are a natural choice for transport calculations since the
-information on the contacts can be incorporated into the Hamiltonian for the
-device region through an additional self energy term. **lmpg**{: style="color: blue"} has been used to
-examine transport in devices ranging from magnetic tunnel junctions to atomic
-point contacts.
 
 + **QSGW + DMFT :** When localised electronic orbitals (*d-* or *f-* type)
 participate to the valence region, the effect of electronic correlation can not

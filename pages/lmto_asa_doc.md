@@ -17,7 +17,7 @@ _____________________________________________________________
 ### _Table of Contents_
 {:.no_toc}
 *  Auto generated table of contents
-{:toc}  
+{:toc}
 
 _____________________________________________________________
 
@@ -28,7 +28,7 @@ Spheres Approximation (ASA).  Formulated by O. K. Andersen in the
 1970's to handle transition metals, the ASA overlaps the augmentation
 spheres so that the interstitial volume is zero (there is a geometry
 violation).  Moreover, the potential is assumed to be spherically
-symmetric inside the spheres.  
+symmetric inside the spheres.
 
 The ASA is very efficient, but its range of validity is limited.  This
 is because the interstitial is omitted so spheres must fill space.
@@ -55,24 +55,21 @@ Questaal has three implementations of the ASA:
 similar to the full-potential program **lmf**{: style="color: blue"}.
 It is interesting to compare the ASA band structure to the FP one, e.g. [in PbTe](xx).
 
-+ **lmgf**{: style="color: blue"}: is a crystal code similar to **lm,**{: style="color: blue"},
-but it uses a Green's function formalism.
++ **lmgf**{: style="color: blue"}: is a crystal code similar to
+**lm**{: style="color: blue"}, but it uses a Green's function
+formalism.  An extra energy integration (in addition to the k
+integration) is required, which makes the program somewhat slower.
+However it has features **lm**{: style="color: blue"} does not: it can
+calculate magnetic exchange interactions and some other properties of
+linear response.  This code can include spin-orbit coupling
+perturbatively, and it also has a fully relativistic Dirac
+formulation.  It also implements the Coherent Potential Approximation,
+either for the study of alloys, or for disordered local moments, or a
+combination of the two.
 
-+ **Green's Function LMTO :** An ASA based density-functional Green's
-function formulation.  The program, **lmgf**{: style="color: blue"}, calculates the Green’s
-function for a periodic system, and is a Green's function counterpart
-to the lm code.  It can be used to determine a range of properties
-including the density of states, energy band structure, and magnetic
-moment.  It also has the ability to calculate magnetic exchange
-interactions and some other properties of linear response.  This code
-can include spin-orbit coupling perturbatively, and it also has a
-fully relativistic Dirac formulation.  It also implements the
-Coherent Potential Approximation, for the study of alloys, or for
-disordered local moments, re a combination of the two.
-
-+ **Principal Layer Green's Function :** This code, **lmpg**{: style="color: blue"}, is an analog of
++ **lmpg**{: style="color: blue"}, is an analog of
 **lmgf**{: style="color: blue"} for layered systems.  Periodic boundary conditions are used in two
-dimensions.  A Principal layer technique is used for the dimension.  This is
+dimensions, and a Principal Layer technique is used for the third dimension.  This is
 advantageous because (1) periodic boundary conditions in this dimension are not
 needed and (2) the computation time scales only linearly in the number of
 principal layers.  It can be used in a self-consistent framework, and also to
@@ -80,16 +77,26 @@ calculation transmission using Landauer-Buttiker theory.  There is a
 non-equilibrium Keldysh formulation of the ASA hamiltonian of the theory
 described in [this paper](http://link.aps.org/doi/10.1103/PhysRevB.71.195422).
 
-
+In more detail, the system is divided up into three regions, two
+contacts and a central device region. The two contact regions are
+taken to extend to infinity in the third dimension. The device region
+is divided up into a series of layers where only nearest neighbor
+interactions between layers are considered. Green’s function
+approaches are a natural choice for transport calculations since the
+information on the contacts can be incorporated into the Hamiltonian
+for the device region through an additional self energy
+term. **lmpg**{: style="color: blue"} has been used to examine
+transport in devices ranging from magnetic tunnel junctions to atomic
+point contacts.
 
 ### _Structure of the ASA_
 
 Augmented-wave methods consist of an ``atomic'' part that solves for the partial waves on a numerical mesh inside
 augmentation spheres and makes the relevant matrix elements needed, e.g. for the hamiltonian or some other property
-(e.g. optics) and a ``band'' part, that diagonalizes the secular matrix of the hamiltonian made by the
+(e.g. optics) and a "crystal" part, that diagonalizes the secular matrix of the hamiltonian made by the
 augmented envelope functions.
 
-In the ASA, the output of the band part are "potential parameters."
+In the ASA, the output of the crystal part are "potential parameters."
 The atomic part takes as input the density (in the present package
 moments $$Q_0$$, $$Q_1$$, and $$Q_2$$ of the density, are sufficient,
 as described below) and generates a small set of parameters
@@ -97,14 +104,16 @@ as described below) and generates a small set of parameters
 parameters, along with structure constants, are sufficient to
 completely determine the hamiltonian.
 
-The ``band'' part takes the potential parameters and it generates
+The crystal part takes the potential parameters and generates
 bands, moments of the density $$Q_0$$, $$Q_1$$, and $$Q_2$$,
 densities-of-states, etc.  
 
-With the moments the cycle can be closed and iterated until self-consistency
-is reached (moments generating _H_ are the same as moments generated by _H_).
+With output $$Q_{0\dots{2}$$ the cycle can be closed and the
+(atom,crystal) pair iterated until self-consistency is reached
+Self consistency occurs when the energy is converged, or when
+$$Q_{0\dots{2}$$ generating _H_ are the same as moments generated by _H_.
 
-The programs can be running starting with the solid part, specifying
+The programs can be running starting with the crystal part, specifying
 potential parameters, or with the atomic part, specifying the moments.
 
 <h3><A name="sectionpq"></A>Potential functions <FONT size="+1"><tt>P</tt></FONT> and energy moments <FONT size="+1"><tt>Q</tt></FONT></h3>
@@ -120,7 +129,7 @@ channel, which are called the atomic number and the boundary
 conditions at the surface of the sphere.  In some sense these numbers
 are ``fundamental'' to a sphere; the atomic program will generate a
 self-consistent potential for a specified set of <i>Q</i><sub>0</sub>,
-<i>Q</i><sub>1</sub>, <i>Q</i><sub>2</sub> and boundary conditions.  
+<i>Q</i><sub>1</sub>, <i>Q</i><sub>2</sub> and boundary conditions.
 
 <A name="logderivative"></A>
 <p>
@@ -129,7 +138,7 @@ derivative parameters" <i>P<sub>l</sub></i> to fix boundary
 conditions at the sphere surface; they are described <A href="lmto.html#pbasp">here</A>.
 <BR><FONT color="#33bb00"><I>*Note</I>&nbsp;</FONT>
 <i>P<sub>l</sub></i> should not be confused with the "potential
-functions" O.K. Andersen defines in his ASA theory and described on p49 of 
+functions" O.K. Andersen defines in his ASA theory and described on p49 of
 <A href="Lecture1.pdf">this lecture</A>.
 (It is unfortunate that these distinct but related functions have the same symbol.)
 
@@ -151,7 +160,7 @@ in this code), "potential parameters" can be generated.
 "Potential parameters" are a compact representation of information needed in
 a linear method to specify the hamiltonian.  A description of how the
 parameters are generated and their significance is too involved to be
-described here; but see these <A href="Lecture1.pdf">lecture notes</A> 
+described here; but see these <A href="Lecture1.pdf">lecture notes</A>
 given to the 2013
 <A href=http://mml.materials.ox.ac.uk/Support/GraduateSchool2013>
 Psi-k/CECAM/CCP9 Biennial Graduate School in Electronic-Structure Methods</A>.
@@ -277,9 +286,9 @@ possible to specify either one.
 <i>D<sub>l</sub></i> is a cotangent-like function, varying between +&infin; and -&infin;:
 it decreases monotonically with energy varying between (+&infin;,&minus;&infin;)
 over a finite window of energy. There is thus a <i>multiplicity</i> of energies for
-a given <i>D<sub>l</sub></i>, one branch for each principal quantum number.  
+a given <i>D<sub>l</sub></i>, one branch for each principal quantum number.
 For that reason we define a <i>smooth</i> quantity
-<i>P<sub>l</sub></i>, which may be thought of as a smooth version of 
+<i>P<sub>l</sub></i>, which may be thought of as a smooth version of
 <i>D<sub>l</sub></i>, and which also contains
 information about both the principal quantum number and
 the logarithmic derivative.  <i>P<sub>l</sub></i> is defined as
@@ -300,7 +309,7 @@ Remember this <i>P</i> should not be confused with the "potential
 functions" O.K. Andersen defines in his ASA theory.
 
 <P> The above description of <i>P<sub>l</sub></i> applies to both ASA and FP codes.  In the
-free atom code <b>lmfa</b>, <i>P<sub>l</sub></i> and <i>Q<sub>l</sub></i>, where 
+free atom code <b>lmfa</b>, <i>P<sub>l</sub></i> and <i>Q<sub>l</sub></i>, where
  <i>Q<sub>l</sub></i> is the charge in orbital <i>l</i>, completely determine
 the density and potential of the free atom.  (As noted, another
 boundary condition can be used in place of <i>P<sub>l</sub></i>, but as a practical
@@ -312,8 +321,8 @@ potential changes while the sphere is made self-consistent).
 
 In the ASA codes (<b>lm</b>, <b>lmgf</b>, <b>lmpg</b>), <i>P<sub>l</sub></i> together with
 the moments <i>Q</i><sub>0..2,<i>l</i></sub>&thinsp;, completely determine the potential in the crystal.
-Both must be supplied for <b>lm</b> to work.  <i>P<sub>l</sub></i> and 
-<i>Q</i><sub>0..2,<i>l</i></sub> are typically input directly through the 
+Both must be supplied for <b>lm</b> to work.  <i>P<sub>l</sub></i> and
+<i>Q</i><sub>0..2,<i>l</i></sub> are typically input directly through the
 <A href="tokens.html#STARTcat"><FONT size="+1"><tt>START</tt></FONT> category</A>
 in the <FONT size="+1"><tt>ctrl</tt></FONT> file.
 <br><FONT color="#33bb00"><I>*Note</I>&nbsp;</FONT>
@@ -324,8 +333,8 @@ the ASA codes can read them in various ways, as described by
 <P> Once you  make a band pass, the fractional part
 of <i>P<sub>l</sub></i> will be automatically updated by the output of
 the band calculation (provided
-<FONT size="+1"><tt>IDMOD</tt></FONT> is not 1; see 
-<A href="tokens.html#SPECcat"><FONT size="+1"><tt>SPEC_ATOM_IDMOD</tt></FONT></A> 
+<FONT size="+1"><tt>IDMOD</tt></FONT> is not 1; see
+<A href="tokens.html#SPECcat"><FONT size="+1"><tt>SPEC_ATOM_IDMOD</tt></FONT></A>
 documentation)
 but <i>P<sub>l</sub></i> must be supplied (in addition to the moments Q)
 if you choose to begin with moments.  A word on choices for the
@@ -374,7 +383,7 @@ The most useful ones are:
          of the functionality is activated through command-line
          options described <A
          href="Command-line-options.html#section1lmchk"><B>here</B></A>.
-         
+
   lmctl  writes out moments (to the log file) in the style of the
          input file, so that a complete calculation can be
          retained within a single file.  See <A href="ASAtutorial.html#lmctl">here</A>
@@ -432,7 +441,7 @@ With extension packages, there are also the following programs or extensions:
          lmgf, but uses a layer technique (real-space GF in one dimension,
          k-space in the other two)
 
-  <A href="tbe.html"><B>tbe</B></A>    empirical tight-binding energy, forces, and dynamics.  
+  <A href="tbe.html"><B>tbe</B></A>    empirical tight-binding energy, forces, and dynamics.
          User specifies form of hamiltonian.
 
   <A href="gw.html"><B>lmfgwd</B></A> a driver for all-electron GW packages.
@@ -460,11 +469,11 @@ There is a plotting package available, FPLOT.<i>vsn</i>.tar.gz, with a
 collection of programs suitable for plotting density-of-states
 (<b>pldos</b>), bands (<b>plbnds</b>) and other x-y plots.  In includes a
 general-purpose plotting program,
-<b>fplot</b>, which creates x-y and contour plots, in postscript format.  
+<b>fplot</b>, which creates x-y and contour plots, in postscript format.
 (As of this writing, the most recent package is <FONT size="+1"><tt>FPLOT.3.39.tar.gz</tt></FONT>.)
 
-Run <b>lm</b> or some other band program to generate energy bands 
-<A href="generating-energy-bands.html#symmetrylinemode">along symmetry lines</A> you choose.  
+Run <b>lm</b> or some other band program to generate energy bands
+<A href="generating-energy-bands.html#symmetrylinemode">along symmetry lines</A> you choose.
 Program <b>plbnds</b> reads this file and can either (1) generate a postscript file
 directly, or (2) generate input and a script to be read by the
 <b>fplot</b> program.  In this way you can tailor a figure to taste.
@@ -516,18 +525,18 @@ The categories and tokens are documented in
 Nearly all files associated with the input file have the same
 extension appended to them as does the <FONT size="+1"><tt>ctrl</tt></FONT> file.  Thus if the
 <FONT size="+1"><tt>ctrl</tt></FONT> file is called
-&nbsp;<FONT size="+1"><tt>ctrl.cr3si6</tt></FONT>, the <A href="#section5">log file</A> is called 
+&nbsp;<FONT size="+1"><tt>ctrl.cr3si6</tt></FONT>, the <A href="#section5">log file</A> is called
 &nbsp;<FONT size="+1"><tt>log.cr3si6</tt></FONT>.
 
 Command-line switches are documented <A href="Command-line-options.html#section1">here</A>.
 <P>
 Other input files are:
 <pre>
- k-points file (default name qp.<i>ext</i>): input file to specify <i>k</i>-points, 
+ k-points file (default name qp.<i>ext</i>): input file to specify <i>k</i>-points,
     mainly for plotting energy bands or Fermi surfaces.
     It is used when the <A href="Command-line-options.html#section1">--band</A> switch is passed. See <A href="generating-energy-bands.html#symmetrylinemode">here</A>
     for description of the options available with the --band plotting mode.
-    The k-points file can take one of several forms; see 
+    The k-points file can take one of several forms; see
     <A href="generating-energy-bands.html#symmetrylinemode">generating-energy-bands.html</A> for details.
 
  site file : Normally site data is read through the ctrl file.
@@ -994,24 +1003,24 @@ potentials!)
 
 <h2><A name="references"></A>References</h2>
 
-<FN ID=fnasa><P> O. K. Andersen, "Linear methods in band theory," 
+<FN ID=fnasa><P> O. K. Andersen, "Linear methods in band theory,"
 Phys. Rev. B12, 3060 (1975); O. K. Andersen and O. Jepsen,
 "Explicit, First-Principles Tight-Binding Theory," Phys. Rev. Lett. 53, 2571 (1984)
-</FN> 
+</FN>
 
 <FN ID=nmto><P>
-O. K. Andersen, T. Saha-Dasgupta, R. W. Tank, and G. K. C. Arcangeli O. Jepsen, 
+O. K. Andersen, T. Saha-Dasgupta, R. W. Tank, and G. K. C. Arcangeli O. Jepsen,
 "Developing the MTO Formalism," in <i>Electronic Structure and Physical Properties of
 Solids: The Uses of the LMTO Method</i>, Lecture Notes in Physics,
 <b>535</b>, 114-147. H. Dreysse, ed. (Springer-Verlag, Berlin) 2000.
-</FN> 
+</FN>
 
 <FN ID=fnlmf><P>
 M. Methfessel, M. van Schilfgaarde, and R. A. Casali, ``A full-potential LMTO method based
 on smooth Hankel functions,'' in <i>Electronic Structure and Physical Properties of
 Solids: The Uses of the LMTO Method</i>, Lecture Notes in Physics,
 <b>535</b>, 114-147. H. Dreysse, ed. (Springer-Verlag, Berlin) 2000.
-</FN> 
+</FN>
 
 
 <BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>

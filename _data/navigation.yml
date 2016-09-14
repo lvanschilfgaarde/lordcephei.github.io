@@ -16,7 +16,6 @@
 - title: "Documentation"
   url: ""
   side: left
-  prefix: "/docs"
   dropdown:
   - title: "Package Overview"
     url: "/package_overview/"
@@ -48,7 +47,7 @@
       prefix: "/lmf"
       content:
       - title: "Full Potential Overview"
-        url: "/overview/"
+        url: "/fpoverview/"
     - name: "lmgf"
       prefix: "/lmgf"
       content:
