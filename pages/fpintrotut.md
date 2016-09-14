@@ -171,7 +171,7 @@ _____________________________________________________________
 
 ### _Other Resources_
 
-A tutorial on [PbTe](https://lordcephei.github.io/lmf_pbte_tutorial/) also covers the basic self-consistency cycle, in a bit more detail. That tutorial has [companion tutorial for the ASA](/https://lordcephei.github.io/asa-doc.md/), allowing you to compare the moethods.
+A [tutorial on PbTe](https://lordcephei.github.io/lmf_pbte_tutorial/) also covers the basic self-consistency cycle, in a bit more detail. That tutorial has companion [tutorial for the ASA](/https://lordcephei.github.io/asa-doc.md/), allowing you to compare the moethods.
 There is [a more detailed tutorial](https://lordcephei.github.io/buildingfpinput/)
 with fully describes the **lmf**{: style="color: blue"} basis set and some important tags the **lmf**{: style="color: blue"} reads.
 
