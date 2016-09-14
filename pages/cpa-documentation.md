@@ -92,3 +92,16 @@ Recommended options:
 
     GF GFOPTS=[...];omgmix=0.4;padtol=1d-3;omgtol=1d-3;lotf;nitmax=30
 
+###_ Compatibility with other features_
+_____________________________________________________________
+
+Downfolding is supported. Note, however, that downfolding applies to the crystal Green's function and not to individual CPA components. The downfolding options are taken from the first species appearing in the CPA list. Gamma representation is supported with a caveat. CPA does not allow random structure constants, which means that the screening parameters must be the same for all components on the same CPA site. In the present implementation, the screening parameters are taken from the first class listed for the given CPA site (for a DLM site this is angle #1).
+
+_LDA+U_ **is not** supported, and density matrices are not calculated for the components on the CPA site. However, the modes **IDU=4** and **IDU=5** are supported. The U and J parameters for these modes are taken from the first species appearing in the CPA list.
+
+Broyden mixing for charged works fine if omgtol is set to a sufficiently low value. If Broyden mixing seems to act strangely, try to reduce omgtol. Charge self-consistency in CPA may sometimes be difficult for impurities with low concentrations. (Note that an isolated impurity can be described by adding it as a CPA component with zero concentration.)
+
+###_ Atomic files_
+_____________________________________________________________
+
+It is important to understand the atomic file handling with CPA. For a CPA site (say, species Fe) the code creates an atomic file per each CPA component. In the above example with **SPEC ATOM=Fe ... NTHET=2 CPA=1 4 5** there will be four atomic files: **fe#1.ext**{: style="color: green"} for Fe with angle 0, **fe#2.ext**{: style="color: green"} for Fe with angle π, **fe#3.ext**{: style="color: green"} for species type 4, and **fe#4.ext**{: style="color: green"} for species type 5. Note that fe#3 and **fe#4**{: style="color: green"} will not actually correspond to Fe atoms, but to those described by species 4 and 5. Because convergence can be delicate, it is always recommended to copy appropriately prepared atomic files before attempting a CPA calculation. In the above example, converge a Fe atom and copy the atom file to **fe#1.ex**{: style="color: green"}t and **fe#2.ext**{: style="color: green"}; then converge species type 4 and copy it to **fe#3.ext**{: style="color: green"}, and so on. For DLM with **NTHET=N**, make N copies of the atomic file: say, **fe#1.ext**{: style="color: green"}, **fe#2.ext**{: style="color: green"}, ..., **fe#N.ext**{: style="color: green"}. 
