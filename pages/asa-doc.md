@@ -130,7 +130,7 @@ the contents of tag **NBAS=** can be interpreted as  "if **les**>0 then  **NBAS=
 
       % const nit=10 les=1
 
-here we have also defined **nit** with value of 10. Next step is to pass the information about the empty sphere sites to the control file. We do this by commenting all instances of **FILE=site** and uncommenting all **FILE=essite** as the new essite.pbte has the new appropiate information. The last step is to copy the new species information from the poses.pbte file to the SPEC category within the control file (including the new empty spheres).
+here we have also defined **nit** with value of 10. Next step is to pass the information about the empty sphere sites to the control file. We do this by commenting the line beginning **FILE=site** and uncommenting the line **FILE=essite** as the new essite.pbte has the new appropiate information. The last step is to copy the new species information from the poses.pbte file to the SPEC category within the control file (including the new empty spheres).
 
 ###### _2.2 Self-consistency_
 Before a self consistant calculation can be performed the real-space structure constants have to be generated. They are made once, for a given structure, with a separate tool
