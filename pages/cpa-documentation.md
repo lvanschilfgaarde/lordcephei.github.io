@@ -124,3 +124,11 @@ _____________________________________________________________
 
 
 **lmgf**{: style="color: blue"} can generate spectral functions. It is very useful way to see the broadening of states from disorder, and you can plot energy bands with it. This document explains how to make them and draw energy bands. 
+
+### _Test case_
+_____________________________________________________________
+
+To familiarize yourself with a CPA case you can run the following test case
+  
+      your path/gf/test/test.gf fe2b
+
