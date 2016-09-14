@@ -85,7 +85,8 @@ Self-consistency in Ω is controlled by the following tags supplied in GF GFOPTS
     nitmax= maximum number of Ω iterations (30 is usually sufficient)
     omgmix= linear mixing parameter for Ω (0.4 works well in most cases)
     omgtol= tolerance for Ω
-    padtol= same meaning as usual, but note that Ω is not mixed unless padtol is reached (1d-3 is recommended for all CPA calculations)
+    padtol= same meaning as usual, but note that Ω is not mixed unless padtol is reached
+    (1d-3 is recommended for all CPA calculations)
     dz=     special branch, in which z-points are shifted by dz along the real axis (experimental)
 
 Recommended options:
