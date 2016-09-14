@@ -139,13 +139,13 @@ Now take a look at the output file _out.lmfsc_{: style="color: green"}. Look for
 
 {::nomarkdown}</div>{:/}
 
-and you will see that this time the rst file was found and the density is used as the input density (the rst file was created after the single iteration). Now move to the end of the file.  The '**c**' in front of the Harris Foulkes **ehf** and Kohn-Sham **ehk** energies indicates that convergence was reached (note how similar the ehf and ehk energies are). A few lines up you can see that it took 8 iterations to converge: look for **it 8 of 20**. At the end of each iteration the ehf and ehk total energies are printed and a check is made for self-consistency. The two parameters **conv** and **convc** in the ctrl file specify, respectively, the self-consistency tolerances for the total energy and root mean square (RMS) change in the density. Note that by default both tolerances have to be met. To use a single tolerance you simply set the one that you don't want to zero. 
+This time the rst file was found and the density is used as the input density (the rst file was created after the single iteration). Now move to the end of the file.  The '**c**' in front of the Harris Foulkes **ehf** and Kohn-Sham **ehk** energies indicates that convergence was reached (note how similar the ehf and ehk energies are). A few lines up you can see that it took 8 iterations to converge: look for "**it 8 of 20**". At the end of each iteration the ehf and ehk total energies are printed and a check is made for self-consistency. The two parameters **conv** and **convc** in the ctrl file specify, respectively, the self-consistency tolerances for the total energy and root mean square (RMS) change in the density. Note that by default both tolerances have to be met. To use a single tolerance you simply set the one that you don't want to zero. 
 
 Further up again the Fermi energy and band gap values, and other key bits of information are reported in the Brillouin zone integration section.  You should find something similar to the output snippet below.
 
 <hr style="height:5pt; visibility:hidden;" />
-<div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show Brillouin zone integration section.</button></div>
-{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
+<div onclick="elm = document.getElementById('bz'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show Brillouin zone integration section.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="bz">{:/}
 
 ~~~
  BZWTS : --- Tetrahedron Integration ---
@@ -171,7 +171,11 @@ _____________________________________________________________
 
 ### _Other Resources_
 
-A tutorial on [PbTe](https://lordcephei.github.io/lmf_pbte_tutorial/) also covers the basics, in somewhat more detail, which you can compare to a [corresponding tutorial for the ASA](/https://lordcephei.github.io/asa-doc.md/). See [this tutorial](xx) for the calculation of a ferromagnetic metal. [This tutorial](xxx) shows how to calculate optical properties for PbTe.  See [this tutorial](xx) for the calculation of the optical mode frequency in Si.  [This document](xxx) gives an overview of the lmf implementation; the formalism behind the method is described in this [book chapter](xx)
+A tutorial on [PbTe](https://lordcephei.github.io/lmf_pbte_tutorial/) also covers the basic self-consistency cycle, in a bit more detail. That tutorial has [companion tutorial for the ASA](/https://lordcephei.github.io/asa-doc.md/), allowing you to compare the moethods.
+There is [a more detailed tutorial](https://lordcephei.github.io/buildingfpinput/)
+with fully describes the **lmf**{: style="color: blue"} basis set and some important tags the **lmf**{: style="color: blue"} reads.
+
+See [this tutorial](xx) for the calculation of a ferromagnetic metal. [This tutorial](xxx) shows how to calculate optical properties for PbTe.  See [this tutorial](xx) for the calculation of the optical mode frequency in Si.  [This document](xxx) gives an overview of the lmf implementation; the formalism behind the method is described in this [book chapter](xx)
 
 _____________________________________________________________
 
