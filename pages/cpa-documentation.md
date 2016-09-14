@@ -130,5 +130,5 @@ _____________________________________________________________
 
 To familiarize yourself with a CPA case you can run the following test case
   
-      your path/gf/test/test.gf fe2b
+      your path to lm /lm/gf/test/test.gf fe2b
 
