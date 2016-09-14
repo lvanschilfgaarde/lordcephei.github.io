@@ -20,6 +20,8 @@
   dropdown:
   - title: "Package Overview"
     url: "/package_overview/"
+  - title: "Installation"
+    url: "/install/"
   - program:
     - name: "Input Files"
       prefix: "/input"
@@ -58,8 +60,6 @@
   side: left
   prefix: ""
   dropdown:
-  - title: "Installation"
-    url: "/install/"
   - program:
     - name: "lmf"
       content:
