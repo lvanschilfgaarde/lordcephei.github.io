@@ -171,11 +171,11 @@ _____________________________________________________________
 
 ### _Other Resources_
 
-A [tutorial on PbTe](https://lordcephei.github.io/lmf_pbte_tutorial/) also covers the basic self-consistency cycle, in a bit more detail. That tutorial has companion [tutorial for the ASA](/https://lordcephei.github.io/asa-doc.md/), allowing you to compare the moethods.
+A [tutorial on PbTe](https://lordcephei.github.io/lmf_pbte_tutorial/) also covers the basic self-consistency cycle, in a bit more detail. That tutorial has companion [tutorial for the ASA](/https://lordcephei.github.io/asa-doc.md/), allowing you to compare the FP and ASA methods.
 There is [a more detailed tutorial](https://lordcephei.github.io/buildingfpinput/)
-with fully describes the **lmf**{: style="color: blue"} basis set and some important tags the **lmf**{: style="color: blue"} reads.
+with some description of important tags the **lmf**{: style="color: blue"} reads, and of the **lmf**{: style="color: blue"} basis set.
 
-See [this tutorial](xx) for the calculation of a ferromagnetic metal. [This tutorial](xxx) shows how to calculate optical properties for PbTe.  See [this tutorial](xx) for the calculation of the optical mode frequency in Si.  [This document](xxx) gives an overview of the lmf implementation; the formalism behind the method is described in this [book chapter](xx)
+For a tutorial showing a self-consistent calculation of ferromagnetic metal, see [this tutorial](xx). [This tutorial](xxx) shows how to calculate optical properties for PbTe.  See [this tutorial](xx) for the calculation of the optical mode frequency in Si.  [This document](xxx) gives an overview of the lmf implementation; the formalism behind the method is described in this [book chapter](xx).
 
 _____________________________________________________________
 
