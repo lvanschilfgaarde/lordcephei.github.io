@@ -82,11 +82,11 @@ the full output can be viewed by clicking here (waiting for file storing system)
     
     Cell volume= 448.07190   Sum of sphere volumes= 301.06511 (0.67191)
 
-here the cell volume, summ of all potential volumes and their ratio are presented, the latter of which has to be equal to 1 for an ASA calculation. Another important value is the overlap percentage, which in this case is given by
+here the cell volume, sum of all potential volumes and their ratio are presented, the latter of which has to be equal to 1 for an ASA calculation. Another important value is the overlap percentage, which in this case is given by
 
       OVMIN, 38 pairs:  fovl = 4.24366e-7   <ovlp> = 8.7%   max ovlp = 8.7%
 
-This line tells us about the average and maximum sphere overlaps. Generally, for ASA the overlaps should be kept below 16\% where possible.  For full potential calculations generally 5\% and below is safe. For _GW_ calculations it should be below 2\%. As the sum of sphere volumes is less than the cell volume, we have to add an empty sphere to meet this requirement. Empty spheres can be thought of as "atoms" with zero atomic number.
+This line tells us about the average and maximum sphere overlaps. Generally, for ASA the overlaps should be kept below 16% where possible.  For full potential calculations generally 5\% and below is safe. For _GW_ calculations it should be below 2\%. As the sum of sphere volumes is less than the cell volume, we have to add an empty sphere to meet this requirement. Empty spheres can be thought of as "atoms" with zero atomic number.
 
 The appropiate space filling spheres can be found using **lmchk**{: style="color: blue"} by invoking:
 
@@ -113,7 +113,7 @@ to
 	
       NBAS=2+{les?2:0}  NL=4  NSPEC=2+{les?1:0}
 
-Quantities in brackets **{...}** are algebraic expressions. In particular, **{les?2:0}** uses C-like syntax consisting of three expressions separated by '**?**' and '**:**'.  The first (**les** in this case) is evaluated.  If **les** is nonzero, the result of the entire bracket is the result of the second expression (**2** in this case) and otherwise the result of the third (**0**).  Returning to the line above,
+Quantities in brackets **{...}** are algebraic expressions. In particular, **{les?2:0}** uses C-like syntax consisting of three expressions separated by '**?**' and '**:**'.  The first (**les** in this case) is evaluated.  If **les** is nonzero, the result of the entire bracket is the result of the second expression (**2** in this case) and otherwise the result of the third (**0**). In the line above,
 the contents of tag **NBAS=** can be interpreted as  "if **les**>0 then  **NBAS=4** else **NBAS=2**". Similarly the contents of **NSPEC** can be interpreted as "if **les**>0 **NSPEC**=3 else **NSPEC=2**".  "**les**" is a variable that is defined in the control file through the following line
 
       % const nit=10 les=1
