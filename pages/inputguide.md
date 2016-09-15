@@ -64,7 +64,7 @@ The input file offers a very flexible free format: tags identify data to be read
 
         W=.01
 
-reads a parameter (.01) from tag W.  
+reads a parameter (.01) from token **W=**Since. In this case **W=**Since belongs to the **BZ**{: style="color: red"} category, the full tag name is **BZ**{: style="color: blue"}\_**W**{: style="color: blue"}.
 
 Tags are organized in a tree structure: a tag connected to the trunk of the tree is called a **category**{: style="color: red"}. A category holds information for a family of data, for example **BZ**{: style="color: red"} contains parameters associated with Brillouin zone integration. The entire input system has at present a grand total of 17 categories, though any one program uses only a subset of them.  
 
