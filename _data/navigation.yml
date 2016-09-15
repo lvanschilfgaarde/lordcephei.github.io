@@ -103,7 +103,7 @@
     - name: "Importing Input files"
       content:
       - title: "Importing Input files"
-        url: "/lmf_bi2te2_tutorial/"
+        url: "/lmf_bi2te3_tutorial/"
     - name: "Miscellaneous"
       content:
       - title: "Adding external Zeeman field to the potential"
