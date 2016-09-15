@@ -97,7 +97,7 @@ and has some elements of a programming language.  A reference defining the synta
 The family consists of the following:
 
 + **blm**{: style="color: blue"}: an input file generator, given structural information.  [Many of the tutorials](https://lordcephei.github.io/lmf_pbte_tutorial/) use **blm**{: style="color: blue"}.
-**cif2init**{: style="color: blue"} and **cif2site**{: style="color: blue"}: convert structural information contained in _cif_{: style="color: green"} files to a form readable by Questaal. **poscar2init**{: style="color: blue"} and **poscar2site**{: style="color: blue"}: perform a similar function, reading VASP **POSCAR**{: style="color: green"} files.
+**cif2init**{: style="color: blue"} and **cif2site**{: style="color: blue"}: convert structural information contained in _cif_{: style="color: green"} files to a form readable by Questaal. **poscar2init**{: style="color: blue"} and **poscar2site**{: style="color: blue"}: perform a similar function, reading VASP _POSCAR_{: style="color: green"} files.
 
 + **lmf**{: style="color: blue"}: the standard full-potential LDA band program.  It has a companion program **lmfa**{: style="color: blue"} to calculate starting wave functions for free atoms and supply parameters for the shape of envelope functions.  See [here](https://lordcephei.github.io/lmf_tutorial/) for a basic tutorial.
 There is an MPI version, **lmf-MPIK**{: style="color: blue"}.
@@ -105,7 +105,7 @@ There is an MPI version, **lmf-MPIK**{: style="color: blue"}.
 + **lmgw1-shot**{: style="color: blue"} and **lmgwsc**{: style="color: blue"}: scripts that perform GW calculations (one-shot or self-consistent), or properties related to GW. The interface connecting to the _GW_ code is **lmfgwd**{: style="color: blue"}.  A basic tutorial for the GW package can be found [here](https://lordcephei.github.io/lmtut/).
 
 + **lm**{: style="color: blue"}: a density functional band program [based on the Atomic Spheres Approximation](https://lordcephei.github.io/lmto_asa_doc/) (ASA).  It requires a companion program **lmstr**{: style="color: blue"} to make structure contants for it.  A basic tutorial can be found [here](https://lordcephei.github.io/asa-doc/).
-There is an MPI version, **lm-MPIK**: style="color: blue"}.
+There is an MPI version, **lm-MPIK**{: style="color: blue"}.
 
 + **lmgf**{: style="color: blue"}: a density functional band program based on the ASA, using a Green's function formalism.
 Its unique contribution to the suite is that it permits the calculation of magnetic exchange interactions, and it 
@@ -123,7 +123,7 @@ There is an MPI version, **lmpg-MPIK**{: style="color: blue"}.
 + **tbe**{: style="color: blue"}: an efficient band structure program that uses empirical tight-binding hamiltonians. One unique feature of this package is that self-consistent calculations can be done (important for polar compounds), and includes Hubbard parameters.  It is also highly parallelized, and versions can be built that work with GPU's.
 
 + **lmdos**{: style="color: blue"}: generates partial densities of states. It is run as a postprocessor after
-     execution of **lmf**{: style="color: blue"}, **lm**{: style="color: blue"}, ro **tbe**{: style="color: blue"}.
+     execution of **lmf**{: style="color: blue"}, **lm**{: style="color: blue"}, or **tbe**{: style="color: blue"}.
 
 + **lmfgws**{: style="color: blue"}: a postprocessing code run after a _GW_ calculation to analyze spectral functions.
 
@@ -161,8 +161,8 @@ Solids: The Uses of the LMTO Method_, Lecture Notes in Physics,
 <b>535</b>, 114-147. H. Dreysse, ed. (Springer-Verlag, Berlin) 2000.
 
 The mathematics of smoothed Hankel functions **lmf**{: style="color: blue"} uses
-are described in this paper:
-  E. Bott, M. Methfessel, W. Krabs, and P. C. Schmid,
+are described in this paper:  
+E. Bott, M. Methfessel, W. Krabs, and P. C. Schmid,
 _Nonsingular Hankel functions as a new basis for electronic structure calculations_,
 [J. Math. Phys. 39, 3393 (1998)](http://dx.doi.org/10.1063/1.532437)
 
