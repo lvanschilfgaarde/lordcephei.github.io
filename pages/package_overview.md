@@ -157,13 +157,13 @@ there are many options available.
 <A href="Building_FP_input_file.html">Building_FP_input_file.html</A> is a tutorial that explains options
 automatically build an input file for the FP program, starting from lattice data you supply or import.
 
-<P> A second stream of input comes through
+A second stream of input comes through
 <A href="Command-line-options.html">command-line switches</A>.  There are a few switches all programs use, and
 there are also a large number of program-specific options, described
 <A href="Command-line-options.html">here</A>.  You can get a listing of switches a particular program uses
 by invoking the program with &thinsp;<FONT size="+1"><tt>--help</tt></FONT>, e.g. &thinsp;<FONT size="+1"><tt>lm --help</tt></FONT>.
 
-<P> There can be many files associated with each calculation.  Most of them are made
+There can be many files associated with each calculation.  Most of them are made
 automatically by an executable program; some files are editable so the user can
 modify them.  In a few instances more than one input file is required to get
 started, e.g. the <i>GW</i> code requires file
@@ -174,51 +174,57 @@ the directories in the top-level directory (note: this file is a bit out of date
 
 ### _Other Resources_
 
-<FN ID=cpa><P>
-I. Turek et al., Electronic strucure of disordered alloys, surfaces and interfaces (Kluwer, Boston, 1996).
-</FN>
-
-<FN ID=fnlmf><P>
+This book chapter describes the theory underlynig the **lmf**{: style="color: blue"} code.
+It is a bit dated but the basics are unchanged.
 M. Methfessel, M. van Schilfgaarde, and R. A. Casali, ``A full-potential LMTO method based
-on smooth Hankel functions,'' in <i>Electronic Structure and Physical Properties of
-Solids: The Uses of the LMTO Method</i>, Lecture Notes in Physics,
+on smooth Hankel functions,'' in _Electronic Structure and Physical Properties of
+Solids: The Uses of the LMTO Method_, Lecture Notes in Physics,
 <b>535</b>, 114-147. H. Dreysse, ed. (Springer-Verlag, Berlin) 2000.
-</FN>
 
-<FN ID=smhankel><P>
+The mathematics of smoothed Hankel functions that form **lmf**{: style="color: blue"} envelope
+functions are described in this paper:
 E. Bott, M. Methfessel, W. Krabs, and P. C. Schmid,
-<i>Nonsingular Hankel functions as a new basis for electronic structure calculations</i>
-J. Math. Phys. 39, 3393 (1998).
+_Nonsingular Hankel functions as a new basis for electronic structure calculations_,
+[J. Math. Phys. 39, 3393 (1998)](http://dx.doi.org/10.1063/1.532437)
 
-<FN ID=fnasa><P> O. K. Andersen, "Linear methods in band theory,"
-Phys. Rev. B12, 3060 (1975); O. K. Andersen and O. Jepsen,
-"Explicit, First-Principles Tight-Binding Theory," Phys. Rev. Lett. 53, 2571 (1984)
-</FN>
+This classic paper laid out the framework for linear methods in band theory
+O. K. Andersen, "Linear methods in band theory,"
+[Phys. Rev. B12, 3060 (1975)](http://dx.doi.org/10.1103/PhysRevB.12.3060)
 
-<FN ID=pmt><P>
+This is paper laid out the framework for tight-binding LMTO:
+O. K. Andersen and O. Jepsen,
+"Explicit, First-Principles Tight-Binding Theory," 
+[Phys. Rev. Lett. 53, 2571 (1984)](http://dx.doi.org/10.1103/PhysRevLett.53.2571)
+
+This paper explains how LAPW and generalized LMTO methods can be joined:
 T. Kotani and M. van Schilfgaarde,
 ``A fusion of the LAPW and the LMTO methods: the augmented plane wave plus muffin-tin orbital (PMT) method''
-Phys. Rev. B81, 125117 (2010)
+[Phys. Rev. B81, 125117 (2010)](http://dx.doi.org/10.1103/PhysRevB.81.125117)
 
-<FN ID=allelectrongw><P>
+This paper presented the first description of an all-electron _GW_ implementation in a mixed basis set:
 T. Kotani and M. van Schilfgaarde,
-<i>All-electron <i>GW</i> approximation with the mixed basis expansion based on the full-potential LMTO method</i>, Sol. State Comm. 121, 461 (2002).
+_All-electron <i>GW</i> approximation with the mixed basis expansion based on the full-potential LMTO method_,
+ Sol. State Comm. 121, 461 (2002).
 
-<FN ID=qsgw><P>
+These papers laid out the framework for QuasiParticle Self-Consistent _GW_ theory
+Sergey V. Faleev, Mark van Schilfgaarde, Takao Kotani,
+_All-electron self-consistent GW approximation: Application to Si, MnO, and NiO_,
+[Phys. Rev. Lett. 93, 126406 (2004)](http://link.aps.org/doi/10.1103/PhysRevLett.93.126406)
+
 M. van Schilfgaarde, Takao Kotani, S. V. Faleev,
-<i>Quasiparticle self-consistent <i>GW</i> theory</i>
-<A href=http://link.aps.org/abstract/PRL/v96/e226402>Phys. Rev. Lett. 96, 226402 (2006)</A>;
++Quasiparticle self-consistent_ GW _theory_,
+[Phys. Rev. Lett. 96, 226402 (2006)](href=http://link.aps.org/abstract/PRL/v96/e226402)
+
+This paper gives the theory underlying Questaal's GW implementation.
 Takao Kotani, M. van Schilfgaarde, S. V. Faleev,
-<i>Quasiparticle self-consistent <i>GW</i> method: a basis for the independent-particle approximation</i>,
-<A href=http://link.aps.org/abstract/PRB/v76/e165106>Phys. Rev. B<b>76</b>, 165106 (2007)</A>
+_Quasiparticle self-consistent GW  method: a basis for the independent-particle approximation_,
+[Phys. Rev. B76, 165106 (2007)](http://link.aps.org/abstract/PRB/v76/e165106)
 
-<FN ID=adequacygw><P>
+This paper shows results from LDA-based GW, and its limitations:
 M. van Schilfgaarde, Takao Kotani, S. V. Faleev,
-<i>Adequacy of Approximations in <i>GW</i> Theory</i>
-<A href=http://link.aps.org/abstract/PRB/v74/e245125>Phys. Rev. B74, 245125 (2006)</A>.
+_Adequacy of Approximations in <i>GW</i> Theory_,
+[Phys. Rev. B74, 245125 (2006)](A href=http://link.aps.org/abstract/PRB/v74/e245125)
 
-<BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+This book explains the ASA-Green's function formalism, including the coherent potential approximation:
+I. Turek et al., Electronic strucure of disordered alloys, surfaces and interfaces (Kluwer, Boston, 1996).
 
-
-
-</HTML>
