@@ -5,18 +5,19 @@ permalink: "/docs/input/inputfile/"
 header: no
 ---
 
+### _Purpose_
+This guide aims to detail the structure and use of the input file and related topics. Additionally, the guide details the different categories that the input file uses and the tokens that can be set within each category.
+
+_____________________________________________________________
+
 ### _Table of Contents_
 {:.no_toc}
 *  Auto generated table of contents
 {:toc}  
 
-### _Purpose_
 _____________________________________________________________
-This guide aims to detail the structure and use of the input file and related topics. Additionally, the guide details the different categories that the input file uses and the tokens that can be set within each category.
 
 ### _The Input File_
-_____________________________________________________________
-
 ##### _Introduction_
 Here is a sample input file for the compound Bi$$_2$$Te$$_3$$ written for the **lmf**{: style="color: blue"} package.
 

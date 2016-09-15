@@ -166,7 +166,7 @@ E. Bott, M. Methfessel, W. Krabs, and P. C. Schmid,
 _Nonsingular Hankel functions as a new basis for electronic structure calculations_,
 [J. Math. Phys. 39, 3393 (1998)](http://dx.doi.org/10.1063/1.532437)
 
-This classic paper laid out the framework for linear methods in band theory:  
+This classic paper established the framework for linear methods in band theory:  
 O. K. Andersen, "Linear methods in band theory,"
 [Phys. Rev. B12, 3060 (1975)](http://dx.doi.org/10.1103/PhysRevB.12.3060)
 
@@ -185,7 +185,7 @@ T. Kotani and M. van Schilfgaarde,
 _All-electron <i>GW</i> approximation with the mixed basis expansion based on the full-potential LMTO method_,
  Sol. State Comm. 121, 461 (2002).
 
-These papers laid out the framework for QuasiParticle Self-Consistent _GW_ theory:  
+These papers established the framework for QuasiParticle Self-Consistent _GW_ theory:  
 Sergey V. Faleev, Mark van Schilfgaarde, Takao Kotani,
 _All-electron self-consistent GW approximation: Application to Si, MnO, and NiO_,
 [Phys. Rev. Lett. 93, 126406 (2004)](http://link.aps.org/doi/10.1103/PhysRevLett.93.126406);  
