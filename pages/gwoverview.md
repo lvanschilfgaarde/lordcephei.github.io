@@ -26,11 +26,11 @@ _____________________________________________________________
 The _GW_ approximation is implemented in two forms: as a 1-shot perturbation to the LDA and as quasiparticle self-consistent _GW_.
 
 In 1-shot mode, the diagonal part of &Sigma; is evaluated at the
-one-particle (usually LDA) energies, yielding a corrections to the
-quasiparticle levels in 1st order perturbation theory.
+one-particle (usually LDA) energies, yielding a correction to the
+LDA levels in 1st order perturbation theory.
 
 In QSGW mode, the full &Sigma; matrix is calculated and
-"quasiparticlized:" $$\Sigma_{ij}(\omega)$ coupling one-electron
+"quasiparticlized:" $$\Sigma_{ij}(\omega)$$ coupling one-electron
 states _i_ and _j_, is evaluated at the one-particle energies
 $$\varepsilon_{i}$$ and $$\varepsilon_{j}$$, and the average value is
 taken.  This results in a static but orbital-dependent potential, a
@@ -38,23 +38,23 @@ taken.  This results in a static but orbital-dependent potential, a
 and defines a one-particle hamiltonian $$H_0$$ which is the
 LDA one-particle hamiltonian with $$\Sigma^0_{ij}$$ substituting for $$V^{LDA}_{xc}$$.
 
-The new $$H_0$$ is used to mke a new $$\Sigma_{ij}(\omega)$, and the process is iterted until 
+The new $$H_0$$ is used to mke a new $$\Sigma_{ij}(\omega)$$, and the process is iterted until 
 $$H_0$$ stops changing (quasiparticle self-consistency).
 
-QS<i>GW</i> theory is an elegant way to choose the optimum noninteracting hamiltonian $H_0$ for <i>GW</i> calculations, rather than using
-the LDA for $$H_0$$, as is customary.  A particularly valuable property of this optimum starting point is that the (real part) of the peaks
-of the interacting Green's function <i>G</i> and the poles of $$G_0$$ coincide.  The eigenfunctions of $$G_0$$ are as close as possible to
-those of <i>G</i>, by construction.  But what are poles in $$G_0$$ get broadened in <i>G</i> so quasiparticles lose weight.  Thus the
+QS<i>GW</i> theory is an elegant way to choose the optimum noninteracting hamiltonian $$H_0$$ for <i>GW</i> calculations, rather than using
+the LDA for $$H_0$$, as is customary.  A particularly valuable property of this optimum starting point is that the peaks
+of the interacting Green's function <i>G</i> coincide with the poles of $$G_0$$.  The eigenfunctions of $$G_0$$ are as close as possible to
+those of <i>G</i>, by construction.  But what are poles in $$G_0$$ get broadened by the interactions, so quasiparticles lose weight.  Thus the
 density-of-states, or spectral function, is composed of a superposition of &delta;-functions for $$G_0$$, but are broadened for <i>G</i>.
 Also the eigenvalues acquire an imaginary part, making the QP lifetime finite.
 
 In QS<i>GW</i> theory $$G_0$$ and <i>G</i> are closely linked.  Associated with the two kinds of <i>G</i> are two kinds of density-of-states
-(DOS).  There is "noninteracting" or "coherent" DOS, the spectral function of $$G_0$$ which is what is usually associated with DOS, and what
+(DOS).  There is "noninteracting" or "coherent" DOS, namely the spectral function of $$G_0$$ which associated with DOS in one-particle description, is what
 is typically calculated by a band program such as **lmf**{: style="color: blue"} .  There is also the true DOS (spectral function of <i>G</i>) which is what is
 approximately measured by e.g.  a photoemission experiment.  The <i>GW</i> package has a facility to generate both kinds of DOS; through the
 normal **lmf**{: style="color: blue"} process for the noninteracting DOS or by analyzing the spectral functions for the interacting case.
 
-A detailed description of QSGW theory and the way in which Questaal implements it
+A detailed description of QS<i>GW</i> theory and the way in which Questaal implements it
 can be found in the references in "Other Resources" below.
 
 ### _How the 1-particle and many-particle codes synchronise_
@@ -63,44 +63,45 @@ The _GW_ package comprise a separate set of codes from the density-functional co
 single-particle basis set of **lmf**{: style="color: blue"} to calculate the screened coulomb interaction _W_ and the self-energy,
 &Sigma;=_iGW_.
 
-Thus the _GW_ package handles the many-body part on **lmf**{: style="color: blue"} the the 1-body part.  The two connect through special
+Thus the _GW_ package handles the many-body part, **lmf**{: style="color: blue"} the 1-body part.  The two connect through special
 purpose interfaces: **lmfgwd**{: style="color: blue"} sets up the inputs needed by GW, supplying information about the wave functions in the
-augmentation spheres and in the interstitial.  The _GW_ part generates QP levels and the quasiparticlized $$V^{GW}_{xc}$$.
-Apart from these linkages, the <i>GW</i> package is completely separate from the FP-LMTO program.  The <i>GW</i> package does not depend on
-the ctrl file **lmf**{: style="color: blue"} and **lmfgwd**{: style="color: blue"} use, only on the eigenfunctions they generate.
-It has a separate input file, **GWinput**.
+augmentation spheres and in the interstitial.  The _GW_ part estimates shifts in  QP levels and
+makes the quasiparticlized $$\Sigma^0_{ij}$$. 
+Apart from these linkages, the <i>GW</i> package is completely separate from **lmf**{: style="color: blue"}.  The <i>GW</i> package 
+has a separate input file, _GWinput_{: style="color: green"}  and does not depend on
+the ctrl file **lmf**{: style="color: blue"} and **lmfgwd**{: style="color: blue"} use; only on the eigenfunctions they generate.
 
-In reality the _GW_ package makes $$\Sigma^0{-}V^{LDA}_{xc}$$.  **lmf**{: style="color: blue"} reads this potential and adds it to the LDA hamiltonian.
-This construction enables **lmf**{: style="color: green"} to do the same kinds of calculations as it performs with the LDA potential.
+In reality the _GW_ package makes $$\Sigma^0{-}V^{LDA}_{xc}$$.  **lmf**{: style="color: blue"} can read this potential and add it to the LDA hamiltonian.
+This construction enables **lmf**{: style="color: blue"} to do the same kinds of calculations it performs with the LDA potential.
 
 #### _Operation of **lmfgwd**{: style="color: blue"}_
 
-**lmfgwd**{: style="color: blue"}  initially operates in the same manner as **lmf**{: style="color: blue"}.  After setting up the potoential
+**lmfgwd**{: style="color: blue"}  initially operates in the same manner as **lmf**{: style="color: blue"}.  After setting up the potential
 it prompts for a job, which tells **lmfgwd**{: style="color: blue"}  what to do.
 
-+ Job &minus;1' generates _GWinput{: style="color: green"}  and exits
-+ Job 0'&nbsp; is an 'initializer' mode.  It creates several input files the <i>GW</i> package requires: **SYMOPS**, **LATTC**, **CLASS**, **NLAindx**, **ldima**
++ Job &minus;1 generates _GWinput{: style="color: green"}  and exits
++ Job 0'&nbsp; is an 'initializer' mode.  It creates several input files the <i>GW</i> package requires: _SYMOPS_{: style="color: blue"}, _LATTC_{: style="color: blue"}, _CLASS_{: style="color: blue"}, _NLAindx_{: style="color: blue"}, _ldima_{: style="color: blue"}
 + Job 1'&nbsp; generates files required by the <i>GW</i> package (e.g. eigenfunctions, eigenvalues, and wave function information)
-+ Job &minus;2' performs sanity checks on the _GWinput{: style="color: green"}  file.
++ Job &minus;2 performs sanity checks on _GWinput_{: style="color: green"}
 
 Even while the _GW_ package is independent of **lmf**{: style="color: blue"},
-the _GWinput{: style="color: green"} file is complicated and
-in practice almost always generated by **lmfgwd**{: style="color: blue"}.
+the _GWinput_{: style="color: green"} file is complicated and
+in practice almost always autogenerated by **lmfgwd**{: style="color: blue"}.
 What **lmfgwd**{: style="color: blue"} writes to 
-_GWinput{: style="color: green"} is affected by the ctrl file.
-There is a special **GW** category **lmfgwd**{: style="color: blue"} 
-reads from the ctrl file; you can set some of the parameters it writes into
-_GWinput{: style="color: green"} through tags in this category.
+_GWinput{: style="color: green"} _is_ modified by contents in the ctrl file.
+ **lmfgwd**{: style="color: blue"} reads a special **GW** category from the ctrl file; 
+through tags in this category you can set some of the parameters it writes into
+_GWinput_{: style="color: green"} .
 
-#### _Analysis of many-body spectral functions_
+### _Analysis of many-body spectral functions_
 
 A pair of executables **spectral**{: style="color: blue"} and **lmfgws**{: style="color: blue"} 
-are included with in the Questaal suite.  They generate spectral functions, derived either
+are included in the Questaal suite.  They generate spectral functions, derived either
 individual QP levels or integrated over the Brillouin zone to make the interacting density-of-states.
 
 ### _Other Resources_
 
-See [this tutorial](https://lordcephei.github.io/lmtut/) for a basic introduction to doing a QSGW calculation.
+See [this tutorial](https://lordcephei.github.io/lmtut/) for a basic introduction to doing a QS<i>GW</i> calculation.
 
 This paper presents the first description of an all-electron _GW_ implementation in a mixed basis set:  
 T. Kotani and M. van Schilfgaarde,
