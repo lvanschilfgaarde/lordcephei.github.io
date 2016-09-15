@@ -100,6 +100,8 @@ individual QP levels or integrated over the Brillouin zone to make the interacti
 
 ### _Other Resources_
 
+See [this tutorial](https://lordcephei.github.io/lmtut/) for a basic introduction to doing a QSGW calculation.
+
 This paper presents the first description of an all-electron _GW_ implementation in a mixed basis set:  
 T. Kotani and M. van Schilfgaarde,
 _All-electron <i>GW</i> approximation with the mixed basis expansion based on the full-potential LMTO method_,
