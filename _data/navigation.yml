@@ -25,7 +25,7 @@
   - title: "Full Potential Overview"
     url: "/fpoverview/"
   - title: "lmgf documentation"
-    url: "/lmgf-documentation/"
+    url: "/lmgf/"
   - program:
     - name: "Input Files"
       prefix: "/input"
@@ -82,18 +82,13 @@
       content:
       - title: "Basic GW Tutorial"
         url: "/lmtut/"
-    - name: "qsgw"
-      prefix: "/qsgw"
-      content:
-      - title: "QSGW Tutorial"
-        url: "/qsgw_tutorial/"
     - name: "lmgf"
       prefix: "/lmgf"
       content:
       - title: "LMGF Tutorial"
-        url: "/lmgf-tutorial/"
+        url: "/lmgf"
     - name: "qsgw + dmft"
-      prefix: "/gsgw_dmft"
+      prefix: "/qsgw_dmft"
       content:
       - title: "Introduction"
         url: "/dmft0/"

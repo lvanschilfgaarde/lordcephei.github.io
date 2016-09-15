@@ -1,7 +1,7 @@
 ---
 layout: page-fullwidth
 title: "The Input File"
-permalink: "/docs/inputfile/"
+permalink: "/docs/input/inputfile/"
 header: no
 ---
 

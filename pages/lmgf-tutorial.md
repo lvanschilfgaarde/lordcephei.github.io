@@ -4,7 +4,7 @@ title: "ASA Green's function package tutorial"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "/tutorial/lmgf/lmgf-tutorial/"
+permalink: "/tutorial/lmgf/lmgf/"
 header: no
 ---
 
