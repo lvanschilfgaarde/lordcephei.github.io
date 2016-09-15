@@ -97,14 +97,14 @@ and has some elements of a programming language.  A reference defining the synta
 The family consists of the following:
 
 + **blm**{: style="color: blue"}: an input file generator, given structural information.  [Many of the tutorials](https://lordcephei.github.io/lmf_pbte_tutorial/) use **blm**{: style="color: blue"}.
-**cif2init**{: style="color: blue"} and **cif2site**{: style="color: blue"}: convert **cif**{: style="color: green"} files convert structural information contained in **cif** files to a form readable by Questaal. **poscar2init**{: style="color: blue"} and **poscar2site**{: style="color: blue"}: convert structural informatoin contained in VASP **POSCAR**{: style="color: green"} files into a Questaal form.
+**cif2init**{: style="color: blue"} and **cif2site**{: style="color: blue"}: convert structural information contained in _cif_{: style="color: green"} files to a form readable by Questaal. **poscar2init**{: style="color: blue"} and **poscar2site**{: style="color: blue"}: perform a similar function, reading VASP **POSCAR**{: style="color: green"} files.
 
 + **lmf**{: style="color: blue"}: the standard full-potential LDA band program.  It has a companion program **lmfa**{: style="color: blue"} to calculate starting wave functions for free atoms and supply parameters for the shape of envelope functions.  See [here](https://lordcephei.github.io/lmf_tutorial/) for a basic tutorial.
 There is an MPI version, **lmf-MPIK**{: style="color: blue"}.
 
 + **lmgw1-shot**{: style="color: blue"} and **lmgwsc**{: style="color: blue"}: scripts that perform GW calculations (one-shot or self-consistent), or properties related to GW. The interface connecting to the _GW_ code is **lmfgwd**{: style="color: blue"}.  A basic tutorial for the GW package can be found [here](https://lordcephei.github.io/lmtut/).
 
-+ **lm**{: style="color: blue"}: a density functional band program based on the ASA.  It requires a companion program **lmstr**{: style="color: blue"} to make structure contants for it.  A basic tutorial can be found [here](https://lordcephei.github.io/asa-doc/).
++ **lm**{: style="color: blue"}: a density functional band program [based on the Atomic Spheres Approximation](https://lordcephei.github.io/lmto_asa_doc/) (ASA).  It requires a companion program **lmstr**{: style="color: blue"} to make structure contants for it.  A basic tutorial can be found [here](https://lordcephei.github.io/asa-doc/).
 There is an MPI version, **lm-MPIK**: style="color: blue"}.
 
 + **lmgf**{: style="color: blue"}: a density functional band program based on the ASA, using a Green's function formalism.
@@ -122,7 +122,7 @@ There is an MPI version, **lmpg-MPIK**.
 
 + **tbe**{: style="color: blue"}: an efficient band structure program that uses empirical tight-binding hamiltonians. One unique feature of this package is that self-consistent calculations can be done (important for polar compounds), and includes Hubbard parameters.  It is also highly parallelized, and versions can be built that work with GPU's.
 
-+ **lmdos**{: style="color: blue"}: generates partial densities of states, run as a postprocessor after
++ **lmdos**{: style="color: blue"}: generates partial densities of states. It is run as a postprocessor after
      execution of **lmf**{: style="color: blue"}, **lm**{: style="color: blue"}, ro **tbe**{: style="color: blue"}.
 
 + **lmfgws**{: style="color: blue"}: a postprocessing code run after a _GW_ calculation to analyze spectral functions.
@@ -133,11 +133,11 @@ There is an MPI version, **lmpg-MPIK**.
 option to automatically determine sphere radii, and another option to locate interstitial sites where empty spheres or
 floating orbitals may be placed --- important for ASA and some _GW_ calculations.
 
++ **rdcmd**{: style="color: blue"}:  a command reader, similar to a shell, but uses Questaal's parser and programming language.
+
 + **lmxbs**{: style="color: blue"}: generates input for the graphics program **xbs**{: style="color: blue"} written by M. Methfessel, which draws pictures of crystals
 
 + **lmmc**{: style="color: blue"}: a (fast) LDA-based molecules program (not documented).
-
-+ **rdcmd**{: style="color: blue"}:  a command reader, similar to a shell, but uses Questaal's parser and programming language.
 
 Some other auxiliary programs are also made.
 
@@ -148,18 +148,9 @@ input in a largely format-free, tree-structured format.  There is some
 programming language capability: e.g. input lines can be conditionally
 read, you can declare variables and use algebraic expressions.  Thus a
 single file can serve as database (one input file for many
-materials systems) and for documentation.  Look at
-<A href="input-file-style.html">input-file-style.html</A> for an
-easy-to-follow example illustrating how an input file is structured, and
-how input is organized by categories and tokens.  It is an operational
-input file, and you can see how quantities used in typical calculations are
-supplied; and it hints at some of the many possibilities of this very
-flexible and versatile interface.  You are advised to go through that web page before
-attempting any calculations.
-<A href="input.pdf">input.pdf</A> provides a somewhat dull, but
-more complete description of the input syntax.  Finally see
-<A href="tokens.html">tokens.html</A> for documentation of tokens
-read by the various programs, and their meaning.
+materials systems) and for documentation.  Look at [this tutorial](https://lordcephei.github.io/docs/inputfile/)
+to see how an input file is structured, and
+how input is organized by _categories_ and _tokens_. 
 
 There is one main input file all programs use, &thinsp;<FONT size="+1"><tt>ctrl.<i>ext</i></tt></FONT>; it can be complicated as
 there are many options available.
