@@ -162,11 +162,11 @@ Solids: The Uses of the LMTO Method_, Lecture Notes in Physics,
 
 The mathematics of smoothed Hankel functions **lmf**{: style="color: blue"} uses
 functions are described in this paper:
-E. Bott, M. Methfessel, W. Krabs, and P. C. Schmid,
+ E. Bott, M. Methfessel, W. Krabs, and P. C. Schmid,
 _Nonsingular Hankel functions as a new basis for electronic structure calculations_,
 [J. Math. Phys. 39, 3393 (1998)](http://dx.doi.org/10.1063/1.532437)
 
-This classic paper laid out the framework for linear methods in band theory
+This classic paper laid out the framework for linear methods in band theory:
 O. K. Andersen, "Linear methods in band theory,"
 [Phys. Rev. B12, 3060 (1975)](http://dx.doi.org/10.1103/PhysRevB.12.3060)
 
