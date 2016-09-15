@@ -97,6 +97,7 @@ and has some elements of a programming language.  A reference defining the synta
 The family consists of the following:
 
 + **blm**{: style="color: blue"}: an input file generator, given structural information.  [Many of the tutorials](https://lordcephei.github.io/lmf_pbte_tutorial/) use **blm**{: style="color: blue"}.
+**cif2init**{: style="color: blue"} and **cif2site**{: style="color: blue"}: convert **cif**{: style="color: green"} files convert structural information contained in **cif** files to a form readable by Questaal. **poscar2init**{: style="color: blue"} and **poscar2site**{: style="color: blue"}: convert structural informatoin contained in VASP **POSCAR**{: style="color: green"} files into a Questaal form.
 
 + **lmf**{: style="color: blue"}: the standard full-potential LDA band program.  It has a companion program **lmfa**{: style="color: blue"} to calculate starting wave functions for free atoms and supply parameters for the shape of envelope functions.  See [here](https://lordcephei.github.io/lmf_tutorial/) for a basic tutorial.
 There is an MPI version, **lmf-MPIK**{: style="color: blue"}.
@@ -137,10 +138,6 @@ floating orbitals may be placed --- important for ASA and some _GW_ calculations
 + **lmmc**{: style="color: blue"}: a (fast) LDA-based molecules program (not documented).
 
 + **rdcmd**{: style="color: blue"}:  a command reader, similar to a shell, but uses Questaal's parser and programming language.
-
-+ **cif2init**{: style="color: blue"} and **cif2site**{: style="color: blue"}: convert **cif**{: style="color: green"} files into files readable by Questaal.
-
-+ **poscar2init**{: style="color: blue"} and **poscar2site**{: style="color: blue"}: convert VASP **POSCAR**{: style="color: green"} files into files readable by Questaal.
 
 Some other auxiliary programs are also made.
 
