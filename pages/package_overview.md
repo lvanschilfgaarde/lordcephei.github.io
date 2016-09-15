@@ -61,7 +61,7 @@ augmented envelope functions.
 
 _____________________________________________________________
 
-### _Questaal's Envelope Functions_
+### _Questaal's Basis Functions_
 
 The primary code in the density-functional package (**lmf**{: style="color: blue"}) uses atom-centered functions for
 envelope functions. They are convolutions of a Hankel and Gaussian functions centred at the nucleus.  Thus 
@@ -96,29 +96,29 @@ and has some elements of a programming language.  A reference defining the synta
 
 The family consists of the following:
 
-+ **blm**{: style="color: blue"}: an input file generator, given structural information.  The introductory tutorial use **blm**{: style="color: blue"}.
++ **blm**{: style="color: blue"}: an input file generator, given structural information.  
+[Many of the tutorials](https://lordcephei.github.io/lmf_pbte_tutorial/) use **blm**{: style="color: blue"}.
 
-+ **lmf**{: style="color: blue"}: the standard full-potential LDA band program.  It has a companion program **lmfa**{: style="color: blue"} to calculate starting wave functions for free atoms and set up trial envelope functions.  See [here](https://lordcephei.github.io/lmf_tutorial/) for a basic tutorial.
-There is an MPI version, **lmf-MPIK**.
++ **lmf**{: style="color: blue"}: the standard full-potential LDA band program.  It has a companion program **lmfa**{: style="color: blue"} to calculate starting wave functions for free atoms and supply parameters for the shape of envelope functions.  See [here](https://lordcephei.github.io/lmf_tutorial/) for a basic tutorial.
+There is an MPI version, **lmf-MPIK**{: style="color: blue"}.
 
 + **lmgw1-shot**{: style="color: blue"} and **lmgwsc**{: style="color: blue"}: scripts that perform GW calculations (one-shot or self-consistent), or properties related to GW. The interface connecting to the _GW_ code is **lmfgwd**{: style="color: blue"}.  A basic tutorial for the GW package can be found [here](https://lordcephei.github.io/lmtut/).
 
 + **lm**{: style="color: blue"}: a density functional band program based on the ASA.  It requires a companion program **lmstr**{: style="color: blue"} to make structure contants for it.  A basic tutorial can be found [here](https://lordcephei.github.io/asa-doc/).
-There is an MPI version, **lm-MPIK**.
+There is an MPI version, **lm-MPIK**: style="color: blue"}.
 
 + **lmgf**{: style="color: blue"}: a density functional band program based on the ASA, using a Green's function formalism.
 Its unique contribution to the suite is that it permits the calculation of magnetic exchange interactions, and it 
 has an implementation of the coherent potential approximation to treat chemical and/or spin disorder.
-There is an MPI version, **lmgf-MPIK**.
-
 A basic tutorial can be found [here](https://lordcephei.github.io/lmgf-tutorial/).
+There is an MPI version, **lmgf-MPIK**{: style="color: blue"}.
 
-+ **lmpg**{: style="color: blue"}: a program similar to **lmgf**{: style="color: blue"}, but it is designed for layered geometries with periodic boundary conditions in
++ **lmpg**{: style="color: blue"}: a program similar to **lmgf**{: style="color: blue"}, but it is designed for layered structures with periodic boundary conditions in
  two dimensions.  It can calculate transport using the Landauer-Buttiker formalism, and has a non-equilibrium capability.  There 
 [a tutorial](https://lordcephei.github.io/pages/lmpg_tutorial.v2.0.pdf/), though it is somewhat out of date.
 There is an MPI version, **lmpg-MPIK**.
 
-+ **lmfdmft**{: style="color: blue"}: an interface connected to  the DMFT package
++ **lmfdmft**{: style="color: blue"}: the main interface that links to the DMFT capabilities.
 
 + **tbe**{: style="color: blue"}: an efficient band structure program that uses empirical tight-binding hamiltonians. One unique feature of this package is that self-consistent calculations can be done (important for polar compounds), and includes Hubbard parameters.  It is also highly parallelized, and versions can be built that work with GPU's.
 
@@ -137,14 +137,13 @@ floating orbitals may be placed --- important for ASA and some _GW_ calculations
 
 + **lmmc**{: style="color: blue"}: a (fast) LDA-based molecules program (not documented).
 
-+ **rdcme**{: style="color: blue"}:
++ **rdcmed**{: style="color: blue"}:  a command reader, similar to a shell, but uses Questaal's parser and programming language.
 
-+ **cif2init**{: style="color: blue"} and **cif2site**{: style="color: blue"}: convert **cif** files into init files or site files.
++ **cif2init**{: style="color: blue"} and **cif2site**{: style="color: blue"}: convert **cif**{: style="color: green"} files into init files or site files.
 
-+ **poscar2init**{: style="color: blue"} and **poscar2site**{: style="color: blue"}: convert VASP **POSCAR** files into init files or site files.
++ **poscar2init**{: style="color: blue"} and **poscar2site**{: style="color: blue"}: convert VASP **POSCAR**{: style="color: green"} files into init files or site files.
 
 
-<br>
 Some other auxiliary programs are also made; see <A href="lmto.html#section3">here</A>.  To plot the bands or density-of-states
 you can use your favorite package, or consider using a graphics package
 (FPLOT.<I>vsn</I>.tar.gz) tailored to work with these programs.  The &thinsp;<FONT size="+1"><tt>FPLOT</tt></FONT>&thinsp;
