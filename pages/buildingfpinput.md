@@ -1,6 +1,6 @@
 ---
 layout: page-fullwidth
-title: "Detailed lmf tutorial"
+title: "Building Input files"
 subheadline: ""
 show_meta: false
 teaser: ""
@@ -10,7 +10,8 @@ header: no
 
 ### _Purpose_
 
-This tutorial shows how to construct input files from various sources
+This tutorial shows how to construct input files, receiving structural information from various sources.
+
 _____________________________________________________________
 
 ### _Command summary_
@@ -161,9 +162,16 @@ It creates file _site_{: style="color: green"} from file _POSCAR_{: style="color
 
 #### 2. _Running blm_
 
-Almost all programs in this package require the input file _ctrl.ext_{: style="color: green"}. You can do an entire calculation starting only with this file; but often you supply other files such as site files to supplement _ctrl.ext_{: style="color: green"}. **blm**{: style="color: blue"} will create a skeleton or template file from basic material structural information; it is called _actrl.ext_{: style="color: green"}, so as not to overwrite any file named _ctrl.ext_{: style="color: green"}.
+**blm**{: style="color: blue"} will create a template file for the main input file of the Questaal package, _ctrl.ext_{: style="color: green"}.
+ext_{: style="color: green"} is a name you select; we will use _bi2te3_{: style="color: green"} corresponding to the material.  
+**blm**{: style="color: blue"} actually generates _actrl.ext_{: style="color: green"}, prepending the _a_ so as not to overwrite any file named _ctrl.ext_{: style="color: green"}.
 
-1.  Create a file named _init.bi2te3_{: style="color: green"} containing the following lines:
+Almost all programs in this package require the input file _ctrl.ext_{: style="color: green"}.  _You can do an entire calculation starting only with this file; but often you supply other files.  For example, symmetry line points for plotting energy bands are read from a separate file (e.g. _syml.bi2te3_{: style="color: green"}).
+Structural data is typically split off into a separate file (_site.bi2te3_{: style="color: green"} in this tutorial); **blm**{: style="color: blue"} will create a site file by default.
+
+##### 2.1 _init_{: style="color: green"} file
+
+Create a file named _init.bi2te3_{: style="color: green"} containing the following lines:
 
         # from http://cst-www.nrl.navy.mil/lattice/struk/c33.html
         # Bi2Te3 from Wyckoff
@@ -177,14 +185,43 @@ Almost all programs in this package require the input file _ctrl.ext_{: style="c
             ATOM=Te X=0     0   {uTe}
             ATOM=Bi X=0     0   {uBi}
 
+**Note**{: style="color: red"}
 
-    [This tutorial](input-file-style.html) explains how the input files _init.ext_{: style="color: green"} and _ctrl.ext_{: style="color: green"} are structured.
++ Lines which begin with ‘#’ are comment lines and are ignored. (More generally, text following a `#’ in any line is ignored).
++ Lines beginning with ‘%’ are directives to the preprocessor. Directives can perform various functions similar to a normal programming language, such as assigning variables, evaluating expressions, conditionally readings some lines, and repeated loops over sections of input.
 
-2.  To create the skeleton input file invoke **blm**{: style="color: blue"}:
+_init_ files and _ctrl_ files are styled the same way: data is divided into _categories_ (**LATTICE** and **SITE**) --- tags which begin in the first column,
+and _tokens_ (e.g. **SPCGRP=**, **A=**, **X=**) -- tags belonging to a particular category.
 
-        $ blm bi2te3
+[This tutorial](https://lordcephei.github.io/docs/inputfile) explains how the input files _init.ext_{: style="color: green"} and _ctrl.ext_{: style="color: green"} are structured.
 
-    As the [output](FPsamples/out.bi2te3.blm) shows, it found all five atoms that were implicit in the specification of the symmetry group, R-3m.
+##### 2.2 _ctrl_{: style="color: green"} file
+
+To create a template input file invoke **blm**{: style="color: blue"}:
+
+    $ blm bi2te3
+
+Now take a look at the standard output. 
+**blm**{: style="color: blue"} finds the lattice vectors from the crystal symmetry (if you had supplied the lattice vectors, it would have found the symmetry).
+In this case, the symmetry is given; the corresponding point group has 12 symmetry operations, and two extra atoms had to be added to make the basis compatible with the group.   The output snippet below indicates what **blm**{: style="color: blue"} found.
+
+<div onclick="elm = document.getElementById('bz'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show basis enlargement</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="bz">{:/}
+
+~~~
+ SGROUP: 12 symmetry operations from 3 generators
+ ADDBAS: The basis was enlarged from 3 to 5 sites
+         The additional sites are: 
+
+        ATOM=Te       POS=   0.0000000   0.0000000   2.5538193
+        ATOM=Bi       POS=   0.0000000   0.0000000  -4.8185270
+~~~ 
+
+{::nomarkdown}</div>{:/}
+
+
+
+
 
     Note that **blm**{: style="color: blue"} automatically determined [augmentation sphere radii](FPsamples/out.bi2te3.blm#rmt), which it accomplishes by attempting to find spheres with equal potentials on each sphere surfaces (as well as it can). If you already have an input file, you can run **lmchk**{: style="color: blue"} with _--getwsr_ to determine radii for you (it uses the same algorithm as **blm**{: style="color: blue"}). Particularly in polar compounds, this algorithm probably does a better job than you can do by hand, and it is recommended that you use the radii it finds, or some scaled version of them.
 
