@@ -60,25 +60,20 @@ The DMFT loop is composed by alternated runs of **lmfdmft**{: style="color: blue
 
 * **Prepare and launch the lmfdmft run**
 
-  First you have to copy the standard input files:
+  First you have to copy the input files. If you have to run the first iteration then 
  
   ```
-  mkdir itX_lmfrun                            # with X=iteration , X=1 if first run
-  cp lmfinput/* itX_lmfrun                    # copy standard input files 
+  mkdir it1_lmfrun                            
+  cp lmfinput/* it1_lmfrun                    # copy standard input files 
+  cp siginp0/sig.inp it1_lmfrun/sig.inp       # cppy vanishing sig.inp
   ```
   
-  If you are running the first iteration, you have to copy the vanishing impurity self-energy:
+  If you are running iteration number X>1, then
   
   ```
-  cp siginp0/sig.inp it1_lmfrun/sig.inp
-  ```
-  
-  Otherwhise, you have to copy the (broadened) impurity self-energy of the previous CTQMC step. 
-  If you are running an iteration X>1 then type:
-  
-  ```
-  cp it(X-1)_qmcrun/Sig.out.brd  itX_lmfrun/sig.inp
-  cp it(X-1)_qmcrun/g_qmc.dat   itX_lmfrun/gimp.prev.lsco
+  mkdir itX_lmfrun                                    # X>1 number of the iteration
+  cp lmfinput/* itX_lmfrun                            # copy standard input files 
+  cp it(X-1)_qmcrun/Sig.out.brd  itX_lmfrun/sig.inp   # copy sigma from last CTQMC run
   ```
 
   Let now _U_=10 eV and _J_=0.7 eV be the Hubbard on-site interaction and Hunds coupling respectively, and _n_=9 the nominal occupancy of the correlated subsystem (_n_=9 for cuprates). Then launch **lmfdmft**{: style="color: blue"} with the command 
