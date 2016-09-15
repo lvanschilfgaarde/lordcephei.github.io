@@ -18,7 +18,7 @@ This guide aims to detail the structure and use of the input file and related to
 _____________________________________________________________
 
 ##### _Introduction_
-Here is a sample input file for the compound $$ Bi_2Te_3 $$ written for the **lmf**{: style="color: blue"} package.
+Here is a sample input file for the compound Bi$$_2$$Te$$_3$$ written for the **lmf**{: style="color: blue"} package.
 
 <div onclick="elm = document.getElementById('sampleinput'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click to show.</div>
 {::nomarkdown}<div style="display:none;padding:25px;" id="sampleinput">{:/} 
@@ -54,9 +54,11 @@ Each element of data follows a **token**{: style="color: blue"}. The **token**{:
 Each token belongs to a category. **VERS**{: style="color: red"}, **ITER**{: style="color: red"}, **BZ**{: style="color: red"}, **STRUC**{: style="color: red"}, **SPEC**{: style="color: red"}, **SITE**{: style="color: red"} are categories that organize the input by topic.  
 Any text that begins in the first column is a category.  
 
-Thus the full identifier consists of a sequence of tags, e.g. **BZ**{: style="color: red"}\_**METAL**{: style="color: blue"}, whose components are stuctured like a tree.  
+Thus the full identifier (tag) consists of a sequence of components, e.g. **BZ**{: style="color: red"}\_**METAL**{: style="color: blue"}.
+Components are organized in a tree structure: the trunk of the tree is called a _category_ (BZ{: style="color: red"}), and is identified as starting in the first column of the file.
+The outermost branch points to actual data and is called a _token_ (METAL{: style="color: blue"}). 
 
-Sometimes the identifier has three tags, e.g. **HAM**{: style="color: red"}\_**AUTOBAS**{: style="color: green"}\_**LOC**{: style="color: blue"}. The leading tag is the **category**{: style="color: red"}; the last is the **token**{: style="color: blue"}.  
+Sometimes a tag has three components, e.g. **HAM**{: style="color: red"}\_**AUTOBAS**{: style="color: green"}\_**LOC**{: style="color: blue"}. The leading component (trunk) is the **category**{: style="color: red"}; the last is the **token**{: style="color: blue"}.  
 
 ##### _Tags, Categories and Tokens_
 
@@ -66,15 +68,14 @@ The input file offers a very flexible free format: tags identify data to be read
 
 reads a parameter (.01) from token **W=**. In this case **W=** belongs to the **BZ**{: style="color: red"} category, so the full tag name is **BZ**{: style="color: red"}\_**W**{: style="color: blue"}.
 
-Tags are organized in a tree structure: a tag connected to the trunk of the tree is called a **category**{: style="color: red"}. A category holds information for a family of data, for example **BZ**{: style="color: red"} contains parameters associated with Brillouin zone integration. The entire input system has at present a grand total of 17 categories, though any one program uses only a subset of them.  
+As noted, tags are organized in a tree structure with the category as the trunk. A category holds information for a family of data, for example **BZ**{: style="color: red"} contains parameters associated with Brillouin zone integration. The entire input system has at present a grand total of 17 categories, though any one program uses only a subset of them.  
 
-The outermost branch of the tree points to actual data and is called a **token**{: style="color: blue"}. Each category contains a collection of tags within it −− usually tokens, but sometimes an intermediate tag which contains a collection of tokens within it, as described below.  
-
-<div onclick="elm = document.getElementById('tagexample'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click here for an example.</div>
+<div onclick="elm = document.getElementById('tagexample'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click here for a more detailed description of syntax.</div>
 {::nomarkdown}<div style="display:none;padding:25px;" id="tagexample">{:/} 
-
-Suppose for example, the calculation you want to do requires Brillouin zone integrations of a metallic material, which you plan to to carry out using the Methfessel-Paxton sampling method.  Two parameters: polynomial order n and gaussian width w. 
-Two tags are used to identify them: internally they are represented as **BZ\_N** and **BZ_W**, but in the input file they are usually expressed as follows: 
+~~~
+Consider the Brillouin zone integration category. Your material is a metal material, and you plan to carry out the BZ integration using the Methfessel-Paxton sampling method.  
+M-P integration has two parameters: polynomial order _n_ and gaussian width _w_. 
+Two tags are used to identify them: tags are **BZ\_N** and **BZ_W**, but in the input file they are usually expressed as follows: 
 
         BZ	N=2	W=.01
 
@@ -96,6 +97,7 @@ Apart from the special use of the first column to identify categories, data is f
 all represent the same information.  
 
 _Note:_{: style="color: red"} if two categories appear in an input file, only the first is used. Subsequent categories are ignored. Generally, only the first tag is used when more than one appears within a given scope.
+~~~ 
 
 {::nomarkdown}</div>{:/}
 
