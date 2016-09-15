@@ -12,7 +12,7 @@ header: no
 
 <hr style="height:5pt; visibility:hidden;" />
 ### Introduction
-As explained in the [introduction to QSGW+DMFT](https://lordcephei.github.io/dmft0), the fundamental step of DMFT is the self-consistent solution of the (local) Anderson impurity problem. This is connected to the electronic structure of the material (bath) through the hybridization function, the impurity level and the effective interactions $$U$$ and $$J$$. The loop of operations leading to the self-consistent result of the DMFT, is called DMFT loop.
+As explained in the [introduction to QSGW+DMFT](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft0), the fundamental step of DMFT is the self-consistent solution of the (local) Anderson impurity problem. This is connected to the electronic structure of the material (bath) through the hybridization function, the impurity level and the effective interactions $$U$$ and $$J$$. The loop of operations leading to the self-consistent result of the DMFT, is called DMFT loop.
  
 The DMFT loop is composed by the following steps:
 
@@ -187,4 +187,4 @@ An other easy way to estimate convergence (and pretty accurate too) is to look a
 A third method is of course to visualise the convergence of each separate channel of local quantities like _Sig.out.brd_ or *g_qmc.dat* 
 
 In this tutorial, a reasonable convergence is achieved after around 10 iterations.
-How to handle the converged DMFT result is the subject of the [third](https://lordcephei.github.io/dmft3) and the [fourth](https://lordcephei.github.io/dmft4) tutorials, while in the [second one](https://lordcephei.github.io/dmft2) we will focus on possible source of errors, technical aspects to speed up the convergence and rule of thumbs to define the input parameters.
+How to handle the converged DMFT result is the subject of the [third](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft3) and the [fourth](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft4) tutorials, while in the [second one](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft2) we will focus on possible source of errors, technical aspects to speed up the convergence and rule of thumbs to define the input parameters.
