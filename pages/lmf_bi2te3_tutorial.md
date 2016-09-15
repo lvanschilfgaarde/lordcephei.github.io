@@ -4,7 +4,7 @@ title: "The lmf basis set"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "/tutorial/inputimport/lmf_bi2te3_tutorial/"
+permalink: "tutorial/lmf/lmf_pbte_tutorial/"
 header: no
 ---
 

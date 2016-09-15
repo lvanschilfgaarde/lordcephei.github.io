@@ -148,12 +148,12 @@ input in a largely format-free, tree-structured format.  There is some
 programming language capability: e.g. input lines can be conditionally
 read, you can declare variables and use algebraic expressions.  Thus a
 single file can serve as database (one input file for many
-materials systems) and for documentation.  Look at [this tutorial](https://lordcephei.github.io/docs/inputfile/)
+materials systems) and for documentation.  Look at [this tutorial](https://lordcephei.github.io/docs/input/inputfile/)
 to see how an input file is structured, and
 how input is organized by _categories_ and _tokens_. 
 
-There is one main input file all programs use, &thinsp;<FONT size="+1"><tt>ctrl.<i>ext</i></tt></FONT>; it can be complicated as
-there are many options available.
+There is one main input file, the _ctrl_{: style="color: green"} file, that all programs use.  It can be [quite simple](https://lordcephei.github.io/tutorial/lmf/lmf_tutorial/),
+or very complicated, depending on your preference.
 <A href="Building_FP_input_file.html">Building_FP_input_file.html</A> is a tutorial that explains options
 automatically build an input file for the FP program, starting from lattice data you supply or import.
 
@@ -198,7 +198,7 @@ O. K. Andersen and O. Jepsen,
 
 This paper explains how LAPW and generalized LMTO methods can be joined:
 T. Kotani and M. van Schilfgaarde,
-``A fusion of the LAPW and the LMTO methods: the augmented plane wave plus muffin-tin orbital (PMT) method''
+_A fusion of the LAPW and the LMTO methods: the augmented plane wave plus muffin-tin orbital (PMT) method_,
 [Phys. Rev. B81, 125117 (2010)](http://dx.doi.org/10.1103/PhysRevB.81.125117)
 
 This paper presented the first description of an all-electron _GW_ implementation in a mixed basis set:
@@ -206,16 +206,15 @@ T. Kotani and M. van Schilfgaarde,
 _All-electron <i>GW</i> approximation with the mixed basis expansion based on the full-potential LMTO method_,
  Sol. State Comm. 121, 461 (2002).
 
-These papers laid out the framework for QuasiParticle Self-Consistent _GW_ theory
+These papers laid out the framework for QuasiParticle Self-Consistent _GW_ theory:
 Sergey V. Faleev, Mark van Schilfgaarde, Takao Kotani,
 _All-electron self-consistent GW approximation: Application to Si, MnO, and NiO_,
-[Phys. Rev. Lett. 93, 126406 (2004)](http://link.aps.org/doi/10.1103/PhysRevLett.93.126406)
-
+[Phys. Rev. Lett. 93, 126406 (2004)](http://link.aps.org/doi/10.1103/PhysRevLett.93.126406);
 M. van Schilfgaarde, Takao Kotani, S. V. Faleev,
-+Quasiparticle self-consistent_ GW _theory_,
+_Quasiparticle self-consistent_ GW _theory_,
 [Phys. Rev. Lett. 96, 226402 (2006)](href=http://link.aps.org/abstract/PRL/v96/e226402)
 
-This paper gives the theory underlying Questaal's GW implementation.
+Questaal's GW implementation is based on the theory in this paper:
 Takao Kotani, M. van Schilfgaarde, S. V. Faleev,
 _Quasiparticle self-consistent GW  method: a basis for the independent-particle approximation_,
 [Phys. Rev. B76, 165106 (2007)](http://link.aps.org/abstract/PRB/v76/e165106)
