@@ -127,25 +127,17 @@ The first part of the output is similar to what we've seen from the other progra
 
 Now take a look at the output file _out.lmfsc_{: style="color: green"}. Look for the line beginning with "iors", again around line 60
 
-<hr style="height:5pt; visibility:hidden;" />
-<div onclick="elm = document.getElementById('iors'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show output file snippet.</button></div>
-{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="iors">{:/}
-
 ~~~
  iors  : read restart file (binary, mesh density) 
          use from  restart file: ef window, positions, pnu 
          ignore in restart file: *
 ~~~ 
 
-{::nomarkdown}</div>{:/}
+
 
 This time the rst file was found and the density is used as the input density (the rst file was created after the single iteration). Now move to the end of the file.  The '**c**' in front of the Harris Foulkes **ehf** and Kohn-Sham **ehk** energies indicates that convergence was reached (note how similar the ehf and ehk energies are). A few lines up you can see that it took 8 iterations to converge: look for "**it 8 of 20**". At the end of each iteration the ehf and ehk total energies are printed and a check is made for self-consistency. The two parameters **conv** and **convc** in the ctrl file specify, respectively, the self-consistency tolerances for the total energy and root mean square (RMS) change in the density. Note that by default both tolerances have to be met. To use a single tolerance you simply set the one that you don't want to zero. 
 
 Further up again the Fermi energy and band gap values, and other key bits of information are reported in the Brillouin zone integration section.  You should find something similar to the output snippet below.
-
-<hr style="height:5pt; visibility:hidden;" />
-<div onclick="elm = document.getElementById('bz'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show Brillouin zone integration section.</button></div>
-{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="bz">{:/}
 
 ~~~
  BZWTS : --- Tetrahedron Integration ---
@@ -154,8 +146,6 @@ Further up again the Fermi energy and band gap values, and other key bits of inf
  BZINTS: Fermi energy:      0.185518;   8.000000 electrons;  D(Ef):    0.000
          Sum occ. bands:   -1.4864297  incl. Bloechl correction:    0.000000
 ~~~ 
-
-{::nomarkdown}</div>{:/}
 
 To see how the density and energy changes between iterations, try grepping for "DQ" and "ehk=-" 
 

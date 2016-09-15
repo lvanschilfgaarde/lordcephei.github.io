@@ -70,7 +70,6 @@ reads a parameter (.01) from token **W=**. In this case **W=** belongs to the **
 A category holds information for a family of data, for example **BZ**{: style="color: red"} contains parameters associated with Brillouin zone integration. The entire input system has at present a grand total of 17 categories, though any one program uses only a subset of them.  
 
 <div onclick="elm = document.getElementById('tagexample'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click here for a more detailed description of the input file's syntax.</div>
-
 {::nomarkdown}<div style="display:none;padding:25px;" id="tagexample">{:/} 
 ~~~
 Consider the Brillouin zone integration category. You plan to carry out the BZ integration using the Methfessel-Paxton sampling method.
