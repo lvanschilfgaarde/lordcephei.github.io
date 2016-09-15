@@ -1,7 +1,7 @@
 ---
 layout: page-fullwidth
 title: "Fifth tutorial on QSGW+DMFT"
-permalink: "/maxent1/"
+permalink: "/tutoria/qsgw_dmft/maxent1/"
 sidebar: "left"
 header: no
 ---

@@ -4,7 +4,7 @@ title: "LM Suite - "
 subheadline: ""
 showmeta: false
 teaser: ""
-permalink: "/fpsheer/"
+permalink: "/tutorial/lmf/fpsheer/"
 header: no
 
 ---

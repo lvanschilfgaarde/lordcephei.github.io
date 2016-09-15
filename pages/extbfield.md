@@ -4,7 +4,7 @@ title: "LM Suite - Zeeman Field Tutorial"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "/extbfield/"
+permalink: "/tutorial/misc/extbfield/"
 header: no
 ---
 

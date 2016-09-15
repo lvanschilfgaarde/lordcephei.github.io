@@ -4,7 +4,7 @@ title: "ASA Tutorial"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "/asa-doc/"
+permalink: "/tutorial/asa/asa-doc/"
 header: no
 ---
 _____________________________________________________________

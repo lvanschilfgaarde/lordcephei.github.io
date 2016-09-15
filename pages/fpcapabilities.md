@@ -4,7 +4,7 @@ title: "Full Potential LMTO Capabilities"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "/fpcapabilities/"
+permalink: "/docs/lmf/fpcapabilities/"
 header: no
 ---
 <hr style="height:5pt; visibility:hidden;" />

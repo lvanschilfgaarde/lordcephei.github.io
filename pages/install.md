@@ -1,7 +1,7 @@
 ---
 layout: page-fullwidth
 title: "Installation"
-permalink: "/install/"
+permalink: "/docs/install/"
 header: no
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: page-fullwidth
 title: "Third tutorial on QSGW+DMFT"
-permalink: "/dmft3/"
+permalink: "/tutorial/qsgw_dmft/dmft3/"
 sidebar: "left"
 header: no
 ---

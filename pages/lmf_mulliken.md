@@ -1,7 +1,7 @@
 ---
 layout: page-fullwidth
 title: "Full Potential (lmf) Mulliken Analysis"
-permalink: "/lmf_mulliken/"
+permalink: "/tutorial/lmf/lmf_mulliken/"
 header: no
 ---
 

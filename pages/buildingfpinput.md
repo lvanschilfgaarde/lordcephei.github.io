@@ -4,7 +4,7 @@ title: "Building Input files"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "/buildingfpinput/"
+permalink: "/tutorial/lmf/buildingfpinput/"
 header: no
 ---
 

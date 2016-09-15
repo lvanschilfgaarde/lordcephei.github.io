@@ -1,7 +1,7 @@
 ---
 layout: page-fullwidth
 title: "Optics Tutorial"
-permalink: "/docs-equ-optics/"
+permalink: "/docs/mics/docs-equ-optics/"
 header: no
 ---
 _____________________________________________________________

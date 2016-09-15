@@ -16,6 +16,7 @@
 - title: "Documentation"
   url: ""
   side: left
+  prefix: "/docs"
   dropdown:
   - title: "Package Overview"
     url: "/package_overview/"
@@ -34,7 +35,7 @@
       - title: "Symmetry Line Files"
         url: "/symfile/"
     - name: "Miscellaneous"
-      prefix: ""
+      prefix: "/misc"
       content:
       - title: "Optics"
         url: "/optics/"
@@ -51,10 +52,11 @@
 - title: "Tutorials"
   url: ""
   side: left
-  prefix: ""
+  prefix: "/tutorial"
   dropdown:
   - program:
     - name: "lmf"
+      prefix: "/lmf"
       content:
       - title: "Basic Tutorial for Full-Potential lmf"
         url: "/lmf_tutorial/"
@@ -71,22 +73,27 @@
       - title: "Performing Mulliken Analysis"
         url: "/lmf_mulliken/"
     - name: "ASA"
+      prefix: "/asa"
       content:
       - title: "LM Tutorial"
         url: "/asa-doc/"
     - name: "GW"
+      prefix: "/gw"
       content:
       - title: "Basic GW Tutorial"
         url: "/lmtut/"
     - name: "qsgw"
+      prefix: "/qsgw"
       content:
       - title: "QSGW Tutorial"
         url: "/qsgw_tutorial/"
     - name: "lmgf"
+      prefix: "/lmgf"
       content:
       - title: "LMGF Tutorial"
         url: "/lmgf-tutorial/"
     - name: "qsgw + dmft"
+      prefix: "/gsgw_dmft"
       content:
       - title: "Introduction"
         url: "/dmft0/"
@@ -101,10 +108,12 @@
       - title: "The maximum entropy method"
         url: "/maxent1/" 
     - name: "Importing Input files"
+      prefix: "/inputimport"
       content:
       - title: "Importing Input files"
         url: "/lmf_bi2te3_tutorial/"
     - name: "Miscellaneous"
+      prefix: "/misc"
       content:
       - title: "Adding external Zeeman field to the potential"
         url: "/extbfield/"

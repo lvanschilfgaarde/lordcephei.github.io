@@ -4,7 +4,7 @@ title: "lmf tutorial: Self-Consistent LDA calculation for PbTe"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "/lmf_pbte_tutorial/"
+permalink: "/tutorial/lmf/lmf_pbte_tutorial/"
 header: no
 ---
 

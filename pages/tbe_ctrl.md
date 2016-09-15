@@ -1,7 +1,7 @@
 ---
 layout: page-fullwidth
 title: "Building A TBE Ctrl File"
-permalink: "/tbectrl/"
+permalink: "/tutorial/misc/tbectrl/"
 header: no
 
 ---

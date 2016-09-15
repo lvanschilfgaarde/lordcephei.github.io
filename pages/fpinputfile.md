@@ -4,7 +4,7 @@ title: "LM Suite - Full Potential LDA Input"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "/fpinputfile/"
+permalink: "/tutorial/lmf/fpinputfile/"
 header:
     image_fullwidth: "header_drop.jpg"
 ---

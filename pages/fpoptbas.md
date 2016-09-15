@@ -4,7 +4,7 @@ title: "FP Optimisation Basis Tutorial"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "/fpoptbas/"
+permalink: "/tutorial/lmf/fpoptbas/"
 header: no
 
 ---

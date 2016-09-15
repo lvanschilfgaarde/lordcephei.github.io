@@ -94,7 +94,7 @@ Just as much as
 
     /tutorial/
 
-The site utilizes this functionality by grouping documentation and tutorials together, and further subdividing them by dropdown level. Lets construct a permalink. We have a file {: _lmf\_dos.md_style="color: green"} which is a _tutorial_ that we would store in the _lmf_ section of the tutorial dropdown (if you navigate to the site [here](https://lordcephei.github.io/) and hover over "Tutorials" you will see a "lmf" section, this is where we would like our file to show).   
+The site utilizes this functionality by grouping documentation and tutorials together, and further subdividing them by dropdown level. Lets construct a permalink. We have a file _lmf\_dos.md_{: style="color: green"} which is a _tutorial_ that we would store in the _lmf_ section of the tutorial dropdown (if you navigate to the site [here](https://lordcephei.github.io/) and hover over "Tutorials" you will see a "lmf" section, this is where we would like our file to show).   
 
 If we click on a tutorial in the Tutorial>lmf dropdown, we will see that it's url starts with "/tutorial/lmf/", as would be expected. So to construct our front matter, we will start with "/tutorial/lmf/" and add our desired identifier at the end. In the end, our front matter may look something like
 
@@ -108,7 +108,7 @@ Documentation | - | /doc/ | /doc/
 Input Files | Documentation | /input/ | /doc/input/
 Tutorials | - | /tutorial/ | /tutorial/
 LMF | Tutorials | /lmf/ | /tutorial/lmf/
-DMFT | Tutorials | /dmft/ | /tutorials/dmft/
+DMFT | Tutorials | /dmft/ | /tutorial/dmft/
 
 ##### _Headers_
 Headers are nested automatically in the table of contents generation by number of # used. Generally, the site uses ### for primary headings and an extra ## for each subheading under that. For example, your primary heading may be ###, a subheading ##### and a subheading under the first subheading #######. In addition, headers are italicized with single underscores surrounding the header (\_Header\_).

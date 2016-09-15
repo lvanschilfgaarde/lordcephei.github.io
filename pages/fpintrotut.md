@@ -1,7 +1,7 @@
 ---
 layout: page-fullwidth
 title: "Introductory tutorial to full-potential program lmf"
-permalink: "/lmf_tutorial/"
+permalink: "/tutorial/lmf/lmf_tutorial/"
 sidebar: "left"
 header: no
 ---

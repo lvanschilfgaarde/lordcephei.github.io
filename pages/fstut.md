@@ -4,7 +4,7 @@ title: "LM Suite - Fermi Surface Tutorial"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "/fstut/"
+permalink: "/tutorial/misc/fstut/"
 header: no
 ---
 

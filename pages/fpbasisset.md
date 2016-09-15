@@ -4,7 +4,7 @@ title: "LM Suite - Full Potential LDA Basis Set"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "/fpbasisset/"
+permalink: "/tutorial/lmf/fpbasisset/"
 header: no
 
 ---

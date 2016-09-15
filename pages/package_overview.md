@@ -1,7 +1,7 @@
 ---
 layout: page-fullwidth
 title: "Package Overview"
-permalink: "/package_overview/"
+permalink: "/docs/package_overview/"
 sidebar: "left"
 header: no
 ---
