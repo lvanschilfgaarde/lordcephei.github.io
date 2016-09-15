@@ -166,43 +166,43 @@ E. Bott, M. Methfessel, W. Krabs, and P. C. Schmid,
 _Nonsingular Hankel functions as a new basis for electronic structure calculations_,
 [J. Math. Phys. 39, 3393 (1998)](http://dx.doi.org/10.1063/1.532437)
 
-This classic paper laid out the framework for linear methods in band theory:
+This classic paper laid out the framework for linear methods in band theory:  
 O. K. Andersen, "Linear methods in band theory,"
 [Phys. Rev. B12, 3060 (1975)](http://dx.doi.org/10.1103/PhysRevB.12.3060)
 
-This is paper laid out the framework for tight-binding LMTO:
+This paper lays out the framework for screening the LMTO basis into a tight-binding form:  
 O. K. Andersen and O. Jepsen,
 "Explicit, First-Principles Tight-Binding Theory," 
 [Phys. Rev. Lett. 53, 2571 (1984)](http://dx.doi.org/10.1103/PhysRevLett.53.2571)
 
-This paper explains how LAPW and generalized LMTO methods can be joined:
+This paper explains how LAPW and generalized LMTO methods can be joined:  
 T. Kotani and M. van Schilfgaarde,
 _A fusion of the LAPW and the LMTO methods: the augmented plane wave plus muffin-tin orbital (PMT) method_,
 [Phys. Rev. B81, 125117 (2010)](http://dx.doi.org/10.1103/PhysRevB.81.125117)
 
-This paper presented the first description of an all-electron _GW_ implementation in a mixed basis set:
+This paper presented the first description of an all-electron _GW_ implementation in a mixed basis set:  
 T. Kotani and M. van Schilfgaarde,
 _All-electron <i>GW</i> approximation with the mixed basis expansion based on the full-potential LMTO method_,
  Sol. State Comm. 121, 461 (2002).
 
-These papers laid out the framework for QuasiParticle Self-Consistent _GW_ theory:
+These papers laid out the framework for QuasiParticle Self-Consistent _GW_ theory:  
 Sergey V. Faleev, Mark van Schilfgaarde, Takao Kotani,
 _All-electron self-consistent GW approximation: Application to Si, MnO, and NiO_,
-[Phys. Rev. Lett. 93, 126406 (2004)](http://link.aps.org/doi/10.1103/PhysRevLett.93.126406);
+[Phys. Rev. Lett. 93, 126406 (2004)](http://link.aps.org/doi/10.1103/PhysRevLett.93.126406);  
 M. van Schilfgaarde, Takao Kotani, S. V. Faleev,
 _Quasiparticle self-consistent_ GW _theory_,
 [Phys. Rev. Lett. 96, 226402 (2006)](href=http://link.aps.org/abstract/PRL/v96/e226402)
 
-Questaal's GW implementation is based on the theory in this paper:
+Questaal's GW implementation is based on this paper:  
 Takao Kotani, M. van Schilfgaarde, S. V. Faleev,
 _Quasiparticle self-consistent GW  method: a basis for the independent-particle approximation_,
 [Phys. Rev. B76, 165106 (2007)](http://link.aps.org/abstract/PRB/v76/e165106)
 
-This paper shows results from LDA-based GW, and its limitations:
+This paper shows results from LDA-based GW, and its limitations:  
 M. van Schilfgaarde, Takao Kotani, S. V. Faleev,
 _Adequacy of Approximations in <i>GW</i> Theory_,
 [Phys. Rev. B74, 245125 (2006)](A href=http://link.aps.org/abstract/PRB/v74/e245125)
 
-This book explains the ASA-Green's function formalism, including the coherent potential approximation:
+This book explains the ASA-Green's function formalism, including the coherent potential approximation:  
 I. Turek et al., Electronic strucure of disordered alloys, surfaces and interfaces (Kluwer, Boston, 1996).
 
