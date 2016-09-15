@@ -67,14 +67,15 @@ The input file offers a very flexible free format: tags identify data to be read
 
 reads a parameter (.01) from token **W=**. In this case **W=** belongs to the **BZ**{: style="color: red"} category, so the full tag name is **BZ**{: style="color: red"}\_**W**{: style="color: blue"}.
 
-As noted, tags are organized in a tree structure with the category as the trunk. A category holds information for a family of data, for example **BZ**{: style="color: red"} contains parameters associated with Brillouin zone integration. The entire input system has at present a grand total of 17 categories, though any one program uses only a subset of them.  
+A category holds information for a family of data, for example **BZ**{: style="color: red"} contains parameters associated with Brillouin zone integration. The entire input system has at present a grand total of 17 categories, though any one program uses only a subset of them.  
 
-<div onclick="elm = document.getElementById('tagexample'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click here for a more detailed description of syntax.</div>
+<div onclick="elm = document.getElementById('tagexample'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click here for a more detailed description of the input file's syntax.</div>
+
 {::nomarkdown}<div style="display:none;padding:25px;" id="tagexample">{:/} 
 ~~~
-Consider the Brillouin zone integration category. Your material is a metal material, and you plan to carry out the BZ integration using the Methfessel-Paxton sampling method.  
+Consider the Brillouin zone integration category. You plan to carry out the BZ integration using the Methfessel-Paxton sampling method.
 M-P integration has two parameters: polynomial order _n_ and gaussian width _w_. 
-Two tags are used to identify them: tags are **BZ\_N** and **BZ_W**, but in the input file they are usually expressed as follows: 
+Two tags are used to identify them: **BZ\_N** and **BZ_W**, they are usually expressed in the input file as follows:
 
         BZ	N=2	W=.01
 
@@ -84,9 +85,9 @@ This format style is the most commonly used because it is clean and easy to read
 
 Now the tree structure is apparent: [..] delimits the scope of tag **BZ**.  
 
-The root tag, or category, is BZ in this case. Any tag that starts in the first column is a category. Thus any non-white character appearing in the first column automatically starts a new category, and also terminates any prior category, if it hasn’t been terminated already. N= and W= mark tokens **BZ_N** and **BZ_W**.  
+The root tag, or category, is BZ in this case. Any tag that starts in the first column is a category, so any non-white character appearing in the first column automatically starts a new category, and also terminates any prior category. **N=** and **W=** mark tokens **BZ_N** and **BZ_W**.  
 
-Apart from the special use of the first column to identify categories, data is free-format, apart from a few mild exceptions. Thus:
+Apart from the special use of the first column to identify categories, data is largely free-format, though there are a a few mild exceptions. Thus:
 
         BZ      N=2
                 W=.01
