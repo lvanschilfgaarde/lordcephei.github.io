@@ -64,7 +64,7 @@
       content:
       - title: "Basic Tutorial for Full-Potential lmf"
         url: "/lmf_tutorial/"
-      - title: "Standard Tutorial for lmf"
+      - title: "Self-consistent density in PbTe"
         url: "/lmf_pbte_tutorial/"
       - title: "Properties of the lmf basis set"
         url: "/lmf_bi2te3_tutorial/"
