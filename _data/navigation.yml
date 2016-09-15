@@ -24,6 +24,8 @@
     url: "/install/"
   - title: "Full Potential Overview"
     url: "/fpoverview/"
+  - title: "Full Potential Overview"
+    url: "/asaoverview/"
   - title: "lmgf documentation"
     url: "/lmgf/"
   - program:
