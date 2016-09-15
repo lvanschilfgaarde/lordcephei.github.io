@@ -62,7 +62,7 @@
         url: "/lmf_tutorial/"
       - title: "Standard Tutorial for lmf"
         url: "/lmf_pbte_tutorial/"
-      - title: "The lmf basis set"
+      - title: "Properties of the lmf basis set"
         url: "/lmf_bi2te3_tutorial/"
       - title: "Elastic constant in Al"
         url: "/fpnew/"

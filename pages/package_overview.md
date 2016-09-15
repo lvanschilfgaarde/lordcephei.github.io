@@ -116,7 +116,7 @@ There is an MPI version, **lmgf-MPIK**{: style="color: blue"}.
 + **lmpg**{: style="color: blue"}: a program similar to **lmgf**{: style="color: blue"}, but it is designed for layered structures with periodic boundary conditions in
  two dimensions.  It can calculate transport using the Landauer-Buttiker formalism, and has a non-equilibrium capability.  There 
 [a tutorial](https://lordcephei.github.io/pages/lmpg_tutorial.v2.0.pdf/), though it is somewhat out of date.
-There is an MPI version, **lmpg-MPIK**.
+There is an MPI version, **lmpg-MPIK**{: style="color: blue"}.
 
 + **lmfdmft**{: style="color: blue"}: the main interface that links to the DMFT capabilities.
 
@@ -146,42 +146,21 @@ Some other auxiliary programs are also made.
 All executables use a common input system.  It is a unique system that parses
 input in a largely format-free, tree-structured format.  There is some
 programming language capability: e.g. input lines can be conditionally
-read, you can declare variables and use algebraic expressions.  Thus a
-single file can serve as database (one input file for many
-materials systems) and for documentation.  Look at [this tutorial](https://lordcephei.github.io/docs/input/inputfile/)
-to see how an input file is structured, and
-how input is organized by _categories_ and _tokens_. 
-
-There is one main input file, the _ctrl_{: style="color: green"} file, that all programs use.  It can be [quite simple](https://lordcephei.github.io/tutorial/lmf/lmf_tutorial/),
-or very complicated, depending on your preference.
-<A href="Building_FP_input_file.html">Building_FP_input_file.html</A> is a tutorial that explains options
-automatically build an input file for the FP program, starting from lattice data you supply or import.
-
-A second stream of input comes through
-<A href="Command-line-options.html">command-line switches</A>.  There are a few switches all programs use, and
-there are also a large number of program-specific options, described
-<A href="Command-line-options.html">here</A>.  You can get a listing of switches a particular program uses
-by invoking the program with &thinsp;<FONT size="+1"><tt>--help</tt></FONT>, e.g. &thinsp;<FONT size="+1"><tt>lm --help</tt></FONT>.
-
-There can be many files associated with each calculation.  Most of them are made
-automatically by an executable program; some files are editable so the user can
-modify them.  In a few instances more than one input file is required to get
-started, e.g. the <i>GW</i> code requires file
-&thinsp;<FONT size="+1"><tt>GWinput</tt></FONT>.  File
-&thinsp;<A href="README"><FONT size="+1"><tt>README</tt></FONT></A>&thinsp;
-supplies a brief description of the contents of each file in this directory, and
-the directories in the top-level directory (note: this file is a bit out of date).
+read, you can declare variables and use algebraic expressions.  Thus the
+input file can be [quite simple](https://lordcephei.github.io/tutorial/lmf/lmf_tutorial/),
+or very detailed, even serving as a database for many materials. This [this tutorial](https://lordcephei.github.io/docs/input/inputfile/)
+explains how an input file is structured, and how input is organized by _categories_ and _tokens_. 
 
 ### _Other Resources_
 
-This book chapter describes the theory underlynig the **lmf**{: style="color: blue"} code.
-It is a bit dated but the basics are unchanged.
+This book chapter describes the theory of the **lmf**{: style="color: blue"} code.
+It is a bit dated but the basics are unchanged.  
 M. Methfessel, M. van Schilfgaarde, and R. A. Casali, ``A full-potential LMTO method based
 on smooth Hankel functions,'' in _Electronic Structure and Physical Properties of
 Solids: The Uses of the LMTO Method_, Lecture Notes in Physics,
 <b>535</b>, 114-147. H. Dreysse, ed. (Springer-Verlag, Berlin) 2000.
 
-The mathematics of smoothed Hankel functions that form **lmf**{: style="color: blue"} envelope
+The mathematics of smoothed Hankel functions **lmf**{: style="color: blue"} uses
 functions are described in this paper:
 E. Bott, M. Methfessel, W. Krabs, and P. C. Schmid,
 _Nonsingular Hankel functions as a new basis for electronic structure calculations_,

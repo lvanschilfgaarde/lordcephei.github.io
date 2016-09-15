@@ -1,10 +1,10 @@
 ---
 layout: page-fullwidth
-title: "The lmf basis set"
+title: "Properties of the lmf basis set"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "tutorial/lmf/lmf_pbte_tutorial/"
+permalink: "/tutorial/lmf/lmf_bi2te3_tutorial/"
 header: no
 ---
 
