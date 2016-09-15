@@ -78,14 +78,14 @@
       content:
       - title: "Basic GW Tutorial"
         url: "/lmtut/"
-    - name: "lmgf"
-      content:
-      - title: "LMGF Tutorial"
-        url: "/lmgf-tutorial/"
     - name: "qsgw"
       content:
       - title: "QSGW Tutorial"
         url: "/qsgw_tutorial/"
+    - name: "lmgf"
+      content:
+      - title: "LMGF Tutorial"
+        url: "/lmgf-tutorial/"
     - name: "qsgw + dmft"
       content:
       - title: "Introduction"
@@ -100,6 +100,10 @@
         url: "/dmft4/"
       - title: "The maximum entropy method"
         url: "/maxent1/" 
+    - name: "Importing Input files"
+      content:
+      - title: "Importing Input files"
+        url: "/lmf_bi2te2_tutorial/"
     - name: "Miscellaneous"
       content:
       - title: "Adding external Zeeman field to the potential"
