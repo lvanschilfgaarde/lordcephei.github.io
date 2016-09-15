@@ -1,7 +1,7 @@
 ---
 layout: page-fullwidth
 title: "Full Potential (lmf) Partial DOS"
-permalink: "/lmf_pdos/"
+permalink: "/tutorial/lmf/lmf_pdos/"
 header: no
 ---
 

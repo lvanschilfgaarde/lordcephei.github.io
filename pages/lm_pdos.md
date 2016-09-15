@@ -1,7 +1,7 @@
 ---
 layout: page-fullwidth
 title: "ASA (lm) Partial DOS"
-permalink: "/lm_pdos/"
+permalink: "/tutorial/asa/lm_pdos/"
 header: no
 ---
 

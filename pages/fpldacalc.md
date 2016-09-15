@@ -4,7 +4,7 @@ title: "LM Suite - Full Potential LDA Calculations"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "/fpldacalc/"
+permalink: "/tutorial/lmf/fpldacalc/"
 header: no
 
 ---

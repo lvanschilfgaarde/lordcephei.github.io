@@ -4,7 +4,7 @@ title: "Resolving optical calculations"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "/opt-part/"
+permalink: "/tutorial/misc/opt-part/"
 header: no
 ---
 

@@ -4,7 +4,7 @@ title: "LM Suite - Full Potential LDA"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "/fullpotlda/"
+permalink: "/tutorial/lmf/fullpotlda/"
 header: no
 ---
 

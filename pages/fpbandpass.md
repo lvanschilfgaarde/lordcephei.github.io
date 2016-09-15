@@ -4,7 +4,7 @@ title: "LM Suite - Full Potential LDA Bandpass"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "/fpbandpass/"
+permalink: "/tutorial/lmf/fpbandpass/"
 header: no
 ---
 

@@ -4,7 +4,7 @@ title: "lmf tutorial : Elastic Constants in Al"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "/fpnew/"
+permalink: "/tutorial/lmf/fpnew/"
 header: no
 ---
 

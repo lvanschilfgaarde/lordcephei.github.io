@@ -1,7 +1,7 @@
 ---
 layout: page-fullwidth
 title: "The Atomic Spheres Approximation"
-permalink: "/lmto_asa_doc/"
+permalink: "/tutorial/asa/lmto_asa_doc/"
 sidebar: "left"
 header: no
 ---

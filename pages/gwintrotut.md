@@ -4,7 +4,7 @@ title: "LM Tutorial"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "/lmtut/"
+permalink: "/tutorial/gw/lmtut/"
 sidebar: "left"
 header: no
 ---

@@ -1,7 +1,7 @@
 ---
 layout: page-fullwidth
 title: "Full Potential Overview"
-permalink: "/fpoverview/"
+permalink: "/docs/fpoverview/"
 header: no
 ---
 
