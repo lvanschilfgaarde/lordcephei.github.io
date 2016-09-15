@@ -71,7 +71,7 @@ A category holds information for a family of data, for example **BZ**{: style="c
 
 <div onclick="elm = document.getElementById('tagexample'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click here for a more detailed description of the input file's syntax.</div>
 {::nomarkdown}<div style="display:none;padding:25px;" id="tagexample">{:/} 
-~~~
+
 Consider the Brillouin zone integration category. You plan to carry out the BZ integration using the Methfessel-Paxton sampling method.
 M-P integration has two parameters: polynomial order _n_ and gaussian width _w_. 
 Two tags are used to identify them: **BZ\_N** and **BZ_W**, they are usually expressed in the input file as follows:
@@ -96,7 +96,6 @@ Apart from the special use of the first column to identify categories, data is l
 all represent the same information.  
 
 _Note:_{: style="color: red"} if two categories appear in an input file, only the first is used. Subsequent categories are ignored. Generally, only the first tag is used when more than one appears within a given scope.
-~~~ 
 
 {::nomarkdown}</div>{:/}
 
