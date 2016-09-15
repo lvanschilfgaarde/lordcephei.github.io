@@ -18,6 +18,7 @@ _____________________________________________________________
 _____________________________________________________________
 
 ### _The Input File_
+
 ##### _Introduction_
 Here is a sample input file for the compound Bi$$_2$$Te$$_3$$ written for the **lmf**{: style="color: blue"} package.
 
@@ -77,11 +78,11 @@ Consider the Brillouin zone integration category. You plan to carry out the BZ i
 M-P integration has two parameters: polynomial order _n_ and gaussian width _w_. 
 Two tags are used to identify them: **BZ\_N** and **BZ_W**; they are usually expressed in the input file as follows:
 
-        BZ	N=2	W=.01
+    BZ	N=2	W=.01
 
 This format style is the most commonly used because it is clean and easy to read; but it conceals the tree structure a little. The same data can equally be written:
 
-        BZ[	N=2 	W=.01]
+    BZ[	N=2 	W=.01]
 
 Now the tree structure is apparent: [..] delimits the scope of tag **BZ**.  
 
@@ -89,10 +90,10 @@ Any tag that starts in the first column is a category, so any non-white characte
 
 Apart from the special use of the first column to identify categories, data is largely free-format, though there are a a few mild exceptions. Thus:
 
-        BZ      N=2
-                W=.01
-        BZ	W=.01	N=2
-        BZ[	W=.01	N=2]
+    BZ  N=2
+        W=.01
+    BZ	W=.01	N=2
+    BZ[	W=.01	N=2]
 
 all represent the same information.  
 
@@ -102,19 +103,19 @@ _Note:_{: style="color: red"} if two categories appear in an input file, only th
 
 Usually the tag tree has only two levels (category and token) but not always. For example, data associated with atomic sites must be supplied for each site. In this case the tree has three levels, e.g. **SITE_ATOM_POS**. Site data is typically represented in a format along the following lines:
 
-        SITE    ATOM=Ga  POS=  0   0   0    RELAX=T
-                ATOM=As  POS= .25 .25 .25
-                ATOM=...
-                ...
-        END
+    SITE    ATOM=Ga  POS=  0   0   0    RELAX=T
+            ATOM=As  POS= .25 .25 .25
+            ATOM=...
+            ...
+    END
 
 The scope of  **SITE**  starts at "SITE"  and terminates just before "END". There will be multiple instances of the  **SITE_ATOM**  tag, one for each site. The scope of the first instance begins with the first occurrence of  ATOM  and terminates just before the second: 
 
-        ATOM=Ga  POS=  0   0   0    RELAX=T 
+    ATOM=Ga  POS=  0   0   0    RELAX=T 
 
 And the scope of the second **SITE_ATOM** is 
 
-        ATOM=As  POS= .25 .25 .25 
+    ATOM=As  POS= .25 .25 .25 
 
 Note that **ATOM** simultaneously acts like a token pointing to data (e.g. Ga) and as a tag holding tokens within it, in this case **SITE_ATOM_POS** and (for the first site) **SITE_ATOM_RELAX**.  
 
@@ -138,8 +139,10 @@ The preprocessor’s programming language makes it possible for a single file to
 
 Many files other than  `ctrl.ext‘ are first parsed by the preprocessor: files for site positions, Euler angles for noncollinear magnetism, among others.  
 
-### _Input File Categories_
 _____________________________________________________________
+
+### _Input File Categories_
+
 This section details the various categories and tokens used in the input file.
 
 ##### _Preliminaries_

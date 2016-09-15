@@ -187,13 +187,13 @@ _All-electron <i>GW</i> approximation with the mixed basis expansion based on th
 
 These papers established the framework for QuasiParticle Self-Consistent _GW_ theory:  
 Sergey V. Faleev, Mark van Schilfgaarde, Takao Kotani,
-_All-electron self-consistent GW approximation: Application to Si, MnO, and NiO_,
+_All-electron self-consistent _GW_ approximation: Application to Si, MnO, and NiO_,
 [Phys. Rev. Lett. 93, 126406 (2004)](http://link.aps.org/doi/10.1103/PhysRevLett.93.126406);  
 M. van Schilfgaarde, Takao Kotani, S. V. Faleev,
 _Quasiparticle self-consistent_ GW _theory_,
 [Phys. Rev. Lett. 96, 226402 (2006)](href=http://link.aps.org/abstract/PRL/v96/e226402)
 
-Questaal's GW implementation is based on this paper:  
+Questaal's _GW_ implementation is based on this paper:  
 Takao Kotani, M. van Schilfgaarde, S. V. Faleev,
 _Quasiparticle self-consistent GW  method: a basis for the independent-particle approximation_,
 [Phys. Rev. B76, 165106 (2007)](http://link.aps.org/abstract/PRB/v76/e165106)
