@@ -55,8 +55,8 @@ Each token belongs to a category. **VERS**{: style="color: red"}, **ITER**{: sty
 Any text that begins in the first column is a category.  
 
 Thus the full identifier (tag) consists of a sequence of components, e.g. **BZ**{: style="color: red"}\_**METAL**{: style="color: blue"}.
-Components are organized in a tree structure: the trunk of the tree is called a _category_ (BZ{: style="color: red"}), and is identified as starting in the first column of the file.
-The outermost branch points to actual data and is called a _token_ (METAL{: style="color: blue"}). 
+Components are organized in a tree structure: the trunk of the tree is the category (BZ{: style="color: red"});
+the outermost branch points to actual data and is called a token (METAL{: style="color: blue"}). 
 
 Sometimes a tag has three components, e.g. **HAM**{: style="color: red"}\_**AUTOBAS**{: style="color: green"}\_**LOC**{: style="color: blue"}. The leading component (trunk) is the **category**{: style="color: red"}; the last is the **token**{: style="color: blue"}.  
 
