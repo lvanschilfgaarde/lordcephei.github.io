@@ -161,8 +161,8 @@ Solids: The Uses of the LMTO Method_, Lecture Notes in Physics,
 <b>535</b>, 114-147. H. Dreysse, ed. (Springer-Verlag, Berlin) 2000.
 
 The mathematics of smoothed Hankel functions **lmf**{: style="color: blue"} uses
-functions are described in this paper:
- E. Bott, M. Methfessel, W. Krabs, and P. C. Schmid,
+are described in this paper:
+  E. Bott, M. Methfessel, W. Krabs, and P. C. Schmid,
 _Nonsingular Hankel functions as a new basis for electronic structure calculations_,
 [J. Math. Phys. 39, 3393 (1998)](http://dx.doi.org/10.1063/1.532437)
 
