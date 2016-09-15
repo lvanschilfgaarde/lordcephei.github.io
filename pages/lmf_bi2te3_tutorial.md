@@ -1,6 +1,6 @@
 ---
 layout: page-fullwidth
-title: "lmf tutorial : basis set"
+title: "The lmf basis set"
 subheadline: ""
 show_meta: false
 teaser: ""
