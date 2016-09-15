@@ -163,10 +163,9 @@ It creates file _site_{: style="color: green"} from file _POSCAR_{: style="color
 #### 2. _Running blm_
 
 **blm**{: style="color: blue"} will create a template file for the main input file of the Questaal package, _ctrl.ext_{: style="color: green"}.
-ext_{: style="color: green"} is a name you select; we will use _bi2te3_{: style="color: green"} corresponding to the material.  
-**blm**{: style="color: blue"} actually generates _actrl.ext_{: style="color: green"}, prepending the _a_ so as not to overwrite any file named _ctrl.ext_{: style="color: green"}.
+ext_{: style="color: green"} is a name you select; we will use _bi2te3_{: style="color: green"} corresponding to the material.  **blm**{: style="color: blue"} actually generates _actrl.ext_{: style="color: green"}, prepending the _a_ so as not to overwrite any file named _ctrl.ext_{: style="color: green"}.
 
-Almost all programs in this package require the input file _ctrl.ext_{: style="color: green"}.  _You can do an entire calculation starting only with this file; but often you supply other files.  For example, symmetry line points for plotting energy bands are read from a separate file (e.g. _syml.bi2te3_{: style="color: green"}).
+Almost all programs in this package require the input file _ctrl.ext_{: style="color: green"}.  You can do an entire calculation starting only with this file; but often you supply other files.  For example, symmetry line points for plotting energy bands are read from a separate file (e.g. _syml.bi2te3_{: style="color: green"}).
 Structural data is typically split off into a separate file (_site.bi2te3_{: style="color: green"} in this tutorial); **blm**{: style="color: blue"} will create a site file by default.
 
 ##### 2.1 _init_{: style="color: green"} file
@@ -189,11 +188,12 @@ Create a file named _init.bi2te3_{: style="color: green"} containing the followi
 
 + Lines which begin with ‘#’ are comment lines and are ignored. (More generally, text following a `#’ in any line is ignored).
 + Lines beginning with ‘%’ are directives to the preprocessor. Directives can perform various functions similar to a normal programming language, such as assigning variables, evaluating expressions, conditionally readings some lines, and repeated loops over sections of input.
++ Quantities in brackets **{...}** are algebraic expressions parsed by the preprocessor, evaluated and the result the contents of brackets replaced by the result.
 
 _init_ files and _ctrl_ files are styled the same way: data is divided into _categories_ (**LATTICE** and **SITE**) --- tags which begin in the first column,
-and _tokens_ (e.g. **SPCGRP=**, **A=**, **X=**) -- tags belonging to a particular category.
+and _tokens_ (e.g. **SPCGRP=**, **A=**, **X=**) --- tags belonging to a particular category.
 
-[This tutorial](https://lordcephei.github.io/docs/inputfile) explains how the input files _init.ext_{: style="color: green"} and _ctrl.ext_{: style="color: green"} are structured.
+[This tutorial](https://lordcephei.github.io/docs/inputfile) explains how the input files _init.ext_{: style="color: green"} and _ctrl.ext_{: style="color: green"} are structured, and the tags the various programs can read.
 
 ##### 2.2 _ctrl_{: style="color: green"} file
 
@@ -220,10 +220,7 @@ In this case, the symmetry is given; the corresponding point group has 12 symmet
 {::nomarkdown}</div>{:/}
 
 
-
-
-
-    Note that **blm**{: style="color: blue"} automatically determined [augmentation sphere radii](FPsamples/out.bi2te3.blm#rmt), which it accomplishes by attempting to find spheres with equal potentials on each sphere surfaces (as well as it can). If you already have an input file, you can run **lmchk**{: style="color: blue"} with _--getwsr_ to determine radii for you (it uses the same algorithm as **blm**{: style="color: blue"}). Particularly in polar compounds, this algorithm probably does a better job than you can do by hand, and it is recommended that you use the radii it finds, or some scaled version of them.
+**blm**{: style="color: blue"} automatically determined [augmentation sphere radii](FPsamples/out.bi2te3.blm#rmt), which it accomplishes by attempting to find spheres with equal potentials on each sphere surfaces (as well as it can). If you already have an input file, you can run **lmchk**{: style="color: blue"} with _--getwsr_ to determine radii for you (it uses the same algorithm as **blm**{: style="color: blue"}). Particularly in polar compounds, this algorithm probably does a better job than you can do by hand, and it is recommended that you use the radii it finds, or some scaled version of them.
 
     **blm**{: style="color: blue"} creates the file _actrl.bi2te3_{: style="color: green"} with these contents:
 
