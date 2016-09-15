@@ -96,8 +96,7 @@ and has some elements of a programming language.  A reference defining the synta
 
 The family consists of the following:
 
-+ **blm**{: style="color: blue"}: an input file generator, given structural information.  
-[Many of the tutorials](https://lordcephei.github.io/lmf_pbte_tutorial/) use **blm**{: style="color: blue"}.
++ **blm**{: style="color: blue"}: an input file generator, given structural information.  [Many of the tutorials](https://lordcephei.github.io/lmf_pbte_tutorial/) use **blm**{: style="color: blue"}.
 
 + **lmf**{: style="color: blue"}: the standard full-potential LDA band program.  It has a companion program **lmfa**{: style="color: blue"} to calculate starting wave functions for free atoms and supply parameters for the shape of envelope functions.  See [here](https://lordcephei.github.io/lmf_tutorial/) for a basic tutorial.
 There is an MPI version, **lmf-MPIK**{: style="color: blue"}.
@@ -137,22 +136,17 @@ floating orbitals may be placed --- important for ASA and some _GW_ calculations
 
 + **lmmc**{: style="color: blue"}: a (fast) LDA-based molecules program (not documented).
 
-+ **rdcmed**{: style="color: blue"}:  a command reader, similar to a shell, but uses Questaal's parser and programming language.
++ **rdcmd**{: style="color: blue"}:  a command reader, similar to a shell, but uses Questaal's parser and programming language.
 
-+ **cif2init**{: style="color: blue"} and **cif2site**{: style="color: blue"}: convert **cif**{: style="color: green"} files into init files or site files.
++ **cif2init**{: style="color: blue"} and **cif2site**{: style="color: blue"}: convert **cif**{: style="color: green"} files into files readable by Questaal.
 
-+ **poscar2init**{: style="color: blue"} and **poscar2site**{: style="color: blue"}: convert VASP **POSCAR**{: style="color: green"} files into init files or site files.
++ **poscar2init**{: style="color: blue"} and **poscar2site**{: style="color: blue"}: convert VASP **POSCAR**{: style="color: green"} files into files readable by Questaal.
 
+Some other auxiliary programs are also made.
 
-Some other auxiliary programs are also made; see <A href="lmto.html#section3">here</A>.  To plot the bands or density-of-states
-you can use your favorite package, or consider using a graphics package
-(FPLOT.<I>vsn</I>.tar.gz) tailored to work with these programs.  The &thinsp;<FONT size="+1"><tt>FPLOT</tt></FONT>&thinsp;
-package has a number of useful features not found in widely used packages, such as the ability to plot energy bands with
-<A href="generating-energy-bands.html">color weights</A>.
+### _Input System_
 
-<h2><A name="input"></A>Input System</h2>
-
-All programs use a common input system.  It is a unique system that parses
+All executables use a common input system.  It is a unique system that parses
 input in a largely format-free, tree-structured format.  There is some
 programming language capability: e.g. input lines can be conditionally
 read, you can declare variables and use algebraic expressions.  Thus a
@@ -169,8 +163,6 @@ attempting any calculations.
 more complete description of the input syntax.  Finally see
 <A href="tokens.html">tokens.html</A> for documentation of tokens
 read by the various programs, and their meaning.
-
-<P>
 
 There is one main input file all programs use, &thinsp;<FONT size="+1"><tt>ctrl.<i>ext</i></tt></FONT>; it can be complicated as
 there are many options available.

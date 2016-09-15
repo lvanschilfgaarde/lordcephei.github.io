@@ -1,16 +1,17 @@
 ---
 layout: page-fullwidth
-title: "Detailed lmf tutorial"
+title: "lmf tutorial : basis set"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "/buildingfpinput/"
+permalink: "/lmf_bi2te3_tutorial/"
 header: no
 ---
 
 ### _Purpose_
 
-This tutorial shows how to construct input files from various sources
+This tutorial explains the main features of the **lmf**{: style="color: blue"} basis set.
+
 _____________________________________________________________
 
 ### _Command summary_
@@ -54,114 +55,15 @@ _____________________________________________________________
 
 ### _Preliminaries_
 
-The materials system in this tutorial is Bi2Te3; you will build an input file _ctrl.bi2te3_{: style="color: green"} by one of several possible paths.
-
 The input file structure is briefly described in [this lmf tutorial for Pbte](https://lordcephei.github.io/lmf_tutorial/), which you may wish to go through first.
 
-This tutorial assumes you have **blm**{: style="color: blue"} installed. Additionally, **poscar2init**{: style="color: blue"}, **lmchk**{: style="color: blue"}, **lmscell**{: style="color: blue"}, **poscar2site**{: style="color: blue"} and **cif2site**{: style="color: blue"} may be required for some sections.
+Executables **blm**{: style="color: blue"}, **lmchk**{: style="color: blue"}, **lmfa**{: style="color: blue"}, and **lmf**{: style="color: blue"} are required and are assumed to be in your path. 
 
 _____________________________________________________________
 
 ### _Tutorial_
 
-**blm**{: style="color: blue"} is an input file generator. You can use it autogenerate an input file (_ctrl.ext_{: style="color: green"}); or you can build it yourself.
-**blm**{: style="color: blue"} usually writes the structural data to a site file (_site.bi2te3_{: style="color: green"}).  Site files are a primary way structural
-data is kept in a form the Questaal programs can read.
-
-In either case, you need structural information to get started.  In default mode **blm**{: style="color: blue"} reads structural data from a file
-_init.ext_{: style="color: green"}, and writes a ctrl file and a site file.  It can read structural data from a site file.
-
-#### 1. _Importing Crystal Structure_
-
-##### 1.1 _Supplying Crystal Structure by hand_
-
-Typically you have structural information about your material, e.g. _space group number_ (e.g. number 99 or name P4_mm_) and _lattice parameters_ related to the space group (_a_ and _b_ in the P4_mm_ case). This page will use Bi2Te3 as an example, which belongs to space group R3m with lattice constants _a_ and _c_. (See Wykoff, [_Structure of Crystals_](https://archive.org/stream/structureofcryst030914mbp#page/n107/mode/2up/search/Bi), to obtain this information.) You also need information about the chemical species and positions of the atoms in the basis. The minimum information for Bi2Te3 is:
-
-    ATOM=Te X=0     0    0
-    ATOM=Te X=0     0   .788
-    ATOM=Bi X=0     0   .4
-
-There are five atoms in the basis; the positions of the remaining two follow from the symmetry of the space group (R3m).
-
-Symbols Te and Bi tell **blm**{: style="color: blue"} that the atoms are Tellurium and Bismuth, with atomic numbers 52 and 83. You can use any symbol for the species name, but if you don't use a standard one you must specify the atomic number, e.g. write ATOM=A Z=52.
-
-The three coordinates e.g. (0 0 0.788) correspond to fractions of the first, second, and third lattice vectors. This is a standard way of representing site coordinates. Alternatively, you can specify Cartesian coordinates; use POS= in place of X=. In the Bi2Te3 case, substituting the above 3 lines with
-
-    ATOM=Te POS= 0.0000000   0.0000000   0.0000000
-    ATOM=Te POS=-0.5000000  -0.8660254   1.4616199
-    ATOM=Bi POS= 0.5000000   0.8660254   0.8030878
-
-creates the same input template.
-
-##### 1.2 _Importing a CIF file_
-
-[Crystallographic Information Files](http://en.wikipedia.org/wiki/Crystallographic_Information_File) (CIF files for short) is a standard text file format for representing crystallographic information, whose standards are set by the International Union of Crystallography. If you have a CIF file, you can automatically make _either_ an _init.ext_{: style="color: green"} file, _or_ a _site.ext_{: style="color: green"} file. The tools in this package do not read CIF files directly, but parse the output of the **cif2cell**{: style="color: blue"} program (version 1.1.0). **cif2cell**{: style="color: blue"} is a very versatile tool, [freely available on the web](http://sourceforge.net/projects/cif2cell).
-
-To import data from a CIF file you need **cif2cell**{: style="color: blue"} installed and **cif2init**{: style="color: blue"} in your path (**cif2init**{: style="color: blue"} should be automatically compiled with this package). The steps are:
-
-1\. Run **cif2cell** (without any special switches) and capture the output in a file, e.g.         cif2cell.out        .
-2\. Run **cif2init** to generate an         init         file (called simply `        init        ').
-3\. Rename         init         to         init._ext_         and use the [blm](#run) tool.
-
-_Example_  : create an init file for the orthorhombic form of BaTiO3:
-
-    $ cp testing/cif2cell.batio3 .
-    $ cif2init cif2cell.batio3
-
-*Note:*{: style="color: red"} _cif2cell.batio3_{: style="color: green"} was obtained by running **cif2cell**{: style="color: blue"} on the CIF file supplied with the cif2cell-1.1.0 distribution: _cif2cell-1.1.0/cifs/BaTiO3_orthorhombic.cif_{: style="color: green"}.
-
-The following init file should be generated:
-
-    HEADER Ba (Ti O3) (Barium titanate - nanocrystalline)
-    LATTICE
-    #       SPCGRP=38
-    #       A=4.0094  B=5.6214  C=5.6386   ALPHA=90  BETA=90  GAMMA=90
-    % const a=4.0094
-            ALAT={a}  UNITS=A
-            PLAT=    1.0000000    0.0000000    0.0000000
-                     0.0000000    0.7010276   -0.7031725
-                     0.0000000    0.7010276    0.7031725
-    SITE
-         ATOM=Ba       X=     0.0000000    0.0000000    0.0000000
-         ATOM=Ti       X=     0.5000000    0.4900000    0.5100000
-         ATOM=O        X=     0.5000000    0.0100000    0.9900000
-         ATOM=O        X=     0.5000000    0.0129000    0.4921000
-         ATOM=O        X=     0.5000000    0.5079000    0.9871000
-
-If you prefer to make your own input file but import structure information via a site file, use **cif2site**{: style="color: blue"} in place of **cif2init**{: style="color: blue"}. To summarize:
-
-cif2init     creates an init file from the output of **cif2cell**
-cif2site     creates a  site file from the output of **cif2cell**
-
-##### 1.3 _Importing a POSCAR file_
-
-[VASP](http://www.vasp.at) is a very popular electronic structure program which can store structural information in the POSCAR files. If you want to import data from such a file in a form suitable for this program suite, use one of the following commands:
-
-    $ poscar2init     creates an init file from a VASP POSCAR file
-    $ poscar2site     creates a  site file from a VASP POSCAR file
-
-If you already have an input file, use **poscar2site**{: style="color: blue"} to translate structural data from a POSCAR file into _site.ext_{: style="color: green"}. If you want an input file instead, use **poscar2init**{: style="color: blue"}; then run **blm**{: style="color: blue"}.
-
-_Example:_{: style="color: red"} create an input file for Zn3As2 from a POSCAR file:
-
-    $ testing/test.blm 2
-
-The script has the following steps
-
-    $ poscar2init > init.zn3as2
-    $ blm zn3as2 --fixpos:tol=1e-6 > out.zn3as2
-
-which creates an input file template (_actrl.zn3as2_{: style="color: green"}) from a POSCAR file in two steps.
-
-_Example:_{: style="color: red"} create a site file for the Kesterite Cu2ZnSnS4:
-
-    $ testing/test.blm 3
-
-It creates file _site_{: style="color: green"} from file _POSCAR_{: style="color: green"}.
-
-#### 2. _Running blm_
-
-Almost all programs in this package require the input file _ctrl.ext_{: style="color: green"}. You can do an entire calculation starting only with this file; but often you supply other files such as site files to supplement _ctrl.ext_{: style="color: green"}. **blm**{: style="color: blue"} will create a skeleton or template file from basic material structural information; it is called _actrl.ext_{: style="color: green"}, so as not to overwrite any file named _ctrl.ext_{: style="color: green"}.
+#### 2. _Set up the input file_
 
 1.  Create a file named _init.bi2te3_{: style="color: green"} containing the following lines:
 
@@ -178,7 +80,7 @@ Almost all programs in this package require the input file _ctrl.ext_{: style="c
             ATOM=Bi X=0     0   {uBi}
 
 
-    [This tutorial](input-file-style.html) explains how the input files _init.ext_{: style="color: green"} and _ctrl.ext_{: style="color: green"} are structured.
+    [This tutorial](/Users/markvanschilfgaarde/lordcephei.github.io/pages/input-file-style.html) explains how the input files _init.ext_{: style="color: green"} and _ctrl.ext_{: style="color: green"} are structured.
 
 2.  To create the skeleton input file invoke **blm**{: style="color: blue"}:
 
