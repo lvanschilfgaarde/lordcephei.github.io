@@ -57,8 +57,8 @@
       content:
       - title: "The ccomp processor"
         url: "/ccomp/"
-      - title: "Optics"
-        url: "/optics/"
+      - title: "The plbnds program"
+        url: "/plbnds/"
 
 - title: "Tutorials"
   url: ""
