@@ -17,7 +17,7 @@ _____________________________________________________________
 
 _____________________________________________________________
 
-### _The Input File_
+### _Input File Structure_
 
 ##### _Introduction_
 
@@ -139,6 +139,8 @@ The preprocessor treats text inside brackets {...} as an expression (usually an 
 The preprocessor’s programming language makes it possible for a single file to serve as input for many materials systems in the manner of a database; or as documentation. Also you can easily vary input conditions in a parameteric fashion.  
 
 Files other than _ctrl.ext_{: style="color: green"} are first parsed by the preprocessor: files for site positions, Euler angles for noncollinear magnetism, among others.  
+
+input-file-style.html
 
 _____________________________________________________________
 

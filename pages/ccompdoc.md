@@ -40,7 +40,7 @@ The ones implemented are
 ~~~
 C#define
 C#include 
-C#ifdef   _expr_
+C#ifdef   <i>expr</i>
 C#ifndef  _expr_
 C#else
 C#elseif
