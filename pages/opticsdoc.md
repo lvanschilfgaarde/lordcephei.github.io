@@ -1,7 +1,7 @@
 ---
 layout: page-fullwidth
 title: "Optics Documentation"
-permalink: "/docs/misc/optics/"
+permalink: "/docs/properties/optics/"
 header: no
 ---
 _____________________________________________________________

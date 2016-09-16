@@ -26,9 +26,9 @@
     url: "/fpoverview/"
   - title: "GW Overview"
     url: "/gwoverview/"
-  - title: "ASA Potential Overview"
+  - title: "ASA Overview"
     url: "/asaoverview/"
-  - title: "lmgf documentation"
+  - title: "ASA Green's function code"
     url: "/lmgf/"
   - program:
     - name: "Input Files"
@@ -38,13 +38,6 @@
         url: "/inputfile/"
       - title: "Symmetry Line Files"
         url: "/symfile/"
-    - name: "Miscellaneous"
-      prefix: "/misc"
-      content:
-      - title: "The ccomp processor"
-        url: "/ccomp/"
-      - title: "Optics"
-        url: "/optics/"
     - name: "Command Line Options"
       prefix: "/commandline"
       content:
@@ -54,6 +47,18 @@
         url: "/lm/"
       - title: "lmf"
         url: "/lmf/"
+    - name: "Physical Properties"
+      prefix: "/properties"
+      content:
+      - title: "Optics"
+        url: "/optics/"
+    - name: "Auxilliary tools"
+      prefix: "/misc"
+      content:
+      - title: "The ccomp processor"
+        url: "/ccomp/"
+      - title: "Optics"
+        url: "/optics/"
 
 - title: "Tutorials"
   url: ""
