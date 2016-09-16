@@ -17,7 +17,7 @@ _____________________________________________________________
 
 _____________________________________________________________
 
-### _Input File Structure_
+### 1. _Input File Structure_
 
 ##### _Introduction_
 
@@ -142,7 +142,7 @@ Files other than _ctrl.ext_{: style="color: green"} are first parsed by the prep
 
 _____________________________________________________________
 
-### _Help with finding tokens: the --input switch_
+### 2. _Help with finding tokens: the --input switch_
 
 To see what a particular tool would try to read, without actually reading
 anything, run your executable code with `--input`, e.g.
@@ -203,28 +203,28 @@ all the tags in the **SITE** category will be ignored).
 
 _____________________________________________________________
 
-### _The EXPRESS category_
+### 3. _The EXPRESS category_
 
-The next section provides some description for each of categories.
+Section 4 provides some description of the input and purpose of tags in each category.
 
 There is one special category, **EXPRESS**, whose purpose is to
 simplify and streamline input files.  Tags in **EXPRESS** are
 effectively aliases for tags in other categories, e.g. reading
 **EXPRESS_gmax** reads the same input as **HAM_GMAX**.
 
-If you put a tag into **EXPRESS**, it will be read there and;
+If you put a tag into **EXPRESS**, it will be read there and
 any tag appearing in its usual location will be ignored. Thus in this instance adding **GMAX**
-to the **HAM** category would have no effect if **gmax** is present in **EXPRESS**.
+to **HAM** would have no effect if **gmax** is present in **EXPRESS**.
 
 **EXPRESS** collects the most commonly used tags in one place.
 There is usually a one-to-one correspondence between the tag in **EXPRESS**
-and its usual location.  The sole exception to this is **EXPRESS_file**.
-It performs the same function as the pair of tags, **STRUC_FILE** and **SITE_FILE**;
-thus in using **EXPRESS_file** all structural data must be supplied through the site file.
+and its usual location.  The sole exception to this is **EXPRESS_file**,
+which performs the same function as the pair of tags, **STRUC_FILE** and **SITE_FILE**.
+Thus in using **EXPRESS_file** all structural data is supplied through the site file.
 
 _____________________________________________________________
 
-### _Input File Categories_
+### 4. _Input File Categories_
 
 This section details the various categories and tokens used in the input file.
 
