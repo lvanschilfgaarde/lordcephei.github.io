@@ -26,7 +26,7 @@ Here is an example:
 
 Following unix style, switches always begin with “-”. There are many command-line switches that are specific to a particular main program, while a number of others are common to several or all programs.
 
-Some switches have a single “-” ; some have two. Those with two tend to control program flow (e.g. `--show`), while those with a single “-” tend to have an “assignment” function, such as a variables declaration (e.g. `-vx=3`). Sometimes there is not a clear distinction between the two, e.g. the printout verbosity `--pr` accepts either “-” or “–” (see below).
+Some switches have a single dash ; some have two. Those with two tend to control program flow (e.g. `--show`), while those with a single dash tend to have an “assignment” function, such as a variables declaration (e.g. `-vx=3`). Sometimes there is not a clear distinction between the two, e.g. the printout verbosity `--pr` accepts either one or two dashes (see below).
 
 In the example above, `-vns=4 -vnm=5` assigns variables **ns** and **nm** to 4 and 5, respectively, while `--rpos=pos` tells **lmf**{: style="color: blue"} to read site positions from file 
 _pos.cafeas_{: style="color: green"}.

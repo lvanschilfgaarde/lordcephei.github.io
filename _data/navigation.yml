@@ -63,6 +63,10 @@
         url: "/pldos/"
       - title: "The fplot program"
         url: "/fplot/"
+      - title: "The mc calculator"
+        url: "/mccalcdoc/"
+      - title: "The pfit program"
+        url: "/pfitdoc/"
 
 - title: "Tutorials"
   url: ""
