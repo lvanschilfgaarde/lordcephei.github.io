@@ -65,9 +65,11 @@ Some useful points to note:
 + By default all four edges of the box are drawn.  You can choose any to draw any combination of the four; see `-frmt` below.
 + The abscissa and ordinate have tic marks, both major and minor.  You have considerable flexibility in controlling them ; `-tmx` below.
 + The major tic marks are numbered.  There is considerable flexibility in controlling the font of the numberinig (`-font`) 
-  the format (`-fmtnx`), whether they are suppressed (`-noxn`) or where they are placed
-  (`-xn`)
-+ The abscissa ranges from -0.1 to 2.1; the ordinate from -0.033 to +0.71
+  the format (`-fmtnx` and `-fmtny`), whether they are suppressed (`-noxn` and `-noyn`) or where they are placed
+  (`-xn` and `-yn`)
++ The abscissa ranges from -0.1 to 2.1; the ordinate from -0.033 to +0.71. They were found automatically by finding the largest and smallest
+  values in the frame, and padding them by 10%.
+You can specify the range (`-x` and `-y`)
 
 
 ### _Other resources_
