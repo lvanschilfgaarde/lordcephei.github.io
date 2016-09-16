@@ -35,15 +35,15 @@ compilation constructs such as the (**#ifdef**, **#else**, **#endif**) group,
 in a fortran-77 compatible way.
 
 FORTRAN statements beginning with **C#** are preprocessor directives.
-The ones implemented are
+The ones implemented are:
 
 ~~~
-C#define
-C#include 
-C#ifdef   <i>expr</i>
-C#ifndef  _expr_
+C#define   name
+C#include  file-name
+C#ifdef    expr
+C#ifndef   expr
 C#else
-C#elseif
+C#elseif   expr
 C#endif 
 ~~~
 
