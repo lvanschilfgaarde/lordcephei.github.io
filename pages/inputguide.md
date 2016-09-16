@@ -20,6 +20,7 @@ _____________________________________________________________
 ### _The Input File_
 
 ##### _Introduction_
+
 Here is a sample input file for the compound Bi$$_2$$Te$$_3$$ written for the **lmf**{: style="color: blue"} package.
 
 <div onclick="elm = document.getElementById('sampleinput'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click to show.</div>
@@ -137,7 +138,7 @@ The preprocessor treats text inside brackets {...} as an expression (usually an 
 
 The preprocessor’s programming language makes it possible for a single file to serve as input for many materials systems in the manner of a database; or as documentation. Also you can easily vary input conditions in a parameteric fashion.  
 
-Many files other than  `ctrl.ext‘ are first parsed by the preprocessor: files for site positions, Euler angles for noncollinear magnetism, among others.  
+Files other than _ctrl.ext_{: style="color: green"} are first parsed by the preprocessor: files for site positions, Euler angles for noncollinear magnetism, among others.  
 
 _____________________________________________________________
 
