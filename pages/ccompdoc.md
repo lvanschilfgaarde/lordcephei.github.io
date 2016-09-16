@@ -52,7 +52,8 @@ C#endif
 **C#define** defines a name, to be used later in boolean expressions.
 
 Names can also be defined through command line switches:
-when they appear in an expression they evaluate to **true** if they exist, otherwise they evaluate to false.
+when they appear in a boolean expression they evaluate to **true** if they exist, 
+else **false**.
 Thus the expression `john & bill` evaluates to **true** if **john** and **bill**
 had both been previously defined; otherwise false.
 Boolean expressions can make use of the **AND**
@@ -67,8 +68,8 @@ whereas `john  & bill | mike` is equivalent to `(john & bill) | mike`.
 #### _Running ccomp_
 
 You can also define (and undefine) names on the command line.
-Names defined or undefined on the command line take precedence over those
-in the source file defined by **C#define**.   Thus if a name is defined
+Names so defined (undefined) take precedence over subsequent occurences of
+**C#define** in the source file.   Thus if a name is defined
 in the source code but undefined on the command line, it is undefined.
 
 **ccomp**{: style="color: blue"} writes to standard output, unless a destination filename is
@@ -79,10 +80,10 @@ ccomp -dMPI -uMPIK source.f dest.f
 ~~~
 
 reads file _source.f_{: style="color: green"} and writes the modified file
-to _dest.f_{: style="color: green"}.  **MPI** is defined; and 
-any definition of MPIK in **source.f**{: style="color: green"} such as
+to _dest.f_{: style="color: green"}.  **MPI** is defined, 
+**MPIK** is undefined.
 
-To see how to invoke **ccomp**{: style="color: blue"}, type `ccomp --h`.
+To see arguments **ccomp**{: style="color: blue"}, accepts, type `ccomp --h`.
 
 #### _Conditional commenting or uncommenting of of lines_
 
@@ -97,12 +98,11 @@ C#ifndef john | bill & mike
 At any point **ccomp**{: style="color: blue"} is in a **true** or **false** state,
 depending on the result of the last boolean expression evaluated.
 It also knows what the 'prior' state of the original code is at that point, i.e. what the
-state would be if given the name definitions in the source file.
+state would be if given the names as defined in the source file.
 
 Any time a new directive such as **C#ifdef** is encountered, the current and prior states
 are recalculated.
-For lines between conditional compilation directives such as 
-a **C#ifdef/C#else/C#endif** block, **ccomp**{: style="color: blue"} does one of the following:
+For lines between conditional compilation directives (e.g. a **C#ifdef/C#else/C#endif** block), **ccomp**{: style="color: blue"} does one of the following:
 
 + If the current and prior states are the same it outputs the line unmodified
 + If the current state is **true** and the prior is **false**, it comments out the line
