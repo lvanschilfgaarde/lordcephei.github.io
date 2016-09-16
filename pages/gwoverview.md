@@ -34,22 +34,22 @@ In QSGW mode, the full &Sigma; matrix is calculated and
 states _i_ and _j_, is evaluated at the one-particle energies
 $$\varepsilon_{i}$$ and $$\varepsilon_{j}$$, and the average value is
 taken.  This results in a static but orbital-dependent potential, a
-"quasiparticlized" $$\Sigma^0_{ij}$$ derived from $$\Sigma_{ij}(\omega)$,
+"quasiparticlized" $$\Sigma^0_{ij}$$ derived from $$\Sigma_{ij}(\omega)$$,
 and defines a one-particle hamiltonian $$H_0$$ which is the
 LDA one-particle hamiltonian with $$\Sigma^0_{ij}$$ substituting for $$V^{LDA}_{xc}$$.
 
-The new $$H_0$$ is used to mke a new $$\Sigma_{ij}(\omega)$$, and the process is iterted until 
-$$H_0$$ stops changing (quasiparticle self-consistency).
+The new $$H_0$$ is used to mke a new $$\Sigma_{ij}(\omega)$$, and the process is iterated until 
+$$H_0$$ stops changing.  This is quasiparticle self-consistency.
 
-QS<i>GW</i> theory is an elegant way to choose the optimum noninteracting hamiltonian $$H_0$$ for <i>GW</i> calculations, rather than using
-the LDA for $$H_0$$, as is customary.  A particularly valuable property of this optimum starting point is that the peaks
+QS<i>GW</i> theory is an elegant way to find the optimum noninteracting hamiltonian $$H_0$$ for <i>GW</i> calculations.  It is vastly better
+than basing $$H_0$$ on the LDA, as is customary, albeit at some computational cost.  A particularly valuable property of this optimum starting point is that the peaks
 of the interacting Green's function <i>G</i> coincide with the poles of $$G_0$$.  The eigenfunctions of $$G_0$$ are as close as possible to
-those of <i>G</i>, by construction.  But what are poles in $$G_0$$ get broadened by the interactions, so quasiparticles lose weight.  Thus the
+those of <i>G</i>, by construction.  What are true poles in $$G_0$$ get broadened by the interactions, so quasiparticles lose weight.  Thus the
 density-of-states, or spectral function, is composed of a superposition of &delta;-functions for $$G_0$$, but are broadened for <i>G</i>.
 Also the eigenvalues acquire an imaginary part, making the QP lifetime finite.
 
 In QS<i>GW</i> theory $$G_0$$ and <i>G</i> are closely linked.  Associated with the two kinds of <i>G</i> are two kinds of density-of-states
-(DOS).  There is "noninteracting" or "coherent" DOS, namely the spectral function of $$G_0$$ which associated with DOS in one-particle description, is what
+(DOS).  There is "noninteracting" or "coherent" DOS, namely the spectral function of $$G_0$$ which is associated with DOS in one-particle description, is what
 is typically calculated by a band program such as **lmf**{: style="color: blue"} .  There is also the true DOS (spectral function of <i>G</i>) which is what is
 approximately measured by e.g.  a photoemission experiment.  The <i>GW</i> package has a facility to generate both kinds of DOS; through the
 normal **lmf**{: style="color: blue"} process for the noninteracting DOS or by analyzing the spectral functions for the interacting case.
