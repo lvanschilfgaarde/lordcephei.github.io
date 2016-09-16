@@ -24,7 +24,11 @@
     url: "/install/"
   - title: "Full Potential Overview"
     url: "/fpoverview/"
-  - title: "lmgf documentation"
+  - title: "GW Overview"
+    url: "/gwoverview/"
+  - title: "ASA Overview"
+    url: "/asaoverview/"
+  - title: "ASA Green's function"
     url: "/lmgf/"
   - program:
     - name: "Input Files"
@@ -34,11 +38,6 @@
         url: "/inputfile/"
       - title: "Symmetry Line Files"
         url: "/symfile/"
-    - name: "Miscellaneous"
-      prefix: "/misc"
-      content:
-      - title: "Optics"
-        url: "/optics/"
     - name: "Command Line Options"
       prefix: "/commandline"
       content:
@@ -48,6 +47,18 @@
         url: "/lm/"
       - title: "lmf"
         url: "/lmf/"
+    - name: "Physical Properties"
+      prefix: "/properties"
+      content:
+      - title: "Optics"
+        url: "/optics/"
+    - name: "Auxilliary tools"
+      prefix: "/misc"
+      content:
+      - title: "The ccomp processor"
+        url: "/ccomp/"
+      - title: "Optics"
+        url: "/optics/"
 
 - title: "Tutorials"
   url: ""
@@ -60,7 +71,7 @@
       content:
       - title: "Basic Tutorial for Full-Potential lmf"
         url: "/lmf_tutorial/"
-      - title: "Standard Tutorial for lmf"
+      - title: "Self-consistent density in PbTe"
         url: "/lmf_pbte_tutorial/"
       - title: "Properties of the lmf basis set"
         url: "/lmf_bi2te3_tutorial/"

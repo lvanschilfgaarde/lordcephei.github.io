@@ -1,12 +1,12 @@
 ---
 layout: page-fullwidth
 title: "Optics Documentation"
-permalink: "/docs/misc/optics/"
+permalink: "/docs/properties/optics/"
 header: no
 ---
 _____________________________________________________________
 
-The LM-suite allows for the calculation of the following parameters:
+The Questaal suite allows for the calculation of the following parameters:
 
 1.   Im $$\epsilon(\omega)$$, without local-field effects
 

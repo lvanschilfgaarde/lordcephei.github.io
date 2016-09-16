@@ -42,7 +42,7 @@ cd qmcinput
 gfortran -o broad_sig.x broad_sig.f90                  # compile (here with gfortran) the broadening program
 ```
 
-The token **DMFT_NLOHI** defines the projection window in band index, **DMFT_BETA** is the inverse temperature in eV^{-1} and **DMFT_NOMEGA** is the number of Matsubara frequencies in the mesh. Some detail of the projection procedure are controlled by **DMFT_PROJ** and **DMFT_KNORM**, but you are not meant to change their value.
+The token **DMFT_NLOHI** defines the projection window in band index, **DMFT_BETA** is the inverse temperature in eV$$^{-1}$$ and **DMFT_NOMEGA** is the number of Matsubara frequencies in the mesh. Some detail of the projection procedure are controlled by **DMFT_PROJ** and **DMFT_KNORM**, but you are not meant to change their value.
 
 After that, you can create an empty impurity self-energy to start the loop.
 
@@ -60,25 +60,20 @@ The DMFT loop is composed by alternated runs of **lmfdmft**{: style="color: blue
 
 * **Prepare and launch the lmfdmft run**
 
-  First you have to copy the standard input files:
+  First you have to copy the input files. If you have to run the first iteration then 
  
   ```
-  mkdir itX_lmfrun                            # with X=iteration , X=1 if first run
-  cp lmfinput/* itX_lmfrun                    # copy standard input files 
+  mkdir it1_lmfrun                            
+  cp lmfinput/* it1_lmfrun                    # copy standard input files 
+  cp siginp0/sig.inp it1_lmfrun/sig.inp       # cppy vanishing sig.inp
   ```
   
-  If you are running the first iteration, you have to copy the vanishing impurity self-energy:
+  If you are running iteration number X>1, then
   
   ```
-  cp siginp0/sig.inp it1_lmfrun/sig.inp
-  ```
-  
-  Otherwhise, you have to copy the (broadened) impurity self-energy of the previous CTQMC step. 
-  If you are running an iteration X>1 then type:
-  
-  ```
-  cp it(X-1)_qmcrun/Sig.out.brd  itX_lmfrun/sig.inp
-  cp it(X-1)_qmcrun/g_qmc.dat   itX_lmfrun/gimp.prev.lsco
+  mkdir itX_lmfrun                                    # X>1 number of the iteration
+  cp lmfinput/* itX_lmfrun                            # copy standard input files 
+  cp it(X-1)_qmcrun/Sig.out.brd  itX_lmfrun/sig.inp   # copy sigma from last CTQMC run
   ```
 
   Let now _U_=10 eV and _J_=0.7 eV be the Hubbard on-site interaction and Hunds coupling respectively, and _n_=9 the nominal occupancy of the correlated subsystem (_n_=9 for cuprates). Then launch **lmfdmft**{: style="color: blue"} with the command 
@@ -89,7 +84,7 @@ The DMFT loop is composed by alternated runs of **lmfdmft**{: style="color: blue
   
   where 82.2 is the double counting term, computed according to the formula $$Edc=U(n-1/2)-J(n-1)/2$$. 
   
-  At the end of the run, the hybridization function $$\Delta(i\omega)$$ is stored in *delta.lsco*{: style="color: green"} (first column are Matsubaras energies and then five d-channels with real and imaginary parts).The impurity levels $$E_{\rm imp}$$ are recorded in *eimp1.lsco*{: sytle="color: green"} .
+  At the end of the run, the hybridization function $$\Delta(i\omega)$$ is stored in *delta.lsco*{: style="color: green"} (first column are Matsubaras energies and then five d-channels with real and imaginary parts).The impurity levels $$E_{\rm imp}$$ are recorded in *eimp1.lsco*{: style="color: green"} .
   These two output files are essential to initialise the next CTQMC run.
 
 * **Prepare and launch the ctqmc run**
@@ -105,8 +100,9 @@ The DMFT loop is composed by alternated runs of **lmfdmft**{: style="color: blue
   
   Now there are some manual operations to do:
   
-  * Copy the forth line of *Eimp.inp*{: style="color: green"} in the *PARAMS*{: style="color: green"} file (in such a way to have one line like **Ed [ ... ]**{: style="color: blue"}. *Note*{: style="color: red"} be careful in erasing the = sign before the brakets!) 
-  * Change accordingly the **mu** variable in *PARAMS*{: style="color: green". It has to be the first value of the __Ed__ string with inverted sign.
+  * Copy the forth line of *Eimp.inp*{: style="color: green"} in the *PARAMS*{: style="color: green"} file (in such a way to have one line like **Ed [ ... ]**{: style="color: blue"}. 
+   *Note:*{: style="color: red"} be careful in erasing the '=' sign before the brakets!
+  * Change accordingly the **mu** variable in *PARAMS*{: style="color: green"}. It has to be the first value of the __Ed__ string with inverted sign.
   * Add correct values of **U**, **J**, **nf0** (equivalent of n) and beta in *PARAMS*{: style="color: green"}.
   
   The *PARAMS*{: style="color: green"} file at the end should look like that one in the dropdown box.
@@ -165,7 +161,7 @@ The command to run in this case will be
 python atom_d.py J=0.7 l=2 cx=0.0 OCA_G=False qatom=0 "CoulombF='Ising'" HB2=False "Eimp=[   0.000000,   0.248617,   0.642283,   0.248882,   0.681997]"
 ```
 
-**Warning: **{: style="color: red"}Pay attention to quotes and double quotes!
+**Warning:**{: style="color: red"} Pay attention to quotes and double quotes!
 
 Except for the value of **Eimp** that will need to be changed at each iteration accordingly to the previous **lmfdmft**{: style="color: blue"} run, all the other parameters do not need to be modified.
 
@@ -188,11 +184,11 @@ Except for the value of **Eimp** that will need to be changed at each iteration 
   For a clearer explanation on how **broad_sig.x**{: style="color: blue"} works, we refer to its commented header.
   
 ### Converging to the SC-solution
-The self-consistent condition holds when $$G_{\rm loc}$$ of iteration _N_ is equal (within a certain tolerance) to $$G_{\rm imp}$$ of iteration _N-1_. The flag **--gprt**{: style="color: blue"} tells the program to print $$G_{\rm loc}$$ on a file called *gloc.lsco*{: style="color: green"} that can be compared with the file *g_qmc.dat*{: style="color: green"} produced by the previous CTQMC run. However in the comparison remember that the latter is not broadened, while the former is obtained by smooth quantities.
+The self-consistent condition holds when $$G_{\rm loc}$$ of iteration _N_ is equal (within a certain tolerance) to $$G_{\rm imp}$$ of iteration _N-1_. The flag **--gprt**{: style="color: blue"} tells the program to print $$G_{\rm loc}$$ on a file called *gloc.lsco*{: style="color: green"} that can be compared with the file *Gf.out*{: style="color: green"} produced by the previous CTQMC run. However in the comparison remember that the latter is not broadened, while the former is obtained by smooth quantities.
 
 An easier though accurate way is to look at the convergence of the chemical potential. This can be done by typing **grep ' mu = ' it*_lmfrun/log**{: sytle="color: blue"}.
 
-A third method is of course to visualise the convergence of each separate channel of local quantities like _Sig.out.brd_{: style="color: green"} or *g_qmc.dat*{: style="color: green"}. 
+A third method is of course to visualise the convergence of each separate channel of local quantities like _Sig.out.brd_{: style="color: green"} or *Gf.out*{: style="color: green"}. 
 
 In this tutorial, a reasonable convergence is achieved after around 10 iterations.
 How to handle the converged DMFT result is the subject of the [third](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft3) and the [fourth](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft4) tutorials, while in the [second one](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft2) we will focus on possible source of errors, technical aspects to speed up the convergence and rule of thumbs to define the input parameters.
