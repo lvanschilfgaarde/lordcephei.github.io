@@ -50,7 +50,7 @@ After that, you can create an empty impurity self-energy to start the loop.
 mkdir siginp0
 cd siginp0
 cp ../lmfinput/*  . 
-lmfdmft lsco -vnk=4 -rs=1,0 --ldadc=82.2 -job=1 --gprt > log
+lmfdmft lsco -vnk=4 -rs=1,0 --ldadc=82.2 -job=1  > log
 ```
 
 You can check that a file called *sig.inp*{: style="color: green"} has been created. It is formatted with the first column being the Matsubara frequencies (in eV) and then a number of columns equal to twice the number of _m_ channels (e.g. ten columns for d-type impurity: five pairs of real and imaginary parts).
@@ -79,7 +79,7 @@ The DMFT loop is composed by alternated runs of **lmfdmft**{: style="color: blue
   Let now _U_=10 eV and _J_=0.7 eV be the Hubbard on-site interaction and Hunds coupling respectively, and _n_=9 the nominal occupancy of the correlated subsystem (_n_=9 for cuprates). Then launch **lmfdmft**{: style="color: blue"} with the command 
 
   ```
-  lmfdmft lsco -vnk=4 --rs=1,0 --ldadc=82.2 -job=1 --gprt > log
+  lmfdmft lsco -vnk=4 --rs=1,0 --ldadc=82.2 -job=1 > log
   ```
   
   where 82.2 is the double counting term, computed according to the formula $$Edc=U(n-1/2)-J(n-1)/2$$. 
@@ -184,7 +184,7 @@ Except for the value of **Eimp** that will need to be changed at each iteration 
   For a clearer explanation on how **broad_sig.x**{: style="color: blue"} works, we refer to its commented header.
   
 ### Converging to the SC-solution
-The self-consistent condition holds when $$G_{\rm loc}$$ of iteration _N_ is equal (within a certain tolerance) to $$G_{\rm imp}$$ of iteration _N-1_. The flag **--gprt**{: style="color: blue"} tells the program to print $$G_{\rm loc}$$ on a file called *gloc.lsco*{: style="color: green"} that can be compared with the file *Gf.out*{: style="color: green"} produced by the previous CTQMC run. However in the comparison remember that the latter is not broadened, while the former is obtained by smooth quantities.
+The self-consistent condition holds when $$G_{\rm loc}$$ of iteration _N_ is equal (within a certain tolerance) to $$G_{\rm imp}$$ of iteration _N-1_. You can add the flag **--gprt**{: style="color: blue"} when running **lmfdmft**{: style="color blue"} to get $$G_{\rm loc}$$ printed on a file called *gloc.lsco*{: style="color: green"}. This can be compared with the file *Gf.out*{: style="color: green"} produced by the previous CTQMC run. However in the comparison remember that the latter is not broadened, while the former is obtained by smoothed quantities.
 
 An easier though accurate way is to look at the convergence of the chemical potential. This can be done by typing **grep ' mu = ' it*_lmfrun/log**{: sytle="color: blue"}.
 
