@@ -41,6 +41,8 @@
     - name: "Miscellaneous"
       prefix: "/misc"
       content:
+      - title: "The ccomp processor"
+        url: "/ccomp/"
       - title: "Optics"
         url: "/optics/"
     - name: "Command Line Options"

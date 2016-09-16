@@ -35,7 +35,7 @@ is because the interstitial is omitted so spheres must fill space.
 Hence there is a geometry violation that becomes severe if the spheres
 overlap too much. It works best for close-packed systems, and still
 remains today one of the best and most highly efficient approach to
-studying magnetic properties of reasonably close-packed systems.  The
+studying magnetic properties of transition metals and their alloys.  The
 ASA package has a non-collinear framework and a fully relativistic Dirac branch.
 
 Questaal's implementation present uses the "tight-binding" form of

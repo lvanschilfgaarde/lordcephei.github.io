@@ -1,12 +1,81 @@
 ---
 layout: page-fullwidth
-title: "Optics Documentation"
-permalink: "/docs/misc/optics/"
+title: "The ccomp processor"
+permalink: "/docs/misc/ccomp/"
 header: no
 ---
 _____________________________________________________________
 
-The Questaal suite allows for the calculation of the following parameters:
+
+### _Introduction_
+{:.no_toc}
+
+Questaal's codes are compiled with a source code preprocessor, 
+**ccomp**{: style="color: blue"}.  This tool, written in C,
+performs a similar function to the conditional compilation
+
+~~~
+# if expr
+# else
+# endif
+~~~
+
+found in modern programming languages.  It was necessary when the
+package was first written because conditional compilation was not part
+of FORTRAN.  
+
+Questaal still uses it in part because of backwards compatibility,
+but also becasue it retains some advantages over conditional compilation.
+
+_____________________________________________________________
+
+### _The **ccomp**{: style="color: blue"}  processor_
+
+*A preprocessor, ccomp, provides a simplified, FORTRAN compatible
+ version of C conditional compilation.  FORTRAN statements
+ beginning with C# are preprocessor directives; the ones
+ implemented now are C#ifdef, C#ifndef, C#else, C#elseif, C#endif
+ (also C#define defines a name).  Directives C#ifdef, C#ifndef,
+ C#elseif, and C#endif are followed by a name, eg C#ifdef CRAY.
+ when C#ifdef is false (either name is not defined or it lies
+ within an #if/#endif block that is false), ccomp comments out
+ until a change of state (new C#ifdef, C#ifndef, C#else,
+ C#elseif, C#endif encountered); C#ifdef is true, ccomp
+ uncomments lines following until another conditional compilation
+ directive is encountered.
+
+*Conditional compilation blocks may be nested.  As with C, ccomp
+ distinguishes case.  Output is to standard out.
+
+*There is a primitive facility to make logical expressions using
+ the AND (&) and OR (|) operators, such C#ifdef john & bill, or
+ C#ifdef john | bill, is provided.  Precedence of operators is
+ strictly left to right, so that john | bill & mike is equivalent
+ to (john | bill) & mike, whereas john & bill | mike is
+ equivalent to (john & bill) | mike
+
+*How ccomp determines whether to modify code (i.e. add comments,
+ or delete comments from a code segment)
+
+ Whether the lines following a C#ifdef, C#ifndef, C#else,
+ C#elseif, C#endif need to be commented out or uncommented
+ depends on whether they have been commented out in a previous
+ pass.  This information is contained in a `C' following the
+ directive, eg C#ifdefC, C#ifndefC, C#elseC, C#elseifC, C#endifC.
+ The preprocessor will set this, it is best advised to create any
+ new blocks uncommented and let the preprocessor do the
+ commenting.
+
+ Programs <b>lm</b>, <b>lmstr</b>, <b>lmdos</b>, <b>lmchk</b>, etc..
+ are in fact the same source code, the only difference being that one
+ is run through ccomp with different keywords defined.  ccomp is used
+ extensively by `configure' both to create new branches code, to and
+ customize code specific to certain compilers, either for optimization
+ purposes or to avoid compiler bugs.
+
+
+
+The LM-suite allows for the calculation of the following parameters:
 
 1.   Im $$\epsilon(\omega)$$, without local-field effects
 
