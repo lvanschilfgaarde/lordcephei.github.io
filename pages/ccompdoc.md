@@ -30,7 +30,7 @@ also because it retains some advantages over conditional compilation
 
 _____________________________________________________________
 
-### _The **ccomp**{: style="color: blue"}  processor_
+### _How **ccomp**{: style="color: blue"} works_
 
 **ccomp**{: style="color: blue"} mimics the C language conditional
 compilation constructs such as the (**#ifdef**, **#else**, **#endif**) group,
