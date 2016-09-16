@@ -59,6 +59,10 @@
         url: "/ccomp/"
       - title: "The plbnds program"
         url: "/plbnds/"
+      - title: "The pldos program"
+        url: "/pldos/"
+      - title: "The fplot program"
+        url: "/fplot/"
 
 - title: "Tutorials"
   url: ""

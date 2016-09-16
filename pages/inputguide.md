@@ -213,7 +213,7 @@ effectively aliases for tags in other categories, e.g. reading
 **EXPRESS_gmax** reads the same input as **HAM_GMAX**.
 
 If you put a tag into **EXPRESS**, it will be read there and
-any tag appearing in its usual location will be ignored. Thus in this instance adding **GMAX**
+any tag appearing in its usual location will be ignored. Thus adding **GMAX**
 to **HAM** would have no effect if **gmax** is present in **EXPRESS**.
 
 **EXPRESS** collects the most commonly used tags in one place.
