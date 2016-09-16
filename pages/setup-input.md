@@ -100,7 +100,7 @@ The starting point of the DMFT loop has to be non-magnetic, but the QSGW (or LDA
 
 If this is the case you need to spin average the QSGW self-energy and construct the LDA $$V_{\rm xc}$$ by reading only the spin-averaged density.
 ```
-lmf --rsig~spinav -vbxc0=1 > log
+lmf --rsig~spinav --wsig -vbxc0=1 > log
 ```
 You will see that the file *sigm2.lsco*{: style="color: green"} has been created. 
 
