@@ -52,6 +52,21 @@ a couple of examples are given; this gives you an intuitive feel of how the code
 
 ### 2.1 _Example: plot $$x^2*exp(-4x)$$_
 
+The following will plot this function in the interval (0,2), with the abscissa spaced in intervals of 0.02:
+
+    $ fplot -ord 'x^2*exp(-4*x)' -tp 0:2:.02
+    $ open fplot.ps 
+
+Click here to see the Figure.
+
+Some useful points to note:
+
++ A square box is drawn around the Figure.  You have freedom to choose the width and height of the box (see `-frme` below).  
++ By default all four edges of the box are drawn.  You can choose any to draw any combination of the four (see `-frmt` below).
++ The abscissa and ordinate have tic marks, both major and minor.  You have considerable flexibility to
+
+
+
 ### _Other resources_
 
-The source code to **ccomp**{: style="color: blue"} can be found [here](https://bitbucket.org/lmto/lm/src/e82e155d8ce7eb808a9a6dca6d8eea5f5a095bd6/startup/ccomp.c).
+
