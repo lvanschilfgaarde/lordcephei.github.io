@@ -140,13 +140,77 @@ The preprocessor’s programming language makes it possible for a single file to
 
 Files other than _ctrl.ext_{: style="color: green"} are first parsed by the preprocessor: files for site positions, Euler angles for noncollinear magnetism, among others.  
 
-input-file-style.html
+_____________________________________________________________
+
+### _Help with finding tokens: the --input switch_
+
+To see what a particular tool would try to read, without actually reading
+anything, run your executable code with `--input`, e.g.
+~~~
+  lmchk --input
+~~~
+This switch tells the parser not to try and read anything, but print
+out information about what it would would try to read.  Several bits
+of information are given, including a brief description of each token,
+in the following format (only a few tokens are reproduced here):
+
+~~~
+ Tag                    Input   cast  (size,min)
+ ------------------------------------------
+
+ IO_VERBOS              opt    i4v      5,  1     default = 35
+   Verbosity stack for printout.
+   May also be set from the command-line: --pr#1[,#2]
+ IO_IACTIV              opt    i4       1,  1     default = 0
+   Turn on interactive mode.
+   May also be controlled from the command-line:  --iactiv  or  --iactiv=no
+...
+ STRUC_NSPEC            opt    i4       1,  1
+   Number of species to read from SPEC category.
+   If not present, NSPEC will be obtained by:
+     - identifying species from the SITE file if it is read, or by
+     - counting entries in the SPEC category
+...
+ STRUC_FILE             opt    chr      1,  0
+   (Not used if data read from EXPRESS_file)
+   Name of site file containing basis and lattice information.
+   Read NBAS, PLAT, and optionally ALAT from site file, if specified.
+   Otherwise, they are read from the ctrl file.
+...
+ STRUC_PLAT             reqd   r8v      9,  9
+   Primitive lattice vectors, in units of alat
+ STRUC_PLAT             reqd   r8v      9,  9
+   Primitive lattice vectors, in units of alat
+...
+ SITE_ATOM_POS          reqd*  r8v      3,  1
+   Atom coordinates, in units of alat
+ - If preceding token is not parsed, attempt to read the following:
+ SITE_ATOM_XPOS         reqd   r8v      3,  1
+   Atom coordinates, as (fractional) multiples of the lattice vectors
+~~~
+
+Compare **IO_VERBOS** and **IO_IACTIV**.  The table tells you
+that the tags are optional; in the latter case 1 integer will be read.
+In the former, up to 5 will be read, though you need supply only one.
+The default values are 35 and 0, respectively.
+
+There is a brief description explaining the functions of each, and
+in these particular cases alternative means to perform equivalent functions
+through command-line switches.
+
+**STRUC_PLAT** is required input, unless you supply the input through a site file
+_fname_{: style="color: green"} (**STRUC_FILE=fname**). The parser requires 9 numbers.
+
+**SITE_ATOM_POS** is required input in the sense that you must supply either it
+or **SITE_ATOM_XPOS**.  (Note: this data can also be given through a site file, 
+in which case all the tags in the **SITE** category will be ignored).
 
 _____________________________________________________________
 
 ### _Input File Categories_
 
 This section details the various categories and tokens used in the input file.
+
 
 ##### _Preliminaries_
 _Note:_{: style="color: red"} The tables below list the input systems’ tokens and their function. Tables are organized by category.

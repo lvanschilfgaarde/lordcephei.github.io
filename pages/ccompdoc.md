@@ -28,7 +28,7 @@ compatibility, but also because it retains some advantages
 
 _____________________________________________________________
 
-### _How **ccomp**{: style="color: blue"} works_
+### _How ccomp works_
 
 **ccomp**{: style="color: blue"} mimics the C language conditional
 compilation constructs such as the (**#ifdef**, **#else**, **#endif**) group,
@@ -64,7 +64,7 @@ whereas `john  & bill | mike` is equivalent to `(john & bill) | mike`.
 **Note**{: style="color: red"}: 
 **ccomp**{: style="color: blue"} distinguishes case in the names (as does C).
 
-#### _Running **ccomp**{: style="color: blue"}_
+#### _Running ccomp_
 
 You can also define (and undefine) names on the command line.
 Names defined or undefined on the command line take precedence over those
@@ -106,13 +106,13 @@ a **C#ifdef/C#else/C#endif** block, **ccomp**{: style="color: blue"} does one of
 
 + If the current and prior states are the same it outputs the line unmodified
 + If the current state is **true** and the prior is **false**, it comments out the line
-+ If the current state is **false** and the prior is **true**, it removes a **C** which should appear in the first column.  
++ If the current state is **false** and the prior is **true**, it removes a **C** from the first column.  
 If the **C** is missing, **ccomp**{: style="color: blue"} exits with an error message.
 
 Comments use the fortran-77 convention (**C** in the first column).
 
 
-### _Applications of **ccomp**{: style="color: blue"}_
+### _Applications of ccomp_
 
 Programs **lmf**{: style="color: blue"}, **lm**{: style="color: blue"}, **lmdos**{: style="color: blue"}, **lmchk**{: style="color: blue"}, etc.
 derive the same source code, _lmv7.f_{: style="color: green"}.  Any one of them can be got from the other by suitable definitions of names.
