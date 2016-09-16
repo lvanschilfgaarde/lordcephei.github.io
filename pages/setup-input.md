@@ -27,6 +27,7 @@ cd lmfinput
 echo 'DMFT    PROJ=2 NLOHI=11,53 BETA=50 NOMEGA=1999 KNORM=0' >> ctrl.lsco  # add a line to the ctrl file 
 cd ..
 ```
+
 The token **DMFT_NLOHI** defines the projection window in band index, **DMFT_BETA** is the inverse temperature in eV$$^{-1}$$ and **DMFT_NOMEGA** is the number of Matsubara frequencies in the mesh. Some detail of the projection procedure are controlled by **DMFT_PROJ** and **DMFT_KNORM**, but you are not meant to change their value.
 Moreover we suggest you to add **% const bxc0=0** and **BXC0={bxc0}** in the **HAM** section of the *ctrl*{: style="color: green"} file.
 
@@ -99,9 +100,11 @@ The tutorial will continue assuming you are using **broad_sig.f90**{: style="col
 The starting point of the DMFT loop has to be non-magnetic, but the QSGW (or LDA) calculation you just finishes can be magnetic. 
 
 If this is the case you need to spin average the QSGW self-energy and construct the LDA $$V_{\rm xc}$$ by reading only the spin-averaged density.
+
 ```
 lmf --rsig~spinav --wsig -vbxc0=1 > log
 ```
+
 You will see that the file *sigm2.lsco*{: style="color: green"} has been created. 
 
 ### Prepare a vanishing impurity self-energy 
