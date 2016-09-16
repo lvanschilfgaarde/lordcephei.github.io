@@ -182,23 +182,45 @@ in the following format (only a snippet of the output is reproduced here):
    Atom coordinates, as (fractional) multiples of the lattice vectors
 ~~~
 
-The table tells you **IO_VERBOS** and **IO_IACTIV**.  
-are optional tags; in the latter case a single integer will be read.
-In the former, between one and five will be read
-The default values are 35 and 0, respectively.
+The table tells you **IO_VERBOS** and **IO_IACTIV** are optional tags; 
+default values are 35 and 0, respectively.
+A single integer will be read from the latter tag, and
+between one and five integers will be read from **IO_VERBOS**.
+
 There is a brief description explaining the functions of each, and
 in these particular cases alternative means to perform equivalent functions
 through command-line switches.
 
-**STRUC_FILE=fname** is optional.  fname indicates the site file
-_fname.ext_{: style="color: green"}.  If you do read it, other tags
-in the **STRUC** category (**NBAS**, **PLAT**, **ALAT**) may be omitted.
+**STRUC_FILE=fname** is optional.  **fname** indicates the name
+_fname.ext_{: style="color: green"} of the site file.  If you do use
+this tags, other tags in the **STRUC** category (**NBAS**, **PLAT**,
+**ALAT**) may be omitted.
+Otherwise, **STRUC_PLAT** is required input; the parser requires 9 numbers.
 
-Otherwise, **STRUC_PLAT** is required input. The parser requires 9 numbers.
+**SITE_ATOM_POS** is required input (reqd\*) in the sense that you must supply either it
+or **SITE_ATOM_XPOS**.  (Note: if this data is given through a site file, 
+all the tags in the **SITE** category will be ignored).
 
-**SITE_ATOM_POS** is required input in the sense that you must supply either it
-or **SITE_ATOM_XPOS**.  (Note: this data can also be given through a site file, 
-in which case all the tags in the **SITE** category will be ignored).
+_____________________________________________________________
+
+### _The EXPRESS category_
+
+The next section provides some description for each of categories.
+
+There is one special category, **EXPRESS**, whose purpose is to
+simplify and streamline input files.  Tags in **EXPRESS** are
+effectively aliases for tags in other categories, e.g. reading
+**EXPRESS_gmax** reads the same input as **HAM_GMAX**.
+
+If you put a tag into **EXPRESS**, it will be read there and;
+any tag appearing in its usual location will be ignored. Thus in this instance adding **GMAX**
+to the **HAM** category would have no effect if **gmax** is present in **EXPRESS**.
+
+**EXPRESS** collects the most commonly used tags in one place.
+There is usually a one-to-one correspondence between the tag in **EXPRESS**
+and its usual location.  The sole exception to this is **EXPRESS_file**.
+It performs the same function as the pair of tags, **STRUC_FILE** and **SITE_FILE**;
+thus in using **EXPRESS_file** all structural data must be supplied through the site file.
 
 _____________________________________________________________
 

@@ -55,7 +55,7 @@ Names can also be defined through command line switches:
 when they appear in a boolean expression they evaluate to **true** if they exist, 
 else **false**.
 Thus the expression `john & bill` evaluates to **true** if **john** and **bill**
-had both been previously defined; otherwise false.
+had both been previously defined; otherwise **false**.
 Boolean expressions can make use of the **AND**
 (&) and **OR** (|) operators.
 Precedence of operators is strictly left to right,
@@ -78,7 +78,6 @@ supplied.  For example:
 ~~~
 ccomp -dMPI -uMPIK source.f dest.f
 ~~~
-
 reads file _source.f_{: style="color: green"} and writes the modified file
 to _dest.f_{: style="color: green"}.  **MPI** is defined, 
 **MPIK** is undefined.
@@ -95,9 +94,9 @@ C#ifdef CRAY
 C#ifndef john | bill & mike
 ~~~
 
-At any point **ccomp**{: style="color: blue"} is in a **true** or **false** state,
+At any point in parsing the source file, **ccomp**{: style="color: blue"} is in a **true** or **false** state,
 depending on the result of the last boolean expression evaluated.
-It also knows what the 'prior' state of the original code is at that point, i.e. what the
+In addition to knowing the 'current' state, it knows what the 'prior' state of the original code is at that point, i.e. what the
 state would be if given the names as defined in the source file.
 
 Any time a new directive such as **C#ifdef** is encountered, the current and prior states
