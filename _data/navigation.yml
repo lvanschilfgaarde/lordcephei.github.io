@@ -103,6 +103,8 @@
       content:
       - title: "Introduction"
         url: "/dmft0/"
+      - title: "Set up DMFT loop"
+        url: "/setup-input/"
       - title: "The DMFT loop"
         url: "/dmft1/"
       - title: "Set up and errors"
