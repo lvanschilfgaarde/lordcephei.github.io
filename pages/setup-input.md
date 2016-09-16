@@ -85,14 +85,24 @@ You can see how it should look like by clicking on the dropdown box.
 {::nomarkdown}</div>{:/}
 
 ### Compile **broad_sig.f90**{: style="color: blue"}
+The statistical noise of Quantum Monte Carlo calculations can be sourse of instabilities. Because of this, you need to broad the output of the **ctqmc**{: style="color: blue"} software.
+The **Questaal**{: style="color: blue"} package prvides **broad_sig.f90**{: style="color: blue"}, but you can use whatever method you prefer. 
 
 ```
 cd qmcinput
 gfortran -o broad_sig.x broad_sig.f90                  # compile (here with gfortran) the broadening program
 cd ..
 ```
+The tutorial will continue assuming you are using **broad_sig.f90**{: style="color: blue"}.
 
 ### Prepare spin-averaged self-energy
+The starting point of the DMFT loop has to be non-magnetic, but the QSGW (or LDA) calculation you just finishes can be magnetic. 
+
+If this is the case you need to spin average the QSGW self-energy and construct the LDA $$V_{\rm xc}$$ by reading only the spin-averaged density.
+```
+lmf --rsig~spinav -vbxc0=1 > log
+```
+You will see that the file *sigm2.lsco*{: style="color: green"} has been created. 
 
 ### Prepare a vanishing impurity self-energy 
 Unless you want to rely on some previous calculation, you start the loop from scratch by creating an empty impurity self-energy. 
