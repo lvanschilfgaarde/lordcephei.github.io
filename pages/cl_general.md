@@ -28,64 +28,53 @@ Following unix style, switches always begin with “-”. There are many command
 
 Some switches have a single “-” ; some have two (“–”). Those with two tend to control program flow (e.g. --show), while those with a single “-” tend to have an “assignment” function, such as a variables declaration (e.g. -vx=3). Sometimes there is not a clear distinction between the two, e.g. the printout verbosity --pr (see below) accepts either “-” or “–”.
 
-In the example above, “-vns=4 -vnm=5“ assigns variables ns and nm to 4 and 5, respectively, while “--rpos=pos” tells lmf to read site positions from file pos.cafeas.
+In the example above, `-vns=4 -vnm=5` assigns variables **ns** and **nm** to 4 and 5, respectively, while `--rpos=pos` tells **lmf**{: style="color: blue"} to read site positions from file 
+_pos.cafeas._{: style="color: green"}.
+
 
 ##### _Switches Common to Most or All Programs_
 
     --help
-    --h             lists command-line switches for that program
-                    and quits.  (warning: sometimes documentation
-                    is slightly out of date)
+    --h             lists command-line switches for that program and quits
     
-    --input         Lists tags (categories and tokens) a program will read. Same as turning on HELP=T in category IO; see
+    --input         Lists tags (categories and tokens) a program will read. 
+                    Same as turning on HELP=T in category IO; see
                     HELP= in the description of the IO category.
 	
-    --showp         Prints out input file after after parsing by preprocessor, and exits.  This can be
-                    useful because it shows the action of the
-                    preprocessor.  When trying to parse a
-                    complicated input file, it can be simpler to
-                    run it through the preprocessor, and use the
-                    output of the preprocessor as the input file.
+    --showp         Prints out input file after after parsing by preprocessor, and exits.
+                    This can be useful because it shows the action of the preprocessor.
 
-    --show          Prints the input file parsing by preprocessor, and the value of the tags the program has parsed or will take as defaults.
+    --show          Prints the input file parsed by preprocessor, and the value of the 
+                    tags parsed default values taken
 			
-    --show=2        Same as --show, except program exits after printing out results of parsing the input file.
-                    Same as turning on SHOW=T in category IO; see SHOW= in the description of the IO category.					
+    --show=2        Same as --show, except program exits after printing out results
+                    of parsing the input file.
 
-    --pr#1[,#2]     sets print verbosities, overriding any
-     -pr#1[,#2]     specification in the input file's IO category.
-                    #2 is verbosity for the potential generation
-                    segment of code and assumes the value of #1
-                    unless specified.  See input-file-style.txt for
-                    a description of the verbosity.
+
+    --pr#1[,#2]     sets output verbosities, overriding any specification
+     -pr#1[,#2]     through IO_VERBOS in the ctrl file
+                    #2 sets verbosity for the potential generation part.
+
+    --time=#1[,#2]  prints out a summary of timings in various sections
+                    of the code. Timings are kept to a nesting level of #1.  
+                    If #2 is nonzero, timings are printed `on the fly'
 					
-    --time=#1[,#2]  prints out a summary of timings in various
-                    branches of the code at the close of program
-                    execution.  Timings are kept to a nesting level
-                    of #1.  If #2 is nonzero, timings are printed
-                    `on the fly'
+    --iactive       turns on `interactive' mode, overriding any specification
+                    through IO_IACTIV in the ctrl file.
 					
-    --iactive       turns on `interactive' mode. This overrides
-                    specification of interactive mode this in the
-                    ctrl file `IO IACTIV=' See input-file-style.txt
-                    for a description of the interactive mode.
+    --iactive=no    
+    --no-iactive    turns off `interactive' mode
 					
-    --iactive=no     
-    --no-iactive    turns off `interactive' mode, overriding
-                    specification in the ctrl file.
+    -c"name=strn"   declares a character variable and assigns it to value `strn'
 					
-    -c"name=strn"   declares a character variable and assigns to
-                    value `strn'
-					
-    -v"name=expr"   declares a numeric variable and assigns to the
-                    value of expression `expr'. Be advised that
+    -v"name=expr"   declares a numeric variable and assigns its value to
+                    the result of expression `expr'. Be advised that
                     only the first declaration of a variable is
-                    used.  Later declarations have no effect.  In
-                    addition to the declaration `name=...'  there
-                    are assignment operators
-                    `*=','/=','+=','-=','^=' modify existing
-                    variables, following C syntax, as described in
-                    description of category CONST above.
+                    used.  Later declarations have no effect.  
+
+                    In addition to the declaration `name=...'  there
+                    are assignment operators `*=','/=','+=','-=','^=' 
+                    that modif existing variables, following C syntax
 
 ##### _Switches Common To Programs Using Site Information_
 Additionally, for any program utilizing site information, the following switches apply
@@ -93,7 +82,6 @@ Additionally, for any program utilizing site information, the following switches
     --rpos=fnam     tells the program to read site positions from
                     file ``fnam'' after the input file has been read.  Data
                     is read following a standard format for 2D arrays.
-                    This page more fully describes how site data are read.
 					
     --fixpos[:tol=#]
     --fixpos[:#]    tells the symmetry finder to adjust positions
@@ -103,13 +91,13 @@ Additionally, for any program utilizing site information, the following switches
                     specifies the maximum amount of adjustment allowed.
                     Example: lmchk --fixpos:tol=.001
 				   
-     --fixlat       Adjust lattice vectors and point group operations, attempting to
-                    render them internally consistent with each other
+    --fixlat        Adjust lattice vectors and point group operations, attempting to
+                    render them internally consistent with each other.
 
     --fixpos[:tol=#] Adjust positions slightly, rendering them
-                   as consistent as possible with the symmetry group
+                   as consistent as possible with the symmetry group.
 
-    --sfill=class-  list tells the program to adjust the sphere sizes
+    --sfill=class   list tells the program to adjust the sphere sizes
                     to space filling.
 					
                     *By default, ``class-list'' is a list of integers.
