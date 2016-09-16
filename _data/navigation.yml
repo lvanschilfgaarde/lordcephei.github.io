@@ -28,7 +28,7 @@
     url: "/gwoverview/"
   - title: "ASA Overview"
     url: "/asaoverview/"
-  - title: "ASA Green's function code"
+  - title: "ASA Green's function"
     url: "/lmgf/"
   - program:
     - name: "Input Files"
