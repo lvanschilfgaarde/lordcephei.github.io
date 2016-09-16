@@ -52,8 +52,8 @@ C#endif
 **C#define** defines a name, to be used later in boolean expressions.
 
 Names can also be defined through command line switches:
-when they appear in an expression they evaluate to true if they exist, otherwise they evaluate to false.
-Thus the expression `john & bill` evaluates to true if **john** and **bill**
+when they appear in an expression they evaluate to **true** if they exist, otherwise they evaluate to false.
+Thus the expression `john & bill` evaluates to **true** if **john** and **bill**
 had both been previously defined; otherwise false.
 Boolean expressions can make use of the **AND**
 (&) and **OR** (|) operators.
@@ -105,9 +105,9 @@ For lines between conditional compilation directives such as
 a **C#ifdef/C#else/C#endif** block, **ccomp**{: style="color: blue"} does one of the following:
 
 + If the current and prior states are the same it outputs the line unmodified
-+ If the current state is true and the prior is false, it comments out the line
-+ If the current state is false and the prior is true, it removes a **C** which should appear in the first column.  
-If the **C** is mising, **ccomp**{: style="color: blue"} exits with an error message.
++ If the current state is **true** and the prior is false, it comments out the line
++ If the current state is **false** and the prior is true, it removes a **C** which should appear in the first column.  
+If the **C** is missing, **ccomp**{: style="color: blue"} exits with an error message.
 
 Comments use the fortran-77 convention (**C** in the first column).
 

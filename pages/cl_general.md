@@ -1,6 +1,6 @@
 ---
 layout: page-fullwidth
-title: "General CLO"
+title: "Command Line switches"
 permalink: "/docs/commandline/general/"
 header: no
 ---
@@ -32,52 +32,52 @@ In the example above, “-vns=4 -vnm=5“ assigns variables ns and nm to 4 and 5
 
 ##### _Switches Common to Most or All Programs_
 
+    --help
     --h             lists command-line switches for that program
                     and quits.  (warning: sometimes documentation
                     is slightly out of date)
     
-	--input         Lists tags (categories and tokens) a program will read. Same as turning on HELP=T in category IO; see
+    --input         Lists tags (categories and tokens) a program will read. Same as turning on HELP=T in category IO; see
                     HELP= in the description of the IO category.
 	
-	--showp         Prints out input file after after parsing by preprocessor, and exits.  This can be
+    --showp         Prints out input file after after parsing by preprocessor, and exits.  This can be
                     useful because it shows the action of the
                     preprocessor.  When trying to parse a
                     complicated input file, it can be simpler to
                     run it through the preprocessor, and use the
-                    output of the preprocessor as the input file
+                    output of the preprocessor as the input file.
 
-	--show          Prints the input file parsing by preprocessor (similar to --showp), and the value of the tags
-			the program has parsed or will take as defaults.
+    --show          Prints the input file parsing by preprocessor, and the value of the tags the program has parsed or will take as defaults.
 			
-	--show=2        Same as --show, except program exits after printing out results of parsing the input file.
-			
-			Same as turning on SHOW=T in category IO; see SHOW= in the description of the IO category.					
-	--pr#1[,#2]     sets print verbosities, overriding any
+    --show=2        Same as --show, except program exits after printing out results of parsing the input file.
+                    Same as turning on SHOW=T in category IO; see SHOW= in the description of the IO category.					
+
+    --pr#1[,#2]     sets print verbosities, overriding any
      -pr#1[,#2]     specification in the input file's IO category.
                     #2 is verbosity for the potential generation
                     segment of code and assumes the value of #1
                     unless specified.  See input-file-style.txt for
                     a description of the verbosity.
 					
-	--time=#1[,#2]  prints out a summary of timings in various
+    --time=#1[,#2]  prints out a summary of timings in various
                     branches of the code at the close of program
                     execution.  Timings are kept to a nesting level
                     of #1.  If #2 is nonzero, timings are printed
                     `on the fly'
 					
-	--iactive       turns on `interactive' mode. This overrides
+    --iactive       turns on `interactive' mode. This overrides
                     specification of interactive mode this in the
                     ctrl file `IO IACTIV=' See input-file-style.txt
                     for a description of the interactive mode.
 					
-	-iactive=no     
+    --iactive=no     
     --no-iactive    turns off `interactive' mode, overriding
                     specification in the ctrl file.
 					
-	-c"name=strn"   declares a character variable and assigns to
+    -c"name=strn"   declares a character variable and assigns to
                     value `strn'
 					
-	-v"name=expr"   declares a numeric variable and assigns to the
+    -v"name=expr"   declares a numeric variable and assigns to the
                     value of expression `expr'. Be advised that
                     only the first declaration of a variable is
                     used.  Later declarations have no effect.  In
@@ -95,15 +95,21 @@ Additionally, for any program utilizing site information, the following switches
                     is read following a standard format for 2D arrays.
                     This page more fully describes how site data are read.
 					
-	--fixpos[:tol=#]
-	--fixpos[:#]    tells the symmetry finder to adjust positions
+    --fixpos[:tol=#]
+    --fixpos[:#]    tells the symmetry finder to adjust positions
                     to sites that are ``slightly displaced'', that is that
                     if they were displaced a small amount, would make the
                     basis conform to a group operation.  Optional tolerance
                     specifies the maximum amount of adjustment allowed.
                     Example: lmchk --fixpos:tol=.001
 				   
-	--sfill=class-  list tells the program to adjust the sphere sizes
+     --fixlat       Adjust lattice vectors and point group operations, attempting to
+                    render them internally consistent with each other
+
+    --fixpos[:tol=#] Adjust positions slightly, rendering them
+                   as consistent as possible with the symmetry group
+
+    --sfill=class-  list tells the program to adjust the sphere sizes
                     to space filling.
 					
                     *By default, ``class-list'' is a list of integers.
