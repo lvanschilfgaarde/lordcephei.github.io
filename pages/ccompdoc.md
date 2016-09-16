@@ -105,8 +105,8 @@ For lines between conditional compilation directives such as
 a **C#ifdef/C#else/C#endif** block, **ccomp**{: style="color: blue"} does one of the following:
 
 + If the current and prior states are the same it outputs the line unmodified
-+ If the current state is **true** and the prior is false, it comments out the line
-+ If the current state is **false** and the prior is true, it removes a **C** which should appear in the first column.  
++ If the current state is **true** and the prior is **false**, it comments out the line
++ If the current state is **false** and the prior is **true**, it removes a **C** which should appear in the first column.  
 If the **C** is missing, **ccomp**{: style="color: blue"} exits with an error message.
 
 Comments use the fortran-77 convention (**C** in the first column).
