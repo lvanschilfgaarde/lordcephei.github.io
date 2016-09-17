@@ -21,7 +21,7 @@ Energy bands provide a great deal of information, and the Questaal codes provide
 them.  (Drawing bands [with color weights](xx) is a particularly useful feature.
 
 You must choose the symmetry lines yourself but [prepackaged symmetry line
-files](https://lordcephei.github.io/docs/input/symfile/) are available in the package.
+files](https://lordcephei.github.io/docs/input/symfile/) are available that greatly facilitate the selection and labelling.
 
 Three Questaal tools can make energy bands along symmetry lines you specify: **lmf**{: style="color: blue"}, **lm**{:
 style="color: blue"}, and **tbe**{: style="color: blue"}. They share a common input and output format.  Bands are
@@ -34,7 +34,7 @@ Also normally you want the data divided into panels corresponding to different s
 
 1. To make postscript files of bands directly, without other software.
 2. To select and formatting data for use with **gnuplot**{: style="color: blue"} or other standard graphics package
-3. To format data and provide a script for [**fplot**{: style="color: blue"}](/fplot/), a plotting package built into Questaaal.
+3. To format data and provide a script for [**fplot**{: style="color: blue"}](fplot/), a plotting package built into Questaaal.
 
 Tutorials show how to draw figures with either **gnuplot**{: style="color: blue"} or **fplot**{: style="color: blue"}.
 
