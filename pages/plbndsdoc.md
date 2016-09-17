@@ -30,15 +30,15 @@ format; but it is often the case that you need only a subset of the bands or to 
 Also normally you want the data divided into panels corresponding to different symmetry lines.
 **plbnds**{: style="color: blue"} provides that function in a flexible way.
 
-In addition, **plbnds**{: style="color: blue"} synchronizes with **fplot**{: style="color: blue"}, a general-purpose plotting package.
-You may use **plbnds**{: style="color: blue"} in one several contexts:
+**plbnds**{: style="color: blue"} may be used in one several contexts:
 
-1. To provide formatting and concatenating for use with a standard graphics package such as **gnuplot**{: style="color: blue"}
-2. To provide input files and a script for the Questaal general plotting program, **fplot**{: style="color: blue"}
-3. To make postscript files of bands directly, without other software
+1. To make postscript files of bands directly, without other software.
+2. To select and formatting data for use with **gnuplot**{: style="color: blue"} or other standard graphics package
+3. To format data and provide a script for [**fplot**{: style="color: blue"}](/fplot/), a plotting package built into Questaaal.
 
-
+Tutorials show how to draw figures with either **gnuplot**{: style="color: blue"} or **fplot**{: style="color: blue"}.
 
 ### _Other resources_
 
-The source code to **ccomp**{: style="color: blue"} can be found [here](https://bitbucket.org/lmto/lm/src/e82e155d8ce7eb808a9a6dca6d8eea5f5a095bd6/startup/ccomp.c).
+See the documentation for [**fplot**{: style="color: blue"}](/fplot/).
+

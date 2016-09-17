@@ -14,10 +14,11 @@ _____________________________________________________________
 It is provided here because the tool synchronises smoothly with the rest of the Questaal codes such as **plbnds**{: style="color: blue"}
 and **pldos**{: style="color: blue"}.  
 
-For standard functions such as plotting bands or densities-of-states, tutorials use **gnuplot**{: style="color: blue"} or **fplot**{: style="color: blue"};
-
-For some purposees **fplot**{: style="color: blue"} provides some functionality not readily obtained in **gnuplot**{: style="color: blue"}, e.g.
+For standard functions such as plotting bands or densities-of-states, most users will prefer **gnuplot**{: style="color: blue"},
+though some may prefer **fplot**{: style="color: blue"}, as it is designed to synchronise with Questaal;
+and for some purposees **fplot**{: style="color: blue"} provides some functionality not readily obtained in **gnuplot**{: style="color: blue"}, e.g.
 to determine cyclotron masses, plotting bands with color weights, and using the programming language features of the Questaal suite.
+Tutorials are written so you can choose which graphics package to use.
 
 _____________________________________________________________
 
