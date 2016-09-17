@@ -62,7 +62,6 @@ The following will plot this function in the interval (0,2), with the abscissa s
 ![Example 2.1](https://lordcephei.github.io/assets/img/fplot1.svg)
 {::nomarkdown}</div>{:/}
 
-
 Some useful points to note:
 
 + A square box is drawn around the figure.  You can select the width and height of the box; see `-frme` below, or try  
@@ -89,19 +88,55 @@ Some useful points to note:
 It is usually more convenient to make scripts for fplot, especially when the figure is complex.
 This figure shows a contour plot of the charge density of the Cr charge density in (100), (011) plane.
 
-To make this plot you will need to copy [this file](../../../assets/download/inputfiles/chgd.cr) to your working directory.
-and cut and past this script to plot.cr
+To make this plot you will need to copy [this charge density file](../../../assets/download/inputfiles/chgd.cr) to your working directory.
+and cut and past the script in the box below to plot.cr.
 
 ~~~
 fplot
-  -pr40 -frme 0,'sqrt(0.5)',0,1 -tmx '1;0' -tmy '1;0' -noxn -noyn
-  -x 0,1 -y 0,1 -con 0.045,0.055,0.065,0.075 -nc=101 chgd.cr
+  -frme 0,'sqrt(0.5)',0,1 -tmx '1;0' -tmy '1;0' -noxn -noyn
+  -x 0,1 -y 0,1
+  -con .045,.055 -nc=101 -lt 2,bold=3,col=.4,0,0 chgd.cr
+  -con .065,.075 -nc=101 -lt 3,bold=4,col=0,0,0 chgd.cr
   -font h14
   -lblu 0.17,0.556 cc '45'
   -lblu 0.28,0.355 cc '55'
+  -font t16
   -lblm 180,124.4 rc 'charge density in bcc Chromium'
   -lblm 180,104.4 rc 'contours: 45,55,65,75 (10^\{-3} a.u.)'
 ~~~
+
+Run fplot with
+
+    $ fplot -f plot.cr
+
+<div onclick="elm = document.getElementById('fig2'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click here to see the figure.</div>
+{::nomarkdown}<div style="display:none;padding:0px;" id="fig2">{:/} 
+![Example 2.2](https://lordcephei.github.io/assets/img/fplot2.svg)
+{::nomarkdown}</div>{:/}
+
+The script uses several of the switches from Example 1.  In addition,
+
++ Commands inside a script work almost exactly as they do on the command line.   
+  In scripts you have to use **\{...}** when you want curly brackets, since **{...}**
+  are interpreted by the preprocessor as expressions.
+
+
++ Tag `-con .045,.055` tells **fplot**{: style="color: blue"} to draw contours at 0.045 and 0.055.
++ By splitting up the `-con` into two, distinct colours and line types could be drawn.
++ By default all four edges of the box are drawn.  You can draw any combination of the four (`-frmt`) or shade the box; e.g.  
+  `fplot -frmt th=6,1,1 -ord ...`  or  `fplot -frmt col=.8,.9,.9,th=0 -ord ...`
++ You can also draw the abscissa and ordinate through some middle point (`-frme:xor` and `-frme:yab`), e.g.  
+  `fplot -frme:xor=.5:yab=.675 0,1,0,1 -ord ...`
++ You have considerable flexibility in controlling major and minor tic marks on the abscissa and ordinate (`-tmx` and `-tmy`), e.g.  
+  `fplot -tmx '.25;1~.02' -tmy '.1:5' -ord ...`
++ There is considerable flexibility in controlling the tic mark numbering, font (`-font`) 
+  and format (`-fmtnx` and `-fmtny`) of the numbers, whether they are suppressed (`-noxn` and `-noyn`) and where they are placed (`-xn` and `-yn`)  
+  `fplot '-fmtnx:%;2,2d' -fmtny:%e -ord ...`
++ You can control many aspects of the line type (`-lt`), e.g.  
+  `fplot -lt 3,bold=4,col=1,0,0 -ord ...`
++ The abscissa ranges from -0.1 to 2.1; the ordinate from -0.033 to +0.71. They were found automatically by finding the largest and smallest
+  values in the frame, and padding the range by 10%.  You can specify the padding (`-pad`) and/or the bounds (`-x` and `-y`), e.g.  
+  `fplot -x .2,.3 -y .3,.6 -p0 -ord ...`
 
 
 ### 3. _fplot command line arguments_
