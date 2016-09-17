@@ -118,9 +118,10 @@ In this example commands are read from script _fplot.cr_{: style="color: green"}
 
 + The `-f` tells **fplot**{: style="color: blue"} that the next argument
   _fplot.cr_{: style="color: green"} is a file containing a script rather than a command.
++ The script file is read through the preprocessor before parsing.  In this case there are no preprocessor directives.
 + Commands inside a script work almost exactly as they do on the command line.   
-  In scripts you have to use **\\{...}** when you want curly brackets, since **{...}**
-  are interpreted by the preprocessor as expressions.  Curly brackets are used in labels for superscripts and subscripts, and Symbol fonts.
+  However, in scripts you have to use **\\{...}** for curly brackets, since a simple **{...}**
+  will interpreted by the preprocessor as expressions.  Curly brackets are used in labels for superscripts and subscripts, and Symbol fonts.
 + **fplot**{: style="color: blue"} draws constant-value contours at 0.045 and 0.055 because of `-con .045,.055`.
   By splitting up the four contours into a pair of `-con` commands, distinct colours and line types can be drawn.
 + Data is read from _chgd.cr_{: style="color: green}, which must contain _xy_ data. **fplot**{: style="color: blue"} must be 
