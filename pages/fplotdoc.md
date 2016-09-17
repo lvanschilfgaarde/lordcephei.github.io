@@ -72,7 +72,8 @@ Some useful points to note:
   `fplot -frmt col=.8,.9,.9,th=0 -ord ...`
 + You can also draw the abscissa and ordinate through some middle point (`-frme:xor` and `-frme:yab`), e.g. try one of  
   `fplot -frme:xor=.5:yab=.675 0,1,0,1 -ord ...`
-+ The abscissa and ordinate have tic marks, both major and minor.  You have considerable flexibility in controlling them (`-tmx` and `-tmy`)
++ The abscissa and ordinate have tic marks, both major and minor.  You have considerable flexibility in controlling them (`-tmx` and `-tmy`), e.g.  
+  `fplot -tmx '.25;1~.02' -tmy '.1:5' -ord ...`
 + The major tic marks are numbered.  There is considerable flexibility in controlling the font (`-font`) 
   and format (`-fmtnx` and `-fmtny`) of the numbers, whether they are suppressed (`-noxn` and `-noyn`) and where they are placed (`-xn` and `-yn`)
 + The line type is a simple solid line.  You can control many aspects of the line type (`-lt`)
