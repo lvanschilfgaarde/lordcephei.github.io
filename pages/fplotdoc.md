@@ -59,7 +59,12 @@ The following will plot this function in the interval (0,2), with the abscissa s
 
 Click here to see the figure.
 
+<div onclick="elm = document.getElementById('sampleinput'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click to show.</div>
+
 ![Example 2.1](https://lordcephei.github.io/assets/img/fplot1.svg)
+
+</div>{:/}
+
 
 Some useful points to note:
 
