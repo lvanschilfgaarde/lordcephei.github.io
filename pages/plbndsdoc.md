@@ -26,9 +26,10 @@ files](https://lordcephei.github.io/docs/input/symfile/) are available that grea
 Three Questaal tools can make energy bands along symmetry lines you specify: **lmf**{: style="color: blue"}, **lm**{:
 style="color: blue"}, and **tbe**{: style="color: blue"}. They share a common input and output format.  Bands are
 written to file _bnds.ext_{: style="color: green"}.  _bnds.ext_{: style="color: green"} is not written in a friendly
-format; but it is often the case that you need only a subset of the bands or to provide extra information.
-Also normally you want the data divided into panels corresponding to different symmetry lines.
+format; but it is often the case that you need only a subset of the bands or to provide extra information, 
+which **plbnds**{: style="color: blue"} can do efficiently.  
 **plbnds**{: style="color: blue"} provides that function in a flexible way.
+It also divides the data corresponding to different symmetry lines into panels.
 
 **plbnds**{: style="color: blue"} may be used in one several contexts:
 
