@@ -66,11 +66,12 @@ The following will plot this function in the interval (0,2), with the abscissa s
 Some useful points to note:
 
 + A square box is drawn around the Figure.  You can select the width and height of the box; see `-frme` below, or try  
-  `fplot -frme .1,.9,.3,.7 ...`
+  `fplot -frme .1,.9,.3,.7 -ord ...`
 + By default all four edges of the box are drawn.  You can draw any combination of the four (`-frmt`) or shade the box; e.g. try  
-  `fplot -frmt col=.8,.9,.9,th=0 ...`
-+ You can also draw the abscissa and ordinate through some middle point (`-frme:xor` and `-frme:yab`), e.g. try  
-  `fplot -frme:xor=.5:yab=.675 0,1,0,1 ...`
+  `fplot -frmt th=6,1,1 -ord ...`
+  `fplot -frmt col=.8,.9,.9,th=0 -ord ...`
++ You can also draw the abscissa and ordinate through some middle point (`-frme:xor` and `-frme:yab`), e.g. try one of  
+  `fplot -frme:xor=.5:yab=.675 0,1,0,1 -ord ...`
 + The abscissa and ordinate have tic marks, both major and minor.  You have considerable flexibility in controlling them (`-tmx` and `-tmy`)
 + The major tic marks are numbered.  There is considerable flexibility in controlling the font (`-font`) 
   and format (`-fmtnx` and `-fmtny`) of the numbers, whether they are suppressed (`-noxn` and `-noyn`) and where they are placed (`-xn` and `-yn`)
