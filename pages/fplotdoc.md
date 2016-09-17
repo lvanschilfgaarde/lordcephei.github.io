@@ -57,13 +57,9 @@ The following will plot this function in the interval (0,2), with the abscissa s
     $ fplot -ord '20*x^2*exp(-4*x)' -tp 0:2:.02; open fplot.ps 
     $ open fplot.ps 
 
-Click here to see the figure.
-
-<div onclick="elm = document.getElementById('fig1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click to show.</div>
-{::nomarkdown}<div style="display:none;padding:25px;" id="fig1">{:/} 
-
+<div onclick="elm = document.getElementById('fig1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click here to see the figure.</div>
+{::nomarkdown}<div style="display:none;padding:0px;" id="fig1">{:/} 
 ![Example 2.1](https://lordcephei.github.io/assets/img/fplot1.svg)
-
 {::nomarkdown}</div>{:/}
 
 
