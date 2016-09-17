@@ -86,26 +86,26 @@ Some useful points to note:
 #### 2.2 _Example 2: &nbsp; Charge density in Cr_
 
 It is usually more convenient to make scripts for fplot, especially when the figure is complex.
-This figure shows a contour plot of the charge density of the Cr charge density in (100), (011) plane.
+This figure shows a contour plot of the charge density of the Cr charge density in (100), (011) plane,
+with quality almost good enough for a journal.
 
 To make this plot you will need to copy [this charge density file](../../../assets/download/inputfiles/chgd.cr) to your working directory.
-and cut and past the script in the box below to plot.cr.
+and cut and paste the script in the box below to _plot.cr_{: style="color: green"}.
 
 ~~~
 fplot
-  -frme 0,'sqrt(0.5)',0,1 -tmx '1;0' -tmy '1;0' -noxn -noyn
+  -frme 0,0.5,0,sqrt(0.5) -tmx '1;0' -tmy '1;0' -noxn -noyn
   -x 0,1 -y 0,1
-  -con .045,.055 -nc=101 -lt 2,bold=3,col=.4,0,0 chgd.cr
-  -con .065,.075 -nc=101 -lt 3,bold=4,col=0,0,0 chgd.cr
-  -font h14
+  -con .045,.055 -lt 2,bold=3,col=.4,0,0 chgd.cr
+  -con .065,.075 -lt 3,bold=4,col=0,0,0 chgd.cr
+  -font h13
   -lblu 0.17,0.556 cc '45'
   -lblu 0.28,0.355 cc '55'
-  -font t16
-  -lblm 180,124.4 rc 'charge density in bcc Chromium'
-  -lblm 180,104.4 rc 'contours: 45,55,65,75 (10^\{-3} a.u.)'
+  -font t14
+  -lblu .5,-.02 cd 'Charge density in bcc Chromium'
 ~~~
 
-Run fplot with
+Run **fplot**{: style="color: blue"} with
 
     $ fplot -f plot.cr
 
@@ -114,30 +114,17 @@ Run fplot with
 ![Example 2.2](https://lordcephei.github.io/assets/img/fplot2.svg)
 {::nomarkdown}</div>{:/}
 
-The script uses several of the switches from Example 1.  In addition,
+This time commands are read from script _fplot.cr_{: style="color: green"}.
 
 + Commands inside a script work almost exactly as they do on the command line.   
   In scripts you have to use **\{...}** when you want curly brackets, since **{...}**
-  are interpreted by the preprocessor as expressions.
-
-
-+ Tag `-con .045,.055` tells **fplot**{: style="color: blue"} to draw contours at 0.045 and 0.055.
-+ By splitting up the `-con` into two, distinct colours and line types could be drawn.
-+ By default all four edges of the box are drawn.  You can draw any combination of the four (`-frmt`) or shade the box; e.g.  
-  `fplot -frmt th=6,1,1 -ord ...`  or  `fplot -frmt col=.8,.9,.9,th=0 -ord ...`
-+ You can also draw the abscissa and ordinate through some middle point (`-frme:xor` and `-frme:yab`), e.g.  
-  `fplot -frme:xor=.5:yab=.675 0,1,0,1 -ord ...`
-+ You have considerable flexibility in controlling major and minor tic marks on the abscissa and ordinate (`-tmx` and `-tmy`), e.g.  
-  `fplot -tmx '.25;1~.02' -tmy '.1:5' -ord ...`
-+ There is considerable flexibility in controlling the tic mark numbering, font (`-font`) 
-  and format (`-fmtnx` and `-fmtny`) of the numbers, whether they are suppressed (`-noxn` and `-noyn`) and where they are placed (`-xn` and `-yn`)  
-  `fplot '-fmtnx:%;2,2d' -fmtny:%e -ord ...`
-+ You can control many aspects of the line type (`-lt`), e.g.  
-  `fplot -lt 3,bold=4,col=1,0,0 -ord ...`
-+ The abscissa ranges from -0.1 to 2.1; the ordinate from -0.033 to +0.71. They were found automatically by finding the largest and smallest
-  values in the frame, and padding the range by 10%.  You can specify the padding (`-pad`) and/or the bounds (`-x` and `-y`), e.g.  
-  `fplot -x .2,.3 -y .3,.6 -p0 -ord ...`
-
+  are interpreted by the preprocessor as expressions.  Curly brackets in labels are used for superscripts and subscripts, and Symbol fonts.
++ **fplot**{: style="color: blue"} draws constant-value contours at 0.045 and 0.055 because of `-con .045,.055`.
++ By splitting up the four contours into a pair of `-con` commands, distinct colours and line types can be drawn.
++ Data is read from _chgd.cr_{: style="color: green}.  It contains 101 rows and 101 columns; but this is not evident from the file itself.
+  The script tells **fplot**{: style="color: blue"} that the file contains 101 columns with `nc -101`; it works out the number of rows from
+  the file contents.
++ Two of the contour values are labelled (`-lblu`) using helvetic font, 13 points; the figure is labelled at the bottom using 14pt Roman type.
 
 ### 3. _fplot command line arguments_
 
