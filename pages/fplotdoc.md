@@ -114,7 +114,9 @@ Run **fplot**{: style="color: blue"} with
 ![Example 2.2](https://lordcephei.github.io/assets/img/fplot2.svg)
 {::nomarkdown}</div>{:/}
 
-+ In this example commands are read from script _fplot.cr_{: style="color: green"}.  The `-f` tells **fplot**{: style="color: blue"} that the next argument
+In this example commands are read from script _fplot.cr_{: style="color: green"}.
+
++ The `-f` tells **fplot**{: style="color: blue"} that the next argument
   _fplot.cr_{: style="color: green"} is a file containing a script rather than a command.
 + Commands inside a script work almost exactly as they do on the command line.   
   In scripts you have to use **\\{...}** when you want curly brackets, since **{...}**
