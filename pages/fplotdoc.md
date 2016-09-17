@@ -87,9 +87,9 @@ Some useful points to note:
 
 It is usually more convenient to make scripts for fplot, especially when the figure is complex.
 This figure shows a contour plot of the charge density of the Cr charge density in (100), (011) plane,
-with quality almost good enough for a journal.
+with quality almost good enough for publication in a journal.
 
-To make this plot you will need to copy [this charge density file](../../../assets/download/inputfiles/chgd.cr) to your working directory.
+To make this plot you will need to copy [this charge density file](../../../assets/download/inputfiles/chgd.cr) to your working directory,
 and cut and paste the script in the box below to _plot.cr_{: style="color: green"}.
 
 ~~~
@@ -102,7 +102,7 @@ fplot
   -lblu 0.17,0.556 cc '45'
   -lblu 0.28,0.355 cc '55'
   -font t14
-  -lblu .5,-.02 cd 'Charge density in bcc Chromium'
+  -lblu .5,-.02 cd 'Charge density in bcc Chromium (10^\{-3} a.u.)'
 ~~~
 
 Run **fplot**{: style="color: blue"} with
@@ -117,16 +117,16 @@ Run **fplot**{: style="color: blue"} with
 This time commands are read from script _fplot.cr_{: style="color: green"}.
 
 + Commands inside a script work almost exactly as they do on the command line.   
-  In scripts you have to use **\{...}** when you want curly brackets, since **{...}**
-  are interpreted by the preprocessor as expressions.  Curly brackets in labels are used for superscripts and subscripts, and Symbol fonts.
+  In scripts you have to use **\\{...}** when you want curly brackets, since **{...}**
+  are interpreted by the preprocessor as expressions.  Curly brackets are used in labels for superscripts and subscripts, and Symbol fonts.
 + **fplot**{: style="color: blue"} draws constant-value contours at 0.045 and 0.055 because of `-con .045,.055`.
-+ By splitting up the four contours into a pair of `-con` commands, distinct colours and line types can be drawn.
+  By splitting up the four contours into a pair of `-con` commands, distinct colours and line types can be drawn.
 + Data is read from _chgd.cr_{: style="color: green}.  It contains 101 rows and 101 columns; but this is not evident from the file itself.
   The script tells **fplot**{: style="color: blue"} that the file contains 101 columns with `nc -101`; it works out the number of rows from
   the file contents.
-+ Two of the contour values are labelled (`-lblu`) using helvetic font, 13 points; the figure is labelled at the bottom using 14pt Roman type.
++ Two of the contour values are labelled (`-lblu`) using helvetica 13 point font; the figure label at the bottom uses 14pt Roman font
 
-### 3. _fplot command line arguments_
+### 3. _fplot commands _
 
 ### _Other resources_
 
