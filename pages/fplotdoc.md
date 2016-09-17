@@ -87,8 +87,22 @@ Some useful points to note:
 #### 2.2 _Example 2: &nbsp; Charge density in Cr_
 
 It is usually more convenient to make scripts for fplot, especially when the figure is complex.
+This figure shows a contour plot of the charge density of the Cr charge density in (100), (011) plane.
 
-To make this plot of the Cr charge density, you will need to copy [this file](../../../assets/download/inputfiles/chgd.cr) to your working directory.
+To make this plot you will need to copy [this file](../../../assets/download/inputfiles/chgd.cr) to your working directory.
+and cut and past this script to plot.cr
+
+~~~
+fplot
+  -pr40 -frme 0,'sqrt(0.5)',0,1 -tmx '1;0' -tmy '1;0' -noxn -noyn
+  -x 0,1 -y 0,1 -con 0.045,0.055,0.065,0.075 -nc=101 chgd.cr
+  -font h14
+  -lblu 0.17,0.556 cc '45'
+  -lblu 0.28,0.355 cc '55'
+  -lblm 180,124.4 rc 'charge density in bcc Chromium'
+  -lblm 180,104.4 rc 'contours: 45,55,65,75 (10^\{-3} a.u.)'
+~~~
+
 
 ### 3. _fplot command line arguments_
 
