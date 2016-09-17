@@ -25,7 +25,7 @@ The solution of each of the two pictures relies on a self-consistent procedure. 
 The following tutorials will guide you in the solution of the DMFT loop and the density loop. 
 It's assumed that you understand how to perform a QSGW loop and what are the basic input/output of QSGW. If this is not the case, please rely on dedicated tutorials.
 
-### Structure of this tuotrial section
+### Structure of this tutorial section
 1. [The first tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft1) is about how to perform a DMFT loop until convergence.
 2. [The second one](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft2) is about possible errors and some indications and rules-of-thumb to adjust parameters in performing a DMFT loop.
 3. [The third tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft3) is about how to close the density loop by means of the static spin-averaged+spin-flip approach.
