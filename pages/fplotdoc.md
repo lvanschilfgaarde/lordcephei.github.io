@@ -124,8 +124,8 @@ In this example commands are read from script _fplot.cr_{: style="color: green"}
   will interpreted by the preprocessor as expressions.  Curly brackets can specify superscripts and subscripts, italic and symbol fonts.
 + **fplot**{: style="color: blue"} draws constant-density contours at 0.045 and 0.055 because of `-con .045,.055`.
   By splitting up the four contours into a pair of `-con` commands, distinct colours and line types can be drawn.
-+ Data is read from _chgd.cr_{: style="color: green}, which must contain _xy_ data. **fplot**{: style="color: blue"} must be 
-  told how many rows or columns the data has; here it is specified in the first line of _chgd.cr_{: style="color: green}.
++ Data is read from _chgd.cr_{: style="color: green"}, which must contain _xy_ data. **fplot**{: style="color: blue"} must be 
+  told how many rows or columns the data has; here it is specified in the first line of _chgd.cr_{: style="color: green"}.
 + Two of the contour values are labelled (`-lblu`) using Helvetica 13pt font; the figure label uses a 14pt Roman font
 
 _____________________________________________________________
@@ -134,7 +134,7 @@ _____________________________________________________________
 
 ... finish ... when reading data from a file
 
-+ Data is read from _chgd.cr_{: style="color: green}.  It contains 101 rows and 101 columns; but this is not evident from the file itself.
++ Data is read from _chgd.cr_{: style="color: green"}.  It contains 101 rows and 101 columns; but this is not evident from the file itself.
   The script tells **fplot**{: style="color: blue"} that the file contains 101 columns with `nc -101`; it works out the number of rows from
   the file contents.
 
