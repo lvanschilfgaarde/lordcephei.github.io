@@ -69,7 +69,7 @@ Now the only thing left to do is to rename _actrl.pbte_{: style="color: green"} 
 
 **blm**{: style="color: blue"} writes to actrl, rather than ctrl, to avoid overwriting a file you may wish to keep.
 
-**Note**{: style="color: red"}
+_Note_{: style="color: red"}
 
 + Lines which begin with ‘#’ are comment lines and are ignored. (More generally, text following a `#’ in any line is ignored).
 + Lines beginning with ‘%’ are directives to the preprocessor. Directives can perform various functions similar to a normal programming language, such as assigning variables, evaluating expressions, conditionally readings some lines, and repeated loops over sections of input.
@@ -131,7 +131,7 @@ the contents of tag **NBAS=** can be interpreted as  "if **les**>0 then  **NBAS=
       % const nit=10 les=1
 
 Here we have also defined **nit** with value of 10.  Finally, we have to pass the information about the empty sphere sites to the control file. We do this by commenting both instances of the line beginning **FILE=site** and uncommenting the line **FILE=essite**, as _essite.pbte_{: style="color: green"} has the new appropiate information. 
-**Note**{: style="color: red"} there are _two_ instances of **FILE=site** : the first occurs in the **STRUC** category, where lattice information is read.  The second occurs in the **SITE** category, where basis information is read.  Be sure to comment/uncomment both instances.
+_Note:_{: style="color: red"} there are _two_ instances of **FILE=site** : the first occurs in the **STRUC** category, where lattice information is read.  The second occurs in the **SITE** category, where basis information is read.  Be sure to comment/uncomment both instances.
 
 The last step is to copy the new species information from file _poses.pbte_{: style="color: green"} file to the **SPEC** category within the ctrl file, including the new empty spheres.
 
