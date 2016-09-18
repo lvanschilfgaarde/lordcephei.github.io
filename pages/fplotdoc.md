@@ -23,8 +23,7 @@ Tutorials are written so you can choose which graphics package to use.
 _____________________________________________________________
 
 ### _Preliminaries_
-
-The input file structure is briefly described in [this lmf tutorial for Pbte](https://lordcephei.github.io/lmf_tutorial/), which you may wish to go through first.
+{:.no_toc}
 
 **fplot**{: style="color: blue"}, is required and is assumed to be in your path. 
 You will also need a postscript viewer.  This document assumes you are using the apple-style **open**{: style="color: blue"} command to view postscript files.
