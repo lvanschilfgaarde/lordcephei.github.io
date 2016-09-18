@@ -281,7 +281,7 @@ density-functional codes.  Enhanced orbitals append a tail so that the
 density from the orbital spills into the interstitial.  It is more accurate, and there is no advantage to using the traditional kind.
 Subtracting the **10**, the remainder (**5.934**) specifies the principal quantum number, and the boundary condition:
 
-$$P_l = 0.5 - {{1}\over{\pi}} \arctan(D_l) + \hbox{(principal quantum number)} $$
+$$P_l = 0.5 - \arctan(D_l) + \hbox{(principal quantum number)} $$
 
 
 ### _Other Resources_
