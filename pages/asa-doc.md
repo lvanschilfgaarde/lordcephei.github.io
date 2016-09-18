@@ -190,11 +190,11 @@ For a self consistent LDA-ASA calculation invoke **lm**{: style="color: blue"} w
 
 You should see "Jolly good show" at the end of the standard output will indicate if self-consistency has been achieved, which in this case it has.
 	    
-_Note:_{: style="color: red"} `-vnit=20` is not _directly_ setting the number of iterations.  The number of iterations is determined by the **NIT** token in this line:
+_Note:_{: style="color: red"} `-vnit=20` does not _directly_ set the number of iterations.  This number is determined by token **NIT** in this line:
 
     ITER  MIX=B2,b=.3,k=7  NIT={nit}  CONVC=1e-5
 
-The preprocessor sees that **\\{nit}**, treats the contents of the curly bracket as an expression (a trivial one in this case) and substitutes the result (20) for **\\{nit}**.
+The preprocessor sees the contents of curly brackets (**\{nit}**), as an expression (a trivial one in this case) and substitutes the result (20) for **\{nit}**.
 
 As a final step, you can collect the self-consistent moments **lm**{: style="color: blue"} generated and add them to the ctrl file. Type
 
