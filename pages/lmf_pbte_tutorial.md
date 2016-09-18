@@ -81,15 +81,14 @@ Create the input file (_ctrl.pbte_{: style="color: green"}) and the site file (_
 In this tutorial, **blm**{: style="color: blue"} is used in "standard" mode. (Compare to the [basic tutorial](https://lordcephei.github.io/lmf_tutorial/)
 which used created a simpler file with `blm --express init.si`). 
 Standard mode makes limited use of the [preprocessing capabilities](/docs/input/inputfile/) of the Questaal input system,
-namely the use of algebraic variables that can be modified on the command line, e.g. `lmf -vnit=10 ...` sets **nit** to 10 before reading the ctrl file.
-Generally
+namely it uses algebraic variables which can be modified on the command line. Thus `lmf -vnit=10 ...` sets **nit** to 10 before doing anything else.
+Generally:
 
 * Lines which begin with '**#**' are comment lines and are ignored. (More generally, text following a `#' in any line is ignored).
-* Lines beginning with '**%**' are directives to the preprocessor.  Directives can perform various functions similar to a normal programming language, such as 
-assigning variables, evaluating expressions, conditionally readings some lines, and repeated loops over sections of input.
+* Lines beginning with '**%**' are directives to the preprocessor.  
 
 <div onclick="elm = document.getElementById('variablesexplained'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click here
-to see how variables are used.</div>
+to see the variables can be set in the ctrl file.</div>
 {::nomarkdown}<div style="display:none;padding:5px;" id="variablesexplained">{:/} 
 
 The beginning of the ctrl file you just generated should look like the following:
@@ -104,7 +103,7 @@ The beginning of the ctrl file you just generated should look like the following
 % const nkabc=0 gmax=0
 ~~~ 
 
-These are a series of variable declarations. **nit**, **met**, etc,  used in expressions later on.  The parser interprets the contents of brackets **{...}** as algrebraic expressions:  **{...}** is evaluated and the numerical result is substituted for it.  Expression substitution works for input lines proper, and also in the directives.  
+**% const** tells the proprocessor that it is declaring one or more variables.  **nit**, **met**, etc,  used in expressions later on.  The parser interprets the contents of brackets **{...}** as algebraic expressions: The contents of **{...}** is evaluated and the numerical result is substituted for it.  Expression substitution works for input lines proper, and also in the directives.  
 
 For example this line
 
