@@ -271,6 +271,15 @@ In brief you carry out the following steps:
     PZ= 0 0 15.934
 ~~~
 
+**lmfa**{: style="color: blue"} is suggesting that the Pb 5_d_ state is shallow enough
+that it be included in the valence as a local orbital.  The three numbers
+correspond to specifications for _s_, _p_, and _d_ states.  zero indicates "no local orbital;"
+there is only a _d_ orbital.  
+The 10's digit in **15.934** isn't required, but it tells **lmf**{: style="color: blue"}
+to use an "enhanced" local orbital as opposed to the usual variety found in most
+density-functional codes.  Enhanced orbitals append a tail so that the
+density from the orbital spills into the interstitial.  It is more accurate, and there is no advantage to using the traditional kind.
+Subtracting the **10**, the remainder (**5.934**) specifies the principal quantum number, and the boundary condition:
 
 ### _Other Resources_
 
