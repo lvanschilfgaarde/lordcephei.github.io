@@ -272,13 +272,15 @@ In brief you carry out the following steps:
 ~~~
 
 **lmfa**{: style="color: blue"} is suggesting that the Pb 5_d_ state is shallow enough
-that it be included in the valence as a local orbital.  The three numbers after **PZ**
-correspond to specifications for _s_, _p_, and _d_ states.  zero indicates "no local orbital."
-The 10's digit in **15.934** isn't required.   It specifies that **lmf**{: style="color: blue"}
+that it be included in the valence as a local orbital.  The three numbers
+correspond to specifications for _s_, _p_, and _d_ states.  zero indicates "no local orbital;"
+there is only a _d_ orbital.  
+The 10's digit in **15.934** isn't required, but it specifies that **lmf**{: style="color: blue"}
 should use an "enhanced" local orbital as opposed to the usual variety found in most
 density-functional codes.  Enhanced orbitals append a tail so that the
-density from the orbital can spill out into the interstitial.  It is more accurate, and there is no advantage to using the traditional kind.
-The fractional part (**.934**) specifies the boundary condition.  It is related
+density from the orbital spills into the interstitial.  It is more accurate, and there is no advantage to using the traditional kind.
+The 1's digit (**5**) specifies the principal quantum number, and 
+the fractional part (**.934**) the boundary condition.  It is related
 to logarithmic derivative _D_ of the core level at the augmentation radius:
 
 $$P_l = 0.5 - {{1}\over{\pi}}\arctan(D_l) + \hbox{(principal quantum number)} $$
