@@ -121,10 +121,10 @@ Lines corresponding to actual input are divided into **categories**{: style="col
 and **tokens**{: style="color: blue"}; within the categories.
 A category begins when a character (other than **%** or **#**) occurs in the
 first column.  Each token belongs to a category; for example in this line
+**SHOW**{: style="color: blue"} is a token within category **IO**{: style="color: red"}:
 
     IO    SHOW=f HELP=f IACTIV=f VERBOS=35,35  OUTPUT=*
 
-**SHOW**{: style="color: blue"}; is a token within category **IO**{: style="color: red"}.
 (The complete tag is **IO_SHOW=**, though it never appears that way in the ctrl file).
 
 [This link](/docs/input/inputfile/) explains the structure of the input file in more detail.
