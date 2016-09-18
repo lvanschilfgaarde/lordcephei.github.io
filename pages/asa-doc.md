@@ -4,7 +4,7 @@ title: "ASA Tutorial"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "/tutorial/asa/asa-doc/"
+permalink: "/asa-doc/"
 header: no
 ---
 _____________________________________________________________
@@ -94,11 +94,11 @@ The full output can be viewed by clicking here (waiting for file storing system)
     
     Cell volume= 448.07190   Sum of sphere volumes= 301.06511 (0.67191)
 
-here the cell volume, sum of all potential volumes and their ratio are presented, the latter of which has to be equal to 1 for an ASA calculation. Another important value is the overlap percentage, which in this case is given by
+Here the cell volume, sum of all sphere volumes and their ratio are presented, the latter of which has to be equal to 1 for an ASA calculation. Another important value is the overlap percentage, which in this case is given by
 
       OVMIN, 38 pairs:  fovl = 4.24366e-7   <ovlp> = 8.7%   max ovlp = 8.7%
 
-This line tells us about the average and maximum sphere overlaps. Generally, for ASA the overlaps should be kept below 16% where possible.  For full potential calculations generally 5% and below is safe. For _GW_ calculations it should be below 2%. As the sum of sphere volumes is less than the cell volume, we have to add an empty sphere to meet this requirement. Empty spheres can be thought of as "atoms" with zero atomic number.
+This line tells us about the average and maximum sphere overlaps. Generally, for ASA the overlaps should be kept below 16% where possible.  For full potential calculations generally 5% and below is safe. For _GW_ calculations it should be below 2%. As the sum of sphere volumes is less than the cell volume, we have to add artificial atoms with _Z_=0 ("empty spheres") to meet this requirement. 
 
 The appropiate space filling spheres can be found using **lmchk**{: style="color: blue"} by invoking:
 
@@ -130,7 +130,10 @@ the contents of tag **NBAS=** can be interpreted as  "if **les**>0 then  **NBAS=
 
       % const nit=10 les=1
 
-Here we have also defined **nit** with value of 10.  Finally, we have to pass the information about the empty sphere sites to the control file. We do this by commenting the line beginning **FILE=site** and uncommenting the line **FILE=essite**, as the newly generated _essite.pbte_{: style="color: green"} has the new appropiate information. The last step is to copy the new species information from file _poses.pbte_{: style="color: green"} file to the **SPEC** category within the control file (including the new empty spheres).
+Here we have also defined **nit** with value of 10.  Finally, we have to pass the information about the empty sphere sites to the control file. We do this by commenting both instances of the line beginning **FILE=site** and uncommenting the line **FILE=essite**, as _essite.pbte_{: style="color: green"} has the new appropiate information. 
+**Note**{: style="color: red"} there are two instances of **FILE=site** : the first lies in the **STRUC** category, where lattice information is read.  The second is in the **SITE** category, where basis information is read.  Be sure to comment/uncomment both instances.
+
+The last step is to copy the new species information from file _poses.pbte_{: style="color: green"} file to the **SPEC** category within the ctrl file, including the new empty spheres.
 
 ###### _2.2 Self-consistency_
 Before a self consistant calculation can be performed the real-space structure constants have to be generated. They are made once, for a given structure, with a separate tool
