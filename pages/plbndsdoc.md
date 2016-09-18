@@ -42,16 +42,16 @@ Tutorials show how to draw figures with either **gnuplot**{: style="color: blue"
 
     $ plbnds --h
 
-The section explains how to use **plbnds**{: style="color: blue"} by an example.
+Section 2 explains how to use **plbnds**{: style="color: blue"} by an example.
 
-Section 4 is is an operations manual.
+Section 3 is an operations manual.
 
 _____________________________________________________________
 
 
 ### 2. _Examples_
 
-To make this plot you will need to copy [this bands file](../../../assets/download/inputfiles/bnds.co) to your working directory
+To make this plot you will need to copy [this bands file](/assets/download/inputfiles/bnds.co) to your working directory
 
 
 ### 3. _plbnds manual_
