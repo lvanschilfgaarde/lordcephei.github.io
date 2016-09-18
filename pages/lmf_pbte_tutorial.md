@@ -120,13 +120,13 @@ because **met** is a numerical expression (admittedly a trivial one).  It evalua
 Lines corresponding to actual input are divided into **categories**{: style="color: red"}
 and **tokens**{: style="color: blue"} within the categories.
 A category begins when a character (other than **%** or **#**) occurs in the
-first column.  Each token belongs to a category; for example in box below **IO**{: style="color: red"} has four tokens, including
-**SHOW**{: style="color: blue"} and **VERBOS**{: style="color: blue"} :
+first column.  Each token belongs to a category; for example in box below **IO**{: style="color: red"} contains three tokens, 
+**SHOWMEM**{: style="color: blue"}, **IACTIV**{: style="color: blue"} and **VERBOS**{: style="color: blue"} :
 
-    IO    SHOW=f HELP=f
+    IO    SHOWMEM=f
           IACTIV=f VERBOS=35,35
 
-(Internally, a complete identifier (aka _tag_) would be **IO_SHOW=**, though it does not appears in that form in the ctrl file.)
+(Internally, a complete identifier (aka _tag_) would be **IO_IACTIV=**, though it does not appears in that form in the ctrl file.)
 
 [This link](/docs/input/inputfile/) explains the structure of the input file in more detail.
 
