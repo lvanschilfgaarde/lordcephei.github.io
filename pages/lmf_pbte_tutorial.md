@@ -88,7 +88,7 @@ Generally:
 * Lines beginning with '**%**' are directives to the preprocessor.  
 
 <div onclick="elm = document.getElementById('variablesexplained'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click here
-to see the variables can be set in the ctrl file.</div>
+to see how variables can be set and used in the ctrl file.</div>
 {::nomarkdown}<div style="display:none;padding:5px;" id="variablesexplained">{:/} 
 
 The beginning of the ctrl file you just generated should look like the following:
