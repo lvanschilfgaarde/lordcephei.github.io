@@ -47,7 +47,7 @@ _____________________________________________________________
 
 ### _Preliminaries_
 
-Some of the basics are covered in the [basic lmf tutorial for Si](https://lordcephei.github.io/lmf_tutorial/), which you may wish to go through first.
+Some of the basics are covered in the basic [lmf tutorial for Si](/tutorial/lmf/lmf_tutorial/), which you may wish to go through first.
 
 Executables **blm**{: style="color: blue"}, **lmchk**{: style="color: blue"}, **lmfa**{: style="color: blue"}, and **lmf**{: style="color: blue"} are required and are assumed to be in your path. 
 
@@ -78,8 +78,8 @@ Create the input file (_ctrl.pbte_{: style="color: green"}) and the site file (_
 
 ##### 2. _How the input file is organized_
 
-In this tutorial, **blm**{: style="color: blue"} is used in "standard" mode. (Compare to the [basic tutorial](https://lordcephei.github.io/lmf_tutorial/)
-which used created a simpler file with `blm --express init.si`). 
+In this tutorial, **blm**{: style="color: blue"} is used in "standard" mode. (Compare to the [basic tutorial](/tutorial/lmf/lmf_tutorial/)
+which created a simpler file with `blm --express init.si`). 
 Standard mode makes limited use of the [preprocessing capabilities](/docs/input/inputfile/) of the Questaal input system,
 namely it uses algebraic variables which can be modified on the command line. Thus `lmf -vnit=10 ...` sets **nit** to 10 before doing anything else.
 Generally:
