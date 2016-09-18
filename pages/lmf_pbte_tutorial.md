@@ -30,8 +30,11 @@ The tutorial starts under the heading "Tutorial"; you can see a synopsis of the 
 <div onclick="elm = document.getElementById('1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Commands - Click to show</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="1">{:/}
 
-    $ blm init.pbte
+    $ blm init.pbte                                 #makes template actrl.pbte and site.pbte
     $ cp actrl.pbte ctrl.pbte
+    $ lmfa ctrl.pbte                                #use lmfa to make basp file, atm file and to get gmax
+    $ cp basp0.pbte basp.pbte                       #copy basp0 to recognised basp prefix   
+
     ... to be finished
 
 {::nomarkdown}</div>{:/}
@@ -250,13 +253,34 @@ It proceeds in a manner [similar to the basic tutorial](/tutorial/lmf/lmf_tutori
 
 In brief you carry out the following steps:
 
-1. Run **lmfa**{: style="color: blue"}.  
-   This :  
+1. Run **lmfa**{: style="color: blue"}. in order to:
 
-+  Makes atomic densities, which **lmf**{: style="color: blue"} will overlap to make a starting trial density  
-+  Provides a reasonable basis set with parameters **RSMH** and **EH** defining the envelope functions  
-+  Supplies an automatic estimate for the PW cutoff **GMAX**.
++  Make atomic densities, which **lmf**{: style="color: blue"} will overlap to make a starting trial density  
++  Provide a reasonable basis set with parameters **RSMH** and **EH** defining the envelope functions  
++  Find any high-lying core states that should be included in the valence as local orbitals.
++  Supply an automatic estimate for the mesh density plane Wave cutoff **GMAX**.
 
+    $ lmfa ctrl.pbte                                #use lmfa to make basp file, atm file and to get gmax
+    $ cp basp0.pbte basp.pbte                       #copy basp0 to recognised basp prefix   
+
+2. Local orbital.  Inspect _basp.pbte_{: style="color: green"}.  Note in particular this text belonging to the Pb atom:  
+
+~~~
+    PZ= 0 0 15.934
+~~~
+
+**lmfa**{: style="color: blue"} is suggesting that the Pb 5_d_ state is shallow enough
+that it be included in the valence as a local orbital.  The three numbers after **PZ**
+correspond to specifications for _s_, _p_, and _d_ states.  zero indicates "no local orbital."
+The 10's digit in **15** isn't required.   It specifies that **lmf**{: style="color: blue"}
+should use an "enhanced" local orbital as opposed to the usual variety found in most
+density-functional codes.  Enhanced orbitals append a tail so that the
+density from the orbital can spill out into the interstitial.  It is more accurate, and there is no advantage to using the traditional kind.
+The fractional part (**.934**) specifies the boundary condition.  It is related
+to logarithmic derivative of the core level at the augmentation radius.
+
+    &nbsp&nbsp&nbsp;
+    <i>P<sub>l</sub></i> = 0.5 &minus; arctan(<i>D<sub>l</sub></i>)/&pi; + (princ.quant.number)
 
 ### _Other Resources_
 
