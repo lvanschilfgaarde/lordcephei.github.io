@@ -125,7 +125,7 @@ first column.  Each token belongs to a category; for example in this line
 
     IO    SHOW=f HELP=f IACTIV=f VERBOS=35,35  OUTPUT=*
 
-(The complete tag is **IO_SHOW=**, though it never appears that way in the ctrl file).
+(Internally, the complete identifier is **IO_SHOW=**, though it never appears that way to the user.)
 
 [This link](/docs/input/inputfile/) explains the structure of the input file in more detail.
 
