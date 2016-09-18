@@ -17,8 +17,6 @@ _____________________________________________________________
 
 ### _Preliminaries_
 
-The input file structure is briefly described in [this lmf tutorial for Pbte](https://lordcephei.github.io/lmf_tutorial/), which you may wish to go through first.
-
 Executables **plbnds**{: style="color: blue"} and **fplot**{: style="color: blue"}, are required and are assumed to be in your path. 
 You will also need a postscript viewer.  This document assumes you are using the apple-style **open**{: style="color: blue"} command to view postscript files.
 
@@ -153,7 +151,7 @@ Assuming your source directory is **~/lm**), you can make _bnds.co_{: style="col
 
     $ ~/lm/fp/test/test.fp co 1
 
-The first color selects out the the majority _d_ bands; the second the minority _d_ bands.
+The first color selects out the majority _d_ bands; the second the minority _d_ bands.
 
 
 Run plbnds without `-nocol` but adding a line type 
@@ -170,13 +168,11 @@ The figure shows clearly which bands have majority and minority  _d_ character. 
 
 ### 3. _plbnds manual_
 
-**plbnds**{: style="color: blue"} will print information about its usage by typing
-
-    $ plbnds --h
+... to be completed	
 
 _____________________________________________________________
 
 ### 4. _Other resources_
 
-See the documentation for [fplot](/docs/misc/plbnds/) and [pldos](/docs/misc/pldos/).
+See the documentation for [fplot](/docs/misc/fplot/) and [pldos](/docs/misc/pldos/).
 
