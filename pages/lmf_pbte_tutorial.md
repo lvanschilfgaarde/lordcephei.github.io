@@ -136,7 +136,7 @@ first column.  Each token belongs to a category; for example in box below **IO**
 
 <div onclick="elm = document.getElementById('express'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click here
 to see the beginning of the EXPRESS category.</div>
-{::nomarkdown}<div style="display:none;padding:5px;" id="express">{:/} 
+{::nomarkdown}<div style="display:none;padding:0px;" id="express">{:/} 
 
 ~~~
 EXPRESS
