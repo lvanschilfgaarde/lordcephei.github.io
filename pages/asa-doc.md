@@ -153,8 +153,7 @@ Invoke **lm**{: style="color: blue"} executable with zero number of iterations a
 
     $ lm -vnit=0 ctrl.pbte
 
-This command takes $$Q_0$$, $$Q_1$$, $$Q_2$$ and makes a trial potential from it.
-It will use ones you give it (we did not supply any). If you do not it assumes some simple default guesses. 
+This command takes $$Q_0$$, $$Q_1$$, $$Q_2$$ and makes a trial potential from it.  You supply $$Q_0$$, $$Q_1$$, $$Q_2$$; if you do not it assumes some simple default guesses.  **blm**{: style="color: blue"} does not supply these values.
 
 For a self consistant LDA-ASA calculation **lm**{: style="color: blue"} is invoked with **-vnit**>1 so that:
 
