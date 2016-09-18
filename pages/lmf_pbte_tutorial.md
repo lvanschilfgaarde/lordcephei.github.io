@@ -125,7 +125,7 @@ first column.  Each token belongs to a category; for example in this line
 
 **SHOW=** is a token within category; the full tag name is **IO_SHOW=**.
 
-See "Other Resources" below to follow links with further information on the syntax of input files, and building them from different sources.
+[This link](/docs/input/inputfile/) explains the structure of the input file in more detail.
 
 #####  3. _The **EXPRESS** category_
 
@@ -249,7 +249,7 @@ the [sister [ASA tutorial](https://lordcephei.github.io/asa-doc/) for PbTe.)
 ### _Other Resources_
 
 A more complete description of the structure of an input file's structure, and features of the programming language capaability, is explained in some detail 
-[in this html document](https://lordcephei.github.io/pages/file-preprocessor.html). A reference defining the syntax of categories and tokens can be found in [this pdf file](input.pdf).
+[here](/docs/input/inputfile/). A reference defining the syntax of categories and tokens can be found in [this pdf file](input.pdf).
 
 [This tutorial](https://lordcephei.github.io/buildingfpinput/) more fully describes some important tags the **lmf**{: style="color: blue"} reads.  It also
 presents alternative ways to build input files from various sources such as the VASP _POSCAR_{: style="color: green"} file.
