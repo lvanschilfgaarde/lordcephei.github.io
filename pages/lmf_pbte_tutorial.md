@@ -166,7 +166,7 @@ In any case each executable has its own unique set of tags, though most executab
 
 Executables accept input from two primary streams : tags in the ctrl file and additional information through command-line switches.
 
-To see what an executable tries to read from the ctrl file, invoke the executable with `--input`, e.g.
+To see what an executable looks for in the ctrl file, invoke the executable with `--input`, e.g.
 
     $ lmchk --input
 
