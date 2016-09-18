@@ -180,9 +180,9 @@ To see what an executable looks for in the ctrl file, invoke the executable with
 The remainder of this section is not essential to this tutorial and you can safely skip to section 5 or 6.  It explains what information is printed when you use
 `--input`; it is useful if you want to see how tags and categories are organized, and how missing or partial tags are handled.
 
-<div onclick="elm = document.getElementById('lmchk'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click 
-here for a description of what `--input` does</div>
-{::nomarkdown}<div style="display:none;padding:0px;" id="express">{:/} 
+<div onclick="elm = document.getElementById('input'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click 
+here for a description of the action `--input` does</div>
+{::nomarkdown}<div style="display:none;padding:0px;" id="input">{:/} 
 
 Below is snippet of output from `lmchk --input`:
 
