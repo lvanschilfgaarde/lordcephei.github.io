@@ -15,10 +15,38 @@ figures of paritial densities-of-states.
 
 _____________________________________________________________
 
-### _Introduction_
+### _Preliminaries_
+{:.no_toc}
+
+Executables **pldos**{: style="color: blue"} and **fplot**{: style="color: blue"}, are required and are assumed to be in your path. 
+You will also need a postscript viewer.  This document assumes you are using the apple-style **open**{: style="color: blue"} command to view postscript files.
+
+
+### _Table of Contents_
+{:.no_toc}
+*  Auto generated table of contents
+{:toc}
+
+
+_____________________________________________________________
+
+### 1. _Introduction_
 
 Needs to be written ...
 
-### _Other resources_
+_____________________________________________________________
 
-The source code to **ccomp**{: style="color: blue"} can be found [here](https://bitbucket.org/lmto/lm/src/e82e155d8ce7eb808a9a6dca6d8eea5f5a095bd6/startup/ccomp.c).
+
+### 2. _Examples_
+
+... to be completed	    
+
+### 3. _pldos manual_
+
+... to be completed	
+
+_____________________________________________________________
+
+### 4. _Other resources_
+
+See the documentation for [fplot](/plbnds/) and [plbnds](/plbnds/).

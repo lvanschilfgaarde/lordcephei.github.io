@@ -14,9 +14,38 @@ _____________________________________________________________
 This tutorial covers the basics for running a self consistent LDA calculation in the Atomic Spheres Approximation (ASA), starting with the creation of an input file.  We will use PbTe for the tutorial.
 
 
+_____________________________________________________________
+
+### _Command summary_     
+
+The tutorial starts under the heading "Tutorial"; you can see a synopsis of the commands by clicking on the box below.
+
+<div onclick="elm = document.getElementById('1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Commands - Click to show</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="1">{:/}
+
+    $ blm --express=0 --asa --wsitex --findes init.pbte
+    $ blm --h
+    $ cp actrl.pbte ctrl.pbte
+    $ blm --express=0 --asa --wsitex --addes init.pbte
+    $ cp actrl.pbte ctrl.pbte
+
+    ... the following from section 2.2 are optional
+    $ lmchk ctrl.pbte
+    $ lmchk --findes --wsitex ctrl.pbte
+ 
+    $ lmstr ctrl.pbte
+    $ lm -vnit=0 ctrl.pbte
+    $ lm -vnit=20 ctrl.pbte
+    $ lmctl ctrl.pbte
+    $ cat log.pbte >> ctrl.pbte
+
+{::nomarkdown}</div>{:/}
+
+_____________________________________________________________
+
 ### _Preliminaries_
 _____________________________________________________________
-Executables **blm**{: style="color: blue"}, **lmchk**{: style="color: blue"}, **lmstr**{: style="color: blue"} and **lm**{: style="color: blue"} are required and are assumed to be in your path.  The source code for all Questaal executables can be found [here](https://bitbucket.org/lmto/lm).
+Executables **blm**{: style="color: blue"}, **lmchk**{: style="color: blue"}, **lmstr**{: style="color: blue"} and **lm**{: style="color: blue"} are required and are assumed to be in your path.  The last step (not essential for the tutorial) uses **lmctl**{: style="color: blue"}.  The source code for all Questaal executables can be found [here](https://bitbucket.org/lmto/lm).
 
 ### _Tutorial_
 _____________________________________________________________
@@ -69,7 +98,7 @@ Now the only thing left to do is to rename _actrl.pbte_{: style="color: green"} 
 
 **blm**{: style="color: blue"} writes to actrl, rather than ctrl, to avoid overwriting a file you may wish to keep.
 
-**Note**{: style="color: red"}
+_Note_{: style="color: red"}
 
 + Lines which begin with ‘#’ are comment lines and are ignored. (More generally, text following a `#’ in any line is ignored).
 + Lines beginning with ‘%’ are directives to the preprocessor. Directives can perform various functions similar to a normal programming language, such as assigning variables, evaluating expressions, conditionally readings some lines, and repeated loops over sections of input.
@@ -94,11 +123,11 @@ The full output can be viewed by clicking here (waiting for file storing system)
     
     Cell volume= 448.07190   Sum of sphere volumes= 301.06511 (0.67191)
 
-here the cell volume, sum of all potential volumes and their ratio are presented, the latter of which has to be equal to 1 for an ASA calculation. Another important value is the overlap percentage, which in this case is given by
+Here the cell volume, sum of all sphere volumes and their ratio are presented, the latter of which has to be equal to 1 for an ASA calculation. Another important value is the overlap percentage, which in this case is given by
 
       OVMIN, 38 pairs:  fovl = 4.24366e-7   <ovlp> = 8.7%   max ovlp = 8.7%
 
-This line tells us about the average and maximum sphere overlaps. Generally, for ASA the overlaps should be kept below 16% where possible.  For full potential calculations generally 5% and below is safe. For _GW_ calculations it should be below 2%. As the sum of sphere volumes is less than the cell volume, we have to add an empty sphere to meet this requirement. Empty spheres can be thought of as "atoms" with zero atomic number.
+This line tells us about the average and maximum sphere overlaps. Generally, for ASA the overlaps should be kept below 16% where possible.  For full potential calculations generally 5% and below is safe. For _GW_ calculations it should be below 2%. As the sum of sphere volumes is less than the cell volume, we have to add artificial atoms with _Z_=0 ("empty spheres") to meet this requirement. 
 
 The appropiate space filling spheres can be found using **lmchk**{: style="color: blue"} by invoking:
 
@@ -130,14 +159,17 @@ the contents of tag **NBAS=** can be interpreted as  "if **les**>0 then  **NBAS=
 
       % const nit=10 les=1
 
-Here we have also defined **nit** with value of 10.  Finally, we have to pass the information about the empty sphere sites to the control file. We do this by commenting the line beginning **FILE=site** and uncommenting the line **FILE=essite**, as the newly generated _essite.pbte_{: style="color: green"} has the new appropiate information. The last step is to copy the new species information from file _poses.pbte_{: style="color: green"} file to the **SPEC** category within the control file (including the new empty spheres).
+Here we have also defined **nit** with value of 10.  Finally, we have to pass the information about the empty sphere sites to the control file. We do this by commenting both instances of the line beginning **FILE=site** and uncommenting the line **FILE=essite**, as _essite.pbte_{: style="color: green"} has the new appropiate information. 
+_Note:_{: style="color: red"} there are _two_ instances of **FILE=site** : the first occurs in the **STRUC** category, where lattice information is read.  The second occurs in the **SITE** category, where basis information is read.  Be sure to comment/uncomment both instances.
+
+The last step is to copy the new species information from file _poses.pbte_{: style="color: green"} file to the **SPEC** category within the ctrl file, including the new empty spheres.
 
 ###### _2.2 Self-consistency_
-Before a self consistant calculation can be performed the real-space structure constants have to be generated. They are made once, for a given structure, with a separate tool
+Before a self consistent calculation can be performed the real-space structure constants have to be generated. They are made once, for a given structure, with a separate tool
 
     $ lmstr ctrl.pbte
 
-The penultimate step, is to generate the initial multipole moments Q$$_0$$,Q$$_1$$,Q$$_2$$. For this we first change the nkabc variable within the control file to (**nkabc=4**, this variable represents the k-mesh density). Use your text editor to change:
+The penultimate step, is to generate a starting potential.  In the ASA, the potential is determined [through multipole moments](/docs/asaoverview/) $$Q_0$$, $$Q_1$$, $$Q_2$$. For this we first change the nkabc variable within the control file to (**nkabc=4**, this variable represents the k-mesh density). Use your text editor to change:
 
     % const nkabc=0
 	
@@ -146,13 +178,30 @@ to
     % const nkabc=4
 
 
-next the  **lm**{: style="color: blue"} executable is invoked with zero number of iterations as:
+Invoke **lm**{: style="color: blue"} executable with zero number of iterations as:
 
     $ lm -vnit=0 ctrl.pbte
 
-Lastly, for a self consistant LDA-ASA calculation **lm**{: style="color: blue"} is invoked with **-vnit**>1 so that:
+This command takes $$Q_0$$, $$Q_1$$, $$Q_2$$ and makes a trial potential from it.  You supply $$Q_0$$, $$Q_1$$, $$Q_2$$; if you do not will take some simple default guesses.  **blm**{: style="color: blue"} does not supply these values.
+
+For a self consistent LDA-ASA calculation invoke **lm**{: style="color: blue"} with **nit**>0, e.g.
 
     $ lm -vnit=20 ctrl.pbte
 
 You should see "Jolly good show" at the end of the standard output will indicate if self-consistency has been achieved, which in this case it has.
 	    
+_Note:_{: style="color: red"} `-vnit=20` does not _directly_ set the number of iterations.  This number is determined by token **NIT** in this line:
+
+    ITER  MIX=B2,b=.3,k=7  NIT={nit}  CONVC=1e-5
+
+The preprocessor sees the the curly brackets (**\{nit}**), treats the contents as an expression (a trivial one in this case) and substitutes the result (20) for **\{nit}**.
+
+As a final step, you can collect the self-consistent moments generated by **lm**{: style="color: blue"} and add them to the ctrl file. Type
+
+    $ lmctl ctrl.pbte
+
+**lmctl**{: style="color: blue"} clears the log file, _log.pbte_{: style="color: green"}, and overwrites it with linearization parameters _P_ and moments $$Q_0$$, $$Q_1$$, $$Q_2$$, in a form suitable for the ctrl file.  Append _log.pbte_{: style="color: green"} with, e.g.
+
+    $ cat log.pbte >> ctrl.pbte
+
+In this way the ctrl file retains the essential information for the self-consistent density.
