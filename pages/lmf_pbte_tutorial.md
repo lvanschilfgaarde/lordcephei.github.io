@@ -78,14 +78,20 @@ Create the input file (_ctrl.pbte_{: style="color: green"}) and the site file (_
 
 ##### 2. _How the input file is organized_
 
+In this tutorial, **blm**{: style="color: blue"} is used in "standard" mode. (Compare to the [basic tutorial](https://lordcephei.github.io/lmf_tutorial/)
+which used `blm --express init.pbte`). Standard mode makes limited use of the [preprocessing capabilities](/docs/input/inputfile/) of the Questaal input system,
+namely the use of algebraic variables that can be modified on the command line, e.g. `lmf -vnit=10 ...` .  It is not necessary to know about the preprocessor,
+but generally:
+
 * Lines which begin with '**#**' are comment lines and are ignored. (More generally, text following a `#' in any line is ignored).
 * Lines beginning with '**%**' are directives to the preprocessor.  Directives can perform various functions similar to a normal programming language, such as 
 assigning variables, evaluating expressions, conditionally readings some lines, and repeated loops over sections of input.
 
-<div onclick="elm = document.getElementById('variablesexplained'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click here for a more detailed description of the input file's syntax.</div>
+<div onclick="elm = document.getElementById('variablesexplained'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click here
+to see how variables are used.</div>
 {::nomarkdown}<div style="display:none;padding:5px;" id="variablesexplained">{:/} 
 
-The box below to see a snippet showing the beginning of the ctrl file.
+The beginning of the ctrl file you just generated should look like the following:
 
 ~~~
 # Variables entering into expressions parsed by input
@@ -97,7 +103,7 @@ The box below to see a snippet showing the beginning of the ctrl file.
 % const nkabc=0 gmax=0
 ~~~ 
 
-Near the top of the ctrl file, beginning with **% const**, follow a series of variable declarations. **nit**, **met**, etc,  are variables used in expressions further down.  The parser interprets the contents of brackets **{...}** as algrebraic expressions:  **{...}** is evaluated and the numerical result is substituted for it.  Expression substitution works for input lines proper, and also in the directives.  
+These are a series of variable declarations. **nit**, **met**, etc,  used in expressions later on.  The parser interprets the contents of brackets **{...}** as algrebraic expressions:  **{...}** is evaluated and the numerical result is substituted for it.  Expression substitution works for input lines proper, and also in the directives.  
 
 For example this line
 
@@ -110,7 +116,6 @@ becomes
 because **met** is a numerical expression (admittedly a trivial one).  It evaluates to 5 because **met** is declared as an algebraic variable and assigned value 5 near the top of the ctrl file.  The advantage is that you can do algebra in the input file, and you can also re-assign values to variables from the command line, as we will see shortly.
 
 {::nomarkdown}</div>{:/}
-
 
 Lines corresponding to actual input are divided into categories and tokens within the categories.
 A category begins when a character (other than **%** or **#**) occurs in the
