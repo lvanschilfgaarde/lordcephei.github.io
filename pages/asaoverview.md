@@ -10,7 +10,7 @@ _____________________________________________________________
 ### _Purpose_
 {:.no_toc}
 
-Questaal's implementation of the LMTO method in the Atomic Spheres Approximation is explained here.
+To describe Questaal's implementation of the LMTO method in the Atomic Spheres Approximation.
 
 _____________________________________________________________
 
@@ -39,8 +39,8 @@ studying magnetic properties of transition metals and their alloys.  The
 ASA package has a non-collinear framework and a fully relativistic Dirac branch.
 
 Questaal's implementation present uses the "tight-binding" form of
-LMTO, sometimes called "second generation" [reference](xx), a linear
-transformation of the original basis set that makes the functions short ranged.
+LMTO, sometimes called "[second generation](http://dx.doi.org/10.1103/PhysRevLett.53.2571)",
+a linear transformation of the original basis set that makes Hankel functions short ranged.
 
 **Note**{: style="color: red"} There is also a non self-consistent
 implementation of Anderen's most recent basis, the `NMTO'.  This code

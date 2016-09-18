@@ -160,7 +160,7 @@ on smooth Hankel functions,'' in _Electronic Structure and Physical Properties o
 Solids: The Uses of the LMTO Method_, Lecture Notes in Physics,
 <b>535</b>, 114-147. H. Dreysse, ed. (Springer-Verlag, Berlin) 2000.
 
-The mathematics of smoothed Hankel functions **lmf**{: style="color: blue"} uses
+The mathematics of smoothed Hankel functions that form the **lmf**{: style="color: blue"} basis set
 are described in this paper:  
 E. Bott, M. Methfessel, W. Krabs, and P. C. Schmid,
 _Nonsingular Hankel functions as a new basis for electronic structure calculations_,
