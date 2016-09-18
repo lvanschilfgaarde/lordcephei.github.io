@@ -120,9 +120,8 @@ because **met** is a numerical expression (admittedly a trivial one).  It evalua
 Lines corresponding to actual input are divided into **categories**{: style="color: red"}
 and **tokens**{: style="color: blue"} within the categories.
 A category begins when a character (other than **%** or **#**) occurs in the
-first column.  Each token belongs to a category; for example in box below
-**SHOW**{: style="color: blue"} and
-**VERBOS**{: style="color: blue"} are tokens within category **IO**{: style="color: red"}:
+first column.  Each token belongs to a category; for example in box below **IO**{: style="color: red"} has four tokens, including
+**SHOW**{: style="color: blue"} and **VERBOS**{: style="color: blue"} :
 
     IO    SHOW=f HELP=f
           IACTIV=f VERBOS=35,35
