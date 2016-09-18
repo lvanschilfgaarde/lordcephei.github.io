@@ -14,9 +14,38 @@ _____________________________________________________________
 This tutorial covers the basics for running a self consistent LDA calculation in the Atomic Spheres Approximation (ASA), starting with the creation of an input file.  We will use PbTe for the tutorial.
 
 
+_____________________________________________________________
+
+### _Command summary_     
+
+The tutorial starts under the heading "Tutorial"; you can see a synopsis of the commands by clicking on the box below.
+
+<div onclick="elm = document.getElementById('1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Commands - Click to show</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="1">{:/}
+
+    $ blm --express=0 --asa --wsitex --findes init.pbte
+    $ blm --h
+    $ cp actrl.pbte ctrl.pbte
+    $ blm --express=0 --asa --wsitex --addes init.pbte
+    $ cp actrl.pbte ctrl.pbte
+
+    ... the following from section 2.2 are optional
+    $ lmchk ctrl.pbte
+    $ lmchk --findes --wsitex ctrl.pbte
+ 
+    $ lmstr ctrl.pbte
+    $ lm -vnit=0 ctrl.pbte
+    $ lm -vnit=20 ctrl.pbte
+    $ lmctl ctrl.pbte
+    $ cat log.pbte >> ctrl.pbte
+
+{::nomarkdown}</div>{:/}
+
+_____________________________________________________________
+
 ### _Preliminaries_
 _____________________________________________________________
-Executables **blm**{: style="color: blue"}, **lmchk**{: style="color: blue"}, **lmstr**{: style="color: blue"} and **lm**{: style="color: blue"} are required and are assumed to be in your path.  The source code for all Questaal executables can be found [here](https://bitbucket.org/lmto/lm).
+Executables **blm**{: style="color: blue"}, **lmchk**{: style="color: blue"}, **lmstr**{: style="color: blue"} and **lm**{: style="color: blue"} are required and are assumed to be in your path.  The last step (not essential for the tutorial) uses **lmctl**{: style="color: blue"}.  The source code for all Questaal executables can be found [here](https://bitbucket.org/lmto/lm).
 
 ### _Tutorial_
 _____________________________________________________________
@@ -140,7 +169,7 @@ Before a self consistant calculation can be performed the real-space structure c
 
     $ lmstr ctrl.pbte
 
-The penultimate step, is to generate a starting potential.  In the ASA, the potential is determined through multipole moments $$Q_0$$, $$Q_1$$, $$Q_2$$. For this we first change the nkabc variable within the control file to (**nkabc=4**, this variable represents the k-mesh density). Use your text editor to change:
+The penultimate step, is to generate a starting potential.  In the ASA, the potential is determined [through multipole moments](/docs/asaoverview/) $$Q_0$$, $$Q_1$$, $$Q_2$$. For this we first change the nkabc variable within the control file to (**nkabc=4**, this variable represents the k-mesh density). Use your text editor to change:
 
     % const nkabc=0
 	
@@ -153,7 +182,7 @@ Invoke **lm**{: style="color: blue"} executable with zero number of iterations a
 
     $ lm -vnit=0 ctrl.pbte
 
-This command takes $$Q_0$$, $$Q_1$$, $$Q_2$$ and makes a trial potential from it.  You supply $$Q_0$$, $$Q_1$$, $$Q_2$$; if you do not it assumes some simple default guesses.  **blm**{: style="color: blue"} does not supply these values.
+This command takes $$Q_0$$, $$Q_1$$, $$Q_2$$ and makes a trial potential from it.  You supply $$Q_0$$, $$Q_1$$, $$Q_2$$; if you do not will take some simple default guesses.  **blm**{: style="color: blue"} does not supply these values.
 
 For a self consistant LDA-ASA calculation **lm**{: style="color: blue"} is invoked with **-vnit**>1 so that:
 
@@ -161,3 +190,12 @@ For a self consistant LDA-ASA calculation **lm**{: style="color: blue"} is invok
 
 You should see "Jolly good show" at the end of the standard output will indicate if self-consistency has been achieved, which in this case it has.
 	    
+As a final step, you can collect the self-consistent moments **lm**{: style="color: blue"} generated and put them into the ctrl file. Type
+
+    $ lmctl ctrl.pbte
+
+**lmctl**{: style="color: blue"} clears the log file, **log.pbte**{: style="color: green"} and writes into it the linearization parameters _P_ and moments $$Q_0$$, $$Q_1$$, $$Q_2$$, in a form for the ctrl file.  Append the contents of the log file to the ctrl, file, e.g.
+
+    $ cat log.pbte >> ctrl.pbte
+
+In this way the ctrl file retains in essentially the self-consistent density.

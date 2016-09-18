@@ -178,5 +178,5 @@ _____________________________________________________________
 
 ### 4. _Other resources_
 
-See the documentation for [**fplot**{: style="color: blue"}](/fplot/).
+See the documentation for [fplot](/plbnds/) and [pldos](/pldos/).
 

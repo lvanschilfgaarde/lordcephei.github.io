@@ -19,6 +19,8 @@ _____________________________________________________________
 
 Needs to be written ...
 
-### _Other resources_
+_____________________________________________________________
 
-The source code to **ccomp**{: style="color: blue"} can be found [here](https://bitbucket.org/lmto/lm/src/e82e155d8ce7eb808a9a6dca6d8eea5f5a095bd6/startup/ccomp.c).
+### 4. _Other resources_
+
+See the documentation for [fplot](/plbnds/) and [plbnds](/plbnds/).
