@@ -128,7 +128,7 @@ first column.  Each token belongs to a category; for example in box below **IO**
 
 (Internally, a complete identifier (aka _tag_) would be **IO_IACTIV=**, though it does not appears in that form in the ctrl file.)
 
-[This link](/docs/input/inputfile/) explains the structure of the input file in more detail.
+[This link](/docs/input/inputfile/#input-file-structure) explains the structure of the input file in more detail.
 
 #####  3. _The **EXPRESS** category_
 
@@ -245,46 +245,35 @@ If you supply only one number it is copied to elements 2 and 3.
 
 #####  5. _Self-consistency_
 
-This section proceeds in a manner [similar to the basic tutorial](/tutorial/lmf/lmf_tutorial/)
+With an input file in hand, we can proceed to carry out a self-consistent calculation.
+It proceeds in a manner [similar to the basic tutorial](/tutorial/lmf/lmf_tutorial/#tutorial).
+
+In brief you carry out the following steps:
+
+1. Run **lmfa**{: style="color: blue"}.  
+   This :  
+
++  Makes atomic densities, which **lmf**{: style="color: blue"} will overlap to make a starting trial density  
++  Provides a reasonable basis set with parameters **RSMH** and **EH** defining the envelope functions  
++  Supplies an automatic estimate for the PW cutoff **GMAX**.
 
 
 ### _Other Resources_
 
 An input file's structure, and features of the programming language capability, is explained in some detail 
-[here](/docs/input/inputfile/#input-file-structure). A reference defining the syntax of categories and tokens can be found in [this pdf file](input.pdf).
-
+[here](/docs/input/inputfile/). The full syntax of categories and tokens can be found in [this reference](input.pdf).
 
 [This tutorial](https://lordcephei.github.io/buildingfpinput/) more fully describes some important tags the **lmf**{: style="color: blue"} reads.  It also
 presents alternative ways to build input files from various sources such as the VASP _POSCAR_{: style="color: green"} file.
 
-There is a corresponding tutorial on the basics of a [self-consistent ASA calculation for PbTe](https://github.com/lordcephei/lordcephei.github.io/blob/master/pages/fptut-pbte.md).  [A tutorial on optics](xx) can be gone through after you have understood this one.
+[This tutorial](/tutorial/lmf/lmf_bi2te3_tutorial/) more fully explains the **lmf**{: style="color: blue"} basis set.
+
+There is a corresponding tutorial on the basics of a [self-consistent ASA calculation for PbTe](https://github.com/lordcephei/lordcephei.github.io/blob/master/pages/fptut-pbte.md).  [A tutorial on optics](/docs/properties/optics/) can be gone through after you have understood this one.
 
 [This document](https://lordcephei.github.io/docs/lmf/overview/) gives an overview of some of **lmf**'s unique features and capabilities.
 
-The theoretical formalism behind the method is described in this [book chapter](xx).
-
-###### _2.2 Self-consistency_
-Before a  self consistant calculation can be preforem the real-space structure constants have to be generated.  They are made once, for a given structure, with a separate tool
-
-       lmstr ctrl.pbte
-
-The penultimate step is to generate the initial the multipole moments Q$_0$,Q$_1$,Q$_2$. For this we first change the nkabc variable within the control file to for (**nkabc=4**, this variable represents the k-mesh density):
-change 
-	
-	% const nkabc=0
-	
-to
-
-	% const nkabc=4
-
-
-next  the  **lm**{: style="color: blue"} executable is invoked with zero number of iterations such that
-
-    lm -vnit=0 ctrl.pbte
-
-and lastly for a fully consistant LDA-ASA calculation **lm**{: style="color: blue"} is invoked with **-vnit**>1 so that
-
-    lm -vnite=20 ctrl.pbte
-
-The message at the end of the standard out put will indicate if self-consistency has been achieved, which in this case it has.
-	    
+The theoretical formalism behind the **lmf**{: style="color: blue"} is described in detail in this book chapter:
+M. Methfessel, M. van Schilfgaarde, and R. A. Casali, ``A full-potential LMTO method based
+on smooth Hankel functions,'' in _Electronic Structure and Physical Properties of
+Solids: The Uses of the LMTO Method_, Lecture Notes in Physics,
+<b>535</b>, 114-147. H. Dreysse, ed. (Springer-Verlag, Berlin) 2000.
