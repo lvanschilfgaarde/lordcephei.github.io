@@ -13,13 +13,13 @@ _____________________________________________________________
 ### _Purpose_
 
 This tutorial carries out a self-consistent density-functional calculation for PbTe using the **lmf**{: style="color: blue"} code.
-This tutorial has a similar purpose but shows some additional features. It:
+It has a similar purpose but shows some additional features. Such as:
 
 1. explains the input file's structure and illustrates some of its programming language capabilities
 2. generates a self consistent potential within the LDA
 3. makes neighbour tables using the **lmchk**{: style="color: blue"} tool
 4. synchronizes with an [ASA tutorial](https://lordcephei.github.io/asa-doc/) on the same system, enabling a comparison of the ASA and full potential methods.
-5. forms the starting point for other tutorials on optics, a QSGW calculation of PbTe, and comparing energy bands computed in different ways.
+5. forms the starting point for other tutorials on optics, a QSGW calculation of PbTe, and compares energy bands computed in different ways.
 
 _____________________________________________________________
 
@@ -124,7 +124,7 @@ See "Other Resources" below to follow links with further information on the synt
 
 #####  3. _The **EXPRESS** category_
 
-**blm**{: style="color: blue"} included an **EXPRESS** category in _ctrl.pbte_{: style="color: green"}.  Clock on the box below to see the beginning of it.
+**blm**{: style="color: blue"} included an **EXPRESS** category in _ctrl.pbte_{: style="color: green"}.  Click on the box below to see the beginning of it.
 
 <div onclick="elm = document.getElementById('2'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="2">{:/}
