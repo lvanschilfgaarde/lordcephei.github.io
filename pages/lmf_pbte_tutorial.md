@@ -80,8 +80,8 @@ Create the input file (_ctrl.pbte_{: style="color: green"}) and the site file (_
 
 In this tutorial, **blm**{: style="color: blue"} is used in "standard" mode. (The [basic tutorial](/tutorial/lmf/lmf_tutorial/)
 creates a simpler file with `blm --express init.si`). 
-Standard mode makes limited use of the [preprocessing capabilities](/docs/input/inputfile/) of the Questaal input system,
-namely it uses algebraic variables which can be modified on the command line. Thus `lmf -vnit=10 ...` sets **nit** to 10 before doing anything else.
+Standard mode makes limited use of the [preprocessing capabilities](/docs/input/inputfile/) of the Questaal input system : 
+it uses algebraic variables which can be modified on the command line. Thus `lmf -vnit=10 ...` sets variable **nit** to 10 before doing anything else.
 Generally:
 
 * Lines which begin with '**#**' are comment lines and are ignored. (More generally, text following a `#' in any line is ignored).
