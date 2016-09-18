@@ -181,7 +181,7 @@ The remainder of this section is not essential to this tutorial and you can safe
 `--input`; it is useful if you want to see how tags and categories are organized, and how missing or partial tags are handled.
 
 <div onclick="elm = document.getElementById('input'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click 
-here for a description of the action `--input` does</div>
+here for a description of the `--input` function</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="input">{:/} 
 
 Below is snippet of output from `lmchk --input`:
@@ -227,19 +227,19 @@ Below is snippet of output from `lmchk --input`:
 ~~~ 
 
 **lmchk**{: style="color: blue"} prints the full name of each tag, e.g. **SPEC_ATOM** and **SPEC_ATOM_Z**, 
-even though only components of the tag appear in the ctrl file.  In this tutorial the it contains:
+even though components of the tag are separated in the ctrl file.  _ctrl.pbte_{: style="color: green"} contains these lines
 
     SPEC 
       ATOM=Pb         Z= 82  R= 3.044814  LMX=3  LMXA=4
 
-Some tags (**SPEC_SCLWSR**, **SPEC_ATOM_LMX**, **SPEC_ATOM_LMXA**) are optional:
-lmchk will substitute defaults if you don't supply them.
-Any marked **reqd** (**SPEC_ATOM**, **SPEC_ATOM_Z**, **SPEC_ATOM_R**) you must supply.
+Many tags (**SPEC_SCLWSR**, **SPEC_ATOM_LMX**, **SPEC_ATOM_LMXA**) are optional:
+**lmchk**{: style="color: blue"} will substitute defaults if you don't supply them.
+Those marked **reqd** (**SPEC_ATOM**, **SPEC_ATOM_Z**, **SPEC_ATOM_R**) you must supply.
 
 The cast (real, integer, character) of each tag is indicated, and also how many numbers are to be read.
-tags look for more than one number, but you can supply fewer.  For example, **BZ_NKABC** looks for
-three numbers to fix the k-mesh, namely the number of divisions only each of the reciprocal lattice vectors.
-If you supply only one, it is copied to elements 2 and 3.
+Sometimes tags will look for more than one number, but allow you to supply fewer.
+For example, **BZ_NKABC** looks for three numbers to determine the k-mesh, which are the number of divisions only each of the reciprocal lattice vectors.
+If you supply only one number it is copied to elements 2 and 3.
 
 {::nomarkdown}</div>{:/}
 
