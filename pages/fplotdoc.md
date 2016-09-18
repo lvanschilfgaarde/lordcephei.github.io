@@ -153,4 +153,4 @@ _____________________________________________________________
 ### 4. _Other resources_
 
 
-See the documentation for [plbnds](/plbnds/) and [pldos](/pldos/).
+See the documentation for [plbnds](/docs/misc/plbnds/) and [pldos](/docs/misc/pldos/).

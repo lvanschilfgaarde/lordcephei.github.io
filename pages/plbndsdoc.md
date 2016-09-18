@@ -178,5 +178,5 @@ _____________________________________________________________
 
 ### 4. _Other resources_
 
-See the documentation for [fplot](/plbnds/) and [pldos](/pldos/).
+See the documentation for [fplot](/docs/misc/plbnds/) and [pldos](/docs/misc/pldos/).
 

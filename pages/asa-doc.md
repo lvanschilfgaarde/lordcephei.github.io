@@ -165,7 +165,7 @@ _Note:_{: style="color: red"} there are _two_ instances of **FILE=site** : the f
 The last step is to copy the new species information from file _poses.pbte_{: style="color: green"} file to the **SPEC** category within the ctrl file, including the new empty spheres.
 
 ###### _2.2 Self-consistency_
-Before a self consistant calculation can be performed the real-space structure constants have to be generated. They are made once, for a given structure, with a separate tool
+Before a self consistent calculation can be performed the real-space structure constants have to be generated. They are made once, for a given structure, with a separate tool
 
     $ lmstr ctrl.pbte
 
@@ -184,18 +184,18 @@ Invoke **lm**{: style="color: blue"} executable with zero number of iterations a
 
 This command takes $$Q_0$$, $$Q_1$$, $$Q_2$$ and makes a trial potential from it.  You supply $$Q_0$$, $$Q_1$$, $$Q_2$$; if you do not will take some simple default guesses.  **blm**{: style="color: blue"} does not supply these values.
 
-For a self consistant LDA-ASA calculation **lm**{: style="color: blue"} is invoked with **-vnit**>1 so that:
+For a self consistant LDA-ASA calculation **lm**{: style="color: blue"} is invoked with **-vnit**>0 so that:
 
     $ lm -vnit=20 ctrl.pbte
 
 You should see "Jolly good show" at the end of the standard output will indicate if self-consistency has been achieved, which in this case it has.
 	    
-As a final step, you can collect the self-consistent moments **lm**{: style="color: blue"} generated and put them into the ctrl file. Type
+As a final step, you can collect the self-consistent moments **lm**{: style="color: blue"} generated and add them to the ctrl file. Type
 
     $ lmctl ctrl.pbte
 
-**lmctl**{: style="color: blue"} clears the log file, **log.pbte**{: style="color: green"} and writes into it the linearization parameters _P_ and moments $$Q_0$$, $$Q_1$$, $$Q_2$$, in a form for the ctrl file.  Append the contents of the log file to the ctrl, file, e.g.
+**lmctl**{: style="color: blue"} clears the log file, _log.pbte_{: style="color: green"} and writes into it the linearization parameters _P_ and moments $$Q_0$$, $$Q_1$$, $$Q_2$$, in a form suitable for the ctrl file.  Append it with, e.g.
 
     $ cat log.pbte >> ctrl.pbte
 
-In this way the ctrl file retains in essentially the self-consistent density.
+In this way the ctrl file retains the essential information for the self-consistent density.
