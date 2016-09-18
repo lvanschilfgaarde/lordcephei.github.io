@@ -18,7 +18,7 @@ It has a purpose [similar to the basic tutorial](/tutorial/lmf/lmf_tutorial/) bu
 1. explains the input file's structure and illustrates some of its programming language capabilities
 2. generates a self consistent potential within the LDA
 3. makes neighbour tables using the **lmchk**{: style="color: blue"} tool
-4. synchronizes with an [ASA tutorial](https://lordcephei.github.io/asa-doc/) on the same system, enabling a comparison of the ASA and full potential methods.
+4. synchronizes with an [ASA tutorial](/tutorial/asa/asa-doc/) on the same system, enabling a comparison of the ASA and full potential methods.
 5. forms the starting point for other tutorials on optics, a QSGW calculation of PbTe, and compares energy bands computed in different ways.
 
 _____________________________________________________________
@@ -132,10 +132,11 @@ first column.  Each token belongs to a category; for example in box below **IO**
 
 #####  3. _The **EXPRESS** category_
 
-**blm**{: style="color: blue"} included an **EXPRESS** category in _ctrl.pbte_{: style="color: green"}.  Click on the box below to see the beginning of it.
+**blm**{: style="color: blue"} normally includes an **EXPRESS** category in _ctrl.pbte_{: style="color: green"}.
 
-<div onclick="elm = document.getElementById('2'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
-{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="2">{:/}
+<div onclick="elm = document.getElementById('express'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click here
+to see the beginning of the EXPRESS category.</div>
+{::nomarkdown}<div style="display:none;padding:5px;" id="express">{:/} 
 
 ~~~
 EXPRESS
@@ -244,14 +245,14 @@ If you supply only one, it is copied to elements 2 and 3.
 #####  5. _Features of **lmchk**{: style="color: blue"}_
 
 **lmchk**{: style="color: blue"}'s default mode is to check sphere overlaps.  But it has several other useful options (e.g. the empty sphere finder, described in
-the [sister [ASA tutorial](https://lordcephei.github.io/asa-doc/) for PbTe.)
+the sister [ASA tutorial](/tutorial/asa/asa-doc/) for PbTe.
 
 #####  6. _Self-consistency_
 
 
 ### _Other Resources_
 
-A more complete description of the structure of an input file's structure, and features of the programming language capaability, is explained in some detail 
+An input file's structure, and features of the programming language capability, is explained in some detail 
 [here](/docs/input/inputfile/). A reference defining the syntax of categories and tokens can be found in [this pdf file](input.pdf).
 
 [This tutorial](https://lordcephei.github.io/buildingfpinput/) more fully describes some important tags the **lmf**{: style="color: blue"} reads.  It also
