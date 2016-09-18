@@ -79,9 +79,10 @@ Create the input file (_ctrl.pbte_{: style="color: green"}) and the site file (_
 ##### 2. _How the input file is organized_
 
 In this tutorial, **blm**{: style="color: blue"} is used in "standard" mode. (Compare to the [basic tutorial](https://lordcephei.github.io/lmf_tutorial/)
-which used `blm --express init.pbte`). Standard mode makes limited use of the [preprocessing capabilities](/docs/input/inputfile/) of the Questaal input system,
-namely the use of algebraic variables that can be modified on the command line, e.g. `lmf -vnit=10 ...` .  It is not necessary to know about the preprocessor,
-but generally:
+which used created a simpler file with `blm --express init.si`). 
+Standard mode makes limited use of the [preprocessing capabilities](/docs/input/inputfile/) of the Questaal input system,
+namely the use of algebraic variables that can be modified on the command line, e.g. `lmf -vnit=10 ...` sets **nit** to 10 before reading the ctrl file.
+Generally
 
 * Lines which begin with '**#**' are comment lines and are ignored. (More generally, text following a `#' in any line is ignored).
 * Lines beginning with '**%**' are directives to the preprocessor.  Directives can perform various functions similar to a normal programming language, such as 
