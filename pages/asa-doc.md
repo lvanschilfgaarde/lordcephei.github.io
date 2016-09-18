@@ -184,12 +184,18 @@ Invoke **lm**{: style="color: blue"} executable with zero number of iterations a
 
 This command takes $$Q_0$$, $$Q_1$$, $$Q_2$$ and makes a trial potential from it.  You supply $$Q_0$$, $$Q_1$$, $$Q_2$$; if you do not will take some simple default guesses.  **blm**{: style="color: blue"} does not supply these values.
 
-For a self consistant LDA-ASA calculation **lm**{: style="color: blue"} is invoked with **-vnit**>0 so that:
+For a self consistent LDA-ASA calculation invoke **lm**{: style="color: blue"} with **nit**>0, e.g.
 
     $ lm -vnit=20 ctrl.pbte
 
 You should see "Jolly good show" at the end of the standard output will indicate if self-consistency has been achieved, which in this case it has.
 	    
+_Note:_{: style="color: red"} `-vnit=20` is not _directly_ setting the number of iterations.  The number of iterations is determined by the **NIT** token in this line:
+
+    ITER  MIX=B2,b=.3,k=7  NIT={nit}  CONVC=1e-5
+
+The preprocessor sees that **\\{nit}**, treats the contents of the curly bracket as an expression (a trivial one in this case) and substitutes the result (20) for **\\{nit}**.
+
 As a final step, you can collect the self-consistent moments **lm**{: style="color: blue"} generated and add them to the ctrl file. Type
 
     $ lmctl ctrl.pbte
