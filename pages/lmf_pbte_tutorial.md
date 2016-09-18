@@ -13,7 +13,7 @@ _____________________________________________________________
 ### _Purpose_
 
 This tutorial carries out a self-consistent density-functional calculation for PbTe using the **lmf**{: style="color: blue"} code.
-It has a similar purpose but shows some additional features. Such as:
+It has a purpose [similar to the basic tutorial](/tutorial/lmf/lmf_tutorial/) but shows some additional features. Such as:
 
 1. explains the input file's structure and illustrates some of its programming language capabilities
 2. generates a self consistent potential within the LDA
