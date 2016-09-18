@@ -78,11 +78,14 @@ Create the input file (_ctrl.pbte_{: style="color: green"}) and the site file (_
 
 ##### 2. _How the input file is organized_
 
-Take a look at the ctrl file. 
-Click on the box below to see a snippet showing the beginning of the file.
-<hr style="height:5pt; visibility:hidden;" />
-<div onclick="elm = document.getElementById('iors'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show.</button></div>
-{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="iors">{:/}
+* Lines which begin with '**#**' are comment lines and are ignored. (More generally, text following a `#' in any line is ignored).
+* Lines beginning with '**%**' are directives to the preprocessor.  Directives can perform various functions similar to a normal programming language, such as 
+assigning variables, evaluating expressions, conditionally readings some lines, and repeated loops over sections of input.
+
+<div onclick="elm = document.getElementById('variablesexplained'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click here for a more detailed description of the input file's syntax.</div>
+{::nomarkdown}<div style="display:none;padding:5px;" id="variablesexplained">{:/} 
+
+The box below to see a snippet showing the beginning of the ctrl file.
 
 ~~~
 # Variables entering into expressions parsed by input
@@ -93,12 +96,6 @@ Click on the box below to see a snippet showing the beginning of the file.
 % const pwmode=0 pwemax=3          # Use pwmode=1 or 11 to add APWs
 % const nkabc=0 gmax=0
 ~~~ 
-
-{::nomarkdown}</div>{:/}
-
-* Lines which begin with '**#**' are comment lines and are ignored. (More generally, text following a `#' in any line is ignored).
-* Lines beginning with '**%**' are directives to the preprocessor.  Directives can perform various functions similar to a normal programming language, such as 
-assigning variables, evaluating expressions, conditionally readings some lines, and repeated loops over sections of input.
 
 Near the top of the ctrl file, beginning with **% const**, follow a series of variable declarations. **nit**, **met**, etc,  are variables used in expressions further down.  The parser interprets the contents of brackets **{...}** as algrebraic expressions:  **{...}** is evaluated and the numerical result is substituted for it.  Expression substitution works for input lines proper, and also in the directives.  
 
@@ -111,6 +108,9 @@ becomes
     metal=  5
 
 because **met** is a numerical expression (admittedly a trivial one).  It evaluates to 5 because **met** is declared as an algebraic variable and assigned value 5 near the top of the ctrl file.  The advantage is that you can do algebra in the input file, and you can also re-assign values to variables from the command line, as we will see shortly.
+
+{::nomarkdown}</div>{:/}
+
 
 Lines corresponding to actual input are divided into categories and tokens within the categories.
 A category begins when a character (other than **%** or **#**) occurs in the
