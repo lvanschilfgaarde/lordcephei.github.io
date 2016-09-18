@@ -279,9 +279,8 @@ The 10's digit in **15.934** isn't required, but it tells **lmf**{: style="color
 to use an "enhanced" local orbital as opposed to the usual variety found in most
 density-functional codes.  Enhanced orbitals append a tail so that the
 density from the orbital spills into the interstitial.  It is more accurate, and there is no advantage to using the traditional kind.
-The 1's digit (**5**) specifies the principal quantum number, and 
-the fractional part (**.934**) the boundary condition.  It is related
-to logarithmic derivative _D_ of the core level at the augmentation radius:
+Subtracting the **10** the residual
+specifies the principal quantum number, and the boundary condition:
 
 $$P_l = 0.5 - \frac{1}{\pi} {{1}\over{\pi}} \arctan(D_l) + \hbox{(principal quantum number)} $$
 
