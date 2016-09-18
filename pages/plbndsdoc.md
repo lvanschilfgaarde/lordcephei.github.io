@@ -34,7 +34,7 @@ It also divides the data corresponding to different symmetry lines into panels.
 
 1. To make postscript files of bands directly, without other software.
 2. To select and formatting data for use with **gnuplot**{: style="color: blue"} or other standard graphics package
-3. Same as 2, but generate a script for [**fplot**{: style="color: blue"}](../../../docs/misc/fplot), a plotting package built into Questaaal.
+3. Same as 2, but generate a script for [**fplot**{: style="color: blue"}](../fplot), a plotting package built into Questaaal.
 
 Tutorials show how to draw figures with either **gnuplot**{: style="color: blue"} or **fplot**{: style="color: blue"}.
 
