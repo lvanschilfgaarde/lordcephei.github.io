@@ -177,11 +177,11 @@ To see what an executable looks for in the ctrl file, invoke the executable with
 
 `$ lmchk --show` tells **lmchk**{: style="color: blue"} to print out tags as it reads them (or the defaults it uses)
 
-The remainder of this section is not essential to this tutorial and you can safely skip to section 5 or 6.  It explains what information is printed when you use
+The remainder of this section is not essential to this tutorial and you can safely skip to section 5.  It explains what information is printed when you use
 `--input`; it is useful if you want to see how tags and categories are organized, and how missing or partial tags are handled.
 
 <div onclick="elm = document.getElementById('input'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click 
-here for a description of the `--input` function</div>
+here for a description of the `--input` function.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="input">{:/} 
 
 Below is snippet of output from `lmchk --input`:
@@ -243,18 +243,16 @@ If you supply only one number it is copied to elements 2 and 3.
 
 {::nomarkdown}</div>{:/}
 
-#####  5. _Features of **lmchk**{: style="color: blue"}_
+#####  5. _Self-consistency_
 
-**lmchk**{: style="color: blue"}'s default mode is to check sphere overlaps.  But it has several other useful options (e.g. the empty sphere finder, described in
-the sister [ASA tutorial](/tutorial/asa/asa-doc/) for PbTe.
-
-#####  6. _Self-consistency_
+This section proceeds in a manner [similar to the basic tutorial](/tutorial/lmf/lmf_tutorial/)
 
 
 ### _Other Resources_
 
 An input file's structure, and features of the programming language capability, is explained in some detail 
-[here](/docs/input/inputfile/). A reference defining the syntax of categories and tokens can be found in [this pdf file](input.pdf).
+[here](/docs/input/inputfile/#input-file-structure). A reference defining the syntax of categories and tokens can be found in [this pdf file](input.pdf).
+
 
 [This tutorial](https://lordcephei.github.io/buildingfpinput/) more fully describes some important tags the **lmf**{: style="color: blue"} reads.  It also
 presents alternative ways to build input files from various sources such as the VASP _POSCAR_{: style="color: green"} file.
