@@ -170,7 +170,7 @@ To see what an executable looks for in the ctrl file, invoke the executable with
 
     $ lmchk --input
 
-`--input` puts **lmchk**{: style="color: blue"} in a special mode.  It doesn't attempt to read anything; instead, it prints out a table of all the tags it would try to read, together with a brief description of the tag, and then exits.
+`--input` puts **lmchk**{: style="color: blue"} in a special mode.  It doesn't attempt to read anything; instead, it prints out a (large) table of all the tags it would try to read, including a brief description of the tag, and then exits.
 
 `lmchk --help` performs a similar function for the command line arguments: it prints out a brief summary of arguments effective in the executable you are using.
 
