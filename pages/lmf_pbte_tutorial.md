@@ -281,7 +281,7 @@ density from the orbital can spill out into the interstitial.  It is more accura
 The fractional part (**.934**) specifies the boundary condition.  It is related
 to logarithmic derivative _D_ of the core level at the augmentation radius:
 
-$$P_l = 0.5 - {1}\atop{\pi}\arctan(D_l) + \hbox{(princ.quant.number)} $$
+$$P_l = 0.5 - {1}\over{\pi}\arctan(D_l) + \hbox{(principal quantum number)} $$
 
 ### _Other Resources_
 
