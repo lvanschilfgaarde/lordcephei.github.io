@@ -136,7 +136,7 @@ $$P_l = 0.5 - \arctan(D_l)/\pi + \hbox{(principal quantum number)} $$
 A core state is exponentially decaying as it approaches _s_; therefore
 its logarithmic derivative
 (<i>D<sub>l</sub></i> is approximately <i>s</i>/<i>&epsilon;<sub>l</sub></i>, which
-is large and negative.  Using the fact that arctan(<i>x&rarr;-&infin;)/&pi;&rarr;-1/2,
+is large and negative.  Using the fact that arctan(<i>x&rarr;-&infin;)/&pi;</i>&rarr;-1/2,
 the fractional part of (<i>P<sub>l</sub></i>  must approach 1 as <i>&epsilon;<sub>l</sub></i> grows deeper.
 Thus the fractional part of _P_ is close to 1 for deep or core states;
 for states far above the Fermi level it is small.

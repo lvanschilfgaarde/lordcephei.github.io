@@ -292,7 +292,8 @@ The continuous principal quantum number (**5.934**) specifies the
 [number of nodes and boundary
 condition](/docs/asaoverview/#boundary-conditions-and-continuous-principal-quantum-numbers).
 or core states it has a large fractional part, typically around 0.93
-for shallow cores.
+for shallow cores.  **lmfa**{: style="color: blue"} determined the appropriate value precisely for the atomic potential.
+In the self-consistency cycle the potential will change and **lmfa**{: style="color: blue"} will update this value.
 
 ### _Other Resources_
 
