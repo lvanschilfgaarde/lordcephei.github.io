@@ -57,7 +57,7 @@ All the other values of the file are either ignored or should not be changed.
 This file is one of the input files read by the CTQMC sovler.
 
 The variables contained in this file define the kind of calculation, allowing for a tuning of the Quantum Monte Carlo algorithm and details on how to treat the connection between the low-energy and the high-energy part of the self-energy. 
-An example of the *PARAMS*{: style="color: green"} file is reported in the [first tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft1) (box-like botton).
+An example of the *PARAMS*{: style="color: green"} file is reported in a dropdown box of the [second tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft1).
 
 <div onclick="elm = document.getElementById('ParamsVariables'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">More details - Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="ParamsVariables">{:/}
