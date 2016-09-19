@@ -96,17 +96,21 @@ Matrix elements of the partial waves are calculated in the full, nonspherical po
 
 The linear approximation is usually quite accurate over an energy window that a valence partial wave is "active" (a few
 Ry for typical _s_ and _p_ states, a few eV for _d_ states of the transition metals).
-
 Linearization greatly simplifies the secular matrix : the eigenvalue problem becomes a linear algebraic elgenvalue
-problem, which greatly simplifies practical solutions of the Schrodinger equation.  Some elements possess partial waves
+problem, which greatly simplifies practical solutions of the Schrodinger equation.  
+
+Some elements possess partial waves
 of very different energies that are both relevant.  The classic examples of this are Ga and In: both 3_d_ (4_d_) and
 4_d_ (5_d_) states are relevant.
-
-To obtain accurate calculations a third partial wave must included. These partial waves are called
-<i>&phi;<sub>z</sub></i> in the Questaal suite.
+To obtain accurate calculations a third partial wave must included.
 In practice additional partial waves are incorporated by turning them into _local orbitals_ which are confined to the
 augmentation sphere.  This ensures that the eigenvalue problem remains a linear one, at the expense of an increase in
 the rank of the hamiltonian.
+
+In practice this is accomplished by adding a judicious amount of $$\phi_l(\varepsilon_\nu,r)$$ and
+$$\dot\phi_l(\varepsilon_\nu,r)$$ to the third partial wave, so that its value and slope vanish at the augmentation
+radius and to not spill out into the interstitial.  These modified waves are called <i>&phi;<sub>z</sub></i> in the
+Questaal suite.
 
 
 {::nomarkdown}</div>{:/}

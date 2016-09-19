@@ -287,7 +287,6 @@ local orbitals, and includes this information in the basp0 file it generates.
 Click here for a description of local orbitals.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="localorbitals">{:/} 
 
-
 Inspect _basp.pbte_{: style="color: green"}.  Note in particular this text connected with the Pb atom:  
 
 ~~~
