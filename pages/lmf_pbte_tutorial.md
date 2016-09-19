@@ -166,7 +166,7 @@ collecting the most commonly used tags in one place.
 
 **blm**{: style="color: blue"} builds input files with only a subset of the tags an executable will try to read.
 Defaults are used for the vast majority of tags.
-In any case each executable has its own unique set of tags, though most executables share many tags in common.
+In any case each executable reads its own particular set, though most executables share many tags in common.
 
 Executables accept input from two primary streams : tags in the ctrl file and additional information through command-line switches.
 
@@ -347,7 +347,7 @@ $ lmfa ctrl.pbte                                #use lmfa to make basp file, atm
 This is necessary whenever the valence-core partitioning changes.
 
 <div onclick="elm = document.getElementById('lmfaoutput'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
-Click here for a description of **lmfa's**{: style="color: blue"} output (it is not necessary to complete the tutorial).</div>
+Click here for a description of lmfa's output.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="lmfaoutput">{:/} 
 
 to be completed
