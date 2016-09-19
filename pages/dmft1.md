@@ -8,6 +8,8 @@ header: no
 
 # Setting up a QSGW+DMFT calculation
 
+### The spin-polarized QSGW starting point 
+
 This tutorial assumes you have terminated a QSGW calculation and you want to start a DMFT calculation. Your QSGW calculation is supposed to be spin-polarized (even for non-magnetic materials). For the purpose of this tutorial, we will refer to a QSGW calculation on ferromagnetic Nickel. 
 
 If you want to start from scratch, you can follow the instructions below to prepare the magnetic QSGW calculation (but they are very concise and must be followed with reference to the QSGW tutorial). Otherwise you can download the relevant files of the converged QSGW loop from [this link](https://lordcephei.github.io/assets/download/inputfiles/qsgw_ni.tar.gz).
@@ -43,6 +45,8 @@ The value of the parameters chose are a pretty low but they can provide a fast e
 The total time required by the calculation above is ~10 hours.
 
 {::nomarkdown}</div>{:/}
+
+*Note:*{: sytle="color: red"} Of course you can do LDA+DMFT instead of QSGW+DMFT. The procedure is basically the same, but you can ignore all reference to any *sigm*{: style="color: green"} file.
 
 ### Prepare input folders and files 
 
