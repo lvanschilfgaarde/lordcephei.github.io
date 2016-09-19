@@ -45,19 +45,46 @@ _____________________________________________________________
 Augmented Wave methods, originally developed by Slater, partitions
 space into spheres enclosing around each atom.  Basis functions used
 to solve Schrodinger's equation consist of a family of smooth envelope
-functions which are "augmented" with partial waves inside each
-sphere. The choice of envelope function defines the method (Linear
-Muffin Tin Orbitals, Linear Augmented Plane Waves, Jigsaw Puzzle
-Orbitals); while partial waves are obtained by integrating the
-Schrodinger equation numerical on a radial mesh inside the
-augmentation sphere.  The reason for augmentation is to enable basis
-functions to vary rapidly near nuclei where they must be orthogonalized to
-core states.
+functions which are "augmented" with solutions of Schrodinger equation
+(aka _partial waves_) inside each sphere.  The reason for augmentation
+is to enable basis functions to vary rapidly near nuclei where they
+must be orthogonalized to core states.
 
-Augmented-wave methods consist of an "atomic" part that solves for the partial waves on a numerical mesh inside
-augmentation spheres and makes the relevant matrix elements needed, e.g. for the hamiltonian or some other property
-(e.g. optics) and a ``band'' part, that diagonalizes the secular matrix of the hamiltonian made by the
-augmented envelope functions.
+Solutions of the Schrodinger equations are then piecewise: the envelope functions
+must be joined differentiably onto the partial waves.  Matching conditions
+set up secular matrix, so solution of the Schrodinger equation in the crystal
+for a given potential reduces to an eigenvalue problem.
+
+The choice of envelope function defines the method (Linear Muffin Tin
+Orbitals, Linear Augmented Plane Waves, Jigsaw Puzzle Orbitals); while
+partial waves are obtained by integrating the Schrodinger equation
+numerical on a radial mesh inside the augmentation sphere.
+
+Augmented-wave methods consist of an "atomic" part that finds
+the "partial waves" on a numerical radial mesh inside
+each augmentation sphere and makes the relevant matrix elements needed,
+e.g. for the hamiltonian or some other property (e.g. optics); and a
+``band'' part, that diagonalizes the secular matrix made by joining
+the partial waves to the envelopes.
+
+#### _Linear Methods in Band Theory_
+
+Nearly all modern electronic structure methods make use of the
+_linear_ approximation pioneered by O.K. Andersen, where partial waves
+are replaced by a wave at some "linearization energy" and its energy
+derivative.  This is explained in detail in Richard Martin's book,
+_Electronic Structure_.
+
+<div onclick="elm = document.getElementById('linear'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click 
+here for a description of the linear approximation.</div>
+{::nomarkdown}<div style="display:none;padding:0px;" id="input">{:/} 
+
+The linear approximation rests on the fact that a partial 
+wave $$\phi_l(\varepsilon,r)$$ for an atom centered at the origin
+varies slowly with &epsilon;.
+
+{::nomarkdown}</div>{:/}
+
 
 _____________________________________________________________
 
@@ -80,6 +107,15 @@ they use LMTO basis sets.
 _____________________________________________________________
 
 ### _Augmentation_
+
+
+
+[Linear methods](http://dx.doi.org/10.1103/PhysRevB.12.3060) approximate
+the radial Schrodinger equation (aka "partial wave") inside the
+augmentation 
+
+
+
 
 **lmf**{: style="color: blue"} carries out augmentation in a manner different than standard augmented wave methods.  It
 somewhat resembles the PAW method, though in the limit of large angular momentum cutoff it has exactly the same behavior

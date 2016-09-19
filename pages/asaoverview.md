@@ -119,7 +119,7 @@ potential parameters, or with the atomic part, specifying the moments.
 
 ### _Boundary conditions and continuous principal quantum numbers_
 
-For a fixed spherical potential, the "partial wave" radial Schrodinger equation (aka "partial wave")
+For a fixed spherical potential, the radial Schrodinger equation (aka "partial wave")
 <i>&phi;<sub>l</sub></i> of quantum number _l_ and its energy are uniquely determined by the boundary condition at the augmentation radius _s_.
 This is normally given through the "logarithmic derivative function"
 

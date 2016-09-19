@@ -267,7 +267,7 @@ $ lmfa ctrl.pbte                                #use lmfa to make basp file, atm
 $ cp basp0.pbte basp.pbte                       #copy basp0 to recognised basp prefix   
 ~~~
 
-#####  Valence-core partitioning
+#####  Valence-core partitioning and local orbitals
 
 <div onclick="elm = document.getElementById('localorbitals'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
 Click here for a description of local orbitals.</div>
