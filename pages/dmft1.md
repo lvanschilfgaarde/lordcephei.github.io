@@ -48,7 +48,7 @@ The total time required by the calculation above is ~10 hours.
 
 *Note:*{: sytle="color: red"} Of course you can do LDA+DMFT instead of QSGW+DMFT. The procedure is basically the same, but you can ignore all reference to any *sigm*{: style="color: green"} file.
 
-### Prepare input folders and files 
+### Input folders, files and programs
 
 Once you have a converged spin-polarized QSGW calculation you still need some additional file required by **lmfdmft**{: style="color: blue"} and **ctqmc**{: style="color: blue"}. You can download them at [this link](https://lordcephei.github.io/assets/download/inputfiles/dmft-input.tar.gz).
 
@@ -62,8 +62,7 @@ cp indmfl_input lmfinput/indmfl.ni                     # copy the indmfl file ha
 cp atom_d.py broad_sig.f90 Trans.dat PARAMS qmcinput/  # copy files and programs relevant for CTQMC
 ```
 
-##### _**Prepare the *ctrl*{: style="color: green"} file**_
-
+##### _**Edit the ctrl file: **_ 
 You need to add some tokens to *ctrl.ni*{: style="color: green"}. 
 
 ```
@@ -130,7 +129,7 @@ You can see how it should look like by clicking on the dropdown box.
 ```
 {::nomarkdown}</div>{:/}
 
-#####  _**Prepare spin-averaged self-energy**_
+#####  _**Prepare spin-averaged self-energy: **_
 Although you have done a spin-polarized calculation, the starting point of the DMFT loop has to be non-magnetic. To do that you have to produce a spin-averaged *sigm.ni*{: style="color: green"}. 
 
 ```
@@ -140,7 +139,7 @@ mv sigm2.ni sigm.ni                         # rename sigm2: you will work with t
 cd ..
 ```
 
-##### _**Compile the broadening program**_
+##### _**Compile the broadening program: **_
 The statistical noise of Quantum Monte Carlo calculations can be source of instabilities. Because of this, you need to broad the output of the **ctqmc**{: style="color: blue"} software.
 
 You should have already downloaded *broad_sig.f90*{: style="color: green"}, however you can use whatever method you prefer (but be careful in not spoiling the low- and the high-frequency limits).
