@@ -253,7 +253,9 @@ It proceeds in a manner [similar to the basic tutorial](/tutorial/lmf/lmf_tutori
 
 In brief you carry out the following steps:
 
-1. Run **lmfa**{: style="color: blue"} in order to
+#####  Initial setup
+
+Run **lmfa**{: style="color: blue"} in order to
 
 +  Make atomic densities, which **lmf**{: style="color: blue"} will overlap to make a starting trial density  
 +  Provide a reasonable basis set with parameters **RSMH** and **EH** defining the envelope functions  
@@ -265,20 +267,22 @@ $ lmfa ctrl.pbte                                #use lmfa to make basp file, atm
 $ cp basp0.pbte basp.pbte                       #copy basp0 to recognised basp prefix   
 ~~~
 
-2x. Valence-core partitioning.  Inspect _basp.pbte_{: style="color: green"}.  Note in particular this text connected with the Pb atom:  
+#####  Valence-core partitioning
+
+Inspect _basp.pbte_{: style="color: green"}.  Note in particular this text connected with the Pb atom:  
 
 ~~~
     PZ= 0 0 15.934
 ~~~
 
-**lmfa**{: style="color: blue"} is suggesting that the Pb 5_d_ state is shallow enough
-that it be included in the valence.  Since this state is far from the fermi level, we would
-badly the hilbert space spanned by Pb 6_d_ state we were to use 
-Pb 5_d_ as the valence partial wave (in a linear method you are allowed to choose a single energy around which partial waves are linearized).
+**lmfa**{: style="color: blue"} is suggesting that the Pb 5_d_ state is shallow enough that it be included in the valence.  Since this state
+is far from the fermi level, we would badly cover the hilbert space spanned by Pb 6_d_ state were we to use Pb 5_d_ as the valence partial
+wave (in a linear method you are allowed to choose a single energy to construct the partial wave; it is 
+usually the "valence" state, which is near the Fermi level).
 
-The resolution to this is to use local orbitals, adding another partial wave at the expense of a large basis set.
+The resolution to this is to use local orbitals, adding a partial wave at an energy far removed from the Fermi level.
 The three numbers in **PZ**
-correspond to specifications for local orbitals in the _s_, _p_, and _d_ channels.  zero indicates "no local orbital;"
+correspond to specifications for local orbitals in the _s_, _p_, and _d_ channels.  Zero indicates "no local orbital;"
 there is only a _d_ orbital.  
 
 **15.934** is actually a compound of **10** and the "[continuous principal quantum number](/docs/asaoverview/#boundary-conditions-and-continuous-principal-quantum-numbers)"
@@ -293,7 +297,14 @@ The continuous principal quantum number (**5.934**) specifies the
 condition](/docs/asaoverview/#boundary-conditions-and-continuous-principal-quantum-numbers).
 For core states it has a large fractional part, typically around 0.93
 for shallow cores.  **lmfa**{: style="color: blue"} determined the appropriate value precisely for the atomic potential.
-In the self-consistency cycle the potential will change and **lmfa**{: style="color: blue"} will update this value.
+In the self-consistency cycle the potential will change and **lmf**{: style="color: blue"} will update this value.
+
+**lmfa**{: style="color: blue"} automatically selects the valence-core partitioning; the information is given in _basp.pbte_{: style="color: green"}.
+You can set the partitioning manually by editing this file.  
+
+_Note:_{: style="color: red"} high-lying states can also be included as local orbitals.  
+**lmfa**{: style="color: blue"} will never include these, but they can sometimes be important in _GW_ calculations.
+In contrast to the LDA, unoccupied states also contribute to the potential.
 
 ### _Other Resources_
 
