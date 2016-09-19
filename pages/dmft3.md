@@ -38,6 +38,7 @@ The first variable of the second line (**iatom**=1 in the example) is the index 
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="StructLSCO">{:/}
 
 If the site file is 
+
 ```
   ATOM=La         POS=  0.5000000   0.5000000  -0.4807290
   ATOM=La         POS= -0.5000000  -0.5000000   0.4807290
@@ -47,6 +48,7 @@ If the site file is
   ATOM=O          POS= -0.5000000   0.0000000   0.0000000
   ATOM=O          POS=  0.0000000   0.0000000  -0.6320273
 ```
+
 then **iatom=3**.
 
 {::nomarkdown}</div>{:/}
@@ -70,7 +72,7 @@ The variable **nf0** is the nominal occupancy of the correlated orbitals (e.g. *
 
 Finally **beta**{: style="color: blue"} fixes the inverse temperature in eV$$^{-1}$$.
 
-**Warning:**{: style="color: red"} Don't forget to be consistent when you run **atom_d.py**{: style="color: blue"} (which wants **J** as an input) and **lmfdmft**{: style="color: blue"} (for which the flag **--ldadc=**{: style="color: blue"} has to be consistently defined as **U*(nf0-0.5)-J*(nf0-1)*0.5**).
+**Warning:**{: style="color: red"} Don't forget to be consistent when you run **atom_d.py**{: style="color: blue"} (which wants **J** as an input) and **lmfdmft**{: style="color: blue"} (for which the flag **\-\-ldadc=**{: style="color: blue"} has to be consistently defined as **U*(nf0-0.5)-J*(nf0-1)*0.5**).
 
 ##### _**Setting the number of sampled frequencies (nom and nomD)**_
 The CTQMC solver gives a very accurate description of the self-energy in the low frequency range (for Matsubara's frequencies close to 0), but it becomes too noisy at high frequencies.
@@ -90,9 +92,9 @@ The higher is the number of Monte Carlo steps, the lower the noise in the QMC ca
 The parameter **M** defines the number of MC steps per core. 
 Reliable calculations easily require at least 500 millions of steps in total.
 For instance, if you're running on 10 cores, you can set **M   50000000**.
-You can judge the quality of your sampling by looking at the file *histogranm.dat*{: style="color: green"}. The closer it looks to a Gaussian distribution, the better is the sampling.
+You can judge the quality of your sampling by looking at the file *histogram.dat*{: style="color: green"}. The closer it looks to a Gaussian distribution, the better is the sampling.
 
-**Warning**{: style="color: red"} The variable **M** should be set keeping in mind that the higher it is, the longer the calculation. This is crucial when running on public clusters, where the elapsed time is computed per core. Too high values of **M** may consume your accounted hours very quickly!
+**Warning:**{: style="color: red"} The variable **M** should be set keeping in mind that the higher it is, the longer the calculation. This is crucial when running on public clusters, where the elapsed time is computed per core. Too high values of **M** may consume your accounted hours very quickly!
 Moreover remember that you are supposed to broaden the output at each iteration, so you don't actually need very clean *Sig.out*{: symbol="color: green"}.
 
 During the first **warmup** steps results are not accumulated, as it is normal on Monte Carlo procedures. This gives the 'time' to the algorithm to thermalise before the significative sampling.
@@ -102,7 +104,7 @@ You can set **warmup**=**M**/1000.
 The variable **Nmax** defines the highest order accounted for in the hybrdization expansion. 
 If you have chosen an excessively low values of **Nmax**, the *histogram.dat*{: style="color: green"} file will be cut and $$\text{Im}[\Sigma(i\omega_n)]$$ will look weird, as shown below.
 
-You should chose **Nmax** high enough for the Gaussian distribution of *histogram.dat* to be comfortably displayed. However note that the higher **Nmax** the longer the calculation, so chose values just above the higher Guassian tail.
+You should chose **Nmax** high enough for the Gaussian distribution of *histogram.dat*{: style="color: green"} to be comfortably displayed. However note that the higher **Nmax** the longer the calculation, so chose values just above the higher Guassian tail.
 
 ![Chosing Nmax](https://lordcephei.github.io/assets/img/histogram-cut.png)
 
