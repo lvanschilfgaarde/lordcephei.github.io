@@ -266,8 +266,8 @@ $ cp basp0.pbte basp.pbte                       #copy basp0 to recognised basp p
 ~~~
 
 The Questaal package reads basis information from _basp.pbte_{: style="color: green"},
-but **lmfa**{: style="color: blue"} writes information it generates into _basp0.pbte_{: style="color: green"},
-to avoid overwriting a file you may already have.
+but **lmfa**{: style="color: blue"} writes into _basp0.pbte_{: style="color: green"},
+to avoid overwriting a file you may want to preserve.
 
 #####  Valence-core partitioning and local orbitals
 
@@ -276,9 +276,9 @@ _local orbitals_ that [extend the linear method](/docs/package_overview/#linear-
 Linear methods are reliable only over a limited energy window; certain elements may require an extension
 to the linear approximation for accurate calculations.  This is accomplished with
 [local orbitals](/docs/package_overview/#linear-methods-in-band-theory).
-
-**lmfa**{: style="color: blue"} will automatically look for candidate
-local orbitals, and includes this information in the basp0 file it generates.
+**lmfa**{: style="color: blue"} will automatically look for atomic levels that
+if certain criteria are satisfied it designates as a local orbital,
+and includes this information in the basp0 file.
 
 <div onclick="elm = document.getElementById('localorbitals'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
 Click here for a description of how local orbitals are indicated in the basp file.</div>
@@ -344,13 +344,18 @@ After _basp.pbte_{: style="color: green"} has been modified, you must run **lmfa
 $ lmfa ctrl.pbte                                #use lmfa to make basp file, atm file and to get gmax
 ~~~
 
-This is necessary whenever the valence-core partitioning changes.
+This is necessary whenever the valence-core partitioning changes through the addition or removal of a local orbital.
 
 <div onclick="elm = document.getElementById('lmfaoutput'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
 Click here for a description of lmfa's output.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="lmfaoutput">{:/} 
 
-to be completed
+**lmfa**{: style="color: blue"} loops over each species, generating a 
+self-consistent density from the charges given to it.  States in the
+core are assumed to be filled; you supply the number of charges
+of the valence _s_, _p_, ... orbitals.
+The Pb atom, for example has  atomic configuration of $$s^2p^2d^{10}$$ 
+and **lmfa**{: style="color: blue"}'s printout for Pb begins with:
 
 ~~~
  Species Pb:  Z=82  Qc=68  R=3.044814  Q=0
@@ -363,12 +368,152 @@ to be completed
    55   82.000000   4.614E-05     1283.9616    0.3612E+08     -309.4131   0.30
 ~~~
 
+The first lines show the augmentation radius and radial mesh parameters.  It uses a shifted logarithmic mesh: point _i_ has a radius
+
+$$ r_i = b[exp^{a(i-1)}-1] $$
+
+The **Pl** are the [continuous principal quantum numbers](/docs/asaoverview/#boundary-conditions-and-continuous-principal-quantum-numbers).
+Note that because 5_d_ states are included in the valence through local orbitals, it treats the 5_d_ as valence with 10 electrons.
+
+You can specify the charges **Ql** in the ctrl file; if you do not it has a lookup table of default values for every atom.
+
+The **Ql** and the boundary condition (wave function decays exponentially as <i>r</i>&rarr;&infin;) are sufficient to completely determine
+the charge density.
+
+**lmfa**{: style="color: blue"} starts with a crude guessed density and after 55 iterations converges to the self-consistent one.
+
+Next follow information about the eigenvalues of the valence and core states it finds along with some additional information, such as
+what fraction of the state falls outside the augmentation radius.
+
+~~~
+ valence:      eval       node at      max at       c.t.p.   rho(r>rmt)
+   6s      -0.91143         1.014       1.961       2.814     0.168779
+   6p      -0.27876         1.185       2.643       4.790     0.524423
+   5d      -1.56879         0.523       1.073       2.252     0.007786
+...
+
+ core:        ecore       node at      max at       c.t.p.   rho(r>rmt)
+   1s   -6465.77343         0.000       0.010       0.022     0.000000
+   2s   -1155.91509         0.020       0.057       0.090     0.000000
+...
+   5p      -6.31315         0.486       0.882       1.314     0.000052
+~~~
+
+For Pb 5_d_, **0.007786** electrons spill out: this is on the ragged edge of whether it needs to be included as a local orbital (see Additional Exercises).
+_Note:_{: style="color: red"} for _GW_ calculations this state is too shallow to be treated as a core.
+
+Next **lmfa**{: style="color: blue"} finds parameters related to the local orbitals: what shape of envelope function is needed to fit the
+tail (**Eh** and **Rsm**), the "continuous principal quantum number" **Pnu**, and finally an estimate for plane wave cutoff **Gmax** that will be
+needed for the density mesh.
+
+~~~
+ Fit local orbitals to sm hankels, species Pb, rmt=3.044814
+ l   Rsm    Eh     Q(r>rmt)   Eval      Exact     Pnu     K.E.   fit K.E.  Gmax
+ 2  1.041 -1.083   0.00792  -1.56878  -1.56879   5.934  -0.8111  -0.8111    7.8
+~~~
+
+Next **lmfa**{: style="color: blue"} finds corresponding parameters for the valence envelope functions.
+This constitutes a reasonable (but not optimal) guess for the shape of crystal envelope functions.
+
+~~~
+ Make LMTO basis parms for species Pb to lmxb=3, rmt=3.0448  vbar=0
+ l  it    Rsm       Eh        Eval      Exact     Pnu    Ql   Gmax
+ 0  30   1.803   -0.706    -0.91141  -0.91143    6.89   2.00   3.9
+ 1  18   2.024   -0.160    -0.27825  -0.27876    6.81   2.00   3.6
+ 2   1   2.030+  -0.100+   -0.11512   0.01352    6.24  10.00
+ 3   1   2.030+  -0.100+    0.20219   0.02051    5.18   0.00
+~~~
+
+The basis data for the valence and local orbitals is later written to the basp0 file.
+
+It searches for core states which are shallow enough to be treated as local orbitals,
+using the core energy and charge spillout as criteria.
+
+~~~
+ Find local orbitals which satisfy E > -2 Ry  or  q(r>rmt) > 5e-3
+ l=2  eval=-1.569  Q(r>rmt)=0.0078  PZ=5.934  Use: PZ=15.934
+ l=3  eval=-9.796  Q(r>rmt)=3e-8  PZ=4.971  Use: PZ=0.000
+~~~
+
+We had already specified that the Pb 5_d_ as a local orbital, information obtained from a prior run.  **lmfa**{: style="color: blue"} uses
+this information to appropriately partition the valence and core densities.
+
+As a last step it fits the valence and core densities to a linear combination of smooth Hankel functions.
+This information will be used to overlap free-atomic densities to obtain a trial starting density.
+
 {::nomarkdown}</div>{:/}
 
+After looping over all species **lmfa**{: style="color: blue"} writes basis information to 
+_basp0.pbte_{: style="color: green"}, atomic charge density data to file
+_atm.pbte_{: style="color: green"}, and exits with the following printout:
+
+~~~
+ FREEAT:  estimate HAM_GMAX from RSMH:  GMAX=4.3 (valence)  7.8 (local orbitals)
+~~~
+
+This last piece of information is the G cutoff that needs to be put into the ctrl file.
 
 #####  Self-consistent density
 
-to be completed
+We are almost ready to carry out a self-consistent calculation
+
+~~~
+$ lmf ctrl.pbte
+~~~
+
+If you try it, **lmf**{: style="color: blue"} will stop with this message:
+
+~~~
+ Exit -1 bzmesh: illegal or missing k-mesh
+~~~
+
+We haven't yet specified a k mesh: there is no sensible default value, and
+you must supply it yourself.  In this case a k-mesh of 6&times;6&times;6
+divisions is adequate.   With your text editor change **nkabc=0** in the ctrl file
+to **nkabc=6*, or alternatively assign it on the command line (which is what this tutorial will do)
+
+We also haven't specified the G cutoff for the density mesh.
+**lmfa**{: style="color: blue"} conveniently supplied that information for us,
+based in the shape of envelope functions it found.  In this case the valence
+G cutoff is quite small (**4.3), but the Pb 5_d_ is a much sharper function,
+and requires a larger cutoff (**7.8**).  You must use use the larger of the two.
+
+_Note:_{: style="color: red"} if you change the shape of the envelope funnctions
+you must take care that the G cutoff is still adequate.  This is described in the 
+lmf output below.
+
+Change variable **gmax=0** in the ctrl file, or alternatively add a variable to the command line.
+Now run
+
+~~~
+$ lmf ctrl.pbte -vnkabc=6 -vgmax=7.8
+~~~
+
+**lmf**{: style="color: blue"} should converged to self-consistency in 10 iterations.
+At the end of the file it prints out
+
+~~~
+                ↓        ↓
+ diffe(q)=  0.000000 (0.000005)    tol= 0.000010 (0.000030)   more=F
+c nkabc=6 gmax=7.8 ehf=-55318.1620974 ehk=-55318.1620958
+~~~
+
+The first line prints out the change in Harris-Foulkes energy relative to the prior iteration and some norm of RMS change in the
+(output-input) charge density (see arrows), followed by the tolerances required for self-consistency.
+
+The last line prints out a table of variables you specify on the command line, and total
+energies from the Harris-Foulkes and Kohn-Sham functionals.  Theses are different
+functionals but they should approach the same value at self-consistency.
+The **c** at the beginning of the line indicates that this iteration is self-consistent.
+
+<div onclick="elm = document.getElementById('lmfoutput'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
+Click here for a description of lmf's output.</div>
+{::nomarkdown}<div style="display:none;padding:0px;" id="lmfoutput">{:/} 
+
+
+
+{::nomarkdown}</div>{:/}
+
 
 
 ### _Other Resources_
@@ -390,3 +535,7 @@ M. Methfessel, M. van Schilfgaarde, and R. A. Casali, ``A full-potential LMTO me
 on smooth Hankel functions,'' in _Electronic Structure and Physical Properties of
 Solids: The Uses of the LMTO Method_, Lecture Notes in Physics,
 <b>535</b>, 114-147. H. Dreysse, ed. (Springer-Verlag, Berlin) 2000.
+
+### _Additional exercises_
+
+You can try self-consistent calculations with the Pb 5_d_ in the valence as a local orbital 

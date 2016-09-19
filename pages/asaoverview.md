@@ -147,6 +147,10 @@ This construction (due to Michael Methfessel) is called a "continuous principal 
 
 ### _Generation of the sphere potential and energy moments Q_
 
+_Note:_{: style="color: red"} This is a [special case of the ASA](/docs/asaoverview/#generation-of-the-sphere-potential-and-energy-moments-q)
+ where Q's for each _l_ are needed to specify the 
+
+
 Because the method is a linear one, and because the density is
 (assumed to be) spherical, only three functions can carry charge
 inside a sphere per <i>l</i> channel 
