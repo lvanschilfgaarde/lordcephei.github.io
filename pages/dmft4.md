@@ -27,9 +27,9 @@ Using the charge-only density and self-energy, you have performed a full DMFT lo
 The result will be saved in the *sigm1.ni*{: style="color: green"} file.
 
 ```
-python mk_siginp-freq0.py                                  # interpolate Sig.out.brd to zero frequency
-lmfdmft ni --ldadc=71.85 -job=1 -vbxc0=1                   # embed+symmetrise sig.inp.f0 to sig.inp.f0.emb
-lmfdmft ni --ldadc=71.85 -job=1 -vbxc0=1 --makesigqp       # write sig.inp.f0.emb on quasiparticle basis sigm1.ni
+python mk_siginp-freq0.py                                  # 1. interpolate Sig.out.brd to zero frequency
+lmfdmft ni --ldadc=71.85 -job=1 -vbxc0=1                   # 2. embed+symmetrise sig.inp.f0 to sig.inp.f0.emb
+lmfdmft ni --ldadc=71.85 -job=1 -vbxc0=1 --makesigqp       # 3. write sig.inp.f0.emb on quasiparticle basis sigm1.ni
 ```
   
 ### Adding charge and magnetic channels
