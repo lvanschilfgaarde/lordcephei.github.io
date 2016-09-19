@@ -269,6 +269,11 @@ $ cp basp0.pbte basp.pbte                       #copy basp0 to recognised basp p
 
 #####  Valence-core partitioning
 
+<div onclick="elm = document.getElementById('localorbitals'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
+Click here for a description of local orbitals.</div>
+{::nomarkdown}<div style="display:none;padding:0px;" id="localorbitals">{:/} 
+
+
 Inspect _basp.pbte_{: style="color: green"}.  Note in particular this text connected with the Pb atom:  
 
 ~~~
@@ -307,6 +312,8 @@ Fermi level. In the LDA they are rarely needed anad **lmfa**{: style="color: blu
 style="color: green"}.  But they can sometimes be important in _GW_ calculations.  In contrast to the LDA, unoccupied states also contribute
 to the potential.
 
+{::nomarkdown}</div>{:/}
+
 #####  Free atomic density
 
 After _basp.pbte_{: style="color: green"} has been modified, you must run **lmfa**{: style="color: blue"} a second time
@@ -322,6 +329,17 @@ It is not necessary for the tutorial, but the output of **lmfa**{: style="color:
 <div onclick="elm = document.getElementById('lmfaoutput'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
 Click here for a description of lmfa output.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="lmfaoutput">{:/} 
+
+~~~
+ Species Pb:  Z=82  Qc=68  R=3.044814  Q=0
+ mesh:   rmt=3.044814  rmax=47.629088  a=0.025  nr=497  nr(rmax)=607
+  Pl=  6.5     6.5     5.5     5.5     5.5    
+  Ql=  2.0     2.0     10.0    0.0     0.0    
+
+  iter     qint         drho          vh0          rho0          vsum     beta
+    1   82.000000   2.667E+04      410.0000    0.4078E+03     -164.7879   0.30
+   55   82.000000   4.614E-05     1283.9616    0.3612E+08     -309.4131   0.30
+~~~
 
 
 
