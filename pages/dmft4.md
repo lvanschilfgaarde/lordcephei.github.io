@@ -19,7 +19,7 @@ To extract the charge components, things have already been set up in the [first 
 ### Extracting the static spin-flip component
 Using the charge-only density and self-energy, you have performed a full DMFT loop whith **HAM_NSPIN=2** (see variables and line command used in the [second tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft2)). Once converged, you have to extract the static spin-flip component from your last _Sig.out.brd_{: style="color: green"}.
 
-1. You interpolates _Sig.inp.out.brd_{: style="color: green"} to zero frequency. You can use the program **mk_siginp-freq0.py**{: style="color: blue"} downloadable at [this link](???). The ouytput file _sif.inp.f0_{: style="color: green"} is the static limit of the impurity self-energy.
+1. You interpolates _Sig.inp.out.brd_{: style="color: green"} to zero frequency. You can use the program **mk_siginp-freq0.py**{: style="color: blue"} downloadable at [this link](https://lordcephei.github.io/assets/download/inputfiles/mk_siginp-freq0.py). The ouytput file _sif.inp.f0_{: style="color: green"} is the static limit of the impurity self-energy.
 2. In the same folder, you can launch **lmfdmft**{: style="color: blue"} using exactly the same input (files and flags) as your last run. The program will automatically find _sig.inp.f0_{: style="color: green"}, it will embed it and symmetrise it before exiting. The output *sig.inp.f0.emb*{: style="color: green"} is a text file.
 3. Still in the same folder you can run again **lmfdmft**{: style="color: blue"}, adding **- -makesigqp**{: style="color: blue"} to the command line. This will
   * subtract the average self-energy component to the whole matrix hence keeping only the spin-flip part and
