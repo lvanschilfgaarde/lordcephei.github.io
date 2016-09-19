@@ -261,8 +261,8 @@ In brief you carry out the following steps:
 +  Supply an automatic estimate for the mesh density plane wave cutoff **GMAX**.
 
 ~~~
-    $ lmfa ctrl.pbte                                #use lmfa to make basp file, atm file and to get gmax
-    $ cp basp0.pbte basp.pbte                       #copy basp0 to recognised basp prefix   
+$ lmfa ctrl.pbte                                #use lmfa to make basp file, atm file and to get gmax
+$ cp basp0.pbte basp.pbte                       #copy basp0 to recognised basp prefix   
 ~~~
 
 2. Valence-core partitioning.  Inspect _basp.pbte_{: style="color: green"}.  Note in particular this text connected with the Pb atom:  
@@ -272,16 +272,27 @@ In brief you carry out the following steps:
 ~~~
 
 **lmfa**{: style="color: blue"} is suggesting that the Pb 5_d_ state is shallow enough
-that it be included in the valence as a local orbital.  The three numbers
-correspond to specifications for _s_, _p_, and _d_ states.  zero indicates "no local orbital;"
+that it be included in the valence.  Since this state is far from the fermi level, we would
+badly the hilbert space spanned by Pb 6_d_ state we were to use 
+Pb 5_d_ as the valence partial wave (in a linear method you are allowed to choose a single energy around which partial waves are linearized).
+
+The resolution to this is to use local orbitals, adding another partial wave at the expense of a large basis set.
+The three numbers in **PZ**
+correspond to specifications for local orbitals in the _s_, _p_, and _d_ channels.  zero indicates "no local orbital;"
 there is only a _d_ orbital.  
-The 10's digit in **15.934** isn't required, but it tells **lmf**{: style="color: blue"}
+
+**15.934** is actually a compound of **10** and the "[continuous principal quantum number](/docs/asaoverview/#boundary-conditions-and-continuous-principal-quantum-numbers)"
+**5.934**. The 10's digit tells **lmf**{: style="color: blue"}
 to use an "enhanced" local orbital as opposed to the usual variety found in most
 density-functional codes.  Enhanced orbitals append a tail so that the
-density from the orbital spills into the interstitial.  It is more accurate, and there is no advantage to using the traditional kind.
-Subtracting the **10**, the remainder (**5.934**) specifies the principal quantum number, and the boundary condition.
-It is called the [continuous principal quantum number](/docs/asaoverview/#boundary-conditions-and-continuous-principal-quantum-numbers)
-and for core states has a large fractional part.
+density from the orbital spills into the interstitial. 
+You can specify a "traditional" local orbital by omitting the 10, but this kind is more accurate, and there is no advantage to doing so.
+
+The continuous principal quantum number (**5.934**) specifies the
+[number of nodes and boundary
+condition](/docs/asaoverview/#boundary-conditions-and-continuous-principal-quantum-numbers).
+or core states it has a large fractional part, typically around 0.93
+for shallow cores.
 
 ### _Other Resources_
 
