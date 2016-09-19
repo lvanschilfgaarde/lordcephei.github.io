@@ -58,7 +58,7 @@ cp indmfl_input lmfinput/indmfl.ni                     # copy the indmfl file ha
 cp atom_d.py broad_sig.f90 Trans.dat PARAMS qmcinput/  # copy files and programs relevant for CTQMC
 ```
 
-##### Prepare the *ctrl*{: style="color: green"} file
+* _**Prepare the *ctrl*{: style="color: green"} file**_
 
 You need to add some tokens to *ctrl.ni*{: style="color: green"}. 
 
@@ -126,7 +126,7 @@ You can see how it should look like by clicking on the dropdown box.
 ```
 {::nomarkdown}</div>{:/}
 
-##### Prepare spin-averaged self-energy
+*  _**Prepare spin-averaged self-energy**_
 Although you have done a spin-polarized calculation, the starting point of the DMFT loop has to be non-magnetic. To do that you have to produce a spin-averaged *sigm.ni*{: style="color: green"}. 
 
 ```
@@ -136,7 +136,7 @@ mv sigm2.ni sigm.ni                         # rename sigm2: you will work with t
 cd ..
 ```
 
-##### Compile **broad_sig.f90**{: style="color: blue"}
+* _**Compile the broadening program**_
 The statistical noise of Quantum Monte Carlo calculations can be source of instabilities. Because of this, you need to broad the output of the **ctqmc**{: style="color: blue"} software.
 From the link above you should have downloaded **broad_sig.f90**{: style="color: blue"} written with this purpose, however you can use whatever method you prefer (but be careful in not spoiling the low- and the high-frequency limits).
 
