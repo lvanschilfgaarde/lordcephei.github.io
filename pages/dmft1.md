@@ -34,15 +34,15 @@ To run a full QSGW calculation follow the commands below
 ```
 blm ni --gw --wsitex
 mv actrl.ni ctrl.ni
-vi ctrl.ni                       # edit control file assigning nit=20, nsp=2, nkabc=10, gmax=8.7 among the % const section
+vi ctrl.ni                       # assign nit=20, nsp=2, nkabc=10, gmax=8.7 among the % const section
 lmfa ni 
 mv basp0.ni basp.ni
 lmf ni                           # At the end of this run (10 iterations, few minutes) mmom=.6442223 ; ehf=-3036.6239355
-echo '-1' | lmfgwd ni -vnsp=2
+echo '-1' | lmfgwd ni 
 lmgwsc --wt --openmp=20 --code2 --sym -maxit=15 --metal --getsigp --tol=2e-5  ni
 ```
-The value of the parameters chose are a pretty low but they can provide a fast enough starting point for the QSGW+DMFT loop. 
-The total time required by the calculation above is ~10 hours.
+The value of the parameters are a pretty low on purpose to run a QSGW loop in a reasonable time. 
+Still, on twenty cores the total computational time is around 10 hours.
 
 {::nomarkdown}</div>{:/}
 
@@ -56,23 +56,23 @@ Let *qsgw*{: style="color: green"} the folder with the QSGW calculation and *dmf
 
 ```
 mkdir lmfinput qmcinput                                             # input folders
-cp qsgw/{ctrl,basp,site,rst}.ni lmfinput                            # copy relevant QSGW output
+cp qsgw/{ctrl,basp,site,rst}.ni lmfinput                            # copy relevant QSGW output files
 cp qsgw/sigm.ni lmfinput/sigm_old                                   # you will actually need a spin-averaged version of this file
-cp dmft-input/indmfl_input lmfinput/indmfl.ni                       # copy the indmfl file has to have the right extension 
-cp dmft-input/{atom_d.py,broad_sig.f90,Trans.dat,PARAMS} qmcinput/  # copy files and programs relevant for CTQMC
+cp dmft-input/indmfl_input lmfinput/indmfl.ni                       # the indmfl file has to have the right extension 
+cp dmft-input/{atom_d.py,broad_sig.f90,Trans.dat,PARAMS} qmcinput/  # copy files and programs for CTQMC runs
 ```
 
-##### _**Edit the ctrl file:**_ 
+##### **Edit the ctrl file** 
 You need to add some tokens to *ctrl.ni*{: style="color: green"}. 
 
 ```
 cd lmfinput
-echo 'DMFT    PROJ=2 NLOHI=1,8 BETA=50 NOMEGA=1999 KNORM=0' >> ctrl.ni  # add a line at the end of the ctrl file 
+echo 'DMFT    PROJ=2 NLOHI=1,8 BETA=50 NOMEGA=1999 KNORM=0' >> ctrl.ni  # add tokens at the end of ctrl.ni
 ```
 
-The token **DMFT_NLOHI** defines the projection window in band index, **DMFT_BETA** is the inverse temperature in eV$$^{-1}$$ and **DMFT_NOMEGA** is the number of Matsubara frequencies in the mesh. Some detail of the projection procedure are controlled by **DMFT_PROJ** and **DMFT_KNORM**, but you are not meant to change their value.
+The token **DMFT_NLOHI** defines the projection window in band index, **DMFT_BETA** is the inverse temperature in eV$$^{-1}$$ and **DMFT_NOMEGA** is the number of Matsubara frequencies in the mesh. Some details of the projection procedure are controlled by **DMFT_PROJ** and **DMFT_KNORM**, but you are not meant to change their value.
 
-Moreover you should add **% const bxc0=0** and **BXC0={bxc0}** in the **HAM** section of the *ctrl*{: style="color: green"} file.
+Moreover we recommend to add **% const bxc0=0** and **BXC0={bxc0}** in the **HAM** section of *ctrl.ni*{: style="color: green"} file.
 
 You can see how it should look like by clicking on the dropdown box.
 <div onclick="elm = document.getElementById('ctrl-4dmft'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Example of ctrl.ni - Click to show.</button></div>
@@ -129,7 +129,7 @@ You can see how it should look like by clicking on the dropdown box.
 ```
 {::nomarkdown}</div>{:/}
 
-#####  _**Prepare spin-averaged self-energy:**_
+#####  **Prepare spin-averaged self-energy**
 Although you have done a spin-polarized calculation, the starting point of the DMFT loop has to be non-magnetic. To do that you have to produce a spin-averaged *sigm.ni*{: style="color: green"}. 
 
 ```
@@ -138,11 +138,13 @@ lmf --rsig~spinav --wsig -vbxc0=1 ni > log  # read sigm, make spin-average, writ
 mv sigm2.ni sigm.ni                         # rename sigm2: you will work with this spin-averaged sigm 
 cd ..
 ```
+In the command above the flat **-vbxc0**{: style="color: blue"} sets the variable **HAM_BXC0** to **TRUE**, telling **lmf**{: style="color: blue"} to construct $$V_{\rm xc}^{\rm LDA}$$ from the spin-averaged charge density. For more details on this flag refer to the [fourth tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft4).
 
-##### _**Compile the broadening program:**_
-The statistical noise of Quantum Monte Carlo calculations can be source of instabilities. Because of this, you need to broad the output of the **ctqmc**{: style="color: blue"} software.
+##### **Compile the broadening program**
+The statistical noise of Quantum Monte Carlo calculations can be source of instabilities. Because of this, you need to broad the output of the **ctqmc**{: style="color: blue"} software at the end of each iteration.
 
-You should have already downloaded *broad_sig.f90*{: style="color: green"}, however you can use whatever method you prefer (but be careful in not spoiling the low- and the high-frequency limits).
+We provide *broad_sig.f90*{: style="color: green"} with this purpose which is part of the *dmft-input.tar.gz*{: style="color: green"} file you should have downloaded.
+However you can use whatever method you prefer (but be careful in not spoiling the low- and the high-frequency limits).
 
 ```
 cd qmcinput
@@ -152,7 +154,7 @@ cd ..
 The tutorial will continue assuming you are using **broad_sig.x**{: style="color: blue"}.
 
 ### Prepare a vanishing impurity self-energy 
-Unless you want to rely on some previous DMFT iteration, you start the loop from scratch by creating an empty impurity self-energy. 
+You start the loop from scratch by creating an empty impurity self-energy: 
 
 ```
 mkdir siginp0
@@ -162,6 +164,8 @@ lmfdmft ni --ldadc=71.85 -job=1  > log
 ```
 
 You can check that a file called *sig.inp*{: style="color: green"} has been created. It is formatted with the first column being the Matsubara frequencies (in eV) and then 0.0 repeated for a number of columns equal to twice the number of _m_ channels (e.g. ten columns for d-type impurity: five pairs of real and imaginary parts).
+
+Of course, if you want you can start from other *sig.inp* files (e.g. from a previously converged DMFT loop).
 
 
 You are now ready to start the DMFT loop, following the link to the [next tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft2).
