@@ -267,14 +267,14 @@ $ lmfa ctrl.pbte                                #use lmfa to make basp file, atm
 $ cp basp0.pbte basp.pbte                       #copy basp0 to recognised basp prefix   
 ~~~
 
-The Questaal package reads basis information from _basp.pbte__{: style="color: green"},
-but **lmfa**{: style="color: blue"} writes information it generates into _basp0.pbte__{: style="color: green"},
-to avoid overwriting a file you already may have.
+The Questaal package reads basis information from _basp.pbte_{: style="color: green"},
+but **lmfa**{: style="color: blue"} writes information it generates into _basp0.pbte_{: style="color: green"},
+to avoid overwriting a file you may already have.
 
 #####  Valence-core partitioning and local orbitals
 
 Part of **lmfa**{: style="color: blue"}'s function is to identify
-_local orbitals_ that extend the [linear method](/docs/package_overview/#linear-methods-in-band-theory).
+_local orbitals_ that [extend the linear method](/docs/package_overview/#linear-methods-in-band-theory).
 By default, **lmf**{: style="color: blue"} uses a [single partial wave](/docs/package_overview/#linear-methods-in-band-theory) (and its energy derivative)
 for each _l_ in the augmentation spheres.
 

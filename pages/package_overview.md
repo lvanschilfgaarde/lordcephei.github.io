@@ -81,12 +81,12 @@ theory](http://journals.aps.org/pr/abstract/10.1103/PhysRev.136.B864) by Hohenbe
 modern electronic structure theory in condensed matter.
 
 <div onclick="elm = document.getElementById('linear'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click 
-here for a brief description of the linear approximation and its extension by local orbitals.</div>
+here for a brief description of the linear method and its extension using local orbitals.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="linear">{:/} 
 
 The linear approximation rests on the fact that a partial wave
 $$\phi_l(\varepsilon,r)$$ for an atom centered at the origin varies
-slowly with &epsilon;.  $$\phi_l(\varepsilon,r)$$ is expanded in a Taylor series
+slowly with <i>&epsilon;</i>.  $$\phi_l(\varepsilon,r)$$ is expanded in a Taylor series
 about a linearization energy $$\varepsilon_\nu$$
 
 $$
