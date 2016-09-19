@@ -7,7 +7,7 @@ header: no
 ---
 
 <hr style="height:5pt; visibility:hidden;" />
-# The DMFT loop
+# Running the DMFT loop
 
 
 <hr style="height:5pt; visibility:hidden;" />
