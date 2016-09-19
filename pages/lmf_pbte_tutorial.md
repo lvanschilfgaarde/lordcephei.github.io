@@ -302,9 +302,35 @@ In the self-consistency cycle the potential will change and **lmf**{: style="col
 **lmfa**{: style="color: blue"} automatically selects the valence-core partitioning; the information is given in _basp.pbte_{: style="color: green"}.
 You can set the partitioning manually by editing this file.  
 
-_Note:_{: style="color: red"} high-lying states can also be included as local orbitals.  
-**lmfa**{: style="color: blue"} will never include these, but they can sometimes be important in _GW_ calculations.
-In contrast to the LDA, unoccupied states also contribute to the potential.
+_Note:_{: style="color: red"} high-lying states can also be included as local orbitals; they improve on the hilbert space far above the
+Fermi level. In the LDA they are rarely needed anad **lmfa**{: style="color: blue"} will never consider including them in the _basp.pbte_{:
+style="color: green"}.  But they can sometimes be important in _GW_ calculations.  In contrast to the LDA, unoccupied states also contribute
+to the potential.
+
+#####  Free atomic density
+
+After _basp.pbte_{: style="color: green"} has been modified, you must run **lmfa**{: style="color: blue"} a second time
+
+~~~
+$ lmfa ctrl.pbte                                #use lmfa to make basp file, atm file and to get gmax
+~~~
+
+This is necessary whenever the valence-core partitioning changes.
+
+It is not necessary for the tutorial, but the output of **lmfa**{: style="color: blue"} provides some useful information.  
+
+<div onclick="elm = document.getElementById('lmfaoutput'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
+Click here for a description of lmfa output.</div>
+{::nomarkdown}<div style="display:none;padding:0px;" id="lmfaoutput">{:/} 
+
+
+
+{::nomarkdown}</div>{:/}
+
+
+#####  Self-consistent density
+
+
 
 ### _Other Resources_
 
