@@ -147,10 +147,6 @@ This construction (due to Michael Methfessel) is called a "continuous principal 
 
 ### _Generation of the sphere potential and energy moments Q_
 
-_Note:_{: style="color: red"} This is a [special case of the ASA](/docs/asaoverview/#generation-of-the-sphere-potential-and-energy-moments-q)
- where Q's for each _l_ are needed to specify the 
-
-
 Because the method is a linear one, and because the density is
 (assumed to be) spherical, only three functions can carry charge
 inside a sphere per <i>l</i> channel 
@@ -165,6 +161,13 @@ conditions at the surface of the sphere.  In some sense these numbers
 are ``fundamental'' to a sphere; the atomic program will generate a
 self-consistent potential for a specified set of <i>Q</i><sub>0</sub>,
 <i>Q</i><sub>1</sub>, <i>Q</i><sub>2</sub> and boundary conditions.
+
+_Note:_{: style="color: red"} This is a generalization of the free-atom 
+case where the atomic density is determined by the zeroth moment
+$$Q_0$$ in each _l_ channel and the boundary condition
+that (<i>d&phi;<sub>l</sub></i> decay as <i>r</i>&rarr;&infin;).
+Only one moment is required there because the atomic level is sharp,
+having no energy dispersion.
 
 <A name="logderivative"></A>
 <p>

@@ -510,6 +510,52 @@ The **c** at the beginning of the line indicates that this iteration is self-con
 Click here for a description of lmf's output.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="lmfoutput">{:/} 
 
+**lmf**{: style="color: blue"} begins by telling you that it is reading
+basis information (envelope function parmeters, _P_ parameters and information
+about local orbitals) from _basp.pbte_{: style="color: green"}.
+
+~~~
+ rdctrl: reading basis parameters from file basp
+ ioorbp: read species Pb        RSMH,EH RSMH2,EH2 P PZ
+ ioorbp: read species Te        RSMH,EH RSMH2,EH2 P
+         reset nkaph from 1 to 3
+~~~
+
+You can also supply this information in the ctrl file.
+If both are present **lmf**{: style="color: blue"} decides on which to
+use depending on settings in **EXPRESS_autobas**.
+
+To see what the tokens in **autobas** do, invoke
+
+    $ lmf --input
+
+and search for autobas in the output
+
+Next follows some header information
+
+~~~
+ LMF:      nbas = 2  nspec = 2  vn 7.11.i  verb 35
+ special:  forces
+ pot:      XC:BH
+ float:    float P LDA-style
+ autoread: mto basis(4), pz(1), pnu(1)
+ bz:       metal(5), tetra, invit 
+~~~
+
+that presents in a condensed synopsis form some key settings that are used in this calculation.
+
+Next follow information about the lattice vectors and settings used in Ewald summations
+
+~~~
+                Plat                                  Qlat
+   0.000000   0.500000   0.500000       -1.000000   1.000000   1.000000
+   0.500000   0.000000   0.500000        1.000000  -1.000000   1.000000
+   0.500000   0.500000   0.000000        1.000000   1.000000  -1.000000
+   alat = 12.147006  Cell vol = 448.071898
+
+ LATTC:  as= 2.000   tol=1.00E-08   alat=12.14701   awald= 0.261
+         r1=  1.807   nkd= 87       q1=  5.403   nkg= 169
+~~~
 
 
 {::nomarkdown}</div>{:/}
