@@ -70,7 +70,7 @@ the partial waves to the envelopes.
 #### _Linear Methods in Band Theory_
 
 Nearly all modern electronic structure methods make use of the
-_linear_ approximation pioneered by O.K. Andersen, where partial waves
+_linear_ approximation pioneered by O.K. Andersen.  Partial waves
 are replaced by a wave at some "linearization energy" and its energy
 derivative.  This is explained in detail in Richard Martin's book,
 _Electronic Structure_.
@@ -83,13 +83,31 @@ The linear approximation rests on the fact that a partial wave
 $$\phi_l(\varepsilon,r)$$ for an atom centered at the origin varies
 slowly with &epsilon;.  $$\phi_l(\varepsilon,r)$$ is expanded in a Taylor series
 about a linearization energy $$\varepsilon_\nu$$
+
 $$
 \phi_l(\varepsilon,r) \approx \phi_l(\varepsilon_\nu,r) +
 (\varepsilon-\varepsilon_\nu)\dot\phi_l(\varepsilon_\nu,r)
 $$
+
 _Note:_{: style="color: red"} in practice the vast majority of methods construct the partial waves
 from the spherical part of the potential, so that _l_ is a good quantum number.
 Then each <i>&phi;<sub>l</sub></i> can be integrated independently of the others.
+
+The linear approximation is usually quite accurate over an energy window that a valence partial wave is "active" (a few
+Ry for typical _s_ and _p_ states, a few eV for _d_ states of the transition metals).
+
+Linearization greatly simplifies the secular matrix : the eigenvalue problem becomes a linear algebraic elgenvalue
+problem, which greatly simplifies practical solutions of the Schrodinger equation.  Some elements possess partial waves
+of very different energies that are both relevant.  The classic examples of this are Ga and In: both 3_d_ (4_d_) and
+4_d_ (5_d_) states are relevant.
+
+To obtain accurate calculations, a third partial wave must included (these partial waves are called
+<i>&phi;<sub>z</sub></i> in the Questaal suite).
+
+In practice these additional partial waves are added by turning them into _local orbitals_ which are confined to the
+augmentation sphere.  This ensures that the eigenvalue problem remains a linear one, at the expense of an increase in
+the rank of the hamiltonian.
+
 
 
 {::nomarkdown}</div>{:/}
