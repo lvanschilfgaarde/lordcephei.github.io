@@ -74,14 +74,14 @@ method](http://dx.doi.org/10.1103/PhysRevB.12.3060) pioneered by O.K. Andersen. 
 expanding them in a Taylor series to first order about some "linearization energy."  This is explained in detail in
 Richard Martin's book, _Electronic Structure_.
 
-The importance of the linear method to electronic structure cannot be overstated.  It, together with the attempt by
-Slater to approximate the difficult Fock exchange with a functional of the density (the X-&alpha; method), which was
+The importance of the linear method to electronic structure cannot be overstated.  It, together with
+Slater's X-&alpha; method to approximate the difficult Fock exchange with a simpler functional of the density, and which was
 subsequently formalized into rigorous [density-functional
 theory](http://journals.aps.org/pr/abstract/10.1103/PhysRev.136.B864) by Hohenberg and Kohn, forms the basis for most of
 modern electronic structure theory in condensed matter.
 
 <div onclick="elm = document.getElementById('linear'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click 
-here for a brief description of the linear approximation and its extension with local orbitals.</div>
+here for a brief description of the linear approximation and its extension by local orbitals.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="linear">{:/} 
 
 The linear approximation rests on the fact that a partial wave
@@ -99,9 +99,9 @@ from the spherical part of the potential, so that _l_ is a good quantum number.
 Then each <i>&phi;<sub>l</sub></i> can be integrated independently of the others.
 Matrix elements of the partial waves are calculated in the full, nonspherical potential.
 
-The linear approximation is usually quite accurate over an energy window that a valence partial wave is "active" (a few
+The linear approximation is usually quite accurate over an energy window where the valence partial wave is "active" (1 or a few
 Ry for typical _s_ and _p_ states, a few eV for _d_ states of the transition metals).
-Linearization greatly simplifies the secular matrix : the eigenvalue problem becomes a linear algebraic elgenvalue
+Linearization greatly simplifies the secular matrix : the eigenvalue problem becomes a linear algebraic eigenvalue
 problem, which greatly simplifies practical solutions of the Schrodinger equation.  
 
 Some elements possess partial waves
@@ -109,13 +109,13 @@ of very different energies that are both relevant.  The classic examples of this
 4_d_ (5_d_) states are relevant.
 To obtain accurate calculations a third partial wave must included.
 In practice additional partial waves are incorporated by turning them into _local orbitals_ which are confined to the
-augmentation sphere.  This ensures that the eigenvalue problem remains a linear one, at the expense of an increase in
-the rank of the hamiltonian.
-
-In practice this is accomplished by adding a judicious amount of $$\phi_l(\varepsilon_\nu,r)$$ and
+augmentation sphere.  It is accomplished by adding a judicious amount of $$\phi_l(\varepsilon_\nu,r)$$ and
 $$\dot\phi_l(\varepsilon_\nu,r)$$ to the third partial wave, so that its value and slope vanish at the augmentation
 radius and to not spill out into the interstitial.  These modified waves are called <i>&phi;<sub>z</sub></i> in the
 Questaal suite.
+
+Extension of the linear method through local orbitals ensures that the eigenvalue problem remains a linear one, at the
+expense of an increase in the rank of the hamiltonian.
 
 
 {::nomarkdown}</div>{:/}
@@ -129,7 +129,7 @@ The primary code in the density-functional package (**lmf**{: style="color: blue
 envelope functions. They are convolutions of a Hankel and Gaussian functions centred at the nucleus.  Thus 
 in contrast to ordinary Hankel functions (the envelope functions of the LMTO method), which are singular at the origin,
 they resemble Gaussian functions for small _r_ and are smooth there.  For large _r_ they behave like ordinary Hankel functions
-and are better approxiations to the wave function than Gaussian orbitals are.  The mathematical properties of
+and are better approximations to the wave function than Gaussian orbitals are.  The mathematical properties of
 these functions are described in some detail in [this paper](http://scitation.aip.org/content/aip/journal/jmp/39/6/10.1063/1.532437)
 
 Such a basis has significant advantages --- basis sets are much smaller for a given level of precision, but they are
@@ -144,7 +144,7 @@ _____________________________________________________________
 ### _Augmentation_
 
 **lmf**{: style="color: blue"} carries out augmentation in a manner different than standard augmented wave methods.  It
-somewhat resembles the PAW method, though in the limit of large angular momentum cutoff it has exactly the same behavior
+somewhat resembles the PAW method, though in the limit of large angular momentum cutoff it has exactly the same behaviour
 that standard augmented-wave methods do.  The advantage to the current scheme is that it converges more rapidly with
 angular momentum cutoff.
 
