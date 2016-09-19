@@ -69,47 +69,49 @@ cp itX_lmfrun/eimp1.ni  itX_qmcrun/Eimp.inp      # copy impurity levels from lmf
 ```
 
 Now there are some manual operations to do:
-* Copy the forth line of *Eimp.inp*{: style="color: green"} in the *PARAMS*{: style="color: green"} file (in such a way to have one line like **Ed [ ... ]**. 
-*Note:*{: style="color: red"} be careful in erasing the '=' sign before the brakets!
+
+* Copy the forth line of *Eimp.inp*{: style="color: green"} in the *PARAMS*{: style="color: green"} file (in such a way to have one line like **Ed [ ... ]**. *Note:*{: style="color: red"} be careful in erasing the '=' sign before the brakets!
+
 * Change accordingly the **mu** variable in *PARAMS*{: style="color: green"}: it has to be the first value of the **Ed** string with opposite sign.
+
 * Add correct values of **U**, **J**, **nf0** (equivalent of n) and **beta** in *PARAMS*{: style="color: green"}.  The *PARAMS*{: style="color: green"} file at the end should look like that one in the dropdown box.
 
-<div onclick="elm = document.getElementById('ParamsDmft1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Example PARAMS - Click to show.</button></div>
-{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="ParamsDmft1">{:/}
+  <div onclick="elm = document.getElementById('ParamsDmft1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Example PARAMS - Click to show.</button></div>
+  {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="ParamsDmft1">{:/}
 
-```
-Ntau  1000  
-OffDiagonal  real
-Sig  Sig.out
-Naver  100000000
-SampleGtau  1000
-Gf  Gf.out
-Delta  Delta.inp
-cix  actqmc.cix
-Nmax  950         # Maximum perturbation order allowed
-nom  150          # Number of Matsubara frequency points sampled
-exe  ctqmc        # Name of the executable
-tsample  50       # How often to record measurements
-nomD  150         # Number of Matsubara frequency points sampled
-Ed [ ??????????? ]     # Impurity levels updated by bash script
-M  20000000.0     # Total number of Monte Carlo steps per core
-Ncout  200000     # How often to print out info
-PChangeOrder  0.9         # Ratio between trial steps: add-remove-a-kink / move-a-kink
-CoulombF  'Ising'         # Ising Coulomb interaction
-mu   ????????  # QMC chemical potential by bash script
-warmup  500000            # Warmup number of QMC steps
-GlobalFlip  200000        # How often to try a global flip
-OCA_G  False      # No OCA diagrams being computed - for speed
-sderiv  0.02      # Maximum derivative mismatch accepted for tail concatenation
-aom  3            # Number of frequency points used to determin the value of sigma at nom
-HB2  False        # Should we compute self-energy with the Bullas trick?
-U    10.0
-J    0.9
-nf0  8.0
-beta 50.0
-```
+  ```
+  Ntau  1000  
+  OffDiagonal  real
+  Sig  Sig.out
+  Naver  100000000
+  SampleGtau  1000
+  Gf  Gf.out
+  Delta  Delta.inp
+  cix  actqmc.cix
+  Nmax  950         # Maximum perturbation order allowed
+  nom  150          # Number of Matsubara frequency points sampled
+  exe  ctqmc        # Name of the executable
+  tsample  50       # How often to record measurements
+  nomD  150         # Number of Matsubara frequency points sampled
+  Ed [ ??????????? ]     # Impurity levels updated by bash script
+  M  20000000.0     # Total number of Monte Carlo steps per core
+  Ncout  200000     # How often to print out info
+  PChangeOrder  0.9         # Ratio between trial steps: add-remove-a-kink / move-a-kink
+  CoulombF  'Ising'         # Ising Coulomb interaction
+  mu   ????????  # QMC chemical potential by bash script
+  warmup  500000            # Warmup number of QMC steps
+  GlobalFlip  200000        # How often to try a global flip
+  OCA_G  False      # No OCA diagrams being computed - for speed
+  sderiv  0.02      # Maximum derivative mismatch accepted for tail concatenation
+  aom  3            # Number of frequency points used to determin the value of sigma at nom
+  HB2  False        # Should we compute self-energy with the Bullas trick?
+  U    10.0
+  J    0.9
+  nf0  8.0
+  beta 50.0
+  ```
 
-{::nomarkdown}</div>{:/}
+  {::nomarkdown}</div>{:/}
 
 * Run **atom_d.py**{: style="color: blue"} using the command
 
@@ -119,28 +121,28 @@ beta 50.0
 
   where the variable **$EIMP** is a copy of the third line of *Eimp.inp*{: style="color: green"}. More details on this part are on the dropdown box.
 
-<div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Example Eimp.inp - Click to show.</button></div>
-{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
+  <div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Example Eimp.inp - Click to show.</button></div>
+  {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
 
-The command to run in this case will be 
+  The command to run in this case will be 
 
-```
-python atom_d.py J=0.9 l=2 cx=0.0 OCA_G=False qatom=0 "CoulombF='Ising'" HB2=False "Eimp=[  ???????????????? ]"
-```
+  ```
+  python atom_d.py J=0.9 l=2 cx=0.0 OCA_G=False qatom=0 "CoulombF='Ising'" HB2=False "Eimp=[  ???????????????? ]"
+  ```
 
-**Warning:**{: style="color: red"} Pay attention to quotes and double quotes!
+  **Warning:**{: style="color: red"} Pay attention to quotes and double quotes!
 
-Except for the value of **Eimp** that will need to be changed at each iteration accordingly to the previous **lmfdmft**{: style="color: blue"} run, all the other parameters do not need to be modified.
+  Except for the value of **Eimp** that will need to be changed at each iteration accordingly to the previous **lmfdmft**{: style="color: blue"} run, all the other parameters do not need to be modified.
 
-*Note:*{: style="color: red"} If you are interesting in solving the problem with different values of the Hund's coupling $$J$$, change accordingly the first argument **J=xxxx**, but remember to be consistent also in the *PARAMS*{: style="color: green"} and in the calculation of the double counting $$Edc$$.
+  *Note:*{: style="color: red"} If you are interesting in solving the problem with different values of the Hund's coupling $$J$$, change accordingly the first argument **J=xxxx**, but remember to be consistent also in the *PARAMS*{: style="color: green"} and in the calculation of the double counting $$Edc$$.
 
-{::nomarkdown}</div>{:/}
+  {::nomarkdown}</div>{:/}
 
   Running **atom_d.py**{: style="color: blue"} generates a file called *actqmc.cix*{: style="color: green"} used by the ctqmc solver.
 
 * Run **ctqmc**{: style="color: blue"} using a submission script on, let's say, 20 cores. Important parameters (that may need to be adjusted during the loop) are **nom**, **Nmax** and **M**. Their explanation is reported as a comment in the *PARAMS*{: style="color: green"} file itself but further information is available in the [next tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft3). For this tutorial, you can set them to **nom 150**, **Nmax 950** and  **M 20000000** (see example in the dropdown box above).
 
-* Broad the output self-energy. Once the **ctqmc**{: style="color: blue"} run is over, you must broad *Sig.out*{: style="color: green"} using the program **brad_sig.x**{: sytle="color: blue"}.
+* Broad the output self-energy. Once the **ctqmc**{: style="color: blue"} run is over, you must broad *Sig.out*{: style="color: green"} using the program **brad_sig.x**{: style="color: blue"}.
  
   ``` 
   cd itX_qmcrun
