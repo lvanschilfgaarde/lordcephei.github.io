@@ -77,7 +77,7 @@ _Electronic Structure_.
 
 <div onclick="elm = document.getElementById('linear'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click 
 here for a description of the linear approximation.</div>
-{::nomarkdown}<div style="display:none;padding:0px;" id="input">{:/} 
+{::nomarkdown}<div style="display:none;padding:0px;" id="linear">{:/} 
 
 The linear approximation rests on the fact that a partial 
 wave $$\phi_l(\varepsilon,r)$$ for an atom centered at the origin
