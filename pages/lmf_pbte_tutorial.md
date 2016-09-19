@@ -275,11 +275,10 @@ to avoid overwriting a file you may already have.
 
 Part of **lmfa**{: style="color: blue"}'s function is to identify
 _local orbitals_ that [extend the linear method](/docs/package_overview/#linear-methods-in-band-theory).
-By default, **lmf**{: style="color: blue"} uses a [single partial wave](/docs/package_overview/#linear-methods-in-band-theory) (and its energy derivative)
-for each _l_ in the augmentation spheres.
+Linear methods are reliable only over a limited energy window; certain elements may require an extension
+to the linear approximation for accurate calculations; this is accomplished with
+[local orbitals](/docs/package_overview/#linear-methods-in-band-theory).
 
-However, linear methods are realiable only over a limited energy window; for certain elements may require an extension
-to the linear approximation for accurate calculations; this is accomplished with _local orbitals_.
 **lmfa**{: style="color: blue"} will automatically look for candidate
 local orbitals, and includes this information in the basp0 file it generates.
 
