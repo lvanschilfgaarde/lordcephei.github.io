@@ -134,12 +134,12 @@ Since _D_ does not specify the principal quantum number, it is convenient to def
 $$P_l = 0.5 - \arctan(D_l)/\pi + \hbox{(principal quantum number)} $$
 
 A core state is exponentially decaying as it approaches _s_; therefore
-is logarithmic derivative _D_ is approximately <i>s<i>/<i>&eps;</i>, which
-is large an negative.  From the properties of the arctan, is is evident that
-the fractional part of _P_ approaches 1 as <i>&eps;</i> grows deeper.
+is logarithmic derivative _D_ is approximately <i>s<i>/<i>&epsilon;</i>, which
+is large and negative.  Using the fact that arctan(<i>x&rarr;-&infin;)/&pi &rarr; -1/2,
+the fractional part of _P_ must approach 1 as <i>&epsilon;</i> grows deeper.
 Thus the fractional part of _P_ is close to 1 for deep or core states;
 for states far above the Fermi level the fractional part of _P_ is small.
-As <i>&eps;</i> varies from -<i>&infin;</i> to <i>&infin;</i>, _P_ changes
+As <i>&epsilon;</i> varies from -<i>&infin;</i> to <i>&infin;</i>, _P_ changes
 in a continous way, picking up an extra integer each time a new node appears.
 
 ### _Generation of the sphere potential and energy moments Q_
