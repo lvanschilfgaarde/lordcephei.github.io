@@ -50,10 +50,10 @@ cp it(X-1)_qmcrun/Sig.out.brd  itX_lmfrun/sig.inp   # copy sigma from last CTQMC
 Let now _U_=10 eV and _J_=0.9 eV be the Hubbard on-site interaction and Hunds coupling respectively, and _n_=8 the nominal occupancy of the correlated subsystem (_n_=8 for Ni). Then launch **lmfdmft**{: style="color: blue"} with the command 
 
 ```
-lmfdmft ni --ldadc=71.85 -job=1 > log
+lmfdmft ni --ldadc=71.85 -job=1 -vbxc0=1 > log
 ```
 
-where 71.85 is the double-counting self-energy, computed according to the formula $$Edc=U(n-1/2)-J(n-1)/2$$. 
+where 71.85 is the double-counting self-energy, computed according to the formula $$Edc=U(n-1/2)-J(n-1)/2$$.
 
 At the end of the run, the hybridization function $$\Delta(i\omega_n)$$ is stored in *delta.ni*{: style="color: green"} (first column are Matsubara's energies and then five _d_-channels with real and imaginary parts).The impurity levels $$E_{\rm imp}$$ are recorded in *eimp1.ni*{: style="color: green"}.
 These two output files are essential to initialise the corresponding CTQMC run.
