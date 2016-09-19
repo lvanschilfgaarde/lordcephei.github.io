@@ -52,14 +52,13 @@ The total time required by the calculation above is ~10 hours.
 
 Once you have a converged spin-polarized QSGW calculation you still need some additional file required by **lmfdmft**{: style="color: blue"} and **ctqmc**{: style="color: blue"}. You can download them at [this link](https://lordcephei.github.io/assets/download/inputfiles/dmft-input.tar.gz).
 
-Relevant files are dispatched into two folders.
-
+Let *qsgw*{: style="color: green} the folder with the QSGW calculation and *dmft-input*{: style="color: green} the one where you extracted the content of the .tar file linked above, then you dispatch relevant input files into two folders:
 ```
-mkdir lmfinput qmcinput                                # prepare input folders
-cp {ctrl,basp,site,rst}.ni lmfinput                    # copy relevant QSGW output
-cp sigm.ni lmfinput/sigm_old                           # you will actually need a spin-averaged version of this file
-cp indmfl_input lmfinput/indmfl.ni                     # copy the indmfl file has to have the right extension 
-cp atom_d.py broad_sig.f90 Trans.dat PARAMS qmcinput/  # copy files and programs relevant for CTQMC
+mkdir lmfinput qmcinput                                             # input folders
+cp qsgw/{ctrl,basp,site,rst}.ni lmfinput                            # copy relevant QSGW output
+cp qsgw/sigm.ni lmfinput/sigm_old                                   # you will actually need a spin-averaged version of this file
+cp dmft-input/indmfl_input lmfinput/indmfl.ni                       # copy the indmfl file has to have the right extension 
+cp dmft-input/{atom_d.py,broad_sig.f90,Trans.dat,PARAMS} qmcinput/  # copy files and programs relevant for CTQMC
 ```
 
 ##### _**Edit the ctrl file:**_ 
