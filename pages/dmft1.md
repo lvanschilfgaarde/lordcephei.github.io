@@ -1,10 +1,14 @@
 ---
 layout: page-fullwidth
-title: "Set up input files"
-permalink: "/tutorial/qsgw_dmft/setup-input/"
+title: "First tutorial on QSGW+DMFT"
+permalink: "/tutorial/qsgw_dmft/dmft1/"
 sidebar: "left"
 header: no
 ---
+
+# Manipulation of the QSGW output and general set up 
+
+
 This tutorial assumes you have terminated a QSGW calculation and you want to start a DMFT calculation.
 Unless you want to try with your own data, you can downlad the outcome of a converged QSGW calculation from [this link](https://lordcephei.github.io/assets/download/inputfiles/dmft1.tar.gz). They have been obtained from a converged QSGW calculation on the paramagnetic phase of La$$_2$$CuO$$_4$$. Every example will be done assuming you are using the provided files.
 
