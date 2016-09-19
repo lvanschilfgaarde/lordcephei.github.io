@@ -58,7 +58,7 @@ ____________________________________________________________
 
 ### _Tutorial_
 
-##### 1. _Building the input file_
+#### 1. _Building the input file_
 
 PbTe crystallizes in the rocksalt structure with lattice constant _a_ = 6.428&#x212B;. You need the structural information in the box below to construct the main input file,
 _ctrl.pbte_{: style="color: green"}. Start in a fresh working directory and cut and paste the box's contents to _init.pbte_{: style="color: green"}.
@@ -79,7 +79,7 @@ Use the **blm**{: style="color: blue"} tool as in the box below to create the in
     $ blm init.pbte
     $ cp actrl.pbte ctrl.pbte
 
-##### 2. _How the input file is organized_
+#### 2. _How the input file is organized_
 
 In this tutorial, **blm**{: style="color: blue"} is used in "standard" mode. (The [basic tutorial](/tutorial/lmf/lmf_tutorial/)
 creates a simpler file with `blm --express init.si`). 
@@ -133,7 +133,7 @@ first column.  Each token belongs to a category; for example in box below **IO**
 
 [This link](/docs/input/inputfile/#input-file-structure) explains the structure of the input file in more detail.
 
-#####  3. _The **EXPRESS** category_
+####  3. _The **EXPRESS** category_
 
 **blm**{: style="color: blue"} normally includes an **EXPRESS** category in _ctrl.pbte_{: style="color: green"}.
 
@@ -162,7 +162,7 @@ to the **HAM** category would have no effect.
 The purpose of **EXPRESS** is to simplify the input file,
 collecting the most commonly used tags in one place.
 
-#####  4. _Determining what input an executable seeks_
+####  4. _Determining what input an executable seeks_
 
 **blm**{: style="color: blue"} builds input files with only a subset of the tags an executable will try to read.
 Defaults are used for the vast majority of tags.
@@ -246,7 +246,7 @@ If you supply only one number it is copied to elements 2 and 3.
 
 {::nomarkdown}</div>{:/}
 
-#####  5. _Self-consistency_
+####  5. _Self-consistency_
 
 With an input file in hand, we can proceed to carry out a self-consistent calculation.
 It proceeds in a manner [similar to the basic tutorial](/tutorial/lmf/lmf_tutorial/#tutorial).
@@ -265,7 +265,7 @@ $ lmfa ctrl.pbte                                #use lmfa to make basp file, atm
 $ cp basp0.pbte basp.pbte                       #copy basp0 to recognised basp prefix   
 ~~~
 
-2. Valence-core partitioning.  Inspect _basp.pbte_{: style="color: green"}.  Note in particular this text connected with the Pb atom:  
+2x. Valence-core partitioning.  Inspect _basp.pbte_{: style="color: green"}.  Note in particular this text connected with the Pb atom:  
 
 ~~~
     PZ= 0 0 15.934
@@ -291,7 +291,7 @@ You can specify a "traditional" local orbital by omitting the 10, but this kind 
 The continuous principal quantum number (**5.934**) specifies the
 [number of nodes and boundary
 condition](/docs/asaoverview/#boundary-conditions-and-continuous-principal-quantum-numbers).
-or core states it has a large fractional part, typically around 0.93
+For core states it has a large fractional part, typically around 0.93
 for shallow cores.  **lmfa**{: style="color: blue"} determined the appropriate value precisely for the atomic potential.
 In the self-consistency cycle the potential will change and **lmfa**{: style="color: blue"} will update this value.
 
