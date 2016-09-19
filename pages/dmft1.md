@@ -164,4 +164,4 @@ lmfdmft ni --ldadc=71.85 -job=1  > log
 You can check that a file called *sig.inp*{: style="color: green"} has been created. It is formatted with the first column being the Matsubara frequencies (in eV) and then 0.0 repeated for a number of columns equal to twice the number of _m_ channels (e.g. ten columns for d-type impurity: five pairs of real and imaginary parts).
 
 
-You are now ready to start the DMFT loop, following the link to the [next tutorial](https://github.com/lordcephei/lordcephei.github.io/edit/master/pages/dmft2).
+You are now ready to start the DMFT loop, following the link to the [next tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft2).
