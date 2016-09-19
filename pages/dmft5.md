@@ -31,8 +31,8 @@ To achieve self-consistency you shall repeat the last **lmfdmft**{: style="color
 ### Restarting the QSGW loop 
 Now a new LDA or QSGW loop can be done keeping the density fixed in order to get a new potential consistent with the density.
 
-+ In the case of an LDA calculation you just want to run **lmf**{: style="color: blue"} with the flag **`--`rs=1,0**{: style="color: blue"}.
++ In the case of an LDA calculation you just want to run **lmf**{: style="color: blue"} with the flag **\-\-rs=1,0**{: style="color: blue"}.
 
-+ In the case of a QSGW calculation you will run **lmfgwsc**{: style="color: blue"} with the additional flag **`--`no-scrho**{: style="color: blue"}.
++ In the case of a QSGW calculation you will run **lmfgwsc**{: style="color: blue"} with the additional flag **\-\-no-scrho**{: style="color: blue"}.
 
 At the end of either cycle (LDA or QSGW) you are back to the same situation of the [first tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft1).
