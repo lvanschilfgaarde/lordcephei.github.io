@@ -160,7 +160,7 @@ You start the loop from scratch by creating an empty impurity self-energy:
 mkdir siginp0
 cd siginp0
 cp ../lmfinput/*  . 
-lmfdmft ni --ldadc=71.85 -job=1  > log
+lmfdmft ni --ldadc=71.85 -job=1 -vbxc0=1 > log
 ```
 
 You can check that a file called *sig.inp*{: style="color: green"} has been created. It is formatted with the first column being the Matsubara frequencies (in eV) and then 0.0 repeated for a number of columns equal to twice the number of _m_ channels (e.g. ten columns for d-type impurity: five pairs of real and imaginary parts).
