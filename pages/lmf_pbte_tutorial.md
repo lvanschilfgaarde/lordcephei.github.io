@@ -279,11 +279,9 @@ The 10's digit in **15.934** isn't required, but it tells **lmf**{: style="color
 to use an "enhanced" local orbital as opposed to the usual variety found in most
 density-functional codes.  Enhanced orbitals append a tail so that the
 density from the orbital spills into the interstitial.  It is more accurate, and there is no advantage to using the traditional kind.
-Subtracting the **10**, the remainder (**5.934**) specifies the principal quantum number, and the boundary condition:
-
-$$P_l = 0.5 - \arctan(D_l)/\pi + \hbox{(principal quantum number)} $$
-
-<i>D<sub>l</sub></i> is the [logarithmic derivative](/docs/asaoverview/) at the augmentation radius.
+Subtracting the **10**, the remainder (**5.934**) specifies the principal quantum number, and the boundary condition.
+It is called the [continuous principal quantum number](/docs/asaoverview/#boundary-conditions-and-continuous-principal-quantum-numbers)
+and for core states has a large fractional part.
 
 ### _Other Resources_
 
