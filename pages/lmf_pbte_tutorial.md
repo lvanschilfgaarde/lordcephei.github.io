@@ -329,7 +329,7 @@ Normally **lmfa**{: style="color: blue"} determines the core levels and core den
 the scalar Dirac equation.  However there is an option to use the full Dirac equation.
 
 <div onclick="elm = document.getElementById('diraccore'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
-Click here to see how to calculate core levels with the Dirac equation.</div>
+Click here to see how to calculate core levels from the Dirac equation.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="diraccore">{:/} 
 
 ... to be completed
@@ -347,7 +347,7 @@ $ lmfa ctrl.pbte                                #use lmfa to make basp file, atm
 This is necessary whenever the valence-core partitioning changes.
 
 <div onclick="elm = document.getElementById('lmfaoutput'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
-Click here for a description of lmfa output (it is not necessary to complete the tutorial).</div>
+Click here for a description of **lmfa's**{: style="color: blue"} output (it is not necessary to complete the tutorial).</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="lmfaoutput">{:/} 
 
 to be completed
