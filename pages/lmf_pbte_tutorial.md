@@ -350,6 +350,8 @@ This is necessary whenever the valence-core partitioning changes.
 Click here for a description of lmfa output (it is not necessary to complete the tutorial).</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="lmfaoutput">{:/} 
 
+to be completed
+
 ~~~
  Species Pb:  Z=82  Qc=68  R=3.044814  Q=0
  mesh:   rmt=3.044814  rmax=47.629088  a=0.025  nr=497  nr(rmax)=607
@@ -361,8 +363,12 @@ Click here for a description of lmfa output (it is not necessary to complete the
    55   82.000000   4.614E-05     1283.9616    0.3612E+08     -309.4131   0.30
 ~~~
 
+{::nomarkdown}</div>{:/}
+
+
 #####  Self-consistent density
 
+to be completed
 
 
 ### _Other Resources_
