@@ -6,13 +6,14 @@ sidebar: "left"
 header: no
 ---
 
-# Manipulation of the QSGW output and general set up 
+# Setting up a QSGW+DMFT calculation
+
+This tutorial assumes you have terminated a QSGW calculation and you want to start a DMFT calculation. Your QSGW calculation is supposed to be spin-polarized (even for non-magnetic materials). For the purpose of this tutorial, we will refer to a QSGW calculation on ferromagnetic Nickel. 
+
+If you want to start from scratch, you can follow the instructions below to prepare the magnetic QSGW calculation (but they are very concise and must be followed with reference to the QSGW tutorial). Otherwise you can download the result of the converged QSGW loop from [this link](https://lordcephei.github.io/assets/download/inputfiles/dmft1.tar.gz).
 
 
-This tutorial assumes you have terminated a QSGW calculation and you want to start a DMFT calculation.
-Unless you want to try with your own data, you can downlad the outcome of a converged QSGW calculation from [this link](https://lordcephei.github.io/assets/download/inputfiles/dmft1.tar.gz). They have been obtained from a converged QSGW calculation on the paramagnetic phase of La$$_2$$CuO$$_4$$. Every example will be done assuming you are using the provided files.
-
-### Prepare folders
+### Prepare input folders and files 
 
 Relevant files are dispatched into two folders.
 
@@ -22,7 +23,7 @@ cp *.lsco lmfinput                                     # copy input files releva
 cp atom_d.py broad_sig.f90 Trans.dat PARAMS qmcinput/  # copy files and programs relevant for CTQMC
 ```
 
-### Prepare the *ctrl*{: style="color: green"} file
+##### Prepare the *ctrl*{: style="color: green"} file
 
 After copying the relevant files in the input folders, you need to compile *broad_sig.f90*{: style="color: green"} and add a string of tokens to *ctrl.lsco*{: style="color: green"}. 
 
@@ -89,7 +90,7 @@ You can see how it should look like by clicking on the dropdown box.
 ```
 {::nomarkdown}</div>{:/}
 
-### Compile **broad_sig.f90**{: style="color: blue"}
+##### Compile **broad_sig.f90**{: style="color: blue"}
 The statistical noise of Quantum Monte Carlo calculations can be sourse of instabilities. Because of this, you need to broad the output of the **ctqmc**{: style="color: blue"} software.
 The **Questaal**{: style="color: blue"} package prvides **broad_sig.f90**{: style="color: blue"}, but you can use whatever method you prefer. 
 
@@ -100,7 +101,7 @@ cd ..
 ```
 The tutorial will continue assuming you are using **broad_sig.f90**{: style="color: blue"}.
 
-### Prepare spin-averaged self-energy
+##### Prepare spin-averaged self-energy
 The starting point of the DMFT loop has to be non-magnetic, but the QSGW (or LDA) calculation you just finishes can be magnetic. 
 
 If this is the case you need to spin average the QSGW self-energy and construct the LDA $$V_{\rm xc}$$ by reading only the spin-averaged density.
@@ -122,5 +123,3 @@ lmfdmft lsco -vnk=4 -rs=1,0 --ldadc=82.2 -job=1  > log
 ```
 
 You can check that a file called *sig.inp*{: style="color: green"} has been created. It is formatted with the first column being the Matsubara frequencies (in eV) and then a number of columns equal to twice the number of _m_ channels (e.g. ten columns for d-type impurity: five pairs of real and imaginary parts).
-
-
