@@ -155,7 +155,7 @@ Now there are some manual operations to do:
 At this point you have a new self-energy to be fed to **lmfdmft**{: style="color: blue"}. You can go back to the point _**(1)**_ and repeat all the operations with a higher iteration number X.
  
 ### Converging to the SC-solution
-The self-consistent condition holds when $$G_{\rm loc}(i\omega_n)$$ of iteration _N_ is equal (within a certain tolerance) to $$G_{\rm imp}(i\omega_n)$$ of iteration _N-1_. You can add the flag **- -gprt**{: style="color: blue"} when running **lmfdmft**{: style="color blue"} to get $$G_{\rm loc}(i\omega_n)$$ printed on a file called *gloc.ni*{: style="color: green"}. This can be compared with the file *Gf.out*{: style="color: green"} produced by the previous CTQMC run. However in the comparison remember that the latter is not broadened, while the former is obtained by smoothened quantities.
+The self-consistent condition holds when $$G_{\rm loc}(i\omega_n)$$ of iteration _N_ is equal (within a certain tolerance) to $$G_{\rm imp}(i\omega_n)$$ of iteration _N-1_. You can add the flag **\-\-gprt**{: style="color: blue"} when running **lmfdmft**{: style="color blue"} to get $$G_{\rm loc}(i\omega_n)$$ printed on a file called *gloc.ni*{: style="color: green"}. This can be compared with the file *Gf.out*{: style="color: green"} produced by the previous CTQMC run. However in the comparison remember that the latter is not broadened, while the former is obtained by smoothened quantities.
 
 An easier though accurate way is to look at the convergence of the chemical potential. This can be done by typing **grep ' mu = ' it*_lmfrun/log**{: sytle="color: blue"}.
 
