@@ -26,10 +26,10 @@ The following tutorials will guide you in the solution of the DMFT loop and the 
 It's assumed that you understand how to perform a QSGW loop and what are the basic input/output of QSGW. If this is not the case, please rely on dedicated tutorials.
 
 ### Structure of this tutorial section
-1. [The first tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/setup-input) is about the maniupulations to be done on the QSGW ouput to start the DMFT loop. Here you can also find input files that will be used throughout all tutorials.  
-2. [The second tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft1) is about how to perform a DMFT loop until convergence.
-3. [The third one](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft2) is about possible errors and some indications and rules-of-thumb to set and adjust the input parameters of the DMFT loop.
-4. [The fourth tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft3) is about how to close the density loop by means of the charge+static-magnetic approach.
-5. [The fifth tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft4) is about how to close the density loop by updating the density with the dynamical approach (standard method).
+1. [The first tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft1) is about the maniupulations to be done on the QSGW ouput to start the DMFT loop. Here you can also find input files that will be used throughout all tutorials.  
+2. [The second tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft2) is about how to perform a DMFT loop until convergence.
+3. [The third one](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft3) is about possible errors and some indications and rules-of-thumb to set and adjust the input parameters of the DMFT loop.
+4. [The fourth tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft4) is about how to close the density loop by means of the charge+static-magnetic approach.
+5. [The fifth tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft5) is about how to close the density loop by updating the density with the dynamical approach (standard method).
 6. [The sixth tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/maxent1) focuses on the maximum entropy method, used to analytically continue the self-energy from the Matsubara's frequency mesh to the real frequency axis. 
 7. [The seventh tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft7) is about how to close the external loop by updating the self-energy instead of the density. It also contains a section about how to construct the dynamical double-counting.
