@@ -251,8 +251,6 @@ If you supply only one number it is copied to elements 2 and 3.
 With an input file in hand, we can proceed to carry out a self-consistent calculation.
 It proceeds in a manner [similar to the basic tutorial](/tutorial/lmf/lmf_tutorial/#tutorial).
 
-In brief you carry out the following steps:
-
 #####  Initial setup
 
 Run **lmfa**{: style="color: blue"} in order to
@@ -325,31 +323,6 @@ the LDA, unoccupied states also contribute to the potential.
 
 {::nomarkdown}</div>{:/}
 
-#####  Free atomic density
-
-After _basp.pbte_{: style="color: green"} has been modified, you must run **lmfa**{: style="color: blue"} a second time
-
-~~~
-$ lmfa ctrl.pbte                                #use lmfa to make basp file, atm file and to get gmax
-~~~
-
-This is necessary whenever the valence-core partitioning changes.
-
-<div onclick="elm = document.getElementById('lmfaoutput'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
-Click here for a description of lmfa output (it is not necessary to complete the tutorial).</div>
-{::nomarkdown}<div style="display:none;padding:0px;" id="lmfaoutput">{:/} 
-
-~~~
- Species Pb:  Z=82  Qc=68  R=3.044814  Q=0
- mesh:   rmt=3.044814  rmax=47.629088  a=0.025  nr=497  nr(rmax)=607
-  Pl=  6.5     6.5     5.5     5.5     5.5    
-  Ql=  2.0     2.0     10.0    0.0     0.0    
-
-  iter     qint         drho          vh0          rho0          vsum     beta
-    1   82.000000   2.667E+04      410.0000    0.4078E+03     -164.7879   0.30
-   55   82.000000   4.614E-05     1283.9616    0.3612E+08     -309.4131   0.30
-~~~
-
 #####  Relativistic cores
 
 Normally **lmfa**{: style="color: blue"} determines the core levels and core density from
@@ -363,7 +336,6 @@ Click here to see how to calculate core levels with the Dirac equation.</div>
 
 {::nomarkdown}</div>{:/}
 
-
 #####  Free atomic density
 
 After _basp.pbte_{: style="color: green"} has been modified, you must run **lmfa**{: style="color: blue"} a second time
@@ -388,9 +360,6 @@ Click here for a description of lmfa output (it is not necessary to complete the
     1   82.000000   2.667E+04      410.0000    0.4078E+03     -164.7879   0.30
    55   82.000000   4.614E-05     1283.9616    0.3612E+08     -309.4131   0.30
 ~~~
-
-{::nomarkdown}</div>{:/}
-
 
 #####  Self-consistent density
 
