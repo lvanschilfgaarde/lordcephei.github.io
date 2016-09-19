@@ -74,10 +74,11 @@ method](http://dx.doi.org/10.1103/PhysRevB.12.3060) pioneered by O.K. Andersen. 
 expanding them in a Taylor series to first order about some "linearization energy."  This is explained in detail in
 Richard Martin's book, _Electronic Structure_.
 
-The importance of the linear method to electronic structure cannot be overstated.  It, together with the
-attempt by Slater to approximate the difficult Fock exchange with a functional of the density (the X-&alpha; method), 
-which was subsequently formalized into rigorous density-functional theory by [Hohenberg and Kohn](http://doi:10.1103/PhysRev.136.B864),
-forms the bedrock of modern electronic structure theory.
+The importance of the linear method to electronic structure cannot be overstated.  It, together with the attempt by
+Slater to approximate the difficult Fock exchange with a functional of the density (the X-&alpha; method), which was
+subsequently formalized into rigorous [density-functional
+theory](http://journals.aps.org/pr/abstract/10.1103/PhysRev.136.B864) by Hohenberg and Kohn, forms the basis for most of
+modern electronic structure theory in condensed matter.
 
 <div onclick="elm = document.getElementById('linear'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click 
 here for a brief description of the linear approximation and its extension with local orbitals.</div>
