@@ -6,7 +6,7 @@ sidebar: "left"
 header: no
 ---
 
-# Setting up a QSGW+DMFT calculation
+# Setting up the DMFT loop
 
 ### The spin-polarized QSGW starting point 
 
