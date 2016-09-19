@@ -76,7 +76,8 @@ Richard Martin's book, _Electronic Structure_.
 
 The importance of the linear method to electronic structure cannot be overstated.  It, together with the
 attempt by Slater to approximate the difficult Fock exchange with a functional of the density (the X-&alpha; method), 
-which was formalized into rigorous density-functional theory, forms the bedrock of modern electronic structure theory.
+which was subsequently formalized into rigorous density-functional theory by [Hohenberg and Kohn](http://doi:10.1103/PhysRev.136.B864),
+forms the bedrock of modern electronic structure theory.
 
 <div onclick="elm = document.getElementById('linear'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click 
 here for a brief description of the linear approximation and its extension with local orbitals.</div>
