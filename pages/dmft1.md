@@ -12,6 +12,36 @@ This tutorial assumes you have terminated a QSGW calculation and you want to sta
 
 If you want to start from scratch, you can follow the instructions below to prepare the magnetic QSGW calculation (but they are very concise and must be followed with reference to the QSGW tutorial). Otherwise you can download the result of the converged QSGW loop from [this link](https://lordcephei.github.io/assets/download/inputfiles/dmft1.tar.gz).
 
+<div onclick="elm = document.getElementById('qsgw_ni'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Commands to run QSGW on Ni from scratch - Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="qsgw_ni">{:/}
+
+The file *init.ni*{: style="color: green"} to start working on Ni is: 
+
+```
+LATTICE
+   SPCGRP=225
+   A=3.524 UNITS=A
+SITE
+   ATOM=Ni X=0 0 0
+   MMOM=0.0 0.0 0.6
+```
+
+To run a full QSGW calculation follow the commands below
+
+```
+blm ni --gw --wsitex
+mv actrl.ni ctrl.ni
+vi ctrl.ni       # edit control file assigning nit=20, sig=8, nkabc=10, gmax=8.7 among the % const section
+lmfa ni -vnsp=2
+mv basp0.ni basp.ni
+lmf ni -vnsp=2   # At the end of this run (10 iterations, few minutes) mmom=.6442223 ; ehf=-3036.6239355
+echo '-1' | lmfgwd ni -vnsp=2
+lmgwsc --wt --openmp=20 --code2 --sym -maxit=15 --metal --getsigp --tol=2e-5  -vnsp=2 ni
+```
+The value of the parameters chose are a pretty low but they can provide a fast enough starting point for the QSGW+DMFT loop. 
+The total time required by the calculation above is ~10 hours.
+
+{::nomarkdown}</div>{:/}
 
 ### Prepare input folders and files 
 
