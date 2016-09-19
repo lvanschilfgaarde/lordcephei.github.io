@@ -355,9 +355,9 @@ Click here for a description of lmfa output (it is not necessary to complete the
 Normally **lmfa**{: style="color: blue"} determines the core levels and core density from
 the scalar Dirac equation.  However there is an option to use the full Dirac equation.
 
-<div onclick="elm = document.getElementById('lmfaoutput'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
+<div onclick="elm = document.getElementById('diraccore'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
 Click here to see how to calculate core levels with the Dirac equation.</div>
-{::nomarkdown}<div style="display:none;padding:0px;" id="lmfaoutput">{:/} 
+{::nomarkdown}<div style="display:none;padding:0px;" id="diraccore">{:/} 
 
 ... to be completed
 
@@ -388,9 +388,6 @@ Click here for a description of lmfa output (it is not necessary to complete the
     1   82.000000   2.667E+04      410.0000    0.4078E+03     -164.7879   0.30
    55   82.000000   4.614E-05     1283.9616    0.3612E+08     -309.4131   0.30
 ~~~
-
-
-
 
 {::nomarkdown}</div>{:/}
 
