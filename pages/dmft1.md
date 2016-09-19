@@ -46,7 +46,7 @@ The total time required by the calculation above is ~10 hours.
 
 {::nomarkdown}</div>{:/}
 
-*Note:*{: style="color: red"} Of course you can do LDA+DMFT instead of QSGW+DMFT. The procedure is basically the same, but you can ignore all reference to any *sigm*{: style="color: green"} file.
+*Note:*{: style="color: red"} Of course you can also do LDA+DMFT. The procedure is basically the same, but you can ignore all reference to any *sigm*{: style="color: green"} file.
 
 ### Input folders, files and programs
 
