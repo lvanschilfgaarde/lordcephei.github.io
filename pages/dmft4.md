@@ -21,7 +21,7 @@ Using the charge-only density and self-energy, you have performed a full DMFT lo
 
 1. You interpolates _Sig.inp.out.brd_{: style="color: green"} to zero frequency. You can use the program **mk_siginp-freq0.py**{: style="color: blue"} downloadable at [this link](https://lordcephei.github.io/assets/download/inputfiles/mk_siginp-freq0.py). The ouytput file _sif.inp.f0_{: style="color: green"} is the static limit of the impurity self-energy.
 2. In the same folder, you can launch **lmfdmft**{: style="color: blue"} using exactly the same input (files and flags) as your last run. The program will automatically find _sig.inp.f0_{: style="color: green"}, it will embed it and symmetrise it before exiting. The output *sig.inp.f0.emb*{: style="color: green"} is a text file.
-3. Still in the same folder you can run again **lmfdmft**{: style="color: blue"}, adding **- -makesigqp**{: style="color: blue"} to the command line. This will
+3. Still in the same folder you can run again **lmfdmft**{: style="color: blue"}, adding **\-\-makesigqp**{: style="color: blue"} to the command line. This will
   * subtract the average self-energy component to the whole matrix hence keeping only the spin-flip part and
   * project the resulting matrix in the correct basis.
 The result will be saved in the *sigm1.ni*{: style="color: green"} file.
@@ -32,7 +32,7 @@ lmfdmft ni --ldadc=71.85 -job=1 -vbxc0=1                   # 2. embed+symmetrise
 lmfdmft ni --ldadc=71.85 -job=1 -vbxc0=1 --makesigqp       # 3. write sig.inp.f0.emb on quasiparticle basis sigm1.ni
 ```
   
-### Adding charge and magnetic channels
+### Adding charge and static-magnetic components 
 You now have a static magnetic-only self-energy produced by DMFT. This has to be added to the charge-oly LDA/QSGW potentials.
 
 ``` 
