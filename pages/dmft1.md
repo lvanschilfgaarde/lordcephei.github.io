@@ -34,12 +34,12 @@ To run a full QSGW calculation follow the commands below
 ```
 blm ni --gw --wsitex
 mv actrl.ni ctrl.ni
-vi ctrl.ni       # edit control file assigning nit=20, sig=8, nkabc=10, gmax=8.7 among the % const section
-lmfa ni -vnsp=2
+vi ctrl.ni                       # edit control file assigning nit=20, nsp=2, sig=8, nkabc=10, gmax=8.7 among the % const section
+lmfa ni 
 mv basp0.ni basp.ni
-lmf ni -vnsp=2   # At the end of this run (10 iterations, few minutes) mmom=.6442223 ; ehf=-3036.6239355
+lmf ni                           # At the end of this run (10 iterations, few minutes) mmom=.6442223 ; ehf=-3036.6239355
 echo '-1' | lmfgwd ni -vnsp=2
-lmgwsc --wt --openmp=20 --code2 --sym -maxit=15 --metal --getsigp --tol=2e-5  -vnsp=2 ni
+lmgwsc --wt --openmp=20 --code2 --sym -maxit=15 --metal --getsigp --tol=2e-5  ni
 ```
 The value of the parameters chose are a pretty low but they can provide a fast enough starting point for the QSGW+DMFT loop. 
 The total time required by the calculation above is ~10 hours.
@@ -52,7 +52,8 @@ The total time required by the calculation above is ~10 hours.
 
 Once you have a converged spin-polarized QSGW calculation you still need some additional file required by **lmfdmft**{: style="color: blue"} and **ctqmc**{: style="color: blue"}. You can download them at [this link](https://lordcephei.github.io/assets/download/inputfiles/dmft-input.tar.gz).
 
-Let *qsgw*{: style="color: green} the folder with the QSGW calculation and *dmft-input*{: style="color: green} the one where you extracted the content of the .tar file linked above, then you dispatch relevant input files into two folders:
+Let *qsgw*{: style="color: green"} the folder with the QSGW calculation and *dmft-input*{: style="color: green"} the one where you extracted the content of the .tar file linked above, then you dispatch relevant input files into two folders:
+
 ```
 mkdir lmfinput qmcinput                                             # input folders
 cp qsgw/{ctrl,basp,site,rst}.ni lmfinput                            # copy relevant QSGW output
@@ -84,7 +85,7 @@ You can see how it should look like by clicking on the dropdown box.
  # Variables entering into expressions parsed by input
  % const nit=20
  % const met=5
- % const so=0 nsp=so?2:1
+ % const so=0 nsp=2
  % const lxcf=2 lxcf1=0 lxcf2=0     # for PBE use: lxcf=0 lxcf1=101 lxcf2=130
  % const pwmode=0 pwemax=3          # Use pwmode=1 or 11 to add APWs
  % const sig=8 gwemax=2 gcutb=3.3 gcutx=2.7  # GW-specific
