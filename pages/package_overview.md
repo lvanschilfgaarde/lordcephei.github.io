@@ -79,9 +79,18 @@ _Electronic Structure_.
 here for a description of the linear approximation.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="linear">{:/} 
 
-The linear approximation rests on the fact that a partial 
-wave $$\phi_l(\varepsilon,r)$$ for an atom centered at the origin
-varies slowly with &epsilon;.
+The linear approximation rests on the fact that a partial wave
+$$\phi_l(\varepsilon,r)$$ for an atom centered at the origin varies
+slowly with &epsilon;.  $$\phi_l(\varepsilon,r)$$ is expanded in a Taylor series
+about a linearization energy $$\varepsilon_\nu$$
+$$
+\phi_l(\varepsilon,r) \approx \phi_l(\varepsilon_\nu,r) +
+(\varepsilon-\varepsilon_\nu)\dot\phi_l(\varepsilon_\nu,r)
+$$
+_Note:_{: style="color: red"} in practice the vast majority of methods construct the partial waves
+from the spherical part of the potential, so that _l_ is a good quantum number.
+Then each <i>&phi;<sub>l</sub></i> can be integrated independently of the others.
+
 
 {::nomarkdown}</div>{:/}
 
