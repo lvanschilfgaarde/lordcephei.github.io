@@ -79,7 +79,7 @@ attempt by Slater to approximate the difficult Fock exchange with a functional o
 which was formalized into rigorous density-functional theory, forms the bedrock of modern electronic structure theory.
 
 <div onclick="elm = document.getElementById('linear'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click 
-here for a description of the linear approximation.</div>
+here for a brief description of the linear approximation and its extension with local orbitals.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="linear">{:/} 
 
 The linear approximation rests on the fact that a partial wave
