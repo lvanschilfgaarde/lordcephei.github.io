@@ -119,7 +119,7 @@ potential parameters, or with the atomic part, specifying the moments.
 
 ### _Boundary conditions and continuous principal quantum numbers_
 
-For a fixed spherical potential, the radial Schrodinger equation (aka "partial wave")
+For a fixed spherical potential, the solution to the radial Schrodinger equation (aka "partial wave")
 <i>&phi;<sub>l</sub></i> of quantum number _l_ and its energy are uniquely determined by the boundary condition at the augmentation radius _s_.
 This is normally given through the "logarithmic derivative function"
 
@@ -135,12 +135,12 @@ $$P_l = 0.5 - \arctan(D_l)/\pi + \hbox{(principal quantum number)} $$
 
 A core state is exponentially decaying as it approaches _s_; therefore
 its logarithmic derivative
-(<i>D<sub>l</sub></i> is approximately <i>s</i>/<i>&epsilon;<sub>l</sub></i>, which
+<i>D<sub>l</sub></i> is approximately <i>s</i>/<i>&epsilon;<sub>l</sub></i>, which
 is large and negative.  Using the fact that arctan(<i>x&rarr;-&infin;)/&pi;</i>&rarr;-1/2,
-the fractional part of (<i>P<sub>l</sub></i>  must approach 1 as <i>&epsilon;<sub>l</sub></i> grows deeper.
-Thus the fractional part of _P_ is close to 1 for deep or core states;
+the fractional part of <i>P<sub>l</sub></i> must approach 1 as <i>&epsilon;<sub>l</sub></i>&rarr;-&infin;.
+Thus the fractional part of <i>P<sub>l</sub></i> is close to 1 for deep or core states;
 for states far above the Fermi level it is small.
-As <i>&epsilon;</i> varies from -<i>&infin;</i> to <i>&infin;</i>, _P_ changes
+As <i>&epsilon;</i> increases from -<i>&infin;</i> to <i>&infin;</i>, _P_ changes
 in a continous way, acquiring an extra integer each time a new node appears.
 
 This construction (due to Michael Methfessel) is called a "continuous principal quantum number."

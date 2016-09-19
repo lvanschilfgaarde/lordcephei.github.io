@@ -276,14 +276,14 @@ to avoid overwriting a file you may already have.
 Part of **lmfa**{: style="color: blue"}'s function is to identify
 _local orbitals_ that [extend the linear method](/docs/package_overview/#linear-methods-in-band-theory).
 Linear methods are reliable only over a limited energy window; certain elements may require an extension
-to the linear approximation for accurate calculations; this is accomplished with
+to the linear approximation for accurate calculations.  This is accomplished with
 [local orbitals](/docs/package_overview/#linear-methods-in-band-theory).
 
 **lmfa**{: style="color: blue"} will automatically look for candidate
 local orbitals, and includes this information in the basp0 file it generates.
 
 <div onclick="elm = document.getElementById('localorbitals'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
-Click here for a description of local orbitals.</div>
+Click here for a description of how local orbitals are indicated in the basp file.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="localorbitals">{:/} 
 
 Inspect _basp.pbte_{: style="color: green"}.  Note in particular this text connected with the Pb atom:  
@@ -298,9 +298,9 @@ wave (in a linear method you are allowed to choose a single energy to construct 
 usually the "valence" state, which is near the Fermi level).
 
 The resolution to this is to use local orbitals, adding a partial wave at an energy far removed from the Fermi level.
-The three numbers in **PZ**
+The three numbers following **PZ**
 correspond to specifications for local orbitals in the _s_, _p_, and _d_ channels.  Zero indicates "no local orbital;"
-there is only a _d_ orbital.  
+there is only a _d_ orbital here.
 
 **15.934** is actually a compound of **10** and the "[continuous principal quantum number](/docs/asaoverview/#boundary-conditions-and-continuous-principal-quantum-numbers)"
 **5.934**. The 10's digit tells **lmf**{: style="color: blue"}
@@ -312,17 +312,16 @@ You can specify a "traditional" local orbital by omitting the 10, but this kind 
 The continuous principal quantum number (**5.934**) specifies the
 [number of nodes and boundary
 condition](/docs/asaoverview/#boundary-conditions-and-continuous-principal-quantum-numbers).
-For core states it has a large fractional part, typically around 0.93
-for shallow cores.  **lmfa**{: style="color: blue"} determined the appropriate value precisely for the atomic potential.
+The large fractional part of _P_ is large for core states, typically around 0.93 for shallow cores.  **lmfa**{: style="color: blue"} determines the proper value for the atomic potential.
 In the self-consistency cycle the potential will change and **lmf**{: style="color: blue"} will update this value.
 
 **lmfa**{: style="color: blue"} automatically selects the valence-core partitioning; the information is given in _basp.pbte_{: style="color: green"}.
 You can set the partitioning manually by editing this file.  
 
-_Note:_{: style="color: red"} high-lying states can also be included as local orbitals; they improve on the hilbert space far above the
-Fermi level. In the LDA they are rarely needed anad **lmfa**{: style="color: blue"} will never consider including them in the _basp.pbte_{:
-style="color: green"}.  But they can sometimes be important in _GW_ calculations.  In contrast to the LDA, unoccupied states also contribute
-to the potential.
+_Note:_{: style="color: red"} high-lying states can also be included as local orbitals; they improve on the hilbert
+space far above the Fermi level. In the LDA they are rarely needed and **lmfa**{: style="color: blue"} will not add them
+to the _basp.pbte_{: style="color: green"}.  But they can sometimes be important in _GW_ calculations, since in contrast to
+the LDA, unoccupied states also contribute to the potential.
 
 {::nomarkdown}</div>{:/}
 
@@ -336,10 +335,8 @@ $ lmfa ctrl.pbte                                #use lmfa to make basp file, atm
 
 This is necessary whenever the valence-core partitioning changes.
 
-It is not necessary for the tutorial, but the output of **lmfa**{: style="color: blue"} provides some useful information.  
-
 <div onclick="elm = document.getElementById('lmfaoutput'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
-Click here for a description of lmfa output.</div>
+Click here for a description of lmfa output (it is not necessary to complete the tutorial).</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="lmfaoutput">{:/} 
 
 ~~~
@@ -352,6 +349,46 @@ Click here for a description of lmfa output.</div>
     1   82.000000   2.667E+04      410.0000    0.4078E+03     -164.7879   0.30
    55   82.000000   4.614E-05     1283.9616    0.3612E+08     -309.4131   0.30
 ~~~
+
+#####  Relativistic cores
+
+Normally **lmfa**{: style="color: blue"} determines the core levels and core density from
+the scalar Dirac equation.  However there is an option to use the full Dirac equation.
+
+<div onclick="elm = document.getElementById('lmfaoutput'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
+Click here to see how to calculate core levels with the Dirac equation.</div>
+{::nomarkdown}<div style="display:none;padding:0px;" id="lmfaoutput">{:/} 
+
+... to be completed
+
+{::nomarkdown}</div>{:/}
+
+
+#####  Free atomic density
+
+After _basp.pbte_{: style="color: green"} has been modified, you must run **lmfa**{: style="color: blue"} a second time
+
+~~~
+$ lmfa ctrl.pbte                                #use lmfa to make basp file, atm file and to get gmax
+~~~
+
+This is necessary whenever the valence-core partitioning changes.
+
+<div onclick="elm = document.getElementById('lmfaoutput'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
+Click here for a description of lmfa output (it is not necessary to complete the tutorial).</div>
+{::nomarkdown}<div style="display:none;padding:0px;" id="lmfaoutput">{:/} 
+
+~~~
+ Species Pb:  Z=82  Qc=68  R=3.044814  Q=0
+ mesh:   rmt=3.044814  rmax=47.629088  a=0.025  nr=497  nr(rmax)=607
+  Pl=  6.5     6.5     5.5     5.5     5.5    
+  Ql=  2.0     2.0     10.0    0.0     0.0    
+
+  iter     qint         drho          vh0          rho0          vsum     beta
+    1   82.000000   2.667E+04      410.0000    0.4078E+03     -164.7879   0.30
+   55   82.000000   4.614E-05     1283.9616    0.3612E+08     -309.4131   0.30
+~~~
+
 
 
 

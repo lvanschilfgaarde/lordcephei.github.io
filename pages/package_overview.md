@@ -74,12 +74,6 @@ method](http://dx.doi.org/10.1103/PhysRevB.12.3060) pioneered by O.K. Andersen. 
 expanding them in a Taylor series to first order about some "linearization energy."  This is explained in detail in
 Richard Martin's book, _Electronic Structure_.
 
-The importance of the linear method to electronic structure cannot be overstated.  It, together with
-Slater's X-&alpha; method to approximate the difficult Fock exchange with a simpler functional of the density, and which was
-subsequently formalized into rigorous [density-functional
-theory](http://journals.aps.org/pr/abstract/10.1103/PhysRev.136.B864) by Hohenberg and Kohn, forms the basis for most of
-modern electronic structure theory in condensed matter.
-
 <div onclick="elm = document.getElementById('linear'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click 
 here for a brief description of the linear method and its extension using local orbitals.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="linear">{:/} 
@@ -118,6 +112,11 @@ Questaal suite.
 Extension of the linear method through local orbitals ensures that the eigenvalue problem remains a linear one, at the
 expense of an increase in the rank of the hamiltonian.
 
+The importance of the linear method to electronic structure cannot be overstated.  It, together with
+Slater's X-&alpha; method to approximate the difficult Fock exchange with a simpler functional of the density, and which was
+subsequently formalized into rigorous [density-functional
+theory](http://journals.aps.org/pr/abstract/10.1103/PhysRev.136.B864) by Hohenberg and Kohn, forms the basis for most of the
+practical modern electronic structure methods in condensed matter.
 
 {::nomarkdown}</div>{:/}
 
