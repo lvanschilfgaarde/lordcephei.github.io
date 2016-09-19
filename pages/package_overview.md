@@ -69,11 +69,10 @@ the partial waves to the envelopes.
 
 #### _Linear Methods in Band Theory_
 
-Nearly all modern electronic structure methods make use of the
-_linear_ approximation pioneered by O.K. Andersen.  Partial waves
-are replaced by a wave at some "linearization energy" and its energy
-derivative.  This is explained in detail in Richard Martin's book,
-_Electronic Structure_.
+Nearly all modern electronic structure methods make use of the [linear
+method](http://dx.doi.org/10.1103/PhysRevB.12.3060) pioneered by O.K. Andersen.  Partial waves are approximated by
+expanding them in a Taylor series to first order about some "linearization energy."  This is explained in detail in
+Richard Martin's book, _Electronic Structure_.
 
 <div onclick="elm = document.getElementById('linear'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">Click 
 here for a description of the linear approximation.</div>
@@ -137,15 +136,6 @@ they use LMTO basis sets.
 _____________________________________________________________
 
 ### _Augmentation_
-
-
-
-[Linear methods](http://dx.doi.org/10.1103/PhysRevB.12.3060) approximate
-the radial Schrodinger equation (aka "partial wave") inside the
-augmentation 
-
-
-
 
 **lmf**{: style="color: blue"} carries out augmentation in a manner different than standard augmented wave methods.  It
 somewhat resembles the PAW method, though in the limit of large angular momentum cutoff it has exactly the same behavior
