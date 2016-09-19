@@ -1,12 +1,12 @@
 ---
 layout: page-fullwidth
-title: "Third tutorial on QSGW+DMFT"
-permalink: "/tutorial/qsgw_dmft/dmft3/"
+title: "Fourth tutorial on QSGW+DMFT"
+permalink: "/tutorial/qsgw_dmft/dmft4/"
 sidebar: "left"
 header: no
 ---
 
-# Static spin-averaged+spin-flip method
+# Charge + static-magnetic contributions. 
 
 This method is a way to close the outer loop (density loop) in a QSGW+DMFT or LDA+DMFT calculation, but instead of doing an update of the density it actually relies on an (approximate) update of the self-energy.
 The assumption behind this method is that charge-charge excitations are well described by the low-level technique (QSGW, LDA or LSDA), while magnetic excitations have to be computed within DMFT, although their effect can be well approximated by a static field. The idea is then to extract only the spin-component of the static limit of the impuirty self-energy and to add it to the spin-averaged part of the lattice calculation (QSGW, LDA or LSDA).
