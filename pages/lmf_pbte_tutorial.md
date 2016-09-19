@@ -265,7 +265,7 @@ In brief you carry out the following steps:
     $ cp basp0.pbte basp.pbte                       #copy basp0 to recognised basp prefix   
 ~~~
 
-2. Local orbital.  Inspect _basp.pbte_{: style="color: green"}.  Note in particular this text belonging to the Pb atom:  
+2. Valence-core partitioning.  Inspect _basp.pbte_{: style="color: green"}.  Note in particular this text connected with the Pb atom:  
 
 ~~~
     PZ= 0 0 15.934
