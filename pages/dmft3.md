@@ -6,7 +6,7 @@ sidebar: "left"
 header: no
 ---
 
-# Issues and adjustments
+# Issues with input and parameters
 The aim of this tutorial is to give some indications on how to set the parameters of the DMFT calculation.
 We will give some examples of how the output should look like and, more importantly, how it shouldn't.
 
