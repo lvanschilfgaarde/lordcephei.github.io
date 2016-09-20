@@ -37,11 +37,7 @@ Performing a Mulliken analysis using the _lmf_{: style="color: blue"} code is ex
     ~/lm/fp/test/test.fp cr3si6 2
     ~/lm/fp/test/test.fp gdn 2
 
-Should you want a more in depth look, or a practical example, these are good places to start. You will find that the primary difference between this process and that of a standard partial DOS (see the tutorial linked in the 'Preliminaries' section) is the use of the 
-
-    --mull
-
-switch. 
+Should you want a more in depth look, or a practical example, these are good places to start. You will find that the primary difference between this process and that of a standard partial DOS (see the tutorial linked in the 'Preliminaries' section) is the use of the `mull` switch. 
 
 An input file is needed for the material of which the partial DOS should be found. A tutorial detailing the steps required to generate a basic input file can be found [here](https://lordcephei.github.io/asa_inputfile/). While this tutorial concerns itself with Cr3Si6, the steps involved are applicable to most other materials.   
 
