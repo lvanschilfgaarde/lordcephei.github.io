@@ -72,12 +72,9 @@ cp itX_lmfrun/eimp1.ni  itX_qmcrun/Eimp.inp      # copy impurity levels from lmf
 
 Now there are some manual operations to do:
 
-+ Look for '????' in the *PARAMS*{: style="color: green"} file provided. Assign the **Ed** variable the values reported in the forth line of *Eimp.inp*{: style="color: green"}. **Warning: be careful in erasing the '=' sign before the brakets!**{: style="color: red"}. Then change **mu** accordingly as the first value of **Ed** with opposite sign.
++ Look for '????' in the *PARAMS*{: style="color: green"} file provided. Assign the **Ed** variable the values reported in the forth line of *Eimp.inp*{: style="color: green"}. **Warning: be careful in erasing the '=' sign before the brakets!**{: style="color: red"}. Then change **mu** accordingly as the first value of **Ed** with opposite sign. Finally add the correct values of **U**, **J**, **beta** and **nf0** (equivalent of n: nominal occupation of correlated orbitals). **Warning: Be careful in being consistent with the values in the ctrl.ni and the double counting used in the lmfdfmt run.**{: style="color: red"}
 
-  Then add to the *PARAMS*{: style="color: green"} the correct values of **U**, **J**, **nf0** (equivalent of n: nominal occupation of correlated orbitals) and **beta**.**Warning: Be careful in being consistent with the values in the ctrl.ni and the double counting used in the lmfdfmt run.**{: style="color: red"}
-  
-
-  <div onclick="elm = document.getElementById('ParamsDmft1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Example of cprrect PARAMS - Click to show.</button></div>
+  <div onclick="elm = document.getElementById('ParamsDmft1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Example of PARAMS - Click to show.</button></div>
   {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="ParamsDmft1">{:/}
   
   At this point the PARAMS file should look like this
@@ -131,15 +128,15 @@ Now there are some manual operations to do:
 
   At the end of the run (it will take a while...) a series of files have been produced. Among them we are especially interested in *Sig.out*{: style="color: green"}, *histogram.dat*{: style="color: green"} and the *status*{: style="color: green"} files. To learn how to use them to judge on the quality of the QMC calculation we refer to the [third tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft3).
 
-+ Once the **ctqmc**{: style="color: blue"} run is over, you must broad *Sig.out*{: style="color: green"} using the program **brad_sig.x**{: style="color: blue"}.
++ You now must broad *Sig.out*{: style="color: green"} to smooth out the noise. If you use the program **brad_sig.x**{: style="color: blue"} you will run it with following commands
  
   ``` 
   cd itX_qmcrun
   cp ../qmcinput/broad_sig.x .
-  echo 'Sig.out 150 l "55  20  150" k "1 2 3 2 3"'| ./broad_sig.x > broad.log
+  echo 'Sig.out 150 l "55  20  150" k "1 2 3 4 5"'| ./broad_sig.x > broad.log
   ```
 
-  For a clearer explanation on how **broad_sig.x**{: style="color: blue"} works, we refer to its commented header.
+  For a clearer explanation of how to use **broad_sig.x**{: style="color: blue"}, we refer to its commented header.
  
 At this point you have a new self-energy to be fed to **lmfdmft**{: style="color: blue"}. You can go back to the point _**(1)**_ and repeat all the operations with a higher iteration number X.
  
