@@ -70,9 +70,9 @@ echo 'DMFT    PROJ=2 NLOHI=1,8 BETA=50 NOMEGA=1999 KNORM=0' >> ctrl.ni  # add to
 
 The token **DMFT_NLOHI** defines the projection window in band index, **DMFT_BETA** is the inverse temperature in eV$$^{-1}$$ and **DMFT_NOMEGA** is the number of Matsubara frequencies in the mesh. Some details of the projection procedure are controlled by **DMFT_PROJ** and **DMFT_KNORM**, but you are not meant to change their value.
 
-Moreover we recommend to add **% const bxc0=0** and **BXC0={bxc0}** in the **HAM** section of *ctrl.ni*{: style="color: green"} file.
+Moreover we recommend to add **% const bxc0=0** and **BXC0={bxc0}** in the **HAM** section of *ctrl.ni*{: style="color: green"} file. Setting **HAM_BXC0** to **TRUE**, tells **lmf**{: style="color: blue"} to construct $$V_{\rm xc}^{\rm LDA}$$ from the spin-averaged charge density. The reason for this will be clarified in the [fourth tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft4).
 
-You can see how it should look like by clicking on the dropdown box.
+At the end, you can see how your *ctrl.ni*{: style="color: green"} should look like by clicking on the dropdown box.
 <div onclick="elm = document.getElementById('ctrl-4dmft'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Example of ctrl.ni - Click to show.</button></div>
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="ctrl-4dmft">{:/}
 
@@ -138,7 +138,16 @@ lmf --rsig~spinav --wsig -vbxc0=1 ni > log  # read sigm, make spin-average, writ
 mv sigm2.ni sigm.ni                         # rename sigm2: you will work with this spin-averaged sigm 
 cd ..
 ```
-In the command above the flag **-vbxc0**{: style="color: blue"} sets the variable **HAM_BXC0** to **TRUE**, telling **lmf**{: style="color: blue"} to construct $$V_{\rm xc}^{\rm LDA}$$ from the spin-averaged charge density. The reason you need this feature will be clarified on the [fourth tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft4).
+
+Check that at among the last lines of the *log*{: style="color: green"}  you find
+
+```
+ replace sigma with spin average ...
+``` 
+and 
+```
+ Exit 0 done writing sigma, file sigm2
+```
 
 ##### **Compile the broadening program**
 The statistical noise of Quantum Monte Carlo calculations can be source of instabilities. Because of this, you need to broad the output of the **ctqmc**{: style="color: blue"} software at the end of each iteration.
@@ -167,7 +176,7 @@ You can check that the line
 ```
 Missing sigma file : create it and exit ...
 ```
-is prompted just before the end of the *log*{: style="color: green"}.
+ is written at the end of the *log*{: style="color: green"}.
 
 The calculation has stopped just after reading the *indmfl.ni*{: style="color: green"} and a file called *sig.inp*{: style="color: green"} has been created. It is formatted with the first column being the Matsubara frequencies (in eV) and then 0.0 repeated for a number of columns equal to twice the number of _m_ channels (e.g. ten columns for _d_-type impurity grouped in real and imaginary parts).
 
