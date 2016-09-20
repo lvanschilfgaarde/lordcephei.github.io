@@ -35,7 +35,7 @@ Questaal's unique features, in particular the ability to carry out
 quasiparticle self-consistent calculations.
 
 Questaal codes have been written mainly by M. van Schilfgaarde, though [many people have made important
-contributions](https://lordcephei.github.io/lmf_tutorial/).  Download the package [here](https://bitbucket.org/lmto/lm)
+contributions !lvs update link!](https://lordcephei.github.io/lmf_tutorial/).  Download the package [here](https://bitbucket.org/lmto/lm)
 and see [this web page](https://lordcephei.github.io/install/) to install the package.
 
 _____________________________________________________________
