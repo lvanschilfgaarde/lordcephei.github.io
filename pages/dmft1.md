@@ -169,6 +169,7 @@ mkdir siginp0
 cd siginp0
 cp ../lmfinput/*  . 
 lmfdmft ni --ldadc=71.85 -job=1 -vbxc0=1 > log
+cd ..
 ```
 
 You can check that the line 
@@ -182,5 +183,27 @@ The calculation has stopped just after reading the *indmfl.ni*{: style="color: g
 Of course, if you want you can start from non-vanishing *sig.inp* files (e.g. from a previously converged DMFT loop).
 
 ### ...Ready to go!
+<div onclick="elm = document.getElementById('qsgw_ni'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Commands to run QSGW on Ni from scratch - Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="qsgw_ni">{:/}
+
+The list of relevant files in the two input directories is
+
+```
+ $ ls -l lmfinput 
+basp.ni           # basis set used in the QSGW calculation
+ctrl.ni           # amended ctrl.ni file with DMFT category and HAM_BXC0={bxc0} token 
+indmfl.ni         # instructions for the correlated subsystem
+rst.ni            # electronic density of the spin-polarized QSGW loop
+sigm.ni           # spin-averaged sigm.ni from converged QSGW loop
+site.ni 
+
+ $ ls -l qmcinput 
+atom_d.py         # initialise the atomic problem in a d-electron system  
+broad_sig.x       # broadens Sig.out at the end of each ctqmc run
+PARAMS            # main parameters for the ctqmc calculation
+Trans.dat         # translation table needed by atom_d.py
+```
+
+{::nomarkdown}</div>{:/}
 
 You are now ready to start the DMFT loop, following the link to the [next tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft2).
