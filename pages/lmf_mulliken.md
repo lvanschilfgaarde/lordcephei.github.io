@@ -25,25 +25,17 @@ All instances of commands assume the starting position is your _build_ directory
 
     $ cd ~/build/
 
-with _~/build_{: style="color: green} being the directory the _lm_{: style="color: blue"} repository was built in to.
+with _~/build/_{: style="color: green} being the directory the _lm_{: style="color: blue"} repository was built in to.
 
 _Note:_{: style="color: red"} the build directory should be different from the source directory.
 
 ### _Tutorial_
 _____________________________________________________________
-Performing a Mulliken analysis using the _lmf_{: style="color: blue"} code is exemplified in three test cases
+In order to perform a Mulliken analysis using the _lmf_{: style="color: blue"} code an input file is needed for the material of which the partial DOS should be found. A tutorial detailing the steps required to generate a basic input file can be found [here](https://lordcephei.github.io/asa_inputfile/). While this tutorial concerns itself with Cr3Si6, the steps involved are applicable to most other materials.
 
-    ~/lm/fp/test/test.fp fe 2
-    ~/lm/fp/test/test.fp cr3si6 2
-    ~/lm/fp/test/test.fp gdn 2
+For the Mulliken analysis tutorial we will use the material Iron, Fe, and thus base our tutorial around the _fe 2_ test case. Our input file, created previously, will be referred to as _ctrl.fe_{: style="color: green"} and should be named as such.
 
-Should you want a more in depth look, or a practical example, these are good places to start. You will find that the primary difference between this process and that of a standard partial DOS (see the tutorial linked in the 'Preliminaries' section) is the use of the `--mull` switch. 
-
-An input file is needed for the material of which the partial DOS should be found. A tutorial detailing the steps required to generate a basic input file can be found [here](https://lordcephei.github.io/asa_inputfile/). While this tutorial concerns itself with Cr3Si6, the steps involved are applicable to most other materials.   
-
-In this tutorial we will use the material Iron, Fe, and thus base our tutorial around the _fe 2_ test case. Our input file, created previously, will be referred to as _ctrl.fe_{: style="color: green"} and should be named as such.
-
-We begin by running _lmfa_{: style="color: blue"} progam which needs to be run before any _lmf_{: style="color: blue"} process in order to generate the free-atom densities which, in our case, is generated in to the file _atm.fe_{: style="color: green"} with the command
+We begin by running _lmfa_{: style="color: blue"} program which needs to be run before any _lmf_{: style="color: blue"} process in order to generate the free-atom densities which, in our case, is generated in to the file _atm.fe_{: style="color: green"} with the command
 
     $ lmfa fe
 
@@ -68,3 +60,17 @@ Which generates a _plot.dos_{: style="color: green"} file readable by _fplot_{: 
     $ fplot -disp -pr10 -f plot.dos
 
 Which should result in a viewable image of the Mulliken DOS.
+
+### _Other Resources_
+
+Performing a Mulliken analysis using the _lmf_{: style="color: blue"} code is exemplified in three test cases
+
+    $ ~/lm/fp/test/test.fp fe 2
+    $ ~/lm/fp/test/test.fp cr3si6 2
+    $ ~/lm/fp/test/test.fp gdn 2
+
+Should you want a more in depth look, or a practical example, these are good places to start. You will find that the primary difference between this process and that of a standard partial DOS (see the tutorial linked in the 'Preliminaries' section) is the use of the `--mull` switch. 
+
+_Note_{: style="color: red"}: These test cases are not pedagogical, they are useful to verify the code works and to extract data.
+
+
