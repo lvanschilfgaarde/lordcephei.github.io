@@ -139,6 +139,12 @@ For that reason the Questaal package uses a "continuous principal quantum number
 
 $$P_l = 0.5 - \arctan(D_l)/\pi + \hbox{(principal quantum number)} $$
 
+<i>P<sub>l</sub></i> increases smoothly and monotically with energy, acquiring an extra integer each time a new node appears.
+This construction is due to Michael Methfessel. <i>P<sub>l</sub></i> called a "continuous principal quantum number."
+
+_Note:_{: style="color: red"} <i>P<sub>l</sub></i> should not be confused with O.K. Andersen's "Potential function", which uses the same symbol.
+(It is unfortunate that these distinct but related functions have the same symbol.)
+
 ##### _Continuous principal quantum number for core levels and free electrons_
 
 <div onclick="elm = document.getElementById('corep'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
@@ -148,7 +154,7 @@ Click here for a description of P for core levels.</div>
 _Core levels_
 
 A core state is exponentially decaying as it approaches _s_; therefore its logarithmic derivative <i>D<sub>l</sub></i> is approximately
-<i>s</i>/<i>&epsilon;<sub>l</sub></i>, which is large and negative.  Using the fact that arctan(<i>x&rarr;-&infin;)/&pi;</i>&rarr;-1/2,
+<i>s</i>/<i>&epsilon;<sub>l</sub></i>, which is large and negative.  Using the fact that arctan(<i>x&rarr;-&infin;</i>)/<i>&pi;</i>&rarr;-1/2,
 the fractional part of <i>P<sub>l</sub></i> is large and close to one.
 
 _Free electrons_
@@ -165,8 +171,6 @@ in a continous way, acquiring an extra integer each time a new node appears.
 
 {::nomarkdown}</div>{:/}
 
-
-This construction (due to Michael Methfessel) is called a "continuous principal quantum number."
 
 ### _Generation of the sphere potential and energy moments Q_
 

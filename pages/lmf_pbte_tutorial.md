@@ -251,7 +251,7 @@ If you supply only one number it is copied to elements 2 and 3.
 
 To carry out a self-consistent calculation, we need to prepare the following:
 
-4.1  Find any high-lying core states that should be included in the valence as local orbitals.
+4.1  Find any high-lying core states that should be included in the valence as local orbitals.  
 4.2  Provide a reasonable basis set with parameters **RSMH** and **EH** defining the envelope functions  
 4.3  Make atomic densities, which **lmf**{: style="color: blue"} will overlap to make a starting trial density  
 4.4  Supply an automatic estimate for the mesh density plane wave cutoff **GMAX**.
