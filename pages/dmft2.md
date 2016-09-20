@@ -68,6 +68,7 @@ mkdir itX_qmcrun                                 # the running folder
 cp qmcinput/*   itX_qmcrun/                      # copy input files and relevant executables
 cp itX_lmfrun/delta.ni  itX_qmcrun/Delta.inp     # copy hybridization function output from lmfdmft
 cp itX_lmfrun/eimp1.ni  itX_qmcrun/Eimp.inp      # copy impurity levels from lmfdmft
+cp it(X-1)_qmcrun/status* itX_qmcrun/            # If X>1. See the third tutorial for details
 ```
 
 Now there are some manual operations to do:
