@@ -43,17 +43,17 @@ _____________________________________________________________
 ### _Augmented Wave Methods_
 
 Augmented Wave methods, originally developed by Slater, partitions space into spheres enclosing around each atom.  Basis functions used to
-solve Schrodinger's equation consist of a family of smooth envelope functions which are "augmented" with solutions of Schrodinger equation
+solve Schrodinger's equation consist of a family of smooth envelope functions which are "augmented" with solutions of the Schrodinger equation
 (aka _partial waves_) inside each sphere.  The reason for augmentation is to enable basis functions to vary rapidly near nuclei where they
 must be orthogonalized to core states.
 
-Augmented-wave methods consist of an "atomic" part and a "band'' part The former takes as input a density and finds the ["partial
+Augmented-wave methods consist of an "atomic" part and a "band'' part. The former takes as input a density and finds the ["partial
 waves"](/docs/asaoverview/#structure-of-the-asa) [update link!] on a numerical radial mesh inside each augmentation sphere and makes the
 relevant matrix elements needed, e.g. for the hamiltonian or some other property (e.g. optics).  The "band'' part constructs the hamiltonian
 and diagonalizes the secular matrix made by joining the partial waves to the envelopes.
 
 Solutions of the Schrodinger equations are then piecewise: the envelope functions must be joined differentiably onto the partial waves.
-Matching conditions set up secular matrix, so solution of the Schrodinger equation in the crystal for a given potential reduces to an
+Matching conditions determine a secular matrix, so solution of the Schrodinger equation in the crystal for a given potential reduces to an
 eigenvalue problem.
 
 The choice of envelope function defines the method (Linear Muffin Tin Orbitals, Linear Augmented Plane Waves, Jigsaw Puzzle Orbitals); while
@@ -118,14 +118,14 @@ _____________________________________________________________
 ### _Questaal's Basis Functions_
 
 The primary code in the density-functional package (**lmf**{: style="color: blue"}) uses atom-centered functions for
-envelope functions. They are convolutions of a Hankel and Gaussian functions centred at the nucleus.  Thus 
-in contrast to ordinary Hankel functions (the envelope functions of the LMTO method), which are singular at the origin,
-they resemble Gaussian functions for small _r_ and are smooth there.  For large _r_ they behave like ordinary Hankel functions
-and are better approximations to the wave function than Gaussian orbitals are.  The mathematical properties of
+envelope functions. They are convolutions of a Hankel and Gaussian functions centred at the nucleus.  Thus, 
+in contrast to ordinary Hankel functions (the envelope functions of the LMTO method) which are singular at the origin,
+they resemble Gaussian functions for small _r_ and are smooth everywhere. For large _r_ they behave like ordinary Hankel functions
+and are better approximations to the wave function than Gaussian orbitals.  The mathematical properties of
 these functions are described in some detail in [this paper](http://scitation.aip.org/content/aip/journal/jmp/39/6/10.1063/1.532437)
 
-Such a basis has significant advantages --- basis sets are much smaller for a given level of precision, but they are
-also more complex.  It is also possible to take a combination of these functions and plane waves -- another unique
+Such a basis has significant advantages: basis sets are much smaller for a given level of precision, but they are
+also more complex.  It is also possible to take a combination of smoothed Hankels and plane waves -- another unique
 feature of this package.
 
 **Note**{: style="color: red"}: some codes in this package are based on the [Atomic Spheres Approximation](https://lordcephei.github.io/lmto_asa_doc.md/);
@@ -146,31 +146,30 @@ _____________________________________________________________
 ### _Executable codes in the Questaal suite_
 
 The Questaal family of executable programs share a common, elegant [input system](https://lordcephei.github.io/pages/input-file-style.html),
-and has some elements of a programming language.  A reference defining the syntax of categories and tokens can be found in [this pdf file](https://lordcephei.github.io/pages/input.pdf).
+and have some elements of a programming language.  A reference defining the syntax of categories and tokens can be found in [this pdf file](https://lordcephei.github.io/pages/input.pdf).
 
 The family consists of the following:
 
 + **blm**{: style="color: blue"}: an input file generator, given structural information.  [Many of the tutorials](https://lordcephei.github.io/lmf_pbte_tutorial/) use **blm**{: style="color: blue"}.
 **cif2init**{: style="color: blue"} and **cif2site**{: style="color: blue"}: convert structural information contained in _cif_{: style="color: green"} files to a form readable by Questaal. **poscar2init**{: style="color: blue"} and **poscar2site**{: style="color: blue"}: perform a similar function, reading VASP _POSCAR_{: style="color: green"} files.
 
-+ **lmf**{: style="color: blue"}: the standard full-potential LDA band program.  It has a companion program **lmfa**{: style="color: blue"} to calculate starting wave functions for free atoms and supply parameters for the shape of envelope functions.  See [here](https://lordcephei.github.io/lmf_tutorial/) for a basic tutorial.
++ **lmf**{: style="color: blue"}: the standard full-potential LDA band program. It has a companion program **lmfa**{: style="color: blue"} to calculate starting wave functions for free atoms and supply parameters for the shape of envelope functions.  See [here](https://lordcephei.github.io/lmf_tutorial/) for a basic tutorial.
 There is an MPI version, **lmf-MPIK**{: style="color: blue"}.
 
 + **lmgw1-shot**{: style="color: blue"} and **lmgwsc**{: style="color: blue"}: scripts that perform GW calculations (one-shot or self-consistent), or properties related to GW. The interface connecting to the _GW_ code is **lmfgwd**{: style="color: blue"}.  A basic tutorial for the GW package can be found [here](https://lordcephei.github.io/lmtut/).
 
-+ **lm**{: style="color: blue"}: a density functional band program [based on the Atomic Spheres Approximation](https://lordcephei.github.io/lmto_asa_doc/) (ASA).  It requires a companion program **lmstr**{: style="color: blue"} to make structure contants for it.  A basic tutorial can be found [here](https://lordcephei.github.io/asa-doc/).
++ **lm**{: style="color: blue"}: a density functional band program [based on the Atomic Spheres Approximation](https://lordcephei.github.io/lmto_asa_doc/) (ASA).  It requires a companion program **lmstr**{: style="color: blue"} to make structure constants for it.  A basic tutorial can be found [here](https://lordcephei.github.io/asa-doc/).
 There is an MPI version, **lm-MPIK**{: style="color: blue"}.
 
 + **lmgf**{: style="color: blue"}: a density functional band program based on the ASA, using a Green's function formalism.
-Its unique contribution to the suite is that it permits the calculation of magnetic exchange interactions, and it 
-has an implementation of the coherent potential approximation to treat chemical and/or spin disorder.
+Its unique contribution to the suite is that it permits the calculation of magnetic exchange interactions, and has an implementation of the coherent potential approximation to treat chemical and/or spin disorder.
 A basic tutorial can be found [here](https://lordcephei.github.io/lmgf-tutorial/).
 There is an MPI version, **lmgf-MPIK**{: style="color: blue"}.
 
 + **lmpg**{: style="color: blue"}: a program similar to **lmgf**{: style="color: blue"}, but it is designed for layered structures with periodic boundary conditions in
- two dimensions.  It can calculate transport using the Landauer-Buttiker formalism, and has a non-equilibrium capability.  There 
+ two dimensions.  It can calculate transport using the Landauer-Buttiker formalism, and has a non-equilibrium capability.  There is  
 [a tutorial](https://lordcephei.github.io/pages/lmpg_tutorial.v2.0.pdf/), though it is somewhat out of date.
-There is an MPI version, **lmpg-MPIK**{: style="color: blue"}.
+There is also an MPI version, **lmpg-MPIK**{: style="color: blue"}.
 
 + **lmfdmft**{: style="color: blue"}: the main interface that links to the DMFT capabilities.
 
@@ -193,7 +192,7 @@ floating orbitals may be placed --- important for ASA and some _GW_ calculations
 
 + **lmmc**{: style="color: blue"}: a (fast) LDA-based molecules program (not documented).
 
-Some other auxiliary programs are also made.
+There are other auxiliary programs, such as a formatter for setting up energy bands and a graphics program similar to gnuplot.
 
 ### _Input System_
 
@@ -202,7 +201,7 @@ input in a largely format-free, tree-structured format.  There is some
 programming language capability: e.g. input lines can be conditionally
 read, you can declare variables and use algebraic expressions.  Thus the
 input file can be [quite simple](https://lordcephei.github.io/tutorial/lmf/lmf_tutorial/),
-or very detailed, even serving as a database for many materials. This [this tutorial](https://lordcephei.github.io/docs/input/inputfile/)
+or very detailed, even serving as a database for many materials. [This tutorial](https://lordcephei.github.io/docs/input/inputfile/)
 explains how an input file is structured, and how input is organized by _categories_ and _tokens_. 
 
 ### _Other Resources_
