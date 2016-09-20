@@ -148,7 +148,7 @@ Once you have familiarised with the procedure, we strongly recommend you to writ
 However be careful that (at least during the first three/four iterations) some variables of *PARAMS*{: style="color: green"} could need to be adjusted on the fly (e.g. **nom**, **Nmax**).
  
 ### Converging to the SC-solution
-The self-consistent condition holds when $$G_{\rm loc}(i\omega_n)$$ of iteration _N_ is equal (within a certain tolerance) to $$G_{\rm imp}(i\omega_n)$$ of iteration _N-1_. You can add the flag **\-\-gprt**{: style="color: blue"} when running **lmfdmft**{: style="color blue"} to get $$G_{\rm loc}(i\omega_n)$$ printed on a file called *gloc.ni*{: style="color: green"}. This can be compared with the file *Gf.out*{: style="color: green"} produced by the previous CTQMC run. However in the comparison remember that the latter is not broadened, while the former is obtained by smoothened quantities.
+The self-consistent condition holds when $$G_{\rm loc}(i\omega_n)$$ of iteration _N_ is equal (within a certain tolerance) to $$G_{\rm imp}(i\omega_n)$$ of iteration _N-1_. You can add the flag **\-\-gprt**{: style="color: blue"} when running **lmfdmft**{: style="color: blue"} to get $$G_{\rm loc}(i\omega_n)$$ printed on a file called *gloc.ni*{: style="color: green"}. This can be compared with the file *Gf.out*{: style="color: green"} produced by the previous CTQMC run. However in the comparison remember that the latter is not broadened, while the former is obtained by smoothened quantities.
 
 An easier though accurate way is to look at the convergence of the chemical potential. This can be done by typing **grep ' mu = ' it*_lmfrun/log**{: style="color: blue"}.
 
