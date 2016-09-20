@@ -130,26 +130,41 @@ $$ D_l(\varepsilon) \equiv D\{\phi_l(\varepsilon)\}
    = \left( {\frac{r}{\phi_l(\varepsilon,r)}}
            {\frac{d\phi_l(\varepsilon,r)}{dr}} \right)_{s} . $$
 
-The energy <i>&epsilon;</i> fixes _D_, or alternatively _D_ can be specified which fixes the <i>&epsilon;</i>.
-
+The energy <i>&epsilon;</i> fixes _D_, or alternatively _D_ can be specified which fixes <i>&epsilon;</i>.
 <i>D<sub>l</sub></i> is a cotangent-like function: it decreases monotonically from (+&infin;,&minus;&infin;)
-over a finite window of energy, where it starts again at +&infin;.
+over a finite window of energy, after which it starts again at +&infin;.
+There is thus a multiplicity of energies for a given <i>D<sub>l</sub></i>, one branch for each principal quantum number.
 
-There is thus a <i>multiplicity</i> of energies for
-a given <i>D<sub>l</sub></i>, one branch for each principal quantum number.  
 For that reason the Questaal package uses a "continuous principal quantum number" defined as
 
 $$P_l = 0.5 - \arctan(D_l)/\pi + \hbox{(principal quantum number)} $$
 
-A core state is exponentially decaying as it approaches _s_; therefore
-its logarithmic derivative
-<i>D<sub>l</sub></i> is approximately <i>s</i>/<i>&epsilon;<sub>l</sub></i>, which
-is large and negative.  Using the fact that arctan(<i>x&rarr;-&infin;)/&pi;</i>&rarr;-1/2,
-the fractional part of <i>P<sub>l</sub></i> must approach 1 as <i>&epsilon;<sub>l</sub></i>&rarr;-&infin;.
-Thus the fractional part of <i>P<sub>l</sub></i> is close to 1 for deep or core states;
-for states far above the Fermi level it is small.
-As <i>&epsilon;</i> increases from -<i>&infin;</i> to <i>&infin;</i>, _P_ changes
+##### _Continuous principal quantum number for core levels and free electrons_
+
+<div onclick="elm = document.getElementById('corep'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
+Click here for a description of P for core levels.</div>
+{::nomarkdown}<div style="display:none;padding:0px;" id="corep">{:/} 
+
+_Core levels_
+
+A core state is exponentially decaying as it approaches _s_; therefore its logarithmic derivative <i>D<sub>l</sub></i> is approximately
+<i>s</i>/<i>&epsilon;<sub>l</sub></i>, which is large and negative.  Using the fact that arctan(<i>x&rarr;-&infin;)/&pi;</i>&rarr;-1/2,
+the fractional part of <i>P<sub>l</sub></i> is large and close to one.
+
+_Free electrons_
+
+In the absence of a potential the partial wave has the shape <i>r<sup>l</sup></i>.
+Thus for free electrons, $${\rm frac}[P_l^{\rm free}] = 0.5 - \arctan(l)/\pi$$.
+This sets a lower bound to $$P_l$$. For _l_=0, $$P_l^{\rm free}{=}1/2$$; for large _l_,
+$$P_l^{\rm free}$$ is small (0.15 for _d_ waves and 0.10 for _f_ waves).
+
+In summary, the fractional part of <i>P<sub>l</sub></i> is close to one for
+for deep states far below the Fermi level, for states far above the Fermi level it is small, at least for 
+_l_>0.  As <i>&epsilon;</i> increases from -<i>&infin;</i> to <i>&infin;</i>, _P_ changes
 in a continous way, acquiring an extra integer each time a new node appears.
+
+{::nomarkdown}</div>{:/}
+
 
 This construction (due to Michael Methfessel) is called a "continuous principal quantum number."
 

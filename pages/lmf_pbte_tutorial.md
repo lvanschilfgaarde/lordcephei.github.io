@@ -307,11 +307,11 @@ density-functional codes.  Enhanced orbitals append a tail so that the
 density from the orbital spills into the interstitial. 
 You can specify a "traditional" local orbital by omitting the 10, but this kind is more accurate, and there is no advantage to doing so.
 
-The continuous principal quantum number (**5.934**) specifies the
-[number of nodes and boundary
-condition](/docs/asaoverview/#boundary-conditions-and-continuous-principal-quantum-numbers).
-The large fractional part of _P_ is large for core states, typically around 0.93 for shallow cores.  **lmfa**{: style="color: blue"} determines the proper value for the atomic potential.
-In the self-consistency cycle the potential will change and **lmf**{: style="color: blue"} will update this value.
+The continuous principal quantum number (**5.934**) specifies the [number of nodes and boundary
+condition](/docs/asaoverview/#augmentation-sphere-boundary-conditions-and-continuous-principal-quantum-numbers).  The large fractional part
+of _P_ is [large for core states](/docs/asaoverview/#continuous-principal-quantum-number-for-core-levels-and-free-electrons), typically
+around 0.93 for shallow cores.  **lmfa**{: style="color: blue"} determines the proper value for the atomic potential.  In the
+self-consistency cycle the potential will change and **lmf**{: style="color: blue"} will update this value.
 
 **lmfa**{: style="color: blue"} automatically selects the valence-core partitioning; the information is given in _basp.pbte_{: style="color: green"}.
 You can set the partitioning manually by editing this file.  
