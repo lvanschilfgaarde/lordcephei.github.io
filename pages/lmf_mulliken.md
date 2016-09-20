@@ -14,17 +14,20 @@ ____________________________________________________________
 
 ### _Purpose_
 _____________________________________________________________
+
 This tutorial demonstrates how to perform mulliken analysis using the full potential band code _lmf_{: style="color: blue"}.
 
 ### _Preliminaries_
 _____________________________________________________________
-This tutorial assumes you have cloned and built the _lm_{: style="color: blue"} repository (located [here](https://bitbucket.org/lmto/lm)). For the purpose of demonstration, _~/lm_{: style="color: green"} will refer to the location of the cloned repository. In practice, this directory can be named differently.
+This tutorial assumes you have cloned and built the _lm_{: style="color: blue"} repository (located [here](https://bitbucket.org/lmto/lm)). For the purpose of demonstration, _~/lm_{: style="color: green"} will refer to the location of the cloned repository (_source_ directory). In practice, this directory can be named differently.
 
-All instances of commands assume the starting position is your build directory (this can be checked with the _pwd_{: style="color: blue"} command).  In this tutorial it will be called _~/build/_{: style="color: green"}.
+All instances of commands assume the starting position is your _build_ directory (this can be checked with the _pwd_{: style="color: blue"} command).  In this tutorial it will be called _~/build/_{: style="color: green"}.
 
     $ cd ~/build/
 
-It is advised that you read the Partial DOS tutorial for the _lmf_{: style="color: blue"} code located [here](/lmf_pdos/), as these tutorials are similar in both commands and results.
+with _~/build_{: style="color: green} being the directory the _lm_{: style="color: blue"} repository was built in to.
+
+_Note:_{: style="color: red"} the build directory should be different from the source directory.
 
 ### _Tutorial_
 _____________________________________________________________

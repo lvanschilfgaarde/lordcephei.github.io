@@ -18,20 +18,22 @@ This tutorial demonstrates how to obtain and plot a partial density of states (D
 
 ### _Preliminaries_
 _____________________________________________________________
-This tutorial assumes you have cloned and built the _lm_{: style="color: blue"} repository (located [here](https://bitbucket.org/lmto/lm)). For the purpose of demonstration, _lm_{: style="color: green"} will refer to the location of the cloned repository. In practice, this directory can be named differently.
+This tutorial assumes you have cloned and built the _lm_{: style="color: blue"} repository (located [here](https://bitbucket.org/lmto/lm)). For the purpose of demonstration, _~/lm_{: style="color: green"} will refer to the location of the cloned repository (_source_ directory). In practice, this directory can be named differently.
 
-All instances of commands assume the starting position is (this can be checked with the _pwd_{: style="color: blue"} command)
+All instances of commands assume the starting position is your _build_ directory (this can be checked with the _pwd_{: style="color: blue"} command).  In this tutorial it will be called _~/build/_{: style="color: green"}.
 
-    $ ~/your_build_directory/
+    $ cd ~/build/
 
-With _your\_build\_directory_{: style="color: blue"} being the directory the _lm_{: style="color: blue"} repository was built in to. Note: You will require files in the repository and those of the built suite, so it is advised to build in to the same directory as the repository itself.
+with _~/build_{: style="color: green} being the directory the _lm_{: style="color: blue"} repository was built in to.
+
+_Note:_{: style="color: red"} the build directory should be different from the source directory.
 
 ### _Tutorial_
 _____________________________________________________________
 Building a partial DOS using the _lmf_{: style="color: blue"} code is exemplified in two test cases
 
-    $ fp/test/test.fp co 3
-	$ fp/test/test.fp gas 2
+    $ ~/lm/fp/test/test.fp co 3
+    $ ~/lm/fp/test/test.fp gas 2
 
 Should you want a more in depth look, or a practical example, these are good places to start. We will use these as a base and go through the steps required to generate the partial DOS.   
 
