@@ -88,7 +88,7 @@ Now there are some manual operations to do:
   Gf  Gf.out
   Delta  Delta.inp
   cix  actqmc.cix
-  Nmax  950         # Maximum perturbation order allowed
+  Nmax  700         # Maximum perturbation order allowed
   nom  150          # Number of Matsubara frequency points sampled
   exe  ctqmc        # Name of the executable
   tsample  50       # How often to record measurements
@@ -124,7 +124,7 @@ Now there are some manual operations to do:
 
   Running **atom_d.py**{: style="color: blue"} generates a file called *actqmc.cix*{: style="color: green"} used by the ctqmc solver.
 
-+ Run **ctqmc**{: style="color: blue"} using a submission script on, let's say, 20 cores. Important parameters (that may need to be adjusted during the loop) are **nom**, **Nmax** and **M**. Their explanation is reported as a comment in the *PARAMS*{: style="color: green"} file itself but further information is available in the [next tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft3). For this tutorial, you can set them to **nom 150**, **Nmax 950** and  **M 20000000** (as illustrated in one dropdown box above).
++ Run **ctqmc**{: style="color: blue"} using a submission script on, let's say, 20 cores. Important parameters (that may need to be adjusted during the loop) are **nom**, **Nmax** and **M**. Their explanation is reported as a comment in the *PARAMS*{: style="color: green"} file itself but further information is available in the [next tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft3). For this tutorial, you can set them to **nom 150**, **Nmax 700** and  **M 20000000** (as illustrated in one dropdown box above).
 
   At the end of the run (it will take a while...) a series of files have been produced. Among them we are especially interested in *Sig.out*{: style="color: green"}, *histogram.dat*{: style="color: green"} and the *status*{: style="color: green"} files. To learn how to use them to judge on the quality of the QMC calculation we refer to the [third tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft3).
 
