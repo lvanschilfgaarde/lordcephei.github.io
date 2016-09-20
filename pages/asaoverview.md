@@ -101,7 +101,7 @@ The ASA makes two simplifications to the atomic part that make the method highlt
    The net interstitial volume is zero, and in the pure ASA it is neglected all together.
 
 Both atomic and band parts become simpler than in full potential methods.  Matrix elements of the potential become quite
-simple and reduce to a few parameters (the "potential parameters").  The band part need only generate energy moments
+simple and reduce to a few parameters (the "potential parameters").  The band part need only generate the lowest three energy moments
 $$Q_0$$, $$Q_1$$, and $$Q_2$$ of the density as described below; this is sufficient for the atomic part to construct a density and make
 potential parameters.  In the self-consistency cycle the atomic part takes moments and generates
 potential parameters; the band part takes potential parameters and generates moments.
@@ -114,25 +114,30 @@ specifying potential parameters, or with the atomic part, specifying the moments
 
 [Linear augmented wave](/docs/package_overview/#linear-methods-in-band-theory) methods almost invariably construct the basis set inside
 augmentation spheres from the spherical part of the potential.  (In the ASA the potential is spherical anyway).
-For a fixed spherical potential, the solution to the radial Schrodinger
-equation (aka "partial wave") <i>&phi;<sub>l</sub></i> of quantum number _l_ and its energy are uniquely determined by the boundary
-condition at the augmentation radius _s_.  The boundary condition fixes the energy, or conversely the energy fixes the boundary condition.
-More precisely, <i>&phi;<sub>l</sub></i> is called a <i>partial wave</i> since it is only a partial solution
+For a fixed spherical potential, the Schrodinger equation separates into an angular part
+(whose solutions are spherical harmonics) and a radial part with quantum number _l_.  Solution to the radial Schrodinger
+equation (aka "partial wave") <i>&phi;<sub>l</sub></i> and its energy are uniquely determined by the boundary
+condition at the augmentation radius _s_.  More precisely, <i>&phi;<sub>l</sub></i> is called a <i>partial wave</i> since it is only a partial solution
 to the full Schrodinger equation.  Partial waves must be matched to the envelope function at the augmentation sphere radius; the condition
 that all partial waves match smoothly and differentiably at all surfaces is the quantization condition that determines allowed eigenvalues.
 [Linear methods](/docs/package_overview/#linear-methods-in-band-theory) in fact require the partial wave $$\phi$$ and its energy derivative
 $$\dot\phi$$ (or possibly $$\phi$$ at two different linearization energies).
 
-
-This is normally given through the "logarithmic derivative function"
+The boundary condition can be given through the "logarithmic derivative function"
 
 $$ D_l(\varepsilon) \equiv D\{\phi_l(\varepsilon)\} 
    = \left({\frac{d\ln\phi_l(\varepsilon,r)}{d\ln r}} \right)_{s}
    = \left( {\frac{r}{\phi_l(\varepsilon,r)}}
            {\frac{d\phi_l(\varepsilon,r)}{dr}} \right)_{s} . $$
 
-Since _D_ does not specify the principal quantum number, it is convenient to define a
-"continuous principal quantum number"
+The energy <i>&epsilon;</i> fixes _D_, or alternatively _D_ can be specified which fixes the <i>&epsilon;</i>.
+
+<i>D<sub>l</sub></i> is a cotangent-like function: it decreases monotonically from (+&infin;,&minus;&infin;)
+over a finite window of energy, where it starts again at +&infin;.
+
+There is thus a <i>multiplicity</i> of energies for
+a given <i>D<sub>l</sub></i>, one branch for each principal quantum number.  
+For that reason the Questaal package uses a "continuous principal quantum number" defined as
 
 $$P_l = 0.5 - \arctan(D_l)/\pi + \hbox{(principal quantum number)} $$
 
