@@ -72,7 +72,7 @@ cp itX_lmfrun/eimp1.ni  itX_qmcrun/Eimp.inp      # copy impurity levels from lmf
 
 Now there are some manual operations to do:
 
-+ Look for '????' in the *PARAMS*{: style="color: green"} file provided. Assign the **Ed** variable the values reported in the forth line of *Eimp.inp*{: style="color: green"}. **Warning: be careful in erasing the '=' sign before the brakets!**{: style="color: red"}. Then change **mu** accordingly as the first value of **Ed** with opposite sign. Finally add the correct values of **U**, **J**, **beta** and **nf0** (equivalent of n: nominal occupation of correlated orbitals). **Warning: Be careful in being consistent with the values in the ctrl.ni and the double counting used in the lmfdfmt run.**{: style="color: red"}
++ Look for '????' in the provided *PARAMS*{: style="color: green"}. Assign the **Ed** variable the values reported in the forth line of *Eimp.inp*{: style="color: green"}. **Warning: be careful in erasing the '=' sign before the brakets!**{: style="color: red"}. Then change **mu** accordingly as the first value of **Ed** with opposite sign. Finally add the correct values of **U**, **J**, **beta** and **nf0** (equivalent of n: nominal occupation of correlated orbitals). **Warning: Be careful in being consistent with the values in the ctrl.ni and the double counting used in the lmfdfmt run.**{: style="color: red"}
 
   <div onclick="elm = document.getElementById('ParamsDmft1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Example of PARAMS - Click to show.</button></div>
   {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="ParamsDmft1">{:/}
