@@ -162,11 +162,11 @@ are ``fundamental'' to a sphere; the atomic program will generate a
 self-consistent potential for a specified set of <i>Q</i><sub>0</sub>,
 <i>Q</i><sub>1</sub>, <i>Q</i><sub>2</sub> and boundary conditions.
 
-_Note:_{: style="color: red"} This is a generalization of the free-atom 
+This is a generalization of the free-atom 
 case where the atomic density is determined by the zeroth moment
 $$Q_0$$ in each _l_ channel and the boundary condition
-that (<i>d&phi;<sub>l</sub></i> decay as <i>r</i>&rarr;&infin;).
-Only one moment is required there because the atomic level is sharp,
+that (<i>&phi;<sub>l</sub></i> decay as <i>r</i>&rarr;&infin;).
+Only $$Q_0$$ is needed because the atomic level is sharp,
 having no energy dispersion.
 
 <A name="logderivative"></A>

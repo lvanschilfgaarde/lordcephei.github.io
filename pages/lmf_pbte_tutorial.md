@@ -277,11 +277,11 @@ Linear methods are reliable only over a limited energy window; certain elements 
 to the linear approximation for accurate calculations.  This is accomplished with
 [local orbitals](/docs/package_overview/#linear-methods-in-band-theory).
 **lmfa**{: style="color: blue"} will automatically look for atomic levels that
-if certain criteria are satisfied it designates as a local orbital,
+if certain criteria are satisfied (as described in "lmfa output" below) it designates as a local orbital,
 and includes this information in the basp0 file.
 
 <div onclick="elm = document.getElementById('localorbitals'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
-Click here for a description of how local orbitals are indicated in the basp file.</div>
+Click here for a description of how local orbitals are included in the basp file.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="localorbitals">{:/} 
 
 Inspect _basp.pbte_{: style="color: green"}.  Note in particular this text connected with the Pb atom:  
@@ -291,11 +291,11 @@ Inspect _basp.pbte_{: style="color: green"}.  Note in particular this text conne
 ~~~
 
 **lmfa**{: style="color: blue"} is suggesting that the Pb 5_d_ state is shallow enough that it be included in the valence.  Since this state
-is far from the fermi level, we would badly cover the hilbert space spanned by Pb 6_d_ state were we to use Pb 5_d_ as the valence partial
-wave (in a linear method you are allowed to choose a single energy to construct the partial wave; it is 
-usually the "valence" state, which is near the Fermi level).
+is far removed from the fermi level, we would badly cover the hilbert space spanned by Pb 6_d_ state were we to use Pb 5_d_ as the valence partial
+wave. (In a linear method you are allowed to choose a single energy to construct the partial wave; it is 
+usually the "valence" state, which is near the Fermi level.)
 
-The resolution to this is to use local orbitals, adding a partial wave at an energy far removed from the Fermi level.
+This problem is resolved with local orbitals : these are partials wave at an energy far removed from the Fermi level.
 The three numbers following **PZ**
 correspond to specifications for local orbitals in the _s_, _p_, and _d_ channels.  Zero indicates "no local orbital;"
 there is only a _d_ orbital here.
@@ -351,8 +351,8 @@ Click here for a description of lmfa's output.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="lmfaoutput">{:/} 
 
 **lmfa**{: style="color: blue"} loops over each species, generating a 
-self-consistent density from the charges given to it.  States in the
-core are assumed to be filled; you supply the number of charges
+self-consistent density from the charges given to it.  Core levels
+are assumed to be filled; you supply the charges
 of the valence _s_, _p_, ... orbitals.
 The Pb atom, for example has  atomic configuration of $$s^2p^2d^{10}$$ 
 and **lmfa**{: style="color: blue"}'s printout for Pb begins with:
