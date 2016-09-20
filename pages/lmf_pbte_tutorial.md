@@ -595,6 +595,21 @@ Notes: (see also "Additional Exercises" below)
 The next group of data contains a synsopsis of key parameters associated with
 augmentation spheres.
 
+~~~
+ species data:  augmentation                           density
+ spec       rmt   rsma lmxa kmxa      lmxl     rg   rsmv  kmxv foca   rfoca
+ Pb       3.045  1.218    4    3         4  0.761  1.522    15    1   1.218
+ Te       3.029  1.211    3    3         3  0.757  1.514    15    1   1.211
+~~~
+
++ **rmt** is the augmentation radius
++ **rsma** is connected with the polynomial expansion <i>P<sub>kL</sub></i> of tails of envelope functions, needed for their one-center expansions about remote sites
++ **lmxa** is the _l_-cutoff of the augmentation.  Because of the unique way augmentation is done in this method, this value can be much lower than in standard augmented wave methods.
++ **kmxa**
++ **lmxl**
++ **rg**, **rsmv**, **kmxv**
++ **foca**, **rfoca**
+
 {::nomarkdown}</div>{:/}
 
 
