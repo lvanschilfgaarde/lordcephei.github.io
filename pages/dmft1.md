@@ -143,8 +143,7 @@ Check that at among the last lines of the *log*{: style="color: green"}  you fin
 
 ```
  replace sigma with spin average ...
-``` 
-and 
+``` and 
 ```
  Exit 0 done writing sigma, file sigm2
 ```
