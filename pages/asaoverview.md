@@ -93,17 +93,17 @@ point contacts.
 ### _Structure of the ASA_
 
 The ASA is like other [augmented wave methods](/docs/package_overview/#augmented-wave-methods) which divide into an
-``atomic'' part which makes matrix elements and and a ``band'' part which generates bands, densities-of-states, etc.
+"atomic'' part which makes matrix elements and a "band'' part which generates bands, densities-of-states, etc.
 The ASA makes two simplifications to the atomic part that make the method highlty efficient:
 
 1. The nonspherical part of the density and potential are neglected.
 2. The spheres are overlapped so that they fill space.  
-   The interstitial volume is zero on average, and in the pure ASA it is neglected all together
+   The net interstitial volume is zero, and in the pure ASA it is neglected all together.
 
 Both atomic and band parts become simpler than in full potential methods.  Matrix elements of the potential become quite
 simple and reduce to a few parameters (the "potential parameters").  The band part need only generate energy moments
-$$Q_0$$, $$Q_1$$, and $$Q_2$$ of the density; this is sufficient for the atomic part to construct a density and make
-potential parameters, as described below.  In the self-consistency cycle the atomic part takes moments and generates
+$$Q_0$$, $$Q_1$$, and $$Q_2$$ of the density as described below; this is sufficient for the atomic part to construct a density and make
+potential parameters.  In the self-consistency cycle the atomic part takes moments and generates
 potential parameters; the band part takes potential parameters and generates moments.
 
 Self-consistency proceeds by alternating between the solid part and atomic part, generating moments, then potential
@@ -112,20 +112,16 @@ specifying potential parameters, or with the atomic part, specifying the moments
 
 ### _Augentation sphere boundary conditions and continuous principal quantum numbers_
 
-Linear augmented wave methods almost invariably construct the basis set 
-inside augmentation spheres from the spherical part of the potential.
-For a fixed spherical potential, the solution to the radial
-Schrodinger equation (aka "partial wave") <i>&phi;<sub>l</sub></i> of
-quantum number _l_ and its energy are uniquely determined by the
-boundary condition at the augmentation radius _s_.  More precisely,
-<i>&phi;</i> is called a <i>partial wave</i> since it is only a
-partial solution to the full Schrodinger equation.  Partial waves must
-be matched to the envelope function at the augmentation sphere radius;
-the condition that all partial waves match smoothly and differentiably
-at all surfaces is the quantization condition that determines allowed
-eigenvalues.  [Linear method](/docs/package_overview/#linear-methods-in-band-theory)
-in fact require the partial wave $\phi$ and its energy derivative $\dot\phi$
-(or, sometimes, $\phi$ at two different linearization energies).
+[Linear augmented wave](/docs/package_overview/#linear-methods-in-band-theory) methods almost invariably construct the basis set inside
+augmentation spheres from the spherical part of the potential.  (In the ASA the potential is spherical anyway).
+For a fixed spherical potential, the solution to the radial Schrodinger
+equation (aka "partial wave") <i>&phi;<sub>l</sub></i> of quantum number _l_ and its energy are uniquely determined by the boundary
+condition at the augmentation radius _s_.  The boundary condition fixes the energy, or conversely the energy fixes the boundary condition.
+More precisely, <i>&phi;<sub>l</sub></i> is called a <i>partial wave</i> since it is only a partial solution
+to the full Schrodinger equation.  Partial waves must be matched to the envelope function at the augmentation sphere radius; the condition
+that all partial waves match smoothly and differentiably at all surfaces is the quantization condition that determines allowed eigenvalues.
+[Linear methods](/docs/package_overview/#linear-methods-in-band-theory) in fact require the partial wave $$\phi$$ and its energy derivative
+$$\dot\phi$$ (or possibly $$\phi$$ at two different linearization energies).
 
 
 This is normally given through the "logarithmic derivative function"
