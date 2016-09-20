@@ -148,7 +148,7 @@ _Note:_{: style="color: red"} <i>P<sub>l</sub></i> should not be confused with O
 ##### _Continuous principal quantum number for core levels and free electrons_
 
 <div onclick="elm = document.getElementById('corep'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
-Click here for a description of P for core levels.</div>
+Click here for a description of P for two limite cases; core levels and free electrons.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="corep">{:/} 
 
 _Core levels_

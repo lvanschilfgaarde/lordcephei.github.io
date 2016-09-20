@@ -262,7 +262,7 @@ The Questaal package reads it from _basp.pbte_{: style="color: green"}, but it i
 file basp0 to avoid overwriting a file you may want to preserve.  You can customize the 
 basis set by editing the file.
 
-To get started, do:
+As a first step, do:
 
 ~~~
 $ lmfa ctrl.pbte                                #use lmfa to make basp file, atm file and to get gmax
@@ -300,7 +300,7 @@ The three numbers following **PZ**
 correspond to specifications for local orbitals in the _s_, _p_, and _d_ channels.  Zero indicates "no local orbital;"
 there is only a _d_ orbital here.
 
-**15.934** is actually a compound of **10** and the "[continuous principal quantum number](/docs/asaoverview/#Augmentation-sphere-boundary-conditions-and-continuous-principal-quantum-numbers)"
+**15.934** is actually a compound of **10** and the "[continuous principal quantum number](/docs/asaoverview/#augmentation-sphere-boundary-conditions-and-continuous-principal-quantum-numbers)"
 **5.934**. The 10's digit tells **lmf**{: style="color: blue"}
 to use an "enhanced" local orbital as opposed to the usual variety found in most
 density-functional codes.  Enhanced orbitals append a tail so that the
