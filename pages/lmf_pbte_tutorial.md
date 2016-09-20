@@ -252,13 +252,13 @@ If you supply only one number it is copied to elements 2 and 3.
 To carry out a self-consistent calculation, we need to prepare the following:
 
 4.1  Find any high-lying core states that should be included in the valence as local orbitals.  
-4.2  Provide a reasonable basis set with parameters **RSMH** and **EH** defining the envelope functions  
-4.3  Make atomic densities, which **lmf**{: style="color: blue"} will overlap to make a starting trial density  
+4.2  Make atomic densities, which **lmf**{: style="color: blue"} will overlap to make a starting trial density  
+4.3  Provide a reasonable basis set with parameters **RSMH** and **EH** defining the envelope functions  
 4.4  Supply an automatic estimate for the mesh density plane wave cutoff **GMAX**.
 
 **lmfa**{: style="color: blue"} is a tool that will provide all of this information automatically.
 It will writes writes basis set information to template _basp0.pbte_{: style="color: green"},
-The Questaal package reads it from _basp.pbte_{: style="color: green"}, but it is written to
+The Questaal package reads from _basp.pbte_{: style="color: green"}, but it is written to
 file basp0 to avoid overwriting a file you may want to preserve.  You can customize the 
 basis set by editing the file.
 
@@ -269,7 +269,7 @@ $ lmfa ctrl.pbte                                #use lmfa to make basp file, atm
 $ cp basp0.pbte basp.pbte                       #copy basp0 to recognised basp prefix   
 ~~~
 
-#####  4.1 Valence-core partitioning and local orbitals
+#####  4.1 Local orbitals
 
 Part of **lmfa**{: style="color: blue"}'s function is to identify
 _local orbitals_ that [extend the linear method](/docs/package_overview/#linear-methods-in-band-theory).
@@ -336,7 +336,7 @@ Click here to see how to calculate core levels from the Dirac equation.</div>
 
 {::nomarkdown}</div>{:/}
 
-#####  Free atomic density
+##### 4.2 Free atomic density : valence-core partitioning
 
 After _basp.pbte_{: style="color: green"} has been modified, you must run **lmfa**{: style="color: blue"} a second time
 
@@ -346,8 +346,16 @@ $ lmfa ctrl.pbte                                #use lmfa to make basp file, atm
 
 This is necessary whenever the valence-core partitioning changes through the addition or removal of a local orbital.
 
+##### 4.3 Automatic determination of basis set
+
+**lmfa**{: style="color: blue"} automatically generates parameters for the basis set, including
+
++ parameters **RSMH** and **EH** which define the shape of envelope functions 
++ suitable [boundary conditions(/docs/asaoverview/#augmentation-sphere-boundary-conditions-and-continuous-principal-quantum-numbers) for linearization energies
++ decides on which high-lying cores should be included as local orbitals
+
 <div onclick="elm = document.getElementById('lmfaoutput'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
-Click here for a description of lmfa's output.</div>
+Click here for an interpretation of lmfa's output, and how it determines basis set parameters.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="lmfaoutput">{:/} 
 
 **lmfa**{: style="color: blue"} loops over each species, generating a 

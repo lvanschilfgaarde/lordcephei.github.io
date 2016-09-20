@@ -142,8 +142,8 @@ $$P_l = 0.5 - \arctan(D_l)/\pi + \hbox{(principal quantum number)} $$
 <i>P<sub>l</sub></i> increases smoothly and monotically with energy, acquiring an extra integer each time a new node appears.
 This construction is due to Michael Methfessel. <i>P<sub>l</sub></i> called a "continuous principal quantum number."
 
-_Note:_{: style="color: red"} <i>P<sub>l</sub></i> should not be confused with O.K. Andersen's "Potential function", which uses the same symbol.
-(It is unfortunate that these distinct but related functions have the same symbol.)
+_Note:_{: style="color: red"} <i>P<sub>l</sub></i> should not be confused with O.K. Andersen's "Potential function."
+It is unfortunate that these distinct but related functions have the same symbol.
 
 ##### _Continuous principal quantum number for core levels and free electrons_
 
@@ -349,8 +349,9 @@ of &phi;,
 at the sphere radius and <i>E<sub>l</sub></i>, so in principle, it is
 possible to specify either one.
 <i>D<sub>l</sub></i> is a cotangent-like function, varying between +&infin; and -&infin;:
-it decreases monotonically with energy varying between (+&infin;,&minus;&infin;)
-over a finite window of energy. There is thus a <i>multiplicity</i> of energies for
+<i>D<sub>l</sub></i>(<i>&epsilon;</i>) decreases monotonically with <i>&epsilon;</i>,
+varying between (+&infin;,&minus;&infin;) over a finite window of energy. 
+There is thus a <i>multiplicity</i> of energies for
 a given <i>D<sub>l</sub></i>, one branch for each principal quantum number.
 For that reason we define a <i>smooth</i> quantity
 <i>P<sub>l</sub></i>, which may be thought of as a smooth version of
