@@ -126,7 +126,7 @@ Now there are some manual operations to do:
 
 + Run **ctqmc**{: style="color: blue"} using a submission script on, let's say, 20 cores. Important parameters (that may need to be adjusted during the loop) are **nom**, **Nmax** and **M**. Their explanation is reported as a comment in the *PARAMS*{: style="color: green"} file itself but further information is available in the [next tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft3). For this tutorial, you can set them to **nom 150**, **Nmax 700** and  **M 20000000** (as illustrated in one dropdown box above).
 
-  At the end of the run (it will take a while...) a series of files have been produced. Among them we are especially interested in *Sig.out*{: style="color: green"}, *histogram.dat*{: style="color: green"} and the *status*{: style="color: green"} files. To learn how to use them to judge on the quality of the QMC calculation we refer to the [third tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft3).
+  At the end of the run (it will take a while... e.g. on 20 cores around 30 minutes) a series of files have been produced. Among them we are especially interested in *Sig.out*{: style="color: green"}, *histogram.dat*{: style="color: green"} and the *status*{: style="color: green"} files. To learn how to use them to judge on the quality of the QMC calculation we refer to the [third tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft3).
 
 + Now you must broad *Sig.out*{: style="color: green"} to smooth out the noise. If you use the program **brad_sig.x**{: style="color: blue"} you will run it with following commands
  
