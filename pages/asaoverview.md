@@ -110,7 +110,7 @@ Self-consistency proceeds by alternating between the solid part and atomic part,
 parameters, then moments again until the process converges.  The program can be started either with the band part,
 specifying potential parameters, or with the atomic part, specifying the moments.
 
-### _Augentation sphere boundary conditions and continuous principal quantum numbers_
+### _Augmentation sphere boundary conditions and continuous principal quantum numbers_
 
 [Linear augmented wave](/docs/package_overview/#linear-methods-in-band-theory) methods almost invariably construct the basis set inside
 augmentation spheres from the spherical part of the potential.  (In the ASA the potential is spherical anyway).

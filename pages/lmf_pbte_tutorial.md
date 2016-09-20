@@ -262,14 +262,14 @@ The Questaal package reads it from _basp.pbte_{: style="color: green"}, but it i
 file basp0 to avoid overwriting a file you may want to preserve.  You can customize the 
 basis set by editing the file.
 
-Perform the initial setup
+To get started, do:
 
 ~~~
 $ lmfa ctrl.pbte                                #use lmfa to make basp file, atm file and to get gmax
 $ cp basp0.pbte basp.pbte                       #copy basp0 to recognised basp prefix   
 ~~~
 
-#####  Valence-core partitioning and local orbitals
+#####  4.1 Valence-core partitioning and local orbitals
 
 Part of **lmfa**{: style="color: blue"}'s function is to identify
 _local orbitals_ that [extend the linear method](/docs/package_overview/#linear-methods-in-band-theory).
@@ -300,7 +300,7 @@ The three numbers following **PZ**
 correspond to specifications for local orbitals in the _s_, _p_, and _d_ channels.  Zero indicates "no local orbital;"
 there is only a _d_ orbital here.
 
-**15.934** is actually a compound of **10** and the "[continuous principal quantum number](/docs/asaoverview/#boundary-conditions-and-continuous-principal-quantum-numbers)"
+**15.934** is actually a compound of **10** and the "[continuous principal quantum number](/docs/asaoverview/#Augmentation-sphere-boundary-conditions-and-continuous-principal-quantum-numbers)"
 **5.934**. The 10's digit tells **lmf**{: style="color: blue"}
 to use an "enhanced" local orbital as opposed to the usual variety found in most
 density-functional codes.  Enhanced orbitals append a tail so that the
@@ -309,7 +309,7 @@ You can specify a "traditional" local orbital by omitting the 10, but this kind 
 
 The continuous principal quantum number (**5.934**) specifies the [number of nodes and boundary
 condition](/docs/asaoverview/#augmentation-sphere-boundary-conditions-and-continuous-principal-quantum-numbers).  The large fractional part
-of _P_ is [large for core states](/docs/asaoverview/#continuous-principal-quantum-number-for-core-levels-and-free-electrons), typically
+of _P_ is [large for core states](/docs/asaoverview/#Continuous-principal-quantum-number-for-core-levels-and-free-electrons), typically
 around 0.93 for shallow cores.  **lmfa**{: style="color: blue"} determines the proper value for the atomic potential.  In the
 self-consistency cycle the potential will change and **lmf**{: style="color: blue"} will update this value.
 
