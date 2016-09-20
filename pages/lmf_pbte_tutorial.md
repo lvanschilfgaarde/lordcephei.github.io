@@ -281,7 +281,7 @@ if certain criteria are satisfied (as described in "lmfa output" below) it desig
 and includes this information in the basp0 file.
 
 <div onclick="elm = document.getElementById('localorbitals'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
-Click here for a description of how local orbitals are included in the basp file.</div>
+Click here for a description of how local orbitals are specified in the basp file.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="localorbitals">{:/} 
 
 Inspect _basp.pbte_{: style="color: green"}.  Note in particular this text connected with the Pb atom:  
@@ -323,6 +323,16 @@ the LDA, unoccupied states also contribute to the potential.
 
 {::nomarkdown}</div>{:/}
 
+##### 4.2 Free atomic density : valence-core partitioning
+
+After _basp.pbte_{: style="color: green"} has been modified, you must run **lmfa**{: style="color: blue"} a second time
+
+~~~
+$ lmfa ctrl.pbte                                #use lmfa to make basp file, atm file and to get gmax
+~~~
+
+This is necessary whenever the valence-core partitioning changes through the addition or removal of a local orbital.
+
 #####  Relativistic cores
 
 Normally **lmfa**{: style="color: blue"} determines the core levels and core density from
@@ -336,26 +346,16 @@ Click here to see how to calculate core levels from the Dirac equation.</div>
 
 {::nomarkdown}</div>{:/}
 
-##### 4.2 Free atomic density : valence-core partitioning
-
-After _basp.pbte_{: style="color: green"} has been modified, you must run **lmfa**{: style="color: blue"} a second time
-
-~~~
-$ lmfa ctrl.pbte                                #use lmfa to make basp file, atm file and to get gmax
-~~~
-
-This is necessary whenever the valence-core partitioning changes through the addition or removal of a local orbital.
-
 ##### 4.3 Automatic determination of basis set
 
 **lmfa**{: style="color: blue"} automatically generates parameters for the basis set, including
 
-+ parameters **RSMH** and **EH** which define the shape of envelope functions 
-+ suitable [boundary conditions(/docs/asaoverview/#augmentation-sphere-boundary-conditions-and-continuous-principal-quantum-numbers) for linearization energies
-+ decides on which high-lying cores should be included as local orbitals
++ finding estimates for parameters **RSMH** and **EH** that define the shape of envelope functions 
++ finding suitable [boundary conditions](/docs/asaoverview/#augmentation-sphere-boundary-conditions-and-continuous-principal-quantum-numbers) for linearization energies
++ deciding on which high-lying cores should be included as local orbitals
 
 <div onclick="elm = document.getElementById('lmfaoutput'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
-Click here for an interpretation of lmfa's output, and how it determines basis set parameters.</div>
+Click here for an interpretation of lmfa's output, and how it determines the parameters outlined above</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="lmfaoutput">{:/} 
 
 **lmfa**{: style="color: blue"} loops over each species, generating a 
@@ -459,18 +459,19 @@ _atm.pbte_{: style="color: green"}, and exits with the following printout:
  FREEAT:  estimate HAM_GMAX from RSMH:  GMAX=4.3 (valence)  7.8 (local orbitals)
 ~~~
 
-This last piece of information is the G cutoff that needs to be put into the ctrl file.
+This is the G cutoff **gmax** that the ctrl file needs.  It determines the mesh spacing for the charge density.
 
-####  5. Self-consistency_
+####  5. _Self-consistency_
 
-We are almost ready to carry out a self-consistent calculation
+We are almost ready to carry out a self-consistent calculation.
 It proceeds in a manner [similar to the basic tutorial](/tutorial/lmf/lmf_tutorial/#tutorial).
+Try the following:
 
 ~~~
 $ lmf ctrl.pbte
 ~~~
 
-If you try it, **lmf**{: style="color: blue"} will stop with this message:
+**lmf**{: style="color: blue"} stops with this message:
 
 ~~~
  Exit -1 bzmesh: illegal or missing k-mesh
