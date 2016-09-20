@@ -65,7 +65,7 @@ You need to add some tokens to *ctrl.ni*{: style="color: green"}.
 
 ```
 cd lmfinput
-echo 'DMFT    PROJ=2 NLOHI=1,8 BETA=50 NOMEGA=1999 KNORM=0' >> ctrl.ni  # add tokens at the end of ctrl.ni
+echo 'DMFT    PROJ=2 NLOHI=1,8 BETA=50 NOMEGA=2000 KNORM=0' >> ctrl.ni  # add tokens at the end of ctrl.ni
 ```
 
 The token **DMFT_NLOHI** defines the projection window in band index, **DMFT_BETA** is the inverse temperature in eV$$^{-1}$$ and **DMFT_NOMEGA** is the number of Matsubara frequencies in the mesh. Some details of the projection procedure are controlled by **DMFT_PROJ** and **DMFT_KNORM**, but you are not meant to change their value.
@@ -125,7 +125,7 @@ GW    NKABC={nkgw} GCUTB={gcutb} GCUTX={gcutx} DELRE=.01 .1
       GSMEAR=0.003 PBTOL=1e-3
 SPEC 
   ATOM=Ni         Z= 28  R= 2.354453  LMX=3  LMXA=4  MMOM=0 0 0.6
-DMFT    PROJ=2 NLOHI=1,8 BETA=50 NOMEGA=1999 KNORM=0
+DMFT    PROJ=2 NLOHI=1,8 BETA=50 NOMEGA=2000 KNORM=0
 ```
 {::nomarkdown}</div>{:/}
 
