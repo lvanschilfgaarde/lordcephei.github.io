@@ -133,7 +133,7 @@ Now there are some manual operations to do:
   ``` 
   cd itX_qmcrun
   cp ../qmcinput/broad_sig.x .
-  echo 'Sig.out 150 l "55  20  150" k "1 2 3 4 5"'| ./broad_sig.x > broad.log
+  echo 'Sig.out 150 l "55  20  150" k "1 2 3 2 3"'| ./broad_sig.x > broad.log
   ```
 
   For a clearer explanation of how to use **broad_sig.x**{: style="color: blue"}, we refer to its commented header.
