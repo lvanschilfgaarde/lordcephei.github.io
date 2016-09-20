@@ -140,13 +140,13 @@ cd ..
 ```
 
 Check that at among the last lines of the *log*{: style="color: green"}  you find
-
 ```
  replace sigma with spin average ...
-``` and 
+```
+and 
 ```
  Exit 0 done writing sigma, file sigm2
-```
+```.
 
 ##### **Compile the broadening program**
 The statistical noise of Quantum Monte Carlo calculations can be source of instabilities. Because of this, you need to broad the output of the **ctqmc**{: style="color: blue"} software at the end of each iteration.
