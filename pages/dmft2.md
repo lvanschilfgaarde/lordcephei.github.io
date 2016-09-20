@@ -137,8 +137,15 @@ Now there are some manual operations to do:
   ```
 
   For a clearer explanation of how to use **broad_sig.x**{: style="color: blue"}, we refer to its commented header.
+  
+
+##### _**(3) Cycling the loop**_
  
 At this point you have a new self-energy to be fed to **lmfdmft**{: style="color: blue"}. You can go back to the point _**(1)**_ and repeat all the operations with a higher iteration number X.
+
+As you have noticed the procedure is based on an alternated utilisation of **lmfdmft**{: style="color: blue} and **ctqmc**{: style="color: blue}. The input/output that makes the loop possible is not automatised though.
+Once you have familiarised with the procedure, we strongly recommend you to write a script that handles the input/output. 
+However be careful that (at least during the first three/four iterations) some variables of *PARAMS*{: style="color: green"} could need to be adjusted on the fly (e.g. **nom**, **Nmax**).
  
 ### Converging to the SC-solution
 The self-consistent condition holds when $$G_{\rm loc}(i\omega_n)$$ of iteration _N_ is equal (within a certain tolerance) to $$G_{\rm imp}(i\omega_n)$$ of iteration _N-1_. You can add the flag **\-\-gprt**{: style="color: blue"} when running **lmfdmft**{: style="color blue"} to get $$G_{\rm loc}(i\omega_n)$$ printed on a file called *gloc.ni*{: style="color: green"}. This can be compared with the file *Gf.out*{: style="color: green"} produced by the previous CTQMC run. However in the comparison remember that the latter is not broadened, while the former is obtained by smoothened quantities.
