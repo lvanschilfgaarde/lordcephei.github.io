@@ -42,30 +42,22 @@ _____________________________________________________________
 
 ### _Augmented Wave Methods_
 
-Augmented Wave methods, originally developed by Slater, partitions
-space into spheres enclosing around each atom.  Basis functions used
-to solve Schrodinger's equation consist of a family of smooth envelope
-functions which are "augmented" with solutions of Schrodinger equation
-(aka _partial waves_) inside each sphere.  The reason for augmentation
-is to enable basis functions to vary rapidly near nuclei where they
+Augmented Wave methods, originally developed by Slater, partitions space into spheres enclosing around each atom.  Basis functions used to
+solve Schrodinger's equation consist of a family of smooth envelope functions which are "augmented" with solutions of Schrodinger equation
+(aka _partial waves_) inside each sphere.  The reason for augmentation is to enable basis functions to vary rapidly near nuclei where they
 must be orthogonalized to core states.
 
-Solutions of the Schrodinger equations are then piecewise: the envelope functions
-must be joined differentiably onto the partial waves.  Matching conditions
-set up secular matrix, so solution of the Schrodinger equation in the crystal
-for a given potential reduces to an eigenvalue problem.
+Augmented-wave methods consist of an "atomic" part and a "band'' part The former takes as input a density and finds the ["partial
+waves"](/docs/asaoverview/#structure-of-the-asa) [update link!] on a numerical radial mesh inside each augmentation sphere and makes the
+relevant matrix elements needed, e.g. for the hamiltonian or some other property (e.g. optics).  The "band'' part constructs the hamiltonian
+and diagonalizes the secular matrix made by joining the partial waves to the envelopes.
 
-The choice of envelope function defines the method (Linear Muffin Tin
-Orbitals, Linear Augmented Plane Waves, Jigsaw Puzzle Orbitals); while
-partial waves are obtained by integrating the Schrodinger equation
-numerical on a radial mesh inside the augmentation sphere.
+Solutions of the Schrodinger equations are then piecewise: the envelope functions must be joined differentiably onto the partial waves.
+Matching conditions set up secular matrix, so solution of the Schrodinger equation in the crystal for a given potential reduces to an
+eigenvalue problem.
 
-Augmented-wave methods consist of an "atomic" part that finds
-the "partial waves" on a numerical radial mesh inside
-each augmentation sphere and makes the relevant matrix elements needed,
-e.g. for the hamiltonian or some other property (e.g. optics); and a
-``band'' part, that diagonalizes the secular matrix made by joining
-the partial waves to the envelopes.
+The choice of envelope function defines the method (Linear Muffin Tin Orbitals, Linear Augmented Plane Waves, Jigsaw Puzzle Orbitals); while
+partial waves are obtained by integrating the Schrodinger equation numerical on a radial mesh inside the augmentation sphere.
 
 #### _Linear Methods in Band Theory_
 

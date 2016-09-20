@@ -246,28 +246,28 @@ If you supply only one number it is copied to elements 2 and 3.
 
 {::nomarkdown}</div>{:/}
 
-####  5. _Self-consistency_
 
-With an input file in hand, we can proceed to carry out a self-consistent calculation.
-It proceeds in a manner [similar to the basic tutorial](/tutorial/lmf/lmf_tutorial/#tutorial).
+####  4. _Initial setup_
 
-#####  Initial setup
+To carry out a self-consistent calculation, we need to prepare the following:
 
-Run **lmfa**{: style="color: blue"} in order to
+4.1  Find any high-lying core states that should be included in the valence as local orbitals.
+4.2  Provide a reasonable basis set with parameters **RSMH** and **EH** defining the envelope functions  
+4.3  Make atomic densities, which **lmf**{: style="color: blue"} will overlap to make a starting trial density  
+4.4  Supply an automatic estimate for the mesh density plane wave cutoff **GMAX**.
 
-+  Make atomic densities, which **lmf**{: style="color: blue"} will overlap to make a starting trial density  
-+  Provide a reasonable basis set with parameters **RSMH** and **EH** defining the envelope functions  
-+  Find any high-lying core states that should be included in the valence as local orbitals.
-+  Supply an automatic estimate for the mesh density plane wave cutoff **GMAX**.
+**lmfa**{: style="color: blue"} is a tool that will provide all of this information automatically.
+It will writes writes basis set information to template _basp0.pbte_{: style="color: green"},
+The Questaal package reads it from _basp.pbte_{: style="color: green"}, but it is written to
+file basp0 to avoid overwriting a file you may want to preserve.  You can customize the 
+basis set by editing the file.
+
+Perform the initial setup
 
 ~~~
 $ lmfa ctrl.pbte                                #use lmfa to make basp file, atm file and to get gmax
 $ cp basp0.pbte basp.pbte                       #copy basp0 to recognised basp prefix   
 ~~~
-
-The Questaal package reads basis information from _basp.pbte_{: style="color: green"},
-but **lmfa**{: style="color: blue"} writes into _basp0.pbte_{: style="color: green"},
-to avoid overwriting a file you may want to preserve.
 
 #####  Valence-core partitioning and local orbitals
 
@@ -453,9 +453,10 @@ _atm.pbte_{: style="color: green"}, and exits with the following printout:
 
 This last piece of information is the G cutoff that needs to be put into the ctrl file.
 
-#####  Self-consistent density
+####  5. Self-consistency_
 
 We are almost ready to carry out a self-consistent calculation
+It proceeds in a manner [similar to the basic tutorial](/tutorial/lmf/lmf_tutorial/#tutorial).
 
 ~~~
 $ lmf ctrl.pbte
