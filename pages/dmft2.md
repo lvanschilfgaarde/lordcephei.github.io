@@ -128,7 +128,7 @@ Now there are some manual operations to do:
 
   At the end of the run (it will take a while...) a series of files have been produced. Among them we are especially interested in *Sig.out*{: style="color: green"}, *histogram.dat*{: style="color: green"} and the *status*{: style="color: green"} files. To learn how to use them to judge on the quality of the QMC calculation we refer to the [third tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft3).
 
-+ You now must broad *Sig.out*{: style="color: green"} to smooth out the noise. If you use the program **brad_sig.x**{: style="color: blue"} you will run it with following commands
++ Now you must broad *Sig.out*{: style="color: green"} to smooth out the noise. If you use the program **brad_sig.x**{: style="color: blue"} you will run it with following commands
  
   ``` 
   cd itX_qmcrun
