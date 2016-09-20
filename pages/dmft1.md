@@ -183,8 +183,8 @@ The calculation has stopped just after reading the *indmfl.ni*{: style="color: g
 Of course, if you want you can start from non-vanishing *sig.inp* files (e.g. from a previously converged DMFT loop).
 
 ### ...Ready to go!
-<div onclick="elm = document.getElementById('qsgw_ni'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Commands to run QSGW on Ni from scratch - Click to show.</button></div>
-{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="qsgw_ni">{:/}
+<div onclick="elm = document.getElementById('inputfolders'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius"> Required content of input folders - Click to show.</button></div>
+{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="inputfolders">{:/}
 
 The list of relevant files in the two input directories is
 
