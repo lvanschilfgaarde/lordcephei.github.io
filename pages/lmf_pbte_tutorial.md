@@ -477,15 +477,16 @@ $ lmf ctrl.pbte
  Exit -1 bzmesh: illegal or missing k-mesh
 ~~~
 
-We haven't yet specified a k mesh: there is no sensible default value, and
-you must supply it yourself.  In this case a k-mesh of 6&times;6&times;6
+We haven't yet specified a k mesh: 
+You must supply it yourself since there are too many contexts to supply a sensible default value.
+In this case a k-mesh of 6&times;6&times;6
 divisions is adequate.   With your text editor change **nkabc=0** in the ctrl file
 to **nkabc=6*, or alternatively assign it on the command line (which is what this tutorial will do)
 
 We also haven't specified the G cutoff for the density mesh.
 **lmfa**{: style="color: blue"} conveniently supplied that information for us,
 based in the shape of envelope functions it found.  In this case the valence
-G cutoff is quite small (**4.3), but the Pb 5_d_ is a much sharper function,
+G cutoff is quite small (**4.388), but the Pb 5_d_ is a much sharper function,
 and requires a larger cutoff (**7.8**).  You must use use the larger of the two.
 
 _Note:_{: style="color: red"} if you change the shape of the envelope funnctions
@@ -499,7 +500,7 @@ Now run
 $ lmf ctrl.pbte -vnkabc=6 -vgmax=7.8
 ~~~
 
-**lmf**{: style="color: blue"} should converged to self-consistency in 10 iterations.
+**lmf**{: style="color: blue"} should converge to self-consistency in 10 iterations.
 At the end of the file it prints out
 
 ~~~
@@ -515,6 +516,8 @@ The last line prints out a table of variables you specify on the command line, a
 energies from the Harris-Foulkes and Kohn-Sham functionals.  Theses are different
 functionals but they should approach the same value at self-consistency.
 The **c** at the beginning of the line indicates that this iteration is self-consistent.
+
+####  6. _Annotation of lmf's output_
 
 <div onclick="elm = document.getElementById('lmfoutput'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
 Click here for a description of lmf's output.</div>
@@ -535,13 +538,10 @@ You can also supply this information in the ctrl file.
 If both are present **lmf**{: style="color: blue"} decides on which to
 use depending on settings in **EXPRESS_autobas**.
 
-To see what the tokens in **autobas** do, invoke
+To see what the tokens in **autobas** do, invoke `lmf --input`
+and search for autobas in the output.
 
-    $ lmf --input
-
-and search for autobas in the output
-
-Next follows some header information
+Next follows some header information:
 
 ~~~
  LMF:      nbas = 2  nspec = 2  vn 7.11.i  verb 35
@@ -552,7 +552,7 @@ Next follows some header information
  bz:       metal(5), tetra, invit 
 ~~~
 
-that presents in a condensed synopsis form some key settings that are used in this calculation.
+that presents in a condensed synopsis form some key settings that are used in this run.
 
 Next follow information about the lattice vectors and settings used in Ewald summations
 
@@ -567,6 +567,33 @@ Next follow information about the lattice vectors and settings used in Ewald sum
          r1=  1.807   nkd= 87       q1=  5.403   nkg= 169
 ~~~
 
+The next group of data find the symmetry operations inherent in the 
+crystal, and the irreducible k mesh given the operations it has.
+
+~~~
+ SGROUP: 1 symmetry operations from 0 generators
+ SYMLAT: Bravais system is cubic with 48 symmetry operations.
+ SYMCRY: crystal invariant under 48 symmetry operations for tol=1e-5
+ GROUPG: the following are sufficient to generate the space group:
+         i*r3(1,1,-1) r4x
+         i*r3(1,1,-1) r4x
+ MKSYM:  found 48 space group operations ... includes inversion
+ BZMESH:  16 irreducible QP from 216 ( 6 6 6 )  shift= F F F
+ TETIRR: sorting 1296 tetrahedra ... 35 inequivalent ones found
+~~~
+
+Notes: (see also "Additional Exercises" below)
+
++ You can specify symmetry operations manually.  This is particularly useful
+  when magnetic symmetry must be considered.  
++ The k mesh is specifed through the number of k divisions, tag **EXPRESS_nabc**.  
+  You can also specify whether the k-mesh should pass through the origin or straddle it
+  through tag **BZ_BZJOB**
++ The Brillouin zone integration is using Bloechl's generalized tetrahedron method.
+  You can also use the Methfessel-Paxton integration scheme or a Fermi function.
+
+The next group of data contains a synsopsis of key parameters associated with
+augmentation spheres.
 
 {::nomarkdown}</div>{:/}
 
@@ -595,3 +622,7 @@ Solids: The Uses of the LMTO Method_, Lecture Notes in Physics,
 ### _Additional exercises_
 
 You can try self-consistent calculations with the Pb 5_d_ in the valence as a local orbital 
+
+Specify symops yourself
+
+Tetrahedron vs sampling vs fermi function
