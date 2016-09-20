@@ -177,7 +177,7 @@ Missing sigma file : create it and exit ...
 ```
  is written at the end of the *log*{: style="color: green"}.
 
-The calculation has stopped just after reading the *indmfl.ni*{: style="color: green"} and a file called *sig.inp*{: style="color: green"} has been created. It is formatted with the first column being the Matsubara frequencies (in eV) and then 0.0 repeated for a number of columns equal to twice the number of _m_ channels (e.g. ten columns for _d_-type impurity grouped in real and imaginary parts).
+The calculation has stopped just after reading the *indmfl.ni*{: style="color: green"}. A text file called *sig.inp*{: style="color: green"} has been created. It is formatted with the first column being the Matsubara frequencies (in eV) and then 0.0 repeated for a number of columns equal to twice the number of _m_ channels (e.g. ten columns for _d_-type impurity grouped in real and imaginary parts).
 
 Of course, if you want you can start from non-vanishing *sig.inp* files (e.g. from a previously converged DMFT loop).
 
