@@ -50,7 +50,9 @@ cp it(X-1)_qmcrun/Sig.out.brd  itX_lmfrun/sig.inp   # copy sigma from last CTQMC
 Let now _U_=10 eV and _J_=0.9 eV be the Hubbard on-site interaction and Hunds coupling respectively, and _n_=8 the nominal occupancy of the correlated subsystem (_n_=8 for Ni). Then launch **lmfdmft**{: style="color: blue"} with the command 
 
 ```
+cd it1_lmfrun
 lmfdmft ni --ldadc=71.85 -job=1 -vbxc0=1 > log
+cd ..
 ```
 
 where 71.85 is the double-counting self-energy, computed according to the formula $$Edc=U(n-1/2)-J(n-1)/2$$.
@@ -70,14 +72,16 @@ cp itX_lmfrun/eimp1.ni  itX_qmcrun/Eimp.inp      # copy impurity levels from lmf
 
 Now there are some manual operations to do:
 
-+ Copy the forth line of *Eimp.inp*{: style="color: green"} in the *PARAMS*{: style="color: green"} file (in such a way to have one line like **Ed [ ... ]**. *Note:*{: style="color: red"} be careful in erasing the '=' sign before the brakets!
++ Change the **Ed** variable in the *PARAMS*{: style="color: green"} the values reported in the forth line of *Eimp.inp*{: style="color: green"}. **Warning: be careful in erasing the '=' sign before the brakets!**{: style="color: red"}
 
 + Change accordingly the **mu** variable in *PARAMS*{: style="color: green"}: it has to be the first value of the **Ed** string with opposite sign.
 
-+ Add correct values of **U**, **J**, **nf0** (equivalent of n) and **beta** in *PARAMS*{: style="color: green"}.  The *PARAMS*{: style="color: green"} file at the end should look like that one in the dropdown box.
++ Add correct values of **U**, **J**, **nf0** (equivalent of n) and **beta** in *PARAMS*{: style="color: green"}.  The *PARAMS*{: style="color: green"} file at the end should look like that one in the dropdown box. **Warning: Be careful in being consistent with the values in the ctrl.ni and the double counting used in the lmfdfmt run.**{: style="color: red"}
 
   <div onclick="elm = document.getElementById('ParamsDmft1'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Example PARAMS - Click to show.</button></div>
   {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="ParamsDmft1">{:/}
+  
+  At this point the PARAMS file should look like this
 
   ```
   Ntau  1000  
@@ -93,12 +97,12 @@ Now there are some manual operations to do:
   exe  ctqmc        # Name of the executable
   tsample  50       # How often to record measurements
   nomD  150         # Number of Matsubara frequency points sampled
-  Ed [ ??????????? ]     # Impurity levels updated by bash script
+  Ed [ -71.710134, -71.710132, -71.796795, -71.710130, -71.796792, -71.732934, -71.732932, -71.820596, -71.732930, -71.820593 ]     # Impurity levels
   M  20000000.0     # Total number of Monte Carlo steps per core
   Ncout  200000     # How often to print out info
   PChangeOrder  0.9         # Ratio between trial steps: add-remove-a-kink / move-a-kink
   CoulombF  'Ising'         # Ising Coulomb interaction
-  mu   ????????  # QMC chemical potential by bash script
+  mu   71.710134            # QMC chemical potential
   warmup  500000            # Warmup number of QMC steps
   GlobalFlip  200000        # How often to try a global flip
   OCA_G  False      # No OCA diagrams being computed - for speed
@@ -116,31 +120,15 @@ Now there are some manual operations to do:
 + Run **atom_d.py**{: style="color: blue"} using the command
 
   ```
-  python atom_d.py J=0.9 l=2 cx=0.0 OCA_G=False qatom=0 "CoulombF='Ising'" HB2=False "$EIMP"
+  python atom_d.py J=0.9 l=2 cx=0.0 OCA_G=False qatom=0 "CoulombF='Ising'" HB2=False "Eimp=[   0.000000,   0.000002,  -0.086661,   0.000004,  -0.086658,  -0.022800,  -0.022798,  -0.110462,  -0.022796,  -0.110459]"
   ```
 
-  where the variable **$EIMP** is a copy of the third line of *Eimp.inp*{: style="color: green"}. More details on this part are on the dropdown box.
-
-  <div onclick="elm = document.getElementById('foobar'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Example Eimp.inp - Click to show.</button></div>
-  {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="foobar">{:/}
-
-  The command to run in this case will be 
-
-  ```
-  python atom_d.py J=0.9 l=2 cx=0.0 OCA_G=False qatom=0 "CoulombF='Ising'" HB2=False "Eimp=[  ???????????????? ]"
-  ```
-
-  **Warning:**{: style="color: red"} Pay attention to quotes and double quotes!
-
-  Except for the value of **Eimp** that will need to be changed at each iteration accordingly to the previous **lmfdmft**{: style="color: blue"} run, all the other parameters do not need to be modified.
-
-  *Note:*{: style="color: red"} If you are interesting in solving the problem with different values of the Hund's coupling $$J$$, change accordingly the first argument **J=xxxx**, but remember to be consistent also in the *PARAMS*{: style="color: green"} and in the calculation of the double counting $$Edc$$.
-
-  {::nomarkdown}</div>{:/}
+  where the argument **Eimp** is a copy of the third line of *Eimp.inp*{: style="color: green"} (to be changed at each iteration accordingly to the previous **lmfdmft**{: style="color: blue"} run) and the argument **J** is the Hund's coupling. All other argument should not be changed.
+  **Warning: Pay attention to quotes and double quotes!**{: style="color: red"} 
 
   Running **atom_d.py**{: style="color: blue"} generates a file called *actqmc.cix*{: style="color: green"} used by the ctqmc solver.
 
-+ Run **ctqmc**{: style="color: blue"} using a submission script on, let's say, 20 cores. Important parameters (that may need to be adjusted during the loop) are **nom**, **Nmax** and **M**. Their explanation is reported as a comment in the *PARAMS*{: style="color: green"} file itself but further information is available in the [next tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft3). For this tutorial, you can set them to **nom 150**, **Nmax 950** and  **M 20000000** (see example in the dropdown box above).
++ Run **ctqmc**{: style="color: blue"} using a submission script on, let's say, 20 cores. Important parameters (that may need to be adjusted during the loop) are **nom**, **Nmax** and **M**. Their explanation is reported as a comment in the *PARAMS*{: style="color: green"} file itself but further information is available in the [next tutorial](https://lordcephei.github.io/tutorial/qsgw_dmft/dmft3). For this tutorial, you can set them to **nom 150**, **Nmax 950** and  **M 20000000** (as illustrated in one dropdown box above).
 
 + Broad the output self-energy. Once the **ctqmc**{: style="color: blue"} run is over, you must broad *Sig.out*{: style="color: green"} using the program **brad_sig.x**{: style="color: blue"}.
  
