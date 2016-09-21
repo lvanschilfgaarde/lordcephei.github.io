@@ -348,9 +348,9 @@ The constraints come in three flavors (all of them are imposed):
 
 Constraints on sphere overlaps
 : There are constraints on sphere overlaps set through tags **SPEC_OMAX1** and **SPEC_OMAX2**.\\
-  Call <i>r<sub>i</sub></i> the radius for sphere <i>i</i> and <i>d<sub>ij</sub></i> the distance between sites <i>i</i> and <i>j</i>:\\
  (<i>r<sub>i</sub></i>+<i>r<sub>j</sub></i>-<i>d<sub>ij</sub></i>)/<i>d<sub>ij</sub></i> is constrained to be less than **OMAX1**\\
- (<i>r<sub>i</sub></i>+<i>r<sub>j</sub></i>-<i>d<sub>ij</sub></i>)/min(<i>r<sub>i</sub></i>,<i>r<sub>j</sub></i>) is constrained to be less than **OMAX2**
+ (<i>r<sub>i</sub></i>+<i>r<sub>j</sub></i>-<i>d<sub>ij</sub></i>)/min(<i>r<sub>i</sub></i>,<i>r<sub>j</sub></i>) is constrained to be less than **OMAX2**\\
+ where <i>r<sub>i</sub></i> the radius for sphere <i>i</i> and <i>d<sub>ij</sub></i> the distance between sites <i>i</i> and <i>j</i>:
 
 Maximum sphere radius
 : Cap the maximum sphere radius by setting **SPEC_WSRMAX**\\
