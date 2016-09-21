@@ -254,9 +254,9 @@ criteria in selecting them is somewhat different.
 Either for the ASA or FP, the Questaal package has codes to automatically select them for you.  It is relatively straightforward in the FP
 case; the ASA can be tricky because of the space-filling requirement.
 
-<div onclick="elm = document.getElementById('corep'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
+<div onclick="elm = document.getElementById('sphereradii'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
 Click here for for a discussion of the (in part competing) criteria for the selection of sphere radii.</div>
-{::nomarkdown}<div style="display:none;padding:0px;" id="corep">{:/} 
+{::nomarkdown}<div style="display:none;padding:0px;" id="sphereradii">{:/} 
 
 <DL>
 <DT><I>Geometry violation of overlapping spheres</I>
