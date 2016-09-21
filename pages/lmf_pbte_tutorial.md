@@ -340,9 +340,9 @@ $ lmfa ctrl.pbte                                #use lmfa to make basp file, atm
 
 This is necessary whenever the valence-core partitioning changes through the addition or removal of a local orbital.
 
-##### Relativistic cores
+##### Relativistic core levels
 {::comment}
-/tutorial/lmf/lmf_pbte_tutorial/#relativistic-cores/
+/tutorial/lmf/lmf_pbte_tutorial/#relativistic-core-levels/
 {:/comment}
 
 Normally **lmfa**{: style="color: blue"} determines the core levels and core density from
@@ -353,10 +353,7 @@ Click here to see how to calculate core levels from the Dirac equation.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="diraccore">{:/} 
 
 Tag **HAM_REL** controls how the Questaal package manages different levels of relativistic treatment
-Enter
-~~~
-$ lmfa --input
-~~~
+Run `lmfa --input`
 and look for **HAM_REL**.  You should see:
 
 ~~~
@@ -368,12 +365,13 @@ and look for **HAM_REL**.  You should see:
    10s digit 2: Like 1, but neglect coupling (1,2) pairs in 4-vector
 ~~~
 
-Set **HAM_REL=12** to make **lmfa**{: style="color: blue"} calculate the core levels and core density with the full Dirac
+Set **HAM_REL=11** to make **lmfa**{: style="color: blue"} calculate the core levels and core density with the full Dirac
 equation.
 
 Typically you want to see the core level eigenvalues; they can shift significantly relative to the scalar Diract case.
 Also within _l_ there are multiple inequivalent states.  To see these levels, invoke **lmfa**{: style="color: blue"} 
 with a sufficiently high verbosity.  Thus if your input file has HAM REL={lrel}, do
+
 ~~~
 $ lmfa --pr41 -vlrel=11 
 ~~~
