@@ -251,7 +251,7 @@ the FP case, this only weakly so.  The ASA also has the additional constraint
 that the sum-of-sphere volumes equals the unit cell volume, so the
 criteria in selecting them is somewhat different.
 
-Either for the ASA or FP, the Questaal package has tools to select radii for you automatically.  It is relatively straightforward in the FP
+For either the ASA or FP, the Questaal package has tools to select radii for you automatically.  It is relatively straightforward in the FP
 case; the ASA can be tricky because of the space-filling requirement.
 
 <div onclick="elm = document.getElementById('sphereradii'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
@@ -262,9 +262,9 @@ Geometry violation of overlapping spheres
 : Overlapping spheres count some parts of space twice and others not at all.  The full-potential code is has a unique augmentation,
 constructed so that the sphere contributions vanish quadratically for radii approaching the MT radius.  Overlap errors tend to be small until
 overlaps reach about 10% of the internuclear distance.  It has been found empirically, however, that self-consistency proceeds more slowly
-when spheres overlap.  Also, the current _GW_ implemntation doesn't have this property: there, spheres should _not_ overlap.
+when spheres overlap.  _Note:_{: style="color: red"} the current _GW_ implemntation doesn't have this property: there, spheres should _not_ overlap.
 
-: _Note:_{: style="color: red"} the ASA band code **lm**{: style="color: blue"}, has a "combined correction" term that partially undoes this
+: The ASA band code **lm**{: style="color: blue"}, has a "combined correction" term that partially undoes this
 error, but not completely.  The Green's function codes **lmgf**{: style="color: blue"} and **lmpg**{: style="color: blue"}
 do not have this term.
 
@@ -323,38 +323,22 @@ usually you choose n=1.
 
 The constraints come in three flavors (all of them are imposed):
 
-<DL>
-<DT><I>Constraints on sphere overlaps</I>
-<DD>
-  There are two constraints OMAX1 and OMAX2 on sphere overlaps.  If we
+Constraints on sphere overlaps
+: There are two constraints OMAX1 and OMAX2 on sphere overlaps.  If we
   call ri the radius for sphere i and rij the distance between sites i
   and j:
-<DL>
-<DD>
-  ri+rj-rij is constrained to be less than OMAX1 <S>x</S> rij
-<DD>
-  ri+rj-rij is constrained to be less than OMAX2 <S>x</S> min(si,sj)
-</DL>
- Set OMAX1 and OMAX2 in category <A href="#SPEC">SPEC</A>.
-<BR><BR>
++   ri+rj-rij is constrained to be less than OMAX1 <S>x</S> rij
++   ri+rj-rij is constrained to be less than OMAX2 <S>x</S> min(si,sj)
+: Set OMAX1 and OMAX2 in category <A href="#SPEC">SPEC</A>.
 
-</DD>
-<DT><I>Maximum sphere radius</I>
-<DD>
-  No sphere radius is allowed to exceed WSRMAX (set in the
+Maximum sphere radius
+: No sphere radius is allowed to exceed WSRMAX (set in the
   <A href="#SPEC">SPEC</A> category).
-<BR><BR>
 
-</DD>
-<DT><I>Lock sphere radii of specific species</I>
-<DD>
-You can "lock down" the sphere radii of specific species.  You set it
+: Lock sphere radii of specific species
+: You can "lock down" the sphere radii of specific species.  You set it
 using token CSTRMX= in the <A
 href="#SPEC">SPEC</A> category for species you want to lock.
-
-</DD>
-
-</DL>
 
 ### _Choosing initial values of sphere radii_
 
@@ -387,9 +371,7 @@ atomic number zero ("empty spheres").  This is tedious but quite often
 necessary.  <A href="Command-line-options.html#section1lmchk">lmchk</A> has an
 automatic "empty sphere" finder that can greatly facilitate this step.
 
-</DD>
-<DT><I>Assigning lower priority to resizing empty spheres</I>
-<DD>
+##### Assigning lower priority to resizing empty spheres
 
 Particularly in the ASA, empty spheres are often needed to get
 reasonable sphere packing.  However, it is reasonable that their radii
@@ -398,18 +380,16 @@ the resizer to do this through the 10's digit of token SCLWSR.  The
 10's digit behaves like a flag to cause the resizer to treat empty spheres
 on a different footing from all the other spheres.
 
-<pre>
-   Add  10 to SCLWSR to initially scale real atoms (those with Z>0) first.
++ Add  10 to SCLWSR to initially scale real atoms (those with Z>0) first.
    The scaling is done using radii of size zero for all empty spheres.
    After this initial scaling, the resizer will proceed rescaling
    all the spheres.
 
-  Add 20 to SCLWSR is similar to adding 10.  However, The final
++ Add 20 to SCLWSR is similar to adding 10.  However, The final
   rescaling applies only to the empty spheres; the real atoms' spheres
   change only in the first scaling, without reference to the empty
   spheres.
-</pre>
-</DD>
+
 
 ### _Second generation Orbital Downfolding_
 
