@@ -51,4 +51,4 @@ You now have a static magnetic-only potential produced by DMFT. This has to be a
 lmf ni --wsig --mixsig=1,1   # add sigm and sigm1 to get sigm2   
 ```
 
-As a result files *sigm.ni*{: style="color: green"} and *sigm1.ni*{: style="color: green"} are summed together and exported in *sigm2.ni*{: style="color: green"}. This is a new $$V_{\rm xc}$$ that can be fed to **lmf**{: style="color: blue"} to restart a QSGW/LDA+DMFT cycle.
+As a result files *sigm.ni*{: style="color: green"} and *sigm1.ni*{: style="color: green"} are summed together and exported in *sigm2.ni*{: style="color: green"}. This is a new $$V_{\rm xc}$$ that can be fed to **lmf**{: style="color: blue"} to get a new magnetic starting point for a DMFT loop.
