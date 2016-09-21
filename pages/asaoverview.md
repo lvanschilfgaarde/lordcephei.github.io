@@ -255,7 +255,7 @@ For either the ASA or FP, the Questaal package has several tools to help you sel
 
 + The input file maker, **blm**{: style="color: blue"}, automatically selects them.  Many tutorials, such as 
 the [basic **lmf**{: style="color: blue"} tutorial](/tutorial/lmf/lmf_tutorial/)
-and [basic **lm**{: style="color: blue"} tutorial](/tutorial/asa/asa-doc)
+and [basic **lm**{: style="color: blue"} tutorial](/tutorial/asa/lm_pbte_tutorial)
 start with **blm**{: style="color: blue"}.
 + The geometry checker **lmchk**{: style="color: blue"} will find radii (`lmchk --getwsr`) if you already have a ctrl file.
 + Questaal programs can rescale preselected sphere radii up to a specified volume within constraints you supply.

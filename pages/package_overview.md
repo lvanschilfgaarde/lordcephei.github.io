@@ -158,7 +158,7 @@ There is an MPI version, **lmf-MPIK**{: style="color: blue"}.
 
 + **lmgw1-shot**{: style="color: blue"} and **lmgwsc**{: style="color: blue"}: scripts that perform GW calculations (one-shot or self-consistent), or properties related to GW. The interface connecting to the _GW_ code is **lmfgwd**{: style="color: blue"}.  A basic tutorial for the GW package can be found [here](https://lordcephei.github.io/lmtut/).
 
-+ **lm**{: style="color: blue"}: a density functional band program [based on the Atomic Spheres Approximation](https://lordcephei.github.io/lmto_asa_doc/) (ASA).  It requires a companion program **lmstr**{: style="color: blue"} to make structure constants for it.  A basic tutorial can be found [here](https://lordcephei.github.io/asa-doc/).
++ **lm**{: style="color: blue"}: a density functional band program [based on the Atomic Spheres Approximation](https://lordcephei.github.io/lmto_asa_doc/) (ASA).  It requires a companion program **lmstr**{: style="color: blue"} to make structure constants for it.  A basic tutorial can be found [here](/tutorial/asa/lm_pbte_tutorial/).
 There is an MPI version, **lm-MPIK**{: style="color: blue"}.
 
 + **lmgf**{: style="color: blue"}: a density functional band program based on the ASA, using a Green's function formalism.

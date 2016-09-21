@@ -18,7 +18,7 @@ It has a purpose [similar to the basic tutorial](/tutorial/lmf/lmf_tutorial/) bu
 1. explains the input file's structure and illustrates some of its programming language capabilities
 2. generates a self consistent potential within the LDA
 3. makes neighbour tables using the **lmchk**{: style="color: blue"} tool
-4. synchronizes with an [ASA tutorial](/tutorial/asa/asa-doc/) on the same system, enabling a comparison of the ASA and full potential methods.
+4. synchronizes with an [ASA tutorial](/tutorial/asa/lm_pbte_tutorial/) on the same system, enabling a comparison of the ASA and full potential methods.
 5. forms the starting point for other tutorials on optics, a QSGW calculation of PbTe, and compares energy bands computed in different ways.
 
 _____________________________________________________________

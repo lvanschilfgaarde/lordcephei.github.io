@@ -1,10 +1,10 @@
 ---
 layout: page-fullwidth
-title: "ASA Tutorial"
+title: "Self-Consistent ASA calculation for PbTe"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "/tutorial/asa/asa-doc/"
+permalink: "/tutorial/asa/lm_pbte_tutorial/"
 header: no
 ---
 _____________________________________________________________

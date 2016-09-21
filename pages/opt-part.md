@@ -13,7 +13,7 @@ header: no
 This tutorial is designed to describe the procedure and output of **OPTICS_PART=1**,**OPTICS_PART=2** and **OPTICS_PART=3**. 
 
 ### _Prerequsites_
-This tutorial follows from the [self-consistent](http://lordcephei.github.io/asa-doc/) and [optics](http://lordcephei.github.io/docs-equ-optics/) tutorial preformed on PbTe, it is highly recomended that you go through those before this tutorial, for this tutorials the **lm**{: style="color: blue"} or  **lmf**{: style="color: blue"} are needed.
+This tutorial follows from the [self-consistent](/tutorial/asa/lm_pbte_tutorial/) and [optics](http://lordcephei.github.io/docs-equ-optics/) tutorial preformed on PbTe, it is highly recomended that you go through those before this tutorial, for this tutorials the **lm**{: style="color: blue"} or  **lmf**{: style="color: blue"} are needed.
 
 ### _Individual band to band contribution _
 
