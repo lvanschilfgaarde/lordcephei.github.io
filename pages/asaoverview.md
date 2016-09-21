@@ -258,6 +258,23 @@ case; the ASA can be tricky because of the space-filling requirement.
 Click here for for a discussion of the (in part competing) criteria for the selection of sphere radii.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="sphereradii">{:/} 
 
+Geometry violation of overlapping spheres
+: Overlapping spheres count some parts of space twice and others not at all.  The full-potential code is has a unique augmentation,
+constructed so that the sphere contributions vanish quadratically for radii approaching the MT radius.  Errors tend to be small until
+overlaps reach about 10% of the internuclear distance.  It has been found empirically, however, that self-consistency proceeds more slowly
+when spheres overlap.
+
+: The ASA band code **lm**{: style="color: blue"}, has a "combined correction" term that partially undoes this
+error, but not completely.  This term is only available to **lm**{: style="color: blue"}, not **lmgf**{: style="color: blue"}
+or **lmpg**{: style="color: blue"}.
+
+ASA Requirement for space-filling spheres
+:The ASA functional requires that the sum-of-sphere volumes equals the cell volume.  More precisely, the density is carried by
+the spheres (superposition of spherically symmetrical sphere densities).   This crition mitigates directly against the preceding one.
+The more closely packed a system is the better suited the ASA.  For open systems, you must add "empty spheres:" fictitious atoms of zero atomic number that
+enable space to be filled without too large a geometry violation.
+
+
 {::comment}
 
 <DL>
