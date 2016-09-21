@@ -260,13 +260,13 @@ Click here for for a discussion of the (in part competing) criteria for the sele
 
 Geometry violation of overlapping spheres
 : Overlapping spheres count some parts of space twice and others not at all.  The full-potential code is has a unique augmentation,
-constructed so that the sphere contributions vanish quadratically for radii approaching the MT radius.  Errors tend to be small until
+constructed so that the sphere contributions vanish quadratically for radii approaching the MT radius.  Overlap errors tend to be small until
 overlaps reach about 10% of the internuclear distance.  It has been found empirically, however, that self-consistency proceeds more slowly
-when spheres overlap.
+when spheres overlap.  Also, the current _GW_ implemntation doesn't have this property: there, spheres should _not_ overlap.
 
-: The ASA band code **lm**{: style="color: blue"}, has a "combined correction" term that partially undoes this
-error, but not completely.  This term is only available to **lm**{: style="color: blue"}, not **lmgf**{: style="color: blue"}
-or **lmpg**{: style="color: blue"}.
+: _Note:_{: style="color: red"} the ASA band code **lm**{: style="color: blue"}, has a "combined correction" term that partially undoes this
+error, but not completely.  The Green's function codes **lmgf**{: style="color: blue"} and **lmpg**{: style="color: blue"}
+do not have this term.
 
 ASA Requirement for space-filling spheres
 : The ASA functional requires that the sum-of-sphere volumes equals the cell volume.  More precisely, the density is carried by
@@ -297,67 +297,6 @@ MT potentials are exactly solvable
   partitioning of space which best resembles a MT potential is the
   best choice.  The automatic sphere radii algorithms try to select
   radii that make the intersitial potential flat.
-
-{::comment}
-
-<DL>
-<DT><I>Geometry violation of overlapping spheres</I>
-<DD>
-Overlapping spheres count some parts of space twice and others not at all.  The full-potential code is has a unique augmentation,
-constructed so that the sphere contributions vanish quadratically for radii approaching the MT radius.  Errors tend to be small until
-overlaps reach about 10% of the internuclear distance.  It has been found empirically, however, that self-consistency proceeds more slowly
-when spheres overlap.
-
-The ASA band code **lm**{: style="color: blue"}, has a "combined correction" term that partially undoes this
-error, but not completely.  This term is only available to **lm**{: style="color: blue"}, not **lmgf**{: style="color: blue"}
-or **lmpg**{: style="color: blue"}.
-
-</DD>
-<DT><I>ASA Requirement for space-filling spheres</I>
-<DD>
-
-The ASA functional requires that the sum-of-sphere volumes equals the cell volume.  More precisely, the density is carried by
-the spheres (superposition of spherically symmetrical sphere densities).   This crition mitigates directly against the preceding one.
-The more closely packed a system is the better suited the ASA.  For open systems, you must add "empty spheres:" fictitious atoms of zero atomic number that
-enable space to be filled without too large a geometry violation.
-
-</DD>
-<DT><I>Large sphere radii assign more volume to augmented functions</I>
-<DD>
-  Augmented wave functions are very accurate, and the more space covered
-  by them the more reliable the basis set.
-
-</DD>
-<DT><I>l-convergence is most rapid for small sphere radii</I>
-<DD>
-The larger the sphere radius, the more <I>l's</I> are required for convergence
-
-</DD>
-<DT><I>Larger spheres better contain shallow semicore states</I>
-<DD>
-Ideally the core is completely localized within augmentation spheres.
-Particularly in the full-potential case where spheres overlap less
-than in the ASA, shallow semicore states can be an issue.  In the FP case, 
-you can always add 
-[a local orbital](/tutorial/lmf/lmf_pbte_tutorial/#local-orbitals/)
-to address this problem.
-
-</DD>
-<DT><I>MT potentials are exactly solvable</I>
-<DD>
-  The KKR method is essentially exact for a MT potential, i.e. one
-  that is spherical inside augmentation spheres and flat in the
-  interstitial.  The LMTO basis starts from the KKR basis; thus a
-  partitioning of space which best resembles a MT potential is the
-  best choice.  The automatic sphere radii algorithms try to select
-  radii that make the intersitial potential flat.
-
-</DD>
-</DL>
-
-{:/comment}
-
-x
 
 {::nomarkdown}</div>{:/}
 

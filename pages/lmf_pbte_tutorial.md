@@ -490,7 +490,7 @@ to **nkabc=6*, or alternatively assign it on the command line (which is what thi
 We also haven't specified the G cutoff for the density mesh.
 **lmfa**{: style="color: blue"} conveniently supplied that information for us,
 based in the shape of envelope functions it found.  In this case the valence
-G cutoff is quite small (**4.388), but the Pb 5_d_ is a much sharper function,
+G cutoff is quite small (**4.388**), but the Pb 5_d_ is a much sharper function,
 and requires a larger cutoff (**7.8**).  You must use use the larger of the two.
 
 _Note:_{: style="color: red"} if you change the shape of the envelope funnctions
