@@ -258,6 +258,8 @@ case; the ASA can be tricky because of the space-filling requirement.
 Click here for for a discussion of the (in part competing) criteria for the selection of sphere radii.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="sphereradii">{:/} 
 
+{::comment}
+
 <DL>
 <DT><I>Geometry violation of overlapping spheres</I>
 <DD>
@@ -312,6 +314,8 @@ to address this problem.
 
 </DD>
 </DL>
+
+{:/comment}
 
 x
 
@@ -428,57 +432,8 @@ on a different footing from all the other spheres.
 </pre>
 </DD>
 
-<H2><A name="section10"></A>Program ccomp</h2>
+### _Second generation Orbital Downfolding_
 
-<pre>
-
-*A preprocessor, ccomp, provides a simplified, FORTRAN compatible
- version of C conditional compilation.  FORTRAN statements
- beginning with C# are preprocessor directives; the ones
- implemented now are C#ifdef, C#ifndef, C#else, C#elseif, C#endif
- (also C#define defines a name).  Directives C#ifdef, C#ifndef,
- C#elseif, and C#endif are followed by a name, eg C#ifdef CRAY.
- when C#ifdef is false (either name is not defined or it lies
- within an #if/#endif block that is false), ccomp comments out
- until a change of state (new C#ifdef, C#ifndef, C#else,
- C#elseif, C#endif encountered); C#ifdef is true, ccomp
- uncomments lines following until another conditional compilation
- directive is encountered.
-
-*Conditional compilation blocks may be nested.  As with C, ccomp
- distinguishes case.  Output is to standard out.
-
-*There is a primitive facility to make logical expressions using
- the AND (&) and OR (|) operators, such C#ifdef john & bill, or
- C#ifdef john | bill, is provided.  Precedence of operators is
- strictly left to right, so that john | bill & mike is equivalent
- to (john | bill) & mike, whereas john & bill | mike is
- equivalent to (john & bill) | mike
-
-*How ccomp determines whether to modify code (i.e. add comments,
- or delete comments from a code segment)
-
- Whether the lines following a C#ifdef, C#ifndef, C#else,
- C#elseif, C#endif need to be commented out or uncommented
- depends on whether they have been commented out in a previous
- pass.  This information is contained in a `C' following the
- directive, eg C#ifdefC, C#ifndefC, C#elseC, C#elseifC, C#endifC.
- The preprocessor will set this, it is best advised to create any
- new blocks uncommented and let the preprocessor do the
- commenting.
-
- Programs <b>lm</b>, <b>lmstr</b>, <b>lmdos</b>, <b>lmchk</b>, etc..
- are in fact the same source code, the only difference being that one
- is run through ccomp with different keywords defined.  ccomp is used
- extensively by `configure' both to create new branches code, to and
- customize code specific to certain compilers, either for optimization
- purposes or to avoid compiler bugs.
-
-</pre>
-
-<h2><A name="section11"></A>2nd generation Orbital Downfolding</h2>
-
-<pre>
 This is a procedure for constructing minimal basis sets and for
 avoiding ghost bands. The best description is in Ole Andersen's
 Varenna Notes (section 4.12), and for the stout-hearted, there is
@@ -555,8 +510,6 @@ the empty spheres (these are the analogues of Vogl's sp^3s*
 basis). Now try folding down the empty sphere s as well: any
 worse than Harrison's minimal basis? (Try the deformation
 potentials!)
-
-</pre>
 
 
 ### _Other Resources_
