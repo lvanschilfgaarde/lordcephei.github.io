@@ -327,7 +327,10 @@ the LDA, unoccupied states also contribute to the potential.
 
 {::nomarkdown}</div>{:/}
 
-##### 4.2 Free atomic density : valence-core partitioning
+##### 4.2 Valence-core partitioning of the free atomic density
+{::comment}
+/tutorial/lmf/lmf_pbte_tutorial/#4.2-valence-core-partitioning-of-the-free-atomic-density/
+{:/comment}
 
 After _basp.pbte_{: style="color: green"} has been modified, you must run **lmfa**{: style="color: blue"} a second time
 
@@ -337,7 +340,10 @@ $ lmfa ctrl.pbte                                #use lmfa to make basp file, atm
 
 This is necessary whenever the valence-core partitioning changes through the addition or removal of a local orbital.
 
-#####  Relativistic cores
+##### Relativistic cores
+{::comment}
+/tutorial/lmf/lmf_pbte_tutorial/#relativistic-cores/
+{:/comment}
 
 Normally **lmfa**{: style="color: blue"} determines the core levels and core density from
 the scalar Dirac equation.  However there is an option to use the full Dirac equation.
@@ -346,7 +352,32 @@ the scalar Dirac equation.  However there is an option to use the full Dirac equ
 Click here to see how to calculate core levels from the Dirac equation.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="diraccore">{:/} 
 
-... to be completed
+Tag **HAM_REL** controls how the Questaal package manages different levels of relativistic treatment
+Enter
+~~~
+$ lmfa --input
+~~~
+and look for **HAM_REL**.  You should see:
+
+~~~
+ HAM_REL                opt    i4       1,  1     default = 1
+   0 for nonrelativistic Schrodinger equation
+   1 for scalar relativistic Schrodinger equation
+   2 for Dirac equation (ASA only for now)
+   10s digit 1: compute core density with full Dirac equation
+   10s digit 2: Like 1, but neglect coupling (1,2) pairs in 4-vector
+~~~
+
+Set **HAM_REL=12** to make **lmfa**{: style="color: blue"} calculate the core levels and core density with the full Dirac
+equation.
+
+Typically you want to see the core level eigenvalues; they can shift significantly relative to the scalar Diract case.
+Also within _l_ there are multiple inequivalent states.  To see these levels, invoke **lmfa**{: style="color: blue"} 
+with a sufficiently high verbosity.  Thus if your input file has HAM REL={lrel}, do
+~~~
+$ lmfa --pr41 -vlrel=11 
+~~~
+
 
 {::nomarkdown}</div>{:/}
 
