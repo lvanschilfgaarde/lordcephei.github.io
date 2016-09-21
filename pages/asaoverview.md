@@ -239,32 +239,35 @@ enough to reach self-consistency.  These codes also have a lookup table for defa
 [above](/docs/asaoverview/#augmentation-sphere-boundary-conditions-and-continuous-principal-quantum-numbers)
 
 ### _Selection of Sphere Radii_
+{::comment}
+/docs/asaoverview/#selection-of-sphere-radii/
+{:/comment}
 
 One of the biggest nuisances for augmented-wave programs is the choice
 of sphere radius.  Results are much more sensitive to choice of
 spheres in the ASA than in the full-potential case, in part because
 the energy functional (and potential) change with MT radii, whereas in
-the FP case, this only weakly so.  Either for the ASA or FP, the radii
-are chosen by balancing the following competing needs:
+the FP case, this only weakly so.  The ASA also has the additional constraint
+that the sum-of-sphere volumes equals the unit cell volume, so the
+criteria in selecting them is somewhat different.
+
+Either for the ASA or FP, the Questaal package has codes to automatically select them for you.  It is relatively straightforward in the FP
+case; the ASA can be tricky because of the space-filling requirement.
+
+<div onclick="elm = document.getElementById('corep'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
+Click here for for a discussion of the (in part competing) criteria for the selection of sphere radii.</div>
+{::nomarkdown}<div style="display:none;padding:0px;" id="corep">{:/} 
 
 <DL>
-<DT><I>MT potentials are exactly solvable</I>
-<DD>
-  The KKR method is essentially exact for a MT potential, i.e. one
-  that is spherical inside augmentation spheres and flat in the
-  interstitial.  The LMTO basis starts from the KKR basis; thus a
-  partitioning of space which best resembles a MT potential is the
-  best choice.  This is particularly true for the ASA.
-
-</DD>
 <DT><I>Geometry violation of overlapping spheres</I>
 <DD>
 Overlapping spheres count some parts of space twice and others not at
-all.  In the ASA, the "combined correction" term partially undoes this
-error, but not completely.  The full-potential hamiltonian is
+all.  The unique augmentation of the full-potential code is
 constructed so that the sphere contributions vanish quadratically for
 radii approaching the MT radius.  Errors tend to be small until
 overlaps reach about 10% of the internuclear distance.
+In the ASA, the "combined correction" term partially undoes this
+error, but not completely.  
 
 </DD>
 <DT><I>ASA Requirement for space-filling spheres</I>
@@ -291,7 +294,19 @@ Ideally the core is completely localized within augmentation spheres.
 Particularly in the full-potential case where spheres overlap less
 than in the ASA, shallow semicore states can be an issue.
 
+</DD>
+<DT><I>MT potentials are exactly solvable</I>
+<DD>
+  The KKR method is essentially exact for a MT potential, i.e. one
+  that is spherical inside augmentation spheres and flat in the
+  interstitial.  The LMTO basis starts from the KKR basis; thus a
+  partitioning of space which best resembles a MT potential is the
+  best choice.  This is particularly true for the ASA.
+
+</DD>
 </DL>
+
+{::nomarkdown}</div>{:/}
 
 This program suite helps you set sphere radii in several ways.  Programs
 using already-chosen (or guessed) sphere radii can <A href="#section8.1">rescale
