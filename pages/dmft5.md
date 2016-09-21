@@ -27,6 +27,7 @@ grep 'RMS DQ=' log
 ```
 
 To achieve self-consistency you shall repeat the last **lmfdmft**{: style="color: blue"} calculation until **RSM DE< 2.0e-4**{: style="color: blue"}, or any other tolerance you may wish although it's not easy to get better than 1.0e-4. To do that you may prefer to insert the last command in a loop like 
+
 ```
 for ((i=1; i<15 ; i++))
 do 
