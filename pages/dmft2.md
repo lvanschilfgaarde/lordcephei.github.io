@@ -142,8 +142,10 @@ Now there are some manual operations to do:
 
 ##### _**(3) Cycling the loop**_
  
-At this point you have a new self-energy to be fed to **lmfdmft**{: style="color: blue"}. You can go back to the point _**(1)**_ and repeat all the operations with a higher iteration number X. The procedure is based on an alternated utilisation of **lmfdmft**{: style="color: blue} and **ctqmc**{: style="color: blue}, but the required input/output handling is not being automatised yet.
-However, once you have familiarised with the procedure, you can use script to do most of the work. From [this link](https://lordcephei.github.io/assets/download/inputfiles/HandleIO_dmft.sh) you can download a basic template to start with.
+At this point you have a new self-energy to be fed to **lmfdmft**{: style="color: blue"}. You can go back to the point _**(1)**_ and repeat all the operations with a higher iteration number X.
+
+As the required input/output handling is not being automatised yet, cycling the loop results pretty annoying.
+However, once you have familiarised with the procedure, you can write a script to do most of the work using [this one](https://lordcephei.github.io/assets/download/inputfiles/HandleIO_dmft.sh) as a basic template.
 
  
 ### Converging to the SC-solution
