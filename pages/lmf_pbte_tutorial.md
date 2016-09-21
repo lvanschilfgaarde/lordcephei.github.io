@@ -335,7 +335,7 @@ the LDA, unoccupied states also contribute to the potential.
 After _basp.pbte_{: style="color: green"} has been modified, you must run **lmfa**{: style="color: blue"} a second time
 
 ~~~
-$ lmfa ctrl.pbte                                #use lmfa to make basp file, atm file and to get gmax
+$ lmfa ctrl.pbte
 ~~~
 
 This is necessary whenever the valence-core partitioning changes through the addition or removal of a local orbital.
@@ -349,7 +349,7 @@ Normally **lmfa**{: style="color: blue"} determines the core levels and core den
 the scalar Dirac equation.  However there is an option to use the full Dirac equation.
 
 <div onclick="elm = document.getElementById('diraccore'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
-Click here to see how to calculate core levels from the Dirac equation.</div>
+Click here to about calculating core levels from the Dirac equation.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="diraccore">{:/} 
 
 Tag **HAM_REL** controls how the Questaal package manages different levels of relativistic treatment.
@@ -536,7 +536,7 @@ _atm.pbte_{: style="color: green"}, and exits with the following printout:
  FREEAT:  estimate HAM_GMAX from RSMH:  GMAX=4.3 (valence)  7.8 (local orbitals)
 ~~~
 
-This is the G cutoff **gmax** that the ctrl file needs.  It determines the mesh spacing for the charge density.
+This is the _G_ cutoff **gmax** that the ctrl file needs in the next section.  It determines the mesh spacing for the charge density.
 
 ####  5. _Self-consistency_
 
@@ -558,16 +558,17 @@ We haven't yet specified a k mesh:
 You must supply it yourself since there are too many contexts to supply a sensible default value.
 In this case a k-mesh of 6&times;6&times;6
 divisions is adequate.   With your text editor change **nkabc=0** in the ctrl file
-to **nkabc=6*, or alternatively assign it on the command line (which is what this tutorial will do)
+to **nkabc=6*8, or alternatively assign variable **nkabc* on the command line (which is what this tutorial will do).
 
-We also haven't specified the G cutoff for the density mesh.
+We also haven't specified the _G_ cutoff for the density mesh.  **blm**{: style="color: blue"} does not determine this parameter automatically
+because it is sensitive to the selection of basis parameters, hich local orbitals are included.
 **lmfa**{: style="color: blue"} conveniently supplied that information for us,
 based in the shape of envelope functions it found.  In this case the valence
-G cutoff is quite small (**4.388**), but the Pb 5_d_ is a much sharper function,
+_G_ cutoff is quite small (**4.388**), but the Pb 5_d_ local orbital is a much sharper function,
 and requires a larger cutoff (**7.8**).  You must use use the larger of the two.
 
 _Note:_{: style="color: red"} if you change the shape of the envelope funnctions
-you must take care that the G cutoff is still adequate.  This is described in the 
+you must take care that **gmax** is large enough. This is described in the 
 lmf output below.
 
 Change variable **gmax=0** in the ctrl file, or alternatively add a variable to the command line.
@@ -663,13 +664,13 @@ Notes: (see also "Additional Exercises" below)
 
 + You can specify symmetry operations manually.  This is particularly useful
   when magnetic symmetry must be considered.  
-+ The k mesh is specifed through the number of k divisions, tag **EXPRESS_nabc**.  
++ The k mesh is specifed through the number of k divisions along each of the three reciprocal lattice vectors, tag **EXPRESS_nabc**.  
   You can also specify whether the k-mesh should pass through the origin or straddle it
-  through tag **BZ_BZJOB**
+  through tag **BZ_BZJOB**.
 + The Brillouin zone integration is using Bloechl's generalized tetrahedron method.
   You can also use the Methfessel-Paxton integration scheme or a Fermi function.
 
-The next group of data contains a synsopsis of key parameters associated with
+The next group of data contains a synopsis of key parameters associated with
 augmentation spheres.
 
 ~~~
@@ -680,16 +681,75 @@ augmentation spheres.
 ~~~
 
 + **rmt** is the augmentation radius
-+ **rsma** is connected with the polynomial expansion <i>P<sub>kL</sub></i> of tails of envelope functions, needed for their one-center expansions about remote sites
-+ **lmxa** is the _l_-cutoff of the augmentation.  Because of the unique way augmentation is done in this method, this value can be much lower than in standard augmented wave methods.
-+ **kmxa**
-+ **lmxl**
-+ **rg**, **rsmv**, **kmxv**
-+ **foca**, **rfoca**
++ **rsma** and **kmxa** are the smoothing radius and polynomial order used to expand envelope function around other sites.
++ **lmxa** is the _l_-cutoff of the augmentation.  Because of the unique way augmentation is done in this method, **lmxa** can be much lower standard augmented wave methods require
++ **lmxl** is similar to **lmxa**, but it corresponds to the _l_-cutoff of the charge density.  **lmxl** defaults to **lmxa**; you can often make it smaller with minimal loss of accuracy
++ **rg**, **rsmv**, **kmxv** are concerned with adding local pseudocharges to manage the Hartree potential
++ **foca**, **rfoca** allow for differing treatments of the core.
+
+The next block is concerned with the mesh used to represent the charge density.
+The fineness of the mesh is controlled by the _G_ cutoff (**7.8 for this tutorial)
+
+~~~
+ MSHSIZ: mesh has 18 x 18 x 18 divisions; length 0.477, 0.477, 0.477
+         generated from gmax = 7.8 a.u. : 3647 vectors of 5832 (62%)
+
+ GVLIST: gmax = 7.8 a.u. created 3647 vectors of 5832 (62%)
+         mesh has 18 x 18 x 18 divisions; length 0.477, 0.477, 0.477
+ SGVSYM: 126 symmetry stars found for 3647 reciprocal lattice vectors
+~~~ 
+
+Information about whether this mesh is sufficiently accurate is given
+in the table beginning with _sugcut_{: style="color: green"} below.
+
+The next block provides information about the size of the basis set.
+
+~~~
+ Makidx:  hamiltonian dimensions Low, Int, High, Negl: 55 0 32 63
+ kappa   Low   Int   High  L+I  L+I+H  Neglected
+   1      32     0     9    32    41       9
+   2      18     0    23    18    41       9
+   3       5     0     0     5     5      45
+  all     55     0    32    55    87      63
+ suham :  41 augmentation channels, 41 local potential channels  Maximum lmxa=4
+~~~
+
+**lmf**{: style="color: blue"} doesn't have downfolding so the
+important numbers are in the "Low" column.  Rows 1,2,3 indicate how
+many orbitals are connected with the first Hankel envelope (**EH**),
+the second envelope (**EH2**), and local orbitals respectively.
+The total basis in this case has 55 orbitals.
+
+The table below lists all the species and the parameters defining the
+shape of the envelope functions.
+
+~~~
+ sugcut:  make orbital-dependent reciprocal vector cutoffs for tol=1.0e-6
+ spec      l    rsm    eh     gmax    last term   cutoff
+  Pb       0    1.80  -0.10   4.123    2.68E-06     531 
+  Pb       1    2.02  -0.10   3.848    2.42E-06     411 
+  Pb       2*   2.03  -0.10   4.013    1.37E-06     531 
+  Pb       3    2.03  -0.10   4.193    1.54E-06     537 
+  Pb       0    1.80  -0.90   4.123    2.68E-06     531 
+  Pb       1    2.02  -0.90   3.848    2.42E-06     411 
+  Pb       2    2.03  -0.90   4.013    1.37E-06     531 
+  Te       0    1.63  -0.10   4.572    1.45E-06     725 
+  Te       1    1.71  -0.10   4.575    1.52E-06     725 
+  Te       2*   2.02  -0.10   4.037    1.63E-06     531 
+  Te       3    2.02  -0.10   4.218    1.87E-06     537 
+  Te       0    1.63  -0.90   4.572    1.45E-06     725 
+  Te       1    1.71  -0.90   4.575    1.52E-06     725 
+  Te       2    2.02  -0.90   4.037    1.63E-06     531 
+~~~ 
+
+Also printed out is an orbital-dependent **gmax**.  Each envelope function
+must be expanded in plane waves in order to assemble matrix elements of the interstitial potential.
+To speed the integration, **gmax** may safely be less than the global _G_ cutoff (**7.8** in this tutorial);
+it cannot exceed it.  _sugcut_{: style="color: green"} will find a **gmax** for each orbital
+that meets a preset tolerance (**tol=10<sup>&minus;6</sup> by default) if it can.  Otherwise it
+uses the global
 
 {::nomarkdown}</div>{:/}
-
-
 
 ### _Other Resources_
 

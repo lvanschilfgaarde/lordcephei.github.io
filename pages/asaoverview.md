@@ -469,12 +469,12 @@ about the screening parameter $$\alpha$$ depending on how weakly they are scatte
 often useful to set the switches manually as the criteria in the
 automatic mode are set to cause no loss of accuracy. Very often
 one can fold down orbitals and save a lot of time with only a
-small error in the eigenvalues. Examples are p-orbitals in
-transition metals and d-orbitals in Al. In Fe, the f-orbitals
+small error in the eigenvalues. Examples are _p_ orbitals in
+transition metals and _d_ orbitals in Al. In Fe, the _f_ orbitals
 must be folded down to avoid a ghost band. Another application is
 in constructing minimal basis sets. As an exercise try folding
 down orbitals in Si right down to _s_ and _p_ on the atoms and _s_ in
-the empty spheres (these are the analogues of Vogl's _sp_<sup>3</sup>s<sup>*</sup>s
+the empty spheres (these are the analogues of Vogl's _sp_<sup>3</sup>s\*
 basis). Now try folding down the empty sphere _s_ as well: any
 worse than Harrison's minimal basis? (Try the deformation
 potentials!)
