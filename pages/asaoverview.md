@@ -188,11 +188,11 @@ conditions at the surface of the sphere.  In some sense these numbers
 are ``fundamental'' to a sphere; the atomic program will generate a
 self-consistent potential for a specified set of <i>Q</i><sub>0</sub>,
 <i>Q</i><sub>1</sub>, <i>Q</i><sub>2</sub> and boundary conditions, specified 
-in the Questaal package through the continuous principal quantum number <i>P<sub></i>
+in the Questaal package through the continuous principal quantum number <i>P</i>
 described in the previous section.  
 This simplification depends on assumption of spherical densities, and is
 unique to the ASA.  Information spcifying the potential is carried compactly in
-the four numbers <i>P,Q<sub>0...2</sub></i> in each _l_ channel.
+the four numbers <i>P,&nbsp; Q<sub>0...2</sub></i> in each _l_ channel.
 
 This is a generalization of the free-atom case where the atomic
 density is determined by the zeroth moment $$Q_0$$ in each _l_ channel
@@ -203,21 +203,21 @@ by the requirement that <i>&phi;</i> is integrable.
 
 _Potential Parameters_
 
-Once a potential is specified (implicitly through <i>P,Q<sub>0...2</sub></i>)
+Once a potential is specified (implicitly through <i>P, Q<sub>0...2</sub></i>),
 "potential parameters" can be generated.  They
 are a compact representation of information needed 
 specify the hamiltonian.  A description of how the
 parameters are generated and their significance is too involved to be
 described in this overview, but see 'Other Resources" below.
-The most important parameters are the "band center of gravity" _C_
-and the bandwidth &Delta;.  
+The most important parameters are the "band center of gravity" <i>C<sub>l</sub></i>
+and the bandwidth <i>&Delta;<sub>l</sub></i>.
 
-+ _C_ describes the band center, and is the analog of the on-site matrix element (or atomic level in the free atom)
-+ &Delta; characterises the width of the partial, i.e. approximately the maximum and minimum values a partial wave would take in the absence of hybridization with other atoms
++ <i>C<sub>l</sub></i> describes the band center, and is the analog of the on-site matrix element (or atomic level in the free atom)
++ <i>&Delta;<sub>l</sub></i> characterises the width of the partial, i.e. approximately the maximum and minimum values a partial wave would take in the absence of hybridization with other atoms
 
 To generate bands and a density potential parameters are required, but not moments.  Nevertheless it is usual (but not essential) to start
-from the moments because rough values for them can easily be guessed.  The ASA codes will assume default values (Q<sub>0</sub></i> =
-occupation of the free atom, Q<sub>1</sub></i> = Q<sub>2</sub></i> = 0), which most of the time is good enough to reach self-consistency.
+from the moments because rough values for them can easily be guessed.  The ASA codes will assume default values (<i>Q</i><sub>0</sub> =
+occupation of the free atom, <i>Q</i><sub>1</sub> = <i>Q</i><sub>2</sub> = 0), which most of the time is good enough to reach self-consistency.
 These codes also have a lookup table for default values of _P_ described 
 [above](/docs/asaoverview/#boundary-conditions-and-continuous-principal-quantum-numbers)
 

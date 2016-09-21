@@ -541,7 +541,7 @@ use depending on settings in **EXPRESS_autobas**.
 To see what the tokens in **autobas** do, invoke `lmf --input`
 and search for autobas in the output.
 
-Next follows some header information:
+Next follows some header information that presents in a condensed synopsis form some key settings that are used in this run:
 
 ~~~
  LMF:      nbas = 2  nspec = 2  vn 7.11.i  verb 35
@@ -552,9 +552,7 @@ Next follows some header information:
  bz:       metal(5), tetra, invit 
 ~~~
 
-that presents in a condensed synopsis form some key settings that are used in this run.
-
-Next follow information about the lattice vectors and settings used in Ewald summations
+Next follow information about the lattice vectors and settings used in Ewald summations:
 
 ~~~
                 Plat                                  Qlat
@@ -567,8 +565,10 @@ Next follow information about the lattice vectors and settings used in Ewald sum
          r1=  1.807   nkd= 87       q1=  5.403   nkg= 169
 ~~~
 
-The next group of data find the symmetry operations inherent in the 
-crystal, and the irreducible k mesh given the operations it has.
+_Note:_{: style="color: red"} When long, thin cells are used, or when PAW's are added to the basis set, some attention needs to be paid to the Ewald tolerance.
+
+The next block of output shows symmetry operations it in the 
+crystal, and the irreducible k mesh given the point group:
 
 ~~~
  SGROUP: 1 symmetry operations from 0 generators
