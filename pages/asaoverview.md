@@ -91,6 +91,9 @@ transport in devices ranging from magnetic tunnel junctions to atomic
 point contacts.
 
 ### _Structure of the ASA_
+{::comment hyperlink
+/docs/asaoverview/#structure-of-the-asa/
+}
 
 The ASA is like other [augmented wave methods](/docs/package_overview/#augmented-wave-methods) which divide into an
 "atomic'' part which makes matrix elements and a "band'' part which generates bands, densities-of-states, etc.
@@ -111,6 +114,9 @@ parameters, then moments again until the process converges.  The program can be 
 specifying potential parameters, or with the atomic part, specifying the moments.
 
 ### _Augmentation sphere boundary conditions and continuous principal quantum numbers_
+{::comment hyperlink
+/docs/asaoverview/#augmentation-sphere-boundary-conditions-and-continuous-principal-quantum-numbers/
+}
 
 [Linear augmented wave](/docs/package_overview/#linear-methods-in-band-theory) methods almost invariably construct the basis set inside
 augmentation spheres from the spherical part of the potential.  (In the ASA the potential is spherical anyway).
@@ -146,6 +152,10 @@ _Note:_{: style="color: red"} <i>P<sub>l</sub></i> should not be confused with O
 It is unfortunate that these distinct but related functions have the same symbol.
 
 ##### _Continuous principal quantum number for core levels and free electrons_
+{::comment hyperlink
+/docs/asaoverview/#continuous-principal-quantum-number-for-core-levels-and-free-electrons/
+}
+
 
 <div onclick="elm = document.getElementById('corep'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
 Click here for a description of P for two limite cases; core levels and free electrons.</div>
@@ -173,6 +183,10 @@ in a continous way, acquiring an extra integer each time a new node appears.
 
 
 ### _Generation of the sphere potential and energy moments Q_
+{::comment hyperlink
+/docs/asaoverview/#generation-of-the-sphere-potential-and-energy-moments-q/
+}
+
 
 Because the method is a linear one, and because the density is
 constrained to be spherical, only three functions can carry charge
@@ -195,31 +209,34 @@ unique to the ASA.  Information spcifying the potential is carried compactly in
 the four numbers <i>P,&nbsp; Q<sub>0...2</sub></i> in each _l_ channel.
 
 This is a generalization of the free-atom case where the atomic
-density is determined by the zeroth moment $$Q_0$$ in each _l_ channel
+density is determined by the zeroth moment <i>Q</i><sub>0</sub> in each _l_ channel
 and the boundary condition that <i>&phi;<sub>l</sub></i> decay as
-<i>r</i>&rarr;&infin;.  Only $$Q_0$$ is needed because the atomic
+<i>r</i>&rarr;&infin;.  Only <i>Q</i><sub>0</sub> is needed because the atomic
 level is sharp, having no energy dispersion. Also the boundary condition is fixed
 by the requirement that <i>&phi;</i> is integrable.
 
 _Potential Parameters_
+{::comment hyperlink
+/docs/asaoverview/#potential-parameters/
+}
 
-Once a potential is specified (implicitly through <i>P, Q<sub>0...2</sub></i>),
+Once a potential is specified (implicitly through <i>P, Q</i><sub>0,1,2</sub>),
 "potential parameters" can be generated.  They
 are a compact representation of information needed 
 specify the hamiltonian.  A description of how the
 parameters are generated and their significance is too involved to be
 described in this overview, but see 'Other Resources" below.
 The most important parameters are the "band center of gravity" <i>C<sub>l</sub></i>
-and the bandwidth <i>&Delta;<sub>l</sub></i>.
+and the bandwidth &Delta;<i><sub>l</sub></i>.
 
 + <i>C<sub>l</sub></i> describes the band center, and is the analog of the on-site matrix element (or atomic level in the free atom)
-+ <i>&Delta;<sub>l</sub></i> characterises the width of the partial, i.e. approximately the maximum and minimum values a partial wave would take in the absence of hybridization with other atoms
++ &Delta;<i><sub>l</sub></i> characterises the width of the partial, i.e. approximately the maximum and minimum values a partial wave would take in the absence of hybridization with other atoms.
 
-To generate bands and a density potential parameters are required, but not moments.  Nevertheless it is usual (but not essential) to start
-from the moments because rough values for them can easily be guessed.  The ASA codes will assume default values (<i>Q</i><sub>0</sub> =
-occupation of the free atom, <i>Q</i><sub>1</sub> = <i>Q</i><sub>2</sub> = 0), which most of the time is good enough to reach self-consistency.
-These codes also have a lookup table for default values of _P_ described 
-[above](/docs/asaoverview/#boundary-conditions-and-continuous-principal-quantum-numbers)
+To generate bands and an output charge density (in the form of moments <i>Q</i><sub>0,1,2</sub>), only potential parameters are required.
+Nevertheless it is more common to start from the moments because rough values for them can easily be guessed.  The ASA codes will assume default
+values (<i>Q</i><sub>0</sub> = occupation of the free atom, <i>Q</i><sub>1</sub> = <i>Q</i><sub>2</sub> = 0), which most of the time is good
+enough to reach self-consistency.  These codes also have a lookup table for default values of _P_ described
+[above](/docs/asaoverview/#augmentation-sphere-boundary-conditions-and-continuous-principal-quantum-numbers)
 
 ### _Selection of Sphere Radii_
 
