@@ -251,8 +251,17 @@ the FP case, this only weakly so.  The ASA also has the additional constraint
 that the sum-of-sphere volumes equals the unit cell volume, so the
 criteria in selecting them is somewhat different.
 
-For either the ASA or FP, the Questaal package has tools to select radii for you automatically.  It is relatively straightforward in the FP
-case; the ASA can be tricky because of the space-filling requirement.
+For either the ASA or FP, the Questaal package has several tools to help you select radii automatically.  
+
++ The input file maker, **blm**, automatically selects them for you.  Many tutorials, such as 
+the [basic **lmf**{: style="color: blue"} tutorial](/tutorial/lmf/lmf_tutorial/)
+and [basic **lm**{: style="color: blue"} tutorial](/tutorial/asa/asa-doc)
+start with **blm**.
++ The sphere radius checker **lmchk** can choose radii for you if you already have a ctrl file.
++ You can rescale already-chosen (or guessed) sphere radii up to a specified volume within constraints you supply.
+
+It is relatively straightforward in the FP case; the ASA can be tricky
+because of the space-filling requirement.
 
 <div onclick="elm = document.getElementById('sphereradii'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
 Click here for for a discussion of the (in part competing) criteria for the selection of sphere radii.</div>
@@ -300,16 +309,11 @@ MT potentials are exactly solvable
 
 {::nomarkdown}</div>{:/}
 
-The Questaal suite helps you set sphere radii in several ways.  
-
-+ The input file maker, **blm**, automatically selects them for you.
-+ The sphere radius checker **lmchk** can choose radii for you if you already have a ctrl file
-+ You can rescale already-chosen (or guessed) sphere radii up to a specified volume within constraints you supply.
-
 ### _Automatic scaling of sphere radii_
 
-Programs needing sphere radii can <A href="#section8.1">scale sphere
-radii</A> as large as possible within constraints you supply.  This
+_Note:_{: style="color: red"} this should be moved to an **lmchk**{: style="color: blue"} tutorial.
+
+Questaal programs can scale sphere radii as large as possible within constraints you supply.  This
 option iteratively adjusts sphere radii as large as possible (or until
 the combined sphere volumes equals the cell volume) within certain
 constraints.  To set this option, set SPEC token SCLWSR=1.  (Actually,
@@ -323,21 +327,14 @@ usually you choose n=1.
 The constraints come in three flavors (all of them are imposed):
 
 Constraints on sphere overlaps
-: There are two constraints OMAX1 and OMAX2 on sphere overlaps.  If we
-  call ri the radius for sphere i and rij the distance between sites i
-  and j:
-+   ri+rj-rij is constrained to be less than OMAX1 <S>x</S> rij
-+   ri+rj-rij is constrained to be less than OMAX2 <S>x</S> min(si,sj)
-: Set OMAX1 and OMAX2 in category <A href="#SPEC">SPEC</A>.
+: There are constraints on sphere overlaps set by **SPEC_OMAX1** and **SPEC_OMAX2**.
+  Call ri the radius for sphere i and rij the distance between sites i  and j:
+:   ri+rj-rij is constrained to be less than OMAX1 <S>x</S> rij
+:   ri+rj-rij is constrained to be less than OMAX2 <S>x</S> min(si,sj)
 
 Maximum sphere radius
-: No sphere radius is allowed to exceed WSRMAX (set in the
-  <A href="#SPEC">SPEC</A> category).
-
-: Lock sphere radii of specific species
-: You can "lock down" the sphere radii of specific species.  You set it
-using token CSTRMX= in the <A
-href="#SPEC">SPEC</A> category for species you want to lock.
+: Cap the maximum sphere radius by setting **SPEC_WSRMAX**
+: Lock sphere radii of specific species, by setting **SPEC_ATOM_CSTRMX**  in any species you want to lock.
 
 ### _Choosing initial values of sphere radii_
 
