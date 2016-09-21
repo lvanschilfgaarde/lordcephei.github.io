@@ -35,20 +35,27 @@ lmfdmft ni --ldadc=71.85 -job=1 -vbxc0=1 --makesigqp       # 3. write sig.inp.f0
 {::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="statmag">{:/}
 
 1. First interpolate _Sig.inp.out.brd_{: style="color: green"} to zero frequency. You can use the program **mk_siginp-freq0.py**{: style="color: blue"} downloadable at [this link](https://lordcephei.github.io/assets/download/inputfiles/mk_siginp-freq0.py). The output file _sif.inp.f0_{: style="color: green"} is the static limit of the impurity self-energy (you can check the quality of the extrapolation by plotting *Sig.out.brd*{: style="color: green"} and *Sig.out.brd.extrap*{: style="color: green"}).
-2. In the same folder, you can launch **lmfdmft**{: style="color: blue"} using exactly the same input (files and flags) as your last run. The program will automatically find _sig.inp.f0_{: style="color: green"}, it will embed it and symmetrise it before exiting. The output *sig.inp.f0.emb*{: style="color: green"} is a text file. Look for the line
+
+2. In the same folder, you can launch **lmfdmft**{: style="color: blue"} using exactly the same input (files and flags) as your last run. The program will automatically find _sig.inp.f0_{: style="color: green"}, it will embed it and symmetrise it before exiting. The output *sig.inp.f0.emb*{: style="color: green"} is a text file. 
+You should find the line
+ 
 ```
 Exit 0 File sig.inp.f0 embedded successfully and recorded in sig.inp.f0.emb
 ```
-in the *log*{: style="color: green"} file.
+
+at the bottom of the *log*{: style="color: green"} file.
+
 3. Still in the same folder you can run again **lmfdmft**{: style="color: blue"}, adding **\-\-makesigqp**{: style="color: blue"} to the command line. This will
   * subtract the average self-energy component to the whole matrix hence keeping only the magnetic part and
   * project the resulting matrix in the quasiparticle basis.
 The result will be saved in the *sigm1.ni*{: style="color: green"} file. 
-Chek for the line
+You should have the line 
+
 ```
 Exit 0 wrote embedded sigma (orbital basis) to file sigm1
 ```
-in the *log*{: style="color: green"} file.
+
+at the bottom of the *log*{: style="color: green"} file.
 
 {::nomarkdown}</div>{:/}
 
