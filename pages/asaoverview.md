@@ -253,14 +253,14 @@ criteria in selecting them is somewhat different.
 
 For either the ASA or FP, the Questaal package has several tools to help you select radii automatically.  
 
-+ The input file maker, **blm**, automatically selects them for you.  Many tutorials, such as 
++ The input file maker, **blm**{: style="color: blue"}, automatically selects them.  Many tutorials, such as 
 the [basic **lmf**{: style="color: blue"} tutorial](/tutorial/lmf/lmf_tutorial/)
 and [basic **lm**{: style="color: blue"} tutorial](/tutorial/asa/asa-doc)
-start with **blm**.
-+ The sphere radius checker **lmchk** can choose radii for you if you already have a ctrl file.
-+ You can rescale already-chosen (or guessed) sphere radii up to a specified volume within constraints you supply.
+start with **blm**{: style="color: blue"}.
++ The geometry checker **lmchk**{: style="color: blue"} will find radii (`lmchk --getwsr`) if you already have a ctrl file.
++ Questaal programs can rescale preselected sphere radii up to a specified volume within constraints you supply.
 
-It is relatively straightforward in the FP case; the ASA can be tricky
+Choosing radii is relatively straightforward in the FP case; the ASA can be tricky
 because of the space-filling requirement.
 
 <div onclick="elm = document.getElementById('sphereradii'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
