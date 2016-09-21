@@ -300,12 +300,11 @@ MT potentials are exactly solvable
 
 {::nomarkdown}</div>{:/}
 
-This program suite helps you set sphere radii in several ways.  Programs
-using already-chosen (or guessed) sphere radii can <A href="#section8.1">rescale
-sphere radii</A> up to a specified volume within constraints you supply.
-Also program <A href="Command-line-options.html#section1lmchk">lmchk</A> can
-supply intelligent <A href="#section8.2">values</B></A>
-for sphere radii (usually better than you can guess on your own).
+The Questaal suite helps you set sphere radii in several ways.  
+
++ The input file maker, **blm**, automatically selects them for you.
++ The sphere radius checker **lmchk** can choose radii for you if you already have a ctrl file
++ You can rescale already-chosen (or guessed) sphere radii up to a specified volume within constraints you supply.
 
 ### _Automatic scaling of sphere radii_
 
