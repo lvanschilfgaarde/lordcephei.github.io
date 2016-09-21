@@ -28,6 +28,7 @@ cp ../itN_qmcrun/Sig.out.brd sigfreq0/sig.inp              # copy converged Sig.
 cd sigfreq0
 ln -sf sig.inp Sig.out.brd                                 # mk_siginp-freq0.py looks for Sig.out.brd
 python mk_siginp-freq0.py                                  # 1. interpolate Sig.out.brd to zero frequency
+vi ctrl.ni                                                 # Set nkabc = nkgw 
 lmfdmft ni --ldadc=71.85 -job=1 -vbxc0=1                   # 2. embed+symmetrise sig.inp.f0 to sig.inp.f0.emb
 lmfdmft ni --ldadc=71.85 -job=1 -vbxc0=1 --makesigqp       # 3. write sig.inp.f0.emb on quasiparticle basis sigm1.ni
 ```
@@ -36,7 +37,7 @@ lmfdmft ni --ldadc=71.85 -job=1 -vbxc0=1 --makesigqp       # 3. write sig.inp.f0
 
 1. First interpolate _Sig.inp.out.brd_{: style="color: green"} to zero frequency. You can use the program **mk_siginp-freq0.py**{: style="color: blue"} downloadable at [this link](https://lordcephei.github.io/assets/download/inputfiles/mk_siginp-freq0.py). The output file _sif.inp.f0_{: style="color: green"} is the static limit of the impurity self-energy (you can check the quality of the extrapolation by plotting *Sig.out.brd*{: style="color: green"} and *Sig.out.brd.extrap*{: style="color: green"}).
 
-2. In the same folder, you can launch **lmfdmft**{: style="color: blue"} using exactly the same input (files and flags) as your last run. The program will automatically find _sig.inp.f0_{: style="color: green"}, it will embed it and symmetrise it before exiting. The output *sig.inp.f0.emb*{: style="color: green"} is a text file. 
+2. In the same folder, you can launch **lmfdmft**{: style="color: blue"} using the same flags as your last run. **Warning: however you have to pay attention to set nkabc equal to nkgw in this and the following run!**{: style="color: red"}. The program will automatically find _sig.inp.f0_{: style="color: green"}, it will embed it and symmetrise it before exiting. The output *sig.inp.f0.emb*{: style="color: green"} is a text file. 
 You should find the line
  
   ```
@@ -49,7 +50,7 @@ You should find the line
   * subtract the average self-energy component to the whole matrix hence keeping only the magnetic part and
   * project the resulting matrix in the quasiparticle basis.
 The result will be saved in the *sigm1.ni*{: style="color: green"} file. 
-You should have the line 
+You should finde the line 
 
   ```
   Exit 0 wrote embedded sigma (orbital basis) to file sigm1
@@ -61,6 +62,8 @@ You should have the line
 
  
 ### Adding charge and static-magnetic components 
+**WARNING: There's a bug here. I can not merge the two sigm files anymore.  TO BE SOLVED!!!**{: style="color: red"}
+
 You now have a static magnetic-only potential produced by DMFT. This has to be added to the charge-only (LDA or QSGW) potential.
 
 ``` 
@@ -68,3 +71,4 @@ lmf ni --wsig --mixsig=1,1   # add sigm and sigm1 to get sigm2
 ```
 
 As a result files *sigm.ni*{: style="color: green"} and *sigm1.ni*{: style="color: green"} are summed together and exported in *sigm2.ni*{: style="color: green"}. This is a new $$V_{\rm xc}$$ that can be fed to **lmf**{: style="color: blue"} to get a new magnetic starting point for a DMFT loop.
+
