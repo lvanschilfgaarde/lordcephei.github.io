@@ -270,6 +270,10 @@ $ cp basp0.pbte basp.pbte                       #copy basp0 to recognised basp p
 ~~~
 
 #####  4.1 Local orbitals
+{::comment}
+/tutorial/lmf/lmf_pbte_tutorial/#local-orbitals/
+{:/comment}
+
 
 Part of **lmfa**{: style="color: blue"}'s function is to identify
 _local orbitals_ that [extend the linear method](/docs/package_overview/#linear-methods-in-band-theory).

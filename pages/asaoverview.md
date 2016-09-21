@@ -251,7 +251,7 @@ the FP case, this only weakly so.  The ASA also has the additional constraint
 that the sum-of-sphere volumes equals the unit cell volume, so the
 criteria in selecting them is somewhat different.
 
-Either for the ASA or FP, the Questaal package has codes to automatically select them for you.  It is relatively straightforward in the FP
+Either for the ASA or FP, the Questaal package has tools to select radii for you automatically.  It is relatively straightforward in the FP
 case; the ASA can be tricky because of the space-filling requirement.
 
 <div onclick="elm = document.getElementById('sphereradii'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
@@ -261,20 +261,23 @@ Click here for for a discussion of the (in part competing) criteria for the sele
 <DL>
 <DT><I>Geometry violation of overlapping spheres</I>
 <DD>
-Overlapping spheres count some parts of space twice and others not at
-all.  The unique augmentation of the full-potential code is
-constructed so that the sphere contributions vanish quadratically for
-radii approaching the MT radius.  Errors tend to be small until
-overlaps reach about 10% of the internuclear distance.
-In the ASA, the "combined correction" term partially undoes this
-error, but not completely.  
+Overlapping spheres count some parts of space twice and others not at all.  The full-potential code is has a unique augmentation,
+constructed so that the sphere contributions vanish quadratically for radii approaching the MT radius.  Errors tend to be small until
+overlaps reach about 10% of the internuclear distance.  It has been found empirically, however, that self-consistency proceeds more slowly
+when spheres overlap.
+
+The ASA band code **lm**{: style="color: blue"}, has a "combined correction" term that partially undoes this
+error, but not completely.  This term is only available to **lm**{: style="color: blue"}, not **lmgf**{: style="color: blue"}
+or **lmpg**{: style="color: blue"}.
 
 </DD>
 <DT><I>ASA Requirement for space-filling spheres</I>
 <DD>
-The ASA functional pretty much requires that the sum-of-sphere volumes
-equals the cell volume.  More precisely, the density is carried by the
-spheres (superposition of spherically symmetrical sphere densities).
+
+The ASA functional requires that the sum-of-sphere volumes equals the cell volume.  More precisely, the density is carried by
+the spheres (superposition of spherically symmetrical sphere densities).   This crition mitigates directly against the preceding one.
+The more closely packed a system is the better suited the ASA.  For open systems, you must add "empty spheres:" fictitious atoms of zero atomic number that
+enable space to be filled without too large a geometry violation.
 
 </DD>
 <DT><I>Large sphere radii assign more volume to augmented functions</I>
@@ -292,7 +295,10 @@ The larger the sphere radius, the more <I>l's</I> are required for convergence
 <DD>
 Ideally the core is completely localized within augmentation spheres.
 Particularly in the full-potential case where spheres overlap less
-than in the ASA, shallow semicore states can be an issue.
+than in the ASA, shallow semicore states can be an issue.  In the FP case, 
+you can always add 
+[a local orbital](/tutorial/lmf/lmf_pbte_tutorial/#local-orbitals/)
+to address this problem.
 
 </DD>
 <DT><I>MT potentials are exactly solvable</I>
@@ -301,10 +307,13 @@ than in the ASA, shallow semicore states can be an issue.
   that is spherical inside augmentation spheres and flat in the
   interstitial.  The LMTO basis starts from the KKR basis; thus a
   partitioning of space which best resembles a MT potential is the
-  best choice.  This is particularly true for the ASA.
+  best choice.  The automatic sphere radii algorithms try to select
+  radii that make the intersitial potential flat.
 
 </DD>
 </DL>
+
+x
 
 {::nomarkdown}</div>{:/}
 
