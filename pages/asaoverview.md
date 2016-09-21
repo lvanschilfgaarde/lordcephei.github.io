@@ -269,11 +269,34 @@ error, but not completely.  This term is only available to **lm**{: style="color
 or **lmpg**{: style="color: blue"}.
 
 ASA Requirement for space-filling spheres
-:The ASA functional requires that the sum-of-sphere volumes equals the cell volume.  More precisely, the density is carried by
+: The ASA functional requires that the sum-of-sphere volumes equals the cell volume.  More precisely, the density is carried by
 the spheres (superposition of spherically symmetrical sphere densities).   This crition mitigates directly against the preceding one.
 The more closely packed a system is the better suited the ASA.  For open systems, you must add "empty spheres:" fictitious atoms of zero atomic number that
 enable space to be filled without too large a geometry violation.
 
+Large sphere radii assign more volume to augmented functions
+: Augmented wave functions are very accurate, and the more space covered
+  by them the more reliable the basis set.
+
+_l_-convergence is most rapid for small sphere radii
+: The larger the sphere radius, slower the convergence with _l_, because
+the angular momentum increases rapidly with _l_.
+
+Larger spheres better contain shallow semicore states
+: Ideally the core is completely localized within augmentation spheres.
+Particularly in the full-potential case where spheres overlap less
+than in the ASA, shallow semicore states can be an issue.  In the FP case, 
+you can always add 
+[a local orbital](/tutorial/lmf/lmf_pbte_tutorial/#local-orbitals/)
+to address this problem.
+
+MT potentials are exactly solvable
+: The KKR method is essentially exact for a MT potential, i.e. one
+  that is spherical inside augmentation spheres and flat in the
+  interstitial.  The LMTO basis starts from the KKR basis; thus a
+  partitioning of space which best resembles a MT potential is the
+  best choice.  The automatic sphere radii algorithms try to select
+  radii that make the intersitial potential flat.
 
 {::comment}
 
