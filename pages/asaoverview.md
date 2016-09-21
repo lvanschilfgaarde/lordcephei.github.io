@@ -91,9 +91,9 @@ transport in devices ranging from magnetic tunnel junctions to atomic
 point contacts.
 
 ### _Structure of the ASA_
-{::comment hyperlink
+{::comment}
 /docs/asaoverview/#structure-of-the-asa/
-:/comment}
+{:/comment}
 
 The ASA is like other [augmented wave methods](/docs/package_overview/#augmented-wave-methods) which divide into an
 "atomic'' part which makes matrix elements and a "band'' part which generates bands, densities-of-states, etc.
@@ -114,9 +114,9 @@ parameters, then moments again until the process converges.  The program can be 
 specifying potential parameters, or with the atomic part, specifying the moments.
 
 ### _Augmentation sphere boundary conditions and continuous principal quantum numbers_
-{::comment hyperlink
+{::comment}
 /docs/asaoverview/#augmentation-sphere-boundary-conditions-and-continuous-principal-quantum-numbers/
-:/comment}
+{:/comment}
 
 [Linear augmented wave](/docs/package_overview/#linear-methods-in-band-theory) methods almost invariably construct the basis set inside
 augmentation spheres from the spherical part of the potential.  (In the ASA the potential is spherical anyway).
@@ -152,9 +152,9 @@ _Note:_{: style="color: red"} <i>P<sub>l</sub></i> should not be confused with O
 It is unfortunate that these distinct but related functions have the same symbol.
 
 ##### _Continuous principal quantum number for core levels and free electrons_
-{::comment hyperlink
+{::comment}
 /docs/asaoverview/#continuous-principal-quantum-number-for-core-levels-and-free-electrons/
-:/comment}
+{:/comment}
 
 
 <div onclick="elm = document.getElementById('corep'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
@@ -183,9 +183,9 @@ in a continous way, acquiring an extra integer each time a new node appears.
 
 
 ### _Generation of the sphere potential and energy moments Q_
-{::comment hyperlink
+{::comment}
 /docs/asaoverview/#generation-of-the-sphere-potential-and-energy-moments-q/
-:/comment}
+{:/comment}
 
 
 Because the method is a linear one, and because the density is
@@ -216,9 +216,9 @@ level is sharp, having no energy dispersion. Also the boundary condition is fixe
 by the requirement that <i>&phi;</i> is integrable.
 
 _Potential Parameters_
-{::comment hyperlink
+{::comment}
 /docs/asaoverview/#potential-parameters/
-:/comment}
+{:/comment}
 
 Once a potential is specified (implicitly through <i>P, Q</i><sub>0,1,2</sub>),
 "potential parameters" can be generated.  They
