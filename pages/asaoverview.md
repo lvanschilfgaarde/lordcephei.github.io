@@ -254,8 +254,8 @@ criteria in selecting them is somewhat different.
 For either the ASA or FP, the Questaal package has several tools to help you select radii automatically.  
 
 + The input file maker, **blm**{: style="color: blue"}, automatically selects them.  Many tutorials, such as 
-the [basic **lmf**{: style="color: blue"} tutorial](/tutorial/lmf/lmf_tutorial/)
-and [basic **lm**{: style="color: blue"} tutorial](/tutorial/asa/lm_pbte_tutorial)
+the basic [**lmf**{: style="color: blue"} tutorial](/tutorial/lmf/lmf_tutorial/)
+and [**lm**{: style="color: blue"} tutorial](/tutorial/asa/lm_pbte_tutorial)
 start with **blm**{: style="color: blue"}.
 + The geometry checker **lmchk**{: style="color: blue"} will find radii (`lmchk --getwsr`) if you already have a ctrl file.
 + Questaal programs can rescale preselected sphere radii up to a specified volume within constraints you supply.
@@ -328,9 +328,9 @@ The constraints come in three flavors (all of them are imposed):
 
 Constraints on sphere overlaps
 : There are constraints on sphere overlaps set by **SPEC_OMAX1** and **SPEC_OMAX2**.
-  Call ri the radius for sphere i and rij the distance between sites i  and j:
-:   ri+rj-rij is constrained to be less than OMAX1 <S>x</S> rij
-:   ri+rj-rij is constrained to be less than OMAX2 <S>x</S> min(si,sj)
+  Call <i>r<sub>i</sub></i> the radius for sphere i and <i>r<sub>ij</sub></i> the distance between sites i  and j:
+:   <i>r<sub>i</sub></i>+<i>r<sub>j</sub></i>-<i>r<sub>ij</sub></i> is constrained to be less than OMAX1 <S>x</S> <i>r<sub>ij</sub></i>
+:   <i>r<sub>i</sub></i>+<i>r<sub>j</sub></i>-<i>r<sub>ij</sub></i> is constrained to be less than OMAX2 <S>x</S> min(si,sj)
 
 Maximum sphere radius
 : Cap the maximum sphere radius by setting **SPEC_WSRMAX**
