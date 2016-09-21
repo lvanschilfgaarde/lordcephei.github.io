@@ -23,8 +23,8 @@ You have performed a full DMFT loop whith **HAM_NSPIN=2** (see variables and lin
 
 ```
 mkdir sigfreq0
-cp ../lmfinput/*.ni  sigfreq0
-cp ../itN_qmcrun/Sig.out.brd sigfreq0/sig.inp              # copy converged Sig.out.brd file 
+cp lmfinput/*.ni  sigfreq0
+cp itN_qmcrun/Sig.out.brd sigfreq0/sig.inp              # copy converged Sig.out.brd file 
 cd sigfreq0
 ln -sf sig.inp Sig.out.brd                                 # mk_siginp-freq0.py looks for Sig.out.brd
 python mk_siginp-freq0.py                                  # 1. interpolate Sig.out.brd to zero frequency
