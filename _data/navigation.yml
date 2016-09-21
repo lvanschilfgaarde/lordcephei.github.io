@@ -95,7 +95,7 @@
       prefix: "/asa"
       content:
       - title: "LM Tutorial"
-        url: "/tutorial/asa/lm_pbte_tutorial/"
+        url: "/lm_pbte_tutorial/"
     - name: "GW"
       prefix: "/gw"
       content:
