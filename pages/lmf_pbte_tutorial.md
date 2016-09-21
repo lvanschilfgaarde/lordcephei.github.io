@@ -352,9 +352,8 @@ the scalar Dirac equation.  However there is an option to use the full Dirac equ
 Click here to see how to calculate core levels from the Dirac equation.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="diraccore">{:/} 
 
-Tag **HAM_REL** controls how the Questaal package manages different levels of relativistic treatment
-Run `lmfa --input`
-and look for **HAM_REL**.  You should see:
+Tag **HAM_REL** controls how the Questaal package manages different levels of relativistic treatment.
+Run `lmfa --input` and look for **HAM_REL**.  You should see:
 
 ~~~
  HAM_REL                opt    i4       1,  1     default = 1
@@ -368,14 +367,59 @@ and look for **HAM_REL**.  You should see:
 Set **HAM_REL=11** to make **lmfa**{: style="color: blue"} calculate the core levels and core density with the full Dirac
 equation.
 
-Typically you want to see the core level eigenvalues; they can shift significantly relative to the scalar Diract case.
-Also within _l_ there are multiple inequivalent states.  To see these levels, invoke **lmfa**{: style="color: blue"} 
-with a sufficiently high verbosity.  Thus if your input file has HAM REL={lrel}, do
+You might want to see the core level eigenvalues; they can shift significantly relative to the scalar Dirac solution.
+Also, _l_ is no longer a good quantum number so there can be multiple eigenvalues connected with
+the scalar Dirac _l_.   To see these levels, invoke **lmfa**{: style="color: blue"} 
+with a sufficiently high verbosity.  In the present instance insert
+**HAM REL=11** into _ctrl.pbte_{: style="color: green"} and do
 
 ~~~
-$ lmfa --pr41 -vlrel=11 
+$ lmfa --pr41 ctrl.pbte
 ~~~
 
+You should see the following table:
+
+~~~
+ Dirac core levels:
+ nl  chg    <ecore(S)>     <ecore(D)>     <Tcore(S)>     <Tcore(D)>   nre
+ 1s   2   -6461.412521   -6461.420614    9160.575645    9160.568216   439
+ ec(mu)   -6461.420614   -6461.420614
+ 2s   2   -1154.772794   -1154.777392    2201.484620    2201.485036   473
+ ec(mu)   -1154.777392   -1154.777392
+ 3s   2    -277.137428    -277.136313     700.148783     700.160432   501
+ ec(mu)    -277.136313    -277.136313
+ 4s   2     -62.683976     -62.678557     231.671152     231.686270   531
+ ec(mu)     -62.678557     -62.678557
+ 5s   2     -10.589828     -10.580503      60.826909      60.833608   567
+ ec(mu)     -10.580503     -10.580503
+ 2p   6    -990.094400   -1001.984462    1702.510726    1772.365432   475
+ ec(mu)    -948.389636   -1109.174115    -948.389636   -1109.174115    -948.389636    -948.389636
+ 3p   6    -229.993746    -232.623198     568.649082     585.156080   505
+ ec(mu)    -220.667558    -256.534478    -220.667558    -256.534478    -220.667558    -220.667558
+ 4p   6     -47.246014     -47.902771     184.751871     189.523363   537
+ ec(mu)     -44.969950     -53.768412     -44.969950     -53.768412     -44.969950     -44.969950
+ 5p   6      -6.300710      -6.422904      43.507054      44.670581   577
+ ec(mu)      -5.869706      -7.529300      -5.869706      -7.529300      -5.869706      -5.869706
+ 3d  10    -182.032939    -182.146340     501.452676     502.171493   509
+ ec(mu)    -179.091564    -186.728504    -179.091564    -186.728504    -179.091564    -186.728504    -179.091564    -186.728504    -179.091564    -179.091564
+ 4d  10     -29.432703     -29.453418     150.979227     151.198976   545
+ ec(mu)     -28.796634     -30.438595     -28.796634     -30.438595     -28.796634     -30.438595     -28.796634     -30.438595     -28.796634     -28.796634
+ 5d  10      -1.566638      -1.562069      23.907636      23.945913   605
+ ec(mu)      -1.485638      -1.676716      -1.485638      -1.676716      -1.485638      -1.676716      -1.485638      -1.676716      -1.485638      -1.485638
+ 4f  14      -9.755569      -9.751307     117.412788     117.457023   569
+ ec(mu)      -9.592725      -9.962749      -9.592725      -9.962749      -9.592725      -9.962749      -9.592725      -9.962749      -9.592725      -9.962749      -9.592725      -9.962749      -9.592725      -9.592725
+
+ qcore(SR) 78.000000  qcore(FR)  78.000000  rho(rmax)  0.00000
+ sum ec :    -25841.9031 (SR)    -25934.9233 (FR) diff       -93.0203
+ sum tc :     48113.1010 (SR)     48677.3220 (FR) diff       564.2210
+~~~
+
+Thus the Pb 5_d_ eigenvalue (**-1.566638 Ry**) gets split into 6 levels with energy **-1.485638 Ry** and four with
+**-1.676716 Ry**.  The mean (**-1.56207 Ry**) is close to the scalar Dirac energy.  In the absence of a magnetic field a
+particular _l_ will split into two distinct levels with degeneracies 2_l_ and 2_l_+2, respectively.
+
+The bottom part of the table shows how much the free atom's total energy changes as a consequence of the fully
+relativistic Dirac treatment.
 
 {::nomarkdown}</div>{:/}
 
