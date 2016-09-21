@@ -26,7 +26,13 @@ As a result of the last command, you have an updated density file *rst.ni*{: sty
 grep 'RMS DQ=' log
 ```
 
-To achieve self-consistency you shall repeat the last **lmfdmft**{: style="color: blue"} calculation until **RSM DE< 1.0e-5**{: style="color: blue"}, or any other tolerance you may wish.
+To achieve self-consistency you shall repeat the last **lmfdmft**{: style="color: blue"} calculation until **RSM DE< 2.0e-4**{: style="color: blue"}, or any other tolerance you may wish although it's not easy to get better than 1.0e-4. To do that you may prefer to insert the last command in a loop like 
+```
+for ((i=1; i<15 ; i++))
+do 
+  lmfdmft ni --ldadc=71.85 -job=1 --rs=1,1 -vbxc0=1 --udrs >> log
+done
+```
 
 ### Restarting the QSGW loop 
 Now a new LDA or QSGW loop can be done keeping the density fixed. This will lead to a new xc-potential consistent with the density.
