@@ -38,6 +38,11 @@
         url: "/inputfile/"
       - title: "Symmetry Line Files"
         url: "/symfile/"
+    - name: "Annotated Output Files"
+      prefix: "/output"
+      content:
+      - title: "lmf standard out"
+        url: "/lmf_output/"
     - name: "Command Line Options"
       prefix: "/commandline"
       content:
