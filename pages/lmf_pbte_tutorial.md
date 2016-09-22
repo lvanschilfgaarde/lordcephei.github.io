@@ -598,7 +598,7 @@ The **c** at the beginning of the line indicates that this iteration is self-con
 ####  6. _Annotation of lmf's output_
 
 <div onclick="elm = document.getElementById('lmfoutput'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
-Click here for a description of lmf's output.</div>
+<button type="button" class="button tiny radius">Click here for a description of lmf's output.</button></div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="lmfoutput">{:/} 
 
 **lmf**{: style="color: blue"} begins by telling you that it is reading
