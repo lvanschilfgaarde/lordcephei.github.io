@@ -177,6 +177,13 @@ Mathematical equations can be added in-line within the markdown files by enclosi
 
 The equation itself is standard LaTeX syntax. If you are not familiar with LaTeX equation formatting, more information can be found [here](https://en.wikibooks.org/wiki/LaTeX/Mathematics).
 
+##### _Images_
+Images can be used on the site if so desired. They can be shown by using
+
+    [image hover text](http://imageurl.svg)
+
+Where the hover text is the text you want to appear when a user hovers over the image, and the url is the url that points to the domain hosting your image. While this is not a strict requirement, images should be in _*.svg_ format where possible. It is also possible to host your images, and other files, on the site. See below for more information.
+
 ### _Making Changes_
 
 ##### _Using Git_
@@ -224,3 +231,8 @@ From within the repository's directory. This will produce a _\_site_{: style="co
 This will create the same _\_site_{: style="color: green"} folder, but will also host the website locally. Read your terminal output for the address of the site.
 
 _Note:_{: style="color: red"} Before committing your changes to the repo, please ensure you delete the _\_site_{: style="color: green"} folder so as to not clutter the repo unnecessarily.
+
+### _Hosting Files_
+Images, input files and whatever other files your tutorial or documentation needs can be hosted on the site, provided they are not too large. Files stored in the _assets/download/_{: style="color: green"} directory in the site source will be accessible on the site. Simply upload your file to the relevant folder, be that _img_{: style="color: green"}, _inputfiles_{: style="color: green"} etc. If a category does not exist, feel free to create one with a relevant name.
+
+If your file is too large, contact us and we can look at other options. To actually commit the changes to the site, follow the making changes guide above; uploading your extra assets is as simple as commiting any other file.
