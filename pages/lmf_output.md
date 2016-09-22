@@ -1,13 +1,12 @@
 ---
 layout: page-fullwidth
-title: "Annotation of **lmf**{: style="color: blue"}'s standard output"
+title: "Annotation of lmf's standard output"
 subheadline: ""
 show_meta: false
 teaser: ""
 permalink: "/docs/outputs/lmf_output/"
 header: no
 ---
-
 
 _____________________________________________________________
 
