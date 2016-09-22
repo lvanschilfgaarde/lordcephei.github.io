@@ -342,15 +342,15 @@ as large as it can within certain constraints, or or until the aggregate sphere 
 radii, set **SPEC_SCLWSR**=_f_, where _f_ is the target aggregate sphere volumes as a fraction of the cell volume.  For the ASA, _f_ should
 be 1.  You can use it for the FP codes too, but it usually isn't necessary.
 
-The overlap between spheres at sites <i> and <j> is defined as <i>o<sub>ij</sub></i> = (<i>s<sub>i</sub></i>+<i>s<sub>j</sub></i>&minus;<i>d<sub>ij</sub></i>)
+The overlap between spheres at sites <i>i</i> and <i>j</i> is defined as <i>o<sub>ij</sub></i> = (<i>s<sub>i</sub></i>+<i>s<sub>j</sub></i>&minus;<i>d<sub>ij</sub></i>)
 where <i>s<sub>i</sub></i> is the augmentation radius for sphere <i>i</i> and <i>d<sub>ij</sub></i> the distance between sites <i>i</i> and <i>j</i>.
-
-The constraints come in the following flavors (all of them are imposed):
+The constraints on <i>o<sub>ij</sub></i> come in the following flavors (all of them are imposed):
 
 Constraints on sphere overlaps
 : There are constraints on sphere overlaps set through tags **SPEC_OMAX1** and **SPEC_OMAX2**.\\
  &nbsp;&nbsp;<i>o<sub>ij</sub></i> / <i>d<sub>ij</sub></i> is constrained to be less than **OMAX1**\\
  &nbsp;&nbsp;<i>o<sub>ij</sub></i> / min(<i>r<sub>i</sub></i>,<i>r<sub>j</sub></i>) is constrained to be less than **OMAX2**\\
+
 Maximum sphere radius
 : Cap the maximum sphere radius by setting **SPEC_WSRMAX**\\
   Lock sphere radii of specific species, by setting **SPEC_ATOM_CSTRMX**  in any species you want to freeze.
