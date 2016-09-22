@@ -597,193 +597,23 @@ The **c** at the beginning of the line indicates that this iteration is self-con
 
 ####  6. _Annotation of lmf's output_
 
-<div onclick="elm = document.getElementById('lmfoutput'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
-<button type="button" class="button tiny radius">Click here for a description of lmf's output.</button></div>
-{::nomarkdown}<div style="display:none;padding:0px;" id="lmfoutput">{:/} 
-
-**lmf**{: style="color: blue"} begins by telling you that it is reading
-basis information (envelope function parmeters, _P_ parameters and information
-about local orbitals) from _basp.pbte_{: style="color: green"}.
-
-~~~
- rdctrl: reading basis parameters from file basp
- ioorbp: read species Pb        RSMH,EH RSMH2,EH2 P PZ
- ioorbp: read species Te        RSMH,EH RSMH2,EH2 P
-         reset nkaph from 1 to 3
-~~~
-
-You can also supply this information in the ctrl file.
-If both are present **lmf**{: style="color: blue"} decides on which to
-use depending on settings in **EXPRESS_autobas**.
-
-To see what the tokens in **autobas** do, invoke `lmf --input`
-and search for autobas in the output.
-
-Next follows some header information that presents in a condensed synopsis form some key settings that are used in this run:
-
-~~~
- LMF:      nbas = 2  nspec = 2  vn 7.11.i  verb 35
- special:  forces
- pot:      XC:BH
- float:    float P LDA-style
- autoread: mto basis(4), pz(1), pnu(1)
- bz:       metal(5), tetra, invit 
-~~~
-
-Next follow information about the lattice vectors and settings used in Ewald summations:
-
-~~~
-                Plat                                  Qlat
-   0.000000   0.500000   0.500000       -1.000000   1.000000   1.000000
-   0.500000   0.000000   0.500000        1.000000  -1.000000   1.000000
-   0.500000   0.500000   0.000000        1.000000   1.000000  -1.000000
-   alat = 12.147006  Cell vol = 448.071898
-
- LATTC:  as= 2.000   tol=1.00E-08   alat=12.14701   awald= 0.261
-         r1=  1.807   nkd= 87       q1=  5.403   nkg= 169
-~~~
-
-_Note:_{: style="color: red"} When long, thin cells are used, or when PAW's are added to the basis set, some attention needs to be paid to the Ewald tolerance.
-
-The next block of output shows symmetry operations it in the 
-crystal, and the irreducible k mesh given the point group:
-
-~~~
- SGROUP: 1 symmetry operations from 0 generators
- SYMLAT: Bravais system is cubic with 48 symmetry operations.
- SYMCRY: crystal invariant under 48 symmetry operations for tol=1e-5
- GROUPG: the following are sufficient to generate the space group:
-         i*r3(1,1,-1) r4x
-         i*r3(1,1,-1) r4x
- MKSYM:  found 48 space group operations ... includes inversion
- BZMESH:  16 irreducible QP from 216 ( 6 6 6 )  shift= F F F
- TETIRR: sorting 1296 tetrahedra ... 35 inequivalent ones found
-~~~
-
-Notes: (see also "Additional Exercises" below)
-
-+ You can specify symmetry operations manually.  This is particularly useful
-  when magnetic symmetry must be considered.  
-+ The k mesh is specifed through the number of k divisions along each of the three reciprocal lattice vectors, tag **EXPRESS_nabc**.  
-  You can also specify whether the k-mesh should pass through the origin or straddle it
-  through tag **BZ_BZJOB**.
-+ The Brillouin zone integration is using Bloechl's generalized tetrahedron method.
-  You can also use the Methfessel-Paxton integration scheme or a Fermi function.
-
-The next group of data contains a synopsis of key parameters associated with
-augmentation spheres.
-
-~~~
- species data:  augmentation                           density
- spec       rmt   rsma lmxa kmxa      lmxl     rg   rsmv  kmxv foca   rfoca
- Pb       3.045  1.218    4    3         4  0.761  1.522    15    1   1.218
- Te       3.029  1.211    3    3         3  0.757  1.514    15    1   1.211
-~~~
-
-+ **rmt** is the augmentation radius
-+ **rsma** and **kmxa** are the smoothing radius and polynomial order used to expand envelope function around other sites.
-+ **lmxa** is the _l_-cutoff of the augmentation.  Because of the unique way augmentation is done in this method, **lmxa** can be much lower standard augmented wave methods require
-+ **lmxl** is analogous to **lmxa**, but it controls the _l_-cutoff of the charge density.  **lmxl** defaults to **lmxa**; you can often make it smaller with minimal loss of accuracy.
-+ **rg**, **rsmv**, **kmxv** are concerned with adding local gaussian pseudocharges to manage the Hartree potential.
-+ **foca**, **rfoca** allow for differing treatments of the core.
-
-The next block is concerned with the mesh used to represent the charge density.
-The fineness of the mesh is controlled by the _G_ cutoff (**7.8** for PbTe).
-
-~~~
- MSHSIZ: mesh has 18 x 18 x 18 divisions; length 0.477, 0.477, 0.477
-         generated from gmax = 7.8 a.u. : 3647 vectors of 5832 (62%)
-
- GVLIST: gmax = 7.8 a.u. created 3647 vectors of 5832 (62%)
-         mesh has 18 x 18 x 18 divisions; length 0.477, 0.477, 0.477
- SGVSYM: 126 symmetry stars found for 3647 reciprocal lattice vectors
-~~~ 
-
-Information about whether this mesh is sufficiently accurate is given
-in the table beginning with _sugcut_{: style="color: green"} below.
-
-The next block provides information about the size of the basis set.
-
-~~~
- Makidx:  hamiltonian dimensions Low, Int, High, Negl: 55 0 32 63
- kappa   Low   Int   High  L+I  L+I+H  Neglected
-   1      32     0     9    32    41       9
-   2      18     0    23    18    41       9
-   3       5     0     0     5     5      45
-  all     55     0    32    55    87      63
- suham :  41 augmentation channels, 41 local potential channels  Maximum lmxa=4
-~~~
-
-**lmf**{: style="color: blue"} doesn't have downfolding capability, so the
-important numbers are those in the "low" column.  Rows 1,2,3 indicate how
-many orbitals are connected respectively with the first Hankel envelope (**EH**),
-the second envelope (**EH2**), and local orbitals.
-The total basis (and hamiltonian rank) consists of 55 orbitals.
-
-The table below lists all the species and the parameters defining the
-shape of the envelope functions and an orbital-dependent **gmax**.
-
-~~~
- sugcut:  make orbital-dependent reciprocal vector cutoffs for tol=1.0e-6
- spec      l    rsm    eh     gmax    last term   cutoff
-  Pb       0    1.80  -0.10   4.123    2.68E-06     531 
-  Pb       1    2.02  -0.10   3.848    2.42E-06     411 
-  Pb       2*   2.03  -0.10   4.013    1.37E-06     531 
-  Pb       3    2.03  -0.10   4.193    1.54E-06     537 
-  Pb       0    1.80  -0.90   4.123    2.68E-06     531 
-  Pb       1    2.02  -0.90   3.848    2.42E-06     411 
-  Pb       2    2.03  -0.90   4.013    1.37E-06     531 
-  Te       0    1.63  -0.10   4.572    1.45E-06     725 
-  Te       1    1.71  -0.10   4.575    1.52E-06     725 
-  Te       2*   2.02  -0.10   4.037    1.63E-06     531 
-  Te       3    2.02  -0.10   4.218    1.87E-06     537 
-  Te       0    1.63  -0.90   4.572    1.45E-06     725 
-  Te       1    1.71  -0.90   4.575    1.52E-06     725 
-  Te       2    2.02  -0.90   4.037    1.63E-06     531 
-~~~ 
-
-Each envelope function must be expanded in plane waves in order to assemble matrix elements of the interstitial potential
-and generate the charge density.  Both are assembled in reciprocal space.
-To speed the integration, **gmax** may safely be less than the global _G_ cutoff (**7.8** for PbTe);
-it cannot exceed it.  _sugcut_{: style="color: green"} will find a **gmax** for each orbital
-that meets a preset tolerance if it can.  Otherwise it uses all the _G_ vectors available to it, and appends a '\*' to the number indicating it could not meet the tolerance.
-If any of the orbitals bump up against the maximum, check the error estimate ("last term") in the Table.
-If it is too high you can expect errors in the hamiltonian and you should increase **gmax**.
-
-The tolerance defaults to 10<sup>&minus;6</sup>, but you can control it with tag **HAM_TOL**.
-
-At this stage the potential independent setup is complete.  To generate the potential a density
-must be given.  **lmf**{: style="color: blue"} tries to read the density from the density restart file,
-*rst.pbte*{: style="color: green"}.  The next box indicates that **lmf**{: style="color: blue"} 
-was not able to find the file, and instead constructs a trial density by overlapping free atom densities:
-
-~~~
- lmfp  : no rst file ... try to overlap atomic densities
- rdovfa: read and overlap free-atom densities (mesh density) ...
- rdovfa: expected Pb,      read Pb       with rmt=  3.0448  mesh   497  0.025
- rdovfa: expected Te,      read Te       with rmt=  3.0287  mesh   461  0.025
-~~~
-
-If you have 
-
-
-{::nomarkdown}</div>{:/}
+Click [here](/docs/outputs/lmf_output/ "lmf standard output") to see the 
+**lmf**{: style="color: blue"}'s standard output annotated.
 
 ### _Other Resources_
 
-An input file's structure, and features of the programming language capability, is explained in some detail 
+1. An input file's structure, and features of the programming language capability, is explained in some detail 
 [here](/docs/input/inputfile/). The full syntax of categories and tokens can be found in [this reference](input.pdf).
 
-[This tutorial](https://lordcephei.github.io/buildingfpinput/) more fully describes some important tags the **lmf**{: style="color: blue"} reads.  It also
+2. [This tutorial](https://lordcephei.github.io/buildingfpinput/) more fully describes some important tags the **lmf**{: style="color: blue"} reads.  It also
 presents alternative ways to build input files from various sources such as the VASP _POSCAR_{: style="color: green"} file.
 
-[This tutorial](/tutorial/lmf/lmf_bi2te3_tutorial/) more fully explains the **lmf**{: style="color: blue"} basis set.
+3. [This tutorial](/tutorial/lmf/lmf_bi2te3_tutorial/) more fully explains the **lmf**{: style="color: blue"} basis set.\\
+   There is a corresponding tutorial on the basics of a [self-consistent ASA calculation for PbTe](https://github.com/lordcephei/lordcephei.github.io/blob/master/pages/fptut-pbte.md).  [A tutorial on optics](/docs/properties/optics/) can be gone through after you have understood this one.
 
-There is a corresponding tutorial on the basics of a [self-consistent ASA calculation for PbTe](https://github.com/lordcephei/lordcephei.github.io/blob/master/pages/fptut-pbte.md).  [A tutorial on optics](/docs/properties/optics/) can be gone through after you have understood this one.
+4. [This document](https://lordcephei.github.io/docs/lmf/overview/) gives an overview of some of **lmf**'s unique features and capabilities.
 
-[This document](https://lordcephei.github.io/docs/lmf/overview/) gives an overview of some of **lmf**'s unique features and capabilities.
-
-The theoretical formalism behind the **lmf**{: style="color: blue"} is described in detail in this book chapter:
+5. The theoretical formalism behind the **lmf**{: style="color: blue"} is described in detail in this book chapter:
 M. Methfessel, M. van Schilfgaarde, and R. A. Casali, ``A full-potential LMTO method based
 on smooth Hankel functions,'' in _Electronic Structure and Physical Properties of
 Solids: The Uses of the LMTO Method_, Lecture Notes in Physics,

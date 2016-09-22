@@ -21,7 +21,7 @@ _____________________________________________________________
 *  Auto generated table of contents
 {:toc}  
 
-####  _Annotation of lmf's output_
+###  _lmf's standard output_
 {::comment}
 /docs/outputs/lmf_output/#annotation-of-lmf's-output
 {:/comment}
@@ -30,10 +30,10 @@ The output documented here is mostly taken from [PbTe
 tutorial](/tutorial/lmf/lmf_pbte tutorial/). It will be indicated
 where portions are adapted from other calculations.  
 
-This document divides the output into blocks approximately in the
-order **lmf**{: style="color: blue"} makes them.
+This document divides the standard output into blocks approximately in the
+order **lmf**{: style="color: blue"} prints them.
 
-######  Reading basis information from the basp file
+####  Reading basis information from the basp file
 <div onclick="elm = document.getElementById('lmfoutput'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
 Click here for a description of lmf's output.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="lmfoutput">{:/} 
@@ -56,7 +56,9 @@ use depending on settings in **EXPRESS_autobas**.
 To see what the tokens in **autobas** do, invoke `lmf --input`
 and search for autobas in the output.
 
-###### Header information
+{::nomarkdown}</div>{:/}
+
+#### Header information
 {::comment}
 /docs/outputs/lmf_output/#header-information
 {:/comment}
@@ -73,7 +75,7 @@ settings that are used in the the calculation.
  bz:       metal(5), tetra, invit 
 ~~~
 
-###### Lattice information
+#### Lattice information
 {::comment}
 /docs/outputs/lmf_output/#lattice-information
 {:/comment}
@@ -93,7 +95,7 @@ This block prints informations about the lattice vectors and settings used in Ew
 
 _Note:_{: style="color: red"} When long, thin cells are used, or when APW's are added to the basis set, some attention needs to be paid to the Ewald tolerance.
 
-###### Symmetry information
+#### Symmetry information
 {::comment}
 /docs/outputs/lmf_output/#symmetry-information
 {:/comment}
@@ -123,7 +125,7 @@ Notes: (see also "Additional Exercises" below)
 + The Brillouin zone integration is using Bloechl's generalized tetrahedron method.
   You can also use the Methfessel-Paxton integration scheme or a Fermi function.
 
-###### Augmentation parameters
+#### Augmentation parameters
 {::comment}
 /docs/outputs/lmf_output/#augmentation-parameters
 {:/comment}
@@ -144,7 +146,7 @@ The table below contains a synopsis of key parameters associated with augmentati
 + **rg**, **rsmv**, **kmxv** are concerned with adding local gaussian pseudocharges to manage the Hartree potential.
 + **foca**, **rfoca** allow for differing treatments of the core.
 
-###### Interstitial mesh
+#### Interstitial mesh
 {::comment}
 /docs/outputs/lmf_output/#interstitial-mesh
 {:/comment}
@@ -165,7 +167,7 @@ The spacing of the mesh is controlled by the _G_ cutoff (**7.8** for PbTe).
 Information about whether this mesh is sufficiently accurate is given
 in the table beginning with _sugcut_{: style="color: green"} below.
 
-###### Counting the size of the basis
+#### Counting the size of the basis
 {::comment}
 /docs/outputs/lmf_output/#counting-the-size-of-the-basis
 {:/comment}
@@ -187,7 +189,7 @@ The total basis (and hamiltonian rank) consists of 55 orbitals.
  suham :  41 augmentation channels, 41 local potential channels  Maximum lmxa=4
 ~~~
 
-###### Envelope function parameters and their G cutoffs
+#### Envelope function parameters and their G cutoffs
 {::comment}
 /docs/outputs/lmf_output/#envelope-function-parameters-and-their-g-cutoffs
 {:/comment}
@@ -232,7 +234,7 @@ The tolerance defaults to 10<sup>&minus;6</sup>, but you can control it with tag
 
 At this stage the potential independent setup is complete.  
 
-###### Obtain an input density
+#### Obtain an input density
 {::comment}
 /docs/outputs/lmf_output/#obtain-an-input-density
 {:/comment}
