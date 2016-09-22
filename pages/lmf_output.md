@@ -26,8 +26,8 @@ The output documented here is mostly taken from the **lmf**{: style="color: blue
 [tutorial for PbTe](/tutorial/lmf/lmf_pbte_tutorial/).
 Some portions are adapted from other calculations, as will be indicated.
 
-Sections of document explain standard output organised by blocks approximately in the
-order they are printed.
+The standard output is organised by blocks.  Each section below
+explains a block approximately in the order they are made.
 
 #### Preprocessor's transformation of the input file
 {::comment}
