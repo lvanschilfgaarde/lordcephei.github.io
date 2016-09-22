@@ -45,10 +45,12 @@ At the bottom of the *log*{: style="color: green"} file you should find the line
   ```
 
 + Still in the same folder you can run again **lmfdmft**{: style="color: blue"}, adding **\-\-makesigqp**{: style="color: blue"} to the command line. This will
-    * subtract the average self-energy component to the whole matrix hence keeping only the magnetic part and
-    * project the resulting matrix in the quasiparticle basis.
-The result will be saved in the *sigm1.ni*{: style="color: green"} file. 
-At the bottom of the *log*{: style="color: green"} file you should finde the line 
+
+   * subtract the average self-energy component to the whole matrix hence keeping only the magnetic part and
+   * project the resulting matrix in the quasiparticle basis.
+
+  The result will be saved in the *sigm1.ni*{: style="color: green"} file. 
+  At the bottom of the *log*{: style="color: green"} file you should finde the line 
 
   ```
   Exit 0 wrote embedded sigma (orbital basis) to file sigm1
