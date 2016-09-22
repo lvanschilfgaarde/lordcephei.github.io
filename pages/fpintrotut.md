@@ -7,7 +7,7 @@ header: no
 ---
 _____________________________________________________________
 
-### _Purpose_
+### _Purpose TTT_
 {:.no_toc}
 
 This tutorial covers the basics for running a self consistent LDA calculation for silicon. The goal is to introduce you to the different file types and the basics of running the code.  
