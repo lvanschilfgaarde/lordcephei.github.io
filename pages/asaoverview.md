@@ -158,7 +158,7 @@ It is unfortunate that these distinct but related functions have the same symbol
 
 
 <div onclick="elm = document.getElementById('corep'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
-Click here for a description of P for two limite cases; core levels and free electrons.</div>
+Click here for a description of P for two limiting cases: core levels and free electrons.</div>
 {::nomarkdown}<div style="display:none;padding:0px;" id="corep">{:/} 
 
 _Core levels_
@@ -220,7 +220,7 @@ _Potential Parameters_
 /docs/asaoverview/#potential-parameters/
 {:/comment}
 
-Once a potential is specified (implicitly through <i>P, Q</i><sub>0,1,2</sub>),
+Once a potential is specified (implicitly through <i>P, Q</i><sub>0,1,2</sub>%nbsp;),
 "potential parameters" can be generated.  They
 are a compact representation of information needed 
 specify the hamiltonian.  A description of how the
@@ -233,6 +233,8 @@ and the bandwidth &Delta;<i><sub>l</sub></i>.
 + &Delta;<i><sub>l</sub></i> characterises the width of the partial, i.e. approximately the maximum and minimum values a partial wave would take in the absence of hybridization with other atoms.
 
 For a connection between _C_ and &Delta; and scattering phase shifts, see [downfolding](/docs/asaoverview/#downfolding-in-the-asa/) below.
+Another useful quantity is the "small parameter" _p_, which tells you the energy window over which the 
+[partial wave is well described by the linear method](/docs/package_overview/#linear-methods-in-band-theory/ "linear methods")
 
 To generate bands and an output charge density (in the form of moments <i>Q</i><sub>0,1,2</sub>), only potential parameters are required.
 Nevertheless it is more common to start from the moments because rough values for them can easily be guessed.  The ASA codes will assume default
@@ -433,7 +435,7 @@ $$ 1 / P_l(E) = \Delta_l / ( E  -  C_l )  +  \gamma  \hspace{1cm}   (1)  $$
 
 which is correct to second order in $$(E - C_l)$$.  Potential parameters *C* and &Delta; are readily identified by comparing the two
 equations: &Delta; is the width *W* of the resonance, and *C* is the band center. &gamma; is the second order distortion parameter, which
-can be seen to add a constant background to the phase shift. In practice one also include third order terms using the small parameter _p_ ;
+can be seen to add a constant background to the phase shift. In practice one also include third order terms using the small parameter _p_;
 see Varenna notes.
 
 _Note:_{: style="color: red"} In (1), <i>P<sub>l</sub></i> is indeed Andersen's "potential function,"

@@ -41,6 +41,9 @@ and see [this web page](https://lordcephei.github.io/install/) to install the pa
 _____________________________________________________________
 
 ### _Augmented Wave Methods_
+{::comment}
+/docs/package_overview/#augmented-wave-methods/
+{:/comment}
 
 Augmented Wave methods, originally developed by Slater, partitions space into spheres enclosing around each atom.  Basis functions used to
 solve Schrodinger's equation consist of a family of smooth envelope functions which are "augmented" with solutions of the Schrodinger equation
@@ -60,6 +63,9 @@ The choice of envelope function defines the method (Linear Muffin Tin Orbitals, 
 partial waves are obtained by integrating the Schrodinger equation numerical on a radial mesh inside the augmentation sphere.
 
 #### _Linear Methods in Band Theory_
+{::comment}
+/docs/package_overview/#linear-methods-in-band-theory/
+{:/comment}
 
 Nearly all modern electronic structure methods make use of the [linear
 method](http://dx.doi.org/10.1103/PhysRevB.12.3060) pioneered by O.K. Andersen.  Partial waves are approximated by
@@ -116,6 +122,9 @@ practical modern electronic structure methods in condensed matter.
 _____________________________________________________________
 
 ### _Questaal's Basis Functions_
+{::comment}
+/docs/package_overview/#questaal's-basis-Functions/
+{:/comment}
 
 The primary code in the density-functional package (**lmf**{: style="color: blue"}) uses atom-centered functions for
 envelope functions. They are convolutions of a Hankel and Gaussian functions centred at the nucleus.  Thus, 
@@ -134,6 +143,9 @@ they use LMTO basis sets.
 _____________________________________________________________
 
 ### _Augmentation_
+{::comment}
+/docs/package_overview/#augmentation/
+{:/comment}
 
 **lmf**{: style="color: blue"} carries out augmentation in a manner different than standard augmented wave methods.  It
 somewhat resembles the PAW method, though in the limit of large angular momentum cutoff it has exactly the same behaviour
@@ -144,6 +156,9 @@ _____________________________________________________________
 
 
 ### _Executable codes in the Questaal suite_
+{::comment}
+/docs/package_overview/#executable-codes-in-the-questaal-suite
+{:/comment}
 
 The Questaal family of executable programs share a common, elegant [input system](https://lordcephei.github.io/pages/input-file-style.html),
 and have some elements of a programming language.  A reference defining the syntax of categories and tokens can be found in [this pdf file](https://lordcephei.github.io/pages/input.pdf).
@@ -195,6 +210,9 @@ floating orbitals may be placed --- important for ASA and some _GW_ calculations
 There are other auxiliary programs, such as a formatter for setting up energy bands and a graphics program similar to gnuplot.
 
 ### _Input System_
+{::comment}
+/docs/package_overview/#input-system/
+{:/comment}
 
 All executables use a common input system.  It is a unique system that parses
 input in a largely format-free, tree-structured format.  There is some
@@ -205,6 +223,9 @@ or very detailed, even serving as a database for many materials. [This tutorial]
 explains how an input file is structured, and how input is organized by _categories_ and _tokens_. 
 
 ### _Other Resources_
+{::comment}
+/docs/package_overview/#other-resources/
+{:/comment}
 
 This book chapter describes the theory of the **lmf**{: style="color: blue"} code.
 It is a bit dated but the basics are unchanged.  
