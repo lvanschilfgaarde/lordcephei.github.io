@@ -4,13 +4,28 @@ title: "Properties of the lmf basis set"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "/tutorial/lmf_bi2te3_tutorial/"
+permalink: "/tutorial/lmf/lmf_bi2te3_tutorial/"
 header: no
 ---
 
 ### _Purpose_
 
 This tutorial explains the main features of the **lmf**{: style="color: blue"} basis set.
+
+_____________________________________________________________
+
+### _Table of Contents_
+{:.no_toc}
+*  Auto generated table of contents
+{:toc}
+
+_____________________________________________________________
+
+### _Preliminaries_
+
+The input file structure is briefly described in [this lmf tutorial for Pbte](https://lordcephei.github.io/lmf_tutorial/), which you may wish to go through first.
+
+Executables **blm**{: style="color: blue"}, **lmchk**{: style="color: blue"}, **lmfa**{: style="color: blue"}, and **lmf**{: style="color: blue"} are required and are assumed to be in your path. 
 
 _____________________________________________________________
 
@@ -43,21 +58,6 @@ The tutorial starts under the heading "Tutorial"; you can see a synopsis of the 
     ... to be finished
 
 {::nomarkdown}</div>{:/}
-
-_____________________________________________________________
-
-### _Table of Contents_
-{:.no_toc}
-*  Auto generated table of contents
-{:toc}
-
-_____________________________________________________________
-
-### _Preliminaries_
-
-The input file structure is briefly described in [this lmf tutorial for Pbte](https://lordcephei.github.io/lmf_tutorial/), which you may wish to go through first.
-
-Executables **blm**{: style="color: blue"}, **lmchk**{: style="color: blue"}, **lmfa**{: style="color: blue"}, and **lmf**{: style="color: blue"} are required and are assumed to be in your path. 
 
 _____________________________________________________________
 
