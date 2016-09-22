@@ -234,7 +234,7 @@ and the bandwidth &Delta;<i><sub>l</sub></i>.
 
 For a connection between _C_ and &Delta; and scattering phase shifts, see [downfolding](/docs/asaoverview/#downfolding-in-the-asa/) below.
 Another useful quantity is the "small parameter" _p_, which tells you the energy window over which the 
-[partial wave is well described by the linear method](/docs/package_overview/#linear-methods-in-band-theory/ "linear methods")
+[partial wave is well described by the linear method](/docs/package_overview/#linear-methods-in-band-theory "linear methods")
 
 To generate bands and an output charge density (in the form of moments <i>Q</i><sub>0,1,2</sub>), only potential parameters are required.
 Nevertheless it is more common to start from the moments because rough values for them can easily be guessed.  The ASA codes will assume default
@@ -349,7 +349,7 @@ The constraints on <i>o<sub>ij</sub></i> come in the following flavors (all of t
 Constraints on sphere overlaps
 : There are constraints on sphere overlaps set through tags **SPEC_OMAX1** and **SPEC_OMAX2**.\\
  &nbsp;&nbsp;<i>o<sub>ij</sub></i> / <i>d<sub>ij</sub></i> is constrained to be less than **OMAX1**\\
- &nbsp;&nbsp;<i>o<sub>ij</sub></i> / min(<i>r<sub>i</sub></i>,<i>r<sub>j</sub></i>) is constrained to be less than **OMAX2**\\
+ &nbsp;&nbsp;<i>o<sub>ij</sub></i> / min(<i>r<sub>i</sub></i>,<i>r<sub>j</sub></i>) is constrained to be less than **OMAX2**
 
 Maximum sphere radius
 : Cap the maximum sphere radius by setting **SPEC_WSRMAX**\\
@@ -379,15 +379,15 @@ See [this tutorial](/tutorial/asa/lm_pbte_tutorial).
 Particularly in the ASA, empty spheres are often needed to get
 reasonable sphere packing.  However, it is reasonable that their radii
 should be scaled after the real spheres are rescaled.  You can tell
-the resizer to do this through the 10's digit of token SCLWSR.  The
+the resizer to do this through the 10's digit of tag **SPEC_SCLWSR**.  The
 10's digit behaves like a flag to cause the resizer to treat empty spheres
 on a different footing from real atoms.
 
-+ Add  10 to **SCLWSR** to initially scale real atoms (those with Z>0) first.
++ Add  10 to **SPEC_SCLWSR** to initially scale real atoms (those with Z>0) first.
    The scaling is done using radii of size zero for all empty spheres.
    After this initial scaling, the resizer will proceed rescaling
    all the spheres.
-+ Add 20 to **SCLWSR** is similar to adding 10.  However, The final
++ Add 20 to **SPEC_SCLWSR** is similar to adding 10.  However, The final
   rescaling applies only to the empty spheres; the real atoms' spheres
   change only in the first scaling, without reference to the empty
   spheres.
