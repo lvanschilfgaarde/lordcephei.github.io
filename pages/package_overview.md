@@ -35,8 +35,8 @@ Questaal's unique features, in particular the ability to carry out
 quasiparticle self-consistent calculations.
 
 Questaal codes have been written mainly by M. van Schilfgaarde, though [many people have made important
-contributions](https://lordcephei.github.io/lmf_tutorial/).  Download the package [here](https://bitbucket.org/lmto/lm)
-and see [this web page](https://lordcephei.github.io/install/) to install the package.
+contributions](https://lordcephei.github.io/lmf_tutorial/)(update link lvs).  Download the package [here](https://bitbucket.org/lmto/lm)
+and see [this web page](https://lordcephei.github.io/install/) (update link lvs)to install the package.
 
 _____________________________________________________________
 
@@ -139,7 +139,7 @@ Such a basis has significant advantages: basis sets are much smaller for a given
 also more complex.  It is also possible to take a combination of smoothed Hankels and plane waves -- another unique
 feature of this package.
 
-**Note**{: style="color: red"}: some codes in this package are based on the [Atomic Spheres Approximation](https://lordcephei.github.io/lmto_asa_doc.md/);
+**Note**{: style="color: red"}: some codes in this package are based on the [Atomic Spheres Approximation](https://lordcephei.github.io/lmto_asa_doc.md/);(update link lvs)
 they use LMTO basis sets.
 
 _____________________________________________________________
@@ -163,29 +163,29 @@ _____________________________________________________________
 {:/comment}
 
 The Questaal family of executable programs share a common, elegant [input system](https://lordcephei.github.io/pages/input-file-style.html),
-and have some elements of a programming language.  A reference defining the syntax of categories and tokens can be found in [this pdf file](https://lordcephei.github.io/pages/input.pdf).
+and have some elements of a programming language.  A reference defining the syntax of categories and tokens can be found in [this pdf file](https://lordcephei.github.io/pages/input.pdf)(update link lvs).
 
 The family consists of the following:
 
-+ **blm**{: style="color: blue"}: an input file generator, given structural information.  [Many of the tutorials](https://lordcephei.github.io/lmf_pbte_tutorial/) use **blm**{: style="color: blue"}.
++ **blm**{: style="color: blue"}: an input file generator, given structural information.  [Many of the tutorials](https://lordcephei.github.io/lmf_pbte_tutorial/)(update link lvs) use **blm**{: style="color: blue"}.
 **cif2init**{: style="color: blue"} and **cif2site**{: style="color: blue"}: convert structural information contained in _cif_{: style="color: green"} files to a form readable by Questaal. **poscar2init**{: style="color: blue"} and **poscar2site**{: style="color: blue"}: perform a similar function, reading VASP _POSCAR_{: style="color: green"} files.
 
-+ **lmf**{: style="color: blue"}: the standard full-potential LDA band program. It has a companion program **lmfa**{: style="color: blue"} to calculate starting wave functions for free atoms and supply parameters for the shape of envelope functions.  See [here](https://lordcephei.github.io/lmf_tutorial/) for a basic tutorial.
++ **lmf**{: style="color: blue"}: the standard full-potential LDA band program. It has a companion program **lmfa**{: style="color: blue"} to calculate starting wave functions for free atoms and supply parameters for the shape of envelope functions.  See [here](https://lordcephei.github.io/lmf_tutorial/)(update link lvs) for a basic tutorial.
 There is an MPI version, **lmf-MPIK**{: style="color: blue"}.
 
-+ **lmgw1-shot**{: style="color: blue"} and **lmgwsc**{: style="color: blue"}: scripts that perform GW calculations (one-shot or self-consistent), or properties related to GW. The interface connecting to the _GW_ code is **lmfgwd**{: style="color: blue"}.  A basic tutorial for the GW package can be found [here](https://lordcephei.github.io/lmtut/).
++ **lmgw1-shot**{: style="color: blue"} and **lmgwsc**{: style="color: blue"}: scripts that perform GW calculations (one-shot or self-consistent), or properties related to GW. The interface connecting to the _GW_ code is **lmfgwd**{: style="color: blue"}.  A basic tutorial for the GW package can be found [here](https://lordcephei.github.io/lmtut/)(update link lvs).
 
-+ **lm**{: style="color: blue"}: a density functional band program [based on the Atomic Spheres Approximation](https://lordcephei.github.io/lmto_asa_doc/) (ASA).  It requires a companion program **lmstr**{: style="color: blue"} to make structure constants for it.  A basic tutorial can be found [here](/tutorial/asa/lm_pbte_tutorial/).
++ **lm**{: style="color: blue"}: a density functional band program [based on the Atomic Spheres Approximation](https://lordcephei.github.io/lmto_asa_doc/) (ASA)(update link lvs).  It requires a companion program **lmstr**{: style="color: blue"} to make structure constants for it.  A basic tutorial can be found [here](/tutorial/asa/lm_pbte_tutorial/).
 There is an MPI version, **lm-MPIK**{: style="color: blue"}.
 
 + **lmgf**{: style="color: blue"}: a density functional band program based on the ASA, using a Green's function formalism.
 Its unique contribution to the suite is that it permits the calculation of magnetic exchange interactions, and has an implementation of the coherent potential approximation to treat chemical and/or spin disorder.
-A basic tutorial can be found [here](https://lordcephei.github.io/lmgf-tutorial/).
+A basic tutorial can be found [here](https://lordcephei.github.io/lmgf-tutorial/)(update link lvs).
 There is an MPI version, **lmgf-MPIK**{: style="color: blue"}.
 
 + **lmpg**{: style="color: blue"}: a program similar to **lmgf**{: style="color: blue"}, but it is designed for layered structures with periodic boundary conditions in
  two dimensions.  It can calculate transport using the Landauer-Buttiker formalism, and has a non-equilibrium capability.  There is  
-[a tutorial](https://lordcephei.github.io/pages/lmpg_tutorial.v2.0.pdf/), though it is somewhat out of date.
+[a tutorial](https://lordcephei.github.io/pages/lmpg_tutorial.v2.0.pdf/)(update link lvs), though it is somewhat out of date.
 There is also an MPI version, **lmpg-MPIK**{: style="color: blue"}.
 
 + **lmfdmft**{: style="color: blue"}: the main interface that links to the DMFT capabilities.
@@ -259,7 +259,7 @@ _A fusion of the LAPW and the LMTO methods: the augmented plane wave plus muffin
 This paper presented the first description of an all-electron _GW_ implementation in a mixed basis set:  
 T. Kotani and M. van Schilfgaarde,
 _All-electron <i>GW</i> approximation with the mixed basis expansion based on the full-potential LMTO method_,
- Sol. State Comm. 121, 461 (2002).
+ Sol. State Comm. 121, 461 (2002)(no hyper link lvs).
 
 These papers established the framework for QuasiParticle Self-Consistent _GW_ theory:  
 Sergey V. Faleev, Mark van Schilfgaarde, Takao Kotani,
@@ -267,7 +267,7 @@ _All-electron self-consistent _GW_ approximation: Application to Si, MnO, and Ni
 [Phys. Rev. Lett. 93, 126406 (2004)](http://link.aps.org/doi/10.1103/PhysRevLett.93.126406);  
 M. van Schilfgaarde, Takao Kotani, S. V. Faleev,
 _Quasiparticle self-consistent_ GW _theory_,
-[Phys. Rev. Lett. 96, 226402 (2006)](href=http://link.aps.org/abstract/PRL/v96/e226402)
+[Phys. Rev. Lett. 96, 226402 (2006)](href=http://link.aps.org/abstract/PRL/v96/e226402)(update link lvs)
 
 Questaal's _GW_ implementation is based on this paper:  
 Takao Kotani, M. van Schilfgaarde, S. V. Faleev,
@@ -277,7 +277,7 @@ _Quasiparticle self-consistent GW  method: a basis for the independent-particle 
 This paper shows results from LDA-based GW, and its limitations:  
 M. van Schilfgaarde, Takao Kotani, S. V. Faleev,
 _Adequacy of Approximations in <i>GW</i> Theory_,
-[Phys. Rev. B74, 245125 (2006)](A href=http://link.aps.org/abstract/PRB/v74/e245125)
+[Phys. Rev. B74, 245125 (2006)](A href=http://link.aps.org/abstract/PRB/v74/e245125)(update link lvs)
 
 This book explains the ASA-Green's function formalism, including the coherent potential approximation:  
 I. Turek et al., Electronic strucure of disordered alloys, surfaces and interfaces (Kluwer, Boston, 1996).
