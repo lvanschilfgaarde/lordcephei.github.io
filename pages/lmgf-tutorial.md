@@ -29,7 +29,7 @@ This package implements the ASA local spin-density approximation using Green's f
 
 **You can find some extra information on the way** **lmgf**{: style="color: blue"} **works in** [lmgf documentation](https://lordcephei.github.io/lmgf-documentation/).
 
-<div onclick="elm = document.getElementById('lmgfvslm'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">lmgf vs lm</button></div>{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="lm">{:/}
+<div onclick="elm = document.getElementById('lmgfvslm'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">lmgf vs lm</button></div>{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="lmgfvslm">{:/}
 
 **lmgf vs lm**{: style="color: orange"}
 
@@ -40,9 +40,7 @@ This package implements the ASA local spin-density approximation using Green's f
 
 then **lmgf**{: style="color: blue"} and **lm**{: style="color: blue"} will produce nearly identical self-consistent solutions. When potential functions are parameterized to 2nd order in both **lm**{: style="color: blue"} and **lmgf**{: style="color: blue"}, and both methods are fully k converged, they should product nearly identical results. By default lm parameterizes the potential function to 3rd order; **lmgf**{: style="color: blue"} can do the same. The 3rd order parameterizations are similar in the two methods, but not identical. To verify this, try the following test:
 
-~~~
-gf/test/test.gf co 1 2   ← Test 1 for 2nd order parameterization; test 2 for 3rd order
-~~~
+    gf/test/test.gf co 1 2   ← Test 1 for 2nd order parameterization; test 2 for 3rd order
 
 **lmgf**{: style="color: blue"} is a bit messier to work with (Green's functions are harder to stabilize than wave functions), and it a bit less accurate as the simplifications to lm amount to approximations. So, typically lm makes a better self-consistent potential.
 
