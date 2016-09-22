@@ -79,7 +79,7 @@
   prefix: "/tutorial"
   dropdown:
   - title: "Importing Input files"
-    url: "/lmf_bi2te3_tutorial/"
+    url: "/importing_input/"
   - program:
     - name: "lmf"
       prefix: "/lmf"
