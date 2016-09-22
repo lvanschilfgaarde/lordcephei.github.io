@@ -32,13 +32,13 @@ symmetric inside the spheres.
 
 The ASA is very efficient, but its range of validity is limited.  This
 is because the interstitial is omitted so spheres must fill space.
-Hence there is a geometry violation that becomes severe if the spheres
+Hence, there is a geometry violation that becomes severe if the spheres
 overlap too much. It works best for close-packed systems, and still
-remains today one of the best and most highly efficient approach to
+remains one of the best and most highly efficient approaches to
 studying magnetic properties of transition metals and their alloys.  The
 ASA package has a non-collinear framework and a fully relativistic Dirac branch.
 
-Questaal's implementation present uses the "tight-binding" form of
+Questaal's implementation uses the "tight-binding" form of
 LMTO, sometimes called "second generation," a [linear
 transformation](http://dx.doi.org/10.1103/PhysRevLett.53.2571)" of the
 original basis set that makes Hankel functions short ranged.
@@ -63,18 +63,18 @@ integration) is required, which makes the program somewhat slower.
 However it has features **lm**{: style="color: blue"} does not: it can
 calculate magnetic exchange interactions and some other properties of
 linear response.  This code can include spin-orbit coupling
-perturbatively, and it also has a fully relativistic Dirac
+perturbatively, and has a fully relativistic Dirac
 formulation.  It also implements the Coherent Potential Approximation,
 either for the study of alloys, or for disordered local moments, or a
 combination of the two.
 
 + **lmpg**{: style="color: blue"}: is an analog of
 **lmgf**{: style="color: blue"} for layered systems.  Periodic boundary conditions are used in two
-dimensions, and a Principal Layer technique is used for the third dimension.  This is
+dimensions, and a Principal Layer technique is used for the third dimension. This is
 advantageous because (1) boundary conditions in this dimension semi-infinite leads,
 corresponding to layered systems and (2) the computation time scales only linearly in the number of
 principal layers.  It can be used in a self-consistent framework, and also to
-calculation transmission using Landauer-Buttiker theory.  There is a
+calculate transmission using Landauer-Buttiker theory.  There is a
 non-equilibrium Keldysh formulation of the ASA hamiltonian of the theory
 described in [this paper](http://link.aps.org/doi/10.1103/PhysRevB.71.195422).
 
@@ -103,8 +103,8 @@ The ASA makes two simplifications to the atomic part that make the method highlt
 2. The spheres are overlapped so that they fill space.  
    The net interstitial volume is zero, and in the pure ASA it is neglected all together.
 
-Both atomic and band parts become simpler than in full potential methods.  Matrix elements of the potential become quite
-simple and reduce to a few parameters (the "potential parameters").  The band part need only generate the lowest three energy moments
+Both atomic and band parts become simpler than in full potential methods. Matrix elements of the potential become quite
+simple and reduce to a few parameters (the "potential parameters"). The band part need only generate the lowest three energy moments
 $$Q_0$$, $$Q_1$$, and $$Q_2$$ of the density as described below; this is sufficient for the atomic part to construct a density and make
 potential parameters.  In the self-consistency cycle the atomic part takes moments and generates
 potential parameters; the band part takes potential parameters and generates moments.
