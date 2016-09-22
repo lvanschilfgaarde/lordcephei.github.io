@@ -53,13 +53,25 @@ The _lmf_{: style="color: blue"} code can draw fermi surfaces as shown in this t
 {::nomarkdown}</div>{:/}
 
 ##### _Density Of States_
-All of the codes have some abilitity to generate either full or partial Density of States.
+All of the codes have some ability to generate either full or partial Density of States (DOS).
 
-A tutorial that covers generation of DoS in the _lmf_{: style="color: blue"}, _lm_{: style="color: blue"} and _tbe_{: style="color: blue"} codes can be found [here](http://titus.phy.qub.ac.uk/packages/LMTO/v7.11/doc/generating-density-of-states.html). [Please note, this is an old-style tutorial and will not be supported in future. It will eventually be ported over but for now this is the main source.]   
+###### _lmf_
+The _lmf_{: style="color: blue"} code can generate a partial DOS as detailed in [this tutorial](https://lordcephei.github.io/tutorial/lmf/lmf_pdos/). A quick rundown of the process consists of (using _GaS_ as our example material):
 
-<div onclick="elm = document.getElementById('lm_dos'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">Click to show/hide lm instructions.</button></div>
-{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="lm_dos">{:/}
-	
+    lmfa gas
+	lmf gas -vpdos=t --pdos~lcut=2,2,1,1~mode=1 --rs=1,0 -vnit=1
+	lmdos gas -vpdos=t --pdos~lcut=2,2,1,1~mode=1 --dos:npts=1001:window=-1.2,.7
+
+From these commands you can then plot the resultant _dos.gas_{: style="color: green"} file with your desired plotting program, although some extra manipulation of the data file to get it in to the correct format may be required.
+
+The _lmf_{: style="color: blue"} package can also perform Mulliken analysis or Core-Level Spectroscopy (CLS) using the switches
+
+    --mull
+	--cls
+
+For Mulliken analysis and CLS respectively, these should be used with the _lmf_ command. A full usage guide for Mulliken analysis, including how the switch is actually used, can be found [here](https://lordcephei.github.io/tutorial/lmf/lmf_mulliken/). A usage guide for the _cls_ switch will be created shortly.
+
+###### _lm_
 A detailed tutorial for _lm_{: style="color: blue"} partial DOS can be found [here](https://lordcephei.github.io/asa_dos/)
 
 {::nomarkdown}</div>{:/}
