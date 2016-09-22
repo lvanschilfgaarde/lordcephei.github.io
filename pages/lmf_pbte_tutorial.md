@@ -714,14 +714,14 @@ The next block provides information about the size of the basis set.
  suham :  41 augmentation channels, 41 local potential channels  Maximum lmxa=4
 ~~~
 
-**lmf**{: style="color: blue"} doesn't have downfolding so the
-important numbers are in the "Low" column.  Rows 1,2,3 indicate how
+**lmf**{: style="color: blue"} doesn't have downfolding capability, so the
+important numbers are those in the "low" column.  Rows 1,2,3 indicate how
 many orbitals are connected with the first Hankel envelope (**EH**),
 the second envelope (**EH2**), and local orbitals respectively.
-The total basis in this case has 55 orbitals.
+The total basis (and hamiltonian rank) consists of 55 orbitals.
 
 The table below lists all the species and the parameters defining the
-shape of the envelope functions.
+shape of the envelope functions and an orbital-dependent **gmax**.
 
 ~~~
  sugcut:  make orbital-dependent reciprocal vector cutoffs for tol=1.0e-6
@@ -742,12 +742,15 @@ shape of the envelope functions.
   Te       2    2.02  -0.90   4.037    1.63E-06     531 
 ~~~ 
 
-Also printed out is an orbital-dependent **gmax**.  Each envelope function
-must be expanded in plane waves in order to assemble matrix elements of the interstitial potential.
-To speed the integration, **gmax** may safely be less than the global _G_ cutoff (**7.8** in this tutorial);
+Each envelope function must be expanded in plane waves in order to assemble matrix elements of the interstitial potential
+and generate the charge density.  Both are assembled in reciprocal space.
+To speed the integration, **gmax** may safely be less than the global _G_ cutoff (**7.8** for this example);
 it cannot exceed it.  _sugcut_{: style="color: green"} will find a **gmax** for each orbital
-that meets a preset tolerance (**tol=10<sup>&minus;6</sup> by default) if it can.  Otherwise it
-uses the global
+that meets a preset tolerance if it can.  Otherwise it uses all the _G_ vectors available to it, which is limited by the global **gmax**.
+If any of the orbitals bump up against the maximum, check the error estimate in the Table.
+If it is too high you can expect errors in the hamiltonian and you should increase **gmax**.
+
+The present tolerance defaults to 10<sup>&minus;6</sup>, but you can control it with tag *HAM_TOL**.
 
 {::nomarkdown}</div>{:/}
 

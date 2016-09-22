@@ -91,8 +91,10 @@ from the spherical part of the potential, so that _l_ is a good quantum number.
 Then each <i>&phi;<sub>l</sub></i> can be integrated independently of the others.
 Matrix elements of the partial waves are calculated in the full, nonspherical potential.
 
-The linear approximation is usually quite accurate over an energy window where the valence partial wave is "active" (1 or a few
-Ry for typical _s_ and _p_ states, a few eV for _d_ states of the transition metals).
+The linear approximation is usually quite accurate over an energy window where the valence partial wave is "active."
+(1 or a few Ry for typical _s_ and _p_ states, a few eV for _d_ states of the transition metals).
+An estimate for this window is given by 1/_p_ where potential parameter $$p == \int_{\rm sphere} \dot\phi^2 d^3r$$ is 
+called the "small parameter."
 Linearization greatly simplifies the secular matrix : the eigenvalue problem becomes a linear algebraic eigenvalue
 problem, which greatly simplifies practical solutions of the Schrodinger equation.  
 
