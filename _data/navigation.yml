@@ -26,6 +26,10 @@
     url: "/fpoverview/"
   - title: "GW Overview"
     url: "/gwoverview/"
+  - title: "ASA Overview"
+    url: "/asaoverview/"
+  - title: "ASA Green's function"
+    url: "/lmgf/"
   - program:
     - name: "Input Files"
       prefix: "/input"
@@ -43,13 +47,6 @@
         url: "/lm/"
       - title: "lmf"
         url: "/lmf/"
-    - name: "ASA"
-      prefix: "/asa"
-      content:
-      - title: "ASA Overview"
-        url: "/asaoverview/"
-      - title: "ASA Green's function"
-        url: "/lmgf/"
     - name: "Physical Properties"
       prefix: "/properties"
       content:
