@@ -477,7 +477,7 @@ This category is optional, and merely prints to the standard output whatever tex
 ~~~
 HEADER  This line and the following one are printed to
         standard out on execution of a program.
-XXX
+NEXT
 ~~~
 
 Alternately:

@@ -40,7 +40,7 @@ Click here for a description.</div>
 
 **lmf**{: style="color: blue"} begins by running the ctrl file through
 the preprocessor.  Normally it does this silently.  If you want to see the effects of the preprocessor use `lmf --showp ...`
-Adapting the **lmf**{: style="color: blue"} command in the [PbTe tutorial](/tutorial/lmf/lmf_pbte_tutorial/#/tutorial/lmf/lmf_pbte_tutorial/#self--consistency)
+Adapting the **lmf**{: style="color: blue"} command in the [PbTe tutorial](/tutorial/lmf/lmf_pbte_tutorial/#/tutorial/lmf/lmf_pbte_tutorial/#self-consistency)
 
 ~~~
 $ lmf ctrl.pbte -vnkabc=6 -vgmax=7.8 --showp
