@@ -40,10 +40,9 @@ lmfdmft ni --ldadc=71.85 -job=1 -vbxc0=1 --makesigqp       # 3. write sig.inp.f0
 2. In the same folder, you can launch **lmfdmft**{: style="color: blue"} using the same flags as your last run, but you have to pay attention to the k-point grid. **Warning: You have to set nkabc equal to nkgw in this and the following run!**{: style="color: red"} The program will automatically find _sig.inp.f0_{: style="color: green"}, it will embed it and symmetrise it before exiting. The output *sig.inp.f0.emb*{: style="color: green"} is a text file. 
 At the bottom of the *log*{: style="color: green"} file you should find the line
  
-  ```
-  Exit 0 File sig.inp.f0 embedded successfully and recorded in sig.inp.f0.emb
-  ```
-
+ ```
+ Exit 0 File sig.inp.f0 embedded successfully and recorded in sig.inp.f0.emb
+ ```
 
 3. Still in the same folder you can run again **lmfdmft**{: style="color: blue"}, adding **\-\-makesigqp**{: style="color: blue"} to the command line. This will
   * subtract the average self-energy component to the whole matrix hence keeping only the magnetic part and
@@ -51,9 +50,9 @@ At the bottom of the *log*{: style="color: green"} file you should find the line
 The result will be saved in the *sigm1.ni*{: style="color: green"} file. 
 At the bottom of the *log*{: style="color: green"} file you should finde the line 
 
-  ```
-  Exit 0 wrote embedded sigma (orbital basis) to file sigm1
-  ```
+ ```
+ Exit 0 wrote embedded sigma (orbital basis) to file sigm1
+ ```
 
 {::nomarkdown}</div>{:/}
 
