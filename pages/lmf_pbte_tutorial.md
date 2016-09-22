@@ -414,7 +414,7 @@ You should see the following table:
  sum tc :     48113.1010 (SR)     48677.3220 (FR) diff       564.2210
 ~~~
 
-Thus the Pb 5_d_ eigenvalue (**-1.566638 Ry**) gets split into 6 levels with energy **-1.485638 Ry** and four with
+The Pb 5_d_ eigenvalue (**-1.566638 Ry**) gets split into 6 levels with energy **-1.485638 Ry** and four with
 **-1.676716 Ry**.  The mean (**-1.56207 Ry**) is close to the scalar Dirac energy.  In the absence of a magnetic field a
 particular _l_ will split into two distinct levels with degeneracies 2_l_ and 2_l_+2, respectively.
 

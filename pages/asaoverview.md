@@ -334,16 +334,16 @@ between the bond, so for that case the two sphere radii will exactly touch and h
 _Note:_{: style="color: red"} this should be moved to an **lmchk**{: style="color: blue"} tutorial.
 
 Questaal programs can scale sphere radii as large as possible within constraints you supply.  This option iteratively adjusts sphere radii
-as large as it can within certain constraints, or or until the combined sphere volumes equals the target you set.  To autoscale sphere
-radii, set **SPEC_SCLWSR**=_f_, where _f_ is the target combined sphere volumes as a fraction of the cell volume.  For the ASA, _f_ should
+as large as it can within certain constraints, or or until the aggregate sphere volumes equals the target you set.  To autoscale sphere
+radii, set **SPEC_SCLWSR**=_f_, where _f_ is the target aggregate sphere volumes as a fraction of the cell volume.  For the ASA, _f_ should
 be 1.  You can use it for the FP codes too, but it usually isn't necessary.
 
 The constraints come in the following flavors (all of them are imposed):
 
 Constraints on sphere overlaps
 : There are constraints on sphere overlaps set through tags **SPEC_OMAX1** and **SPEC_OMAX2**.\\
- (<i>r<sub>i</sub></i>+<i>r<sub>j</sub></i>&minus;<i>d<sub>ij</sub></i>)/<i>d<sub>ij</sub></i> is constrained to be less than **OMAX1**\\
- (<i>r<sub>i</sub></i>+<i>r<sub>j</sub></i>&minus;<i>d<sub>ij</sub></i>)/min(<i>r<sub>i</sub></i>,<i>r<sub>j</sub></i>) is constrained to be less than **OMAX2**\\
+ &nbsp;&nbsp;(<i>r<sub>i</sub></i>+<i>r<sub>j</sub></i>&minus;<i>d<sub>ij</sub></i>)/<i>d<sub>ij</sub></i> is constrained to be less than **OMAX1**\\
+ &nbsp;&nbsp;(<i>r<sub>i</sub></i>+<i>r<sub>j</sub></i>&minus;<i>d<sub>ij</sub></i>)/min(<i>r<sub>i</sub></i>,<i>r<sub>j</sub></i>) is constrained to be less than **OMAX2**\\
  Here <i>r<sub>i</sub></i> is the augmentation radius for sphere <i>i</i> and <i>d<sub>ij</sub></i> the distance between sites <i>i</i> and <i>j</i>.
 
 Maximum sphere radius
@@ -355,12 +355,13 @@ Maximum sphere radius
 /docs/asaoverview/#finding-empty-spheres/
 {:/comment}
 
-You can use "empty spheres" as a device to fill space.  The ASA
-requires the aggregate sphere volume to match the cell volume; however
-this can only be done with reasonable sphere overlaps (<18%) for
-fairly close-packed systems.  To use the ASA for open systems,
-you must  pack the volume with "atoms" with
-atomic number zero ("empty spheres").  This is tedious, but 
+You can use "empty spheres" as a device to fill space.  The ASA constraint that
+the aggregate sphere volume to match the cell volume
+can only be realized with reasonable sphere overlaps (<18%) for
+fairly close-packed systems.  The geometry violation for open
+systems, e.g. Si, is too severe.  To use the ASA for such systems
+you must pack the volume with "atoms" with
+atomic number zero ("empty spheres").  This can be tedious, but 
 **blm**{: style="color: blue"} and **lmchk**{: style="color: blue"}
 have an automatic "empty sphere" finder that can greatly facilitate this step.
 See [this tutorial](/tutorial/asa/lm_pbte_tutorial).
@@ -391,7 +392,8 @@ on a different footing from real atoms.
 /docs/asaoverview/#downfolding-in-the-asa/
 {:/comment}
 
-This is a procedure for constructing minimal basis by downfolding orbitals whose
+The **lm**{: style="color: blue"} and **lmgf**{: style="color: blue"} codes
+have procedures for constructing minimal basis by downfolding orbitals whose
 center of gravity is far above the Fermi level.
 
 <div onclick="elm = document.getElementById('downfolding'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';">
