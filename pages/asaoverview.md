@@ -406,9 +406,7 @@ Downfolding is a procedure for constructing minimal basis sets and for
 avoiding ghost bands. The best description is in Ole Andersen's
 Varenna Notes (section 4.12), and for the stout-hearted, there is
 a full account in Lambrecht and Andersen, [Phys. Rev. B, 34, 2439 (1986)](http://dx.doi.org/10.1103/PhysRevB.34.2439).  
-It is implemented here including combined correction
-which is described in Ole Andersen's unpublished notes,
-"Transformation to a minimal LMTO set; downfolding" Aug 15, 1988.
+It is implemented in the ASA including the "combined correction" term.
 We include in this documentation a 
 [plain TeX source file of notes](../../../assets/download/docs/dnfpap.tex)
 explaining in some detail how downfolding is implemented 
@@ -433,11 +431,10 @@ KKR phase shift in the following parameterization:
 
 $$ 1 / P_l(E) = \Delta_l / ( E  -  C_l )  +  \gamma  \hspace{1cm}   (1)  $$
 
-which is correct to second order in $$(E - C_l)$$.  Comparing the two equations
-potential parameters *C* and &Delta; are readily identified. &Delta; is the width *W*
-of the resonance, and *C* is the band center. &gamma; is the second order distortion parameter. (In
-practice one also include third order terms using the small
-parameter _p_ ; see Varenna notes). 
+which is correct to second order in $$(E - C_l)$$.  Potential parameters *C* and &Delta; are readily identified by comparing the two
+equations: &Delta; is the width *W* of the resonance, and *C* is the band center. &gamma; is the second order distortion parameter, which
+can be seen to add a constant background to the phase shift. In practice one also include third order terms using the small parameter _p_ ;
+see Varenna notes.
 
 _Note:_{: style="color: red"} In (1), <i>P<sub>l</sub></i> is indeed Andersen's "potential function,"
 _not_ the ["continuously varying principal quantum number"!](/docs/asaoverview/#augmentation-sphere-boundary-conditions-and-continuous-principal-quantum-numbers)
