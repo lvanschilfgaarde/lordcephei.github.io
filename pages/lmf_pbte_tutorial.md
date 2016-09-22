@@ -541,7 +541,11 @@ _atm.pbte_{: style="color: green"}, and exits with the following printout:
 
 This is the _G_ cutoff **gmax** that the ctrl file needs in the next section.  It determines the mesh spacing for the charge density.
 
-####  5. _Self-consistency_
+####  5. _Selfconsistency_
+{::comment}
+/tutorial/lmf/lmf_pbte_tutorial/#self-consistency
+{:/comment}
+
 
 We are almost ready to carry out a self-consistent calculation.
 It proceeds in a manner [similar to the basic tutorial](/tutorial/lmf/lmf_tutorial/#tutorial).
