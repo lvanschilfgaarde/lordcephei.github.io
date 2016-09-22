@@ -38,25 +38,22 @@ lmfdmft ni --ldadc=71.85 -job=1 -vbxc0=1 --makesigqp       # 3. write sig.inp.f0
 1. First interpolate _Sig.inp.out.brd_{: style="color: green"} to zero frequency. You can use the program **mk_siginp-freq0.py**{: style="color: blue"} downloadable at [this link](https://lordcephei.github.io/assets/download/inputfiles/mk_siginp-freq0.py). The output file _sif.inp.f0_{: style="color: green"} is the static limit of the impurity self-energy (you can check the quality of the extrapolation by plotting *Sig.out.brd*{: style="color: green"} and *Sig.out.brd.extrap*{: style="color: green"}).
 
 2. In the same folder, you can launch **lmfdmft**{: style="color: blue"} using the same flags as your last run, but you have to pay attention to the k-point grid. **Warning: You have to set nkabc equal to nkgw in this and the following run!**{: style="color: red"} The program will automatically find _sig.inp.f0_{: style="color: green"}, it will embed it and symmetrise it before exiting. The output *sig.inp.f0.emb*{: style="color: green"} is a text file. 
-You should find the line
+At the bottom of the *log*{: style="color: green"} file you should find the line
  
   ```
   Exit 0 File sig.inp.f0 embedded successfully and recorded in sig.inp.f0.emb
   ```
 
-  at the bottom of the *log*{: style="color: green"} file.
 
 3. Still in the same folder you can run again **lmfdmft**{: style="color: blue"}, adding **\-\-makesigqp**{: style="color: blue"} to the command line. This will
   * subtract the average self-energy component to the whole matrix hence keeping only the magnetic part and
   * project the resulting matrix in the quasiparticle basis.
 The result will be saved in the *sigm1.ni*{: style="color: green"} file. 
-You should finde the line 
+At the bottom of the *log*{: style="color: green"} file you should finde the line 
 
   ```
   Exit 0 wrote embedded sigma (orbital basis) to file sigm1
   ```
-
-  at the bottom of the *log*{: style="color: green"} file.
 
 {::nomarkdown}</div>{:/}
 
@@ -70,5 +67,20 @@ You now have a static magnetic-only potential produced by DMFT. This has to be a
 lmf ni --wsig --mixsig=1,1   # add sigm and sigm1 to get sigm2   
 ```
 
-As a result files *sigm.ni*{: style="color: green"} and *sigm1.ni*{: style="color: green"} are summed together and exported in *sigm2.ni*{: style="color: green"}. This is a new $$V_{\rm xc}$$ that can be fed to **lmf**{: style="color: blue"} to get a new magnetic starting point for a DMFT loop.
+As a result files *sigm.ni*{: style="color: green"} and *sigm1.ni*{: style="color: green"} are summed together and exported in *sigm2.ni*{: style="color: green"}. 
+Check that among the last lines of the *log*{: style="color: green"} you find lines 
+
+```
+Use for sigma: 1*(file sigm) + 1*(file sigm1)
+average SE read from sigm file:   0.139009 0.140914
+average SE read from sigm1 file:  0.000000 0.000000
+```
+
+and
+
+```
+Exit 0 done writing sigma, file sigm2
+```
+
+The resulting file is a new $$V_{\rm xc}$$ that can be fed to **lmf**{: style="color: blue"} to get a new magnetic starting point for a DMFT loop.
 
