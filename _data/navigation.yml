@@ -39,7 +39,7 @@
       - title: "Symmetry Line Files"
         url: "/symfile/"
     - name: "Annotated Output Files"
-      prefix: "/output"
+      prefix: "/outputs"
       content:
       - title: "lmf standard out"
         url: "/lmf_output/"

@@ -4,7 +4,7 @@ title: "Annotation of lmf's standard output"
 subheadline: ""
 show_meta: false
 teaser: ""
-permalink: "/outputs/lmf_output/"
+permalink: "/docs/outputs/lmf_output/"
 header: no
 ---
 
@@ -23,7 +23,7 @@ _____________________________________________________________
 
 ####  _Annotation of lmf's output_
 {::comment}
-/outputs/lmf_output/#annotation-of-lmf's-output
+/docs/outputs/lmf_output/#annotation-of-lmf's-output
 {:/comment}
 
 The output documented here is mostly taken from [PbTe
@@ -58,7 +58,7 @@ and search for autobas in the output.
 
 ###### Header information
 {::comment}
-/outputs/lmf_output/#header-information
+/docs/outputs/lmf_output/#header-information
 {:/comment}
 
 The header information presents a condensed synopsis of some key
@@ -75,7 +75,7 @@ settings that are used in the the calculation.
 
 ###### Lattice information
 {::comment}
-/outputs/lmf_output/#lattice-information
+/docs/outputs/lmf_output/#lattice-information
 {:/comment}
 
 This block prints informations about the lattice vectors and settings used in Ewald summations:
@@ -95,7 +95,7 @@ _Note:_{: style="color: red"} When long, thin cells are used, or when APW's are 
 
 ###### Symmetry information
 {::comment}
-/outputs/lmf_output/#symmetry-information
+/docs/outputs/lmf_output/#symmetry-information
 {:/comment}
 
 The block below shows symmetry operations it finds in the 
@@ -125,7 +125,7 @@ Notes: (see also "Additional Exercises" below)
 
 ###### Augmentation parameters
 {::comment}
-/outputs/lmf_output/#augmentation-parameters
+/docs/outputs/lmf_output/#augmentation-parameters
 {:/comment}
 
 The table below contains a synopsis of key parameters associated with augmentation spheres.
@@ -146,7 +146,7 @@ The table below contains a synopsis of key parameters associated with augmentati
 
 ###### Interstitial mesh
 {::comment}
-/outputs/lmf_output/#interstitial-mesh
+/docs/outputs/lmf_output/#interstitial-mesh
 {:/comment}
 
 The following block is concerned with the mesh used to represent the charge density,
@@ -167,7 +167,7 @@ in the table beginning with _sugcut_{: style="color: green"} below.
 
 ###### Counting the size of the basis
 {::comment}
-/outputs/lmf_output/#counting-the-size-of-the-basis
+/docs/outputs/lmf_output/#counting-the-size-of-the-basis
 {:/comment}
 
 In the table below, the size of the basis is presented.
@@ -189,7 +189,7 @@ The total basis (and hamiltonian rank) consists of 55 orbitals.
 
 ###### Envelope function parameters and their G cutoffs
 {::comment}
-/outputs/lmf_output/#envelope-function-parameters-and-their-g-cutoffs
+/docs/outputs/lmf_output/#envelope-function-parameters-and-their-g-cutoffs
 {:/comment}
 
 In the table envelope function parameters for each species is given,
@@ -234,7 +234,7 @@ At this stage the potential independent setup is complete.
 
 ###### Obtain an input density
 {::comment}
-/outputs/lmf_output/#obtain-an-input-density
+/docs/outputs/lmf_output/#obtain-an-input-density
 {:/comment}
 
 The next step is to generate the potential : for this a density must be given.  **lmf**{: style="color: blue"} tries to read the density
