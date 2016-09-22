@@ -1,6 +1,6 @@
 ---
 layout: page-fullwidth
-title: "Package Overview"
+title: "The Questaal Suite"
 permalink: "/docs/package_overview/"
 sidebar: "left"
 header: no
@@ -50,8 +50,8 @@ solve Schrodinger's equation consist of a family of smooth envelope functions wh
 (aka _partial waves_) inside each sphere.  The reason for augmentation is to enable basis functions to vary rapidly near nuclei where they
 must be orthogonalized to core states.
 
-Augmented-wave methods consist of an "atomic" part and a "band'' part. The former takes as input a density and finds the ["partial
-waves"](/docs/asaoverview/#structure-of-the-asa) [update link!] on a numerical radial mesh inside each augmentation sphere and makes the
+Augmented-wave methods consist of an "atomic" part and a "band" part. The former takes as input a density and finds the 
+[partial waves $$\phi(\varepsilon,r)$$](/docs/package_overview/#linear-methods-in-band-theory/) on a numerical radial mesh inside each augmentation sphere and makes the
 relevant matrix elements needed, e.g. for the hamiltonian or some other property (e.g. optics).  The "band'' part constructs the hamiltonian
 and diagonalizes the secular matrix made by joining the partial waves to the envelopes.
 

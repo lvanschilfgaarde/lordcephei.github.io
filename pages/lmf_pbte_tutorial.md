@@ -414,8 +414,8 @@ You should see the following table:
  sum tc :     48113.1010 (SR)     48677.3220 (FR) diff       564.2210
 ~~~
 
-The Pb 5_d_ eigenvalue (**-1.566638 Ry**) gets split into 6 levels with energy **-1.485638 Ry** and four with
-**-1.676716 Ry**.  The mean (**-1.56207 Ry**) is close to the scalar Dirac energy.  In the absence of a magnetic field a
+The scalar Dirac Pb 5_d_ eigenvalue (**-1.566638 Ry**) gets split into 6 levels with energy **-1.485638 Ry** and four with
+**-1.676716 Ry**.  The mean (**-1.56207 Ry**) is close to the scalar Dirac value.  In the absence of a magnetic field a
 particular _l_ will split into two distinct levels with degeneracies 2_l_ and 2_l_+2, respectively.
 
 The bottom part of the table shows how much the free atom's total energy changes as a consequence of the fully
@@ -683,12 +683,12 @@ augmentation spheres.
 + **rmt** is the augmentation radius
 + **rsma** and **kmxa** are the smoothing radius and polynomial order used to expand envelope function around other sites.
 + **lmxa** is the _l_-cutoff of the augmentation.  Because of the unique way augmentation is done in this method, **lmxa** can be much lower standard augmented wave methods require
-+ **lmxl** is similar to **lmxa**, but it corresponds to the _l_-cutoff of the charge density.  **lmxl** defaults to **lmxa**; you can often make it smaller with minimal loss of accuracy
-+ **rg**, **rsmv**, **kmxv** are concerned with adding local pseudocharges to manage the Hartree potential
++ **lmxl** is analogous to **lmxa**, but it controls the _l_-cutoff of the charge density.  **lmxl** defaults to **lmxa**; you can often make it smaller with minimal loss of accuracy.
++ **rg**, **rsmv**, **kmxv** are concerned with adding local gaussian pseudocharges to manage the Hartree potential.
 + **foca**, **rfoca** allow for differing treatments of the core.
 
 The next block is concerned with the mesh used to represent the charge density.
-The fineness of the mesh is controlled by the _G_ cutoff (**7.8 for this tutorial)
+The fineness of the mesh is controlled by the _G_ cutoff (**7.8** for PbTe).
 
 ~~~
  MSHSIZ: mesh has 18 x 18 x 18 divisions; length 0.477, 0.477, 0.477
@@ -716,8 +716,8 @@ The next block provides information about the size of the basis set.
 
 **lmf**{: style="color: blue"} doesn't have downfolding capability, so the
 important numbers are those in the "low" column.  Rows 1,2,3 indicate how
-many orbitals are connected with the first Hankel envelope (**EH**),
-the second envelope (**EH2**), and local orbitals respectively.
+many orbitals are connected respectively with the first Hankel envelope (**EH**),
+the second envelope (**EH2**), and local orbitals.
 The total basis (and hamiltonian rank) consists of 55 orbitals.
 
 The table below lists all the species and the parameters defining the
@@ -744,13 +744,28 @@ shape of the envelope functions and an orbital-dependent **gmax**.
 
 Each envelope function must be expanded in plane waves in order to assemble matrix elements of the interstitial potential
 and generate the charge density.  Both are assembled in reciprocal space.
-To speed the integration, **gmax** may safely be less than the global _G_ cutoff (**7.8** for this example);
+To speed the integration, **gmax** may safely be less than the global _G_ cutoff (**7.8** for PbTe);
 it cannot exceed it.  _sugcut_{: style="color: green"} will find a **gmax** for each orbital
-that meets a preset tolerance if it can.  Otherwise it uses all the _G_ vectors available to it, which is limited by the global **gmax**.
-If any of the orbitals bump up against the maximum, check the error estimate in the Table.
+that meets a preset tolerance if it can.  Otherwise it uses all the _G_ vectors available to it, and appends a '\*' to the number indicating it could not meet the tolerance.
+If any of the orbitals bump up against the maximum, check the error estimate ("last term") in the Table.
 If it is too high you can expect errors in the hamiltonian and you should increase **gmax**.
 
-The present tolerance defaults to 10<sup>&minus;6</sup>, but you can control it with tag *HAM_TOL**.
+The tolerance defaults to 10<sup>&minus;6</sup>, but you can control it with tag **HAM_TOL**.
+
+At this stage the potential independent setup is complete.  To generate the potential a density
+must be given.  **lmf**{: style="color: blue"} tries to read the density from the density restart file,
+*rst.pbte*{: style="color: green"}.  The next box indicates that **lmf**{: style="color: blue"} 
+was not able to find the file, and instead constructs a trial density by overlapping free atom densities:
+
+~~~
+ lmfp  : no rst file ... try to overlap atomic densities
+ rdovfa: read and overlap free-atom densities (mesh density) ...
+ rdovfa: expected Pb,      read Pb       with rmt=  3.0448  mesh   497  0.025
+ rdovfa: expected Te,      read Te       with rmt=  3.0287  mesh   461  0.025
+~~~
+
+If you have 
+
 
 {::nomarkdown}</div>{:/}
 
