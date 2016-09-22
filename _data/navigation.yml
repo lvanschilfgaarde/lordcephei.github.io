@@ -26,10 +26,6 @@
     url: "/fpoverview/"
   - title: "GW Overview"
     url: "/gwoverview/"
-  - title: "ASA Overview"
-    url: "/asaoverview/"
-  - title: "ASA Green's function"
-    url: "/lmgf/"
   - program:
     - name: "Input Files"
       prefix: "/input"
@@ -47,6 +43,13 @@
         url: "/lm/"
       - title: "lmf"
         url: "/lmf/"
+    - name: "ASA"
+      prefix: "/asa"
+      content:
+      - title: "ASA Overview"
+        url: "/asaoverview/"
+      - title: "ASA Green's function"
+        url: "/lmgf/"
     - name: "Physical Properties"
       prefix: "/properties"
       content:
@@ -73,6 +76,8 @@
   side: left
   prefix: "/tutorial"
   dropdown:
+  - title: "Importing Input files"
+    url: "/lmf_bi2te3_tutorial/"
   - program:
     - name: "lmf"
       prefix: "/lmf"
@@ -125,11 +130,6 @@
         url: "/maxent1/"
       - title: "The self-energy loop and the dynamical double-counting"
         url: "/dmft7/"
-    - name: "Importing Input files"
-      prefix: "/inputimport"
-      content:
-      - title: "Importing Input files"
-        url: "/lmf_bi2te3_tutorial/"
     - name: "Miscellaneous"
       prefix: "/misc"
       content:

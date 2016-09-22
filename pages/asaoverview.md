@@ -1,7 +1,7 @@
 ---
 layout: page-fullwidth
 title: "The Atomic Spheres Approximation"
-permalink: "/docs/asaoverview/"
+permalink: "/docs/asa/asaoverview/"
 sidebar: "left"
 header: no
 ---
