@@ -29,6 +29,10 @@ This package implements the ASA local spin-density approximation using Green's f
 
 **You can find some extra information on the way** **lmgf**{: style="color: blue"} **works in** [lmgf documentation](https://lordcephei.github.io/lmgf-documentation/).
 
+<div onclick="elm = document.getElementById('lmgfvslm'); if(elm.style.display == 'none') elm.style.display = 'block'; else elm.style.display = 'none';"><button type="button" class="button tiny radius">lmgf vs lm</button></div>{::nomarkdown}<div style="display:none;margin:0px 25px 0px 25px;"id="lm">{:/}
+
+{::nomarkdown}</div>{:/}
+
 ##### _lmgf vs lm_
 
 
