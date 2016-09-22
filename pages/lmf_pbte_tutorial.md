@@ -59,6 +59,9 @@ ____________________________________________________________
 ### _Tutorial_
 
 #### 1. _Building the input file_
+{::comment}
+/tutorial/lmf/lmf_pbte_tutorial/#building-the-input-file
+{:/comment}
 
 PbTe crystallizes in the rocksalt structure with lattice constant _a_ = 6.428&#x212B;. You need the structural information in the box below to construct the main input file,
 _ctrl.pbte_{: style="color: green"}. Start in a fresh working directory and cut and paste the box's contents to _init.pbte_{: style="color: green"}.
