@@ -408,8 +408,8 @@ It is implemented here including combined correction
 which is described in Ole Andersen's unpublished notes,
 "Transformation to a minimal LMTO set; downfolding" Aug 15, 1988.
 We include in this documentation a 
-[plain TeX source file of notes](/assets/download/docs/dnfpap.tex/)
-which explains in some detail how downfolding is implemented 
+[plain TeX source file of notes](../../../assets/download/docs/dnfpap.tex)
+explaining in some detail how downfolding is implemented 
 into the **lm**{: style="color: blue"} code.
 
 One way to look at the scheme is the following. When an electron
