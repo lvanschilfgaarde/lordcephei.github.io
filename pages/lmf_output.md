@@ -1,12 +1,13 @@
 ---
 layout: page-fullwidth
-title: "Annotation of lmf's standard output"
+title: "Annotation of **lmf**{: style="color: blue"}'s standard output"
 subheadline: ""
 show_meta: false
 teaser: ""
 permalink: "/docs/outputs/lmf_output/"
 header: no
 ---
+
 
 _____________________________________________________________
 
@@ -21,13 +22,8 @@ _____________________________________________________________
 *  Auto generated table of contents
 {:toc}  
 
-###  _lmf's standard output_
-{::comment}
-/docs/outputs/lmf_output/#annotation-of-lmf's-output
-{:/comment}
-
 The output documented here is mostly taken from [PbTe
-tutorial](/tutorial/lmf/lmf_pbte tutorial/). It will be indicated
+tutorial](/tutorial/lmf/lmf_pbte_tutorial/). It will be indicated
 where portions are adapted from other calculations.  
 
 This document divides the standard output into blocks approximately in the
