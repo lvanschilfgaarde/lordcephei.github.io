@@ -1,6 +1,6 @@
 ---
 layout: page-fullwidth
-title: "lmf CLO"
+title: "lmf Command Line Options"
 permalink: "/docs/commandline/lmf/"
 header: no
 ---
