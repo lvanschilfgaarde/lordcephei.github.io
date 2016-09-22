@@ -232,6 +232,8 @@ and the bandwidth &Delta;<i><sub>l</sub></i>.
 + <i>C<sub>l</sub></i> describes the band center, and is the analog of the on-site matrix element (or atomic level in the free atom)
 + &Delta;<i><sub>l</sub></i> characterises the width of the partial, i.e. approximately the maximum and minimum values a partial wave would take in the absence of hybridization with other atoms.
 
+For a connection between _C_ and &Delta; and scattering phase shifts, see [downfolding](/docs/asaoverview/#downfolding-in-the-asa/) below.
+
 To generate bands and an output charge density (in the form of moments <i>Q</i><sub>0,1,2</sub>), only potential parameters are required.
 Nevertheless it is more common to start from the moments because rough values for them can easily be guessed.  The ASA codes will assume default
 values (<i>Q</i><sub>0</sub> = occupation of the free atom, <i>Q</i><sub>1</sub> = <i>Q</i><sub>2</sub> = 0), which most of the time is good
@@ -408,7 +410,7 @@ It is implemented here including combined correction
 which is described in Ole Andersen's unpublished notes,
 "Transformation to a minimal LMTO set; downfolding" Aug 15, 1988.
 We include in this documentation a 
-[plain TeX source file of notes](assets/download/docs/dnfpap.tex)
+[plain TeX source file of notes](../../../assets/download/docs/dnfpap.tex)
 explaining in some detail how downfolding is implemented 
 into the **lm**{: style="color: blue"} code.
 
@@ -429,14 +431,13 @@ so that one can construct an energy-independent hamiltonian. In
 LMTO, it is customary to use the <i>&kappa;</i>=0 (<i>&kappa;</i><sup>2</sup> is the envelope function energy)
 KKR phase shift in the following parameterization:
 
-$$  / P_l(E) = \Delta / ( E  -  C )  +  \gamma  \hspace{1cm}   (1)  $$
+$$ 1 / P_l(E) = \Delta_l / ( E  -  C_l )  +  \gamma  \hspace{1cm}   (1)  $$
 
-which is correct to second order in $$(E - C)$$.
-&Delta; is the width *W*
-of the resonance, and *C* is the band center (analogous to $$E_l$$ in
-KKR theory). &gamma; is the second order distortion parameter. (In
+which is correct to second order in $$(E - C_l)$$.  Comparing the two equations
+potential parameters *C* and &Delta; are readily identified. &Delta; is the width *W*
+of the resonance, and *C* is the band center. &gamma; is the second order distortion parameter. (In
 practice one also include third order terms using the small
-parameter _p_ (see Varenna notes)). 
+parameter _p_ ; see Varenna notes). 
 
 _Note:_{: style="color: red"} In (1), <i>P<sub>l</sub></i> is indeed Andersen's "potential function,"
 _not_ the ["continuously varying principal quantum number"!](/docs/asaoverview/#augmentation-sphere-boundary-conditions-and-continuous-principal-quantum-numbers)
